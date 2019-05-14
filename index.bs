@@ -4,7 +4,7 @@ Shortname: solid
 Level: 1
 Status: w3c/ED
 Group: Solid Community Group
-URL: http://example.com/url-this-spec-will-live-at
+URL: https://solid.github.io/specification/
 Editor: Your Name, Your Company http://example.com/your-company, your-email@example.com, http://example.com/your-personal-website
 Abstract: This specification describes the interactions between Read/Write Linked Data apps and servers.
 </pre>
