@@ -1,0 +1,12 @@
+<pre class='metadata'>
+Title: Solid
+Shortname: solid
+Level: 1
+Status: w3c/ED
+Group: Solid Community Group
+URL: http://example.com/url-this-spec-will-live-at
+Editor: Your Name, Your Company http://example.com/your-company, your-email@example.com, http://example.com/your-personal-website
+Abstract: This specification describes the interactions between Read/Write Linked Data apps and servers.
+</pre>
+
+<pre class=include>path: introduction.bs</pre>
