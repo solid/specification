@@ -1,0 +1,23 @@
+sudo: false
+language: python
+python:
+  - "2.7"
+
+install:
+  - git clone https://github.com/tabatkins/bikeshed.git
+  - pip install --editable bikeshed
+  - bikeshed update
+
+script:
+  - bikeshed spec index.bs
+
+before_deploy:
+  - rm .gitignore
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  on:
+    branch: master
