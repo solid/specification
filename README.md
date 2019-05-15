@@ -11,3 +11,8 @@ https://lists.w3.org/Archives/Public/public-solid/2019May/0009.html
 
 ## Editing and building the specification
 The specification is built using [Bikeshed](https://tabatkins.github.io/bikeshed/).
+
+## Current Solid Specification Repositories 
+* [Solid](https://github.com/solid/solid-spec)  
+* [Web Access Control](https://github.com/solid/web-access-control-spec) 
+* [WebID OIDC](https://github.com/solid/webid-oidc-spec)
