@@ -1,15 +1,17 @@
 <pre class='metadata'>
-Title: The Solid Ecosystem
-Shortname: solid
+Title: Data Pod Management
+Shortname: pod-management
 Level: 1
 Status: w3c/ED
 Group: Solid Community Group
 URL: https://solid.github.io/specification/
 Editor: Your Name, Your Company http://example.com/your-company, your-email@example.com, http://example.com/your-personal-website
 Abstract:
-  This document connects a set of specifications that, together,
-  provide applications with secure and permissioned access to externally stored data
-  in an interoperable way.
+  This document describes an RDF-driven Web API
+  for managing users and data pods of a Solid pod server.
+  Through this common API,
+  servers with different implementations
+  can be managed with the same apps.
 </pre>
 
 <pre class=include>path: introduction.bs</pre>
