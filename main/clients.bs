@@ -5,12 +5,9 @@ Issue: Write introduction to the Clients and Apps section.
 
 
 ## Implementation Guidance ## {#client-guidance}
-<div class="non-normative">
 <em>This section is non-normative.</em>
 
 Issue: Write Implementation Guidance section.
-
-</div>
 
 
 ## Data Shapes and Footprints ## {#shapes-footprints}
@@ -19,20 +16,25 @@ Issue: Write introduction to Data Shapes and Footprints section.
 
 
 ### Data Shapes ### {#shapes}
+
 Issue: Write Data Shapes section.
+
+A Solid client MUST conform to the SHACL specification [[!SHACL]].
+
+Issue: SHACL or ShEx?
 
 
 ### Footprints ### {#footprints}
+
 Issue: Write Footprints section.
+
+A Solid client MUST conform to the Data Footprints specification [[!FOOTPRINTS]].
 
 
 ## Data Shape Guidance ## {#shape-guidance}
-<div class="non-normative">
 <em>This section is non-normative.</em>
 
 Issue: Write Data Shape Guidance section.
-
-</div>
 
 
 ## Cross-Origin Resource Sharing ## {#cors}

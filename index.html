@@ -1214,7 +1214,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version 30aa90d768746168deba12493f1f3622df2814b6" name="generator">
   <link href="https://solid.github.io/specification/" rel="canonical">
-  <meta content="7cccce052f78ddeb92bc0d549f3a13c3d9a62020" name="document-revision">
+  <meta content="d0f51aef54c57bb034405dec222df5a989dc69ef" name="document-revision">
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -1477,21 +1477,20 @@ Parts of this work may be from another specification document.  If so, those par
    <h2 class="heading settled" data-level="3" id="clients"><span class="secno">3. </span><span class="content">Clients and Apps</span><a class="self-link" href="#clients"></a></h2>
    <p class="issue" id="issue-428d418b"><a class="self-link" href="#issue-428d418b"></a> Write introduction to the Clients and Apps section.</p>
    <h3 class="heading settled" data-level="3.1" id="client-guidance"><span class="secno">3.1. </span><span class="content">Implementation Guidance</span><a class="self-link" href="#client-guidance"></a></h3>
-   <div class="non-normative">
-     <em>This section is non-normative.</em> 
-    <p class="issue" id="issue-1acf634c"><a class="self-link" href="#issue-1acf634c"></a> Write Implementation Guidance section.</p>
-   </div>
+    <em>This section is non-normative.</em> 
+   <p class="issue" id="issue-1acf634c"><a class="self-link" href="#issue-1acf634c"></a> Write Implementation Guidance section.</p>
    <h3 class="heading settled" data-level="3.2" id="shapes-footprints"><span class="secno">3.2. </span><span class="content">Data Shapes and Footprints</span><a class="self-link" href="#shapes-footprints"></a></h3>
    <p class="issue" id="issue-97a4e1a4"><a class="self-link" href="#issue-97a4e1a4"></a> Write introduction to Data Shapes and Footprints section.</p>
    <h4 class="heading settled" data-level="3.2.1" id="shapes"><span class="secno">3.2.1. </span><span class="content">Data Shapes</span><a class="self-link" href="#shapes"></a></h4>
-    Issue: Write Data Shapes section. 
+   <p class="issue" id="issue-35932cfe"><a class="self-link" href="#issue-35932cfe"></a> Write Data Shapes section.</p>
+   <p>A Solid client MUST conform to the SHACL specification <a data-link-type="biblio" href="#biblio-shacl">[SHACL]</a>.</p>
+   <p class="issue" id="issue-66cd441f"><a class="self-link" href="#issue-66cd441f"></a> SHACL or ShEx?</p>
    <h4 class="heading settled" data-level="3.2.2" id="footprints"><span class="secno">3.2.2. </span><span class="content">Footprints</span><a class="self-link" href="#footprints"></a></h4>
-    Issue: Write Footprints section. 
+   <p class="issue" id="issue-e8199220"><a class="self-link" href="#issue-e8199220"></a> Write Footprints section.</p>
+   <p>A Solid client MUST conform to the Data Footprints specification <a data-link-type="biblio" href="#biblio-footprints">[FOOTPRINTS]</a>.</p>
    <h3 class="heading settled" data-level="3.3" id="shape-guidance"><span class="secno">3.3. </span><span class="content">Data Shape Guidance</span><a class="self-link" href="#shape-guidance"></a></h3>
-   <div class="non-normative">
-     <em>This section is non-normative.</em> 
-    <p class="issue" id="issue-88b43b72"><a class="self-link" href="#issue-88b43b72"></a> Write Data Shape Guidance section.</p>
-   </div>
+    <em>This section is non-normative.</em> 
+   <p class="issue" id="issue-88b43b72"><a class="self-link" href="#issue-88b43b72"></a> Write Data Shape Guidance section.</p>
    <h3 class="heading settled" data-level="3.4" id="cors"><span class="secno">3.4. </span><span class="content">Cross-Origin Resource Sharing</span><a class="self-link" href="#cors"></a></h3>
    <p class="issue" id="issue-a807e3ed"><a class="self-link" href="#issue-a807e3ed"></a> Write Cross-Origin Resource Sharing section.</p>
    <p>A Solid data pod MUST conform to the CORS specification <a data-link-type="biblio" href="#biblio-fetch">[FETCH]</a>.</p>
@@ -1671,6 +1670,8 @@ Parts of this work may be from another specification document.  If so, those par
   <dl>
    <dt id="biblio-fetch">[FETCH]
    <dd>Anne van Kesteren. <a href="https://fetch.spec.whatwg.org/">Fetch Standard</a>. Living Standard. URL: <a href="https://fetch.spec.whatwg.org/">https://fetch.spec.whatwg.org/</a>
+   <dt id="biblio-footprints">[FOOTPRINTS]
+   <dd><a href="https://solid.github.io/specification/footprints/">Data Footprints</a>. URL: <a href="https://solid.github.io/specification/footprints/">https://solid.github.io/specification/footprints/</a>
    <dt id="biblio-ldn">[LDN]
    <dd>Sarven Capadisli; Amy Guy. <a href="https://www.w3.org/TR/ldn/">Linked Data Notifications</a>. 2 May 2017. REC. URL: <a href="https://www.w3.org/TR/ldn/">https://www.w3.org/TR/ldn/</a>
    <dt id="biblio-ldp">[LDP]
@@ -1683,6 +1684,8 @@ Parts of this work may be from another specification document.  If so, those par
    <dd>S. Bradner. <a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a>
    <dt id="biblio-rfc7089">[RFC7089]
    <dd>H. Van de Sompel; M. Nelson; R. Sanderson. <a href="https://tools.ietf.org/html/rfc7089">HTTP Framework for Time-Based Access to Resource States -- Memento</a>. December 2013. Informational. URL: <a href="https://tools.ietf.org/html/rfc7089">https://tools.ietf.org/html/rfc7089</a>
+   <dt id="biblio-shacl">[SHACL]
+   <dd>Holger Knublauch; Dimitris Kontokostas. <a href="https://www.w3.org/TR/shacl/">Shapes Constraint Language (SHACL)</a>. 20 July 2017. REC. URL: <a href="https://www.w3.org/TR/shacl/">https://www.w3.org/TR/shacl/</a>
    <dt id="biblio-tpf">[TPF]
    <dd>Ruben Verborgh. <a href="https://www.hydra-cg.com/spec/latest/triple-pattern-fragments/">Triple Pattern Fragments</a>. URL: <a href="https://www.hydra-cg.com/spec/latest/triple-pattern-fragments/">https://www.hydra-cg.com/spec/latest/triple-pattern-fragments/</a>
    <dt id="biblio-verifiable-credentials">[VERIFIABLE-CREDENTIALS]
@@ -1713,6 +1716,9 @@ Parts of this work may be from another specification document.  If so, those par
    <div class="issue"> Write introduction to the Clients and Apps section.<a href="#issue-428d418b"> ↵ </a></div>
    <div class="issue"> Write Implementation Guidance section.<a href="#issue-1acf634c"> ↵ </a></div>
    <div class="issue"> Write introduction to Data Shapes and Footprints section.<a href="#issue-97a4e1a4"> ↵ </a></div>
+   <div class="issue"> Write Data Shapes section.<a href="#issue-35932cfe"> ↵ </a></div>
+   <div class="issue"> SHACL or ShEx?<a href="#issue-66cd441f"> ↵ </a></div>
+   <div class="issue"> Write Footprints section.<a href="#issue-e8199220"> ↵ </a></div>
    <div class="issue"> Write Data Shape Guidance section.<a href="#issue-88b43b72"> ↵ </a></div>
    <div class="issue"> Write Cross-Origin Resource Sharing section.<a href="#issue-a807e3ed"> ↵ </a></div>
    <div class="issue"> Write Update Notification section.<a href="#issue-045d0b84"> ↵ </a></div>

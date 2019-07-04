@@ -20,6 +20,10 @@ Abstract:
 
 <pre class=biblio>
 {
+	"footprints": {
+		"href": "https://solid.github.io/specification/footprints/",
+		"title": "Data Footprints"
+	},
   "pod-management": {
 		"href": "https://solid.github.io/specification/pod-management/",
 		"title": "Data Pod Management"
