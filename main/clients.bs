@@ -19,6 +19,6 @@ Issue: Write this section.
 Issue: Write this section.
 
 
-## Notifications ## {#notifications}
+## Update Notifications ## {#notifications}
 
 Issue: Write this section.
