@@ -1,0 +1,29 @@
+Authenticated Resource Access {#resource-access}
+================================================
+
+Issue: Write this section.
+
+
+## Linked Data Platform ## {#ldp}
+
+Issue: Write this section.
+
+
+## WebID ## {#webid}
+
+Issue: Write this section.
+
+
+### WebID-OIDC ### {#webid-oidc}
+
+Issue: Write this section.
+
+
+### WebID-TLS ### {#webid-tls}
+
+Issue: Write this section.
+
+
+## Web Access Control ## {#wac}
+
+Issue: Write this section.

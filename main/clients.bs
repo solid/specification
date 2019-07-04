@@ -1,0 +1,24 @@
+Clients and Apps {#clients}
+===========================
+
+Issue: Write this section.
+
+
+## Cross-Origin Resource Sharing ## {#cors}
+
+Issue: Write this section.
+
+
+## Implementation Guidance ## {#client-guidance}
+
+Issue: Write this section.
+
+
+## Data Shape Guidance ## {#shape-guidance}
+
+Issue: Write this section.
+
+
+## Update Notifications ## {#notifications}
+
+Issue: Write this section.
