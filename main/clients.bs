@@ -4,21 +4,36 @@ Clients and Apps {#clients}
 Issue: Write introduction to the Clients and Apps section.
 
 
+## Implementation Guidance ## {#client-guidance}
+<em>This section is non-normative.</em>
+
+Issue: Write Implementation Guidance section.
+
+
+## Data Shapes and Footprints ## {#shapes-footprints}
+
+Issue: Write introduction to Data Shapes and Footprints section.
+
+
+### Data Shapes ### {#shapes}
+Issue: Write Data Shapes section.
+
+
+### Footprints ### {#footprints}
+Issue: Write Footprints section.
+
+
+## Data Shape Guidance ## {#shape-guidance}
+<em>This section is non-normative.</em>
+
+Issue: Write Data Shape Guidance section.
+
+
 ## Cross-Origin Resource Sharing ## {#cors}
 
 Issue: Write Cross-Origin Resource Sharing section.
 
 A Solid data pod MUST conform to the CORS specification [[!FETCH]].
-
-
-## Implementation Guidance ## {#client-guidance}
-
-Issue: Write Implementation Guidance section.
-
-
-## Data Shape Guidance ## {#shape-guidance}
-
-Issue: Write Data Shape Guidance section.
 
 
 ## Update Notifications ## {#notifications}
