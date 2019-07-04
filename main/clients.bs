@@ -37,15 +37,8 @@ A Solid client MUST conform to the Data Footprints specification [[!FOOTPRINTS]]
 Issue: Write Data Shape Guidance section.
 
 
-## Cross-Origin Resource Sharing ## {#cors}
-
-Issue: Write Cross-Origin Resource Sharing section.
-
-A Solid data pod MUST conform to the CORS specification [[!FETCH]].
-
-
 ## Update Notifications ## {#notifications}
 
 Issue: Write Update Notification section.
 
-A Solid data pod MUST conform to the LDN specification [[!LDN]].
+A Solid client MUST conform to the LDN specification [[!LDN]].

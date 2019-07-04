@@ -37,3 +37,10 @@ A Solid data pod MAY conform to the WebID-TLS specification [[!WEBID-TLS]].
 Issue: Write Web Access Control section.
 
 A Solid data pod MUST conform to the Web Access Control specification [[!WAC]].
+
+
+## Cross-Origin Resource Sharing ## {#cors}
+
+Issue: Write Cross-Origin Resource Sharing section.
+
+A Solid data pod MUST conform to the CORS specification [[!FETCH]].

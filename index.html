@@ -1214,7 +1214,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version 30aa90d768746168deba12493f1f3622df2814b6" name="generator">
   <link href="https://solid.github.io/specification/" rel="canonical">
-  <meta content="d0f51aef54c57bb034405dec222df5a989dc69ef" name="document-revision">
+  <meta content="d9b5d1535f913f34425611e1c3e18837ddb43bf0" name="document-revision">
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -1410,6 +1410,7 @@ Parts of this work may be from another specification document.  If so, those par
         <li><a href="#webid-tls"><span class="secno">2.2.2</span> <span class="content">WebID-TLS</span></a>
        </ol>
       <li><a href="#wac"><span class="secno">2.3</span> <span class="content">Web Access Control</span></a>
+      <li><a href="#cors"><span class="secno">2.4</span> <span class="content">Cross-Origin Resource Sharing</span></a>
      </ol>
     <li>
      <a href="#clients"><span class="secno">3</span> <span class="content">Clients and Apps</span></a>
@@ -1422,8 +1423,7 @@ Parts of this work may be from another specification document.  If so, those par
         <li><a href="#footprints"><span class="secno">3.2.2</span> <span class="content">Footprints</span></a>
        </ol>
       <li><a href="#shape-guidance"><span class="secno">3.3</span> <span class="content">Data Shape Guidance</span></a>
-      <li><a href="#cors"><span class="secno">3.4</span> <span class="content">Cross-Origin Resource Sharing</span></a>
-      <li><a href="#notifications"><span class="secno">3.5</span> <span class="content">Update Notifications</span></a>
+      <li><a href="#notifications"><span class="secno">3.4</span> <span class="content">Update Notifications</span></a>
      </ol>
     <li>
      <a href="#optional"><span class="secno">4</span> <span class="content">Optional Integrations</span></a>
@@ -1474,6 +1474,9 @@ Parts of this work may be from another specification document.  If so, those par
    <h3 class="heading settled" data-level="2.3" id="wac"><span class="secno">2.3. </span><span class="content">Web Access Control</span><a class="self-link" href="#wac"></a></h3>
    <p class="issue" id="issue-d582b7fc"><a class="self-link" href="#issue-d582b7fc"></a> Write Web Access Control section.</p>
    <p>A Solid data pod MUST conform to the Web Access Control specification <a data-link-type="biblio" href="#biblio-wac">[WAC]</a>.</p>
+   <h3 class="heading settled" data-level="2.4" id="cors"><span class="secno">2.4. </span><span class="content">Cross-Origin Resource Sharing</span><a class="self-link" href="#cors"></a></h3>
+   <p class="issue" id="issue-a807e3ed"><a class="self-link" href="#issue-a807e3ed"></a> Write Cross-Origin Resource Sharing section.</p>
+   <p>A Solid data pod MUST conform to the CORS specification <a data-link-type="biblio" href="#biblio-fetch">[FETCH]</a>.</p>
    <h2 class="heading settled" data-level="3" id="clients"><span class="secno">3. </span><span class="content">Clients and Apps</span><a class="self-link" href="#clients"></a></h2>
    <p class="issue" id="issue-428d418b"><a class="self-link" href="#issue-428d418b"></a> Write introduction to the Clients and Apps section.</p>
    <h3 class="heading settled" data-level="3.1" id="client-guidance"><span class="secno">3.1. </span><span class="content">Implementation Guidance</span><a class="self-link" href="#client-guidance"></a></h3>
@@ -1491,12 +1494,9 @@ Parts of this work may be from another specification document.  If so, those par
    <h3 class="heading settled" data-level="3.3" id="shape-guidance"><span class="secno">3.3. </span><span class="content">Data Shape Guidance</span><a class="self-link" href="#shape-guidance"></a></h3>
     <em>This section is non-normative.</em> 
    <p class="issue" id="issue-88b43b72"><a class="self-link" href="#issue-88b43b72"></a> Write Data Shape Guidance section.</p>
-   <h3 class="heading settled" data-level="3.4" id="cors"><span class="secno">3.4. </span><span class="content">Cross-Origin Resource Sharing</span><a class="self-link" href="#cors"></a></h3>
-   <p class="issue" id="issue-a807e3ed"><a class="self-link" href="#issue-a807e3ed"></a> Write Cross-Origin Resource Sharing section.</p>
-   <p>A Solid data pod MUST conform to the CORS specification <a data-link-type="biblio" href="#biblio-fetch">[FETCH]</a>.</p>
-   <h3 class="heading settled" data-level="3.5" id="notifications"><span class="secno">3.5. </span><span class="content">Update Notifications</span><a class="self-link" href="#notifications"></a></h3>
+   <h3 class="heading settled" data-level="3.4" id="notifications"><span class="secno">3.4. </span><span class="content">Update Notifications</span><a class="self-link" href="#notifications"></a></h3>
    <p class="issue" id="issue-045d0b84"><a class="self-link" href="#issue-045d0b84"></a> Write Update Notification section.</p>
-   <p>A Solid data pod MUST conform to the LDN specification <a data-link-type="biblio" href="#biblio-ldn">[LDN]</a>.</p>
+   <p>A Solid client MUST conform to the LDN specification <a data-link-type="biblio" href="#biblio-ldn">[LDN]</a>.</p>
    <h2 class="heading settled" data-level="4" id="optional"><span class="secno">4. </span><span class="content">Optional Integrations</span><a class="self-link" href="#optional"></a></h2>
    <p class="issue" id="issue-3c1c981b"><a class="self-link" href="#issue-3c1c981b"></a> Write introduction to the Optional Integrations section.</p>
    <h3 class="heading settled" data-level="4.1" id="pod-management"><span class="secno">4.1. </span><span class="content">Pod and User Management</span><a class="self-link" href="#pod-management"></a></h3>
@@ -1713,6 +1713,7 @@ Parts of this work may be from another specification document.  If so, those par
    <div class="issue"> Write WebID-OIDC section.<a href="#issue-ba14f105"> ↵ </a></div>
    <div class="issue"> Write WebID-TLS section.<a href="#issue-b2a56341"> ↵ </a></div>
    <div class="issue"> Write Web Access Control section.<a href="#issue-d582b7fc"> ↵ </a></div>
+   <div class="issue"> Write Cross-Origin Resource Sharing section.<a href="#issue-a807e3ed"> ↵ </a></div>
    <div class="issue"> Write introduction to the Clients and Apps section.<a href="#issue-428d418b"> ↵ </a></div>
    <div class="issue"> Write Implementation Guidance section.<a href="#issue-1acf634c"> ↵ </a></div>
    <div class="issue"> Write introduction to Data Shapes and Footprints section.<a href="#issue-97a4e1a4"> ↵ </a></div>
@@ -1720,7 +1721,6 @@ Parts of this work may be from another specification document.  If so, those par
    <div class="issue"> SHACL or ShEx?<a href="#issue-66cd441f"> ↵ </a></div>
    <div class="issue"> Write Footprints section.<a href="#issue-e8199220"> ↵ </a></div>
    <div class="issue"> Write Data Shape Guidance section.<a href="#issue-88b43b72"> ↵ </a></div>
-   <div class="issue"> Write Cross-Origin Resource Sharing section.<a href="#issue-a807e3ed"> ↵ </a></div>
    <div class="issue"> Write Update Notification section.<a href="#issue-045d0b84"> ↵ </a></div>
    <div class="issue"> Write introduction to the Optional Integrations section.<a href="#issue-3c1c981b"> ↵ </a></div>
    <div class="issue"> Write Pod and User Management section.<a href="#issue-e248ac8f"> ↵ </a></div>
