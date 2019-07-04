@@ -1,7 +1,7 @@
 Introduction {#intro}
 =====================
 
-Issue: Write this section.
+Issue: Write Introduction section.
 
 Issue: Explain the principle of orthogonality,
   by which this spec is split into multiple documents.
