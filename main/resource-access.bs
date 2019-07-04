@@ -8,22 +8,32 @@ Issue: Write this section.
 
 Issue: Write this section.
 
+A Solid data pod MUST conform to the LDP specification [[!LDP]].
+
 
 ## WebID ## {#webid}
 
-Issue: Write this section.
+Issue: Explain inline that agents accessing non-public Solid resources
+  need a WebID, and that this is a URL
+  pointing to a document with an RDF representation.
 
 
 ### WebID-OIDC ### {#webid-oidc}
 
 Issue: Write this section.
 
+A Solid data pod MUST conform to the WebID-OIDC specification [[!WEBID-OIDC]].
+
 
 ### WebID-TLS ### {#webid-tls}
 
 Issue: Write this section.
 
+A Solid data pod MAY conform to the WebID-TLS specification [[!WEBID-TLS]].
+
 
 ## Web Access Control ## {#wac}
 
 Issue: Write this section.
+
+A Solid data pod MUST conform to the Web Access Control specification [[!WAC]].

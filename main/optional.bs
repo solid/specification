@@ -8,10 +8,14 @@ Issue: Write this section.
 
 Issue: Write this section.
 
+A Solid data pod MAY conform to the Pod Management specification [[!POD-MANAGEMENT]].
+
 
 ## Query interfaces ## {#query}
 
 Issue: Write this section.
+
+A Solid data pod MAY conform to the Triple Pattern Fragments specification [[!TPF]].
 
 
 ## Additional Content Negotiation Dimensions ## {#content-negotation}
@@ -23,12 +27,18 @@ Issue: Write this section.
 
 Issue: Write this section.
 
+A Solid data pod MAY conform to the Memento specification [[!RFC7089]].
+
 
 ### Profiles ### {#profiles}
 
 Issue: Write this section.
 
+A Solid data pod MAY conform to the Profile-based Content Negotiation specification [[!PROFILES]].
+
 
 ## Verifiable Credentials ## {#verifiable-credentials}
 
 Issue: Write this section.
+
+A Solid data pod MAY conform to the Verifiable Credentials specification [[!VERIFIABLE-CREDENTIALS]].
