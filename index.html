@@ -1214,7 +1214,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version 30aa90d768746168deba12493f1f3622df2814b6" name="generator">
   <link href="https://solid.github.io/specification/" rel="canonical">
-  <meta content="1884f28da616104d725e0b6ef9c442d03afb2588" name="document-revision">
+  <meta content="7cccce052f78ddeb92bc0d549f3a13c3d9a62020" name="document-revision">
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -1414,10 +1414,16 @@ Parts of this work may be from another specification document.  If so, those par
     <li>
      <a href="#clients"><span class="secno">3</span> <span class="content">Clients and Apps</span></a>
      <ol class="toc">
-      <li><a href="#cors"><span class="secno">3.1</span> <span class="content">Cross-Origin Resource Sharing</span></a>
-      <li><a href="#client-guidance"><span class="secno">3.2</span> <span class="content">Implementation Guidance</span></a>
+      <li><a href="#client-guidance"><span class="secno">3.1</span> <span class="content">Implementation Guidance</span></a>
+      <li>
+       <a href="#shapes-footprints"><span class="secno">3.2</span> <span class="content">Data Shapes and Footprints</span></a>
+       <ol class="toc">
+        <li><a href="#shapes"><span class="secno">3.2.1</span> <span class="content">Data Shapes</span></a>
+        <li><a href="#footprints"><span class="secno">3.2.2</span> <span class="content">Footprints</span></a>
+       </ol>
       <li><a href="#shape-guidance"><span class="secno">3.3</span> <span class="content">Data Shape Guidance</span></a>
-      <li><a href="#notifications"><span class="secno">3.4</span> <span class="content">Update Notifications</span></a>
+      <li><a href="#cors"><span class="secno">3.4</span> <span class="content">Cross-Origin Resource Sharing</span></a>
+      <li><a href="#notifications"><span class="secno">3.5</span> <span class="content">Update Notifications</span></a>
      </ol>
     <li>
      <a href="#optional"><span class="secno">4</span> <span class="content">Optional Integrations</span></a>
@@ -1470,14 +1476,26 @@ Parts of this work may be from another specification document.  If so, those par
    <p>A Solid data pod MUST conform to the Web Access Control specification <a data-link-type="biblio" href="#biblio-wac">[WAC]</a>.</p>
    <h2 class="heading settled" data-level="3" id="clients"><span class="secno">3. </span><span class="content">Clients and Apps</span><a class="self-link" href="#clients"></a></h2>
    <p class="issue" id="issue-428d418b"><a class="self-link" href="#issue-428d418b"></a> Write introduction to the Clients and Apps section.</p>
-   <h3 class="heading settled" data-level="3.1" id="cors"><span class="secno">3.1. </span><span class="content">Cross-Origin Resource Sharing</span><a class="self-link" href="#cors"></a></h3>
+   <h3 class="heading settled" data-level="3.1" id="client-guidance"><span class="secno">3.1. </span><span class="content">Implementation Guidance</span><a class="self-link" href="#client-guidance"></a></h3>
+   <div class="non-normative">
+     <em>This section is non-normative.</em> 
+    <p class="issue" id="issue-1acf634c"><a class="self-link" href="#issue-1acf634c"></a> Write Implementation Guidance section.</p>
+   </div>
+   <h3 class="heading settled" data-level="3.2" id="shapes-footprints"><span class="secno">3.2. </span><span class="content">Data Shapes and Footprints</span><a class="self-link" href="#shapes-footprints"></a></h3>
+   <p class="issue" id="issue-97a4e1a4"><a class="self-link" href="#issue-97a4e1a4"></a> Write introduction to Data Shapes and Footprints section.</p>
+   <h4 class="heading settled" data-level="3.2.1" id="shapes"><span class="secno">3.2.1. </span><span class="content">Data Shapes</span><a class="self-link" href="#shapes"></a></h4>
+    Issue: Write Data Shapes section. 
+   <h4 class="heading settled" data-level="3.2.2" id="footprints"><span class="secno">3.2.2. </span><span class="content">Footprints</span><a class="self-link" href="#footprints"></a></h4>
+    Issue: Write Footprints section. 
+   <h3 class="heading settled" data-level="3.3" id="shape-guidance"><span class="secno">3.3. </span><span class="content">Data Shape Guidance</span><a class="self-link" href="#shape-guidance"></a></h3>
+   <div class="non-normative">
+     <em>This section is non-normative.</em> 
+    <p class="issue" id="issue-88b43b72"><a class="self-link" href="#issue-88b43b72"></a> Write Data Shape Guidance section.</p>
+   </div>
+   <h3 class="heading settled" data-level="3.4" id="cors"><span class="secno">3.4. </span><span class="content">Cross-Origin Resource Sharing</span><a class="self-link" href="#cors"></a></h3>
    <p class="issue" id="issue-a807e3ed"><a class="self-link" href="#issue-a807e3ed"></a> Write Cross-Origin Resource Sharing section.</p>
    <p>A Solid data pod MUST conform to the CORS specification <a data-link-type="biblio" href="#biblio-fetch">[FETCH]</a>.</p>
-   <h3 class="heading settled" data-level="3.2" id="client-guidance"><span class="secno">3.2. </span><span class="content">Implementation Guidance</span><a class="self-link" href="#client-guidance"></a></h3>
-   <p class="issue" id="issue-1acf634c"><a class="self-link" href="#issue-1acf634c"></a> Write Implementation Guidance section.</p>
-   <h3 class="heading settled" data-level="3.3" id="shape-guidance"><span class="secno">3.3. </span><span class="content">Data Shape Guidance</span><a class="self-link" href="#shape-guidance"></a></h3>
-   <p class="issue" id="issue-88b43b72"><a class="self-link" href="#issue-88b43b72"></a> Write Data Shape Guidance section.</p>
-   <h3 class="heading settled" data-level="3.4" id="notifications"><span class="secno">3.4. </span><span class="content">Update Notifications</span><a class="self-link" href="#notifications"></a></h3>
+   <h3 class="heading settled" data-level="3.5" id="notifications"><span class="secno">3.5. </span><span class="content">Update Notifications</span><a class="self-link" href="#notifications"></a></h3>
    <p class="issue" id="issue-045d0b84"><a class="self-link" href="#issue-045d0b84"></a> Write Update Notification section.</p>
    <p>A Solid data pod MUST conform to the LDN specification <a data-link-type="biblio" href="#biblio-ldn">[LDN]</a>.</p>
    <h2 class="heading settled" data-level="4" id="optional"><span class="secno">4. </span><span class="content">Optional Integrations</span><a class="self-link" href="#optional"></a></h2>
@@ -1693,9 +1711,10 @@ Parts of this work may be from another specification document.  If so, those par
    <div class="issue"> Write WebID-TLS section.<a href="#issue-b2a56341"> ↵ </a></div>
    <div class="issue"> Write Web Access Control section.<a href="#issue-d582b7fc"> ↵ </a></div>
    <div class="issue"> Write introduction to the Clients and Apps section.<a href="#issue-428d418b"> ↵ </a></div>
-   <div class="issue"> Write Cross-Origin Resource Sharing section.<a href="#issue-a807e3ed"> ↵ </a></div>
    <div class="issue"> Write Implementation Guidance section.<a href="#issue-1acf634c"> ↵ </a></div>
+   <div class="issue"> Write introduction to Data Shapes and Footprints section.<a href="#issue-97a4e1a4"> ↵ </a></div>
    <div class="issue"> Write Data Shape Guidance section.<a href="#issue-88b43b72"> ↵ </a></div>
+   <div class="issue"> Write Cross-Origin Resource Sharing section.<a href="#issue-a807e3ed"> ↵ </a></div>
    <div class="issue"> Write Update Notification section.<a href="#issue-045d0b84"> ↵ </a></div>
    <div class="issue"> Write introduction to the Optional Integrations section.<a href="#issue-3c1c981b"> ↵ </a></div>
    <div class="issue"> Write Pod and User Management section.<a href="#issue-e248ac8f"> ↵ </a></div>
