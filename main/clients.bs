@@ -1,28 +1,28 @@
 Clients and Apps {#clients}
 ===========================
 
-Issue: Write this section.
+Issue: Write introduction to the Clients and Apps section.
 
 
 ## Cross-Origin Resource Sharing ## {#cors}
 
-Issue: Write this section.
+Issue: Write Cross-Origin Resource Sharing section.
 
 A Solid data pod MUST conform to the CORS specification [[!FETCH]].
 
 
 ## Implementation Guidance ## {#client-guidance}
 
-Issue: Write this section.
+Issue: Write Implementation Guidance section.
 
 
 ## Data Shape Guidance ## {#shape-guidance}
 
-Issue: Write this section.
+Issue: Write Data Shape Guidance section.
 
 
 ## Update Notifications ## {#notifications}
 
-Issue: Write this section.
+Issue: Write Update Notification section.
 
 A Solid data pod MUST conform to the LDN specification [[!LDN]].

@@ -1,12 +1,12 @@
 Authenticated Resource Access {#resource-access}
 ================================================
 
-Issue: Write this section.
+Issue: Write introduction to the Authenticated Resource Access section.
 
 
 ## Linked Data Platform ## {#ldp}
 
-Issue: Write this section.
+Issue: Write Linked Data Platform section.
 
 A Solid data pod MUST conform to the LDP specification [[!LDP]].
 
@@ -20,20 +20,20 @@ Issue: Explain inline that agents accessing non-public Solid resources
 
 ### WebID-OIDC ### {#webid-oidc}
 
-Issue: Write this section.
+Issue: Write WebID-OIDC section.
 
 A Solid data pod MUST conform to the WebID-OIDC specification [[!WEBID-OIDC]].
 
 
 ### WebID-TLS ### {#webid-tls}
 
-Issue: Write this section.
+Issue: Write WebID-TLS section.
 
 A Solid data pod MAY conform to the WebID-TLS specification [[!WEBID-TLS]].
 
 
 ## Web Access Control ## {#wac}
 
-Issue: Write this section.
+Issue: Write Web Access Control section.
 
 A Solid data pod MUST conform to the Web Access Control specification [[!WAC]].
