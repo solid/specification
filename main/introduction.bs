@@ -2,3 +2,10 @@ Introduction {#intro}
 =====================
 
 Issue: Write this section.
+
+Issue: Explain the principle of orthogonality,
+  by which this spec is split into multiple documents.
+
+Issue: Explain that this specification is not documentation;
+  it is the easiest way to understand how Solid works,
+  not the easiest way for building a Solid app.
