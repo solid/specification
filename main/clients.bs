@@ -8,6 +8,8 @@ Issue: Write this section.
 
 Issue: Write this section.
 
+A Solid data pod MUST conform to the CORS specification [[!FETCH]].
+
 
 ## Implementation Guidance ## {#client-guidance}
 
@@ -22,3 +24,5 @@ Issue: Write this section.
 ## Update Notifications ## {#notifications}
 
 Issue: Write this section.
+
+A Solid data pod MUST conform to the LDN specification [[!LDN]].

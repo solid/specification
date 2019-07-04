@@ -17,3 +17,48 @@ Abstract:
 <pre class=include>path: clients.bs</pre>
 <pre class=include>path: optional.bs</pre>
 <pre class=include>path: security.bs</pre>
+
+<pre class=biblio>
+{
+  "pod-management": {
+		"href": "https://solid.github.io/specification/pod-management/",
+		"title": "Data Pod Management"
+	},
+  "profiles": {
+		"href": "https://profilenegotiation.github.io/I-D-Profile-Negotiation/I-D-Profile-Negotiation.html",
+		"title": "Indicating and Negotiating Profiles in HTTP",
+    "authors": [
+      "Lars Svensson",
+      "Ruben Verborgh"
+    ]
+	},
+  "tpf": {
+		"href": "https://www.hydra-cg.com/spec/latest/triple-pattern-fragments/",
+		"title": "Triple Pattern Fragments",
+    "authors": [
+      "Ruben Verborgh"
+    ]
+	},
+  "verifiable-credentials": {
+		"href": "https://www.w3.org/TR/verifiable-claims-data-model/",
+		"title": "Verifiable Credentials Data Model 1.0",
+    "authors": [
+      "Manu Sporny",
+      "Dave Longley",
+      "David Chadwick"
+    ]
+	},
+	"wac": {
+		"href": "https://solid.github.io/specification/wac/",
+		"title": "Web Access Control"
+	},
+	"webid-oidc": {
+		"href": "https://solid.github.io/specification/webid-oidc/",
+		"title": "WebID-OIDC"
+	},
+	"webid-tls": {
+		"href": "https://solid.github.io/specification/webid-tls/",
+		"title": "WebID-TLS"
+	}
+}
+</pre>
