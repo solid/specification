@@ -1,0 +1,34 @@
+Optional Integrations {#optional}
+=================================
+
+Issue: Write this section.
+
+
+## Pod and User Management ## {#pod-management}
+
+Issue: Write this section.
+
+
+## Query interfaces ## {#query}
+
+Issue: Write this section.
+
+
+## Additional Content Negotiation Dimensions ## {#content-negotation}
+
+Issue: Write this section.
+
+
+### Memento ### {#memento}
+
+Issue: Write this section.
+
+
+### Profiles ### {#profiles}
+
+Issue: Write this section.
+
+
+## Verifiable Credentials ## {#verifiable-credentials}
+
+Issue: Write this section.

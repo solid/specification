@@ -13,3 +13,7 @@ Abstract:
 </pre>
 
 <pre class=include>path: introduction.bs</pre>
+<pre class=include>path: resource-access.bs</pre>
+<pre class=include>path: clients.bs</pre>
+<pre class=include>path: optional.bs</pre>
+<pre class=include>path: security.bs</pre>
