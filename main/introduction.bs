@@ -9,3 +9,7 @@ Issue: Explain the principle of orthogonality,
 Issue: Explain that this specification is not documentation;
   it is the easiest way to understand how Solid works,
   not the easiest way for building a Solid app.
+
+## Definitions ## {#definitions}
+
+Issue: Write Definitions section.
