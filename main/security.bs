@@ -2,3 +2,7 @@ Security Considerations {#security}
 ===================================
 
 Issue: Write Security Considerations section.
+
+## Privacy Considerations ## {#privacy}
+
+Issue: Write Privacy Considerations section.
