@@ -14,3 +14,6 @@ Issue: Explain that this specification is not documentation;
 
 A <dfn export>data pod</dfn> is a place for storing documents,
 with mechanisms for controlling who can access what.
+
+A <dfn export>Solid app</dfn> is an application
+that reads or writes data from one or more [=data pods=].
