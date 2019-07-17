@@ -41,6 +41,52 @@ A Solid data pod MUST conform to the Web Access Control specification [[!WAC]].
 
 ## Cross-Origin Resource Sharing ## {#cors}
 
+### Background and Need ### {#cors-need}
+<em>This section is non-normative.</em>
+
+[=Solid apps=] typically access data from multiple sources.
+However,
+Web browsers by default prevent apps that run on one origin
+from accessing data on other origins.
+This cross-origin protection is a security mechanism
+that ensures malicious websites cannot simply read
+your profile or banking details from other websites.
+However, this reasonable default poses a problem
+even for benevolent Solid apps,
+which might have good reasons to access data from different places.
+For instance,
+a Solid app at `https://app.example/`
+would be prevented from accessing data on
+`https://alice-data-pod.example/` or `https://bob-data-pod.example/`,
+even when Alice and Bob have given the user of the app
+their permission to see some of their data.
+
+For cases where the other origins
+have their own access protection mechanism—
+[like within Solid](#wac)—
+the browser's built-in cross-origin protection
+is actually an obstacle rather than a feature.
+After all,
+[=data pods=] already ensure through access control
+that certain documents can only be accessed by specific people.
+Preventively blocking apps from different origins
+thus introduces an unnecessary barrier.
+
+Fortunately,
+Web servers can indicate to the browser
+that certain documents do not require cross-origin protection.
+This mechanism to selectively disable that protection
+is called *Cross-Origin Resource Sharing* or *CORS* [[FETCH]].
+By responding to browser requests
+with a specific combination of HTTP headers,
+servers can indicate which actions are allowed for a given resource.
+For a Solid data pod,
+the goal is to allow *all* actions on the CORS level,
+such that the deeper [access control layer](#wac)
+can exert full control over the app's allowed permissions.
+The next section describes how to achieve this
+through the right HTTP header configuration.
+
 Issue: Write Cross-Origin Resource Sharing section.
 
 A Solid data pod MUST conform to the CORS specification [[!FETCH]].
