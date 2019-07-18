@@ -90,8 +90,8 @@ through the right HTTP header configuration.
 ### Required server-side implementation ### {#cors-server}
 
 A [=data pod=] MUST implement the CORS protocol [[!FETCH]]
-such that no request to it or response from it
-is blocked by the browser.
+such that, to the extent possible,
+no request to it or response from it is blocked by the browser.
 If the data pod wishes to block access to a resource,
 this MUST NOT happen via CORS
 but MUST instead be communicated to the Solid app in the browser
@@ -103,6 +103,32 @@ Note: Since the CORS protocol is part of a Living Standard,
 it should still be considered in evolution.
 Changes to the CORS protocol might thus happen at any point,
 which might necessitate changes to server implementations
-to prevent undesired blocking.
+for continued prevention of undesired blocking.
 A [proposal](https://github.com/whatwg/fetch/issues/878) to mitigate this
 has been suggested.
+
+Concretely,
+whenever a data pod receives an HTTP request
+containing an `Origin` header [[!RFC6454]],
+the server MUST respond with the appropriate `Access-Control-*` headers
+as specified in the CORS protocol [[!FETCH]].
+A data pod MUST also support the HTTP `OPTIONS` method [[!RFC7231]]
+such that it can respond appropriately to CORS preflight requests.
+
+Careful attention is warranted,
+especially because of the many edge cases.
+For instance,
+data pods SHOULD enumerate all response headers under `Access-Control-Expose-Headers`
+because there are cases (credentials mode set to `include`)
+where using `*` as a value does not work.
+As another example,
+data pods SHOULD always explicitly list `Accept` under `Access-Control-Allow-Headers`.
+This is recommended because,
+despite `Accept` being safelisted,
+values longer than 128 characters are blocked by default,
+and the number of available RDF formats that Solid apps might use
+could easily lead to longer value lengths.
+
+Note: Under the current CORS protocol,
+the correct HTTP response headers depend on the specifics of the request
+and thus cannot be pre-generated.
