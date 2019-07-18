@@ -87,6 +87,22 @@ can exert full control over the app's allowed permissions.
 The next section describes how to achieve this
 through the right HTTP header configuration.
 
-Issue: Write Cross-Origin Resource Sharing section.
+### Required server-side implementation ### {#cors-server}
 
-A Solid data pod MUST conform to the CORS specification [[!FETCH]].
+A [=data pod=] MUST implement the CORS protocol [[!FETCH]]
+such that no request to it or response from it
+is blocked by the browser.
+If the data pod wishes to block access to a resource,
+this MUST NOT happen via CORS
+but MUST instead be communicated to the Solid app in the browser
+through HTTP status codes such as `401`, `403`, or `404` [[!RFC7231]].
+Furthermore,
+all response headers MUST be exposed to the Solid app.
+
+Note: Since the CORS protocol is part of a Living Standard,
+it should still be considered in evolution.
+Changes to the CORS protocol might thus happen at any point,
+which might necessitate changes to server implementations
+to prevent undesired blocking.
+A [proposal](https://github.com/whatwg/fetch/issues/878) to mitigate this
+has been suggested.
