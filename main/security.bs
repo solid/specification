@@ -6,3 +6,7 @@ Issue: Write Security Considerations section.
 ## Privacy Considerations ## {#privacy}
 
 Issue: Write Privacy Considerations section.
+
+### Identifiable Information ### {#identifiable-information}
+
+Issue: Write Identifiable Information section.
