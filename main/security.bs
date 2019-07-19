@@ -31,5 +31,9 @@ in headers such as `User-Agent` or `Origin`.
 
 Issue: Write Privacy Considerations section.
 
+### Identifiable Information ### {#identifiable-information}
+
+Issue: Write Identifiable Information section.
+
 In order to prevent leakage of non-resource data,
 error responses SHOULD NOT contain identifiable information.
