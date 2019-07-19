@@ -3,28 +3,40 @@ Security Considerations {#security}
 
 Issue: Write Security Considerations section.
 
+A data pod MUST NOT assume that HTTP request headers
+sent by a client are valid.
+For example,
+values for `Host` and `Origin`
+MUST NOT be assumed to be free of possibly malicious sequences
+such as `/..` or others.
+
+A data pod MUST NOT assume that the user agent is a regular Web browser,
+even when requests contain familiar values
+in headers such as `User-Agent` or `Origin`.
+Such an assumption could incorrectly lead to conclusions
+about the security model of the application making the request,
+whereas the request might actually come
+from a malicious actor that is not bound to the same security constraints.
+
 Solid data pods [disable all cross-origin protections](#cors-server) in browsers
 because resource access is governed explicitly by [Web Access Control](#wac).
 As such,
 data pods MUST NOT rely on cross-origin protection
 for shielding access to resources.
 While this ensures that unauthorized resource access will not occur,
-additional security measures MAY be needed
+additional security measures MAY be taken
 to prevent metadata in error responses from leaking.
 For instance,
 a malicious app could probe multiple servers
-to check whether the response status code is `401` or `403`,
+to check whether the response status code is
+`401 Unauthorized` or `403 Forbidden`,
 or could try to access an error page
 from an intranet server within the user agent's private network
 to extract company names or other data.
 To mitigate this,
-when a request from an untrusted the `Origin` arrives,
-the data pod MAY set the status code of error responses to `404`
+when a request from an untrusted `Origin` arrives,
+the data pod MAY set the status code of error responses to `404 Not Found`
 and/or anonymize or censor their contents.
-
-A data pod MUST NOT assume that the user agent is a regular Web browser,
-even when requests contain familiar values
-in headers such as `User-Agent` or `Origin`.
 
 
 ## Privacy Considerations ## {#privacy}

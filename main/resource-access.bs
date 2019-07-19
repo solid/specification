@@ -87,15 +87,20 @@ can exert full control over the app's allowed permissions.
 The next section describes how to achieve this
 through the right HTTP header configuration.
 
+
 ### Required server-side implementation ### {#cors-server}
 
 A [=data pod=] MUST implement the CORS protocol [[!FETCH]]
 such that, to the extent possible,
-no request to it or response from it is blocked by the browser.
+the browser does not block
+any request sent to it or response received from it.
 If the data pod wishes to block access to a resource,
 this MUST NOT happen via CORS
 but MUST instead be communicated to the Solid app in the browser
-through HTTP status codes such as `401`, `403`, or `404` [[!RFC7231]].
+through HTTP status codes such as
+`401 Unauthorized`,
+`403 Forbidden`,
+or `404 Not Found` [[!RFC7231]].
 Furthermore,
 all response headers MUST be exposed to the Solid app.
 
@@ -124,11 +129,13 @@ where using `*` as a value does not work.
 As another example,
 data pods SHOULD always explicitly list `Accept` under `Access-Control-Allow-Headers`.
 This is recommended because,
-despite `Accept` being safelisted,
-values longer than 128 characters are blocked by default,
-and the number of available RDF formats that Solid apps might use
-could easily lead to longer value lengths.
+while CORS allows some headers such as `Accept` by default,
+they are blocked when their value exceeds 128 characters
+(which is not uncommon for RDF consumers such as Solid apps).
 
-Note: Under the current CORS protocol,
-the correct HTTP response headers depend on the specifics of the request
+Note:
+The correct HTTP response headers depend on the specifics of the request
 and thus cannot be pre-generated.
+For example,
+`Access-Control-Allow-Origin: *` cannot be used with a credentials mode of `include`
+and should instead reflect a valid `Origin` sent by the client.
