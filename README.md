@@ -7,7 +7,7 @@ which aims to be a clear, unambiguous, and implementable rewrite of the [existin
 
 For the time being, while the migration is in progress, please refer to the existing draft documents if you want to implement a pod server or a solid app.
 
-A fair number of spec improvements is currently in the making. If you want to contribute, please refer to a relevant [Solid panel](https://github.com/solid/culture/blob/master/panels.md).
+A fair number of spec improvements are currently in the making. If you want to contribute, please refer to a relevant [Solid panel](https://github.com/solid/culture/blob/master/panels.md).
 
 Please join our chat room for spec-related issues at https://gitter.im/solid/solid-spec. Feel free to ask any question you may have about the Solid spec, or just say hi!
 
