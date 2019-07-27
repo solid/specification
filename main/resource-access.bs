@@ -3,6 +3,24 @@ Authenticated Resource Access {#resource-access}
 
 Issue: Write introduction to the Authenticated Resource Access section.
 
+## Hypertext Transfer Protocol ## {#http}
+
+Issue: Write Hypertext Transfer Protocol section.
+
+A Solid data pod MUST implement HTTP/1.1 Message Syntax and Routing [[!RFC7230]]
+
+A Solid data pod MUST implement HTTP/1.1 Semantics and Content [[!RFC7231]].
+
+A Solid data pod MUST implement HTTP/1.1 Authentication [[!RFC7235]].
+
+A Solid data pod SHOULD implement HTTP/1.1 Conditional Requests [[!RFC7232]].
+
+A Solid data pod SHOULD implement HTTP/1.1 Range Requests [[!RFC7233]].
+
+A Solid data pod SHOULD implement HTTP/1.1 Caching [[!RFC7234]].
+
+A Solid data pod MAY implement HTTP/2 [[!RFC7540]].
+
 
 ## Linked Data Platform ## {#ldp}
 

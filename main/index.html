@@ -1214,7 +1214,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version 4ddcab19963463e8c5de512468eb40615d02d56e" name="generator">
   <link href="https://solid.github.io/specification/" rel="canonical">
-  <meta content="740014321d4314b494e378a8303bf4b2cc0dd9f5" name="document-revision">
+  <meta content="0225ca9defd068a0bf753f108a16535157e25156" name="document-revision">
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -1406,10 +1406,11 @@ Parts of this work may be from another specification document.  If so, those par
     <li>
      <a href="#resource-access"><span class="secno">2</span> <span class="content">Authenticated Resource Access</span></a>
      <ol class="toc">
-      <li><a href="#ldp"><span class="secno">2.1</span> <span class="content">Linked Data Platform</span></a>
-      <li><a href="#webid"><span class="secno">2.2</span> <span class="content">WebID</span></a>
-      <li><a href="#wac"><span class="secno">2.3</span> <span class="content">Web Access Control</span></a>
-      <li><a href="#cors"><span class="secno">2.4</span> <span class="content">Cross-Origin Resource Sharing</span></a>
+      <li><a href="#http"><span class="secno">2.1</span> <span class="content">Hypertext Transfer Protocol</span></a>
+      <li><a href="#ldp"><span class="secno">2.2</span> <span class="content">Linked Data Platform</span></a>
+      <li><a href="#webid"><span class="secno">2.3</span> <span class="content">WebID</span></a>
+      <li><a href="#wac"><span class="secno">2.4</span> <span class="content">Web Access Control</span></a>
+      <li><a href="#cors"><span class="secno">2.5</span> <span class="content">Cross-Origin Resource Sharing</span></a>
      </ol>
     <li>
      <a href="#clients"><span class="secno">3</span> <span class="content">Clients and Apps</span></a>
@@ -1454,23 +1455,32 @@ Parts of this work may be from another specification document.  If so, those par
    <p class="issue" id="issue-45213e2c"><a class="self-link" href="#issue-45213e2c"></a> Introduce the structure of this document. <a href="#resource-access">Cross-server interoperability</a> <a href="#clients">Cross-app interoperability</a></p>
    <h2 class="heading settled" data-level="2" id="resource-access"><span class="secno">2. </span><span class="content">Authenticated Resource Access</span><a class="self-link" href="#resource-access"></a></h2>
    <p class="issue" id="issue-638fb2f9"><a class="self-link" href="#issue-638fb2f9"></a> Write introduction to the Authenticated Resource Access section.</p>
-   <h3 class="heading settled" data-level="2.1" id="ldp"><span class="secno">2.1. </span><span class="content">Linked Data Platform</span><a class="self-link" href="#ldp"></a></h3>
+   <h3 class="heading settled" data-level="2.1" id="http"><span class="secno">2.1. </span><span class="content">Hypertext Transfer Protocol</span><a class="self-link" href="#http"></a></h3>
+   <p class="issue" id="issue-73c28399"><a class="self-link" href="#issue-73c28399"></a> Write Hypertext Transfer Protocol section.</p>
+   <p>A Solid data pod MUST implement HTTP/1.1 Message Syntax and Routing <a data-link-type="biblio" href="#biblio-rfc7230">[RFC7230]</a></p>
+   <p>A Solid data pod MUST implement HTTP/1.1 Semantics and Content <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>.</p>
+   <p>A Solid data pod MUST implement HTTP/1.1 Authentication <a data-link-type="biblio" href="#biblio-rfc7235">[RFC7235]</a>.</p>
+   <p>A Solid data pod SHOULD implement HTTP/1.1 Conditional Requests <a data-link-type="biblio" href="#biblio-rfc7232">[RFC7232]</a>.</p>
+   <p>A Solid data pod SHOULD implement HTTP/1.1 Range Requests <a data-link-type="biblio" href="#biblio-rfc7233">[RFC7233]</a>.</p>
+   <p>A Solid data pod SHOULD implement HTTP/1.1 Caching <a data-link-type="biblio" href="#biblio-rfc7234">[RFC7234]</a>.</p>
+   <p>A Solid data pod MAY implement HTTP/2 <a data-link-type="biblio" href="#biblio-rfc7540">[RFC7540]</a>.</p>
+   <h3 class="heading settled" data-level="2.2" id="ldp"><span class="secno">2.2. </span><span class="content">Linked Data Platform</span><a class="self-link" href="#ldp"></a></h3>
    <p class="issue" id="issue-2692aa9a"><a class="self-link" href="#issue-2692aa9a"></a> Write Linked Data Platform section.</p>
    <p>A Solid data pod MUST conform to the LDP specification <a data-link-type="biblio" href="#biblio-ldp">[LDP]</a>.</p>
-   <h3 class="heading settled" data-level="2.2" id="webid"><span class="secno">2.2. </span><span class="content">WebID</span><a class="self-link" href="#webid"></a></h3>
+   <h3 class="heading settled" data-level="2.3" id="webid"><span class="secno">2.3. </span><span class="content">WebID</span><a class="self-link" href="#webid"></a></h3>
    <p class="issue" id="issue-8badece5"><a class="self-link" href="#issue-8badece5"></a> Explain inline that agents accessing non-public Solid resources
   need a WebID, and that this is a URL
   pointing to a document with an RDF representation.</p>
-   <h4 class="heading settled" data-level="2.2.1" id="webid-oidc"><span class="secno">2.2.1. </span><span class="content">WebID-OIDC</span><a class="self-link" href="#webid-oidc"></a></h4>
+   <h4 class="heading settled" data-level="2.3.1" id="webid-oidc"><span class="secno">2.3.1. </span><span class="content">WebID-OIDC</span><a class="self-link" href="#webid-oidc"></a></h4>
    <p class="issue" id="issue-ba14f105"><a class="self-link" href="#issue-ba14f105"></a> Write WebID-OIDC section.</p>
    <p>A Solid data pod MUST conform to the WebID-OIDC specification <a data-link-type="biblio" href="#biblio-webid-oidc">[WEBID-OIDC]</a>.</p>
-   <h4 class="heading settled" data-level="2.2.2" id="webid-tls"><span class="secno">2.2.2. </span><span class="content">WebID-TLS</span><a class="self-link" href="#webid-tls"></a></h4>
+   <h4 class="heading settled" data-level="2.3.2" id="webid-tls"><span class="secno">2.3.2. </span><span class="content">WebID-TLS</span><a class="self-link" href="#webid-tls"></a></h4>
    <p class="issue" id="issue-b2a56341"><a class="self-link" href="#issue-b2a56341"></a> Write WebID-TLS section.</p>
    <p>A Solid data pod MAY conform to the WebID-TLS specification <a data-link-type="biblio" href="#biblio-webid-tls">[WEBID-TLS]</a>.</p>
-   <h3 class="heading settled" data-level="2.3" id="wac"><span class="secno">2.3. </span><span class="content">Web Access Control</span><a class="self-link" href="#wac"></a></h3>
+   <h3 class="heading settled" data-level="2.4" id="wac"><span class="secno">2.4. </span><span class="content">Web Access Control</span><a class="self-link" href="#wac"></a></h3>
    <p class="issue" id="issue-d582b7fc"><a class="self-link" href="#issue-d582b7fc"></a> Write Web Access Control section.</p>
    <p>A Solid data pod MUST conform to the Web Access Control specification <a data-link-type="biblio" href="#biblio-wac">[WAC]</a>.</p>
-   <h3 class="heading settled" data-level="2.4" id="cors"><span class="secno">2.4. </span><span class="content">Cross-Origin Resource Sharing</span><a class="self-link" href="#cors"></a></h3>
+   <h3 class="heading settled" data-level="2.5" id="cors"><span class="secno">2.5. </span><span class="content">Cross-Origin Resource Sharing</span><a class="self-link" href="#cors"></a></h3>
    <p class="issue" id="issue-a807e3ed"><a class="self-link" href="#issue-a807e3ed"></a> Write Cross-Origin Resource Sharing section.</p>
    <p>A Solid data pod MUST conform to the CORS specification <a data-link-type="biblio" href="#biblio-fetch">[FETCH]</a>.</p>
    <h2 class="heading settled" data-level="3" id="clients"><span class="secno">3. </span><span class="content">Clients and Apps</span><a class="self-link" href="#clients"></a></h2>
@@ -1684,6 +1694,20 @@ Parts of this work may be from another specification document.  If so, those par
    <dd>S. Bradner. <a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a>
    <dt id="biblio-rfc7089">[RFC7089]
    <dd>H. Van de Sompel; M. Nelson; R. Sanderson. <a href="https://tools.ietf.org/html/rfc7089">HTTP Framework for Time-Based Access to Resource States -- Memento</a>. December 2013. Informational. URL: <a href="https://tools.ietf.org/html/rfc7089">https://tools.ietf.org/html/rfc7089</a>
+   <dt id="biblio-rfc7230">[RFC7230]
+   <dd>R. Fielding, Ed.; J. Reschke, Ed.. <a href="https://httpwg.org/specs/rfc7230.html">Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing</a>. June 2014. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc7230.html">https://httpwg.org/specs/rfc7230.html</a>
+   <dt id="biblio-rfc7231">[RFC7231]
+   <dd>R. Fielding, Ed.; J. Reschke, Ed.. <a href="https://httpwg.org/specs/rfc7231.html">Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content</a>. June 2014. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc7231.html">https://httpwg.org/specs/rfc7231.html</a>
+   <dt id="biblio-rfc7232">[RFC7232]
+   <dd>R. Fielding, Ed.; J. Reschke, Ed.. <a href="https://httpwg.org/specs/rfc7232.html">Hypertext Transfer Protocol (HTTP/1.1): Conditional Requests</a>. June 2014. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc7232.html">https://httpwg.org/specs/rfc7232.html</a>
+   <dt id="biblio-rfc7233">[RFC7233]
+   <dd>R. Fielding, Ed.; Y. Lafon, Ed.; J. Reschke, Ed.. <a href="https://httpwg.org/specs/rfc7233.html">Hypertext Transfer Protocol (HTTP/1.1): Range Requests</a>. June 2014. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc7233.html">https://httpwg.org/specs/rfc7233.html</a>
+   <dt id="biblio-rfc7234">[RFC7234]
+   <dd>R. Fielding, Ed.; M. Nottingham, Ed.; J. Reschke, Ed.. <a href="https://httpwg.org/specs/rfc7234.html">Hypertext Transfer Protocol (HTTP/1.1): Caching</a>. June 2014. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc7234.html">https://httpwg.org/specs/rfc7234.html</a>
+   <dt id="biblio-rfc7235">[RFC7235]
+   <dd>R. Fielding, Ed.; J. Reschke, Ed.. <a href="https://httpwg.org/specs/rfc7235.html">Hypertext Transfer Protocol (HTTP/1.1): Authentication</a>. June 2014. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc7235.html">https://httpwg.org/specs/rfc7235.html</a>
+   <dt id="biblio-rfc7540">[RFC7540]
+   <dd>M. Belshe; R. Peon; M. Thomson, Ed.. <a href="https://httpwg.org/specs/rfc7540.html">Hypertext Transfer Protocol Version 2 (HTTP/2)</a>. May 2015. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc7540.html">https://httpwg.org/specs/rfc7540.html</a>
    <dt id="biblio-shacl">[SHACL]
    <dd>Holger Knublauch; Dimitris Kontokostas. <a href="https://www.w3.org/TR/shacl/">Shapes Constraint Language (SHACL)</a>. 20 July 2017. REC. URL: <a href="https://www.w3.org/TR/shacl/">https://www.w3.org/TR/shacl/</a>
    <dt id="biblio-tpf">[TPF]
@@ -1708,6 +1732,7 @@ Parts of this work may be from another specification document.  If so, those par
    <div class="issue"> Write Definitions section.<a href="#issue-6b0b1b7b"> ↵ </a></div>
    <div class="issue"> Introduce the structure of this document. <a href="#resource-access">Cross-server interoperability</a> <a href="#clients">Cross-app interoperability</a><a href="#issue-45213e2c"> ↵ </a></div>
    <div class="issue"> Write introduction to the Authenticated Resource Access section.<a href="#issue-638fb2f9"> ↵ </a></div>
+   <div class="issue"> Write Hypertext Transfer Protocol section.<a href="#issue-73c28399"> ↵ </a></div>
    <div class="issue"> Write Linked Data Platform section.<a href="#issue-2692aa9a"> ↵ </a></div>
    <div class="issue"> Explain inline that agents accessing non-public Solid resources
   need a WebID, and that this is a URL
