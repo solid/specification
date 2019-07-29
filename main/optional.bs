@@ -8,6 +8,7 @@ Issue: Write introduction to the Optional Integrations section.
 
 Issue: Write Pod and User Management section.
 
+Draft:
 A Solid data pod MAY conform to the Pod Management specification [[!POD-MANAGEMENT]].
 
 
@@ -15,6 +16,7 @@ A Solid data pod MAY conform to the Pod Management specification [[!POD-MANAGEME
 
 Issue: Write Query Interfaces section.
 
+Draft:
 A Solid data pod MAY conform to the Triple Pattern Fragments specification [[!TPF]].
 
 
@@ -27,6 +29,7 @@ Issue: Write Additional Content Negotiation Dimension section.
 
 Issue: Write Memento section.
 
+Draft:
 A Solid data pod MAY conform to the Memento specification [[!RFC7089]].
 
 
@@ -34,6 +37,7 @@ A Solid data pod MAY conform to the Memento specification [[!RFC7089]].
 
 Issue: Write Profiles section.
 
+Draft:
 A Solid data pod MAY conform to the Profile-based Content Negotiation specification [[!PROFILES]].
 
 
@@ -41,4 +45,5 @@ A Solid data pod MAY conform to the Profile-based Content Negotiation specificat
 
 Issue: Write Verifiable Credentials section.
 
+Draft:
 A Solid data pod MAY conform to the Verifiable Credentials specification [[!VERIFIABLE-CREDENTIALS]].

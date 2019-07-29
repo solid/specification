@@ -7,18 +7,25 @@ Issue: Write introduction to the Authenticated Resource Access section.
 
 Issue: Write Hypertext Transfer Protocol section.
 
+Draft:
 A Solid data pod MUST implement HTTP/1.1 Message Syntax and Routing [[!RFC7230]]
 
+Draft:
 A Solid data pod MUST implement HTTP/1.1 Semantics and Content [[!RFC7231]].
 
+Draft:
 A Solid data pod MUST implement HTTP/1.1 Authentication [[!RFC7235]].
 
+Draft:
 A Solid data pod SHOULD implement HTTP/1.1 Conditional Requests [[!RFC7232]].
 
+Draft:
 A Solid data pod SHOULD implement HTTP/1.1 Range Requests [[!RFC7233]].
 
+Draft:
 A Solid data pod SHOULD implement HTTP/1.1 Caching [[!RFC7234]].
 
+Draft:
 A Solid data pod MAY implement HTTP/2 [[!RFC7540]].
 
 
@@ -26,6 +33,7 @@ A Solid data pod MAY implement HTTP/2 [[!RFC7540]].
 
 Issue: Write Linked Data Platform section.
 
+Draft:
 A Solid data pod MUST conform to the LDP specification [[!LDP]].
 
 
@@ -40,6 +48,7 @@ Issue: Explain inline that agents accessing non-public Solid resources
 
 Issue: Write WebID-OIDC section.
 
+Draft:
 A Solid data pod MUST conform to the WebID-OIDC specification [[!WEBID-OIDC]].
 
 
@@ -47,6 +56,7 @@ A Solid data pod MUST conform to the WebID-OIDC specification [[!WEBID-OIDC]].
 
 Issue: Write WebID-TLS section.
 
+Draft:
 A Solid data pod MAY conform to the WebID-TLS specification [[!WEBID-TLS]].
 
 
@@ -54,6 +64,7 @@ A Solid data pod MAY conform to the WebID-TLS specification [[!WEBID-TLS]].
 
 Issue: Write Web Access Control section.
 
+Draft:
 A Solid data pod MUST conform to the Web Access Control specification [[!WAC]].
 
 
@@ -61,4 +72,5 @@ A Solid data pod MUST conform to the Web Access Control specification [[!WAC]].
 
 Issue: Write Cross-Origin Resource Sharing section.
 
+Draft:
 A Solid data pod MUST conform to the CORS specification [[!FETCH]].
