@@ -17,3 +17,7 @@ with mechanisms for controlling who can access what.
 
 A <dfn export>Solid app</dfn> is an application
 that reads or writes data from one or more [=data pods=].
+
+Issue: Introduce the structure of this document.
+  [Cross-server interoperability](#resource-access)
+  [Cross-app interoperability](#clients)
