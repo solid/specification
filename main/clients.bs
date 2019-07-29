@@ -19,6 +19,7 @@ Issue: Write introduction to Data Shapes and Footprints section.
 
 Issue: Write Data Shapes section.
 
+Draft:
 A Solid client MUST conform to the SHACL specification [[!SHACL]].
 
 Issue: SHACL or ShEx?
@@ -28,6 +29,7 @@ Issue: SHACL or ShEx?
 
 Issue: Write Footprints section.
 
+Draft:
 A Solid client MUST conform to the Data Footprints specification [[!FOOTPRINTS]].
 
 
@@ -41,4 +43,5 @@ Issue: Write Data Shape Guidance section.
 
 Issue: Write Update Notification section.
 
+Draft:
 A Solid client MUST conform to the LDN specification [[!LDN]].
