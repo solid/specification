@@ -28,14 +28,13 @@ additional security measures MAY be taken
 to prevent metadata in error responses from leaking.
 For instance,
 a malicious app could probe multiple servers
-to check whether the response status code is
-`401 Unauthorized` or `403 Forbidden`,
+to check whether the response status code is `401` or `403`,
 or could try to access an error page
 from an intranet server within the user agent's private network
 to extract company names or other data.
 To mitigate this,
 when a request from an untrusted `Origin` arrives,
-the data pod MAY set the status code of error responses to `404 Not Found`
+the data pod MAY set the status code of error responses to `404`
 and/or anonymize or censor their contents.
 
 

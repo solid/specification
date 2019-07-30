@@ -127,9 +127,7 @@ If the data pod wishes to block access to a resource,
 this MUST NOT happen via CORS
 but MUST instead be communicated to the Solid app in the browser
 through HTTP status codes such as
-`401 Unauthorized`,
-`403 Forbidden`,
-or `404 Not Found` [[!RFC7231]].
+`401`, `403`, or `404` [[!RFC7231]].
 Furthermore,
 all response headers MUST be exposed to the Solid app.
 
