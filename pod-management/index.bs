@@ -5,6 +5,7 @@ Level: 1
 Status: w3c/ED
 Group: Solid Community Group
 URL: https://solid.github.io/specification/pod-management/
+Markup Shorthands: markdown yes
 Editor: Your Name, Your Company http://example.com/your-company, your-email@example.com, http://example.com/your-personal-website
 Abstract:
   This document describes an RDF-driven Web API
@@ -13,5 +14,14 @@ Abstract:
   servers with different implementations
   can be managed with the same apps.
 </pre>
+
+## Status of This Document ## {#status}
+**This document is an incomplete draft.**
+The sections that have been incorporated have been reviewed
+following the [Solid process](https://github.com/solid/culture/blob/master/README.md).
+However, the information in this document is still subject to change.
+
+You are invited to [contribute](https://github.com/solid/specification/issues)
+any feedback, comments, or questions you might have.
 
 <pre class=include>path: introduction.bs</pre>
