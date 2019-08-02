@@ -121,15 +121,16 @@ through the right HTTP header configuration.
 
 A [=data pod=] MUST implement the CORS protocol [[!FETCH]]
 such that, to the extent possible,
-the browser does not block
-any request sent to it or response received from it.
+the browser allows Solid apps
+to send any request and combination of request headers
+to the data pod,
+and the Solid app can read any response and response headers
+received from the data pod.
 If the data pod wishes to block access to a resource,
 this MUST NOT happen via CORS
 but MUST instead be communicated to the Solid app in the browser
 through HTTP status codes such as
 `401`, `403`, or `404` [[!RFC7231]].
-Furthermore,
-all response headers MUST be exposed to the Solid app.
 
 Note: Since the CORS protocol is part of a Living Standard,
 it should still be considered in evolution.
@@ -141,28 +142,28 @@ has been suggested.
 
 Concretely,
 whenever a data pod receives an HTTP request
-containing an `Origin` header [[!RFC6454]],
+containing a valid `Origin` header [[!RFC6454]],
 the server MUST respond with the appropriate `Access-Control-*` headers
 as specified in the CORS protocol [[!FETCH]].
+In particular,
+the data pod MUST set the `Access-Control-Allow-Origin` header
+to the valid `Origin` value from the request
+and list `Origin` in the `Vary` header value.
+The data pod MUST make all used response headers readable for the Solid app
+through `Access-Control-Expose-Headers`
+(with the possible exception of the `Access-Control-*` headers themselves).
 A data pod MUST also support the HTTP `OPTIONS` method [[!RFC7231]]
 such that it can respond appropriately to CORS preflight requests.
 
 Careful attention is warranted,
 especially because of the many edge cases.
 For instance,
-data pods SHOULD enumerate all response headers under `Access-Control-Expose-Headers`
-because there are cases (credentials mode set to `include`)
-where using `*` as a value does not work.
-As another example,
-data pods SHOULD always explicitly list `Accept` under `Access-Control-Allow-Headers`.
-This is recommended because,
-while CORS allows some headers such as `Accept` by default,
-they are blocked when their value exceeds 128 characters
-(which is not uncommon for RDF consumers such as Solid apps).
-
-Note:
-The correct HTTP response headers depend on the specifics of the request
-and thus cannot be pre-generated.
-For example,
-`Access-Control-Allow-Origin: *` cannot be used with a credentials mode of `include`
-and should instead reflect a valid `Origin` sent by the client.
+data pods SHOULD explicitly enumerate
+all used response headers under `Access-Control-Expose-Headers`
+rather than resorting to `*`,
+which does not cover all cases (such as credentials mode set to `include`).
+Data pods SHOULD also explicitly list `Accept` under `Access-Control-Allow-Headers`,
+because values longer than 128 characters
+(not uncommon for RDF-based Solid apps)
+would otherwise be blocked,
+despite shorter `Accept` headers being allowed without explicit mention.

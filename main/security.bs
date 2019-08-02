@@ -1,22 +1,25 @@
 Security Considerations {#security}
 ===================================
 
-Issue: Write Security Considerations section.
-
-A data pod MUST NOT assume that HTTP request headers
-sent by a client are valid.
+A data pod MUST NOT assume that
+HTTP request headers sent by a client are valid,
+and MUST reject or sanitize invalid header values
+before processing them
+or incorporating them in messages sent to others.
 For example,
 values for `Host` and `Origin`
 MUST NOT be assumed to be free of possibly malicious sequences
-such as `/..` or others.
+such as `/..` or others,
+and invalid `Origin` values
+MUST NOT be echoed into the `Access-Control-Allow-Origin` response header.
 
 A data pod MUST NOT assume that the user agent is a regular Web browser,
 even when requests contain familiar values
 in headers such as `User-Agent` or `Origin`.
-Such an assumption could incorrectly lead to conclusions
+Such an assumption could lead to incorrect conclusions
 about the security model of the application making the request,
-whereas the request might actually come
-from a malicious actor that is not bound to the same security constraints.
+since the request might actually come
+from a non-browser actor unaffected by browser security constraints.
 
 Solid data pods [disable all cross-origin protections](#cors-server) in browsers
 because resource access is governed explicitly by [Web Access Control](#wac).
