@@ -97,7 +97,8 @@ the browser's built-in cross-origin protection
 is actually an obstacle rather than a feature.
 After all,
 [=data pods=] already ensure through access control
-that certain documents can only be accessed by specific people.
+that certain documents can only be accessed
+by specific people or applications.
 Preventively blocking apps from different origins
 thus introduces an unnecessary barrier.
 
