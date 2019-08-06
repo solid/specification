@@ -5,8 +5,10 @@ Issue: Write introduction to the Authenticated Resource Access section.
 
 ## Hypertext Transfer Protocol ## {#http}
 
+### Required server-side implementation ### {#http-server}
+
 A [=data pod=] MUST be an HTTP/1.1 server [[!RFC7230]][[!RFC7231]].
-It SHOULD additionally implement HTTP/2 [[!RFC7540]]
+It SHOULD additionally be an HTTP/2 server [[!RFC7540]]
 to improve performance,
 especially in cases where individual clients
 are expected to send high numbers of successive requests.
@@ -17,16 +19,20 @@ When both `http` and `https` are supported,
 all `http` URIs MUST redirect to their `https` counterparts
 using a response with a `301` status code and a `Location` header.
 
-A data pod MUST implement HTTP/1.1 Conditional Requests [[!RFC7232]]
+A data pod MUST implement the server part
+of HTTP/1.1 Conditional Requests [[!RFC7232]]
 to ensure that updates requested by clients
 will only be applied if given preconditions are met.
-It SHOULD additionally implement HTTP/1.1 Caching [[!RFC7234]]
+It SHOULD additionally implement the server part
+of HTTP/1.1 Caching [[!RFC7234]]
 to reduce bandwidth.
-A data pod MAY implement HTTP/1.1 Range Requests [[!RFC7233]]
+A data pod MAY implement the server part
+of HTTP/1.1 Range Requests [[!RFC7233]]
 on large representations
 to achieve further bandwidth reduction.
 
-A data pod MUST implement HTTP/1.1 Authentication [[!RFC7235]].
+A data pod MUST implement the server part
+of HTTP/1.1 Authentication [[!RFC7235]].
 When a client does not provide valid credentials
 when requesting a resource that requires it (see [[#webid]]),
 the data pod MUST send a response with a `401` status code
