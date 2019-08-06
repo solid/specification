@@ -28,23 +28,42 @@ all `http` URIs MUST redirect to their `https` counterparts
 using a response with a `301` status code and a `Location` header.
 
 A data pod MUST implement the server part
-of HTTP/1.1 Conditional Requests [[!RFC7232]]
+of <cite>HTTP/1.1 Conditional Requests</cite> [[!RFC7232]]
 to ensure that updates requested by clients
 will only be applied if given preconditions are met.
 It SHOULD additionally implement the server part
-of HTTP/1.1 Caching [[!RFC7234]]
-to reduce bandwidth.
+of <cite>HTTP/1.1 Caching</cite> [[!RFC7234]]
+to reduce bandwidth consumption.
 A data pod MAY implement the server part
-of HTTP/1.1 Range Requests [[!RFC7233]]
+of <cite>HTTP/1.1 Range Requests</cite> [[!RFC7233]]
 on large representations
 to achieve further bandwidth reduction.
 
 A data pod MUST implement the server part
-of HTTP/1.1 Authentication [[!RFC7235]].
+of <cite>HTTP/1.1 Authentication</cite> [[!RFC7235]].
 When a client does not provide valid credentials
 when requesting a resource that requires it (see [[#webid]]),
 the data pod MUST send a response with a `401` status code
 (unless `404` is preferred for security reasons).
+
+### Required client-side implementation ### {#http-client}
+
+A Solid client MUST be an HTTP/1.1 client [[!RFC7230]][[!RFC7231]].
+It MAY additionally be an HTTP/2 client [[!RFC7540]]
+to improve performance.
+
+A Solid client MAY implement the client parts of
+<cite>HTTP/1.1 Conditional Requests</cite> [[!RFC7232]]
+to only trigger updates when certain preconditions are met.
+It MAY implement
+<cite>HTTP/1.1 Caching</cite> [[!RFC7234]]
+and
+<cite>HTTP/1.1 Range Requests</cite> [[!RFC7233]]
+to reduce bandwidth consumption.
+
+A Solid client MUST implement the client part
+of <cite>HTTP/1.1 Authentication</cite> [[!RFC7235]]
+if it needs to access resources requiring authentication (see [[#webid]]).
 
 
 ## Linked Data Platform ## {#ldp}
