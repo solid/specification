@@ -5,28 +5,32 @@ Issue: Write introduction to the Authenticated Resource Access section.
 
 ## Hypertext Transfer Protocol ## {#http}
 
-Issue: Write Hypertext Transfer Protocol section.
+A [=data pod=] MUST be an HTTP/1.1 server [[!RFC7230]][[!RFC7231]].
+It SHOULD additionally implement HTTP/2 [[!RFC7540]]
+to improve performance,
+especially in cases where individual clients
+are expected to send high numbers of successive requests.
 
-Draft:
-A Solid data pod MUST implement HTTP/1.1 Message Syntax and Routing [[!RFC7230]]
+A data pod SHOULD use the `https` URI scheme
+in order to secure the connection between clients and servers.
+When both `http` and `https` are supported,
+all `http` URIs MUST redirect to their `https` counterparts
+using a response with a `301` status code and a `Location` header.
 
-Draft:
-A Solid data pod MUST implement HTTP/1.1 Semantics and Content [[!RFC7231]].
+A data pod MUST implement HTTP/1.1 Conditional Requests [[!RFC7232]]
+to ensure that updates requested by clients
+will only be applied if given preconditions are met.
+It SHOULD additionally implement HTTP/1.1 Caching [[!RFC7234]]
+to reduce bandwidth.
+A data pod MAY implement HTTP/1.1 Range Requests [[!RFC7233]]
+on large representations
+to achieve further bandwidth reduction.
 
-Draft:
-A Solid data pod MUST implement HTTP/1.1 Authentication [[!RFC7235]].
-
-Draft:
-A Solid data pod SHOULD implement HTTP/1.1 Conditional Requests [[!RFC7232]].
-
-Draft:
-A Solid data pod SHOULD implement HTTP/1.1 Range Requests [[!RFC7233]].
-
-Draft:
-A Solid data pod SHOULD implement HTTP/1.1 Caching [[!RFC7234]].
-
-Draft:
-A Solid data pod MAY implement HTTP/2 [[!RFC7540]].
+A data pod MUST implement HTTP/1.1 Authentication [[!RFC7235]].
+When a client does not provide valid credentials
+when requesting a resource that requires it (see [[#webid]]),
+the data pod MUST send a response with a `401` status code
+(unless `404` is preferred for security reasons).
 
 
 ## Linked Data Platform ## {#ldp}
@@ -40,7 +44,7 @@ A Solid data pod MUST conform to the LDP specification [[!LDP]].
 ## WebID ## {#webid}
 
 Issue: Explain inline that agents accessing non-public Solid resources
-  need a WebID, and that this is a URL
+  need to authenticate with a WebID, which is a URL
   pointing to a document with an RDF representation.
 
 
