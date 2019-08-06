@@ -30,10 +30,11 @@ from a non-browser actor unaffected by browser security constraints.
 Solid data pods [disable all cross-origin protections](#cors-server) in browsers
 because resource access is governed explicitly by [Web Access Control](#wac).
 As such,
-data pods MUST NOT rely on cross-origin protection
-for shielding access to resources.
-While this ensures that unauthorized resource access will not occur,
-additional security measures MAY be taken
+data pods MUST NOT rely on browser-based cross-origin protection mechanisms
+for determining the authentication status or representation of a resource.
+In particular,
+they MUST ignore HTTP cookies from untrusted origins.
+Additional security measures MAY be taken
 to prevent metadata in error responses from leaking.
 For instance,
 a malicious app could probe multiple servers
