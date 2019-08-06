@@ -5,6 +5,14 @@ Issue: Write introduction to the Authenticated Resource Access section.
 
 ## Hypertext Transfer Protocol ## {#http}
 
+### Background and Need ### {#http-need}
+<em>This section is non-normative.</em>
+
+Solid clients and servers need to exchange data securely over the Internet,
+and they do so using the Web protocol HTTP.
+This section describes in detail
+which parts of HTTP must be implemented by clients and servers.
+
 ### Required server-side implementation ### {#http-server}
 
 A [=data pod=] MUST be an HTTP/1.1 server [[!RFC7230]][[!RFC7231]].
