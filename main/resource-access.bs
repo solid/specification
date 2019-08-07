@@ -21,8 +21,9 @@ to improve performance,
 especially in cases where individual clients
 are expected to send high numbers of successive requests.
 
-A data pod SHOULD use the `https` URI scheme
-in order to secure the connection between clients and servers.
+A data pod SHOULD use TLS connections
+through the `https` URI scheme
+in order to secure the communication between clients and servers.
 When both `http` and `https` are supported,
 all `http` URIs MUST redirect to their `https` counterparts
 using a response with a `301` status code and a `Location` header.
@@ -33,11 +34,10 @@ to ensure that updates requested by clients
 will only be applied if given preconditions are met.
 It SHOULD additionally implement the server part
 of <cite>HTTP/1.1 Caching</cite> [[!RFC7234]]
-to reduce bandwidth consumption.
+to improve performance.
 A data pod MAY implement the server part
 of <cite>HTTP/1.1 Range Requests</cite> [[!RFC7233]]
-on large representations
-to achieve further bandwidth reduction.
+to further improve performance for large representations.
 
 A data pod MUST implement the server part
 of <cite>HTTP/1.1 Authentication</cite> [[!RFC7235]].
@@ -59,7 +59,7 @@ It MAY implement
 <cite>HTTP/1.1 Caching</cite> [[!RFC7234]]
 and
 <cite>HTTP/1.1 Range Requests</cite> [[!RFC7233]]
-to reduce bandwidth consumption.
+to improve performance.
 
 A Solid client MUST implement the client part
 of <cite>HTTP/1.1 Authentication</cite> [[!RFC7235]]
