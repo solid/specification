@@ -134,9 +134,8 @@ through HTTP status codes such as
 `401`, `403`, or `404` [[!RFC7231]].
 
 Note: Since the CORS protocol is part of a Living Standard,
-it should still be considered in evolution.
-Changes to the CORS protocol might thus happen at any point,
-which might necessitate changes to server implementations
+it might be changed at any point,
+which might necessitate changes to data pod implementations
 for continued prevention of undesired blocking.
 A [proposal](https://github.com/whatwg/fetch/issues/878) to mitigate this
 has been suggested.
