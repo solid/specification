@@ -9,7 +9,7 @@ Issue: Write introduction to the Authenticated Resource Access section.
 <em>This section is non-normative.</em>
 
 Solid clients and servers need to exchange data securely over the Internet,
-and they do so using the Web protocol HTTP.
+and they do so using the HTTP Web standard.
 This section describes in detail
 which parts of HTTP must be implemented by clients and servers.
 
@@ -64,6 +64,8 @@ to improve performance.
 A Solid client MUST implement the client part
 of <cite>HTTP/1.1 Authentication</cite> [[!RFC7235]]
 if it needs to access resources requiring authentication (see [[#webid]]).
+When it receives a response with a `403` or `404` status code,
+it MAY repeat the request with different credentials.
 
 
 ## Linked Data Platform ## {#ldp}
