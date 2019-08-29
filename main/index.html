@@ -1214,7 +1214,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version 08c4b0e94d147852f66673459784d3429bb3bda1" name="generator">
   <link href="https://solid.github.io/specification/" rel="canonical">
-  <meta content="c88ea9b1028e3e7c9eb04f82eeb275c1b5e53c58" name="document-revision">
+  <meta content="62e89e98ac8a7f86ba941f35074d4490d2fea577" name="document-revision">
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -1506,28 +1506,52 @@ that reads or writes data from one or more <a data-link-type="dfn" href="#data-p
    <h2 class="heading settled" data-level="2" id="resource-access"><span class="secno">2. </span><span class="content">Authenticated Resource Access</span><a class="self-link" href="#resource-access"></a></h2>
    <p class="issue" id="issue-638fb2f9"><a class="self-link" href="#issue-638fb2f9"></a> Write introduction to the Authenticated Resource Access section.</p>
    <h3 class="heading settled" data-level="2.1" id="http"><span class="secno">2.1. </span><span class="content">Hypertext Transfer Protocol</span><a class="self-link" href="#http"></a></h3>
-   <p class="issue" id="issue-73c28399"><a class="self-link" href="#issue-73c28399"></a> Write Hypertext Transfer Protocol section.</p>
-   <p>Draft:
-A Solid data pod MUST implement HTTP/1.1 Message Syntax and Routing <a data-link-type="biblio" href="#biblio-rfc7230">[RFC7230]</a></p>
-   <p>Draft:
-A Solid data pod MUST implement HTTP/1.1 Semantics and Content <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>.</p>
-   <p>Draft:
-A Solid data pod MUST implement HTTP/1.1 Authentication <a data-link-type="biblio" href="#biblio-rfc7235">[RFC7235]</a>.</p>
-   <p>Draft:
-A Solid data pod SHOULD implement HTTP/1.1 Conditional Requests <a data-link-type="biblio" href="#biblio-rfc7232">[RFC7232]</a>.</p>
-   <p>Draft:
-A Solid data pod SHOULD implement HTTP/1.1 Range Requests <a data-link-type="biblio" href="#biblio-rfc7233">[RFC7233]</a>.</p>
-   <p>Draft:
-A Solid data pod SHOULD implement HTTP/1.1 Caching <a data-link-type="biblio" href="#biblio-rfc7234">[RFC7234]</a>.</p>
-   <p>Draft:
-A Solid data pod MAY implement HTTP/2 <a data-link-type="biblio" href="#biblio-rfc7540">[RFC7540]</a>.</p>
+   <h4 class="heading settled" data-level="2.1.1" id="http-need"><span class="secno">2.1.1. </span><span class="content">Background and Need</span><a class="self-link" href="#http-need"></a></h4>
+    <em>This section is non-normative.</em> 
+   <p>Solid clients and servers need to exchange data securely over the Internet,
+and they do so using the HTTP Web standard.
+This section describes in detail
+which parts of HTTP must be implemented by clients and servers.</p>
+   <h4 class="heading settled" data-level="2.1.2" id="http-server"><span class="secno">2.1.2. </span><span class="content">Required server-side implementation</span><a class="self-link" href="#http-server"></a></h4>
+   <p>A <a data-link-type="dfn" href="#data-pod" id="ref-for-data-pod①">data pod</a> MUST be an HTTP/1.1 server <a data-link-type="biblio" href="#biblio-rfc7230">[RFC7230]</a><a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>.
+It SHOULD additionally be an HTTP/2 server <a data-link-type="biblio" href="#biblio-rfc7540">[RFC7540]</a> to improve performance,
+especially in cases where individual clients
+are expected to send high numbers of successive requests.</p>
+   <p>A data pod SHOULD use TLS connections
+through the <code>https</code> URI scheme
+in order to secure the communication between clients and servers.
+When both <code>http</code> and <code>https</code> are supported,
+all <code>http</code> URIs MUST redirect to their <code>https</code> counterparts
+using a response with a <code>301</code> status code and a <code>Location</code> header.</p>
+   <p>A data pod MUST implement the server part
+of <cite>HTTP/1.1 Conditional Requests</cite> <a data-link-type="biblio" href="#biblio-rfc7232">[RFC7232]</a> to ensure that updates requested by clients
+will only be applied if given preconditions are met.
+It SHOULD additionally implement the server part
+of <cite>HTTP/1.1 Caching</cite> <a data-link-type="biblio" href="#biblio-rfc7234">[RFC7234]</a> to improve performance.
+A data pod MAY implement the server part
+of <cite>HTTP/1.1 Range Requests</cite> <a data-link-type="biblio" href="#biblio-rfc7233">[RFC7233]</a> to further improve performance for large representations.</p>
+   <p>A data pod MUST implement the server part
+of <cite>HTTP/1.1 Authentication</cite> <a data-link-type="biblio" href="#biblio-rfc7235">[RFC7235]</a>.
+When a client does not provide valid credentials
+when requesting a resource that requires it (see <a href="#webid">§ 2.3 WebID</a>),
+the data pod MUST send a response with a <code>401</code> status code
+(unless <code>404</code> is preferred for security reasons).</p>
+   <h4 class="heading settled" data-level="2.1.3" id="http-client"><span class="secno">2.1.3. </span><span class="content">Required client-side implementation</span><a class="self-link" href="#http-client"></a></h4>
+   <p>A Solid client MUST be an HTTP/1.1 client <a data-link-type="biblio" href="#biblio-rfc7230">[RFC7230]</a><a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>.
+It MAY additionally be an HTTP/2 client <a data-link-type="biblio" href="#biblio-rfc7540">[RFC7540]</a> to improve performance.</p>
+   <p>A Solid client MAY implement the client parts of <cite>HTTP/1.1 Conditional Requests</cite> <a data-link-type="biblio" href="#biblio-rfc7232">[RFC7232]</a> to only trigger updates when certain preconditions are met.
+It MAY implement <cite>HTTP/1.1 Caching</cite> <a data-link-type="biblio" href="#biblio-rfc7234">[RFC7234]</a> and <cite>HTTP/1.1 Range Requests</cite> <a data-link-type="biblio" href="#biblio-rfc7233">[RFC7233]</a> to improve performance.</p>
+   <p>A Solid client MUST implement the client part
+of <cite>HTTP/1.1 Authentication</cite> <a data-link-type="biblio" href="#biblio-rfc7235">[RFC7235]</a> if it needs to access resources requiring authentication (see <a href="#webid">§ 2.3 WebID</a>).
+When it receives a response with a <code>403</code> or <code>404</code> status code,
+it MAY repeat the request with different credentials.</p>
    <h3 class="heading settled" data-level="2.2" id="ldp"><span class="secno">2.2. </span><span class="content">Linked Data Platform</span><a class="self-link" href="#ldp"></a></h3>
    <p class="issue" id="issue-2692aa9a"><a class="self-link" href="#issue-2692aa9a"></a> Write Linked Data Platform section.</p>
    <p>Draft:
 A Solid data pod MUST conform to the LDP specification <a data-link-type="biblio" href="#biblio-ldp">[LDP]</a>.</p>
    <h3 class="heading settled" data-level="2.3" id="webid"><span class="secno">2.3. </span><span class="content">WebID</span><a class="self-link" href="#webid"></a></h3>
-   <p class="issue" id="issue-8badece5"><a class="self-link" href="#issue-8badece5"></a> Explain inline that agents accessing non-public Solid resources
-  need a WebID, and that this is a URL
+   <p class="issue" id="issue-06f3939c"><a class="self-link" href="#issue-06f3939c"></a> Explain inline that agents accessing non-public Solid resources
+  need to authenticate with a WebID, which is a URL
   pointing to a document with an RDF representation.</p>
    <h4 class="heading settled" data-level="2.3.1" id="webid-oidc"><span class="secno">2.3.1. </span><span class="content">WebID-OIDC</span><a class="self-link" href="#webid-oidc"></a></h4>
    <p class="issue" id="issue-ba14f105"><a class="self-link" href="#issue-ba14f105"></a> Write WebID-OIDC section.</p>
@@ -1561,7 +1585,7 @@ their permission to see some of their data.</p>
    <p>For cases where the other origins
 have their own access protection mechanism—<wbr><a href="#wac">like within Solid</a>—<wbr>the browser’s built-in cross-origin protection
 is actually an obstacle rather than a feature.
-After all, <a data-link-type="dfn" href="#data-pod" id="ref-for-data-pod①">data pods</a> already ensure through access control
+After all, <a data-link-type="dfn" href="#data-pod" id="ref-for-data-pod②">data pods</a> already ensure through access control
 that certain documents can only be accessed
 by specific people or applications.
 Preventively blocking apps from different origins
@@ -1580,7 +1604,7 @@ such that the deeper <a href="#wac">access control layer</a> can exert full cont
 The next section describes how to achieve this
 through the right HTTP header configuration.</p>
    <h4 class="heading settled" data-level="2.5.2" id="cors-server"><span class="secno">2.5.2. </span><span class="content">Required server-side implementation</span><a class="self-link" href="#cors-server"></a></h4>
-   <p>A <a data-link-type="dfn" href="#data-pod" id="ref-for-data-pod②">data pod</a> MUST implement the CORS protocol <a data-link-type="biblio" href="#biblio-fetch">[FETCH]</a> such that, to the extent possible,
+   <p>A <a data-link-type="dfn" href="#data-pod" id="ref-for-data-pod③">data pod</a> MUST implement the CORS protocol <a data-link-type="biblio" href="#biblio-fetch">[FETCH]</a> such that, to the extent possible,
 the browser allows Solid apps
 to send any request and combination of request headers
 to the data pod,
@@ -1707,6 +1731,13 @@ to extract company names or other data.
 To mitigate this,
 when a request from an untrusted <code>Origin</code> arrives,
 the data pod MAY set the status code of error responses to <code>404</code> and/or anonymize or censor their contents.</p>
+   <p>Data pods SHOULD use TLS connections
+to protect the contents of requests and responses
+from eavesdropping and modification by third parties.
+Unsecured TCP connections without TLS MAY be used
+in testing environments
+or when the data pod is behind a reverse proxy
+that terminates a secure connection.</p>
    <h3 class="heading settled" data-level="5.1" id="privacy"><span class="secno">5.1. </span><span class="content">Privacy Considerations</span><a class="self-link" href="#privacy"></a></h3>
    <p class="issue" id="issue-4267249d"><a class="self-link" href="#issue-4267249d"></a> Write Privacy Considerations section.</p>
    <h4 class="heading settled" data-level="5.1.1" id="identifiable-information"><span class="secno">5.1.1. </span><span class="content">Identifiable Information</span><a class="self-link" href="#identifiable-information"></a></h4>
@@ -1924,11 +1955,10 @@ error responses SHOULD NOT contain identifiable information.</p>
   not the easiest way for building a Solid app.<a href="#issue-ca10dda5"> ↵ </a></div>
    <div class="issue"> Introduce the structure of this document. <a href="#resource-access">Cross-server interoperability</a> <a href="#clients">Cross-app interoperability</a><a href="#issue-45213e2c"> ↵ </a></div>
    <div class="issue"> Write introduction to the Authenticated Resource Access section.<a href="#issue-638fb2f9"> ↵ </a></div>
-   <div class="issue"> Write Hypertext Transfer Protocol section.<a href="#issue-73c28399"> ↵ </a></div>
    <div class="issue"> Write Linked Data Platform section.<a href="#issue-2692aa9a"> ↵ </a></div>
    <div class="issue"> Explain inline that agents accessing non-public Solid resources
-  need a WebID, and that this is a URL
-  pointing to a document with an RDF representation.<a href="#issue-8badece5"> ↵ </a></div>
+  need to authenticate with a WebID, which is a URL
+  pointing to a document with an RDF representation.<a href="#issue-06f3939c"> ↵ </a></div>
    <div class="issue"> Write WebID-OIDC section.<a href="#issue-ba14f105"> ↵ </a></div>
    <div class="issue"> Write WebID-TLS section.<a href="#issue-b2a56341"> ↵ </a></div>
    <div class="issue"> Write Web Access Control section.<a href="#issue-d582b7fc"> ↵ </a></div>
@@ -1954,8 +1984,9 @@ error responses SHOULD NOT contain identifiable information.</p>
    <b><a href="#data-pod">#data-pod</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-data-pod">1.1. Definitions</a>
-    <li><a href="#ref-for-data-pod①">2.5.1. Background and Need</a>
-    <li><a href="#ref-for-data-pod②">2.5.2. Required server-side implementation</a>
+    <li><a href="#ref-for-data-pod①">2.1.2. Required server-side implementation</a>
+    <li><a href="#ref-for-data-pod②">2.5.1. Background and Need</a>
+    <li><a href="#ref-for-data-pod③">2.5.2. Required server-side implementation</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="solid-app">
