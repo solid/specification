@@ -5,28 +5,67 @@ Issue: Write introduction to the Authenticated Resource Access section.
 
 ## Hypertext Transfer Protocol ## {#http}
 
-Issue: Write Hypertext Transfer Protocol section.
+### Background and Need ### {#http-need}
+<em>This section is non-normative.</em>
 
-Draft:
-A Solid data pod MUST implement HTTP/1.1 Message Syntax and Routing [[!RFC7230]]
+Solid clients and servers need to exchange data securely over the Internet,
+and they do so using the HTTP Web standard.
+This section describes in detail
+which parts of HTTP must be implemented by clients and servers.
 
-Draft:
-A Solid data pod MUST implement HTTP/1.1 Semantics and Content [[!RFC7231]].
+### Required server-side implementation ### {#http-server}
 
-Draft:
-A Solid data pod MUST implement HTTP/1.1 Authentication [[!RFC7235]].
+A [=data pod=] MUST be an HTTP/1.1 server [[!RFC7230]][[!RFC7231]].
+It SHOULD additionally be an HTTP/2 server [[!RFC7540]]
+to improve performance,
+especially in cases where individual clients
+are expected to send high numbers of successive requests.
 
-Draft:
-A Solid data pod SHOULD implement HTTP/1.1 Conditional Requests [[!RFC7232]].
+A data pod SHOULD use TLS connections
+through the `https` URI scheme
+in order to secure the communication between clients and servers.
+When both `http` and `https` are supported,
+all `http` URIs MUST redirect to their `https` counterparts
+using a response with a `301` status code and a `Location` header.
 
-Draft:
-A Solid data pod SHOULD implement HTTP/1.1 Range Requests [[!RFC7233]].
+A data pod MUST implement the server part
+of <cite>HTTP/1.1 Conditional Requests</cite> [[!RFC7232]]
+to ensure that updates requested by clients
+will only be applied if given preconditions are met.
+It SHOULD additionally implement the server part
+of <cite>HTTP/1.1 Caching</cite> [[!RFC7234]]
+to improve performance.
+A data pod MAY implement the server part
+of <cite>HTTP/1.1 Range Requests</cite> [[!RFC7233]]
+to further improve performance for large representations.
 
-Draft:
-A Solid data pod SHOULD implement HTTP/1.1 Caching [[!RFC7234]].
+A data pod MUST implement the server part
+of <cite>HTTP/1.1 Authentication</cite> [[!RFC7235]].
+When a client does not provide valid credentials
+when requesting a resource that requires it (see [[#webid]]),
+the data pod MUST send a response with a `401` status code
+(unless `404` is preferred for security reasons).
 
-Draft:
-A Solid data pod MAY implement HTTP/2 [[!RFC7540]].
+### Required client-side implementation ### {#http-client}
+
+A Solid client MUST be an HTTP/1.1 client [[!RFC7230]][[!RFC7231]].
+It MAY additionally be an HTTP/2 client [[!RFC7540]]
+to improve performance.
+
+A Solid client MAY implement the client parts of
+<cite>HTTP/1.1 Conditional Requests</cite> [[!RFC7232]]
+to only trigger updates when certain preconditions are met.
+It MAY implement
+<cite>HTTP/1.1 Caching</cite> [[!RFC7234]]
+and
+<cite>HTTP/1.1 Range Requests</cite> [[!RFC7233]]
+to improve performance.
+
+A Solid client MUST implement the client part
+of <cite>HTTP/1.1 Authentication</cite> [[!RFC7235]]
+if it needs to access resources requiring authentication (see [[#webid]]).
+When it receives a response with a `403` or `404` status code,
+it MAY repeat the request with different credentials.
 
 
 ## Linked Data Platform ## {#ldp}
@@ -40,7 +79,7 @@ A Solid data pod MUST conform to the LDP specification [[!LDP]].
 ## WebID ## {#webid}
 
 Issue: Explain inline that agents accessing non-public Solid resources
-  need a WebID, and that this is a URL
+  need to authenticate with a WebID, which is a URL
   pointing to a document with an RDF representation.
 
 
