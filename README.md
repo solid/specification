@@ -1,6 +1,6 @@
 # Solid specification repository
 
-**Status: proposed document structure**
+**Status: under active development**
 
 This repository contains the source code of the [Solid specification](https://solid.github.io/specification/),
 which aims to be a clear, unambiguous, and implementable rewrite of the [existing draft documents](https://github.com/solid/solid-spec/).
