@@ -70,7 +70,100 @@ A Solid data pod MUST conform to the Web Access Control specification [[!WAC]].
 
 ## Cross-Origin Resource Sharing ## {#cors}
 
-Issue: Write Cross-Origin Resource Sharing section.
+### Background and Need ### {#cors-need}
+<em>This section is non-normative.</em>
 
-Draft:
-A Solid data pod MUST conform to the CORS specification [[!FETCH]].
+[=Solid apps=] typically access data from multiple sources.
+However,
+Web browsers by default prevent apps that run on one origin
+from accessing data on other origins.
+This cross-origin protection is a security mechanism
+that ensures malicious websites cannot simply read
+your profile or banking details from other websites.
+However, this reasonable default poses a problem
+even for benevolent Solid apps,
+which might have good reasons to access data from different places.
+For instance,
+a Solid app at `https://app.example/`
+would be prevented from accessing data on
+`https://alice-data-pod.example/` or `https://bob-data-pod.example/`,
+even when Alice and Bob have given the user of the app
+their permission to see some of their data.
+
+For cases where the other origins
+have their own access protection mechanism—
+[like within Solid](#wac)—
+the browser's built-in cross-origin protection
+is actually an obstacle rather than a feature.
+After all,
+[=data pods=] already ensure through access control
+that certain documents can only be accessed
+by specific people or applications.
+Preventively blocking apps from different origins
+thus introduces an unnecessary barrier.
+
+Fortunately,
+Web servers can indicate to the browser
+that certain documents do not require cross-origin protection.
+This mechanism to selectively disable that protection
+is called *Cross-Origin Resource Sharing* or *CORS* [[FETCH]].
+By responding to browser requests
+with a specific combination of HTTP headers,
+servers can indicate which actions are allowed for a given resource.
+For a Solid data pod,
+the goal is to allow *all* actions on the CORS level,
+such that the deeper [access control layer](#wac)
+can exert full control over the app's allowed permissions.
+The next section describes how to achieve this
+through the right HTTP header configuration.
+
+
+### Required server-side implementation ### {#cors-server}
+
+A [=data pod=] MUST implement the CORS protocol [[!FETCH]]
+such that, to the extent possible,
+the browser allows Solid apps
+to send any request and combination of request headers
+to the data pod,
+and the Solid app can read any response and response headers
+received from the data pod.
+If the data pod wishes to block access to a resource,
+this MUST NOT happen via CORS
+but MUST instead be communicated to the Solid app in the browser
+through HTTP status codes such as
+`401`, `403`, or `404` [[!RFC7231]].
+
+Note: Since the CORS protocol is part of a Living Standard,
+it might be changed at any point,
+which might necessitate changes to data pod implementations
+for continued prevention of undesired blocking.
+A [proposal](https://github.com/whatwg/fetch/issues/878) to mitigate this
+has been suggested.
+
+Concretely,
+whenever a data pod receives an HTTP request
+containing a valid `Origin` header [[!RFC6454]],
+the server MUST respond with the appropriate `Access-Control-*` headers
+as specified in the CORS protocol [[!FETCH]].
+In particular,
+the data pod MUST set the `Access-Control-Allow-Origin` header
+to the valid `Origin` value from the request
+and list `Origin` in the `Vary` header value.
+The data pod MUST make all used response headers readable for the Solid app
+through `Access-Control-Expose-Headers`
+(with the possible exception of the `Access-Control-*` headers themselves).
+A data pod MUST also support the HTTP `OPTIONS` method [[!RFC7231]]
+such that it can respond appropriately to CORS preflight requests.
+
+Careful attention is warranted,
+especially because of the many edge cases.
+For instance,
+data pods SHOULD explicitly enumerate
+all used response headers under `Access-Control-Expose-Headers`
+rather than resorting to `*`,
+which does not cover all cases (such as credentials mode set to `include`).
+Data pods SHOULD also explicitly list `Accept` under `Access-Control-Allow-Headers`,
+because values longer than 128 characters
+(not uncommon for RDF-based Solid apps)
+would otherwise be blocked,
+despite shorter `Accept` headers being allowed without explicit mention.

@@ -1212,9 +1212,9 @@ Possible extra rowspan handling
 		}
 	}
 </style>
-  <meta content="Bikeshed version 5a2c04fbf9f3418b378c5d733b60fe6fc575091b" name="generator">
+  <meta content="Bikeshed version 08c4b0e94d147852f66673459784d3429bb3bda1" name="generator">
   <link href="https://solid.github.io/specification/" rel="canonical">
-  <meta content="8447f9cb472b2b99e2addfe7460bf69d2ce76c08" name="document-revision">
+  <meta content="c88ea9b1028e3e7c9eb04f82eeb275c1b5e53c58" name="document-revision">
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -1254,6 +1254,43 @@ figcaption {
 figcaption:not(.no-marker)::before {
     content: "Figure " counter(figure) " ";
 }</style>
+<style>/* style-dfn-panel */
+
+.dfn-panel {
+    position: absolute;
+    z-index: 35;
+    height: auto;
+    width: -webkit-fit-content;
+    width: fit-content;
+    max-width: 300px;
+    max-height: 500px;
+    overflow: auto;
+    padding: 0.5em 0.75em;
+    font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
+    background: #DDDDDD;
+    color: black;
+    border: outset 0.2em;
+}
+.dfn-panel:not(.on) { display: none; }
+.dfn-panel * { margin: 0; padding: 0; text-indent: 0; }
+.dfn-panel > b { display: block; }
+.dfn-panel a { color: black; }
+.dfn-panel a:not(:hover) { text-decoration: none !important; border-bottom: none !important; }
+.dfn-panel > b + b { margin-top: 0.25em; }
+.dfn-panel ul { padding: 0; }
+.dfn-panel li { list-style: inside; }
+.dfn-panel.activated {
+    display: inline-block;
+    position: fixed;
+    left: .5em;
+    bottom: 2em;
+    margin: 0 auto;
+    max-width: calc(100vw - 1.5em - .4em - .5em);
+    max-height: 30vh;
+}
+
+.dfn-paneled { cursor: pointer; }
+</style>
 <style>/* style-selflinks */
 
 .heading, .issue, .note, .example, li, dt {
@@ -1366,7 +1403,7 @@ pre .property::before, pre .property::after {
   <div class="head">
    <p data-fill-with="logo"></p>
    <h1 class="p-name no-ref" id="title">The Solid Ecosystem</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2019-08-02">2 August 2019</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2019-08-29">29 August 2019</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1381,7 +1418,7 @@ pre .property::before, pre .property::after {
    <div data-fill-with="warning"></div>
    <p class="copyright" data-fill-with="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="https://licensebuttons.net/p/zero/1.0/80x15.png"></a> To the extent possible under law, the editors have waived all copyright
 and related or neighboring rights to this work.
-In addition, as of 2 August 2019,
+In addition, as of 29 August 2019,
 the editors have made this specification available under the <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>,
 which is available at http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0.
 Parts of this work may be from another specification document.  If so, those parts are instead covered by the license of that specification document. </p>
@@ -1435,6 +1472,11 @@ Parts of this work may be from another specification document.  If so, those par
      </ol>
     <li><a href="#conformance"><span class="secno"></span> <span class="content"> Conformance</span></a>
     <li>
+     <a href="#index"><span class="secno"></span> <span class="content">Index</span></a>
+     <ol class="toc">
+      <li><a href="#index-defined-here"><span class="secno"></span> <span class="content">Terms defined by this specification</span></a>
+     </ol>
+    <li>
      <a href="#references"><span class="secno"></span> <span class="content">References</span></a>
      <ol class="toc">
       <li><a href="#normative"><span class="secno"></span> <span class="content">Normative References</span></a>
@@ -1456,7 +1498,10 @@ However, the information in this document is still subject to change.
   it is the easiest way to understand how Solid works,
   not the easiest way for building a Solid app.</p>
    <h3 class="heading settled" data-level="1.1" id="definitions"><span class="secno">1.1. </span><span class="content">Definitions</span><a class="self-link" href="#definitions"></a></h3>
-   <p class="issue" id="issue-6b0b1b7b"><a class="self-link" href="#issue-6b0b1b7b"></a> Write Definitions section.</p>
+   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="data-pod">data pod</dfn> is a place for storing documents,
+with mechanisms for controlling who can access what.</p>
+   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="solid-app">Solid app</dfn> is an application
+that reads or writes data from one or more <a data-link-type="dfn" href="#data-pod" id="ref-for-data-pod">data pods</a>.</p>
    <p class="issue" id="issue-45213e2c"><a class="self-link" href="#issue-45213e2c"></a> Introduce the structure of this document. <a href="#resource-access">Cross-server interoperability</a> <a href="#clients">Cross-app interoperability</a></p>
    <h2 class="heading settled" data-level="2" id="resource-access"><span class="secno">2. </span><span class="content">Authenticated Resource Access</span><a class="self-link" href="#resource-access"></a></h2>
    <p class="issue" id="issue-638fb2f9"><a class="self-link" href="#issue-638fb2f9"></a> Write introduction to the Authenticated Resource Access section.</p>
@@ -1497,9 +1542,83 @@ A Solid data pod MAY conform to the WebID-TLS specification <a data-link-type="b
    <p>Draft:
 A Solid data pod MUST conform to the Web Access Control specification <a data-link-type="biblio" href="#biblio-wac">[WAC]</a>.</p>
    <h3 class="heading settled" data-level="2.5" id="cors"><span class="secno">2.5. </span><span class="content">Cross-Origin Resource Sharing</span><a class="self-link" href="#cors"></a></h3>
-   <p class="issue" id="issue-a807e3ed"><a class="self-link" href="#issue-a807e3ed"></a> Write Cross-Origin Resource Sharing section.</p>
-   <p>Draft:
-A Solid data pod MUST conform to the CORS specification <a data-link-type="biblio" href="#biblio-fetch">[FETCH]</a>.</p>
+   <h4 class="heading settled" data-level="2.5.1" id="cors-need"><span class="secno">2.5.1. </span><span class="content">Background and Need</span><a class="self-link" href="#cors-need"></a></h4>
+    <em>This section is non-normative.</em> 
+   <p><a data-link-type="dfn" href="#solid-app" id="ref-for-solid-app">Solid apps</a> typically access data from multiple sources.
+However,
+Web browsers by default prevent apps that run on one origin
+from accessing data on other origins.
+This cross-origin protection is a security mechanism
+that ensures malicious websites cannot simply read
+your profile or banking details from other websites.
+However, this reasonable default poses a problem
+even for benevolent Solid apps,
+which might have good reasons to access data from different places.
+For instance,
+a Solid app at <code>https://app.example/</code> would be prevented from accessing data on <code>https://alice-data-pod.example/</code> or <code>https://bob-data-pod.example/</code>,
+even when Alice and Bob have given the user of the app
+their permission to see some of their data.</p>
+   <p>For cases where the other origins
+have their own access protection mechanism—<wbr><a href="#wac">like within Solid</a>—<wbr>the browser’s built-in cross-origin protection
+is actually an obstacle rather than a feature.
+After all, <a data-link-type="dfn" href="#data-pod" id="ref-for-data-pod①">data pods</a> already ensure through access control
+that certain documents can only be accessed
+by specific people or applications.
+Preventively blocking apps from different origins
+thus introduces an unnecessary barrier.</p>
+   <p>Fortunately,
+Web servers can indicate to the browser
+that certain documents do not require cross-origin protection.
+This mechanism to selectively disable that protection
+is called <em>Cross-Origin Resource Sharing</em> or <em>CORS</em> <a data-link-type="biblio" href="#biblio-fetch">[FETCH]</a>.
+By responding to browser requests
+with a specific combination of HTTP headers,
+servers can indicate which actions are allowed for a given resource.
+For a Solid data pod,
+the goal is to allow <em>all</em> actions on the CORS level,
+such that the deeper <a href="#wac">access control layer</a> can exert full control over the app’s allowed permissions.
+The next section describes how to achieve this
+through the right HTTP header configuration.</p>
+   <h4 class="heading settled" data-level="2.5.2" id="cors-server"><span class="secno">2.5.2. </span><span class="content">Required server-side implementation</span><a class="self-link" href="#cors-server"></a></h4>
+   <p>A <a data-link-type="dfn" href="#data-pod" id="ref-for-data-pod②">data pod</a> MUST implement the CORS protocol <a data-link-type="biblio" href="#biblio-fetch">[FETCH]</a> such that, to the extent possible,
+the browser allows Solid apps
+to send any request and combination of request headers
+to the data pod,
+and the Solid app can read any response and response headers
+received from the data pod.
+If the data pod wishes to block access to a resource,
+this MUST NOT happen via CORS
+but MUST instead be communicated to the Solid app in the browser
+through HTTP status codes such as <code>401</code>, <code>403</code>, or <code>404</code> <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>.</p>
+   <p class="note" role="note"><span>Note:</span> Since the CORS protocol is part of a Living Standard,
+it might be changed at any point,
+which might necessitate changes to data pod implementations
+for continued prevention of undesired blocking.
+A <a href="https://github.com/whatwg/fetch/issues/878">proposal</a> to mitigate this
+has been suggested.</p>
+   <p>Concretely,
+whenever a data pod receives an HTTP request
+containing a valid <code>Origin</code> header <a data-link-type="biblio" href="#biblio-rfc6454">[RFC6454]</a>,
+the server MUST respond with the appropriate <code>Access-Control-*</code> headers
+as specified in the CORS protocol <a data-link-type="biblio" href="#biblio-fetch">[FETCH]</a>.
+In particular,
+the data pod MUST set the <code>Access-Control-Allow-Origin</code> header
+to the valid <code>Origin</code> value from the request
+and list <code>Origin</code> in the <code>Vary</code> header value.
+The data pod MUST make all used response headers readable for the Solid app
+through <code>Access-Control-Expose-Headers</code> (with the possible exception of the <code>Access-Control-*</code> headers themselves).
+A data pod MUST also support the HTTP <code>OPTIONS</code> method <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a> such that it can respond appropriately to CORS preflight requests.</p>
+   <p>Careful attention is warranted,
+especially because of the many edge cases.
+For instance,
+data pods SHOULD explicitly enumerate
+all used response headers under <code>Access-Control-Expose-Headers</code> rather than resorting to <code>*</code>,
+which does not cover all cases (such as credentials mode set to <code>include</code>).
+Data pods SHOULD also explicitly list <code>Accept</code> under <code>Access-Control-Allow-Headers</code>,
+because values longer than 128 characters
+(not uncommon for RDF-based Solid apps)
+would otherwise be blocked,
+despite shorter <code>Accept</code> headers being allowed without explicit mention.</p>
    <h2 class="heading settled" data-level="3" id="clients"><span class="secno">3. </span><span class="content">Clients and Apps</span><a class="self-link" href="#clients"></a></h2>
    <p class="issue" id="issue-428d418b"><a class="self-link" href="#issue-428d418b"></a> Write introduction to the Clients and Apps section.</p>
    <h3 class="heading settled" data-level="3.1" id="client-guidance"><span class="secno">3.1. </span><span class="content">Implementation Guidance</span><a class="self-link" href="#client-guidance"></a></h3>
@@ -1548,11 +1667,52 @@ A Solid data pod MAY conform to the Profile-based Content Negotiation specificat
    <p>Draft:
 A Solid data pod MAY conform to the Verifiable Credentials specification <a data-link-type="biblio" href="#biblio-verifiable-credentials">[VERIFIABLE-CREDENTIALS]</a>.</p>
    <h2 class="heading settled" data-level="5" id="security"><span class="secno">5. </span><span class="content">Security Considerations</span><a class="self-link" href="#security"></a></h2>
-   <p class="issue" id="issue-a2336e95"><a class="self-link" href="#issue-a2336e95"></a> Write Security Considerations section.</p>
+   <p>Some of the normative references with this specification
+point to documents with a _Living Standard_ status,
+meaning their contents can still change over time.
+It is advised to monitor these documents,
+as such changes might have security implications.</p>
+   <p>A data pod MUST NOT assume that
+HTTP request headers sent by a client are valid,
+and MUST reject or sanitize invalid header values
+before processing them
+or incorporating them in messages sent to others.
+For example,
+values for <code>Host</code> and <code>Origin</code> MUST NOT be assumed to be free of possibly malicious sequences
+such as <code>/..</code> or others,
+and invalid <code>Origin</code> values
+MUST NOT be echoed into the <code>Access-Control-Allow-Origin</code> response header.</p>
+   <p>A data pod MUST NOT assume that the user agent is a regular Web browser,
+even when requests contain familiar values
+in headers such as <code>User-Agent</code> or <code>Origin</code>.
+Such an assumption could lead to incorrect conclusions
+about the security model of the application making the request,
+since the request might actually come
+from a non-browser actor unaffected by browser security constraints.</p>
+   <p>Solid data pods <a href="#cors-server">disable all cross-origin protections</a> in browsers
+because resource access is governed explicitly by <a href="#wac">Web Access Control</a>.
+As such,
+data pods MUST NOT rely on browser-based cross-origin protection mechanisms
+for determining the authentication status or representation of a resource.
+In particular,
+they MUST ignore HTTP cookies from untrusted origins.
+Additional security measures MAY be taken
+to prevent metadata in error responses from leaking.
+For instance,
+a malicious app could probe multiple servers
+to check whether the response status code is <code>401</code> or <code>403</code>,
+or could try to access an error page
+from an intranet server within the user agent’s private network
+to extract company names or other data.
+To mitigate this,
+when a request from an untrusted <code>Origin</code> arrives,
+the data pod MAY set the status code of error responses to <code>404</code> and/or anonymize or censor their contents.</p>
    <h3 class="heading settled" data-level="5.1" id="privacy"><span class="secno">5.1. </span><span class="content">Privacy Considerations</span><a class="self-link" href="#privacy"></a></h3>
    <p class="issue" id="issue-4267249d"><a class="self-link" href="#issue-4267249d"></a> Write Privacy Considerations section.</p>
    <h4 class="heading settled" data-level="5.1.1" id="identifiable-information"><span class="secno">5.1.1. </span><span class="content">Identifiable Information</span><a class="self-link" href="#identifiable-information"></a></h4>
    <p class="issue" id="issue-e08c9a5d"><a class="self-link" href="#issue-e08c9a5d"></a> Write Identifiable Information section.</p>
+   <p>In order to prevent leakage of non-resource data,
+error responses SHOULD NOT contain identifiable information.</p>
   </main>
   <div data-fill-with="conformance">
    <h2 class="no-ref no-num heading settled" id="conformance"><span class="content"> Conformance</span><a class="self-link" href="#conformance"></a></h2>
@@ -1700,6 +1860,12 @@ A Solid data pod MAY conform to the Verifiable Credentials specification <a data
 
 })();
 </script>
+  <h2 class="no-num no-ref heading settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
+  <h3 class="no-num no-ref heading settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
+  <ul class="index">
+   <li><a href="#data-pod">data pod</a><span>, in §1.1</span>
+   <li><a href="#solid-app">Solid app</a><span>, in §1.1</span>
+  </ul>
   <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
   <h3 class="no-num no-ref heading settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
   <dl>
@@ -1717,6 +1883,8 @@ A Solid data pod MAY conform to the Verifiable Credentials specification <a data
    <dd>Lars Svensson; Ruben Verborgh. <a href="https://profilenegotiation.github.io/I-D-Profile-Negotiation/I-D-Profile-Negotiation.html">Indicating and Negotiating Profiles in HTTP</a>. URL: <a href="https://profilenegotiation.github.io/I-D-Profile-Negotiation/I-D-Profile-Negotiation.html">https://profilenegotiation.github.io/I-D-Profile-Negotiation/I-D-Profile-Negotiation.html</a>
    <dt id="biblio-rfc2119">[RFC2119]
    <dd>S. Bradner. <a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a>
+   <dt id="biblio-rfc6454">[RFC6454]
+   <dd>A. Barth. <a href="https://tools.ietf.org/html/rfc6454">The Web Origin Concept</a>. December 2011. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc6454">https://tools.ietf.org/html/rfc6454</a>
    <dt id="biblio-rfc7089">[RFC7089]
    <dd>H. Van de Sompel; M. Nelson; R. Sanderson. <a href="https://tools.ietf.org/html/rfc7089">HTTP Framework for Time-Based Access to Resource States -- Memento</a>. December 2013. Informational. URL: <a href="https://tools.ietf.org/html/rfc7089">https://tools.ietf.org/html/rfc7089</a>
    <dt id="biblio-rfc7230">[RFC7230]
@@ -1754,7 +1922,6 @@ A Solid data pod MAY conform to the Verifiable Credentials specification <a data
    <div class="issue"> Explain that this specification is not documentation;
   it is the easiest way to understand how Solid works,
   not the easiest way for building a Solid app.<a href="#issue-ca10dda5"> ↵ </a></div>
-   <div class="issue"> Write Definitions section.<a href="#issue-6b0b1b7b"> ↵ </a></div>
    <div class="issue"> Introduce the structure of this document. <a href="#resource-access">Cross-server interoperability</a> <a href="#clients">Cross-app interoperability</a><a href="#issue-45213e2c"> ↵ </a></div>
    <div class="issue"> Write introduction to the Authenticated Resource Access section.<a href="#issue-638fb2f9"> ↵ </a></div>
    <div class="issue"> Write Hypertext Transfer Protocol section.<a href="#issue-73c28399"> ↵ </a></div>
@@ -1765,7 +1932,6 @@ A Solid data pod MAY conform to the Verifiable Credentials specification <a data
    <div class="issue"> Write WebID-OIDC section.<a href="#issue-ba14f105"> ↵ </a></div>
    <div class="issue"> Write WebID-TLS section.<a href="#issue-b2a56341"> ↵ </a></div>
    <div class="issue"> Write Web Access Control section.<a href="#issue-d582b7fc"> ↵ </a></div>
-   <div class="issue"> Write Cross-Origin Resource Sharing section.<a href="#issue-a807e3ed"> ↵ </a></div>
    <div class="issue"> Write introduction to the Clients and Apps section.<a href="#issue-428d418b"> ↵ </a></div>
    <div class="issue"> Write Implementation Guidance section.<a href="#issue-1acf634c"> ↵ </a></div>
    <div class="issue"> Write introduction to Data Shapes and Footprints section.<a href="#issue-97a4e1a4"> ↵ </a></div>
@@ -1781,7 +1947,76 @@ A Solid data pod MAY conform to the Verifiable Credentials specification <a data
    <div class="issue"> Write Memento section.<a href="#issue-e38039a6"> ↵ </a></div>
    <div class="issue"> Write Profiles section.<a href="#issue-f726fd8d"> ↵ </a></div>
    <div class="issue"> Write Verifiable Credentials section.<a href="#issue-c8aeac29"> ↵ </a></div>
-   <div class="issue"> Write Security Considerations section.<a href="#issue-a2336e95"> ↵ </a></div>
    <div class="issue"> Write Privacy Considerations section.<a href="#issue-4267249d"> ↵ </a></div>
    <div class="issue"> Write Identifiable Information section.<a href="#issue-e08c9a5d"> ↵ </a></div>
   </div>
+  <aside class="dfn-panel" data-for="data-pod">
+   <b><a href="#data-pod">#data-pod</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-data-pod">1.1. Definitions</a>
+    <li><a href="#ref-for-data-pod①">2.5.1. Background and Need</a>
+    <li><a href="#ref-for-data-pod②">2.5.2. Required server-side implementation</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="solid-app">
+   <b><a href="#solid-app">#solid-app</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-solid-app">2.5.1. Background and Need</a>
+   </ul>
+  </aside>
+<script>/* script-dfn-panel */
+
+document.body.addEventListener("click", function(e) {
+    var queryAll = function(sel) { return [].slice.call(document.querySelectorAll(sel)); }
+    // Find the dfn element or panel, if any, that was clicked on.
+    var el = e.target;
+    var target;
+    var hitALink = false;
+    while(el.parentElement) {
+        if(el.tagName == "A") {
+            // Clicking on a link in a <dfn> shouldn't summon the panel
+            hitALink = true;
+        }
+        if(el.classList.contains("dfn-paneled")) {
+            target = "dfn";
+            break;
+        }
+        if(el.classList.contains("dfn-panel")) {
+            target = "dfn-panel";
+            break;
+        }
+        el = el.parentElement;
+    }
+    if(target != "dfn-panel") {
+        // Turn off any currently "on" or "activated" panels.
+        queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(function(el){
+            el.classList.remove("on");
+            el.classList.remove("activated");
+        });
+    }
+    if(target == "dfn" && !hitALink) {
+        // open the panel
+        var dfnPanel = document.querySelector(".dfn-panel[data-for='" + el.id + "']");
+        if(dfnPanel) {
+            dfnPanel.classList.add("on");
+            var rect = el.getBoundingClientRect();
+            dfnPanel.style.left = window.scrollX + rect.right + 5 + "px";
+            dfnPanel.style.top = window.scrollY + rect.top + "px";
+            var panelRect = dfnPanel.getBoundingClientRect();
+            var panelWidth = panelRect.right - panelRect.left;
+            if(panelRect.right > document.body.scrollWidth && (rect.left - (panelWidth + 5)) > 0) {
+                // Reposition, because the panel is overflowing
+                dfnPanel.style.left = window.scrollX + rect.left - (panelWidth + 5) + "px";
+            }
+        } else {
+            console.log("Couldn't find .dfn-panel[data-for='" + el.id + "']");
+        }
+    } else if(target == "dfn-panel") {
+        // Switch it to "activated" state, which pins it.
+        el.classList.add("activated");
+        el.style.left = null;
+        el.style.top = null;
+    }
+
+});
+</script>
