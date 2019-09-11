@@ -2,7 +2,7 @@ Security Considerations {#security}
 ===================================
 
 Some of the normative references with this specification
-point to documents with a _Living Standard_ status,
+point to documents with a *Living Standard* status,
 meaning their contents can still change over time.
 It is advised to monitor these documents,
 as such changes might have security implications.
