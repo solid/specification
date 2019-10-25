@@ -9,7 +9,7 @@ For the time being, while the migration is in progress, please refer to the exis
 
 A fair number of spec improvements are currently in the making. If you want to contribute, please refer to a relevant [Solid panel](https://github.com/solid/culture/blob/master/panels.md).
 
-Please join the chat room for spec-related issues at https://gitter.im/solid/solid-spec. Feel free to ask any question you may have about the Solid spec, or just say hi!
+Please join the chat room for spec-related issues at https://gitter.im/solid/specification. Feel free to ask any question you may have about the Solid spec, or just say hi!
 
 Background:
 https://lists.w3.org/Archives/Public/public-solid/2019May/0009.html
