@@ -1,5 +1,5 @@
 <pre class='metadata'>
-Title: The Solid Standard
+Title: The Solid Ecosystem
 Shortname: solid
 Level: 1
 Status: w3c/ED
