@@ -12,8 +12,8 @@ Max ToC Depth: 2
 Editor: Dmitri Zagidulin
 Editor: Justin Bingham
 Abstract:
-  This document introduces a mechanism for user and application authentication
-  based on the OpenID Connect protocol.
+  This document introduces an authentication mechanism based on the OpenID
+  Connect protocol.
 </pre>
 
 ## Status of This Document ## {#status}
