@@ -1,11 +1,11 @@
 <pre class='metadata'>
-Title: WebID-OIDC
+Title: Solid-OIDC Specification v1
 Boilerplate: issues-index no
-Shortname: webid-oidc
+Shortname: solid-oidc
 Level: 1
 Status: w3c/ED
 Group: Solid Community Group
-URL: https://solid.github.io/specification/webid-oidc/
+URL: https://solid.github.io/specification/solid-oidc/
 Repository: https://github.com/solid/specification
 Markup Shorthands: markdown yes
 Max ToC Depth: 2

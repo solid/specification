@@ -82,14 +82,14 @@ Issue: Explain inline that agents accessing non-public Solid resources
   need to authenticate with a WebID, which is a URL
   pointing to a document with an RDF representation.
 
+## Authentication ## {#authentication}
 
-### WebID-OIDC ### {#webid-oidc}
+### Solid-OIDC ### {#solid-oidc}
 
-Issue: Write WebID-OIDC section.
+Issue: Write Solid-OIDC section.
 
 Draft:
-A Solid data pod MUST conform to the WebID-OIDC specification [[!WEBID-OIDC]].
-
+A Solid data pod MUST conform to the Solid-OIDC specification [[!SOLID-OIDC]].
 
 ### WebID-TLS ### {#webid-tls}
 
@@ -97,7 +97,6 @@ Issue: Write WebID-TLS section.
 
 Draft:
 A Solid data pod MAY conform to the WebID-TLS specification [[!WEBID-TLS]].
-
 
 ## Web Access Control ## {#wac}
 
