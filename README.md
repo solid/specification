@@ -1,6 +1,11 @@
 # Solid specification repository
 
-**Publication Status**: Editor's Draft
+* Editor's Draft: https://solid.github.io/specification/
+* Latest Published: https://solid.github.io/specification/
+* Working Drafts:
+  * Currently in progress
+* Test Suite:
+  * Source: https://github.com/solid/test-suite
 
 This repository contains the source code of the [Solid specification](https://solid.github.io/specification/),
 which aims to be a clear, unambiguous, and implementable rewrite of the [Unofficial Draft](https://github.com/solid/solid-spec/).
