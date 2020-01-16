@@ -1,9 +1,9 @@
 # Solid specification repository
 
-**Status: under active development**
+**Publication Status**: Editor's Draft
 
 This repository contains the source code of the [Solid specification](https://solid.github.io/specification/),
-which aims to be a clear, unambiguous, and implementable rewrite of the [existing draft documents](https://github.com/solid/solid-spec/).
+which aims to be a clear, unambiguous, and implementable rewrite of the [Unofficial Draft](https://github.com/solid/solid-spec/).
 
 For the time being, while the migration is in progress, please refer to the existing draft documents if you want to implement a pod server or a solid app.
 
