@@ -71,15 +71,16 @@ it MAY repeat the request with different credentials.
 
 ### Required shared semantics of slashes ### {#uri-path-component}
 
-Server and client share the slash semantics in the URI path component representing hierarchy [[!RFC3986]]. Based on consensus: https://github.com/solid/specification/issues/35 .
+Server and client share the slash semantics in the URI path component representing hierarchy [[!RFC3986]]. Based on consensus: https://github.com/solid/specification/issues/35#issuecomment-547949014 .
 
 
 ## Linked Data Platform ## {#ldp}
 
 Issue: Write Linked Data Platform section.
 
-Draft:
-A Solid data pod MUST conform to the LDP specification [[!LDP]].
+### Containment ### {#resource-containment}
+
+There is a 1-1 correspondence between containment triples and relative reference within the path name hierarchy. Based on consensus: https://github.com/solid/specification/issues/98#issuecomment-547506617
 
 
 ## WebID ## {#webid}
