@@ -67,6 +67,12 @@ if it needs to access resources requiring authentication (see [[#webid]]).
 When it receives a response with a `403` or `404` status code,
 it MAY repeat the request with different credentials.
 
+## Uniform Resource Identifier ## {#uri}
+
+### Required shared semantics of slashes ### {#uri-path-component}
+
+Server and client share the slash semantics in the URI path component representing hierarchy [[!RFC3986]]. Based on consensus: https://github.com/solid/specification/issues/35 .
+
 
 ## Linked Data Platform ## {#ldp}
 
