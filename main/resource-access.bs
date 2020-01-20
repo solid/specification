@@ -92,11 +92,12 @@ A Solid data pod MUST conform to the WebID-OIDC specification [[!WEBID-OIDC]].
 
 
 ### WebID-TLS ### {#webid-tls}
+<em>This section is non-normative.</em>
 
-Issue: Write WebID-TLS section.
-
-Draft:
-A Solid data pod MAY conform to the WebID-TLS specification [[!WEBID-TLS]].
+Initial versions of Solid relied on WebID-TLS for authenticated resource access,
+this specification only relies on [[!WEBID-OIDC]]. Implementations can use WebID-TLS
+just as any other mechanism as an additional authentication method. Implementations
+should not assume broad support for any of those additional methods in solid ecosystem.
 
 
 ## Web Access Control ## {#wac}
