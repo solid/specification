@@ -80,6 +80,8 @@ Issue: Write Linked Data Platform section.
 
 ### Containment ### {#resource-containment}
 
+Solid has the notion of containers to represent a collection of linked resources to help with resource discovery and lifecycle management.
+
 There is a 1-1 correspondence between containment triples and relative reference within the path name hierarchy. Based on consensus: https://github.com/solid/specification/issues/98#issuecomment-547506617
 
 The representation and behaviour of containers in Solid is corresponds to LDP Basic Container and MUST be supported. Based on consensus: https://github.com/solid/specification/issues/47#issuecomment-561675764
