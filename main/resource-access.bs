@@ -82,6 +82,7 @@ Issue: Write Linked Data Platform section.
 
 There is a 1-1 correspondence between containment triples and relative reference within the path name hierarchy. Based on consensus: https://github.com/solid/specification/issues/98#issuecomment-547506617
 
+The representation and behaviour of containers in Solid is corresponds to LDP Basic Container and MUST be supported. Based on consensus: https://github.com/solid/specification/issues/47#issuecomment-561675764
 
 ## WebID ## {#webid}
 
