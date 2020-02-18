@@ -73,6 +73,7 @@ it MAY repeat the request with different credentials.
 
 Server and client share the slash semantics in the URI path component representing hierarchy [[!RFC3986]]. Based on consensus: https://github.com/solid/specification/issues/35#issuecomment-547949014 .
 
+Server MUST NOT create a URI differing only in the trailing slash with that of an existing URI. Based on consensus: https://github.com/solid/specification/issues/107#issuecomment-567482817 .
 
 ## Linked Data Platform ## {#ldp}
 
