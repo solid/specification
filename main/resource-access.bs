@@ -69,13 +69,13 @@ it MAY repeat the request with different credentials.
 
 ## Uniform Resource Identifier ## {#uri}
 
-### Required shared semantics of slashes ### {#uri-path-component}
+### Required shared slash semantics ### {#uri-path-component}
 
 Server and client share the slash semantics in the URI path component representing hierarchy [[!RFC3986]]. Based on consensus: https://github.com/solid/specification/issues/35#issuecomment-547949014 .
 
 Server MUST NOT create a URI differing only in the trailing slash with that of an existing URI. Based on consensus: https://github.com/solid/specification/issues/107#issuecomment-567482817 .
 
-Server MAY redirect a request with 301 from a non-existing URI to an existing URI with a matching path component ending with the same segment term. Behaviour pertaining to authorization MUST proceed this optional redirect. Based on consensus: https://github.com/solid/specification/issues/107#issuecomment-567454889
+Server MAY redirect a request with 301 from a non-existing URI to an existing URI with a matching path component ending with the same segment term. Behaviour pertaining to authorization MUST proceed this optional redirect. Based on consensus: https://github.com/solid/specification/issues/107#issuecomment-567454889 .
 
 ## Linked Data Platform ## {#ldp}
 
@@ -87,7 +87,7 @@ Solid has the notion of containers to represent a collection of linked resources
 
 There is a 1-1 correspondence between containment triples and relative reference within the path name hierarchy. Based on consensus: https://github.com/solid/specification/issues/98#issuecomment-547506617 . It follows that all resources are discoverable from a container and that it is not possible to create orphan resources. Based on consensus: https://github.com/solid/specification/issues/97#issuecomment-547459396 .
 
-The representation and behaviour of containers in Solid is corresponds to LDP Basic Container and MUST be supported. Based on consensus: https://github.com/solid/specification/issues/47#issuecomment-561675764
+The representation and behaviour of containers in Solid is corresponds to LDP Basic Container and MUST be supported. Based on consensus: https://github.com/solid/specification/issues/47#issuecomment-561675764 .
 
 ## WebID ## {#webid}
 
