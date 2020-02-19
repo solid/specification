@@ -18,6 +18,8 @@ with mechanisms for controlling who can access what.
 A <dfn export>Solid app</dfn> is an application
 that reads or writes data from one or more [=data pods=].
 
+A <dfn export>write operation</dfn> entails an update in that information can be created or removed, and categorically excludes operations to "read", as well as unintended exposure or side-effects within that. A write operation affects a set resources atomically and recursively. Based on consensus https://github.com/solid/specification/issues/126#issuecomment-569920473 .
+
 Issue: Introduce the structure of this document.
   [Cross-server interoperability](#resource-access)
   [Cross-app interoperability](#clients)
