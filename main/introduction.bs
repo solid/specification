@@ -18,6 +18,8 @@ with mechanisms for controlling who can access what.
 A <dfn export>Solid app</dfn> is an application
 that reads or writes data from one or more [=data pods=].
 
+A <dfn export>read operation</dfn> entails that information can be revealed about the content of a resource, and categorically excludes operations to "write", as well as unintended exposure or side-effects within that. Based on conensus https://github.com/solid/specification/issues/149#issue-568433265 .
+
 A <dfn export>write operation</dfn> entails an update in that information can be created or removed, and categorically excludes operations to "read", as well as unintended exposure or side-effects within that. A write operation affects a set resources atomically and recursively. Based on consensus https://github.com/solid/specification/issues/126#issuecomment-569920473 .
 
 An <dfn export>append operation</dfn> entails an update in that information can be added but not removed, and categorically excludes operations to "read" and "replace", as well as unintended exposure or side-effects within that. An append operation affects a set resources atomically and recursively. Based on consensus https://github.com/solid/specification/issues/118#issuecomment-569648485 .
