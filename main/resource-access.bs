@@ -67,6 +67,8 @@ if it needs to access resources requiring authentication (see [[#webid]]).
 When it receives a response with a `403` or `404` status code,
 it MAY repeat the request with different credentials.
 
+A Solid client MUST use the `Content-Type` request header in `PUT`, `POST` and `PATCH` requests. Based on consensus: https://github.com/solid/specification/issues/70#issuecomment-547924171 .
+
 ## Uniform Resource Identifier ## {#uri}
 
 ### Required shared slash semantics ### {#uri-path-component}
