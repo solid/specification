@@ -46,6 +46,8 @@ when requesting a resource that requires it (see [[#webid]]),
 the data pod MUST send a response with a `401` status code
 (unless `404` is preferred for security reasons).
 
+A Solid server MUST reject `PUT`, `POST` and `PATCH` requests without the `Content-Type` header with a status code of `400`. Based on consensus: https://github.com/solid/specification/issues/70#issuecomment-535499628 .
+
 ### Required client-side implementation ### {#http-client}
 
 A Solid client MUST be an HTTP/1.1 client [[!RFC7230]][[!RFC7231]].
