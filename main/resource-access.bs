@@ -93,6 +93,8 @@ There is a 1-1 correspondence between containment triples and relative reference
 
 The representation and behaviour of containers in Solid is corresponds to LDP Basic Container and MUST be supported. Based on consensus: https://github.com/solid/specification/issues/47#issuecomment-561675764 .
 
+Server MUST create intermediate containers as well as corresponding containment triples derived from the URI path component of `PUT`, `POST`, and `PATCH` requests. Based on consensus: https://github.com/solid/specification/issues/68#issuecomment-561690124 .
+
 ## WebID ## {#webid}
 
 Issue: Explain inline that agents accessing non-public Solid resources
