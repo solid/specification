@@ -47,6 +47,15 @@ any feedback, comments, or questions you might have.
       "Ruben Verborgh"
     ]
 	},
+  "shex": {
+    "href": "https://shex.io/shex-semantics/",
+    "title": "Shape Expressions Language",
+    "authors": [
+      "Eric Prud'hommeaux",
+      "Iovka Boneva",
+      "Jose Emilio Labra Gayo"
+    ]
+  },
   "tpf": {
 		"href": "https://www.hydra-cg.com/spec/latest/triple-pattern-fragments/",
 		"title": "Triple Pattern Fragments",
