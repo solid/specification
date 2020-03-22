@@ -1,7 +1,7 @@
 sudo: false
 language: python
 python:
-  - "2.7"
+  - "3.7"
 
 install:
   - pushd /tmp
