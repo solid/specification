@@ -80,7 +80,7 @@ A Solid data pod MUST conform to the LDP specification [[!LDP]].
 ### Background and Need ### {#rm-need}
 <em>This section is non-normative.</em>
 
-Resource Metadata introduces a mechanism for linking to metadata about resources
+This section introduces a mechanism for linking to metadata about resources
 in the Solid Ecosystem using HTTP Link headers. The metadata may serve as
 supplementary descriptions or, when supported by a Solid server implementation,
 may influence the behavior of the resources. A given resource might link to zero
