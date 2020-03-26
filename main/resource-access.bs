@@ -134,6 +134,8 @@ A Solid data pod MUST conform to the Web Access Control specification [[!WAC]].
 
 A resource can advertise an ACL document that is directly associated by using the HTTP `Link` header with a `rel` value of `acl`. [[Source](https://github.com/solid/specification/issues/31#issuecomment-548360553)]
 
+In the event that a server can't apply an ACL to a resource, it MUST deny access. [[Source](https://github.com/solid/specification/issues/130#issue-532777017)]
+
 ## Cross-Origin Resource Sharing ## {#cors}
 
 ### Background and Need ### {#cors-need}
