@@ -130,17 +130,18 @@ Note:
 Servers that wish to disable URI re-use may want to use the `410` status
 code.
 
-## Resource Metadata ## {#rm}
+## Auxiliary Resources ## {#rm}
 
 ### Background and Need ### {#rm-need}
 <em>This section is non-normative.</em>
 
-This section introduces a mechanism for linking to metadata about resources
-in the Solid Ecosystem using HTTP Link headers. The metadata may serve as
+This section introduces a mechanism for linking Auxiliary Resources with
+regular resources in the Solid Ecosystem using HTTP Link headers. The auxiliary
+resources may serve as
 supplementary descriptions or, when supported by a Solid server implementation,
 may influence the behavior of the resources. A given resource might link to zero
-or more such related metadata representations. It is not meant to replace the
-ability for the directly associated resource to self-describe.
+or more such related auxiliary representations. It is not meant to replace the
+ability for the regular resource to self-describe.
 
 Examples of this mechanism in use include:
 
@@ -150,39 +151,46 @@ Examples of this mechanism in use include:
   <li>A container with a Link header, pointing to an ACL resource that governs
   access controls for the contained resources.</li>
   <li>A resource whose shape is constrained by a ShEx schema includes a Link
-  header that points to a metadata resource defining that constraint.</li>
+  header that points to an auxiliary resource defining that constraint.</li>
   <li>A resource with an associated set of configurable parameters includes a
   Link header that points to a resource where those configurable parameters
   reside.</li>
 </ul>
 
-### Metadata Discovery ###  {#rm-discovery}
+NOTE: Provide a better explanation of why Auxiliary Resources are needed.
 
-To discover the metadata resources directly associated with a given target
+### Auxiliary Resource Discovery ###  {#rm-discovery}
+
+To discover the auxiliary resources directly associated with a given target
 resource, a client MUST issue a `HEAD` or `GET` request to the target resource
 URL and inspect the `Link` headers in the response, or make an HTTP `GET`
 request on the target resource URL to retrieve an RDF representation, and
-inspect the encoded RDF graph for relations of one or more metadata types. These
+inspect the encoded RDF graph for relations of one or more auxiliary types.
+These
 may be carried out in either order, but if the first fails to result in
-discovering the metadata resource or the described resource, the second MUST be
+discovering the auxiliary resource or the described resource, the second MUST be
 tried.
 
-Issue: It would seem that requiring that metadata MUST looked up through *both*
+Issue: It would seem that requiring that auxiliary resources MUST looked up
+through *both*
 Link headers and the RDF graph is redundant and invites synchronization
 problems. Suggest that the primary mechanism is through Link headers, and the
-client MAY or SHOULD inspect the RDF graph for any additional metadata.
+client MAY or SHOULD inspect the RDF graph for any additional auxiliary
+resources.
 
 The `rel={relation-type}` [[!RFC8288]] will define the relationship to the
 target URL in the `Link` header. Refer to [[!RFC8288]] for allowed [link
 relation types](https://httpwg.org/specs/rfc8288.html#link-relation-types).
 
-For any defined metadata type available for a given resource, all
+For any defined auxiliary type available for a given resource, all
 representations of that resource MUST include a Link header pointing to the
-location of each metadata resource. Metadata discovered through a Link header
+location of each auxiliary resource. An auxiliary resource discovered through a
+Link header
 for a given resource is considered to be *directly associated* with that
-resource. Access to different types of metadata require varying levels of
+resource. Access to different types of auxiliary resources require varying
+levels of
 authorization, which MUST be specified as part of the definition for a given
-metadata type.
+auxiliary type.
 
 <p class="example">
 As defined by [[!WAC]]), a client can use this mechanism to discover the
@@ -191,7 +199,7 @@ location of an ACL resource:<br/>
 </p>
 
 The following table lists [[#rm-reserved]] and the associated link relation URIs
-that are used for discovery. Other metadata types and relations may also be
+that are used for discovery. Other auxiliary types and relations may also be
 used, and may be added to the reserved set in the future.
 
 <table class="data" align="left">
@@ -199,7 +207,7 @@ used, and may be added to the reserved set in the future.
   <colgroup span="2"></colgroup>
   <thead>
     <tr>
-      <th>Metadata Type</th>
+      <th>auxiliary Type</th>
       <th>Link Relation</th>
     </tr>
   </thead>
@@ -230,188 +238,202 @@ used, and may be added to the reserved set in the future.
 
 #### Discovery of Annotated Resource #### {#rm-annotated}
 
-Certain metadata resource types require the Solid server to link back to the
-annotated resource that the metadata is directly associated with, via Link
+Certain auxiliary resource types require the Solid server to link back to the
+annotated resource that the auxiliary resource is directly associated with, via
+Link
 headers. In these instances, the link relation ```rel=describes``` MUST be used.
 
 <p class="example">
-A metadata resource `<https://server.example/metadata/resource.meta>` is
-directly associated with `<https://server.example/resource.ttl>`. The metadata
+An auxiliary resource `<https://server.example/auxiliary/resource.meta>` is
+directly associated with `<https://server.example/resource.ttl>`. The auxiliary
 type for `resource.meta` requires linking back to the annotated resource, which
 is `resource.ttl`. `resource.meta` must have the following included in its
 `Link` headers:<br/>
 `Link: <https://server.example/resource.ttl>; rel="describes"`
 </p>
 
-### Metadata Characteristics ### {#rm-characteristics}
+### Auxiliary Resource Characteristics ### {#rm-characteristics}
 
-A given resource MAY Link to metadata on a different server under a different
+A given resource MAY Link to auxiliary resources on a different server under a
+different
 authority, per the configuration of the Solid server on which that resource
 resides.
 
-Metadata resources that reside on a Solid server MUST adhere to the same
+Auxiliary resources that reside on a Solid server MUST adhere to the same
 interaction model used by other standard Solid resources, except where specified
-in the definition of the associated metadata type in [[#rm-reserved]].
+in the definition of the associated auxiliary type in [[#rm-reserved]].
 
-A metadata resource MUST be deleted by the Solid server when the resource it is
+An auxiliary resource MUST be deleted by the Solid server when the resource it
+is
 directly associated with is also deleted and the Solid server is authoritative
 for both resources.
 
-### Reserved Metadata Types ### {#rm-reserved}
+### Reserved Auxiliary Resource Types ### {#rm-reserved}
 
 #### Web Access Control #### {#rm-wac}
 
-ACL resources as defined by [[!WAC]] MUST be supported as a resource metadata
+ACL resources as defined by [[!WAC]] MUST be supported as an auxiliary
 type by Solid servers.
 
-The ACL metadata resource directly associated with a given resource is
+The ACL auxiliary resource directly associated with a given resource is
 discovered by the client via the `rel="acl"` `Link` relation in a `Link` header.
 
 A given Solid resource MUST NOT be directly associated with more than one ACL
-metadata resource. A given ACL metadata resource MUST NOT be directly associated
+auxiliary resource. A given ACL auxiliary resource MUST NOT be directly
+associated
 with more than one Solid resource.
 
-To discover, read, create, or modify an ACL metadata resource, an
+To discover, read, create, or modify an ACL auxiliary resource, an
 [acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
 MUST have
 [acl:Control](https://github.com/solid/web-access-control-spec#aclcontrol)
 privileges per the [ACL inheritance
+
 algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
 on the resource directly associated with it.
 
-An ACL metadata resource MUST NOT be deleted unless the resource directly
+An ACL auxiliary resource MUST NOT be deleted unless the resource directly
 associated with it is deleted.
 
-A Solid server SHOULD sanity check ACL metadata resources upon creation or
+A Solid server SHOULD sanity check ACL auxiliary resources upon creation or
 update to restrict invalid changes, such as by performing shape validation
 against authorization statements therein.
 
 #### Resource Description #### {#rm-description}
 
-Issue: Identify any resource description metadata parameters that MUST be
+Issue: Identify any auxiliary resource description parameters that MUST be
 recognized by all implementations.
 
 Resource description is a general mechanism to provide descriptive metadata for
-a given resource. It MUST be supported as a resource metadata type by Solid
+a given resource. It MUST be supported as an auxiliary type by Solid
 servers.
 
-The Descriptive metadata resource directly associated with a given resource is
+The Descriptive auxiliary resource directly associated with a given resource is
 discovered by the client via the `"rel=describedby"` `Link` relation in a `Link`
-header. Conversely, the resource being described by a Descriptive metadata
+header. Conversely, the resource being described by a Descriptive auxiliary
 resource is discovered by the client via the `rel="describes"` `Link` relation
 in a `Link` header.
 
 A given Solid resource MUST NOT be directly associated with more than one
-Descriptive metadata resource.
+Descriptive auxiliary resource.
 
-To create or modify a Descriptive metadata resource, a given
+To create or modify a Descriptive auxiliary resource, a given
 [acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
 MUST have
 [acl:Write](https://github.com/solid/web-access-control-spec#aclcontrol)
 privileges per the [ACL inheritance
+
 algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
 on the resource directly associated with it.
 
-To discover or read a Descriptive metadata resource, an
+To discover or read a Descriptive auxiliary resource, an
 [acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
 MUST have
 [acl:Read](https://github.com/solid/web-access-control-spec#aclcontrol)
 privileges per the [ACL inheritance
+
 algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
 on the resource directly associated with it.
 
 #### Shape Validation #### {#rm-shape}
 
-Issue: Detail the composition of a shape metadata resource, including the shape
+Issue: Detail the composition of a shape auxiliary resource, including the shape
 language, shape url, and any additional parameters to be used in shape
 validation by the server implementation.
 
 Shape Validation ensures that any data changes in a given resource conform to an
-associated [[!SHACL]] or [[!SHEX]] data shape. It MUST be supported as a
-resource metadata type by Solid servers.
+associated [[!SHACL]] or [[!SHEX]] data shape. It MUST be supported as an
+auxiliary type by Solid servers.
 
-The Shape validation metadata resource directly associated with a given resource
+The Shape validation auxiliary resource directly associated with a given
+resource
 is discovered by the client via the `rel=http://www.w3.org/ns/solid/terms#shape`
 `Link` relation in a `Link` header. Conversely, the resource being described by
-a Shape validation metadata resource is discovered by the client via the
+a Shape validation auxiliary resource is discovered by the client via the
 `rel=describes` `Link` relation in a `Link` header.
 
 A given Solid resource MUST NOT be directly associated with more than one
-Descriptive metadata resource.
+Shape Validation auxiliary resource.
 
-To create or modify a Shape validation metadata resource, an
+To create or modify a Shape validation auxiliary resource, an
 [acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
 MUST have
 [acl:Write](https://github.com/solid/web-access-control-spec#aclcontrol)
 privileges per the [ACL inheritance
+
 algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
 on the resource directly associated with it.
 
-To read a Shape validation metadata resource, an
+To read a Shape validation auxiliary resource, an
 [acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
 MUST have
 [acl:Read](https://github.com/solid/web-access-control-spec#aclcontrol)
 privileges per the [ACL inheritance
+
 algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
 on the resource directly associated with it.
 
-A Solid server SHOULD sanity check Shape validation metadata resources upon
+A Solid server SHOULD sanity check Shape validation auxiliary resources upon
 creation or update to restrict invalid changes.
 
 #### Server Managed #### {#rm-managed}
 
-Issue: Identify any metadata the server MUST be required to manage.
+Issue: Identify any data the server MUST be required to manage.
 
 A Solid server stores information about a resource that clients can read but not
-change in Server Managed metadata. Examples of Server Managed metadata could
+change in Server Managed auxiliary resources. Examples of data stored in Server
+Managed auxiliary resources might
 include resource creation or modification timestamps, identity of the agent that
-created the resource, etc. It MUST be supported as a resource metadata type by
+created the resource, etc. It MUST be supported as an auxiliary type by
 Solid servers.
 
-A Server Managed metadata resource directly associated with a given resource is
+A Server Managed auxiliary resource directly associated with a given resource is
 discovered by the client via the `rel=http://www.w3.org/ns/solid/terms#managed`
 `Link` relation in a `Link` header. Conversely, the resource being described by
-a Server Managed metadata resource is discovered by the client via the
+a Server Managed auxiliary resource is discovered by the client via the
 `rel=describes` `Link` relation in a `Link` header.
 
 A given Solid resource MUST NOT be directly associated with more than one Server
-Managed metadata resource.
+Managed auxiliary resource.
 
-To read a Server Managed metadata resource, an
+To read a Server Managed auxiliary resource, an
 [acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
 MUST have [acl:Read](https://github.com/solid/web-access-control-spec#aclread)
 privileges per the [ACL inheritance
+
 algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
 on the resource directly associated with it. Modes of access beyond
 [acl:Read](https://github.com/solid/web-access-control-spec#aclread) MUST NOT be
-permitted on a Server Managed metadata resource.
+permitted on a Server Managed auxiliary resource.
 
 #### Configuration #### {#rm-configuration}
 
-Issue: Identify any configuration metadata parameters that MUST be recognized by
+Issue: Identify any configuration parameters that MUST be recognized by
 all implementations.
 
-Configuration metadata is used to store configurable parameters for a given
+A Configuration auxiliary resource is used to store configurable parameters for
+a given
 resource. For example, whether to maintain
 [Mementos](https://tools.ietf.org/html/rfc7089) for a given resource, or how the
 data within a given resource should be rendered or indexed. It MUST be supported
-as a resource metadata type by Solid servers.
+as an auxiliary type by Solid servers.
 
-A configuration metadata resource directly associated with a given resource is
+A Configuration auxiliary resource directly associated with a given resource is
 discovered by the client via the
 `rel=http://www.w3.org/ns/solid/terms#configuration` `Link` relation in a `Link`
-header. Conversely, the resource being described by a Configuration metadata
+header. Conversely, the resource being described by a Configuration auxiliary
 resource is discovered by the client via the `rel=describes` `Link` relation in
 a `Link header`.
 
 A given Solid resource MUST NOT be directly associated with more than one
-Configuration metadata resource.
+Configuration auxiliary resource.
 
-To discover, read, create, or modify a Configuration metadata resource, an
+To discover, read, create, or modify a Configuration auxiliary resource, an
 [acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
 MUST have
 [acl:Control](https://github.com/solid/web-access-control-spec#aclcontrol)
 privileges per the [ACL inheritance
+
 algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
 on the resource directly associated with it.
 
