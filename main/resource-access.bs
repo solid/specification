@@ -77,9 +77,7 @@ A Solid client MUST use the `Content-Type` HTTP header in `PUT`, `POST` and `PAT
 
 Server and client share the slash semantics in the URI path component representing hierarchy [[!RFC3986]]. [[Source](https://github.com/solid/specification/issues/35#issuecomment-547949014)]
 
-Server MUST NOT create a URI differing only in the trailing slash with that of an existing URI. [[Source](https://github.com/solid/specification/issues/107#issuecomment-567482817)]
-
-Server MAY redirect a request with 301 from a non-existing URI to an existing URI with a matching path component ending with the same segment term. Behaviour pertaining to authorization MUST proceed this optional redirect. [[Source](https://github.com/solid/specification/issues/107#issuecomment-567454889)]
+If two URIs differ only in the trailing slash, and the server has associated a resource with one of them, then the other URI MUST NOT correspond to another resource. Instead, the server MAY respond to requests for the latter URI with a 301 redirect to the former. [[Source](https://github.com/solid/specification/issues/107#issuecomment-567482817)]. Behaviour pertaining to authorization MUST proceed this optional redirect [[Source](https://github.com/solid/specification/issues/107#issuecomment-567454889)]
 
 ## Linked Data ## {#linked-data}
 
