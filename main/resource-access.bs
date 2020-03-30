@@ -94,6 +94,8 @@ The representation and behaviour of containers in Solid is corresponds to LDP Ba
 Server MUST create intermediate containers as well as corresponding containment triples derived from the URI path component of `PUT`, `POST`, and `PATCH` requests. [[Source](https://github.com/solid/specification/issues/68#issuecomment-561690124)]
 
 ### Persistence ### {#uri-persistence}
+<em>This section is non-normative.</em>
+
 Servers should not re-use URIs, regardless of the mechanism by which resources are created. Certain specific cases exist where URIs may be reinstated when it identifies the same resource, but only when consistent with Web architecture's <cite><a href="https://www.w3.org/TR/webarch/#URI-persistence">URI persistence</a></cite> [[!WEBARCH]]. [[Source](https://github.com/solid/specification/issues/46#issuecomment-589619372)]
 
 Note:
