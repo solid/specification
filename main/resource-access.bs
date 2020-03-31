@@ -105,7 +105,7 @@ It follows that all resources are discoverable from a container and that it is
 not possible to create orphan resources.
 [[Source](https://github.com/solid/specification/issues/97#issuecomment-547459396)]
 
-The representation and behaviour of containers in Solid is corresponds to LDP
+The representation and behaviour of containers in Solid corresponds to LDP
 Basic Container and MUST be supported.
 [[Source](https://github.com/solid/specification/issues/47#issuecomment-561675764)]
 
