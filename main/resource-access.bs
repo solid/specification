@@ -109,9 +109,9 @@ The representation and behaviour of containers in Solid is corresponds to LDP
 Basic Container and MUST be supported.
 [[Source](https://github.com/solid/specification/issues/47#issuecomment-561675764)]
 
-Server MUST create intermediate containers as well as corresponding
-containment triples derived from the URI path component of `PUT`, `POST`, and
-`PATCH` requests.
+Server MUST create intermediate containers and include corresponding
+containment triples in container representations derived from the URI path
+component of `PUT`, `POST` and `PATCH` requests.
 [[Source](https://github.com/solid/specification/issues/68#issuecomment-561690124)]
 
 ### Persistence ### {#uri-persistence}
