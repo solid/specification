@@ -77,10 +77,12 @@ A Solid client MUST use the `Content-Type` HTTP header in `PUT`, `POST` and
 
 ## Uniform Resource Identifier ## {#uri}
 
-### Required shared slash semantics ### {#uri-path-component}
+### Shared slash semantics ### {#uri-slash-semantics}
 
-Server and client share the slash semantics in the URI path component
-representing hierarchy [[!RFC3986]].
+The slash character in the URI path indicates hierarchical relationship
+segments, and enables relative referencing [[!RFC3986]]. The semantics of the
+slash character is shared by servers and clients. Paths ending with a slash
+denote a container resource.
 [[Source](https://github.com/solid/specification/issues/35#issuecomment-547949014)]
 
 If two URIs differ only in the trailing slash, and the server has associated a
