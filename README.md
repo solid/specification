@@ -16,9 +16,7 @@ A fair number of spec improvements are currently in the making. If you want to c
 
 Please join the chat room for spec-related issues at https://gitter.im/solid/specification. Feel free to ask any question you may have about the Solid spec, or just say hi!
 
-Background:
-https://lists.w3.org/Archives/Public/public-solid/2019May/0009.html
-
+Background: https://lists.w3.org/Archives/Public/public-solid/2019May/0009.html . On Solid ecosystem and spec orthogonality: https://lists.w3.org/Archives/Public/public-solid/2019May/0015.html
 
 ## Editing and building the specification
 The specification is built using [Bikeshed](https://tabatkins.github.io/bikeshed/).
