@@ -77,73 +77,105 @@ A Solid data pod MUST conform to the LDP specification [[!LDP]].
 
 ## Auxiliary Resources ## {#rm}
 
-### Background and Need ### {#rm-need}
+### Background and Need ### {#ar-need}
 <em>This section is non-normative.</em>
 
-This section introduces a mechanism for linking Auxiliary Resources with
-regular resources in the Solid Ecosystem using HTTP Link headers. The auxiliary
-resources may serve as
-supplementary descriptions or, when supported by a Solid server implementation,
-may influence the behavior of the resources. A given resource might link to zero
-or more such related auxiliary representations. It is not meant to replace the
-ability for the regular resource to self-describe.
+An auxiliary resource may provide supplementary information about a given
+Solid resource, or affect how that resource and others associated with it
+are processed, served, or interpreted. Different auxiliary resource types
+provide different capabilities. This section introduces a mechanism for linking
+auxiliary resources with regular Solid resources.
 
-Examples of this mechanism in use include:
+Auxiliary resources are needed to influence the configuration, processing, or
+interpretation of Solid resources without changing the composition of the
+resources themselves. To do so would be undesirable in many cases, and not
+possible in others. Auxiliary resources are not meant to replace the ability
+of a Solid resource to self-describe.
+
+Examples of auxiliary resources in use include:
 
 <ul>
-  <li>A binary JPEG image with a Link header, pointing to a description that has
-  an RDF representation.</li>
-  <li>A container with a Link header, pointing to an ACL resource that governs
-  access controls for the contained resources.</li>
-  <li>A resource whose shape is constrained by a ShEx schema includes a Link
-  header that points to an auxiliary resource defining that constraint.</li>
-  <li>A resource with an associated set of configurable parameters includes a
-  Link header that points to a resource where those configurable parameters
-  reside.</li>
+  <li>A binary JPEG image linked to an auxiliary resource that includes
+  information describing that binary JPEG.</li>
+  <li>A container linked to an auxiliary resource that includes access control
+  statements for that container and the resources that belong to it.</li>
+  <li>A resource representation whose shape is constrained by a given ShEx
+  schema that links to an auxiliary resource defining that schema.</li>
+  <li>A resource with an associated set of configurable parameters links to an
+  auxiliary resource where those configurable parameters reside.</li>
 </ul>
 
-NOTE: Provide a better explanation of why Auxiliary Resources are needed.
+### Required Server-side Implementation ### {#ar-server}
 
-### Auxiliary Resource Discovery ###  {#rm-discovery}
 
-To discover the auxiliary resources directly associated with a given target
-resource, a client MUST issue a `HEAD` or `GET` request to the target resource
-URL and inspect the `Link` headers in the response, or make an HTTP `GET`
-request on the target resource URL to retrieve an RDF representation, and
-inspect the encoded RDF graph for relations of one or more auxiliary types.
-These
-may be carried out in either order, but if the first fails to result in
-discovering the auxiliary resource or the described resource, the second MUST be
-tried.
-
-Issue: It would seem that requiring that auxiliary resources MUST looked up
-through *both*
-Link headers and the RDF graph is redundant and invites synchronization
-problems. Suggest that the primary mechanism is through Link headers, and the
-client MAY or SHOULD inspect the RDF graph for any additional auxiliary
-resources.
+For any defined auxiliary resource available for a given Solid resource, all
+representations of that resource MUST include an HTTP `Link` header pointing to
+the location of each auxiliary resource.
 
 The `rel={relation-type}` [[!RFC8288]] will define the relationship to the
-target URL in the `Link` header. Refer to [[!RFC8288]] for allowed [link
-relation types](https://httpwg.org/specs/rfc8288.html#link-relation-types).
+target URL in the HTTP `Link` header. URIs are encouraged to indicate Link
+relation types.
 
-For any defined auxiliary type available for a given resource, all
-representations of that resource MUST include a Link header pointing to the
-location of each auxiliary resource. An auxiliary resource discovered through a
-Link header
-for a given resource is considered to be *directly associated* with that
-resource. Access to different types of auxiliary resources require varying
-levels of
+An auxiliary resource linked with a given Solid resource through an HTTP `Link`
+header is considered to be *directly associated* with that resource. It is up
+to the server to determine how that association affects processing based on the
+auxiliary resource type.
+
+A given Solid resource MAY link to zero or more auxiliary resources. A given
+Solid resource MAY Link to auxiliary resources on a different server under a
+different authority, per the configuration of the Solid server on which that
+resource resides.
+
+Access to different types of auxiliary resources require varying levels of
 authorization, which MUST be specified as part of the definition for a given
-auxiliary type.
+auxiliary resource type.
 
-<p class="example">
-As defined by [[!WAC]]), a client can use this mechanism to discover the
-location of an ACL resource:<br/>
-`Link: <https://server.example/acls/resource.acl>; rel="acl"`
-</p>
+An auxiliary resource that resides on a Solid server MUST adhere to the same
+interaction model used by other regular Solid resources, except where specified
+in the definition of that auxiliary resource type.
 
-The following table lists [[#rm-reserved]] and the associated link relation URIs
+### Required Client-side Implementation ### {#ar-client}
+
+#### Discovery of Auxiliary Resources #### {#ar-discovery}
+
+To discover the auxiliary resources directly associated with a given Solid
+resource, a Solid client MUST issue a `HEAD` or `GET` request to the target
+resource URL and inspect the `Link` headers in the response.
+
+<div class="example">
+  <p>
+    As defined by [[!WAC]]), a client would discover the location of an auxiliary
+    ACL resource through the following HTTP `Link` header:
+  </p>
+  <div class="code">
+    `Link: <https://server.example/acls/resource.acl>; rel="acl"`
+  </div>
+</div>
+
+#### Discovery of Annotated Solid Resources #### {#ar-annotated}
+
+Certain auxiliary resource types MAY require the auxiliary resource to link back
+to the Solid resource it is directly associated with, via HTTP `Link` headers.
+In these instances, the link relation `rel=describes` MUST be used.
+
+Issue: Is MUST too strong, as opposed to encouraging via SHOULD instead?
+
+<div class="example">
+  <p>
+    An auxiliary resource `<https://server.example/auxiliary/resource.meta>` is
+    directly associated with `<https://server.example/resource.ttl>`. The auxiliary
+    type for `resource.meta` requires linking back to the annotated resource, which
+    is `resource.ttl`, so `resource.meta` must have the following included in its
+    `Link` headers:
+  </p>
+  <div class="code">
+    `Link: <https://server.example/resource.ttl>; rel="describes"`
+  </div>
+</div>
+
+### Reserved Auxiliary Resource Types ### {#ar-reserved}
+
+The following table lists [[#ar-reserved]] and the associated link relation URIs
 that are used for discovery. Other auxiliary types and relations may also be
 used, and may be added to the reserved set in the future.
 
@@ -152,102 +184,73 @@ used, and may be added to the reserved set in the future.
   <colgroup span="2"></colgroup>
   <thead>
     <tr>
-      <th>auxiliary Type</th>
+      <th>Auxiliary Type</th>
       <th>Link Relation</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>[[#rm-wac]]</td>
+      <td>[[#ar-wac]]</td>
       <td>```"acl"``` or ```http://www.w3.org/ns/solid/terms#acl```</td>
     </tr>
     <tr>
-      <td>[[#rm-description]]</td>
+      <td>[[#ar-description]]</td>
       <td>```"describedby"``` or
 ```https://www.w3.org/ns/iana/link-relations/relation#describedby```</td>
     </tr>
     <tr>
-      <td>[[#rm-shape]]</td>
+      <td>[[#ar-shape]]</td>
       <td>```http://www.w3.org/ns/solid/terms#shape```</td>
     </tr>
     <tr>
-      <td>[[#rm-managed]]</td>
+      <td>[[#ar-managed]]</td>
       <td>```http://www.w3.org/ns/solid/terms#servermanaged```</td>
     </tr>
     <tr>
-      <td>[[#rm-configuration]]</td>
+      <td>[[#ar-configuration]]</td>
       <td>```http://www.w3.org/ns/solid/terms#configuration```</td>
     </tr>
   </tbody>
 </table>
 
-#### Discovery of Annotated Resource #### {#rm-annotated}
+Issue: Agree on specific link relation URIs to use for shape, server managed,
+configuration.
 
-Certain auxiliary resource types require the Solid server to link back to the
-annotated resource that the auxiliary resource is directly associated with, via
-Link
-headers. In these instances, the link relation ```rel=describes``` MUST be used.
+#### Web Access Control #### {#ar-wac}
 
-<p class="example">
-An auxiliary resource `<https://server.example/auxiliary/resource.meta>` is
-directly associated with `<https://server.example/resource.ttl>`. The auxiliary
-type for `resource.meta` requires linking back to the annotated resource, which
-is `resource.ttl`. `resource.meta` must have the following included in its
-`Link` headers:<br/>
-`Link: <https://server.example/resource.ttl>; rel="describes"`
-</p>
-
-### Auxiliary Resource Characteristics ### {#rm-characteristics}
-
-A given resource MAY Link to auxiliary resources on a different server under a
-different
-authority, per the configuration of the Solid server on which that resource
-resides.
-
-Auxiliary resources that reside on a Solid server MUST adhere to the same
-interaction model used by other standard Solid resources, except where specified
-in the definition of the associated auxiliary type in [[#rm-reserved]].
-
-An auxiliary resource MUST be deleted by the Solid server when the resource it
-is
-directly associated with is also deleted and the Solid server is authoritative
-for both resources.
-
-### Reserved Auxiliary Resource Types ### {#rm-reserved}
-
-#### Web Access Control #### {#rm-wac}
-
-ACL resources as defined by [[!WAC]] MUST be supported as an auxiliary
+ACL resources as defined by [[#wac]] MUST be supported as an auxiliary
 type by Solid servers.
 
 The ACL auxiliary resource directly associated with a given resource is
 discovered by the client via the `rel="acl"` `Link` relation in a `Link` header.
 
+Issue: Considering moving some of this information to [[#wac]]
+
 A given Solid resource MUST NOT be directly associated with more than one ACL
 auxiliary resource. A given ACL auxiliary resource MUST NOT be directly
-associated
-with more than one Solid resource.
+associated with more than one Solid resource.
 
 To discover, read, create, or modify an ACL auxiliary resource, an
 [acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
 MUST have
 [acl:Control](https://github.com/solid/web-access-control-spec#aclcontrol)
-privileges per the [ACL inheritance
-
-algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
+privileges per the
+[ACL inheritance algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
 on the resource directly associated with it.
 
-An ACL auxiliary resource MUST NOT be deleted unless the resource directly
-associated with it is deleted.
+An ACL auxiliary resource MUST be deleted by the Solid server when the resource
+it is directly associated with is also deleted and the Solid server is
+authoritative for both resources.
 
 A Solid server SHOULD sanity check ACL auxiliary resources upon creation or
 update to restrict invalid changes, such as by performing shape validation
 against authorization statements therein.
 
-#### Resource Description #### {#rm-description}
+#### Resource Description #### {#ar-description}
 
-Issue: Identify any auxiliary resource description parameters that MUST be
-recognized by all implementations.
+Issue: Consider where there are any common parameters that would be
+ubiquitous across resource descriptions that should be defined as part of the
+specification.
 
 Resource description is a general mechanism to provide descriptive metadata for
 a given resource. It MUST be supported as an auxiliary type by Solid
@@ -259,36 +262,39 @@ header. Conversely, the resource being described by a Descriptive auxiliary
 resource is discovered by the client via the `rel="describes"` `Link` relation
 in a `Link` header.
 
+Issue: Consider whether a given Solid resource should be allowed to have
+multiple resource description auxiliary resources.
+
 A given Solid resource MUST NOT be directly associated with more than one
 Descriptive auxiliary resource.
+
+Issue: Determine what the default permissions should be on resource description
+auxiliary resources, or whether we should have them at all.
 
 To create or modify a Descriptive auxiliary resource, a given
 [acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
 MUST have
 [acl:Write](https://github.com/solid/web-access-control-spec#aclcontrol)
-privileges per the [ACL inheritance
-
-algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
+privileges per the
+[ACL inheritance algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
 on the resource directly associated with it.
 
 To discover or read a Descriptive auxiliary resource, an
 [acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
 MUST have
 [acl:Read](https://github.com/solid/web-access-control-spec#aclcontrol)
-privileges per the [ACL inheritance
-
-algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
+privileges per the
+[ACL inheritance algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
 on the resource directly associated with it.
 
-#### Shape Validation #### {#rm-shape}
+An Descriptive auxiliary resource MUST be deleted by the Solid server when the
+resource it is directly associated with is also deleted and the Solid server is
+authoritative for both resources.
 
-Issue: Detail the composition of a shape auxiliary resource, including the shape
-language, shape url, and any additional parameters to be used in shape
-validation by the server implementation.
+#### Shape Validation #### {#ar-shape}
 
-Shape Validation ensures that any data changes in a given resource conform to an
-associated [[!SHACL]] or [[!SHEX]] data shape. It MUST be supported as an
-auxiliary type by Solid servers.
+Shape Validation auxiliary resources as defined by (link to shape validation)
+SHOULD be supported as an auxiliary type by Solid servers.
 
 The Shape validation auxiliary resource directly associated with a given
 resource
@@ -297,6 +303,8 @@ is discovered by the client via the `rel=http://www.w3.org/ns/solid/terms#shape`
 a Shape validation auxiliary resource is discovered by the client via the
 `rel=describes` `Link` relation in a `Link` header.
 
+Issue: Consider moving some of this information to the Shape Validation section
+
 A given Solid resource MUST NOT be directly associated with more than one
 Shape Validation auxiliary resource.
 
@@ -304,26 +312,35 @@ To create or modify a Shape validation auxiliary resource, an
 [acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
 MUST have
 [acl:Write](https://github.com/solid/web-access-control-spec#aclcontrol)
-privileges per the [ACL inheritance
-
-algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
+privileges per the
+[ACL inheritance algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
 on the resource directly associated with it.
+
+Issue: Determine what the default permissions should be on shape validation
+auxiliary resources, or whether we should have them at all.
 
 To read a Shape validation auxiliary resource, an
 [acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
 MUST have
 [acl:Read](https://github.com/solid/web-access-control-spec#aclcontrol)
-privileges per the [ACL inheritance
-
-algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
+privileges per the
+[ACL inheritance algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
 on the resource directly associated with it.
+
+A Shape validation auxiliary resource MUST be deleted by the Solid server when
+the resource it is directly associated with is also deleted and the Solid server
+is authoritative for both resources.
+
+Issue: Provide a shape to validate a shape validation auxiliary resource. May
+include the shape language, shape url, and any additional parameters to be used
+in shape validation by the server implementation.
 
 A Solid server SHOULD sanity check Shape validation auxiliary resources upon
 creation or update to restrict invalid changes.
 
-#### Server Managed #### {#rm-managed}
+#### Server Managed #### {#ar-managed}
 
-Issue: Identify any data the server MUST be required to manage.
+Issue: Identify any data the server MUST or SHOULD be required to manage
 
 A Solid server stores information about a resource that clients can read but not
 change in Server Managed auxiliary resources. Examples of data stored in Server
@@ -344,17 +361,20 @@ Managed auxiliary resource.
 To read a Server Managed auxiliary resource, an
 [acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
 MUST have [acl:Read](https://github.com/solid/web-access-control-spec#aclread)
-privileges per the [ACL inheritance
-
-algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
+privileges per the
+[ACL inheritance algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
 on the resource directly associated with it. Modes of access beyond
 [acl:Read](https://github.com/solid/web-access-control-spec#aclread) MUST NOT be
 permitted on a Server Managed auxiliary resource.
 
-#### Configuration #### {#rm-configuration}
+A Server managed auxiliary resource MUST be deleted by the Solid server when the
+resource it is directly associated with is also deleted and the Solid server is
+authoritative for both resources.
 
-Issue: Identify any configuration parameters that MUST be recognized by
-all implementations.
+#### Configuration #### {#ar-configuration}
+
+Issue: Identify any configuration parameters that MUST or SHOULD be recognized
+by client or server implementations.
 
 A Configuration auxiliary resource is used to store configurable parameters for
 a given
@@ -373,15 +393,20 @@ a `Link header`.
 A given Solid resource MUST NOT be directly associated with more than one
 Configuration auxiliary resource.
 
+Issue: Determine what the default permissions should be on configuration
+auxiliary resources, or whether we should have them at all.
+
 To discover, read, create, or modify a Configuration auxiliary resource, an
 [acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
 MUST have
 [acl:Control](https://github.com/solid/web-access-control-spec#aclcontrol)
-privileges per the [ACL inheritance
-
-algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
+privileges per the
+[ACL inheritance algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
 on the resource directly associated with it.
 
+A Configuration auxiliary resource MUST be deleted by the Solid server when the
+resource it is directly associated with is also deleted and the Solid server is
+authoritative for both resources.
 
 ## WebID ## {#webid}
 
@@ -508,8 +533,7 @@ data pods SHOULD explicitly enumerate
 all used response headers under `Access-Control-Expose-Headers`
 rather than resorting to `*`,
 which does not cover all cases (such as credentials mode set to `include`).
-Data pods SHOULD also explicitly list `Accept` under
-`Access-Control-Allow-Headers`,
+Data pods SHOULD also explicitly list `Accept` under `Access-Control-Allow-Headers`,
 because values longer than 128 characters
 (not uncommon for RDF-based Solid apps)
 would otherwise be blocked,
