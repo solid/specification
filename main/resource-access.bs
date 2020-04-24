@@ -159,6 +159,7 @@ to the Solid resource it is directly associated with, via HTTP `Link` headers.
 In these instances, the link relation `rel=describes` MUST be used.
 
 Issue: Is MUST too strong, as opposed to encouraging via SHOULD instead?
+[Related Issue](https://github.com/solid/data-interoperability-panel/issues/37)
 
 <div class="example">
   <p>
@@ -215,6 +216,7 @@ used, and may be added to the reserved set in the future.
 
 Issue: Agree on specific link relation URIs to use for shape, server managed,
 configuration.
+[Related Issue](https://github.com/solid/specification/issues/172)
 
 #### Web Access Control #### {#ar-wac}
 
@@ -224,7 +226,7 @@ type by Solid servers.
 The ACL auxiliary resource directly associated with a given resource is
 discovered by the client via the `rel="acl"` `Link` relation in a `Link` header.
 
-Issue: Considering moving some of this information to [[#wac]]
+Note: Consider moving some of this information to [[#wac]]
 
 A given Solid resource MUST NOT be directly associated with more than one ACL
 auxiliary resource. A given ACL auxiliary resource MUST NOT be directly
@@ -248,7 +250,7 @@ against authorization statements therein.
 
 #### Resource Description #### {#ar-description}
 
-Issue: Consider where there are any common parameters that would be
+Note: Consider where there are any common parameters that would be
 ubiquitous across resource descriptions that should be defined as part of the
 specification.
 
@@ -264,12 +266,14 @@ in a `Link` header.
 
 Issue: Consider whether a given Solid resource should be allowed to have
 multiple resource description auxiliary resources.
+[Related Issue](https://github.com/solid/specification/issues/173)
 
 A given Solid resource MUST NOT be directly associated with more than one
 Descriptive auxiliary resource.
 
 Issue: Determine what the default permissions should be on resource description
 auxiliary resources, or whether we should have them at all.
+[Related Issue](https://github.com/solid/specification/issues/174)
 
 To create or modify a Descriptive auxiliary resource, a given
 [acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
@@ -303,10 +307,14 @@ is discovered by the client via the `rel=http://www.w3.org/ns/solid/terms#shape`
 a Shape validation auxiliary resource is discovered by the client via the
 `rel=describes` `Link` relation in a `Link` header.
 
-Issue: Consider moving some of this information to the Shape Validation section
+Note: Consider moving some of this information to the Shape Validation section
 
 A given Solid resource MUST NOT be directly associated with more than one
 Shape Validation auxiliary resource.
+
+Issue: Determine what the default permissions should be on shape validation
+auxiliary resources, or whether we should have them at all.
+[Related Issue](https://github.com/solid/specification/issues/174)
 
 To create or modify a Shape validation auxiliary resource, an
 [acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
@@ -316,10 +324,7 @@ privileges per the
 [ACL inheritance algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
 on the resource directly associated with it.
 
-Issue: Determine what the default permissions should be on shape validation
-auxiliary resources, or whether we should have them at all.
-
-To read a Shape validation auxiliary resource, an
+To discover or read a Shape validation auxiliary resource, an
 [acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
 MUST have
 [acl:Read](https://github.com/solid/web-access-control-spec#aclcontrol)
@@ -395,11 +400,20 @@ Configuration auxiliary resource.
 
 Issue: Determine what the default permissions should be on configuration
 auxiliary resources, or whether we should have them at all.
+[Related Issue](https://github.com/solid/specification/issues/174)
 
-To discover, read, create, or modify a Configuration auxiliary resource, an
+To create or modify a Configuration auxiliary resource, an
 [acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
 MUST have
-[acl:Control](https://github.com/solid/web-access-control-spec#aclcontrol)
+[acl:Write](https://github.com/solid/web-access-control-spec#aclcontrol)
+privileges per the
+[ACL inheritance algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
+on the resource directly associated with it.
+
+To discover or read a Configuration auxiliary resource, an
+[acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
+MUST have
+[acl:Read](https://github.com/solid/web-access-control-spec#aclcontrol)
 privileges per the
 [ACL inheritance algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
 on the resource directly associated with it.
