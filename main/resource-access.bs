@@ -255,7 +255,7 @@ a given resource. It MUST be supported as an auxiliary type by Solid
 servers.
 
 The Descriptive auxiliary resource directly associated with a given resource is
-discovered by the client via the `"rel=describedby"` `Link` relation in a `Link`
+discovered by the client via the `rel="describedby"` `Link` relation in a `Link`
 header. Conversely, the resource being described by a Descriptive auxiliary
 resource is discovered by the client via the `rel="describes"` `Link` relation
 in a `Link` header.
