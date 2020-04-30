@@ -262,10 +262,6 @@ used, and may be added to the reserved set in the future.
       <td>[[#ar-managed]]</td>
       <td>```http://www.w3.org/ns/solid/terms#servermanaged```</td>
     </tr>
-    <tr>
-      <td>[[#ar-configuration]]</td>
-      <td>```http://www.w3.org/ns/solid/terms#configuration```</td>
-    </tr>
   </tbody>
 </table>
 
@@ -428,52 +424,6 @@ on the resource directly associated with it. Modes of access beyond
 permitted on a Server Managed auxiliary resource.
 
 A Server managed auxiliary resource MUST be deleted by the Solid server when the
-resource it is directly associated with is also deleted and the Solid server is
-authoritative for both resources.
-
-#### Configuration #### {#ar-configuration}
-
-Issue: Identify any configuration parameters that MUST or SHOULD be recognized
-by client or server implementations.
-
-A Configuration auxiliary resource is used to store configurable parameters for
-a given
-resource. For example, whether to maintain
-[Mementos](https://tools.ietf.org/html/rfc7089) for a given resource, or how the
-data within a given resource should be rendered or indexed. It MUST be supported
-as an auxiliary type by Solid servers.
-
-A Configuration auxiliary resource directly associated with a given resource is
-discovered by the client via the
-`rel=http://www.w3.org/ns/solid/terms#configuration` `Link` relation in a `Link`
-header. Conversely, the resource being described by a Configuration auxiliary
-resource is discovered by the client via the `rel=describes` `Link` relation in
-a `Link header`.
-
-A given Solid resource MUST NOT be directly associated with more than one
-Configuration auxiliary resource.
-
-Issue: Determine what the default permissions should be on configuration
-auxiliary resources, or whether we should have them at all.
-[Related Issue](https://github.com/solid/specification/issues/174)
-
-To create or modify a Configuration auxiliary resource, an
-[acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
-MUST have
-[acl:Write](https://github.com/solid/web-access-control-spec#aclcontrol)
-privileges per the
-[ACL inheritance algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
-on the resource directly associated with it.
-
-To discover or read a Configuration auxiliary resource, an
-[acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
-MUST have
-[acl:Read](https://github.com/solid/web-access-control-spec#aclcontrol)
-privileges per the
-[ACL inheritance algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
-on the resource directly associated with it.
-
-A Configuration auxiliary resource MUST be deleted by the Solid server when the
 resource it is directly associated with is also deleted and the Solid server is
 authoritative for both resources.
 
