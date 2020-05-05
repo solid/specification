@@ -177,9 +177,11 @@ to the server to determine how that association affects processing based on the
 auxiliary resource type.
 
 A given Solid resource MAY link to zero or more auxiliary resources. A given
-Solid resource MAY Link to auxiliary resources on a different server under a
-different authority, per the configuration of the Solid server on which that
-resource resides.
+Solid resource MUST NOT link to auxiliary resources on a different server under
+a different authority.
+
+Issue: Is MUST NOT too strong?
+[Related Issue](https://github.com/solid/specification/issues/176)
 
 Access to different types of auxiliary resources require varying levels of
 authorization, which MUST be specified as part of the definition for a given
