@@ -1221,18 +1221,70 @@ Possible extra rowspan handling
 		}
 	}
 </style>
-  <meta content="Bikeshed version 2a881f0ee698433d75c6a1555514334adb37d8c7" name="generator">
+  <meta content="Bikeshed version 4be3a54, updated Mon May 4 06:47:10 2020 -0700" name="generator">
   <link href="https://solid.github.io/specification/" rel="canonical">
-  <meta content="f2eeb0a6009878d3949e84e3bb7d3ba0771fe4e4" name="document-revision">
-<style>/* style-md-lists */
+  <meta content="35f7af7be5d7ba1125b3d920d17a63539e6d6945" name="document-revision">
+<style>/* style-autolinks */
 
-/* This is a weird hack for me not yet following the commonmark spec
-   regarding paragraph and lists. */
-[data-md] > :first-child {
-    margin-top: 0;
+.css.css, .property.property, .descriptor.descriptor {
+    color: #005a9c;
+    font-size: inherit;
+    font-family: inherit;
 }
-[data-md] > :last-child {
-    margin-bottom: 0;
+.css::before, .property::before, .descriptor::before {
+    content: "‘";
+}
+.css::after, .property::after, .descriptor::after {
+    content: "’";
+}
+.property, .descriptor {
+    /* Don't wrap property and descriptor names */
+    white-space: nowrap;
+}
+.type { /* CSS value <type> */
+    font-style: italic;
+}
+pre .property::before, pre .property::after {
+    content: "";
+}
+[data-link-type="property"]::before,
+[data-link-type="propdesc"]::before,
+[data-link-type="descriptor"]::before,
+[data-link-type="value"]::before,
+[data-link-type="function"]::before,
+[data-link-type="at-rule"]::before,
+[data-link-type="selector"]::before,
+[data-link-type="maybe"]::before {
+    content: "‘";
+}
+[data-link-type="property"]::after,
+[data-link-type="propdesc"]::after,
+[data-link-type="descriptor"]::after,
+[data-link-type="value"]::after,
+[data-link-type="function"]::after,
+[data-link-type="at-rule"]::after,
+[data-link-type="selector"]::after,
+[data-link-type="maybe"]::after {
+    content: "’";
+}
+
+[data-link-type].production::before,
+[data-link-type].production::after,
+.prod [data-link-type]::before,
+.prod [data-link-type]::after {
+    content: "";
+}
+
+[data-link-type=element],
+[data-link-type=element-attr] {
+    font-family: Menlo, Consolas, "DejaVu Sans Mono", monospace;
+    font-size: .9em;
+}
+[data-link-type=element]::before { content: "<" }
+[data-link-type=element]::after  { content: ">" }
+
+[data-link-type=biblio] {
+    white-space: pre;
 }</style>
 <style>/* style-counters */
 
@@ -1300,6 +1352,16 @@ figcaption:not(.no-marker)::before {
 
 .dfn-paneled { cursor: pointer; }
 </style>
+<style>/* style-md-lists */
+
+/* This is a weird hack for me not yet following the commonmark spec
+   regarding paragraph and lists. */
+[data-md] > :first-child {
+    margin-top: 0;
+}
+[data-md] > :last-child {
+    margin-bottom: 0;
+}</style>
 <style>/* style-selflinks */
 
 .heading, .issue, .note, .example, li, dt {
@@ -1346,73 +1408,11 @@ dfn > a.self-link:hover {
 a.self-link::before            { content: "¶"; }
 .heading > a.self-link::before { content: "§"; }
 dfn > a.self-link::before      { content: "#"; }</style>
-<style>/* style-autolinks */
-
-.css.css, .property.property, .descriptor.descriptor {
-    color: #005a9c;
-    font-size: inherit;
-    font-family: inherit;
-}
-.css::before, .property::before, .descriptor::before {
-    content: "‘";
-}
-.css::after, .property::after, .descriptor::after {
-    content: "’";
-}
-.property, .descriptor {
-    /* Don't wrap property and descriptor names */
-    white-space: nowrap;
-}
-.type { /* CSS value <type> */
-    font-style: italic;
-}
-pre .property::before, pre .property::after {
-    content: "";
-}
-[data-link-type="property"]::before,
-[data-link-type="propdesc"]::before,
-[data-link-type="descriptor"]::before,
-[data-link-type="value"]::before,
-[data-link-type="function"]::before,
-[data-link-type="at-rule"]::before,
-[data-link-type="selector"]::before,
-[data-link-type="maybe"]::before {
-    content: "‘";
-}
-[data-link-type="property"]::after,
-[data-link-type="propdesc"]::after,
-[data-link-type="descriptor"]::after,
-[data-link-type="value"]::after,
-[data-link-type="function"]::after,
-[data-link-type="at-rule"]::after,
-[data-link-type="selector"]::after,
-[data-link-type="maybe"]::after {
-    content: "’";
-}
-
-[data-link-type].production::before,
-[data-link-type].production::after,
-.prod [data-link-type]::before,
-.prod [data-link-type]::after {
-    content: "";
-}
-
-[data-link-type=element],
-[data-link-type=element-attr] {
-    font-family: Menlo, Consolas, "DejaVu Sans Mono", monospace;
-    font-size: .9em;
-}
-[data-link-type=element]::before { content: "<" }
-[data-link-type=element]::after  { content: ">" }
-
-[data-link-type=biblio] {
-    white-space: pre;
-}</style>
  <body class="h-entry">
   <div class="head">
    <p data-fill-with="logo"></p>
    <h1 class="p-name no-ref" id="title">The Solid Ecosystem</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-01-16">16 January 2020</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-05-05">5 May 2020</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1427,7 +1427,7 @@ pre .property::before, pre .property::after {
    <div data-fill-with="warning"></div>
    <p class="copyright" data-fill-with="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="https://licensebuttons.net/p/zero/1.0/80x15.png"></a> To the extent possible under law, the editors have waived all copyright
 and related or neighboring rights to this work.
-In addition, as of 16 January 2020,
+In addition, as of 5 May 2020,
 the editors have made this specification available under the <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>,
 which is available at http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0.
 Parts of this work may be from another specification document.  If so, those parts are instead covered by the license of that specification document. </p>
@@ -1454,10 +1454,11 @@ Parts of this work may be from another specification document.  If so, those par
      <a href="#resource-access"><span class="secno">2</span> <span class="content">Authenticated Resource Access</span></a>
      <ol class="toc">
       <li><a href="#http"><span class="secno">2.1</span> <span class="content">Hypertext Transfer Protocol</span></a>
-      <li><a href="#ldp"><span class="secno">2.2</span> <span class="content">Linked Data Platform</span></a>
-      <li><a href="#webid"><span class="secno">2.3</span> <span class="content">WebID</span></a>
-      <li><a href="#wac"><span class="secno">2.4</span> <span class="content">Web Access Control</span></a>
-      <li><a href="#cors"><span class="secno">2.5</span> <span class="content">Cross-Origin Resource Sharing</span></a>
+      <li><a href="#uri"><span class="secno">2.2</span> <span class="content">Uniform Resource Identifier</span></a>
+      <li><a href="#linked-data"><span class="secno">2.3</span> <span class="content">Linked Data</span></a>
+      <li><a href="#webid"><span class="secno">2.4</span> <span class="content">WebID</span></a>
+      <li><a href="#wac"><span class="secno">2.5</span> <span class="content">Web Access Control</span></a>
+      <li><a href="#cors"><span class="secno">2.6</span> <span class="content">Cross-Origin Resource Sharing</span></a>
      </ol>
     <li>
      <a href="#clients"><span class="secno">3</span> <span class="content">Clients and Apps</span></a>
@@ -1479,6 +1480,7 @@ Parts of this work may be from another specification document.  If so, those par
      <a href="#security"><span class="secno">5</span> <span class="content">Security Considerations</span></a>
      <ol class="toc">
       <li><a href="#privacy"><span class="secno">5.1</span> <span class="content">Privacy Considerations</span></a>
+      <li><a href="#security-privacy-review"><span class="secno">5.2</span> <span class="content">Security and Privacy Review</span></a>
      </ol>
     <li><a href="#conformance"><span class="secno"></span> <span class="content"> Conformance</span></a>
     <li>
@@ -1490,6 +1492,7 @@ Parts of this work may be from another specification document.  If so, those par
      <a href="#references"><span class="secno"></span> <span class="content">References</span></a>
      <ol class="toc">
       <li><a href="#normative"><span class="secno"></span> <span class="content">Normative References</span></a>
+      <li><a href="#informative"><span class="secno"></span> <span class="content">Informative References</span></a>
      </ol>
     <li><a href="#issues-index"><span class="secno"></span> <span class="content">Issues Index</span></a>
    </ol>
@@ -1512,6 +1515,9 @@ However, the information in this document is still subject to change.
 with mechanisms for controlling who can access what.</p>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="solid-app">Solid app</dfn> is an application
 that reads or writes data from one or more <a data-link-type="dfn" href="#data-pod" id="ref-for-data-pod">data pods</a>.</p>
+   <p>A <dfn data-dfn-type="dfn" data-export id="read-operation">read operation<a class="self-link" href="#read-operation"></a></dfn> entails that information about a resource’s existence or its description can be known. <a href="https://github.com/solid/specification/issues/149#issue-568433265">[Source</a>]</p>
+   <p>A <dfn data-dfn-type="dfn" data-export id="write-operation">write operation<a class="self-link" href="#write-operation"></a></dfn> entails that information about resources can be created or removed. <a href="https://github.com/solid/specification/issues/126#issuecomment-569920473">[Source</a>]</p>
+   <p>An <dfn data-dfn-type="dfn" data-export id="append-operation">append operation<a class="self-link" href="#append-operation"></a></dfn> entails that information can be added but not removed. <a href="https://github.com/solid/specification/issues/118#issuecomment-569648485">[Source</a>]</p>
    <p class="issue" id="issue-45213e2c"><a class="self-link" href="#issue-45213e2c"></a> Introduce the structure of this document. <a href="#resource-access">Cross-server interoperability</a> <a href="#clients">Cross-app interoperability</a></p>
    <h3 class="heading settled" data-level="1.2" id="namespaces"><span class="secno">1.2. </span><span class="content">Namespaces</span><a class="self-link" href="#namespaces"></a></h3>
    <table>
@@ -1563,40 +1569,74 @@ of <cite>HTTP/1.1 Range Requests</cite> <a data-link-type="biblio" href="#biblio
    <p>A data pod MUST implement the server part
 of <cite>HTTP/1.1 Authentication</cite> <a data-link-type="biblio" href="#biblio-rfc7235">[RFC7235]</a>.
 When a client does not provide valid credentials
-when requesting a resource that requires it (see <a href="#webid">§ 2.3 WebID</a>),
+when requesting a resource that requires it (see <a href="#webid">§ 2.4 WebID</a>),
 the data pod MUST send a response with a <code>401</code> status code
 (unless <code>404</code> is preferred for security reasons).</p>
+   <p>A Solid server MUST reject <code>PUT</code>, <code>POST</code> and <code>PATCH</code> requests without the <code>Content-Type</code> header with a status code of <code>400</code>. <a href="https://github.com/solid/specification/issues/70#issuecomment-535499628">[Source</a>]</p>
    <h4 class="heading settled" data-level="2.1.3" id="http-client"><span class="secno">2.1.3. </span><span class="content">Required client-side implementation</span><a class="self-link" href="#http-client"></a></h4>
    <p>A Solid client MUST be an HTTP/1.1 client <a data-link-type="biblio" href="#biblio-rfc7230">[RFC7230]</a><a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>.
 It MAY additionally be an HTTP/2 client <a data-link-type="biblio" href="#biblio-rfc7540">[RFC7540]</a> to improve performance.</p>
    <p>A Solid client MAY implement the client parts of <cite>HTTP/1.1 Conditional Requests</cite> <a data-link-type="biblio" href="#biblio-rfc7232">[RFC7232]</a> to only trigger updates when certain preconditions are met.
 It MAY implement <cite>HTTP/1.1 Caching</cite> <a data-link-type="biblio" href="#biblio-rfc7234">[RFC7234]</a> and <cite>HTTP/1.1 Range Requests</cite> <a data-link-type="biblio" href="#biblio-rfc7233">[RFC7233]</a> to improve performance.</p>
    <p>A Solid client MUST implement the client part
-of <cite>HTTP/1.1 Authentication</cite> <a data-link-type="biblio" href="#biblio-rfc7235">[RFC7235]</a> if it needs to access resources requiring authentication (see <a href="#webid">§ 2.3 WebID</a>).
+of <cite>HTTP/1.1 Authentication</cite> <a data-link-type="biblio" href="#biblio-rfc7235">[RFC7235]</a> if it needs to access resources requiring authentication (see <a href="#webid">§ 2.4 WebID</a>).
 When it receives a response with a <code>403</code> or <code>404</code> status code,
 it MAY repeat the request with different credentials.</p>
-   <h3 class="heading settled" data-level="2.2" id="ldp"><span class="secno">2.2. </span><span class="content">Linked Data Platform</span><a class="self-link" href="#ldp"></a></h3>
-   <p class="issue" id="issue-2692aa9a"><a class="self-link" href="#issue-2692aa9a"></a> Write Linked Data Platform section.</p>
-   <p>Draft:
-A Solid data pod MUST conform to the LDP specification <a data-link-type="biblio" href="#biblio-ldp">[LDP]</a>.</p>
-   <h3 class="heading settled" data-level="2.3" id="webid"><span class="secno">2.3. </span><span class="content">WebID</span><a class="self-link" href="#webid"></a></h3>
+   <p>A Solid client MUST use the <code>Content-Type</code> HTTP header in <code>PUT</code>, <code>POST</code> and <code>PATCH</code> requests <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>. <a href="https://github.com/solid/specification/issues/70#issuecomment-547924171">[Source</a>]</p>
+   <h3 class="heading settled" data-level="2.2" id="uri"><span class="secno">2.2. </span><span class="content">Uniform Resource Identifier</span><a class="self-link" href="#uri"></a></h3>
+   <h4 class="heading settled" data-level="2.2.1" id="uri-slash-semantics"><span class="secno">2.2.1. </span><span class="content">Shared slash semantics</span><a class="self-link" href="#uri-slash-semantics"></a></h4>
+   <p>The slash character in the URI path indicates hierarchical relationship
+segments, and enables relative referencing <a data-link-type="biblio" href="#biblio-rfc3986">[RFC3986]</a>. The semantics of the
+slash character is shared by servers and clients. Paths ending with a slash
+denote a container resource. <a href="https://github.com/solid/specification/issues/35#issuecomment-547949014">[Source</a>]</p>
+   <p>If two URIs differ only in the trailing slash, and the server has associated a
+resource with one of them, then the other URI MUST NOT correspond to another
+resource. Instead, the server MAY respond to requests for the latter URI with
+a 301 redirect to the former. <a href="https://github.com/solid/specification/issues/107#issuecomment-567482817">[Source</a>].
+Behaviour pertaining to authorization MUST proceed this optional redirect <a href="https://github.com/solid/specification/issues/107#issuecomment-567454889">[Source</a>]</p>
+   <h3 class="heading settled" data-level="2.3" id="linked-data"><span class="secno">2.3. </span><span class="content">Linked Data</span><a class="self-link" href="#linked-data"></a></h3>
+   <h4 class="heading settled" data-level="2.3.1" id="resource-containment"><span class="secno">2.3.1. </span><span class="content">Containment</span><a class="self-link" href="#resource-containment"></a></h4>
+   <p>Solid has the notion of containers to represent a collection of linked
+resources to help with resource discovery and lifecycle management.</p>
+   <p>There is a 1-1 correspondence between containment triples and relative
+reference within the path name hierarchy. <a href="https://github.com/solid/specification/issues/98#issuecomment-547506617">[Source</a>].
+It follows that all resources are discoverable from a container and that it is
+not possible to create orphan resources. <a href="https://github.com/solid/specification/issues/97#issuecomment-547459396">[Source</a>]</p>
+   <p>The representation and behaviour of containers in Solid corresponds to LDP
+Basic Container and MUST be supported. <a href="https://github.com/solid/specification/issues/47#issuecomment-561675764">[Source</a>]</p>
+   <p>Server MUST create intermediate containers and include corresponding
+containment triples in container representations derived from the URI path
+component of <code>PUT</code>, <code>POST</code> and <code>PATCH</code> requests. <a href="https://github.com/solid/specification/issues/68#issuecomment-561690124">[Source</a>]</p>
+   <h4 class="heading settled" data-level="2.3.2" id="uri-persistence"><span class="secno">2.3.2. </span><span class="content">Persistence</span><a class="self-link" href="#uri-persistence"></a></h4>
+    <em>This section is non-normative.</em> 
+   <p>Servers should not re-use URIs, regardless of the mechanism by which resources
+are created. Certain specific cases exist where URIs may be reinstated when it
+identifies the same resource, but only when consistent with Web architecture’s <cite><a href="https://www.w3.org/TR/webarch/#URI-persistence">URI
+persistence</a></cite> <a data-link-type="biblio" href="#biblio-webarch">[WEBARCH]</a>. <a href="https://github.com/solid/specification/issues/46#issuecomment-589619372">[Source</a>]</p>
+   <p class="note" role="note"><span>Note:</span> Servers that wish to disable URI re-use may want to use the <code>410</code> status
+code.</p>
+   <h3 class="heading settled" data-level="2.4" id="webid"><span class="secno">2.4. </span><span class="content">WebID</span><a class="self-link" href="#webid"></a></h3>
    <p class="issue" id="issue-06f3939c"><a class="self-link" href="#issue-06f3939c"></a> Explain inline that agents accessing non-public Solid resources
   need to authenticate with a WebID, which is a URL
   pointing to a document with an RDF representation.</p>
-   <h4 class="heading settled" data-level="2.3.1" id="webid-oidc"><span class="secno">2.3.1. </span><span class="content">WebID-OIDC</span><a class="self-link" href="#webid-oidc"></a></h4>
+   <h4 class="heading settled" data-level="2.4.1" id="webid-oidc"><span class="secno">2.4.1. </span><span class="content">WebID-OIDC</span><a class="self-link" href="#webid-oidc"></a></h4>
    <p class="issue" id="issue-ba14f105"><a class="self-link" href="#issue-ba14f105"></a> Write WebID-OIDC section.</p>
    <p>Draft:
 A Solid data pod MUST conform to the WebID-OIDC specification <a data-link-type="biblio" href="#biblio-webid-oidc">[WEBID-OIDC]</a>.</p>
-   <h4 class="heading settled" data-level="2.3.2" id="webid-tls"><span class="secno">2.3.2. </span><span class="content">WebID-TLS</span><a class="self-link" href="#webid-tls"></a></h4>
+   <h4 class="heading settled" data-level="2.4.2" id="webid-tls"><span class="secno">2.4.2. </span><span class="content">WebID-TLS</span><a class="self-link" href="#webid-tls"></a></h4>
    <p class="issue" id="issue-b2a56341"><a class="self-link" href="#issue-b2a56341"></a> Write WebID-TLS section.</p>
    <p>Draft:
 A Solid data pod MAY conform to the WebID-TLS specification <a data-link-type="biblio" href="#biblio-webid-tls">[WEBID-TLS]</a>.</p>
-   <h3 class="heading settled" data-level="2.4" id="wac"><span class="secno">2.4. </span><span class="content">Web Access Control</span><a class="self-link" href="#wac"></a></h3>
+   <h3 class="heading settled" data-level="2.5" id="wac"><span class="secno">2.5. </span><span class="content">Web Access Control</span><a class="self-link" href="#wac"></a></h3>
    <p class="issue" id="issue-d582b7fc"><a class="self-link" href="#issue-d582b7fc"></a> Write Web Access Control section.</p>
    <p>Draft:
 A Solid data pod MUST conform to the Web Access Control specification <a data-link-type="biblio" href="#biblio-wac">[WAC]</a>.</p>
-   <h3 class="heading settled" data-level="2.5" id="cors"><span class="secno">2.5. </span><span class="content">Cross-Origin Resource Sharing</span><a class="self-link" href="#cors"></a></h3>
-   <h4 class="heading settled" data-level="2.5.1" id="cors-need"><span class="secno">2.5.1. </span><span class="content">Background and Need</span><a class="self-link" href="#cors-need"></a></h4>
+   <p>A resource can advertise an ACL document that is directly associated by using
+the HTTP <code>Link</code> header with a <code>rel</code> value of <code>acl</code>. <a href="https://github.com/solid/specification/issues/31#issuecomment-548360553">[Source</a>]</p>
+   <p>In the event that a server can’t apply an ACL to a resource, it MUST deny
+access. <a href="https://github.com/solid/specification/issues/130#issue-532777017">[Source</a>]</p>
+   <h3 class="heading settled" data-level="2.6" id="cors"><span class="secno">2.6. </span><span class="content">Cross-Origin Resource Sharing</span><a class="self-link" href="#cors"></a></h3>
+   <h4 class="heading settled" data-level="2.6.1" id="cors-need"><span class="secno">2.6.1. </span><span class="content">Background and Need</span><a class="self-link" href="#cors-need"></a></h4>
     <em>This section is non-normative.</em> 
    <p><a data-link-type="dfn" href="#solid-app" id="ref-for-solid-app">Solid apps</a> typically access data from multiple sources.
 However,
@@ -1633,7 +1673,7 @@ the goal is to allow <em>all</em> actions on the CORS level,
 such that the deeper <a href="#wac">access control layer</a> can exert full control over the app’s allowed permissions.
 The next section describes how to achieve this
 through the right HTTP header configuration.</p>
-   <h4 class="heading settled" data-level="2.5.2" id="cors-server"><span class="secno">2.5.2. </span><span class="content">Required server-side implementation</span><a class="self-link" href="#cors-server"></a></h4>
+   <h4 class="heading settled" data-level="2.6.2" id="cors-server"><span class="secno">2.6.2. </span><span class="content">Required server-side implementation</span><a class="self-link" href="#cors-server"></a></h4>
    <p>A <a data-link-type="dfn" href="#data-pod" id="ref-for-data-pod③">data pod</a> MUST implement the CORS protocol <a data-link-type="biblio" href="#biblio-fetch">[FETCH]</a> such that, to the extent possible,
 the browser allows Solid apps
 to send any request and combination of request headers
@@ -1774,6 +1814,8 @@ that terminates a secure connection.</p>
    <p class="issue" id="issue-e08c9a5d"><a class="self-link" href="#issue-e08c9a5d"></a> Write Identifiable Information section.</p>
    <p>In order to prevent leakage of non-resource data,
 error responses SHOULD NOT contain identifiable information.</p>
+   <h3 class="heading settled" data-level="5.2" id="security-privacy-review"><span class="secno">5.2. </span><span class="content">Security and Privacy Review</span><a class="self-link" href="#security-privacy-review"></a></h3>
+   <p class="issue" id="issue-4eadf7d9"><a class="self-link" href="#issue-4eadf7d9"></a> Complete <a data-link-type="biblio" href="#biblio-security-privacy-questionnaire">[security-privacy-questionnaire]</a></p>
   </main>
   <div data-fill-with="conformance">
    <h2 class="no-ref no-num heading settled" id="conformance"><span class="content"> Conformance</span><a class="self-link" href="#conformance"></a></h2>
@@ -1924,8 +1966,11 @@ error responses SHOULD NOT contain identifiable information.</p>
   <h2 class="no-num no-ref heading settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
   <h3 class="no-num no-ref heading settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
   <ul class="index">
+   <li><a href="#append-operation">append operation</a><span>, in §1.1</span>
    <li><a href="#data-pod">data pod</a><span>, in §1.1</span>
+   <li><a href="#read-operation">read operation</a><span>, in §1.1</span>
    <li><a href="#solid-app">Solid app</a><span>, in §1.1</span>
+   <li><a href="#write-operation">write operation</a><span>, in §1.1</span>
   </ul>
   <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
   <h3 class="no-num no-ref heading settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
@@ -1946,6 +1991,8 @@ error responses SHOULD NOT contain identifiable information.</p>
    <dd>Dan Brickley; Ramanathan Guha. <a href="https://www.w3.org/TR/rdf-schema/">RDF Schema 1.1</a>. 25 February 2014. REC. URL: <a href="https://www.w3.org/TR/rdf-schema/">https://www.w3.org/TR/rdf-schema/</a>
    <dt id="biblio-rfc2119">[RFC2119]
    <dd>S. Bradner. <a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a>
+   <dt id="biblio-rfc3986">[RFC3986]
+   <dd>T. Berners-Lee; R. Fielding; L. Masinter. <a href="https://tools.ietf.org/html/rfc3986">Uniform Resource Identifier (URI): Generic Syntax</a>. January 2005. Internet Standard. URL: <a href="https://tools.ietf.org/html/rfc3986">https://tools.ietf.org/html/rfc3986</a>
    <dt id="biblio-rfc6454">[RFC6454]
    <dd>A. Barth. <a href="https://tools.ietf.org/html/rfc6454">The Web Origin Concept</a>. December 2011. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc6454">https://tools.ietf.org/html/rfc6454</a>
    <dt id="biblio-rfc7089">[RFC7089]
@@ -1972,10 +2019,17 @@ error responses SHOULD NOT contain identifiable information.</p>
    <dd>Manu Sporny; Dave Longley; David Chadwick. <a href="https://www.w3.org/TR/verifiable-claims-data-model/">Verifiable Credentials Data Model 1.0</a>. URL: <a href="https://www.w3.org/TR/verifiable-claims-data-model/">https://www.w3.org/TR/verifiable-claims-data-model/</a>
    <dt id="biblio-wac">[WAC]
    <dd><a href="https://solid.github.io/specification/wac/">Web Access Control</a>. URL: <a href="https://solid.github.io/specification/wac/">https://solid.github.io/specification/wac/</a>
+   <dt id="biblio-webarch">[WEBARCH]
+   <dd>Ian Jacobs; Norman Walsh. <a href="https://www.w3.org/TR/webarch/">Architecture of the World Wide Web, Volume One</a>. 15 December 2004. REC. URL: <a href="https://www.w3.org/TR/webarch/">https://www.w3.org/TR/webarch/</a>
    <dt id="biblio-webid-oidc">[WEBID-OIDC]
    <dd><a href="https://solid.github.io/specification/webid-oidc/">WebID-OIDC</a>. URL: <a href="https://solid.github.io/specification/webid-oidc/">https://solid.github.io/specification/webid-oidc/</a>
    <dt id="biblio-webid-tls">[WEBID-TLS]
    <dd><a href="https://solid.github.io/specification/webid-tls/">WebID-TLS</a>. URL: <a href="https://solid.github.io/specification/webid-tls/">https://solid.github.io/specification/webid-tls/</a>
+  </dl>
+  <h3 class="no-num no-ref heading settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
+  <dl>
+   <dt id="biblio-security-privacy-questionnaire">[SECURITY-PRIVACY-QUESTIONNAIRE]
+   <dd>Lukasz Olejnik; Jason Novak. <a href="https://www.w3.org/TR/security-privacy-questionnaire/">Self-Review Questionnaire: Security and Privacy</a>. 10 September 2019. NOTE. URL: <a href="https://www.w3.org/TR/security-privacy-questionnaire/">https://www.w3.org/TR/security-privacy-questionnaire/</a>
   </dl>
   <h2 class="no-num no-ref heading settled" id="issues-index"><span class="content">Issues Index</span><a class="self-link" href="#issues-index"></a></h2>
   <div style="counter-reset:issue">
@@ -1987,7 +2041,6 @@ error responses SHOULD NOT contain identifiable information.</p>
   not the easiest way for building a Solid app.<a href="#issue-ca10dda5"> ↵ </a></div>
    <div class="issue"> Introduce the structure of this document. <a href="#resource-access">Cross-server interoperability</a> <a href="#clients">Cross-app interoperability</a><a href="#issue-45213e2c"> ↵ </a></div>
    <div class="issue"> Write introduction to the Authenticated Resource Access section.<a href="#issue-638fb2f9"> ↵ </a></div>
-   <div class="issue"> Write Linked Data Platform section.<a href="#issue-2692aa9a"> ↵ </a></div>
    <div class="issue"> Explain inline that agents accessing non-public Solid resources
   need to authenticate with a WebID, which is a URL
   pointing to a document with an RDF representation.<a href="#issue-06f3939c"> ↵ </a></div>
@@ -2011,20 +2064,21 @@ error responses SHOULD NOT contain identifiable information.</p>
    <div class="issue"> Write Verifiable Credentials section.<a href="#issue-c8aeac29"> ↵ </a></div>
    <div class="issue"> Write Privacy Considerations section.<a href="#issue-4267249d"> ↵ </a></div>
    <div class="issue"> Write Identifiable Information section.<a href="#issue-e08c9a5d"> ↵ </a></div>
+   <div class="issue"> Complete <a data-link-type="biblio" href="#biblio-security-privacy-questionnaire">[security-privacy-questionnaire]</a><a href="#issue-4eadf7d9"> ↵ </a></div>
   </div>
   <aside class="dfn-panel" data-for="data-pod">
    <b><a href="#data-pod">#data-pod</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-data-pod">1.1. Definitions</a>
     <li><a href="#ref-for-data-pod①">2.1.2. Required server-side implementation</a>
-    <li><a href="#ref-for-data-pod②">2.5.1. Background and Need</a>
-    <li><a href="#ref-for-data-pod③">2.5.2. Required server-side implementation</a>
+    <li><a href="#ref-for-data-pod②">2.6.1. Background and Need</a>
+    <li><a href="#ref-for-data-pod③">2.6.2. Required server-side implementation</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="solid-app">
    <b><a href="#solid-app">#solid-app</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-solid-app">2.5.1. Background and Need</a>
+    <li><a href="#ref-for-solid-app">2.6.1. Background and Need</a>
    </ul>
   </aside>
 <script>/* script-dfn-panel */

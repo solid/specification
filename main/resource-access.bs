@@ -46,6 +46,10 @@ when requesting a resource that requires it (see [[#webid]]),
 the data pod MUST send a response with a `401` status code
 (unless `404` is preferred for security reasons).
 
+A Solid server MUST reject `PUT`, `POST` and `PATCH` requests without the
+`Content-Type` header with a status code of `400`.
+[[Source](https://github.com/solid/specification/issues/70#issuecomment-535499628)]
+
 ### Required client-side implementation ### {#http-client}
 
 A Solid client MUST be an HTTP/1.1 client [[!RFC7230]][[!RFC7231]].
@@ -67,13 +71,64 @@ if it needs to access resources requiring authentication (see [[#webid]]).
 When it receives a response with a `403` or `404` status code,
 it MAY repeat the request with different credentials.
 
+A Solid client MUST use the `Content-Type` HTTP header in `PUT`, `POST` and
+`PATCH` requests [[!RFC7231]].
+[[Source](https://github.com/solid/specification/issues/70#issuecomment-547924171)]
 
-## Linked Data Platform ## {#ldp}
+## Uniform Resource Identifier ## {#uri}
 
-Issue: Write Linked Data Platform section.
+### Shared slash semantics ### {#uri-slash-semantics}
 
-Draft:
-A Solid data pod MUST conform to the LDP specification [[!LDP]].
+The slash character in the URI path indicates hierarchical relationship
+segments, and enables relative referencing [[!RFC3986]]. The semantics of the
+slash character is shared by servers and clients. Paths ending with a slash
+denote a container resource.
+[[Source](https://github.com/solid/specification/issues/35#issuecomment-547949014)]
+
+If two URIs differ only in the trailing slash, and the server has associated a
+resource with one of them, then the other URI MUST NOT correspond to another
+resource. Instead, the server MAY respond to requests for the latter URI with
+a 301 redirect to the former.
+[[Source](https://github.com/solid/specification/issues/107#issuecomment-567482817)].
+Behaviour pertaining to authorization MUST proceed this optional redirect
+[[Source](https://github.com/solid/specification/issues/107#issuecomment-567454889)]
+
+## Linked Data ## {#linked-data}
+
+### Containment ### {#resource-containment}
+
+Solid has the notion of containers to represent a collection of linked
+resources to help with resource discovery and lifecycle management.
+
+There is a 1-1 correspondence between containment triples and relative
+reference within the path name hierarchy.
+[[Source](https://github.com/solid/specification/issues/98#issuecomment-547506617)].
+It follows that all resources are discoverable from a container and that it is
+not possible to create orphan resources.
+[[Source](https://github.com/solid/specification/issues/97#issuecomment-547459396)]
+
+The representation and behaviour of containers in Solid corresponds to LDP
+Basic Container and MUST be supported.
+[[Source](https://github.com/solid/specification/issues/47#issuecomment-561675764)]
+
+Server MUST create intermediate containers and include corresponding
+containment triples in container representations derived from the URI path
+component of `PUT`, `POST` and `PATCH` requests.
+[[Source](https://github.com/solid/specification/issues/68#issuecomment-561690124)]
+
+### Persistence ### {#uri-persistence}
+<em>This section is non-normative.</em>
+
+Servers should not re-use URIs, regardless of the mechanism by which resources
+are created. Certain specific cases exist where URIs may be reinstated when it
+identifies the same resource, but only when consistent with Web architecture's
+<cite><a href="https://www.w3.org/TR/webarch/#URI-persistence">URI
+persistence</a></cite> [[!WEBARCH]].
+[[Source](https://github.com/solid/specification/issues/46#issuecomment-589619372)]
+
+Note:
+Servers that wish to disable URI re-use may want to use the `410` status
+code.
 
 
 ## WebID ## {#webid}
@@ -106,6 +161,13 @@ Issue: Write Web Access Control section.
 Draft:
 A Solid data pod MUST conform to the Web Access Control specification [[!WAC]].
 
+A resource can advertise an ACL document that is directly associated by using
+the HTTP `Link` header with a `rel` value of `acl`.
+[[Source](https://github.com/solid/specification/issues/31#issuecomment-548360553)]
+
+In the event that a server can't apply an ACL to a resource, it MUST deny
+access.
+[[Source](https://github.com/solid/specification/issues/130#issue-532777017)]
 
 ## Cross-Origin Resource Sharing ## {#cors}
 

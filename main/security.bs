@@ -66,3 +66,7 @@ Issue: Write Identifiable Information section.
 
 In order to prevent leakage of non-resource data,
 error responses SHOULD NOT contain identifiable information.
+
+## Security and Privacy Review ## {#security-privacy-review}
+
+Issue: Complete [[security-privacy-questionnaire]]
