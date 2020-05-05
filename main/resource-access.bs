@@ -260,15 +260,10 @@ used, and may be added to the reserved set in the future.
       <td>[[#ar-shape]]</td>
       <td>```http://www.w3.org/ns/solid/terms#shape```</td>
     </tr>
-    <tr>
-      <td>[[#ar-managed]]</td>
-      <td>```http://www.w3.org/ns/solid/terms#servermanaged```</td>
-    </tr>
   </tbody>
 </table>
 
-Issue: Agree on specific link relation URIs to use for shape, server managed,
-configuration.
+Issue: Agree on specific link relation URIs to use for auxiliary types
 [Related Issue](https://github.com/solid/specification/issues/172)
 
 #### Web Access Control #### {#ar-wac}
@@ -395,39 +390,6 @@ in shape validation by the server implementation.
 
 A Solid server SHOULD sanity check Shape validation auxiliary resources upon
 creation or update to restrict invalid changes.
-
-#### Server Managed #### {#ar-managed}
-
-Issue: Identify any data the server MUST or SHOULD be required to manage
-
-A Solid server stores information about a resource that clients can read but not
-change in Server Managed auxiliary resources. Examples of data stored in Server
-Managed auxiliary resources might
-include resource creation or modification timestamps, identity of the agent that
-created the resource, etc. It MUST be supported as an auxiliary type by
-Solid servers.
-
-A Server Managed auxiliary resource directly associated with a given resource is
-discovered by the client via the `rel=http://www.w3.org/ns/solid/terms#managed`
-`Link` relation in a `Link` header. Conversely, the resource being described by
-a Server Managed auxiliary resource is discovered by the client via the
-`rel=describes` `Link` relation in a `Link` header.
-
-A given Solid resource MUST NOT be directly associated with more than one Server
-Managed auxiliary resource.
-
-To read a Server Managed auxiliary resource, an
-[acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
-MUST have [acl:Read](https://github.com/solid/web-access-control-spec#aclread)
-privileges per the
-[ACL inheritance algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
-on the resource directly associated with it. Modes of access beyond
-[acl:Read](https://github.com/solid/web-access-control-spec#aclread) MUST NOT be
-permitted on a Server Managed auxiliary resource.
-
-A Server managed auxiliary resource MUST be deleted by the Solid server when the
-resource it is directly associated with is also deleted and the Solid server is
-authoritative for both resources.
 
 ## WebID ## {#webid}
 
