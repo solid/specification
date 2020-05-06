@@ -130,6 +130,280 @@ Note:
 Servers that wish to disable URI re-use may want to use the `410` status
 code.
 
+## Auxiliary Resources ## {#rm}
+
+### Background and Need ### {#ar-need}
+<em>This section is non-normative.</em>
+
+An auxiliary resource may provide supplementary information about a given
+Solid resource, or affect how that resource and others associated with it
+are processed, served, or interpreted. Different auxiliary resource types
+provide different capabilities. This section introduces a mechanism for linking
+auxiliary resources with regular Solid resources.
+
+Auxiliary resources are needed to influence the configuration, processing, or
+interpretation of Solid resources without changing the composition of the
+resources themselves. To do so would be undesirable in many cases, and not
+possible in others. Auxiliary resources are not meant to replace the ability
+of a Solid resource to self-describe.
+
+Examples of auxiliary resources in use include:
+
+<ul>
+  <li>A binary JPEG image linked to an auxiliary resource that includes
+  information describing that binary JPEG.</li>
+  <li>A container linked to an auxiliary resource that includes access control
+  statements for that container and the resources that belong to it.</li>
+  <li>A resource representation whose shape is constrained by a given ShEx
+  schema that links to an auxiliary resource defining that schema.</li>
+  <li>A resource with an associated set of configurable parameters links to an
+  auxiliary resource where those configurable parameters reside.</li>
+</ul>
+
+### Required Server-side Implementation ### {#ar-server}
+
+
+For any defined auxiliary resource available for a given Solid resource, all
+representations of that resource MUST include an HTTP `Link` header pointing to
+the location of each auxiliary resource.
+
+The `rel={relation-type}` [[!RFC8288]] will define the relationship to the
+target URL in the HTTP `Link` header. URIs are encouraged to indicate Link
+relation types.
+
+An auxiliary resource linked with a given Solid resource through an HTTP `Link`
+header is considered to be *directly associated* with that resource. It is up
+to the server to determine how that association affects processing based on the
+auxiliary resource type.
+
+A given Solid resource MAY link to zero or more auxiliary resources. A given
+Solid resource MUST NOT link to auxiliary resources on a different server under
+a different authority.
+
+Issue: Is MUST NOT too strong?
+[Related Issue](https://github.com/solid/specification/issues/176)
+
+Access to different types of auxiliary resources require varying levels of
+authorization, which MUST be specified as part of the definition for a given
+auxiliary resource type.
+
+An auxiliary resource that resides on a Solid server MUST adhere to the same
+interaction model used by other regular Solid resources, except where specified
+in the definition of that auxiliary resource type.
+
+### Required Client-side Implementation ### {#ar-client}
+
+#### Discovery of Auxiliary Resources #### {#ar-discovery}
+
+To discover the auxiliary resources directly associated with a given Solid
+resource, a Solid client MUST issue a `HEAD` or `GET` request to the target
+resource URL and inspect the `Link` headers in the response.
+
+<div class="example">
+  <p>
+    A client discovers the location of auxiliary resources for [[#ar-wac]] and
+    [[#ar-shape]] through a HEAD request on
+    `<https://server.example/resource.ttl>:`
+  </p>
+  <pre>
+    HEAD https://server.example/resource.ttl
+    `Link: <https://server.example/acls/24986>; rel="http://www.w3.org/ns/solid/terms#acl"`
+    `Link: <https://server.example/shapes/85432>; rel="http://www.w3.org/ns/solid/terms#shape"`
+  </pre>
+  <p>
+    A client discovers the [[#ar-wac]] and [[#ar-description]] auxiliary
+    resources through a GET request on `<https://server.example/image.png>`:
+  </p>
+  <pre>
+    GET https://server.example/image.png
+    `Link: <https://server.example/acls/36789>; rel="http://www.w3.org/ns/solid/terms#acl"`
+    `Link: <https://server.example/desc/08744>; rel="https://www.w3.org/ns/iana/link-relations/relation#describedby"`
+  </pre>
+</div>
+
+#### Discovery of Annotated Solid Resources #### {#ar-annotated}
+
+Certain auxiliary resource types MAY require the auxiliary resource to link back
+to the Solid resource it is directly associated with, via HTTP `Link` headers.
+In these instances, the link relation `rel=describes` or
+`rel=https://www.w3.org/ns/iana/link-relations/relation#describes` MUST be used.
+
+Issue: Is MUST too strong, as opposed to encouraging via SHOULD instead?
+[Related Issue](https://github.com/solid/data-interoperability-panel/issues/37)
+
+<div class="example">
+  <p>
+    A [[#ar-description]] auxiliary resource
+    `<https://server.example/desc/08744>` is directly associated with and
+    describes `<https://server.example/image.png>`. A client that performs a GET
+    request on `<https://server.example/desc/08744>` would discover the
+    following relation in the `Link` headers returned in the response.
+  </p>
+  <pre>
+    GET https://server.example/desc/08744
+    `Link: <https://server.example/image.png>; rel="https://www.w3.org/ns/iana/link-relations/relation#describes"`
+  </pre>
+</div>
+
+### Reserved Auxiliary Resource Types ### {#ar-reserved}
+
+The following table lists [[#ar-reserved]] and the associated link relation URIs
+that are used for discovery. Other auxiliary types and relations may also be
+used, and may be added to the reserved set in the future.
+
+<table class="data" align="left">
+  <colgroup class="header"></colgroup>
+  <colgroup span="2"></colgroup>
+  <thead>
+    <tr>
+      <th>Auxiliary Type</th>
+      <th>Link Relation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>[[#ar-wac]]</td>
+      <td>```"acl"``` or ```http://www.w3.org/ns/solid/terms#acl```</td>
+    </tr>
+    <tr>
+      <td>[[#ar-description]]</td>
+      <td>```"describedby"``` or
+```https://www.w3.org/ns/iana/link-relations/relation#describedby```</td>
+    </tr>
+    <tr>
+      <td>[[#ar-shape]]</td>
+      <td>```http://www.w3.org/ns/solid/terms#shape```</td>
+    </tr>
+  </tbody>
+</table>
+
+Issue: Agree on specific link relation URIs to use for auxiliary types
+[Related Issue](https://github.com/solid/specification/issues/172)
+
+#### Web Access Control #### {#ar-wac}
+
+ACL resources as defined by [[#wac]] MUST be supported as an auxiliary
+type by Solid servers.
+
+The ACL auxiliary resource directly associated with a given resource is
+discovered by the client via the `rel="acl"` `Link` relation in a `Link` header.
+
+Note: Consider moving some of this information to [[#wac]]
+
+A given Solid resource MUST NOT be directly associated with more than one ACL
+auxiliary resource. A given ACL auxiliary resource MUST NOT be directly
+associated with more than one Solid resource.
+
+To discover, read, create, or modify an ACL auxiliary resource, an
+[acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
+MUST have
+[acl:Control](https://github.com/solid/web-access-control-spec#aclcontrol)
+privileges per the
+[ACL inheritance algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
+on the resource directly associated with it.
+
+An ACL auxiliary resource MUST be deleted by the Solid server when the resource
+it is directly associated with is also deleted and the Solid server is
+authoritative for both resources.
+
+A Solid server SHOULD sanity check ACL auxiliary resources upon creation or
+update to restrict invalid changes, such as by performing shape validation
+against authorization statements therein.
+
+#### Resource Description #### {#ar-description}
+
+Note: Consider where there are any common parameters that would be
+ubiquitous across resource descriptions that should be defined as part of the
+specification.
+
+Resource description is a general mechanism to provide descriptive metadata for
+a given resource. It MUST be supported as an auxiliary type by Solid
+servers.
+
+The Descriptive auxiliary resource directly associated with a given resource is
+discovered by the client via the `rel="describedby"` `Link` relation in a `Link`
+header. Conversely, the resource being described by a Descriptive auxiliary
+resource is discovered by the client via the `rel="describes"` `Link` relation
+in a `Link` header.
+
+Issue: Consider whether a given Solid resource should be allowed to have
+multiple resource description auxiliary resources.
+[Related Issue](https://github.com/solid/specification/issues/173)
+
+A given Solid resource MUST NOT be directly associated with more than one
+Descriptive auxiliary resource.
+
+Issue: Determine what the default permissions should be on resource description
+auxiliary resources, or whether we should have them at all.
+[Related Issue](https://github.com/solid/specification/issues/174)
+
+To create or modify a Descriptive auxiliary resource, a given
+[acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
+MUST have
+[acl:Write](https://github.com/solid/web-access-control-spec#aclcontrol)
+privileges per the
+[ACL inheritance algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
+on the resource directly associated with it.
+
+To discover or read a Descriptive auxiliary resource, an
+[acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
+MUST have
+[acl:Read](https://github.com/solid/web-access-control-spec#aclcontrol)
+privileges per the
+[ACL inheritance algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
+on the resource directly associated with it.
+
+An Descriptive auxiliary resource MUST be deleted by the Solid server when the
+resource it is directly associated with is also deleted and the Solid server is
+authoritative for both resources.
+
+#### Shape Validation #### {#ar-shape}
+
+Shape Validation auxiliary resources as defined by (link to shape validation)
+SHOULD be supported as an auxiliary type by Solid servers.
+
+The Shape validation auxiliary resource directly associated with a given
+resource
+is discovered by the client via the `rel=http://www.w3.org/ns/solid/terms#shape`
+`Link` relation in a `Link` header. Conversely, the resource being described by
+a Shape validation auxiliary resource is discovered by the client via the
+`rel=describes` `Link` relation in a `Link` header.
+
+Note: Consider moving some of this information to the Shape Validation section
+
+A given Solid resource MUST NOT be directly associated with more than one
+Shape Validation auxiliary resource.
+
+Issue: Determine what the default permissions should be on shape validation
+auxiliary resources, or whether we should have them at all.
+[Related Issue](https://github.com/solid/specification/issues/174)
+
+To create or modify a Shape validation auxiliary resource, an
+[acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
+MUST have
+[acl:Write](https://github.com/solid/web-access-control-spec#aclcontrol)
+privileges per the
+[ACL inheritance algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
+on the resource directly associated with it.
+
+To discover or read a Shape validation auxiliary resource, an
+[acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
+MUST have
+[acl:Read](https://github.com/solid/web-access-control-spec#aclcontrol)
+privileges per the
+[ACL inheritance algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
+on the resource directly associated with it.
+
+A Shape validation auxiliary resource MUST be deleted by the Solid server when
+the resource it is directly associated with is also deleted and the Solid server
+is authoritative for both resources.
+
+Issue: Provide a shape to validate a shape validation auxiliary resource. May
+include the shape language, shape url, and any additional parameters to be used
+in shape validation by the server implementation.
+
+A Solid server SHOULD sanity check Shape validation auxiliary resources upon
+creation or update to restrict invalid changes.
 
 ## WebID ## {#webid}
 
