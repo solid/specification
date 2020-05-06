@@ -146,34 +146,48 @@ resource URL and inspect the `Link` headers in the response.
 
 <div class="example">
   <p>
-    As defined by [[!WAC]]), a client would discover the location of an auxiliary
-    ACL resource through the following HTTP `Link` header:
+    A client discovers the location of auxiliary resources for [[#ar-wac]] and
+    [[#ar-shape]] through a HEAD request on
+    `<https://server.example/resource.ttl>:`
   </p>
-  <div class="code">
-    `Link: <https://server.example/acls/resource.acl>; rel="acl"`
-  </div>
+  <pre>
+    HEAD https://server.example/resource.ttl
+    `Link: <https://server.example/acls/24986>; rel="http://www.w3.org/ns/solid/terms#acl"`
+    `Link: <https://server.example/shapes/85432>; rel="http://www.w3.org/ns/solid/terms#shape"`
+  </pre>
+  <p>
+    A client discovers the [[#ar-wac]] and [[#ar-description]] auxiliary
+    resources through a GET request on `<https://server.example/image.png>`:
+  </p>
+  <pre>
+    GET https://server.example/image.png
+    `Link: <https://server.example/acls/36789>; rel="http://www.w3.org/ns/solid/terms#acl"`
+    `Link: <https://server.example/desc/08744>; rel="https://www.w3.org/ns/iana/link-relations/relation#describedby"`
+  </pre>
 </div>
 
 #### Discovery of Annotated Solid Resources #### {#ar-annotated}
 
 Certain auxiliary resource types MAY require the auxiliary resource to link back
 to the Solid resource it is directly associated with, via HTTP `Link` headers.
-In these instances, the link relation `rel=describes` MUST be used.
+In these instances, the link relation `rel=describes` or
+`rel=https://www.w3.org/ns/iana/link-relations/relation#describes` MUST be used.
 
 Issue: Is MUST too strong, as opposed to encouraging via SHOULD instead?
 [Related Issue](https://github.com/solid/data-interoperability-panel/issues/37)
 
 <div class="example">
   <p>
-    An auxiliary resource `<https://server.example/auxiliary/resource.meta>` is
-    directly associated with `<https://server.example/resource.ttl>`. The auxiliary
-    type for `resource.meta` requires linking back to the annotated resource, which
-    is `resource.ttl`, so `resource.meta` must have the following included in its
-    `Link` headers:
+    A [[#ar-description]] auxiliary resource
+    `<https://server.example/desc/08744>` is directly associated with and
+    describes `<https://server.example/image.png>`. A client that performs a GET
+    request on `<https://server.example/desc/08744>` would discover the
+    following relation in the `Link` headers returned in the response.
   </p>
-  <div class="code">
-    `Link: <https://server.example/resource.ttl>; rel="describes"`
-  </div>
+  <pre>
+    GET https://server.example/desc/08744
+    `Link: <https://server.example/image.png>; rel="https://www.w3.org/ns/iana/link-relations/relation#describes"`
+  </pre>
 </div>
 
 ### Reserved Auxiliary Resource Types ### {#ar-reserved}
