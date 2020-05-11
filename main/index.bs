@@ -23,6 +23,7 @@ However, the information in this document is still subject to change.
 You are invited to [contribute](https://github.com/solid/specification/issues)
 any feedback, comments, or questions you might have.
 
+<pre class=include>path: copyright.bs</pre>
 <pre class=include>path: introduction.bs</pre>
 <pre class=include>path: resource-access.bs</pre>
 <pre class=include>path: clients.bs</pre>
