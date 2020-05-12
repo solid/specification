@@ -153,12 +153,12 @@ type
     </tr>
     <tr>
       <td><code>foo/</code></td>
-      <td>`Link` header with `ldp:Container` or a specialisation.</td>
+      <td>`Link` header with `rel="type"` targeting a valid LDP container type.</td>
       <td>Create a container with `foo/` appended to the request-URI.</td>
     </tr>
     <tr>
       <td><code>foo/</code></td>
-      <td>`Link` header other than container type.</td>
+      <td>`Link` header without a `rel="type"` targeting a valid LDP container type.</td>
       <td>Create a resource with `foo` appended to the request-URI, check for
       consistency.</td>
     </tr>
@@ -170,12 +170,12 @@ type
     </tr>
     <tr>
       <td>`foo`</td>
-      <td>`Link` header with `ldp:Container` or a specialisation.</td>
+      <td>`Link` header with `rel="type"` targeting a valid LDP container type.</td>
       <td>Create a container with `foo/` appended to the request-URI.</td>
     </tr>
     <tr>
       <td>`foo`</td>
-      <td>`Link` header other than container type.</td>
+      <td>`Link` header without a `rel="type"` targeting a valid LDP container type.</td>
       <td>Create a resource with `foo` appended to the request-URI, check for
       consistency.</td>
     </tr>
@@ -187,13 +187,13 @@ type
     </tr>
     <tr>
       <td><em>none</em></td>
-      <td>`Link` header with `ldp:Container` or a specialisation.</td>
+      <td>`Link` header with `rel="type"` targeting a valid LDP container type.</td>
       <td>Create a container with server determined identifier appended to the
       request-URI.</td>
     </tr>
     <tr>
       <td><em>none</em></td>
-      <td>`Link` header other than container type.</td>
+      <td>`Link` header without a `rel="type"` targeting a valid LDP container type.</td>
       <td>Create a resource with server determined identifier appended to the
       request-URI, check for consistency.</td>
     </tr>
