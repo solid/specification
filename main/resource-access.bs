@@ -130,6 +130,86 @@ Note:
 Servers that wish to disable URI re-use may want to use the `410` status
 code.
 
+### Resource type heuristics ### {#resource-type-heuristics}
+
+Servers MUST apply the following heuristics to determine a request's resource
+type
+[[Source](https://github.com/solid/specification/issues/128#issuecomment-573033297)].
+
+<table id="heuristics-resource-type">
+  <caption>Heuristics to determine a resource type</caption>
+  <thead>
+    <tr>
+      <th>`Slug`</th>
+      <th>`Link`</th>
+      <th>Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`foo/`</td>
+      <td>No `Link` header.</td>
+      <td>Create a container with `foo/` appended to the request-URI.</td>
+    </tr>
+    <tr>
+      <td><code>foo/</code></td>
+      <td>`Link` header with `ldp:Container` or a specialisation.</td>
+      <td>Create a container with `foo/` appended to the request-URI.</td>
+    </tr>
+    <tr>
+      <td><code>foo/</code></td>
+      <td>`Link` header other than container type.</td>
+      <td>Create a resource with `foo` appended to the request-URI, check for
+      consistency.</td>
+    </tr>
+    <tr>
+      <td>`foo`</td>
+      <td>No `Link` header.</td>
+      <td>Create a resource with `foo` appended to the request-URI, check for
+      consistency.</td>
+    </tr>
+    <tr>
+      <td>`foo`</td>
+      <td>`Link` header with `ldp:Container` or a specialisation.</td>
+      <td>Create a container with `foo/` appended to the request-URI.</td>
+    </tr>
+    <tr>
+      <td>`foo`</td>
+      <td>`Link` header other than container type.</td>
+      <td>Create a resource with `foo` appended to the request-URI, check for
+      consistency.</td>
+    </tr>
+    <tr>
+      <td><em>none</em></td>
+      <td>No `Link` header.</td>
+      <td>Create a resource with server determined identifier appended to the
+      request-URI, check for consistency.</td>
+    </tr>
+    <tr>
+      <td><em>none</em></td>
+      <td>`Link` header with `ldp:Container` or a specialisation.</td>
+      <td>Create a container with server determined identifier appended to the
+      request-URI.</td>
+    </tr>
+    <tr>
+      <td><em>none</em></td>
+      <td>`Link` header other than container type.</td>
+      <td>Create a resource with server determined identifier appended to the
+      request-URI, check for consistency.</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3">
+The consistency of a request is determined by checking its data, metadata and
+URI
+[[Source](https://github.com/solid/specification/issues/40#issuecomment-566995240)].
+      </td>
+    </tr>
+  </tfoot>
+</table>
+
+
 ## Auxiliary Resources ## {#rm}
 
 ### Background and Need ### {#ar-need}
