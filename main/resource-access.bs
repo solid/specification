@@ -204,6 +204,8 @@ type
 The consistency of a request is determined by checking its data, metadata and
 URI
 [[Source](https://github.com/solid/specification/issues/40#issuecomment-566995240)].
+
+The semantics of slash in URI paths are shared ([[#uri-slash-semantics]]).
       </td>
     </tr>
   </tfoot>
