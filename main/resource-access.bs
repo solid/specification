@@ -136,7 +136,7 @@ Servers MUST apply the following heuristics to determine a request's resource
 type
 [[Source](https://github.com/solid/specification/issues/128#issuecomment-573033297)].
 
-<table id="heuristics-resource-type">
+<table class="data" id="heuristics-resource-type">
   <caption>Heuristics to determine a resource type</caption>
   <thead>
     <tr>
