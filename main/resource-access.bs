@@ -132,9 +132,24 @@ code.
 
 ### Resource type heuristics ### {#resource-type-heuristics}
 
-Servers MUST apply the following heuristics to determine a request's resource
-type
+The semantics of slashes in URI paths are shared ([[#uri-slash-semantics]]).
+
+Servers MUST apply the following heuristics to determine the request's
+resource type and to construct the effective request URI for the target
+resource of an HTTP `POST`
 [[Source](https://github.com/solid/specification/issues/128#issuecomment-573033297)].
+
+The consistency of a request is determined by checking the optional `Link` and
+`Slug` headers against the target URI
+[[Source](https://github.com/solid/specification/issues/40#issuecomment-566995240)].
+
+Servers supporting the `Slug` header MUST apply the shared slash semantics on
+the `slugtext` on requests that also include the `Link` header with
+`rel="type"`.
+
+Issue:
+Redefine `slugtext` eg. exclude recursive container creation?
+[Related issue](https://github.com/solid/specification/issues/128)
 
 <table class="data" id="heuristics-resource-type">
   <caption>Heuristics to determine a resource type</caption>
@@ -153,12 +168,14 @@ type
     </tr>
     <tr>
       <td><code>foo/</code></td>
-      <td>`Link` header with `rel="type"` targeting a valid LDP container type.</td>
+      <td>`Link` header with `rel="type"` targeting a valid LDP container
+      type.</td>
       <td>Create a container with `foo/` appended to the request-URI.</td>
     </tr>
     <tr>
       <td><code>foo/</code></td>
-      <td>`Link` header without a `rel="type"` targeting a valid LDP container type.</td>
+      <td>`Link` header without a `rel="type"` targeting a valid LDP container
+      type.</td>
       <td>Create a resource with `foo` appended to the request-URI, check for
       consistency.</td>
     </tr>
@@ -170,12 +187,14 @@ type
     </tr>
     <tr>
       <td>`foo`</td>
-      <td>`Link` header with `rel="type"` targeting a valid LDP container type.</td>
+      <td>`Link` header with `rel="type"` targeting a valid LDP container
+      type.</td>
       <td>Create a container with `foo/` appended to the request-URI.</td>
     </tr>
     <tr>
       <td>`foo`</td>
-      <td>`Link` header without a `rel="type"` targeting a valid LDP container type.</td>
+      <td>`Link` header without a `rel="type"` targeting a valid LDP container
+      type.</td>
       <td>Create a resource with `foo` appended to the request-URI, check for
       consistency.</td>
     </tr>
@@ -187,13 +206,15 @@ type
     </tr>
     <tr>
       <td><em>none</em></td>
-      <td>`Link` header with `rel="type"` targeting a valid LDP container type.</td>
+      <td>`Link` header with `rel="type"` targeting a valid LDP container
+      type.</td>
       <td>Create a container with server determined identifier appended to the
       request-URI.</td>
     </tr>
     <tr>
       <td><em>none</em></td>
-      <td>`Link` header without a `rel="type"` targeting a valid LDP container type.</td>
+      <td>`Link` header without a `rel="type"` targeting a valid LDP container
+      type.</td>
       <td>Create a resource with server determined identifier appended to the
       request-URI, check for consistency.</td>
     </tr>
@@ -201,11 +222,6 @@ type
   <tfoot>
     <tr>
       <td colspan="3">
-The semantics of slashes in URI paths are shared ([[#uri-slash-semantics]]).
-
-The consistency of a request is determined by checking its data, metadata and
-URI
-[[Source](https://github.com/solid/specification/issues/40#issuecomment-566995240)].
       </td>
     </tr>
   </tfoot>
