@@ -130,6 +130,32 @@ Note:
 Servers that wish to disable URI re-use may want to use the `410` status
 code.
 
+### Resource type heuristics ### {#resource-type-heuristics}
+
+When creating new resources, servers can determine an effective request URI's
+type by examining the URI path ending ([[#uri-slash-semantics]]).
+
+Clients who want to assign a URI for their resource, MUST use PUT and PATCH
+requests. Servers MAY allow clients to suggest the URI for a resource created
+through POST, using the HTTP `Slug` header as defined in [[!RFC5023]].
+
+Clients who want the server to determine the URI for their resource, MUST use
+the POST request.
+
+Servers MUST allow creating new resources with a POST request to URI path
+ending `/`. Servers MUST create a resource with URI path ending `/{id}` in
+container `/`. Servers MUST create a container with URI path ending `/{id}/`
+in container `/` for requests including the HTTP `Link` header with
+`rel="type"` targeting a valid LDP container type. Servers MUST handle
+subsequent requests to the newly created container's URI as if it is a valid
+LDP container type by including it the HTTP response's `Link` header.
+
+Clients who want to create hierarchical containers MUST use PUT and PATCH
+requests.
+
+[[Source](https://github.com/solid/specification/pull/160#issuecomment-636822687)].
+
+
 ## Auxiliary Resources ## {#rm}
 
 ### Background and Need ### {#ar-need}

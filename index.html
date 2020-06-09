@@ -1175,7 +1175,7 @@ Possible extra rowspan handling
 		   1. When table < content column, centers table in column.
 		   2. When content < table < available, left-aligns.
 		   3. When table > available, fills available + scroll bar.
-		*/ 
+		*/
 		display: grid;
 		grid-template-columns: minmax(0, 50em);
 	}
@@ -1221,9 +1221,9 @@ Possible extra rowspan handling
 		}
 	}
 </style>
-  <meta content="Bikeshed version 4be3a54, updated Mon May 4 06:47:10 2020 -0700" name="generator">
+  <meta content="Bikeshed version 792aee4, updated Fri Jun 5 17:22:42 2020 -0700" name="generator">
   <link href="https://solid.github.io/specification/" rel="canonical">
-  <meta content="baaaba8f7f29f1d767e7c7a745102272bcf74c76" name="document-revision">
+  <meta content="88baa6eb7bbd937f524150109bb8925ab39f619a" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -1412,7 +1412,7 @@ dfn > a.self-link::before      { content: "#"; }</style>
   <div class="head">
    <p data-fill-with="logo"></p>
    <h1 class="p-name no-ref" id="title">The Solid Ecosystem</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-05-11">11 May 2020</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-06-09">9 June 2020</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1617,6 +1617,22 @@ identifies the same resource, but only when consistent with Web architecture’s
 persistence</a></cite> <a data-link-type="biblio" href="#biblio-webarch">[WEBARCH]</a>. <a href="https://github.com/solid/specification/issues/46#issuecomment-589619372">[Source</a>]</p>
    <p class="note" role="note"><span>Note:</span> Servers that wish to disable URI re-use may want to use the <code>410</code> status
 code.</p>
+   <h4 class="heading settled" data-level="2.3.3" id="resource-type-heuristics"><span class="secno">2.3.3. </span><span class="content">Resource type heuristics</span><a class="self-link" href="#resource-type-heuristics"></a></h4>
+   <p>When creating new resources, servers can determine an effective request URI’s
+type by examining the URI path ending (<a href="#uri-slash-semantics">§ 2.2.1 Shared slash semantics</a>).</p>
+   <p>Clients who want to assign a URI for their resource, MUST use PUT and PATCH
+requests. Servers MAY allow clients to suggest the URI for a resource created
+through POST, using the HTTP <code>Slug</code> header as defined in <a data-link-type="biblio" href="#biblio-rfc5023">[RFC5023]</a>.</p>
+   <p>Clients who want the server to determine the URI for their resource, MUST use
+the POST request.</p>
+   <p>Servers MUST allow creating new resources with a POST request to URI path
+ending <code>/</code>. Servers MUST create a resource with URI path ending <code>/{id}</code> in
+container <code>/</code>. Servers MUST create a container with URI path ending <code>/{id}/</code> in container <code>/</code> for requests including the HTTP <code>Link</code> header with <code>rel="type"</code> targeting a valid LDP container type. Servers MUST handle
+subsequent requests to the newly created container’s URI as if it is a valid
+LDP container type by including it the HTTP response’s <code>Link</code> header.</p>
+   <p>Clients who want to create hierarchical containers MUST use PUT and PATCH
+requests.</p>
+   <p><a href="https://github.com/solid/specification/pull/160#issuecomment-636822687">[Source</a>].</p>
    <h3 class="heading settled" data-level="2.4" id="rm"><span class="secno">2.4. </span><span class="content">Auxiliary Resources</span><a class="self-link" href="#rm"></a></h3>
    <h4 class="heading settled" data-level="2.4.1" id="ar-need"><span class="secno">2.4.1. </span><span class="content">Background and Need</span><a class="self-link" href="#ar-need"></a></h4>
     <em>This section is non-normative.</em> 
@@ -2147,6 +2163,8 @@ error responses SHOULD NOT contain identifiable information.</p>
    <dd>S. Bradner. <a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a>
    <dt id="biblio-rfc3986">[RFC3986]
    <dd>T. Berners-Lee; R. Fielding; L. Masinter. <a href="https://tools.ietf.org/html/rfc3986">Uniform Resource Identifier (URI): Generic Syntax</a>. January 2005. Internet Standard. URL: <a href="https://tools.ietf.org/html/rfc3986">https://tools.ietf.org/html/rfc3986</a>
+   <dt id="biblio-rfc5023">[RFC5023]
+   <dd>J. Gregorio, Ed.; B. de hOra, Ed.. <a href="https://tools.ietf.org/html/rfc5023">The Atom Publishing Protocol</a>. October 2007. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc5023">https://tools.ietf.org/html/rfc5023</a>
    <dt id="biblio-rfc6454">[RFC6454]
    <dd>A. Barth. <a href="https://tools.ietf.org/html/rfc6454">The Web Origin Concept</a>. December 2011. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc6454">https://tools.ietf.org/html/rfc6454</a>
    <dt id="biblio-rfc7089">[RFC7089]
@@ -2185,7 +2203,7 @@ error responses SHOULD NOT contain identifiable information.</p>
   <h3 class="no-num no-ref heading settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
   <dl>
    <dt id="biblio-security-privacy-questionnaire">[SECURITY-PRIVACY-QUESTIONNAIRE]
-   <dd>Lukasz Olejnik; Jason Novak. <a href="https://www.w3.org/TR/security-privacy-questionnaire/">Self-Review Questionnaire: Security and Privacy</a>. 10 September 2019. NOTE. URL: <a href="https://www.w3.org/TR/security-privacy-questionnaire/">https://www.w3.org/TR/security-privacy-questionnaire/</a>
+   <dd>Theresa O'Connor; Peter Snyder. <a href="https://www.w3.org/TR/security-privacy-questionnaire/">Self-Review Questionnaire: Security and Privacy</a>. 8 May 2020. NOTE. URL: <a href="https://www.w3.org/TR/security-privacy-questionnaire/">https://www.w3.org/TR/security-privacy-questionnaire/</a>
   </dl>
   <h2 class="no-num no-ref heading settled" id="issues-index"><span class="content">Issues Index</span><a class="self-link" href="#issues-index"></a></h2>
   <div style="counter-reset:issue">
