@@ -50,6 +50,13 @@ A Solid server MUST reject `PUT`, `POST` and `PATCH` requests without the
 `Content-Type` header with a status code of `400`.
 [[Source](https://github.com/solid/specification/issues/70#issuecomment-535499628)]
 
+#### Deleting resources #### {#delete}
+
+Servers MUST support the HTTP `DELETE` method [[!RFC7231]].
+[[Source](https://github.com/solid/specification/issues/39#issuecomment-538017667)]
+
+When using Web Access Control ([[#wac]]):
+
 ### Required client-side implementation ### {#http-client}
 
 A Solid client MUST be an HTTP/1.1 client [[!RFC7230]][[!RFC7231]].
