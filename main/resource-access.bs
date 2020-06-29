@@ -66,6 +66,12 @@ To delete a resource, an `acl:agent` MUST have `acl:Write` privilege per the ACL
 When a contained resource is deleted, the server MUST also remove the corresponding containment triple, which has the effect of removing the deleted resource from the containing container.
 [[Source](https://www.w3.org/TR/ldp#ldpc-del-contremovesconttriple)]
 
+When a contained resource is deleted, the server MUST also delete the associated resources (see the [[#rm]] section).
+
+To delete an ACL resource (see [[#ar-wac]]), an `acl:agent` MUST have `acl:Control` privileges per the ACL inheritance algorithm on the resource directly associated with it.
+[[Source](https://github.com/solid/specification/issues/145)]
+[[Source](https://github.com/solid/specification/issues/41)]
+
 ### Required client-side implementation ### {#http-client}
 
 A Solid client MUST be an HTTP/1.1 client [[!RFC7230]][[!RFC7231]].
