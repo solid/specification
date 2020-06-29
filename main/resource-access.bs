@@ -85,6 +85,10 @@ Server MAY omit the `DELETE` method in the HTTP response header `Allow` in respo
 
 The server might perform additional actions, as described in the normative references like [[!RFC7231]]. For example, the server could remove membership triples referring to the deleted resource, perform additional cleanup tasks for resources it knows are no longer referenced or have not been accessed for some period of time, and so on.
 
+Subsequent `GET` requests to the deleted resource usually results in a `404` or `410` status code, although HTTP allows others.
+[[Source](https://github.com/solid/specification/issues/72)]
+[[Source](https://github.com/solid/specification/issues/46)]
+
 ### Required client-side implementation ### {#http-client}
 
 A Solid client MUST be an HTTP/1.1 client [[!RFC7230]][[!RFC7231]].
