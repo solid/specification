@@ -79,6 +79,12 @@ A container can only be deleted if it contains no resources ([[#resource-contain
 
 Server MAY omit the `DELETE` method in the HTTP response header `Allow` in response to safe method requests to a container, if `acl:agent` does not have the `acl:Write` privilege to a resource under its URI path.
 
+[[Source](https://github.com/solid/specification/issues/41)]
+
+<em>This section is non-normative.</em>
+
+The server might perform additional actions, as described in the normative references like [[!RFC7231]]. For example, the server could remove membership triples referring to the deleted resource, perform additional cleanup tasks for resources it knows are no longer referenced or have not been accessed for some period of time, and so on.
+
 ### Required client-side implementation ### {#http-client}
 
 A Solid client MUST be an HTTP/1.1 client [[!RFC7230]][[!RFC7231]].
