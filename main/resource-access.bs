@@ -92,6 +92,9 @@ Subsequent `GET` requests to the deleted resource usually results in a `404` or 
 As deleted resources can be reinstated with the same URI, access controls on the reinstated resource can change per the ACL inheritance algorithm.
 [[Source](https://github.com/solid/specification/issues/145#issuecomment-618918284)]
 
+Issue:
+Pertaining to events and loss of control mitigation: https://github.com/solid/specification/issues/41#issuecomment-534679278
+
 ### Required client-side implementation ### {#http-client}
 
 A Solid client MUST be an HTTP/1.1 client [[!RFC7230]][[!RFC7231]].
