@@ -72,6 +72,11 @@ To delete an ACL resource (see [[#ar-wac]]), an `acl:agent` MUST have `acl:Contr
 [[Source](https://github.com/solid/specification/issues/145)]
 [[Source](https://github.com/solid/specification/issues/41)]
 
+A container can only be deleted if it contains no resources ([[#resource-containment]]). When a `DELETE` method request is made to a container, the server MUST delete the contained resources except containers. To recursively delete a container, server MUST accept client's `DELETE` request including the HTTP `Prefer` header with `return="representation"; include="http://www.w3.org/ns/ldp#PreferContainment"` (see [[!LDP]]'s Preferences on the Prefer Request Header). Server MUST respond with the `409` status code and response body including containment triples about unaffected resources of the delete request for agents with `acl:Read` privilege per the ACL inheritance algorithm.
+[[Source](https://github.com/solid/specification/issues/132#issuecomment-562314633)]
+[[Source](https://github.com/solid/specification/issues/41#issuecomment-580212776)]
+[[Source](https://github.com/solid/specification/issues/41#issuecomment-582154098)]
+
 ### Required client-side implementation ### {#http-client}
 
 A Solid client MUST be an HTTP/1.1 client [[!RFC7230]][[!RFC7231]].
