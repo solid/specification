@@ -57,36 +57,54 @@ Servers MUST support the HTTP `DELETE` method [[!RFC7231]].
 
 When using Web Access Control ([[#wac]]):
 
-Servers MUST NOT allow delete requests to a storage's root container and associated ACL resource and exclude the `DELETE` method in the HTTP response header `Allow` in response to safe method requests [[!RFC7231]].
+Servers MUST NOT allow delete requests to a storage's root container and
+associated ACL resource and exclude the `DELETE` method in the HTTP response
+header `Allow` in response to safe method requests [[!RFC7231]].
 [[Source](https://github.com/solid/specification/issues/37#issuecomment-627281466)]
 
-To delete a resource, an `acl:agent` MUST have `acl:Write` privilege per the ACL inheritance algorithm on the resource and the containing container.
+To delete a resource, an `acl:agent` MUST have `acl:Write` privilege per the
+ACL inheritance algorithm on the resource and the containing container.
 [[Source](https://github.com/solid/solid-spec/issues/195#issuecomment-559799154)]
 
-When a contained resource is deleted, the server MUST also remove the corresponding containment triple, which has the effect of removing the deleted resource from the containing container.
+When a contained resource is deleted, the server MUST also remove the
+corresponding containment triple, which has the effect of removing the deleted
+resource from the containing container.
 [[Source](https://www.w3.org/TR/ldp#ldpc-del-contremovesconttriple)]
 
-When a contained resource is deleted, the server MUST also delete the associated resources (see the [[#rm]] section).
+When a contained resource is deleted, the server MUST also delete the
+associated resources (see the [[#rm]] section).
 
-To delete an ACL resource (see [[#ar-wac]]), an `acl:agent` MUST have `acl:Control` privileges per the ACL inheritance algorithm on the resource directly associated with it.
+To delete an ACL resource (see [[#ar-wac]]), an `acl:agent` MUST have
+`acl:Control` privileges per the ACL inheritance algorithm on the resource
+directly associated with it.
 [[Source](https://github.com/solid/specification/issues/145)]
 
-When a `DELETE` method request is made to a container, the server MUST delete the container if it contains no resources. If the container contains resources, the server MUST respond with the `409` status code and response body describing the error.
+When a `DELETE` method request is made to a container, the server MUST delete
+the container if it contains no resources. If the container contains
+resources, the server MUST respond with the `409` status code and response
+body describing the error.
 [[Source](https://github.com/solid/specification/pull/187/files/b7426e95a1613e08195a853a4d0a403b7030f494#r447130915)]
 
 <em>This section is non-normative.</em>
 
-The server might perform additional actions, as described in the normative references like [[!RFC7231]]. For example, the server could remove membership triples referring to the deleted resource, perform additional cleanup tasks for resources it knows are no longer referenced or have not been accessed for some period of time, and so on.
+The server might perform additional actions, as described in the normative
+references like [[!RFC7231]]. For example, the server could remove membership
+triples referring to the deleted resource, perform additional cleanup tasks
+for resources it knows are no longer referenced or have not been accessed for
+some period of time, and so on.
 
-Subsequent `GET` requests to the deleted resource usually results in a `404` or `410` status code, although HTTP allows others.
+Subsequent `GET` requests to the deleted resource usually results in a `404`
+or `410` status code, although HTTP allows others.
 [[Source](https://github.com/solid/specification/issues/72)]
 [[Source](https://github.com/solid/specification/issues/46)]
 
-As deleted resources can be reinstated with the same URI, access controls on the reinstated resource can change per the ACL inheritance algorithm.
+As deleted resources can be reinstated with the same URI, access controls on
+the reinstated resource can change per the ACL inheritance algorithm.
 [[Source](https://github.com/solid/specification/issues/145#issuecomment-618918284)]
 
 Issue:
-Pertaining to events and loss of control mitigation: https://github.com/solid/specification/issues/41#issuecomment-534679278
+Pertaining to events and loss of control mitigation:
+https://github.com/solid/specification/issues/41#issuecomment-534679278
 
 ### Required client-side implementation ### {#http-client}
 
