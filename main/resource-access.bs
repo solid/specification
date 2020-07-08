@@ -141,6 +141,12 @@ the POST request.
 
 [[Source](https://github.com/solid/specification/pull/160#issuecomment-636822687)].
 
+### Reading resources ### {#read}
+
+Servers MUST support the HTTP `GET`, `HEAD` and `OPTIONS` methods [[!RFC7231]]
+for clients to read resources or to determine communication options.
+[[Source](https://github.com/solid/specification/issues/39#issuecomment-538017667)]
+
 ### Writing resources ### {#write}
 
 Servers MUST support the HTTP `PUT`, `POST` and `PATCH` methods [[!RFC7231]]
