@@ -166,6 +166,12 @@ operation, servers MUST update resources for HTTP `POST` requests. Servers
 MUST perform RDF merge [[!RDF11-MT]] on RDF sources [[!RDF-CONCEPTS]].
 [[Source](https://github.com/solid/specification/issues/108#issuecomment-573655070)]
 
+When a `PUT` or `PATCH` method request targets an auxiliary resource, the
+server MUST create or update it. When a `POST` method request with the `Slug`
+header targets an auxiliary resource, the server `MUST` respond with the `403`
+status code and response body describing the error.
+[[Source](https://github.com/solid/specification/issues/42#issuecomment-616688848)]
+
 ### Deleting Resources ### {#delete}
 
 Servers MUST support the HTTP `DELETE` method [[!RFC7231]].
