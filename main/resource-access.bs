@@ -272,7 +272,7 @@ triples referring to the deleted resource, perform additional cleanup tasks
 for resources it knows are no longer referenced or have not been accessed for
 some period of time, and so on.
 
-Subsequent `GET` requests to the deleted resource usually results in a `404`
+Subsequent `GET` requests to the deleted resource usually result in a `404`
 or `410` status code, although HTTP allows others.
 [[Source](https://github.com/solid/specification/issues/72)]
 [[Source](https://github.com/solid/specification/issues/46)]
