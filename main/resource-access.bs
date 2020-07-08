@@ -177,6 +177,12 @@ container's containment triples; if the server receives such a request, it
 SHOULD respond with a `409` status code.
 [[Source](https://github.com/solid/specification/issues/40#issuecomment-573358652)]
 
+Clients MUST use the HTTP `If-None-Match` header with a value of `"*"` to
+prevent an unsafe method from updating an existing representation of the
+target resource when creation of a new resource is intended.
+[[Source](https://github.com/solid/specification/issues/108#issuecomment-567272797)]
+[[Source](https://github.com/solid/specification/issues/40#issuecomment-566995240)]
+
 ### Deleting Resources ### {#delete}
 
 Servers MUST support the HTTP `DELETE` method [[!RFC7231]].
