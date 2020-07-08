@@ -151,11 +151,9 @@ When using Web Access Control ([[#wac]]):
 
 Servers MUST indicate their support for HTTP Methods by responding to HTTP
 `GET`, `HEAD` and `OPTIONS` requests on the resource's URL with the HTTP
-Method tokens in the HTTP response header `Allow`.
-
-Servers MUST indicate supported media types in the `Accept-Patch` [[!RFC5789]]
-and the `Accept-Post` [[!LDP]] headers for matching HTTP methods in `Allow`
-header value.
+Method tokens in the HTTP response header `Allow`. Servers MUST indicate
+supported media types in the `Accept-Patch` [[!RFC5789]] and the `Accept-Post`
+[[!LDP]] headers for matching HTTP methods in `Allow` header value.
 
 Servers MAY include the HTTP `Accept-Patch` and `Accept-Post` headers in the
 response of a `OPTIONS *` request.
