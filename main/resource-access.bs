@@ -258,7 +258,7 @@ To delete an ACL resource (see [[#ar-wac]]), an `acl:agent` MUST have
 directly associated with it.
 [[Source](https://github.com/solid/specification/issues/145)]
 
-When a `DELETE` method request is made to a container, the server MUST delete
+When a `DELETE` request is made to a container, the server MUST delete
 the container if it contains no resources. If the container contains
 resources, the server MUST respond with the `409` status code and response
 body describing the error.
