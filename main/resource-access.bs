@@ -194,6 +194,13 @@ rejecting the request [[!RFC6585]].
 [[Source](https://github.com/solid/specification/issues/60)]
 [[Source](https://github.com/solid/specification/issues/33)]
 
+When using Web Access Control ([[#wac]]):
+
+To create or update an ACL resource (see [[#ar-wac]]), an `acl:agent` MUST
+have `acl:Control` privileges per the ACL inheritance algorithm on the
+resource directly associated with it.
+[[Source](https://github.com/solid/specification/issues/42#issuecomment-616688848)]
+
 ### Deleting Resources ### {#delete}
 
 Servers MUST support the HTTP `DELETE` method [[!RFC7231]].
