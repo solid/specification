@@ -236,7 +236,7 @@ Servers MUST support the HTTP `DELETE` method [[!RFC7231]].
 
 When using Web Access Control ([[#wac]]):
 
-Servers MUST NOT allow delete requests to a storage's root container and
+Servers MUST NOT allow `DELETE` requests to a storage's root container and
 associated ACL resource and exclude the `DELETE` method in the HTTP response
 header `Allow` in response to safe method requests [[!RFC7231]].
 [[Source](https://github.com/solid/specification/issues/37#issuecomment-627281466)]
