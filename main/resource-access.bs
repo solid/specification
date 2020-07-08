@@ -172,6 +172,11 @@ header targets an auxiliary resource, the server `MUST` respond with the `403`
 status code and response body describing the error.
 [[Source](https://github.com/solid/specification/issues/42#issuecomment-616688848)]
 
+Servers SHOULD NOT allow HTTP `POST`, `PUT` and `PATCH` to update a
+container's containment triples; if the server receives such a request, it
+SHOULD respond with a `409` status code.
+[[Source](https://github.com/solid/specification/issues/40#issuecomment-573358652)]
+
 ### Deleting Resources ### {#delete}
 
 Servers MUST support the HTTP `DELETE` method [[!RFC7231]].
