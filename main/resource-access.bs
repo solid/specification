@@ -221,12 +221,6 @@ have `acl:Control` privileges per the ACL inheritance algorithm on the
 resource directly associated with it.
 [[Source](https://github.com/solid/specification/issues/42#issuecomment-616688848)]
 
-<em>This section is non-normative.</em>
-
-While it is technically possible to auxiliary resources using the HTTP `POST`
-method with the `Slug` header, it allows varying implementations due to its
-non-deterministic resource naming.
-
 ### Deleting Resources ### {#delete}
 
 Servers MUST support the HTTP `DELETE` method [[!RFC7231]].
