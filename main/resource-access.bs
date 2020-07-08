@@ -157,6 +157,12 @@ Servers MUST indicate supported media types in the `Accept-Patch` [[!RFC5789]]
 and the `Accept-Post` [[!LDP]] headers for matching HTTP methods in `Allow`
 header value.
 
+Servers MAY include the HTTP `Accept-Patch` and `Accept-Post` headers in the
+response of a `OPTIONS *` request.
+
+[[Source](https://github.com/solid/specification/issues/85#issuecomment-575386251)]
+[[Source](https://github.com/solid/specification/issues/43)]
+
 ### Writing resources ### {#write}
 
 Servers MUST support the HTTP `PUT`, `POST` and `PATCH` methods [[!RFC7231]]
