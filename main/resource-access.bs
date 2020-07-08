@@ -137,13 +137,6 @@ through POST, using the HTTP `Slug` header as defined in [[!RFC5023]].
 Clients who want the server to determine the URI for their resource, MUST use
 the POST request.
 
-Servers MUST allow creating new resources with a POST request to URI path
-ending `/`. Servers MUST create a resource with URI path ending `/{id}` in
-container `/`. Servers MUST create a container with URI path ending `/{id}/`
-in container `/` for requests including the HTTP `Link` header with
-`rel="type"` targeting a valid LDP container type. Servers MUST handle
-subsequent requests to the newly created container's URI as if it is a valid
-LDP container type by including it the HTTP response's `Link` header.
 [[Source](https://github.com/solid/specification/pull/160#issuecomment-636822687)].
 
 ## Reading and Writing Resources ## {#read-write}
@@ -158,6 +151,16 @@ Servers MUST create intermediate containers and include corresponding
 containment triples in container representations derived from the URI path
 component of `PUT`, `POST` and `PATCH` requests.
 [[Source](https://github.com/solid/specification/issues/68#issuecomment-561690124)]
+
+Servers MUST allow creating new resources with a `POST` request to URI path
+ending `/`. Servers MUST create a resource with URI path ending `/{id}` in
+container `/`. Servers MUST create a container with URI path ending `/{id}/`
+in container `/` for requests including the HTTP `Link` header with
+`rel="type"` targeting a valid LDP container type. Servers MUST handle
+subsequent requests to the newly created container's URI as if it is a valid
+LDP container type by including the HTTP response's `Link` header.
+[[Source](https://github.com/solid/specification/pull/160#issuecomment-636822687)]
+
 
 ### Deleting Resources ### {#delete}
 
