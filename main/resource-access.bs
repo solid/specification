@@ -111,11 +111,6 @@ The representation and behaviour of containers in Solid corresponds to LDP
 Basic Container and MUST be supported.
 [[Source](https://github.com/solid/specification/issues/47#issuecomment-561675764)]
 
-Server MUST create intermediate containers and include corresponding
-containment triples in container representations derived from the URI path
-component of `PUT`, `POST` and `PATCH` requests.
-[[Source](https://github.com/solid/specification/issues/68#issuecomment-561690124)]
-
 ### Persistence ### {#uri-persistence}
 <em>This section is non-normative.</em>
 
@@ -149,10 +144,6 @@ in container `/` for requests including the HTTP `Link` header with
 `rel="type"` targeting a valid LDP container type. Servers MUST handle
 subsequent requests to the newly created container's URI as if it is a valid
 LDP container type by including it the HTTP response's `Link` header.
-
-Clients who want to create hierarchical containers MUST use PUT and PATCH
-requests.
-
 [[Source](https://github.com/solid/specification/pull/160#issuecomment-636822687)].
 
 ## Reading and Writing Resources ## {#read-write}
@@ -162,6 +153,11 @@ requests.
 Servers MUST support the HTTP `PUT`, `POST` and `PATCH` methods [[!RFC7231]]
 for clients to create and update resources.
 [[Source](https://github.com/solid/specification/issues/39#issuecomment-538017667)]
+
+Servers MUST create intermediate containers and include corresponding
+containment triples in container representations derived from the URI path
+component of `PUT`, `POST` and `PATCH` requests.
+[[Source](https://github.com/solid/specification/issues/68#issuecomment-561690124)]
 
 ### Deleting Resources ### {#delete}
 
