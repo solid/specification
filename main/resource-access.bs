@@ -125,6 +125,8 @@ Note:
 Servers that wish to disable URI re-use may want to use the `410` status
 code.
 
+## Reading and Writing Resources ## {#read-write}
+
 ### Resource type heuristics ### {#resource-type-heuristics}
 
 When creating new resources, servers can determine an effective request URI's
@@ -138,8 +140,6 @@ Clients who want the server to determine the URI for their resource, MUST use
 the POST request.
 
 [[Source](https://github.com/solid/specification/pull/160#issuecomment-636822687)].
-
-## Reading and Writing Resources ## {#read-write}
 
 ### Writing resources ### {#write}
 
