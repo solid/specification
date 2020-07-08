@@ -157,6 +157,12 @@ requests.
 
 ## Reading and Writing Resources ## {#read-write}
 
+### Writing resources ### {#write}
+
+Servers MUST support the HTTP `PUT`, `POST` and `PATCH` methods [[!RFC7231]]
+for clients to create and update resources.
+[[Source](https://github.com/solid/specification/issues/39#issuecomment-538017667)]
+
 ### Deleting Resources ### {#delete}
 
 Servers MUST support the HTTP `DELETE` method [[!RFC7231]].
