@@ -223,7 +223,8 @@ resource directly associated with it.
 
 ### Deleting Resources ### {#delete}
 
-Servers MUST support the HTTP `DELETE` method [[!RFC7231]].
+When a server supports the HTTP `DELETE` method [[!RFC7231]] this
+specification imposes the following requirements:
 [[Source](https://github.com/solid/specification/issues/39#issuecomment-538017667)]
 
 When a `DELETE` request targets storage's root container or its associated ACL
@@ -231,10 +232,6 @@ resource, the server must respond with the `405` status code. Server MUST
 exclude the `DELETE` method in the HTTP response header `Allow` in response to
 safe method requests [[!RFC7231]].
 [[Source](https://github.com/solid/specification/issues/37#issuecomment-627281466)]
-
-To delete a resource, an `acl:agent` MUST have `acl:Write` privilege per the
-ACL inheritance algorithm on the resource and the containing container.
-[[Source](https://github.com/solid/solid-spec/issues/195#issuecomment-559799154)]
 
 When a contained resource is deleted, the server MUST also remove the
 corresponding containment triple, which has the effect of removing the deleted
@@ -244,16 +241,22 @@ resource from the containing container.
 When a contained resource is deleted, the server MUST also delete the
 associated resources (see the [[#rm]] section).
 
-To delete an ACL resource (see [[#ar-wac]]), an `acl:agent` MUST have
-`acl:Control` privileges per the ACL inheritance algorithm on the resource
-directly associated with it.
-[[Source](https://github.com/solid/specification/issues/145)]
-
 When a `DELETE` request is made to a container, the server MUST delete
 the container if it contains no resources. If the container contains
 resources, the server MUST respond with the `409` status code and response
 body describing the error.
 [[Source](https://github.com/solid/specification/pull/187/files/b7426e95a1613e08195a853a4d0a403b7030f494#r447130915)]
+
+When using Web Access Control ([[#wac]]):
+
+To delete a resource, an `acl:agent` MUST have `acl:Write` privilege per the
+ACL inheritance algorithm on the resource and the containing container.
+[[Source](https://github.com/solid/solid-spec/issues/195#issuecomment-559799154)]
+
+To delete an ACL resource (see [[#ar-wac]]), an `acl:agent` MUST have
+`acl:Control` privileges per the ACL inheritance algorithm on the resource
+directly associated with it.
+[[Source](https://github.com/solid/specification/issues/145)]
 
 <em>This section is non-normative.</em>
 
