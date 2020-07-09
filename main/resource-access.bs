@@ -161,8 +161,8 @@ response of a `OPTIONS *` request.
 
 ### Writing resources ### {#write}
 
-Servers MUST support the HTTP `PUT`, `POST` and `PATCH` methods [[!RFC7231]]
-for clients to create and update resources.
+When a server supports the HTTP `PUT`, `POST` and `PATCH` methods [[!RFC7231]]
+this specification imposes the following requirements:
 [[Source](https://github.com/solid/specification/issues/39#issuecomment-538017667)]
 
 Servers MUST create intermediate containers and include corresponding
