@@ -127,6 +127,10 @@ code.
 
 ## Reading and Writing Resources ## {#read-write}
 
+Servers MUST respond with the `405` status code to requests using HTTP methods
+that are not supported by the target resource.
+[[Source](https://github.com/solid/specification/issues/117)]
+
 ### Resource type heuristics ### {#resource-type-heuristics}
 
 When creating new resources, servers can determine an effective request URI's
