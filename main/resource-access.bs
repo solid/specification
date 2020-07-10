@@ -183,10 +183,8 @@ subsequent requests to the newly created container's URI as if it is a valid
 LDP container type by including the HTTP response's `Link` header.
 [[Source](https://github.com/solid/specification/pull/160#issuecomment-636822687)]
 
-For resource representations having an algorithm to perform an append
-operation, servers MUST update resources for HTTP `POST` requests. Servers
-MUST perform RDF merge [[!RDF11-MT]] on RDF sources [[!RDF-CONCEPTS]].
-[[Source](https://github.com/solid/specification/issues/108#issuecomment-573655070)]
+When a `POST` method request targets a non-container resource, the server
+`MUST` respond with the `405` status code.
 
 When a `PUT` or `PATCH` method request targets an auxiliary resource, the
 server MUST create or update it. When a `POST` method request with the `Slug`
