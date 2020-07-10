@@ -228,7 +228,7 @@ specification imposes the following requirements:
 [[Source](https://github.com/solid/specification/issues/39#issuecomment-538017667)]
 
 When a `DELETE` request targets storage's root container or its associated ACL
-resource, the server must respond with the `405` status code. Server MUST
+resource, the server MUST respond with the `405` status code. Server MUST
 exclude the `DELETE` method in the HTTP response header `Allow` in response to
 safe method requests [[!RFC7231]].
 [[Source](https://github.com/solid/specification/issues/37#issuecomment-627281466)]
