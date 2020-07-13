@@ -136,12 +136,12 @@ that are not supported by the target resource.
 When creating new resources, servers can determine an effective request URI's
 type by examining the URI path ending ([[#uri-slash-semantics]]).
 
-Clients who want to assign a URI for their resource, MUST use `PUT` and
-`PATCH` requests. Servers MAY allow clients to suggest the URI for a resource
-created through POST, using the HTTP `Slug` header as defined in [[!RFC5023]].
+Clients who want to assign a URI to a resource, MUST use `PUT` and `PATCH`
+requests. Servers MAY allow clients to suggest the URI of a resource created
+through POST, using the HTTP `Slug` header as defined in [[!RFC5023]].
 
-Clients who want the server to determine the URI for their resource, MUST use
-the `POST` request.
+Clients who want the server to assign a URI of a resource, MUST use the `POST`
+request.
 
 [[Source](https://github.com/solid/specification/pull/160#issuecomment-636822687)].
 
