@@ -203,17 +203,6 @@ target resource when creation of a new resource is intended.
 [[Source](https://github.com/solid/specification/issues/108#issuecomment-567272797)]
 [[Source](https://github.com/solid/specification/issues/40#issuecomment-566995240)]
 
-Clients MUST use the HTTP `If-Match` header and HTTP `ETags` to ensure it
-isn't modifying a resource that has changed since the client last retrieved
-its representation. Servers MUST require the HTTP `If-Match` header and HTTP
-`ETags` to detect collisions. Servers MUST respond with status code `412` if
-`ETags` fail to match when there are no other errors with the request
-[[!RFC7232]]. Servers MUST respond with status code `428` and response body
-describing the error when the absence of a precondition is the only reason for
-rejecting the request [[!RFC6585]].
-[[Source](https://github.com/solid/specification/issues/60)]
-[[Source](https://github.com/solid/specification/issues/33)]
-
 When using Web Access Control ([[#wac]]):
 
 To create or update an ACL resource (see [[#ar-wac]]), an `acl:agent` MUST
