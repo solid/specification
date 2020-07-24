@@ -151,11 +151,16 @@ Servers MUST support the HTTP `GET`, `HEAD` and `OPTIONS` methods [[!RFC7231]]
 for clients to read resources or to determine communication options.
 [[Source](https://github.com/solid/specification/issues/39#issuecomment-538017667)]
 
+When responding to authorized requests:
+
 Servers MUST indicate their support for HTTP Methods by responding to HTTP
-`GET`, `HEAD` and `OPTIONS` requests on the resource's URL with the HTTP
-Method tokens in the HTTP response header `Allow`. Servers MUST indicate
-supported media types in the `Accept-Patch` [[!RFC5789]] and the `Accept-Post`
-[[!LDP]] headers for matching HTTP methods in `Allow` header value.
+`GET` and `HEAD` requests for the target resource with the HTTP Method tokens
+in the HTTP response header `Allow`.
+
+Servers MUST indicate supported media types in the HTTP `Accept-Patch`
+[[!RFC5789]] and the `Accept-Post` [[!LDP]] response headers that correspond
+to acceptable HTTP methods listed in `Allow` header value in response to HTTP
+`GET` and `HEAD` requests.
 
 Servers MAY include the HTTP `Accept-Patch` and `Accept-Post` headers in the
 response of a `OPTIONS *` request.
