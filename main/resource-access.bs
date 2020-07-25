@@ -198,9 +198,9 @@ header targets an auxiliary resource, the server MUST respond with the `403`
 status code and response body describing the error.
 [[Source](https://github.com/solid/specification/issues/42#issuecomment-616688848)]
 
-Servers SHOULD NOT allow HTTP `POST`, `PUT` and `PATCH` to update a
-container's containment triples; if the server receives such a request, it
-SHOULD respond with a `409` status code.
+Servers MUST NOT allow HTTP `POST`, `PUT` and `PATCH` to update a container's
+containment triples; if the server receives such a request, it MUST respond
+with a `409` status code.
 [[Source](https://github.com/solid/specification/issues/40#issuecomment-573358652)]
 
 Clients MAY use the HTTP `If-None-Match` header with a value of `"*"` to
