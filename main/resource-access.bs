@@ -210,6 +210,10 @@ believes that the resource does not have a current representation.
 [[Source](https://github.com/solid/specification/issues/108#issuecomment-567272797)]
 [[Source](https://github.com/solid/specification/issues/40#issuecomment-566995240)]
 
+Servers MAY use the HTTP `ETag` header with a strong validator for RDF bearing
+representations in order to encourage clients to opt-in to using the
+`If-Match` header in their requests.
+
 When using Web Access Control ([[#wac]]):
 
 To create or update an ACL resource (see [[#ar-wac]]), an `acl:agent` MUST
