@@ -111,11 +111,6 @@ The representation and behaviour of containers in Solid corresponds to LDP
 Basic Container and MUST be supported.
 [[Source](https://github.com/solid/specification/issues/47#issuecomment-561675764)]
 
-Server MUST create intermediate containers and include corresponding
-containment triples in container representations derived from the URI path
-component of `PUT`, `POST` and `PATCH` requests.
-[[Source](https://github.com/solid/specification/issues/68#issuecomment-561690124)]
-
 ### Persistence ### {#uri-persistence}
 <em>This section is non-normative.</em>
 
@@ -130,31 +125,159 @@ Note:
 Servers that wish to disable URI re-use may want to use the `410` status
 code.
 
+## Reading and Writing Resources ## {#read-write}
+
+Servers MUST respond with the `405` status code to requests using HTTP methods
+that are not supported by the target resource.
+[[Source](https://github.com/solid/specification/issues/117)]
+
 ### Resource type heuristics ### {#resource-type-heuristics}
 
 When creating new resources, servers can determine an effective request URI's
 type by examining the URI path ending ([[#uri-slash-semantics]]).
 
-Clients who want to assign a URI for their resource, MUST use PUT and PATCH
-requests. Servers MAY allow clients to suggest the URI for a resource created
+Clients who want to assign a URI to a resource, MUST use `PUT` and `PATCH`
+requests. Servers MAY allow clients to suggest the URI of a resource created
 through POST, using the HTTP `Slug` header as defined in [[!RFC5023]].
 
-Clients who want the server to determine the URI for their resource, MUST use
-the POST request.
+Clients who want the server to assign a URI of a resource, MUST use the `POST`
+request.
 
-Servers MUST allow creating new resources with a POST request to URI path
+[[Source](https://github.com/solid/specification/pull/160#issuecomment-636822687)].
+
+### Reading resources ### {#read}
+
+Servers MUST support the HTTP `GET`, `HEAD` and `OPTIONS` methods [[!RFC7231]]
+for clients to read resources or to determine communication options.
+[[Source](https://github.com/solid/specification/issues/39#issuecomment-538017667)]
+
+When responding to authorized requests:
+
+Servers MUST indicate their support for HTTP Methods by responding to HTTP
+`GET` and `HEAD` requests for the target resource with the HTTP Method tokens
+in the HTTP response header `Allow`.
+
+Servers MUST indicate supported media types in the HTTP `Accept-Patch`
+[[!RFC5789]] and the `Accept-Post` [[!LDP]] response headers that correspond
+to acceptable HTTP methods listed in `Allow` header value in response to HTTP
+`GET` and `HEAD` requests.
+
+Servers MAY include the HTTP `Accept-Patch` and `Accept-Post` headers in the
+response of a `OPTIONS *` request.
+
+[[Source](https://github.com/solid/specification/issues/85#issuecomment-575386251)]
+[[Source](https://github.com/solid/specification/issues/43)]
+
+### Writing resources ### {#write}
+
+When a server supports the HTTP `PUT`, `POST` and `PATCH` methods [[!RFC7231]]
+this specification imposes the following requirements:
+[[Source](https://github.com/solid/specification/issues/39#issuecomment-538017667)]
+
+Servers MUST create intermediate containers and include corresponding
+containment triples in container representations derived from the URI path
+component of `PUT`, `POST` and `PATCH` requests.
+[[Source](https://github.com/solid/specification/issues/68#issuecomment-561690124)]
+
+Servers MUST allow creating new resources with a `POST` request to URI path
 ending `/`. Servers MUST create a resource with URI path ending `/{id}` in
 container `/`. Servers MUST create a container with URI path ending `/{id}/`
 in container `/` for requests including the HTTP `Link` header with
 `rel="type"` targeting a valid LDP container type. Servers MUST handle
 subsequent requests to the newly created container's URI as if it is a valid
-LDP container type by including it the HTTP response's `Link` header.
+LDP container type by including the HTTP response's `Link` header.
+[[Source](https://github.com/solid/specification/pull/160#issuecomment-636822687)]
 
-Clients who want to create hierarchical containers MUST use PUT and PATCH
-requests.
+When a `POST` method request targets a non-container resource without an
+existing representation, the server `MUST` respond with the `404` status code.
+[[Source](https://github.com/solid/specification/issues/108#issuecomment-549448159)]
 
-[[Source](https://github.com/solid/specification/pull/160#issuecomment-636822687)].
+When a `PUT` or `PATCH` method request targets an auxiliary resource, the
+server MUST create or update it. When a `POST` method request with the `Slug`
+header targets an auxiliary resource, the server MUST respond with the `403`
+status code and response body describing the error.
+[[Source](https://github.com/solid/specification/issues/42#issuecomment-616688848)]
 
+Servers MUST NOT allow HTTP `POST`, `PUT` and `PATCH` to update a container's
+containment triples; if the server receives such a request, it MUST respond
+with a `409` status code.
+[[Source](https://github.com/solid/specification/issues/40#issuecomment-573358652)]
+
+Clients MAY use the HTTP `If-None-Match` header with a value of `"*"` to
+prevent an unsafe request method (eg. `PUT`, `PATCH`) from inadvertently
+modifying an existing representation of the target resource when the client
+believes that the resource does not have a current representation.
+[[Source](https://github.com/solid/specification/issues/108#issuecomment-567272797)]
+[[Source](https://github.com/solid/specification/issues/40#issuecomment-566995240)]
+
+Servers MAY use the HTTP `ETag` header with a strong validator for RDF bearing
+representations in order to encourage clients to opt-in to using the
+`If-Match` header in their requests.
+
+When using Web Access Control ([[#wac]]):
+
+To create or update an ACL resource (see [[#ar-wac]]), an `acl:agent` MUST
+have `acl:Control` privileges per the ACL inheritance algorithm on the
+resource directly associated with it.
+[[Source](https://github.com/solid/specification/issues/42#issuecomment-616688848)]
+
+### Deleting Resources ### {#delete}
+
+When a server supports the HTTP `DELETE` method [[!RFC7231]] this
+specification imposes the following requirements:
+[[Source](https://github.com/solid/specification/issues/39#issuecomment-538017667)]
+
+When a `DELETE` request targets storage's root container or its associated ACL
+resource, the server MUST respond with the `405` status code. Server MUST
+exclude the `DELETE` method in the HTTP response header `Allow` in response to
+safe method requests [[!RFC7231]].
+[[Source](https://github.com/solid/specification/issues/37#issuecomment-627281466)]
+
+When a contained resource is deleted, the server MUST also remove the
+corresponding containment triple, which has the effect of removing the deleted
+resource from the containing container.
+[[Source](https://www.w3.org/TR/ldp#ldpc-del-contremovesconttriple)]
+
+When a contained resource is deleted, the server MUST also delete the
+associated resources (see the [[#rm]] section).
+
+When a `DELETE` request is made to a container, the server MUST delete
+the container if it contains no resources. If the container contains
+resources, the server MUST respond with the `409` status code and response
+body describing the error.
+[[Source](https://github.com/solid/specification/pull/187/files/b7426e95a1613e08195a853a4d0a403b7030f494#r447130915)]
+
+When using Web Access Control ([[#wac]]):
+
+To delete a resource, an `acl:agent` MUST have `acl:Write` privilege per the
+ACL inheritance algorithm on the resource and the containing container.
+[[Source](https://github.com/solid/solid-spec/issues/195#issuecomment-559799154)]
+
+To delete an ACL resource (see [[#ar-wac]]), an `acl:agent` MUST have
+`acl:Control` privileges per the ACL inheritance algorithm on the resource
+directly associated with it.
+[[Source](https://github.com/solid/specification/issues/145)]
+
+<em>This section is non-normative.</em>
+
+The server might perform additional actions, as described in the normative
+references like [[!RFC7231]]. For example, the server could remove membership
+triples referring to the deleted resource, perform additional cleanup tasks
+for resources it knows are no longer referenced or have not been accessed for
+some period of time, and so on.
+
+Subsequent `GET` requests to the deleted resource usually result in a `404`
+or `410` status code, although HTTP allows others.
+[[Source](https://github.com/solid/specification/issues/72)]
+[[Source](https://github.com/solid/specification/issues/46)]
+
+As deleted resources can be reinstated with the same URI, access controls on
+the reinstated resource can change per the ACL inheritance algorithm.
+[[Source](https://github.com/solid/specification/issues/145#issuecomment-618918284)]
+
+Issue:
+Pertaining to events and loss of control mitigation:
+https://github.com/solid/specification/issues/41#issuecomment-534679278
 
 ## Auxiliary Resources ## {#rm}
 
@@ -238,7 +361,7 @@ resource URL and inspect the `Link` headers in the response.
   </pre>
   <p>
     A client discovers the [[#ar-wac]] and [[#ar-description]] auxiliary
-    resources through a GET request on `<https://server.example/image.png>`:
+    resources through a `GET` request on `<https://server.example/image.png>`:
   </p>
   <pre>
     GET https://server.example/image.png
