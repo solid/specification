@@ -279,6 +279,20 @@ Issue:
 Pertaining to events and loss of control mitigation:
 https://github.com/solid/specification/issues/41#issuecomment-534679278
 
+### Representations ### {#representations}
+
+When a server creates a resource on HTTP `PUT`, `POST` or `PATCH` requests
+such that the request's representation data encodes an *RDF document*
+[[!RDF11-CONCEPTS]] (as determined by the `Content-Type` header), the server
+MUST respect `GET` requests on this resource when the value of the `Accept`
+header requests a response in `text/turtle` or `application/ld+json`, unless
+HTTP content negotiation requires a different outcome.
+
+[[Source](https://github.com/solid/specification/issues/45)]
+[[Source](https://github.com/solid/specification/issues/69)]
+[[Source](https://github.com/solid/specification/issues/109)]
+[[Source](https://github.com/solid/specification/issues/195)]
+
 ## Auxiliary Resources ## {#rm}
 
 ### Background and Need ### {#ar-need}
