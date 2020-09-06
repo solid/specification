@@ -286,7 +286,7 @@ such that the request's representation data encodes an *RDF document*
 [[!RDF11-CONCEPTS]] (as determined by the `Content-Type` header), the server
 MUST respect `GET` requests on this resource when the value of the `Accept`
 header requests a representation in `text/turtle` or `application/ld+json`
-[[!Turtle]] [[!JSON-LD]].
+[[!Turtle]] [[!JSON-LD11]].
 [[Source](https://github.com/solid/specification/issues/45)]
 [[Source](https://github.com/solid/specification/issues/69)]
 [[Source](https://github.com/solid/specification/issues/109)]
