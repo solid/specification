@@ -284,7 +284,7 @@ https://github.com/solid/specification/issues/41#issuecomment-534679278
 When a server creates a resource on HTTP `PUT`, `POST` or `PATCH` requests
 such that the request's representation data encodes an *RDF document*
 [[!RDF11-CONCEPTS]] (as determined by the `Content-Type` header), the server
-MUST respect `GET` requests on this resource when the value of the `Accept`
+MUST accept `GET` requests on this resource when the value of the `Accept`
 header requests a representation in `text/turtle` or `application/ld+json`
 [[!Turtle]] [[!JSON-LD11]].
 [[Source](https://github.com/solid/specification/issues/45)]
