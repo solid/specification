@@ -28,6 +28,7 @@ any feedback, comments, or questions you might have.
 <pre class=include>path: resource-access.bs</pre>
 <pre class=include>path: clients.bs</pre>
 <pre class=include>path: optional.bs</pre>
+<pre class=include>path: http-definitions.bs</pre>
 <pre class=include>path: security.bs</pre>
 <pre class=include>path: conformance.bs</pre>
 
