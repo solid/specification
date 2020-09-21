@@ -13,7 +13,7 @@ The syntax for `Accept-Put`, using the ABNF syntax defined in Section 1.2 of [[!
 Accept-Put = "Accept-Put" ":" # media-range
 ```
 
-The `Accept-Put` header specifies a comma-separated list of media ranges (with optional parameters) as defined by [[!RFC7231]], Section 5.3.2. The `Accept-Put` header, in effect, uses the same syntax as the HTTP Accept header minus the optional accept-params BNF production, since the latter does not apply to `Accept-Put`.
+The `Accept-Put` header specifies a comma-separated list of media ranges (with optional parameters) as defined by [[!RFC7231]], Section 5.3.2. The `Accept-Put` header, in effect, uses the same syntax as the HTTP `Accept` header minus the optional `accept-params` BNF production, since the latter does not apply to `Accept-Put`.
 
 The presence of the `Accept-Put` header in response to any method is an implicit indication that `PUT` is allowed on the resource identified by the request URI. The presence of a specific document format in this header indicates that that specific format is allowed on `PUT` requests to the resource identified by the request URI. 
 
