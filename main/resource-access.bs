@@ -176,7 +176,7 @@ this specification imposes the following requirements:
 
 Servers MUST create intermediate containers and include corresponding
 containment triples in container representations derived from the URI path
-component of `PUT`, `POST` and `PATCH` requests.
+component of `PUT` and `PATCH` requests.
 [[Source](https://github.com/solid/specification/issues/68#issuecomment-561690124)]
 
 Servers MUST allow creating new resources with a `POST` request to URI path
@@ -188,8 +188,8 @@ subsequent requests to the newly created container's URI as if it is a valid
 LDP container type by including the HTTP response's `Link` header.
 [[Source](https://github.com/solid/specification/pull/160#issuecomment-636822687)]
 
-When a `POST` method request targets a non-container resource without an
-existing representation, the server `MUST` respond with the `404` status code.
+When a `POST` method request targets a resource without an existing
+representation, the server `MUST` respond with the `404` status code.
 [[Source](https://github.com/solid/specification/issues/108#issuecomment-549448159)]
 
 When a `PUT` or `PATCH` method request targets an auxiliary resource, the
