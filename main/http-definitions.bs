@@ -1,0 +1,27 @@
+HTTP Definitions {#http-definitions}
+===================================
+
+## Link Relations ## {#link-relations}
+
+The intent is that these link relations will be registered with IANA per [[!RFC8288]]. 
+
+### acl ### {#acl}
+
+The contents of this section were originally taken from [Web Access Control](https://www.w3.org/wiki/WebAccessControl).
+
+The following Link Relationship will be submitted to IANA for review, approval, and inclusion in the IANA Link Relations registry.
+
+: Relation Name
+:: `acl`
+: Description
+:: The relationship `A acl B` asserts that resource B provides access control description of resource A. There are no constraints on the format or representation of either A or B, neither are there any further constraints on either resource.
+: Reference
+:: This specification.
+: Notes
+:: Consumers of ACL resources should be aware of the source and chain of custody of the data.
+
+[[Source](https://github.com/solid/specification/issues/54)]
+[[Source](https://github.com/solid/web-access-control-spec/issues/21)]
+
+Issue:
+Shape of ACL: https://github.com/solid/specification/issues/169

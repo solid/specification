@@ -1323,7 +1323,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version a4c48e2, updated Fri Oct 9 16:20:08 2020 -0700" name="generator">
   <link href="https://solid.github.io/specification/" rel="canonical">
-  <meta content="568370cd668bf714f35b3e486d0c08219da77588" name="document-revision">
+  <meta content="01c8cf30584a4b7888cfe7cf648a03bd0d8a27d0" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -1812,10 +1812,15 @@ dfn > a.self-link::before      { content: "#"; }
       <li><a href="#verifiable-credentials"><span class="secno">4.4</span> <span class="content">Verifiable Credentials</span></a>
      </ol>
     <li>
-     <a href="#security"><span class="secno">5</span> <span class="content">Security Considerations</span></a>
+     <a href="#http-definitions"><span class="secno">5</span> <span class="content">HTTP Definitions</span></a>
      <ol class="toc">
-      <li><a href="#privacy"><span class="secno">5.1</span> <span class="content">Privacy Considerations</span></a>
-      <li><a href="#security-privacy-review"><span class="secno">5.2</span> <span class="content">Security and Privacy Review</span></a>
+      <li><a href="#link-relations"><span class="secno">5.1</span> <span class="content">Link Relations</span></a>
+     </ol>
+    <li>
+     <a href="#security"><span class="secno">6</span> <span class="content">Security Considerations</span></a>
+     <ol class="toc">
+      <li><a href="#privacy"><span class="secno">6.1</span> <span class="content">Privacy Considerations</span></a>
+      <li><a href="#security-privacy-review"><span class="secno">6.2</span> <span class="content">Security and Privacy Review</span></a>
      </ol>
     <li><a href="#conformance"><span class="secno"></span> <span class="content">Conformance</span></a>
     <li>
@@ -2340,7 +2345,29 @@ A Solid data pod MAY conform to the Profile-based Content Negotiation specificat
    <p class="issue" id="issue-c8aeac29"><a class="self-link" href="#issue-c8aeac29"></a> Write Verifiable Credentials section.</p>
    <p>Draft:
 A Solid data pod MAY conform to the Verifiable Credentials specification <a data-link-type="biblio" href="#biblio-verifiable-credentials">[VERIFIABLE-CREDENTIALS]</a>.</p>
-   <h2 class="heading settled" data-level="5" id="security"><span class="secno">5. </span><span class="content">Security Considerations</span><a class="self-link" href="#security"></a></h2>
+   <h2 class="heading settled" data-level="5" id="http-definitions"><span class="secno">5. </span><span class="content">HTTP Definitions</span><a class="self-link" href="#http-definitions"></a></h2>
+   <h3 class="heading settled" data-level="5.1" id="link-relations"><span class="secno">5.1. </span><span class="content">Link Relations</span><a class="self-link" href="#link-relations"></a></h3>
+   <p>The intent is that these link relations will be registered with IANA per <a data-link-type="biblio" href="#biblio-rfc8288">[RFC8288]</a>.</p>
+   <h4 class="heading settled" data-level="5.1.1" id="acl"><span class="secno">5.1.1. </span><span class="content">acl</span><a class="self-link" href="#acl"></a></h4>
+   <p>The contents of this section were originally taken from <a href="https://www.w3.org/wiki/WebAccessControl">Web Access Control</a>.</p>
+   <p>The following Link Relationship will be submitted to IANA for review, approval, and inclusion in the IANA Link Relations registry.</p>
+   <dl>
+    <dt data-md>Relation Name
+    <dd data-md>
+     <p><code>acl</code></p>
+    <dt data-md>Description
+    <dd data-md>
+     <p>The relationship <code>A acl B</code> asserts that resource B provides access control description of resource A. There are no constraints on the format or representation of either A or B, neither are there any further constraints on either resource.</p>
+    <dt data-md>Reference
+    <dd data-md>
+     <p>This specification.</p>
+    <dt data-md>Notes
+    <dd data-md>
+     <p>Consumers of ACL resources should be aware of the source and chain of custody of the data.</p>
+   </dl>
+   <p><a href="https://github.com/solid/specification/issues/54">[Source</a>] <a href="https://github.com/solid/web-access-control-spec/issues/21">[Source</a>]</p>
+   <p class="issue" id="issue-e549d761"><a class="self-link" href="#issue-e549d761"></a> Shape of ACL: https://github.com/solid/specification/issues/169</p>
+   <h2 class="heading settled" data-level="6" id="security"><span class="secno">6. </span><span class="content">Security Considerations</span><a class="self-link" href="#security"></a></h2>
    <p>Some of the normative references with this specification
 point to documents with a <em>Living Standard</em> status,
 meaning their contents can still change over time.
@@ -2388,13 +2415,13 @@ Unsecured TCP connections without TLS MAY be used
 in testing environments
 or when the data pod is behind a reverse proxy
 that terminates a secure connection.</p>
-   <h3 class="heading settled" data-level="5.1" id="privacy"><span class="secno">5.1. </span><span class="content">Privacy Considerations</span><a class="self-link" href="#privacy"></a></h3>
+   <h3 class="heading settled" data-level="6.1" id="privacy"><span class="secno">6.1. </span><span class="content">Privacy Considerations</span><a class="self-link" href="#privacy"></a></h3>
    <p class="issue" id="issue-4267249d"><a class="self-link" href="#issue-4267249d"></a> Write Privacy Considerations section.</p>
-   <h4 class="heading settled" data-level="5.1.1" id="identifiable-information"><span class="secno">5.1.1. </span><span class="content">Identifiable Information</span><a class="self-link" href="#identifiable-information"></a></h4>
+   <h4 class="heading settled" data-level="6.1.1" id="identifiable-information"><span class="secno">6.1.1. </span><span class="content">Identifiable Information</span><a class="self-link" href="#identifiable-information"></a></h4>
    <p class="issue" id="issue-e08c9a5d"><a class="self-link" href="#issue-e08c9a5d"></a> Write Identifiable Information section.</p>
    <p>In order to prevent leakage of non-resource data,
 error responses SHOULD NOT contain identifiable information.</p>
-   <h3 class="heading settled" data-level="5.2" id="security-privacy-review"><span class="secno">5.2. </span><span class="content">Security and Privacy Review</span><a class="self-link" href="#security-privacy-review"></a></h3>
+   <h3 class="heading settled" data-level="6.2" id="security-privacy-review"><span class="secno">6.2. </span><span class="content">Security and Privacy Review</span><a class="self-link" href="#security-privacy-review"></a></h3>
    <p class="issue" id="issue-4eadf7d9"><a class="self-link" href="#issue-4eadf7d9"></a> Complete <a data-link-type="biblio" href="#biblio-security-privacy-questionnaire">[security-privacy-questionnaire]</a></p>
   </main>
   <div data-fill-with="conformance">
@@ -2659,6 +2686,7 @@ in shape validation by the server implementation.<a href="#issue-d5201460"> ↵ 
    <div class="issue"> Write Memento section.<a href="#issue-e38039a6"> ↵ </a></div>
    <div class="issue"> Write Profiles section.<a href="#issue-f726fd8d"> ↵ </a></div>
    <div class="issue"> Write Verifiable Credentials section.<a href="#issue-c8aeac29"> ↵ </a></div>
+   <div class="issue"> Shape of ACL: https://github.com/solid/specification/issues/169<a href="#issue-e549d761"> ↵ </a></div>
    <div class="issue"> Write Privacy Considerations section.<a href="#issue-4267249d"> ↵ </a></div>
    <div class="issue"> Write Identifiable Information section.<a href="#issue-e08c9a5d"> ↵ </a></div>
    <div class="issue"> Complete <a data-link-type="biblio" href="#biblio-security-privacy-questionnaire">[security-privacy-questionnaire]</a><a href="#issue-4eadf7d9"> ↵ </a></div>
