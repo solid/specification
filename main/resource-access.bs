@@ -279,6 +279,26 @@ Issue:
 Pertaining to events and loss of control mitigation:
 https://github.com/solid/specification/issues/41#issuecomment-534679278
 
+### Representations ### {#representations}
+
+When a server creates a resource on HTTP `PUT`, `POST` or `PATCH` requests
+such that the request's representation data encodes an *RDF document*
+[[!RDF11-CONCEPTS]] (as determined by the `Content-Type` header), the server
+MUST accept `GET` requests on this resource when the value of the `Accept`
+header requests a representation in `text/turtle` or `application/ld+json`
+[[!Turtle]] [[!JSON-LD11]].
+[[Source](https://github.com/solid/specification/issues/45)]
+[[Source](https://github.com/solid/specification/issues/69)]
+[[Source](https://github.com/solid/specification/issues/109)]
+[[Source](https://github.com/solid/specification/issues/195)]
+
+When a `PUT`, `POST`, `PATCH` or `DELETE` method request targets a
+representation URL that is different than the resource URL, the server MUST
+respond with a `307` or `308` status code and `Location` header specifying the
+preferred URI reference.
+[[Source](https://github.com/solid/specification/issues/109)]
+
+
 ## Auxiliary Resources ## {#rm}
 
 ### Background and Need ### {#ar-need}
