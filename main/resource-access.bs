@@ -95,6 +95,15 @@ Behaviour pertaining to authorization MUST proceed this optional redirect
 
 ## Linked Data ## {#linked-data}
 
+### Storage ### {#storage}
+
+When a servers supports a data pod, it MUST provide one or more storages
+(`pim:Storage`). A storage is the root container for all of its contained
+resources (see [[#resource-containment]]).
+
+When a server supports multiple storages, the URIs MUST be allocated to
+non-overlapping space.
+
 ### Containment ### {#resource-containment}
 
 Solid has the notion of containers to represent a collection of linked
