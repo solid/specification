@@ -117,6 +117,11 @@ hierarchy until the response includes a `Link` header with `rel="type"`
 targeting `http://www.w3.org/ns/pim/space#Storage`. Clients may check the root
 path of a URI for the storage claim at any time.
 
+Clients can discover a storage by making an HTTP `GET` request on the target
+URL to retrieve an RDF representation [[!RDF11-CONCEPTS]], whose encoded RDF
+graph contains a relation of type `http://www.w3.org/ns/pim/space#storage`.
+The object of the relation is the storage (`pim:Storage`).
+
 ### Containment ### {#resource-containment}
 
 Solid has the notion of containers to represent a collection of linked
