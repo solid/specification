@@ -112,6 +112,11 @@ Clients can determine a resource is of type storage by making an HTTP `HEAD`
 or `GET` request on the target URL, and check for the `Link` header with
 `rel="type"` targeting `http://www.w3.org/ns/pim/space#Storage`.
 
+Clients can determine the storage of a resource by moving up the URI path
+hierarchy until the response includes a `Link` header with `rel="type"`
+targeting `http://www.w3.org/ns/pim/space#Storage`. Clients may check the root
+path of a URI for the storage claim at any time.
+
 ### Containment ### {#resource-containment}
 
 Solid has the notion of containers to represent a collection of linked
