@@ -122,6 +122,12 @@ URL to retrieve an RDF representation [[!RDF11-CONCEPTS]], whose encoded RDF
 graph contains a relation of type `http://www.w3.org/ns/pim/space#storage`.
 The object of the relation is the storage (`pim:Storage`).
 
+When using Web Access Control ([[#wac]]):
+
+The root container (`pim:Storage`) MUST have an ACL auxiliary resource
+associated to it. The associated ACL document MUST include an authorization
+policy with `acl:Control` access privilege.
+
 ### Containment ### {#resource-containment}
 
 Solid has the notion of containers to represent a collection of linked
