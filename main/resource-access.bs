@@ -104,6 +104,10 @@ resources (see [[#resource-containment]]).
 When a server supports multiple storages, the URIs MUST be allocated to
 non-overlapping space.
 
+Servers exposing the storage resource MUST advertise by including the HTTP
+`Link` header with `rel="type"` targeting
+`http://www.w3.org/ns/pim/space#Storage` when responding to request URI.
+
 ### Containment ### {#resource-containment}
 
 Solid has the notion of containers to represent a collection of linked
