@@ -45,7 +45,7 @@ The following Link Relationship will be submitted to IANA for review, approval, 
 : Relation Name
 :: `acl`
 : Description
-:: The relationship `A acl B` asserts that resource B provides access control description of resource A. There are no constraints on the format or representation of A. B MUST be a Access Control List document using a Resource Description Framework syntax.
+:: The relationship `A acl B` asserts that resource B provides access control description of resource A. There are no constraints on the format or representation of either A or B, neither are there any further constraints on either resource.
 : Reference
 :: This specification.
 : Notes

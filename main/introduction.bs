@@ -35,5 +35,6 @@ Issue: Introduce the structure of this document.
 <tr><td>rdf</td><td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td><td>[[!rdf-schema]]</td></tr>
 <tr><td>ldp</td><td>http://www.w3.org/ns/ldp#</td><td>[[!LDP]]</td></tr>
 <tr><td>solid</td><td>http://www.w3.org/ns/solid/terms#</td><td>Solid Terms</td></tr>
+<tr><td>pim</td><td>http://www.w3.org/ns/pim/space#</td><td>Workspace Ontology</td></tr>
 </tbody>
 </table>
