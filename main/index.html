@@ -6,9 +6,9 @@
   <meta content="w3c/ED" name="w3c-status">
   <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet">
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
-  <meta content="Bikeshed version adf8655, updated Thu Oct 29 16:15:09 2020 -0700" name="generator">
+  <meta content="Bikeshed version e3b7dea, updated Fri Nov 6 12:09:18 2020 -0800" name="generator">
   <link href="https://solid.github.io/specification/" rel="canonical">
-  <meta content="cdd227f92de1df4bcb05fb1a700f2462ab95f22b" name="document-revision">
+  <meta content="dad2c4317a9693ad85c52dcc7a7fb82dc8b400b9" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -429,7 +429,7 @@ dfn > a.self-link::before      { content: "#"; }
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">The Solid Ecosystem</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-11-06">6 November 2020</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-11-07">7 November 2020</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -503,7 +503,8 @@ dfn > a.self-link::before      { content: "#"; }
     <li>
      <a href="#http-definitions"><span class="secno">5</span> <span class="content">HTTP Definitions</span></a>
      <ol class="toc">
-      <li><a href="#link-relations"><span class="secno">5.1</span> <span class="content">Link Relations</span></a>
+      <li><a href="#http-headers"><span class="secno">5.1</span> <span class="content">HTTP Headers</span></a>
+      <li><a href="#link-relations"><span class="secno">5.2</span> <span class="content">Link Relations</span></a>
      </ol>
     <li>
      <a href="#security"><span class="secno">6</span> <span class="content">Security Considerations</span></a>
@@ -1039,9 +1040,33 @@ A Solid data pod MAY conform to the Profile-based Content Negotiation specificat
    <p>Draft:
 A Solid data pod MAY conform to the Verifiable Credentials specification <a data-link-type="biblio" href="#biblio-verifiable-credentials">[VERIFIABLE-CREDENTIALS]</a>.</p>
    <h2 class="heading settled" data-level="5" id="http-definitions"><span class="secno">5. </span><span class="content">HTTP Definitions</span><a class="self-link" href="#http-definitions"></a></h2>
-   <h3 class="heading settled" data-level="5.1" id="link-relations"><span class="secno">5.1. </span><span class="content">Link Relations</span><a class="self-link" href="#link-relations"></a></h3>
+   <h3 class="heading settled" data-level="5.1" id="http-headers"><span class="secno">5.1. </span><span class="content">HTTP Headers</span><a class="self-link" href="#http-headers"></a></h3>
+   <h4 class="heading settled" data-level="5.1.1" id="accept-put"><span class="secno">5.1.1. </span><span class="content">The Accept-Put Response Header</span><a class="self-link" href="#accept-put"></a></h4>
+   <p>This specification introduces a new HTTP response header <code>Accept-Put</code> used to specify the document formats accepted by the server on HTTP PUT requests. It is modelled after the <code>Accept-Patch</code> header defined in <a data-link-type="biblio" href="#biblio-rfc5789">[RFC5789]</a> and the <code>Accept-Post</code> header defined in <a data-link-type="biblio" href="#biblio-ldp">[LDP]</a>.</p>
+   <p>The syntax for <code>Accept-Put</code>, using the ABNF syntax defined in Section 1.2 of <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>, is:</p>
+<pre>Accept-Put = "Accept-Put" ":" # media-range
+</pre>
+   <p>The <code>Accept-Put</code> header specifies a comma-separated list of media ranges (with optional parameters) as defined by <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>, Section 5.3.2. The <code>Accept-Put</code> header, in effect, uses the same syntax as the HTTP <code>Accept</code> header minus the optional <code>accept-params</code> BNF production, since the latter does not apply to <code>Accept-Put</code>.</p>
+   <p>The presence of the <code>Accept-Put</code> header in response to any method is an implicit indication that <code>PUT</code> is allowed on the resource identified by the request URI. The presence of a specific document format in this header indicates that that specific format is allowed on <code>PUT</code> requests to the resource identified by the request URI.</p>
+   <p><strong>IANA Registration Template:</strong></p>
+   <p>The <code>Accept-Put</code> response header must be added to the permanent registry (see <a data-link-type="biblio" href="#biblio-rfc3864">[RFC3864]</a>).</p>
+   <dl>
+    <dt data-md>Header field name
+    <dd data-md>
+     <p>Accept-Put</p>
+    <dt data-md>Applicable Protocol
+    <dd data-md>
+     <p>HTTP</p>
+    <dt data-md>Author/Change controller
+    <dd data-md>
+     <p>W3C Solid Community Group</p>
+    <dt data-md>Specification document
+    <dd data-md>
+     <p>This specification</p>
+   </dl>
+   <h3 class="heading settled" data-level="5.2" id="link-relations"><span class="secno">5.2. </span><span class="content">Link Relations</span><a class="self-link" href="#link-relations"></a></h3>
    <p>The intent is that these link relations will be registered with IANA per <a data-link-type="biblio" href="#biblio-rfc8288">[RFC8288]</a>.</p>
-   <h4 class="heading settled" data-level="5.1.1" id="acl"><span class="secno">5.1.1. </span><span class="content">acl</span><a class="self-link" href="#acl"></a></h4>
+   <h4 class="heading settled" data-level="5.2.1" id="acl"><span class="secno">5.2.1. </span><span class="content">acl</span><a class="self-link" href="#acl"></a></h4>
    <p>The contents of this section were originally taken from <a href="https://www.w3.org/wiki/WebAccessControl">Web Access Control</a>.</p>
    <p>The following Link Relationship will be submitted to IANA for review, approval, and inclusion in the IANA Link Relations registry.</p>
    <dl>
@@ -1158,6 +1183,8 @@ error responses SHOULD NOT contain identifiable information.</p>
    <dd>Richard Cyganiak; David Wood; Markus Lanthaler. <a href="https://www.w3.org/TR/rdf11-concepts/">RDF 1.1 Concepts and Abstract Syntax</a>. 25 February 2014. REC. URL: <a href="https://www.w3.org/TR/rdf11-concepts/">https://www.w3.org/TR/rdf11-concepts/</a>
    <dt id="biblio-rfc2119">[RFC2119]
    <dd>S. Bradner. <a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a>
+   <dt id="biblio-rfc3864">[RFC3864]
+   <dd>G. Klyne; M. Nottingham; J. Mogul. <a href="https://tools.ietf.org/html/rfc3864">Registration Procedures for Message Header Fields</a>. September 2004. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc3864">https://tools.ietf.org/html/rfc3864</a>
    <dt id="biblio-rfc3986">[RFC3986]
    <dd>T. Berners-Lee; R. Fielding; L. Masinter. <a href="https://tools.ietf.org/html/rfc3986">Uniform Resource Identifier (URI): Generic Syntax</a>. January 2005. Internet Standard. URL: <a href="https://tools.ietf.org/html/rfc3986">https://tools.ietf.org/html/rfc3986</a>
    <dt id="biblio-rfc5023">[RFC5023]
