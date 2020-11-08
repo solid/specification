@@ -1,11 +1,10 @@
 Security Considerations {#security}
 ===================================
 
-Some of the normative references with this specification
-point to documents with a *Living Standard* status,
-meaning their contents can still change over time.
-It is advised to monitor these documents,
-as such changes might have security implications.
+Some of the normative references with this specification point to documents
+with a *Living Standard* or *Draft* status, meaning their contents can still
+change over time. It is advised to monitor these documents, as such changes
+might have security implications.
 
 A data pod MUST NOT assume that
 HTTP request headers sent by a client are valid,
