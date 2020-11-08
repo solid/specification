@@ -8,7 +8,7 @@
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="Bikeshed version e3b7dea, updated Fri Nov 6 12:09:18 2020 -0800" name="generator">
   <link href="https://solid.github.io/specification/" rel="canonical">
-  <meta content="aed75652be926c90e31c2f827a04d48e119743fa" name="document-revision">
+  <meta content="9f1f779ad8fb1db14d287ae92d74924f63453f84" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -534,12 +534,42 @@ following the <a href="https://github.com/solid/culture/blob/master/README.md">S
 However, the information in this document is still subject to change. 
    <p>You are invited to <a href="https://github.com/solid/specification/issues">contribute</a> any feedback, comments, or questions you might have.</p>
    <h2 class="heading settled" data-level="1" id="intro"><span class="secno">1. </span><span class="content">Introduction</span><a class="self-link" href="#intro"></a></h2>
-   <p class="issue" id="issue-add5c02e"><a class="self-link" href="#issue-add5c02e"></a> Write Introduction section.</p>
-   <p class="issue" id="issue-0bb0747d"><a class="self-link" href="#issue-0bb0747d"></a> Explain the principle of orthogonality,
-  by which this spec is split into multiple documents.</p>
-   <p class="issue" id="issue-ca10dda5"><a class="self-link" href="#issue-ca10dda5"></a> Explain that this specification is not documentation;
-  it is the easiest way to understand how Solid works,
-  not the easiest way for building a Solid app.</p>
+   <p>Solid is a technology, like the Web, but a new level of standard which adds to
+the existing protocols with the motivation to empower an equitable, informed
+and interconnected society.</p>
+   <p>The Solid ecosystem encapsulates a set of technical specifications that are
+guided by the principles we have adopted and the priority of our values. We
+acknowledge that each technical decision has ethical implications both for the
+end user (short-term) as well as society (long-term). In order to contribute
+to shared goals on a net positive social benefit, we use the <cite><a href="https://www.w3.org/2001/tag/doc/ethical-web-principles/">Ethical Web
+Principles</a></cite> to orient ourselves. The resulting consensus of the
+technical problems are derived from common use cases, implementation
+experience, as well as use.</p>
+   <p>An overarching design goal of the Solid ecosystem is to have decentralised Web
+applications for information exchange where individuals as well as groups can
+have high degree of control of their data and share with consent.</p>
+   <p>The general architectural principles of Solid specifications are borrowed from
+the <cite><a href="https://www.w3.org/TR/webarch/">Architecture of the World
+Wide Web</a></cite>. The components as described in each specification may
+evolve independently – according to the principle of orthogonality in order to
+increase the flexibility and robustness of the Solid ecosystem. With that, the
+specifications are loosely coupled and indicate which features overlap with
+those governed by another specification. Extensibility as well as variability
+are also taken into account in each specification.</p>
+   <p>The specifications prescribe components and mechanisms such as transfer
+protocols, identification, authentication and authorization, data formats and
+shapes, as well as query and notification systems, in order to implement
+interoperabile servers and clients.</p>
+   <p>This document includes the specification document, server-client interaction
+pertaining to read-write operations to access resources - this could be in its
+own document but since it prescribes some fundamental operations, it is kept
+there for the time being. I plan to restructure this soon to make it more
+readable. Stay tuned.</p>
+   <p>The specifications explain the easiest way to understand how Solid works, as
+opposed to easiest way for building Solid servers and clients. The
+specifications are accompanied with other documents such as <em>Primers</em> and <em>Best Practices and Guidelines</em> to help implementers to form a
+well-rounded understanding of the Solid ecosystem as well as to improve
+implementations.</p>
    <h3 class="heading settled" data-level="1.1" id="definitions"><span class="secno">1.1. </span><span class="content">Definitions</span><a class="self-link" href="#definitions"></a></h3>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="data-pod">data pod</dfn> is a place for storing documents,
 with mechanisms for controlling who can access what.</p>
@@ -1234,12 +1264,6 @@ error responses SHOULD NOT contain identifiable information.</p>
   </dl>
   <h2 class="no-num no-ref heading settled" id="issues-index"><span class="content">Issues Index</span><a class="self-link" href="#issues-index"></a></h2>
   <div style="counter-reset:issue">
-   <div class="issue"> Write Introduction section.<a href="#issue-add5c02e"> ↵ </a></div>
-   <div class="issue"> Explain the principle of orthogonality,
-  by which this spec is split into multiple documents.<a href="#issue-0bb0747d"> ↵ </a></div>
-   <div class="issue"> Explain that this specification is not documentation;
-  it is the easiest way to understand how Solid works,
-  not the easiest way for building a Solid app.<a href="#issue-ca10dda5"> ↵ </a></div>
    <div class="issue"> Introduce the structure of this document. <a href="#resource-access">Cross-server interoperability</a> <a href="#clients">Cross-app interoperability</a><a href="#issue-45213e2c"> ↵ </a></div>
    <div class="issue"> Write introduction to the Authenticated Resource Access section.<a href="#issue-638fb2f9"> ↵ </a></div>
    <div class="issue"> Pertaining to events and loss of control mitigation:
