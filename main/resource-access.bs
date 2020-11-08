@@ -95,6 +95,46 @@ Behaviour pertaining to authorization MUST proceed this optional redirect
 
 ## Linked Data ## {#linked-data}
 
+### Storage ### {#storage}
+
+When a server supports a data pod, it MUST provide one or more storages
+(`pim:Storage`) - a space of URIs in which data can be accessed. A storage is
+the root container for all of its contained resources (see
+[[#resource-containment]]).
+
+When a server supports multiple storages, the URIs MUST be allocated to
+non-overlapping space.
+
+Servers exposing the storage resource MUST advertise by including the HTTP
+`Link` header with `rel="type"` targeting
+`http://www.w3.org/ns/pim/space#Storage` when responding to storage's request
+URI.
+
+Clients can determine a resource is of type storage by making an HTTP `HEAD`
+or `GET` request on the target URL, and checking for the `Link` header with
+`rel="type"` targeting `http://www.w3.org/ns/pim/space#Storage`.
+
+Clients can determine the storage of a resource by moving up the URI path
+hierarchy until the response includes a `Link` header with `rel="type"`
+targeting `http://www.w3.org/ns/pim/space#Storage`. Clients may check the root
+path of a URI for the storage claim at any time.
+
+Clients can discover a storage by making an HTTP `GET` request on the target
+URL to retrieve an RDF representation [[!RDF11-CONCEPTS]], whose encoded RDF
+graph contains a relation of type `http://www.w3.org/ns/pim/space#storage`.
+The object of the relation is the storage (`pim:Storage`).
+
+[[Source](https://github.com/solid/data-interoperability-panel/issues/10#issuecomment-598694029)]
+[[Source](https://github.com/solid/specification/issues/153#issuecomment-624630022)]
+
+When using Web Access Control ([[#wac]]):
+
+The root container (`pim:Storage`) MUST have an ACL auxiliary resource
+directly associated to it. The associated ACL document MUST include an authorization
+policy with `acl:Control` access privilege.
+
+[[Source](https://github.com/solid/specification/issues/197#issuecomment-699937520)]
+
 ### Containment ### {#resource-containment}
 
 Solid has the notion of containers to represent a collection of linked

@@ -8,7 +8,7 @@
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="Bikeshed version e3b7dea, updated Fri Nov 6 12:09:18 2020 -0800" name="generator">
   <link href="https://solid.github.io/specification/" rel="canonical">
-  <meta content="1d5d5e1ec029277d9a8a16aa0cbee549ce2621a3" name="document-revision">
+  <meta content="c1a864211f58c9e4e335a9bd253c0ea95a651f93" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -654,7 +654,29 @@ resource. Instead, the server MAY respond to requests for the latter URI with
 a 301 redirect to the former. <a href="https://github.com/solid/specification/issues/107#issuecomment-567482817">[Source</a>].
 Behaviour pertaining to authorization MUST proceed this optional redirect <a href="https://github.com/solid/specification/issues/107#issuecomment-567454889">[Source</a>]</p>
    <h3 class="heading settled" data-level="2.3" id="linked-data"><span class="secno">2.3. </span><span class="content">Linked Data</span><a class="self-link" href="#linked-data"></a></h3>
-   <h4 class="heading settled" data-level="2.3.1" id="resource-containment"><span class="secno">2.3.1. </span><span class="content">Containment</span><a class="self-link" href="#resource-containment"></a></h4>
+   <h4 class="heading settled" data-level="2.3.1" id="storage"><span class="secno">2.3.1. </span><span class="content">Storage</span><a class="self-link" href="#storage"></a></h4>
+   <p>When a server supports a data pod, it MUST provide one or more storages
+(<code>pim:Storage</code>) - a space of URIs in which data can be accessed. A storage is
+the root container for all of its contained resources (see <a href="#resource-containment">§ 2.3.2 Containment</a>).</p>
+   <p>When a server supports multiple storages, the URIs MUST be allocated to
+non-overlapping space.</p>
+   <p>Servers exposing the storage resource MUST advertise by including the HTTP <code>Link</code> header with <code>rel="type"</code> targeting <code>http://www.w3.org/ns/pim/space#Storage</code> when responding to storage’s request
+URI.</p>
+   <p>Clients can determine a resource is of type storage by making an HTTP <code>HEAD</code> or <code>GET</code> request on the target URL, and checking for the <code>Link</code> header with <code>rel="type"</code> targeting <code>http://www.w3.org/ns/pim/space#Storage</code>.</p>
+   <p>Clients can determine the storage of a resource by moving up the URI path
+hierarchy until the response includes a <code>Link</code> header with <code>rel="type"</code> targeting <code>http://www.w3.org/ns/pim/space#Storage</code>. Clients may check the root
+path of a URI for the storage claim at any time.</p>
+   <p>Clients can discover a storage by making an HTTP <code>GET</code> request on the target
+URL to retrieve an RDF representation <a data-link-type="biblio" href="#biblio-rdf11-concepts">[RDF11-CONCEPTS]</a>, whose encoded RDF
+graph contains a relation of type <code>http://www.w3.org/ns/pim/space#storage</code>.
+The object of the relation is the storage (<code>pim:Storage</code>).</p>
+   <p><a href="https://github.com/solid/data-interoperability-panel/issues/10#issuecomment-598694029">[Source</a>] <a href="https://github.com/solid/specification/issues/153#issuecomment-624630022">[Source</a>]</p>
+   <p>When using Web Access Control (<a href="#wac">§ 2.7 Web Access Control</a>):</p>
+   <p>The root container (<code>pim:Storage</code>) MUST have an ACL auxiliary resource
+directly associated to it. The associated ACL document MUST include an authorization
+policy with <code>acl:Control</code> access privilege.</p>
+   <p><a href="https://github.com/solid/specification/issues/197#issuecomment-699937520">[Source</a>]</p>
+   <h4 class="heading settled" data-level="2.3.2" id="resource-containment"><span class="secno">2.3.2. </span><span class="content">Containment</span><a class="self-link" href="#resource-containment"></a></h4>
    <p>Solid has the notion of containers to represent a collection of linked
 resources to help with resource discovery and lifecycle management.</p>
    <p>There is a 1-1 correspondence between containment triples and relative
@@ -663,7 +685,7 @@ It follows that all resources are discoverable from a container and that it is
 not possible to create orphan resources. <a href="https://github.com/solid/specification/issues/97#issuecomment-547459396">[Source</a>]</p>
    <p>The representation and behaviour of containers in Solid corresponds to LDP
 Basic Container and MUST be supported. <a href="https://github.com/solid/specification/issues/47#issuecomment-561675764">[Source</a>]</p>
-   <h4 class="heading settled" data-level="2.3.2" id="uri-persistence"><span class="secno">2.3.2. </span><span class="content">Persistence</span><a class="self-link" href="#uri-persistence"></a></h4>
+   <h4 class="heading settled" data-level="2.3.3" id="uri-persistence"><span class="secno">2.3.3. </span><span class="content">Persistence</span><a class="self-link" href="#uri-persistence"></a></h4>
     <em>This section is non-normative.</em> 
    <p>Servers should not re-use URIs, regardless of the mechanism by which resources
 are created. Certain specific cases exist where URIs may be reinstated when it
