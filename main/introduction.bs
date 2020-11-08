@@ -1,14 +1,51 @@
 Introduction {#intro}
 =====================
 
-Issue: Write Introduction section.
+Solid is a technology, like the Web, but a new level of standard which adds to
+the existing protocols with the motivation to empower an equitable, informed
+and interconnected society.
 
-Issue: Explain the principle of orthogonality,
-  by which this spec is split into multiple documents.
+The Solid ecosystem encapsulates a set of technical specifications that are
+guided by the principles we have adopted and the priority of our values. We
+acknowledge that each technical decision has ethical implications both for the
+end user (short-term) as well as society (long-term). In order to contribute
+to shared goals on a net positive social benefit, we use the <cite><a
+href="https://www.w3.org/2001/tag/doc/ethical-web-principles/">Ethical Web
+Principles</a></cite> to orient ourselves. The resulting consensus of the
+technical problems are derived from common use cases, implementation
+experience, as well as use.
 
-Issue: Explain that this specification is not documentation;
-  it is the easiest way to understand how Solid works,
-  not the easiest way for building a Solid app.
+An overarching design goal of the Solid ecosystem is to have decentralised Web
+applications for information exchange where individuals as well as groups can
+have high degree of control of their data and share with consent.
+
+The general architectural principles of Solid specifications are borrowed from
+the <cite><a href="https://www.w3.org/TR/webarch/">Architecture of the World
+Wide Web</a></cite>. The components as described in each specification may
+evolve independently – according to the principle of orthogonality in order to
+increase the flexibility and robustness of the Solid ecosystem. With that, the
+specifications are loosely coupled and indicate which features overlap with
+those governed by another specification. Extensibility as well as variability
+are also taken into account in each specification.
+
+The specifications prescribe components and mechanisms such as transfer
+protocols, identification, authentication and authorization, data formats and
+shapes, as well as query and notification systems, in order to implement
+interoperabile servers and clients.
+
+This document includes the specification document, server-client interaction
+pertaining to read-write operations to access resources - this could be in its
+own document but since it prescribes some fundamental operations, it is kept
+there for the time being. I plan to restructure this soon to make it more
+readable. Stay tuned.
+
+The specifications explain the easiest way to understand how Solid works, as
+opposed to easiest way for building Solid servers and clients. The
+specifications are accompanied with other documents such as <em>Primers</em>
+and <em>Best Practices and Guidelines</em> to help implementers to form a
+well-rounded understanding of the Solid ecosystem as well as to improve
+implementations.
+
 
 ## Definitions ## {#definitions}
 
