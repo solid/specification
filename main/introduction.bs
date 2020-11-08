@@ -33,12 +33,6 @@ protocols, identification, authentication and authorization, data formats and
 shapes, as well as query and notification systems, in order to implement
 interoperabile servers and clients.
 
-This document includes the specification document, server-client interaction
-pertaining to read-write operations to access resources - this could be in its
-own document but since it prescribes some fundamental operations, it is kept
-there for the time being. I plan to restructure this soon to make it more
-readable. Stay tuned.
-
 The specifications explain the easiest way to understand how Solid works, as
 opposed to easiest way for building Solid servers and clients. The
 specifications are accompanied with other documents such as <em>Primers</em>
