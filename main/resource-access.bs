@@ -109,7 +109,7 @@ Servers exposing the storage resource MUST advertise by including the HTTP
 `http://www.w3.org/ns/pim/space#Storage` when responding to request URI.
 
 Clients can determine a resource is of type storage by making an HTTP `HEAD`
-or `GET` request on the target URL, and check for the `Link` header with
+or `GET` request on the target URL, and checking for the `Link` header with
 `rel="type"` targeting `http://www.w3.org/ns/pim/space#Storage`.
 
 Clients can determine the storage of a resource by moving up the URI path
