@@ -14,6 +14,10 @@ Abstract:
   in an interoperable way.
 </pre>
 
+<div boilerplate="copyright">
+MIT License. Copyright 2019 - 2020 W3C Solid Community Group
+</div>
+
 ## Status of This Document ## {#status}
 **This document is an incomplete draft.**
 The sections that have been incorporated have been reviewed
@@ -23,7 +27,6 @@ However, the information in this document is still subject to change.
 You are invited to [contribute](https://github.com/solid/specification/issues)
 any feedback, comments, or questions you might have.
 
-<pre class=include>path: copyright.bs</pre>
 <pre class=include>path: introduction.bs</pre>
 <pre class=include>path: resource-access.bs</pre>
 <pre class=include>path: clients.bs</pre>
