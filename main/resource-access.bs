@@ -97,7 +97,7 @@ Behaviour pertaining to authorization MUST proceed this optional redirect
 
 ### Storage ### {#storage}
 
-When a servers supports a data pod, it MUST provide one or more storages
+When a server supports a data pod, it MUST provide one or more storages
 (`pim:Storage`). A storage is the root container for all of its contained
 resources (see [[#resource-containment]]).
 
