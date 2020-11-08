@@ -128,7 +128,7 @@ The object of the relation is the storage (`pim:Storage`).
 When using Web Access Control ([[#wac]]):
 
 The root container (`pim:Storage`) MUST have an ACL auxiliary resource
-associated to it. The associated ACL document MUST include an authorization
+directly associated to it. The associated ACL document MUST include an authorization
 policy with `acl:Control` access privilege.
 
 [[Source](https://github.com/solid/specification/issues/197#issuecomment-699937520)]
