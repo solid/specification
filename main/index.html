@@ -8,7 +8,7 @@
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="Bikeshed version e3b7dea, updated Fri Nov 6 12:09:18 2020 -0800" name="generator">
   <link href="https://solid.github.io/specification/" rel="canonical">
-  <meta content="c62cf9cc83498f42afa893ab065dee59b79d2eed" name="document-revision">
+  <meta content="d819f7d925abfbb6f700550a12b6da9d2109371f" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -467,7 +467,7 @@ dfn > a.self-link::before      { content: "#"; }
       <li><a href="#namespaces"><span class="secno">1.2</span> <span class="content">Namespaces</span></a>
      </ol>
     <li>
-     <a href="#resource-access"><span class="secno">2</span> <span class="content">Authenticated Resource Access</span></a>
+     <a href="#resource-access"><span class="secno">2</span> <span class="content">Resource Access</span></a>
      <ol class="toc">
       <li><a href="#http"><span class="secno">2.1</span> <span class="content">Hypertext Transfer Protocol</span></a>
       <li><a href="#uri"><span class="secno">2.2</span> <span class="content">Uniform Resource Identifier</span></a>
@@ -583,8 +583,7 @@ that reads or writes data from one or more <a data-link-type="dfn" href="#data-p
       <td>http://www.w3.org/ns/pim/space#
       <td>Workspace Ontology
    </table>
-   <h2 class="heading settled" data-level="2" id="resource-access"><span class="secno">2. </span><span class="content">Authenticated Resource Access</span><a class="self-link" href="#resource-access"></a></h2>
-   <p class="issue" id="issue-638fb2f9"><a class="self-link" href="#issue-638fb2f9"></a> Write introduction to the Authenticated Resource Access section.</p>
+   <h2 class="heading settled" data-level="2" id="resource-access"><span class="secno">2. </span><span class="content">Resource Access</span><a class="self-link" href="#resource-access"></a></h2>
    <h3 class="heading settled" data-level="2.1" id="http"><span class="secno">2.1. </span><span class="content">Hypertext Transfer Protocol</span><a class="self-link" href="#http"></a></h3>
    <h4 class="heading settled" data-level="2.1.1" id="http-need"><span class="secno">2.1.1. </span><span class="content">Background and Need</span><a class="self-link" href="#http-need"></a></h4>
     <em>This section is non-normative.</em> 
@@ -955,11 +954,15 @@ Solid-OIDC (<a href="#solid-oidc">§ 2.7.1 Solid-OIDC</a>). Implementations ca
 other mechanism as an additional authentication method. Implementations should
 not assume broad support for any of those additional methods.</p>
    <h3 class="heading settled" data-level="2.8" id="wac"><span class="secno">2.8. </span><span class="content">Web Access Control</span><a class="self-link" href="#wac"></a></h3>
-   <p class="issue" id="issue-d582b7fc"><a class="self-link" href="#issue-d582b7fc"></a> Write Web Access Control section.</p>
-   <p>Draft:
-A Solid data pod MUST conform to the Web Access Control specification <a data-link-type="biblio" href="#biblio-wac">[WAC]</a>.</p>
+   <p>Web Access Control (WAC) is a decentralized cross-domain access control
+system. The WAC mechanism is concerned with giving access to agents denoted by
+a <a href="#webid">§ 2.7 WebID</a> to perform various kinds of read-write operations on resources
+identified by URLs. The Access Control List (ACL) vocabulary is used to
+describe authorization policies about authorized agents with modes of access
+on target resources.</p>
+   <p>Servers MUST conform to the Web Access Control specification <a data-link-type="biblio" href="#biblio-wac">[WAC]</a>.</p>
    <p>A resource can advertise an ACL document that is directly associated by using
-the HTTP <code>Link</code> header with a <code>rel</code> value of <code>acl</code>. <a href="https://github.com/solid/specification/issues/31#issuecomment-548360553">[Source</a>]</p>
+the HTTP <code>Link</code> header with a <code>rel</code> value of <code>acl</code> <a href="#acl">§ 3.2.1 acl</a>. <a href="https://github.com/solid/specification/issues/31#issuecomment-548360553">[Source</a>]</p>
    <p>In the event that a server can’t apply an ACL to a resource, it MUST deny
 access. <a href="https://github.com/solid/specification/issues/130#issue-532777017">[Source</a>]</p>
    <h3 class="heading settled" data-level="2.9" id="cors"><span class="secno">2.9. </span><span class="content">Cross-Origin Resource Sharing</span><a class="self-link" href="#cors"></a></h3>
@@ -1251,7 +1254,6 @@ error responses SHOULD NOT contain identifiable information.</p>
   </dl>
   <h2 class="no-num no-ref heading settled" id="issues-index"><span class="content">Issues Index</span><a class="self-link" href="#issues-index"></a></h2>
   <div style="counter-reset:issue">
-   <div class="issue"> Write introduction to the Authenticated Resource Access section.<a href="#issue-638fb2f9"> ↵ </a></div>
    <div class="issue"> Pertaining to events and loss of control mitigation:
 https://github.com/solid/specification/issues/41#issuecomment-534679278<a href="#issue-5c4e642f"> ↵ </a></div>
    <div class="issue"> Is MUST NOT too strong? <a href="https://github.com/solid/specification/issues/176">Related Issue</a><a href="#issue-f351b1a1"> ↵ </a></div>
@@ -1266,7 +1268,6 @@ auxiliary resources, or whether we should have them at all. <a href="https://git
    <div class="issue"> Provide a shape to validate a shape validation auxiliary resource. May
 include the shape language, shape url, and any additional parameters to be used
 in shape validation by the server implementation.<a href="#issue-d5201460"> ↵ </a></div>
-   <div class="issue"> Write Web Access Control section.<a href="#issue-d582b7fc"> ↵ </a></div>
    <div class="issue"> Shape of ACL: https://github.com/solid/specification/issues/169<a href="#issue-e549d761"> ↵ </a></div>
   </div>
   <aside class="dfn-panel" data-for="data-pod">
