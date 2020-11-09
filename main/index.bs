@@ -75,6 +75,10 @@ any feedback, comments, or questions you might have.
       "David Chadwick"
     ]
 	},
+  "webid": {
+    "href": "https://dvcs.w3.org/hg/WebID/raw-file/tip/spec/identity-respec.html",
+    "title": "WebID 1.0 Editors Draft"
+  },
 	"wac": {
 		"href": "https://solid.github.io/specification/wac/",
 		"title": "Web Access Control"
