@@ -1,4 +1,0 @@
-Introduction {#intro}
-=====================
-
-Issue: Write Introduction section.
