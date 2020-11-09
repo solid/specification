@@ -7,7 +7,14 @@ Group: W3C Solid Community Group
 URL: https://solid.github.io/specification/
 Markup Shorthands: markdown yes
 Max ToC Depth: 2
-Editor: Your Name, Your Company http://example.com/your-company, your-email@example.com, http://example.com/your-personal-website
+Editor: [Tim Berners-Lee](https://www.w3.org/People/Berners-Lee/card#i)
+Editor: [Sarven Capadisli](https://csarven.ca/#i)
+Editor: [Ruben Verborgh](https://ruben.verborgh.org/profile/#me)
+Editor: [Kjetil Kjernsmo](http://www.kjetil.kjernsmo.net/foaf#me)
+Editor: [Justin Bingham](https://justin.bingham.id/#me)
+Editor: [Dmitri Zagidulin](http://computingjoy.com/)
+
+
 Abstract:
   This document connects a set of specifications that, together,
   provide applications with secure and permissioned access to externally stored data
