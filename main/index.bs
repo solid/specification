@@ -33,22 +33,22 @@ any feedback, comments, or questions you might have.
 
 <pre class=biblio>
 {
-	"footprints": {
-		"href": "https://solid.github.io/specification/footprints/",
-		"title": "Data Footprints"
-	},
+  "footprints": {
+    "href": "https://solid.github.io/specification/footprints/",
+    "title": "Data Footprints"
+  },
   "pod-management": {
-		"href": "https://solid.github.io/specification/pod-management/",
-		"title": "Data Pod Management"
-	},
+    "href": "https://solid.github.io/specification/pod-management/",
+    "title": "Data Pod Management"
+  },
   "profiles": {
-		"href": "https://profilenegotiation.github.io/I-D-Profile-Negotiation/I-D-Profile-Negotiation.html",
-		"title": "Indicating and Negotiating Profiles in HTTP",
+    "href": "https://profilenegotiation.github.io/I-D-Profile-Negotiation/I-D-Profile-Negotiation.html",
+    "title": "Indicating and Negotiating Profiles in HTTP",
     "authors": [
       "Lars Svensson",
       "Ruben Verborgh"
     ]
-	},
+  },
   "shex": {
     "href": "https://shex.io/shex-semantics/",
     "title": "Shape Expressions Language",
@@ -59,36 +59,36 @@ any feedback, comments, or questions you might have.
     ]
   },
   "tpf": {
-		"href": "https://www.hydra-cg.com/spec/latest/triple-pattern-fragments/",
-		"title": "Triple Pattern Fragments",
+    "href": "https://www.hydra-cg.com/spec/latest/triple-pattern-fragments/",
+    "title": "Triple Pattern Fragments",
     "authors": [
       "Ruben Verborgh"
     ]
-	},
+  },
   "verifiable-credentials": {
-		"href": "https://www.w3.org/TR/verifiable-claims-data-model/",
-		"title": "Verifiable Credentials Data Model 1.0",
+    "href": "https://www.w3.org/TR/verifiable-claims-data-model/",
+    "title": "Verifiable Credentials Data Model 1.0",
     "authors": [
       "Manu Sporny",
       "Dave Longley",
       "David Chadwick"
     ]
-	},
+  },
   "webid": {
     "href": "https://dvcs.w3.org/hg/WebID/raw-file/tip/spec/identity-respec.html",
     "title": "WebID 1.0 Editors Draft"
   },
-	"wac": {
-		"href": "https://solid.github.io/specification/wac/",
-		"title": "Web Access Control"
-	},
-	"solid-oidc": {
-		"href": "https://solid.github.io/authentication-panel/solid-oidc/",
-		"title": "Solid-OIDC"
-	},
-	"webid-tls": {
-		"href": "https://solid.github.io/specification/webid-tls/",
-		"title": "WebID-TLS"
-	}
+  "wac": {
+    "href": "https://solid.github.io/specification/wac/",
+    "title": "Web Access Control"
+  },
+  "solid-oidc": {
+    "href": "https://solid.github.io/authentication-panel/solid-oidc/",
+    "title": "Solid-OIDC"
+  },
+  "webid-tls": {
+    "href": "https://solid.github.io/specification/webid-tls/",
+    "title": "WebID-TLS"
+  }
 }
 </pre>
