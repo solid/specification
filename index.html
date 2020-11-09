@@ -8,7 +8,7 @@
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="Bikeshed version e3b7dea, updated Fri Nov 6 12:09:18 2020 -0800" name="generator">
   <link href="https://solid.github.io/specification/" rel="canonical">
-  <meta content="97c4f66756a75adedc5705b72f01016b00cf67b2" name="document-revision">
+  <meta content="40c2e93b81d0226b27d1a5da1d3234806f976b22" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -474,9 +474,10 @@ dfn > a.self-link::before      { content: "#"; }
       <li><a href="#linked-data"><span class="secno">2.3</span> <span class="content">Linked Data</span></a>
       <li><a href="#read-write"><span class="secno">2.4</span> <span class="content">Reading and Writing Resources</span></a>
       <li><a href="#rm"><span class="secno">2.5</span> <span class="content">Auxiliary Resources</span></a>
-      <li><a href="#webid"><span class="secno">2.6</span> <span class="content">WebID</span></a>
-      <li><a href="#wac"><span class="secno">2.7</span> <span class="content">Web Access Control</span></a>
-      <li><a href="#cors"><span class="secno">2.8</span> <span class="content">Cross-Origin Resource Sharing</span></a>
+      <li><a href="#notifications"><span class="secno">2.6</span> <span class="content">Notifications</span></a>
+      <li><a href="#webid"><span class="secno">2.7</span> <span class="content">WebID</span></a>
+      <li><a href="#wac"><span class="secno">2.8</span> <span class="content">Web Access Control</span></a>
+      <li><a href="#cors"><span class="secno">2.9</span> <span class="content">Cross-Origin Resource Sharing</span></a>
      </ol>
     <li>
      <a href="#clients"><span class="secno">3</span> <span class="content">Clients and Apps</span></a>
@@ -484,7 +485,6 @@ dfn > a.self-link::before      { content: "#"; }
       <li><a href="#client-guidance"><span class="secno">3.1</span> <span class="content">Implementation Guidance</span></a>
       <li><a href="#shapes-footprints"><span class="secno">3.2</span> <span class="content">Data Shapes and Footprints</span></a>
       <li><a href="#shape-guidance"><span class="secno">3.3</span> <span class="content">Data Shape Guidance</span></a>
-      <li><a href="#notifications"><span class="secno">3.4</span> <span class="content">Update Notifications</span></a>
      </ol>
     <li>
      <a href="#http-definitions"><span class="secno">4</span> <span class="content">HTTP Definitions</span></a>
@@ -621,7 +621,7 @@ of <cite>HTTP/1.1 Range Requests</cite> <a data-link-type="biblio" href="#biblio
    <p>A data pod MUST implement the server part
 of <cite>HTTP/1.1 Authentication</cite> <a data-link-type="biblio" href="#biblio-rfc7235">[RFC7235]</a>.
 When a client does not provide valid credentials
-when requesting a resource that requires it (see <a href="#webid">§ 2.6 WebID</a>),
+when requesting a resource that requires it (see <a href="#webid">§ 2.7 WebID</a>),
 the data pod MUST send a response with a <code>401</code> status code
 (unless <code>404</code> is preferred for security reasons).</p>
    <p>A Solid server MUST reject <code>PUT</code>, <code>POST</code> and <code>PATCH</code> requests without the <code>Content-Type</code> header with a status code of <code>400</code>. <a href="https://github.com/solid/specification/issues/70#issuecomment-535499628">[Source</a>]</p>
@@ -631,7 +631,7 @@ It MAY additionally be an HTTP/2 client <a data-link-type="biblio" href="#biblio
    <p>A Solid client MAY implement the client parts of <cite>HTTP/1.1 Conditional Requests</cite> <a data-link-type="biblio" href="#biblio-rfc7232">[RFC7232]</a> to only trigger updates when certain preconditions are met.
 It MAY implement <cite>HTTP/1.1 Caching</cite> <a data-link-type="biblio" href="#biblio-rfc7234">[RFC7234]</a> and <cite>HTTP/1.1 Range Requests</cite> <a data-link-type="biblio" href="#biblio-rfc7233">[RFC7233]</a> to improve performance.</p>
    <p>A Solid client MUST implement the client part
-of <cite>HTTP/1.1 Authentication</cite> <a data-link-type="biblio" href="#biblio-rfc7235">[RFC7235]</a> if it needs to access resources requiring authentication (see <a href="#webid">§ 2.6 WebID</a>).
+of <cite>HTTP/1.1 Authentication</cite> <a data-link-type="biblio" href="#biblio-rfc7235">[RFC7235]</a> if it needs to access resources requiring authentication (see <a href="#webid">§ 2.7 WebID</a>).
 When it receives a response with a <code>403</code> or <code>404</code> status code,
 it MAY repeat the request with different credentials.</p>
    <p>A Solid client MUST use the <code>Content-Type</code> HTTP header in <code>PUT</code>, <code>POST</code> and <code>PATCH</code> requests <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>. <a href="https://github.com/solid/specification/issues/70#issuecomment-547924171">[Source</a>]</p>
@@ -664,7 +664,7 @@ URL to retrieve an RDF representation <a data-link-type="biblio" href="#biblio-r
 graph contains a relation of type <code>http://www.w3.org/ns/pim/space#storage</code>.
 The object of the relation is the storage (<code>pim:Storage</code>).</p>
    <p><a href="https://github.com/solid/data-interoperability-panel/issues/10#issuecomment-598694029">[Source</a>] <a href="https://github.com/solid/specification/issues/153#issuecomment-624630022">[Source</a>]</p>
-   <p>When using Web Access Control (<a href="#wac">§ 2.7 Web Access Control</a>):</p>
+   <p>When using Web Access Control (<a href="#wac">§ 2.8 Web Access Control</a>):</p>
    <p>The root container (<code>pim:Storage</code>) MUST have an ACL auxiliary resource
 directly associated to it. The associated ACL document MUST include an authorization
 policy with <code>acl:Control</code> access privilege.</p>
@@ -729,7 +729,7 @@ modifying an existing representation of the target resource when the client
 believes that the resource does not have a current representation. <a href="https://github.com/solid/specification/issues/108#issuecomment-567272797">[Source</a>] <a href="https://github.com/solid/specification/issues/40#issuecomment-566995240">[Source</a>]</p>
    <p>Servers MAY use the HTTP <code>ETag</code> header with a strong validator for RDF bearing
 representations in order to encourage clients to opt-in to using the <code>If-Match</code> header in their requests.</p>
-   <p>When using Web Access Control (<a href="#wac">§ 2.7 Web Access Control</a>):</p>
+   <p>When using Web Access Control (<a href="#wac">§ 2.8 Web Access Control</a>):</p>
    <p>To create or update an ACL resource (see <a href="#ar-wac">§ 2.5.4.1 Web Access Control</a>), an <code>acl:agent</code> MUST
 have <code>acl:Control</code> privileges per the ACL inheritance algorithm on the
 resource directly associated with it. <a href="https://github.com/solid/specification/issues/42#issuecomment-616688848">[Source</a>]</p>
@@ -749,7 +749,7 @@ associated resources (see the <a href="#rm">§ 2.5 Auxiliary Resources</a> sec
 the container if it contains no resources. If the container contains
 resources, the server MUST respond with the <code>409</code> status code and response
 body describing the error. <a href="https://github.com/solid/specification/pull/187/files/b7426e95a1613e08195a853a4d0a403b7030f494#r447130915">[Source</a>]</p>
-   <p>When using Web Access Control (<a href="#wac">§ 2.7 Web Access Control</a>):</p>
+   <p>When using Web Access Control (<a href="#wac">§ 2.8 Web Access Control</a>):</p>
    <p>To delete a resource, an <code>acl:agent</code> MUST have <code>acl:Write</code> privilege per the
 ACL inheritance algorithm on the resource and the containing container. <a href="https://github.com/solid/specification/issues/197">[Source</a>]</p>
    <p>To delete an ACL resource (see <a href="#ar-wac">§ 2.5.4.1 Web Access Control</a>), an <code>acl:agent</code> MUST have <code>acl:Control</code> privileges per the ACL inheritance algorithm on the resource
@@ -875,11 +875,11 @@ used, and may be added to the reserved set in the future.</p>
    </table>
    <p class="issue" id="issue-e6be0bd4"><a class="self-link" href="#issue-e6be0bd4"></a> Agree on specific link relation URIs to use for auxiliary types <a href="https://github.com/solid/specification/issues/172">Related Issue</a></p>
    <h5 class="heading settled" data-level="2.5.4.1" id="ar-wac"><span class="secno">2.5.4.1. </span><span class="content">Web Access Control</span><a class="self-link" href="#ar-wac"></a></h5>
-   <p>ACL resources as defined by <a href="#wac">§ 2.7 Web Access Control</a> MUST be supported as an auxiliary
+   <p>ACL resources as defined by <a href="#wac">§ 2.8 Web Access Control</a> MUST be supported as an auxiliary
 type by Solid servers.</p>
    <p>The ACL auxiliary resource directly associated with a given resource is
 discovered by the client via the <code>rel="acl"</code> <code>Link</code> relation in a <code>Link</code> header.</p>
-   <p class="note" role="note"><span>Note:</span> Consider moving some of this information to <a href="#wac">§ 2.7 Web Access Control</a></p>
+   <p class="note" role="note"><span>Note:</span> Consider moving some of this information to <a href="#wac">§ 2.8 Web Access Control</a></p>
    <p>A given Solid resource MUST NOT be directly associated with more than one ACL
 auxiliary resource. A given ACL auxiliary resource MUST NOT be directly
 associated with more than one Solid resource.</p>
@@ -934,19 +934,26 @@ include the shape language, shape url, and any additional parameters to be used
 in shape validation by the server implementation.</p>
    <p>A Solid server SHOULD sanity check Shape validation auxiliary resources upon
 creation or update to restrict invalid changes.</p>
-   <h3 class="heading settled" data-level="2.6" id="webid"><span class="secno">2.6. </span><span class="content">WebID</span><a class="self-link" href="#webid"></a></h3>
+   <h3 class="heading settled" data-level="2.6" id="notifications"><span class="secno">2.6. </span><span class="content">Notifications</span><a class="self-link" href="#notifications"></a></h3>
+   <p>A Solid server MUST conform to the LDN specification by implementing the
+Receiver parts to receive notifications and make Inbox contents
+available <a data-link-type="biblio" href="#biblio-ldn">[LDN]</a>.</p>
+   <p>A Solid client MUST conform to the LDN specification by implementing the
+Sender or Consumer parts to discover the location of resource’s Inbox, and to
+send and retrieve the contents of an Inbox <a data-link-type="biblio" href="#biblio-ldn">[LDN]</a>.</p>
+   <h3 class="heading settled" data-level="2.7" id="webid"><span class="secno">2.7. </span><span class="content">WebID</span><a class="self-link" href="#webid"></a></h3>
    <p class="issue" id="issue-06f3939c"><a class="self-link" href="#issue-06f3939c"></a> Explain inline that agents accessing non-public Solid resources
   need to authenticate with a WebID, which is a URL
   pointing to a document with an RDF representation.</p>
-   <h4 class="heading settled" data-level="2.6.1" id="webid-oidc"><span class="secno">2.6.1. </span><span class="content">WebID-OIDC</span><a class="self-link" href="#webid-oidc"></a></h4>
+   <h4 class="heading settled" data-level="2.7.1" id="webid-oidc"><span class="secno">2.7.1. </span><span class="content">WebID-OIDC</span><a class="self-link" href="#webid-oidc"></a></h4>
    <p class="issue" id="issue-ba14f105"><a class="self-link" href="#issue-ba14f105"></a> Write WebID-OIDC section.</p>
    <p>Draft:
 A Solid data pod MUST conform to the WebID-OIDC specification <a data-link-type="biblio" href="#biblio-webid-oidc">[WEBID-OIDC]</a>.</p>
-   <h4 class="heading settled" data-level="2.6.2" id="webid-tls"><span class="secno">2.6.2. </span><span class="content">WebID-TLS</span><a class="self-link" href="#webid-tls"></a></h4>
+   <h4 class="heading settled" data-level="2.7.2" id="webid-tls"><span class="secno">2.7.2. </span><span class="content">WebID-TLS</span><a class="self-link" href="#webid-tls"></a></h4>
    <p class="issue" id="issue-b2a56341"><a class="self-link" href="#issue-b2a56341"></a> Write WebID-TLS section.</p>
    <p>Draft:
 A Solid data pod MAY conform to the WebID-TLS specification <a data-link-type="biblio" href="#biblio-webid-tls">[WEBID-TLS]</a>.</p>
-   <h3 class="heading settled" data-level="2.7" id="wac"><span class="secno">2.7. </span><span class="content">Web Access Control</span><a class="self-link" href="#wac"></a></h3>
+   <h3 class="heading settled" data-level="2.8" id="wac"><span class="secno">2.8. </span><span class="content">Web Access Control</span><a class="self-link" href="#wac"></a></h3>
    <p class="issue" id="issue-d582b7fc"><a class="self-link" href="#issue-d582b7fc"></a> Write Web Access Control section.</p>
    <p>Draft:
 A Solid data pod MUST conform to the Web Access Control specification <a data-link-type="biblio" href="#biblio-wac">[WAC]</a>.</p>
@@ -954,8 +961,8 @@ A Solid data pod MUST conform to the Web Access Control specification <a data-li
 the HTTP <code>Link</code> header with a <code>rel</code> value of <code>acl</code>. <a href="https://github.com/solid/specification/issues/31#issuecomment-548360553">[Source</a>]</p>
    <p>In the event that a server can’t apply an ACL to a resource, it MUST deny
 access. <a href="https://github.com/solid/specification/issues/130#issue-532777017">[Source</a>]</p>
-   <h3 class="heading settled" data-level="2.8" id="cors"><span class="secno">2.8. </span><span class="content">Cross-Origin Resource Sharing</span><a class="self-link" href="#cors"></a></h3>
-   <h4 class="heading settled" data-level="2.8.1" id="cors-need"><span class="secno">2.8.1. </span><span class="content">Background and Need</span><a class="self-link" href="#cors-need"></a></h4>
+   <h3 class="heading settled" data-level="2.9" id="cors"><span class="secno">2.9. </span><span class="content">Cross-Origin Resource Sharing</span><a class="self-link" href="#cors"></a></h3>
+   <h4 class="heading settled" data-level="2.9.1" id="cors-need"><span class="secno">2.9.1. </span><span class="content">Background and Need</span><a class="self-link" href="#cors-need"></a></h4>
     <em>This section is non-normative.</em> 
    <p><a data-link-type="dfn" href="#solid-app" id="ref-for-solid-app">Solid apps</a> typically access data from multiple sources.
 However,
@@ -992,7 +999,7 @@ the goal is to allow <em>all</em> actions on the CORS level,
 such that the deeper <a href="#wac">access control layer</a> can exert full control over the app’s allowed permissions.
 The next section describes how to achieve this
 through the right HTTP header configuration.</p>
-   <h4 class="heading settled" data-level="2.8.2" id="cors-server"><span class="secno">2.8.2. </span><span class="content">Required server-side implementation</span><a class="self-link" href="#cors-server"></a></h4>
+   <h4 class="heading settled" data-level="2.9.2" id="cors-server"><span class="secno">2.9.2. </span><span class="content">Required server-side implementation</span><a class="self-link" href="#cors-server"></a></h4>
    <p>A <a data-link-type="dfn" href="#data-pod" id="ref-for-data-pod③">data pod</a> MUST implement the CORS protocol <a data-link-type="biblio" href="#biblio-fetch">[FETCH]</a> such that, to the extent possible,
 the browser allows Solid apps
 to send any request and combination of request headers
@@ -1051,10 +1058,6 @@ A Solid client MUST conform to the Data Footprints specification <a data-link-ty
    <h3 class="heading settled" data-level="3.3" id="shape-guidance"><span class="secno">3.3. </span><span class="content">Data Shape Guidance</span><a class="self-link" href="#shape-guidance"></a></h3>
     <em>This section is non-normative.</em> 
    <p class="issue" id="issue-88b43b72"><a class="self-link" href="#issue-88b43b72"></a> Write Data Shape Guidance section.</p>
-   <h3 class="heading settled" data-level="3.4" id="notifications"><span class="secno">3.4. </span><span class="content">Update Notifications</span><a class="self-link" href="#notifications"></a></h3>
-   <p class="issue" id="issue-045d0b84"><a class="self-link" href="#issue-045d0b84"></a> Write Update Notification section.</p>
-   <p>Draft:
-A Solid client MUST conform to the LDN specification <a data-link-type="biblio" href="#biblio-ldn">[LDN]</a>.</p>
    <h2 class="heading settled" data-level="4" id="http-definitions"><span class="secno">4. </span><span class="content">HTTP Definitions</span><a class="self-link" href="#http-definitions"></a></h2>
    <h3 class="heading settled" data-level="4.1" id="http-headers"><span class="secno">4.1. </span><span class="content">HTTP Headers</span><a class="self-link" href="#http-headers"></a></h3>
    <h4 class="heading settled" data-level="4.1.1" id="accept-put"><span class="secno">4.1.1. </span><span class="content">The Accept-Put Response Header</span><a class="self-link" href="#accept-put"></a></h4>
@@ -1302,7 +1305,6 @@ in shape validation by the server implementation.<a href="#issue-d5201460"> ↵ 
    <div class="issue"> SHACL or ShEx?<a href="#issue-66cd441f"> ↵ </a></div>
    <div class="issue"> Write Footprints section.<a href="#issue-e8199220"> ↵ </a></div>
    <div class="issue"> Write Data Shape Guidance section.<a href="#issue-88b43b72"> ↵ </a></div>
-   <div class="issue"> Write Update Notification section.<a href="#issue-045d0b84"> ↵ </a></div>
    <div class="issue"> Shape of ACL: https://github.com/solid/specification/issues/169<a href="#issue-e549d761"> ↵ </a></div>
    <div class="issue"> Write Privacy Considerations section.<a href="#issue-4267249d"> ↵ </a></div>
    <div class="issue"> Write Identifiable Information section.<a href="#issue-e08c9a5d"> ↵ </a></div>
@@ -1313,14 +1315,14 @@ in shape validation by the server implementation.<a href="#issue-d5201460"> ↵ 
    <ul>
     <li><a href="#ref-for-data-pod">1.1. Definitions</a>
     <li><a href="#ref-for-data-pod①">2.1.2. Required server-side implementation</a>
-    <li><a href="#ref-for-data-pod②">2.8.1. Background and Need</a>
-    <li><a href="#ref-for-data-pod③">2.8.2. Required server-side implementation</a>
+    <li><a href="#ref-for-data-pod②">2.9.1. Background and Need</a>
+    <li><a href="#ref-for-data-pod③">2.9.2. Required server-side implementation</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="solid-app">
    <b><a href="#solid-app">#solid-app</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-solid-app">2.8.1. Background and Need</a>
+    <li><a href="#ref-for-solid-app">2.9.1. Background and Need</a>
    </ul>
   </aside>
 <script>/* script-dfn-panel */

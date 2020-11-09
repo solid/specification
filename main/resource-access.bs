@@ -338,7 +338,6 @@ respond with a `307` or `308` status code and `Location` header specifying the
 preferred URI reference.
 [[Source](https://github.com/solid/specification/issues/109)]
 
-
 ## Auxiliary Resources ## {#rm}
 
 ### Background and Need ### {#ar-need}
@@ -613,6 +612,16 @@ in shape validation by the server implementation.
 
 A Solid server SHOULD sanity check Shape validation auxiliary resources upon
 creation or update to restrict invalid changes.
+
+## Notifications ## {#notifications}
+
+A Solid server MUST conform to the LDN specification by implementing the
+Receiver parts to receive notifications and make Inbox contents
+available [[!LDN]].
+
+A Solid client MUST conform to the LDN specification by implementing the
+Sender or Consumer parts to discover the location of resource's Inbox, and to
+send and retrieve the contents of an Inbox [[!LDN]].
 
 ## WebID ## {#webid}
 

@@ -37,11 +37,3 @@ A Solid client MUST conform to the Data Footprints specification [[!FOOTPRINTS]]
 <em>This section is non-normative.</em>
 
 Issue: Write Data Shape Guidance section.
-
-
-## Update Notifications ## {#notifications}
-
-Issue: Write Update Notification section.
-
-Draft:
-A Solid client MUST conform to the LDN specification [[!LDN]].
