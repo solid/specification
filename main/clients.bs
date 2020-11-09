@@ -1,4 +1,4 @@
-Clients and Apps {#clients}
+Clients and Applications {#clients}
 ===========================
 
 Issue: Write introduction to the Clients and Apps section.

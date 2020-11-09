@@ -8,7 +8,7 @@
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="Bikeshed version e3b7dea, updated Fri Nov 6 12:09:18 2020 -0800" name="generator">
   <link href="https://solid.github.io/specification/" rel="canonical">
-  <meta content="f9bfa4112a6b1443fd3b1561114ab795367e5296" name="document-revision">
+  <meta content="717fee123938933e6d7d3826c566c9f422c8a36b" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -480,7 +480,7 @@ dfn > a.self-link::before      { content: "#"; }
       <li><a href="#cors"><span class="secno">2.9</span> <span class="content">Cross-Origin Resource Sharing</span></a>
      </ol>
     <li>
-     <a href="#clients"><span class="secno">3</span> <span class="content">Clients and Apps</span></a>
+     <a href="#clients"><span class="secno">3</span> <span class="content">Clients and Applications</span></a>
      <ol class="toc">
       <li><a href="#client-guidance"><span class="secno">3.1</span> <span class="content">Implementation Guidance</span></a>
       <li><a href="#shapes-footprints"><span class="secno">3.2</span> <span class="content">Data Shapes and Footprints</span></a>
@@ -942,9 +942,15 @@ available <a data-link-type="biblio" href="#biblio-ldn">[LDN]</a>.</p>
 Sender or Consumer parts to discover the location of resource’s Inbox, and to
 send and retrieve the contents of an Inbox <a data-link-type="biblio" href="#biblio-ldn">[LDN]</a>.</p>
    <h3 class="heading settled" data-level="2.7" id="webid"><span class="secno">2.7. </span><span class="content">WebID</span><a class="self-link" href="#webid"></a></h3>
-   <p class="issue" id="issue-06f3939c"><a class="self-link" href="#issue-06f3939c"></a> Explain inline that agents accessing non-public Solid resources
-  need to authenticate with a WebID, which is a URL
-  pointing to a document with an RDF representation.</p>
+   <p>A <em>WebID</em> is a HTTP URI denoting an agent, for example a person, organisation,
+or software <a data-link-type="biblio" href="#biblio-webid">[WEBID]</a>. When a WebID is dereferenced, server provides a
+representation of the WebID Profile in an <em>RDF document</em> <a data-link-type="biblio" href="#biblio-rdf11-concepts">[RDF11-CONCEPTS]</a> which uniquely describes an agent denoted by a WebID. The WebID Profile can be
+used by controlling agents to link with others to grant access to identity
+resources as they see fit. WebIDs are an underpinning component in the Solid
+ecosystem and are used as the primary identifier for users and client
+application.</p>
+   <p>When using Web Access Control (<a href="#wac">§ 2.8 Web Access Control</a>):</p>
+   <p>Agents accessing non-public Solid resources need to authenticate with a WebID.</p>
    <h4 class="heading settled" data-level="2.7.1" id="webid-oidc"><span class="secno">2.7.1. </span><span class="content">WebID-OIDC</span><a class="self-link" href="#webid-oidc"></a></h4>
    <p class="issue" id="issue-ba14f105"><a class="self-link" href="#issue-ba14f105"></a> Write WebID-OIDC section.</p>
    <p>Draft:
@@ -1039,7 +1045,7 @@ because values longer than 128 characters
 (not uncommon for RDF-based Solid apps)
 would otherwise be blocked,
 despite shorter <code>Accept</code> headers being allowed without explicit mention.</p>
-   <h2 class="heading settled" data-level="3" id="clients"><span class="secno">3. </span><span class="content">Clients and Apps</span><a class="self-link" href="#clients"></a></h2>
+   <h2 class="heading settled" data-level="3" id="clients"><span class="secno">3. </span><span class="content">Clients and Applications</span><a class="self-link" href="#clients"></a></h2>
    <p class="issue" id="issue-428d418b"><a class="self-link" href="#issue-428d418b"></a> Write introduction to the Clients and Apps section.</p>
    <h3 class="heading settled" data-level="3.1" id="client-guidance"><span class="secno">3.1. </span><span class="content">Implementation Guidance</span><a class="self-link" href="#client-guidance"></a></h3>
     <em>This section is non-normative.</em> 
@@ -1273,6 +1279,8 @@ error responses SHOULD NOT contain identifiable information.</p>
   <dl>
    <dt id="biblio-security-privacy-questionnaire">[SECURITY-PRIVACY-QUESTIONNAIRE]
    <dd>Theresa O'Connor; Peter Snyder. <a href="https://www.w3.org/TR/security-privacy-questionnaire/">Self-Review Questionnaire: Security and Privacy</a>. 8 May 2020. NOTE. URL: <a href="https://www.w3.org/TR/security-privacy-questionnaire/">https://www.w3.org/TR/security-privacy-questionnaire/</a>
+   <dt id="biblio-webid">[WEBID]
+   <dd><a href="https://dvcs.w3.org/hg/WebID/raw-file/tip/spec/identity-respec.html">WebID 1.0 Editors Draft</a>. URL: <a href="https://dvcs.w3.org/hg/WebID/raw-file/tip/spec/identity-respec.html">https://dvcs.w3.org/hg/WebID/raw-file/tip/spec/identity-respec.html</a>
   </dl>
   <h2 class="no-num no-ref heading settled" id="issues-index"><span class="content">Issues Index</span><a class="self-link" href="#issues-index"></a></h2>
   <div style="counter-reset:issue">
@@ -1292,9 +1300,6 @@ auxiliary resources, or whether we should have them at all. <a href="https://git
    <div class="issue"> Provide a shape to validate a shape validation auxiliary resource. May
 include the shape language, shape url, and any additional parameters to be used
 in shape validation by the server implementation.<a href="#issue-d5201460"> ↵ </a></div>
-   <div class="issue"> Explain inline that agents accessing non-public Solid resources
-  need to authenticate with a WebID, which is a URL
-  pointing to a document with an RDF representation.<a href="#issue-06f3939c"> ↵ </a></div>
    <div class="issue"> Write WebID-OIDC section.<a href="#issue-ba14f105"> ↵ </a></div>
    <div class="issue"> Write WebID-TLS section.<a href="#issue-b2a56341"> ↵ </a></div>
    <div class="issue"> Write Web Access Control section.<a href="#issue-d582b7fc"> ↵ </a></div>
