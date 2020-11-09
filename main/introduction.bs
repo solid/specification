@@ -56,9 +56,6 @@ A <dfn export>write operation</dfn> entails that information about resources can
 
 An <dfn export>append operation</dfn> entails that information can be added but not removed. [[Source](https://github.com/solid/specification/issues/118#issuecomment-569648485)]
 
-Issue: Introduce the structure of this document.
-  [Cross-server interoperability](#resource-access)
-  [Cross-app interoperability](#clients)
 
 ## Namespaces ## {#namespaces}
 <table>
