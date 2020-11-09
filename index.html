@@ -8,7 +8,7 @@
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="Bikeshed version e3b7dea, updated Fri Nov 6 12:09:18 2020 -0800" name="generator">
   <link href="https://solid.github.io/specification/" rel="canonical">
-  <meta content="43a0cc739fb537988a602326b6fe4493a9f35d10" name="document-revision">
+  <meta content="c62cf9cc83498f42afa893ab065dee59b79d2eed" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -480,23 +480,16 @@ dfn > a.self-link::before      { content: "#"; }
       <li><a href="#cors"><span class="secno">2.9</span> <span class="content">Cross-Origin Resource Sharing</span></a>
      </ol>
     <li>
-     <a href="#clients"><span class="secno">3</span> <span class="content">Clients and Applications</span></a>
+     <a href="#http-definitions"><span class="secno">3</span> <span class="content">HTTP Definitions</span></a>
      <ol class="toc">
-      <li><a href="#client-guidance"><span class="secno">3.1</span> <span class="content">Implementation Guidance</span></a>
-      <li><a href="#shapes-footprints"><span class="secno">3.2</span> <span class="content">Data Shapes and Footprints</span></a>
-      <li><a href="#shape-guidance"><span class="secno">3.3</span> <span class="content">Data Shape Guidance</span></a>
+      <li><a href="#http-headers"><span class="secno">3.1</span> <span class="content">HTTP Headers</span></a>
+      <li><a href="#link-relations"><span class="secno">3.2</span> <span class="content">Link Relations</span></a>
      </ol>
     <li>
-     <a href="#http-definitions"><span class="secno">4</span> <span class="content">HTTP Definitions</span></a>
+     <a href="#security"><span class="secno">4</span> <span class="content">Security Considerations</span></a>
      <ol class="toc">
-      <li><a href="#http-headers"><span class="secno">4.1</span> <span class="content">HTTP Headers</span></a>
-      <li><a href="#link-relations"><span class="secno">4.2</span> <span class="content">Link Relations</span></a>
-     </ol>
-    <li>
-     <a href="#security"><span class="secno">5</span> <span class="content">Security Considerations</span></a>
-     <ol class="toc">
-      <li><a href="#privacy"><span class="secno">5.1</span> <span class="content">Privacy Considerations</span></a>
-      <li><a href="#security-privacy-review"><span class="secno">5.2</span> <span class="content">Security and Privacy Review</span></a>
+      <li><a href="#privacy"><span class="secno">4.1</span> <span class="content">Privacy Considerations</span></a>
+      <li><a href="#security-privacy-review"><span class="secno">4.2</span> <span class="content">Security and Privacy Review</span></a>
      </ol>
     <li>
      <a href="#w3c-conformance"><span class="secno"></span> <span class="content">Conformance</span></a>
@@ -566,7 +559,6 @@ that reads or writes data from one or more <a data-link-type="dfn" href="#data-p
    <p>A <dfn data-dfn-type="dfn" data-export id="read-operation">read operation<a class="self-link" href="#read-operation"></a></dfn> entails that information about a resource’s existence or its description can be known. <a href="https://github.com/solid/specification/issues/149#issue-568433265">[Source</a>]</p>
    <p>A <dfn data-dfn-type="dfn" data-export id="write-operation">write operation<a class="self-link" href="#write-operation"></a></dfn> entails that information about resources can be created or removed. <a href="https://github.com/solid/specification/issues/126#issuecomment-569920473">[Source</a>]</p>
    <p>An <dfn data-dfn-type="dfn" data-export id="append-operation">append operation<a class="self-link" href="#append-operation"></a></dfn> entails that information can be added but not removed. <a href="https://github.com/solid/specification/issues/118#issuecomment-569648485">[Source</a>]</p>
-   <p class="issue" id="issue-45213e2c"><a class="self-link" href="#issue-45213e2c"></a> Introduce the structure of this document. <a href="#resource-access">Cross-server interoperability</a> <a href="#clients">Cross-app interoperability</a></p>
    <h3 class="heading settled" data-level="1.2" id="namespaces"><span class="secno">1.2. </span><span class="content">Namespaces</span><a class="self-link" href="#namespaces"></a></h3>
    <table>
     <tbody>
@@ -1048,28 +1040,9 @@ because values longer than 128 characters
 (not uncommon for RDF-based Solid apps)
 would otherwise be blocked,
 despite shorter <code>Accept</code> headers being allowed without explicit mention.</p>
-   <h2 class="heading settled" data-level="3" id="clients"><span class="secno">3. </span><span class="content">Clients and Applications</span><a class="self-link" href="#clients"></a></h2>
-   <p class="issue" id="issue-428d418b"><a class="self-link" href="#issue-428d418b"></a> Write introduction to the Clients and Apps section.</p>
-   <h3 class="heading settled" data-level="3.1" id="client-guidance"><span class="secno">3.1. </span><span class="content">Implementation Guidance</span><a class="self-link" href="#client-guidance"></a></h3>
-    <em>This section is non-normative.</em> 
-   <p class="issue" id="issue-1acf634c"><a class="self-link" href="#issue-1acf634c"></a> Write Implementation Guidance section.</p>
-   <h3 class="heading settled" data-level="3.2" id="shapes-footprints"><span class="secno">3.2. </span><span class="content">Data Shapes and Footprints</span><a class="self-link" href="#shapes-footprints"></a></h3>
-   <p class="issue" id="issue-97a4e1a4"><a class="self-link" href="#issue-97a4e1a4"></a> Write introduction to Data Shapes and Footprints section.</p>
-   <h4 class="heading settled" data-level="3.2.1" id="shapes"><span class="secno">3.2.1. </span><span class="content">Data Shapes</span><a class="self-link" href="#shapes"></a></h4>
-   <p class="issue" id="issue-35932cfe"><a class="self-link" href="#issue-35932cfe"></a> Write Data Shapes section.</p>
-   <p>Draft:
-A Solid client MUST conform to the SHACL specification <a data-link-type="biblio" href="#biblio-shacl">[SHACL]</a>.</p>
-   <p class="issue" id="issue-66cd441f"><a class="self-link" href="#issue-66cd441f"></a> SHACL or ShEx?</p>
-   <h4 class="heading settled" data-level="3.2.2" id="footprints"><span class="secno">3.2.2. </span><span class="content">Footprints</span><a class="self-link" href="#footprints"></a></h4>
-   <p class="issue" id="issue-e8199220"><a class="self-link" href="#issue-e8199220"></a> Write Footprints section.</p>
-   <p>Draft:
-A Solid client MUST conform to the Data Footprints specification <a data-link-type="biblio" href="#biblio-footprints">[FOOTPRINTS]</a>.</p>
-   <h3 class="heading settled" data-level="3.3" id="shape-guidance"><span class="secno">3.3. </span><span class="content">Data Shape Guidance</span><a class="self-link" href="#shape-guidance"></a></h3>
-    <em>This section is non-normative.</em> 
-   <p class="issue" id="issue-88b43b72"><a class="self-link" href="#issue-88b43b72"></a> Write Data Shape Guidance section.</p>
-   <h2 class="heading settled" data-level="4" id="http-definitions"><span class="secno">4. </span><span class="content">HTTP Definitions</span><a class="self-link" href="#http-definitions"></a></h2>
-   <h3 class="heading settled" data-level="4.1" id="http-headers"><span class="secno">4.1. </span><span class="content">HTTP Headers</span><a class="self-link" href="#http-headers"></a></h3>
-   <h4 class="heading settled" data-level="4.1.1" id="accept-put"><span class="secno">4.1.1. </span><span class="content">The Accept-Put Response Header</span><a class="self-link" href="#accept-put"></a></h4>
+   <h2 class="heading settled" data-level="3" id="http-definitions"><span class="secno">3. </span><span class="content">HTTP Definitions</span><a class="self-link" href="#http-definitions"></a></h2>
+   <h3 class="heading settled" data-level="3.1" id="http-headers"><span class="secno">3.1. </span><span class="content">HTTP Headers</span><a class="self-link" href="#http-headers"></a></h3>
+   <h4 class="heading settled" data-level="3.1.1" id="accept-put"><span class="secno">3.1.1. </span><span class="content">The Accept-Put Response Header</span><a class="self-link" href="#accept-put"></a></h4>
    <p>This specification introduces a new HTTP response header <code>Accept-Put</code> used to specify the document formats accepted by the server on HTTP PUT requests. It is modelled after the <code>Accept-Patch</code> header defined in <a data-link-type="biblio" href="#biblio-rfc5789">[RFC5789]</a> and the <code>Accept-Post</code> header defined in <a data-link-type="biblio" href="#biblio-ldp">[LDP]</a>.</p>
    <p>The syntax for <code>Accept-Put</code>, using the ABNF syntax defined in Section 1.2 of <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>, is:</p>
 <pre>Accept-Put = "Accept-Put" ":" # media-range
@@ -1092,9 +1065,9 @@ A Solid client MUST conform to the Data Footprints specification <a data-link-ty
     <dd data-md>
      <p>This specification</p>
    </dl>
-   <h3 class="heading settled" data-level="4.2" id="link-relations"><span class="secno">4.2. </span><span class="content">Link Relations</span><a class="self-link" href="#link-relations"></a></h3>
+   <h3 class="heading settled" data-level="3.2" id="link-relations"><span class="secno">3.2. </span><span class="content">Link Relations</span><a class="self-link" href="#link-relations"></a></h3>
    <p>The intent is that these link relations will be registered with IANA per <a data-link-type="biblio" href="#biblio-rfc8288">[RFC8288]</a>.</p>
-   <h4 class="heading settled" data-level="4.2.1" id="acl"><span class="secno">4.2.1. </span><span class="content">acl</span><a class="self-link" href="#acl"></a></h4>
+   <h4 class="heading settled" data-level="3.2.1" id="acl"><span class="secno">3.2.1. </span><span class="content">acl</span><a class="self-link" href="#acl"></a></h4>
    <p>The contents of this section were originally taken from <a href="https://www.w3.org/wiki/WebAccessControl">Web Access Control</a>.</p>
    <p>The following Link Relationship will be submitted to IANA for review, approval, and inclusion in the IANA Link Relations registry.</p>
    <dl>
@@ -1113,7 +1086,7 @@ A Solid client MUST conform to the Data Footprints specification <a data-link-ty
    </dl>
    <p><a href="https://github.com/solid/specification/issues/54">[Source</a>] <a href="https://github.com/solid/web-access-control-spec/issues/21">[Source</a>]</p>
    <p class="issue" id="issue-e549d761"><a class="self-link" href="#issue-e549d761"></a> Shape of ACL: https://github.com/solid/specification/issues/169</p>
-   <h2 class="heading settled" data-level="5" id="security"><span class="secno">5. </span><span class="content">Security Considerations</span><a class="self-link" href="#security"></a></h2>
+   <h2 class="heading settled" data-level="4" id="security"><span class="secno">4. </span><span class="content">Security Considerations</span><a class="self-link" href="#security"></a></h2>
    <p>Some of the normative references with this specification point to documents
 with a <em>Living Standard</em> or <em>Draft</em> status, meaning their contents can still
 change over time. It is advised to monitor these documents, as such changes
@@ -1160,14 +1133,11 @@ Unsecured TCP connections without TLS MAY be used
 in testing environments
 or when the data pod is behind a reverse proxy
 that terminates a secure connection.</p>
-   <h3 class="heading settled" data-level="5.1" id="privacy"><span class="secno">5.1. </span><span class="content">Privacy Considerations</span><a class="self-link" href="#privacy"></a></h3>
-   <p class="issue" id="issue-4267249d"><a class="self-link" href="#issue-4267249d"></a> Write Privacy Considerations section.</p>
-   <h4 class="heading settled" data-level="5.1.1" id="identifiable-information"><span class="secno">5.1.1. </span><span class="content">Identifiable Information</span><a class="self-link" href="#identifiable-information"></a></h4>
-   <p class="issue" id="issue-e08c9a5d"><a class="self-link" href="#issue-e08c9a5d"></a> Write Identifiable Information section.</p>
+   <h3 class="heading settled" data-level="4.1" id="privacy"><span class="secno">4.1. </span><span class="content">Privacy Considerations</span><a class="self-link" href="#privacy"></a></h3>
+   <h4 class="heading settled" data-level="4.1.1" id="identifiable-information"><span class="secno">4.1.1. </span><span class="content">Identifiable Information</span><a class="self-link" href="#identifiable-information"></a></h4>
    <p>In order to prevent leakage of non-resource data,
 error responses SHOULD NOT contain identifiable information.</p>
-   <h3 class="heading settled" data-level="5.2" id="security-privacy-review"><span class="secno">5.2. </span><span class="content">Security and Privacy Review</span><a class="self-link" href="#security-privacy-review"></a></h3>
-   <p class="issue" id="issue-4eadf7d9"><a class="self-link" href="#issue-4eadf7d9"></a> Complete <a data-link-type="biblio" href="#biblio-security-privacy-questionnaire">[security-privacy-questionnaire]</a></p>
+   <h3 class="heading settled" data-level="4.2" id="security-privacy-review"><span class="secno">4.2. </span><span class="content">Security and Privacy Review</span><a class="self-link" href="#security-privacy-review"></a></h3>
   </main>
   <div data-fill-with="conformance">
    <h2 class="no-ref no-num heading settled" id="w3c-conformance"><span class="content">Conformance</span><a class="self-link" href="#w3c-conformance"></a></h2>
@@ -1225,8 +1195,6 @@ error responses SHOULD NOT contain identifiable information.</p>
   <dl>
    <dt id="biblio-fetch">[FETCH]
    <dd>Anne van Kesteren. <a href="https://fetch.spec.whatwg.org/">Fetch Standard</a>. Living Standard. URL: <a href="https://fetch.spec.whatwg.org/">https://fetch.spec.whatwg.org/</a>
-   <dt id="biblio-footprints">[FOOTPRINTS]
-   <dd><a href="https://solid.github.io/specification/footprints/">Data Footprints</a>. URL: <a href="https://solid.github.io/specification/footprints/">https://solid.github.io/specification/footprints/</a>
    <dt id="biblio-json-ld11">[JSON-LD11]
    <dd>Gregg Kellogg; Pierre-Antoine Champin; Dave Longley. <a href="https://www.w3.org/TR/json-ld11/">JSON-LD 1.1</a>. 16 July 2020. REC. URL: <a href="https://www.w3.org/TR/json-ld11/">https://www.w3.org/TR/json-ld11/</a>
    <dt id="biblio-ldn">[LDN]
@@ -1265,8 +1233,6 @@ error responses SHOULD NOT contain identifiable information.</p>
    <dd>M. Belshe; R. Peon; M. Thomson, Ed.. <a href="https://httpwg.org/specs/rfc7540.html">Hypertext Transfer Protocol Version 2 (HTTP/2)</a>. May 2015. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc7540.html">https://httpwg.org/specs/rfc7540.html</a>
    <dt id="biblio-rfc8288">[RFC8288]
    <dd>M. Nottingham. <a href="https://httpwg.org/specs/rfc8288.html">Web Linking</a>. October 2017. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc8288.html">https://httpwg.org/specs/rfc8288.html</a>
-   <dt id="biblio-shacl">[SHACL]
-   <dd>Holger Knublauch; Dimitris Kontokostas. <a href="https://www.w3.org/TR/shacl/">Shapes Constraint Language (SHACL)</a>. 20 July 2017. REC. URL: <a href="https://www.w3.org/TR/shacl/">https://www.w3.org/TR/shacl/</a>
    <dt id="biblio-solid-oidc">[SOLID-OIDC]
    <dd><a href="https://solid.github.io/authentication-panel/solid-oidc/">Solid-OIDC</a>. URL: <a href="https://solid.github.io/authentication-panel/solid-oidc/">https://solid.github.io/authentication-panel/solid-oidc/</a>
    <dt id="biblio-turtle">[Turtle]
@@ -1280,14 +1246,11 @@ error responses SHOULD NOT contain identifiable information.</p>
   </dl>
   <h3 class="no-num no-ref heading settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
   <dl>
-   <dt id="biblio-security-privacy-questionnaire">[SECURITY-PRIVACY-QUESTIONNAIRE]
-   <dd>Theresa O'Connor; Peter Snyder. <a href="https://www.w3.org/TR/security-privacy-questionnaire/">Self-Review Questionnaire: Security and Privacy</a>. 8 May 2020. NOTE. URL: <a href="https://www.w3.org/TR/security-privacy-questionnaire/">https://www.w3.org/TR/security-privacy-questionnaire/</a>
    <dt id="biblio-webid-tls">[WEBID-TLS]
    <dd><a href="https://solid.github.io/specification/webid-tls/">WebID-TLS</a>. URL: <a href="https://solid.github.io/specification/webid-tls/">https://solid.github.io/specification/webid-tls/</a>
   </dl>
   <h2 class="no-num no-ref heading settled" id="issues-index"><span class="content">Issues Index</span><a class="self-link" href="#issues-index"></a></h2>
   <div style="counter-reset:issue">
-   <div class="issue"> Introduce the structure of this document. <a href="#resource-access">Cross-server interoperability</a> <a href="#clients">Cross-app interoperability</a><a href="#issue-45213e2c"> ↵ </a></div>
    <div class="issue"> Write introduction to the Authenticated Resource Access section.<a href="#issue-638fb2f9"> ↵ </a></div>
    <div class="issue"> Pertaining to events and loss of control mitigation:
 https://github.com/solid/specification/issues/41#issuecomment-534679278<a href="#issue-5c4e642f"> ↵ </a></div>
@@ -1304,17 +1267,7 @@ auxiliary resources, or whether we should have them at all. <a href="https://git
 include the shape language, shape url, and any additional parameters to be used
 in shape validation by the server implementation.<a href="#issue-d5201460"> ↵ </a></div>
    <div class="issue"> Write Web Access Control section.<a href="#issue-d582b7fc"> ↵ </a></div>
-   <div class="issue"> Write introduction to the Clients and Apps section.<a href="#issue-428d418b"> ↵ </a></div>
-   <div class="issue"> Write Implementation Guidance section.<a href="#issue-1acf634c"> ↵ </a></div>
-   <div class="issue"> Write introduction to Data Shapes and Footprints section.<a href="#issue-97a4e1a4"> ↵ </a></div>
-   <div class="issue"> Write Data Shapes section.<a href="#issue-35932cfe"> ↵ </a></div>
-   <div class="issue"> SHACL or ShEx?<a href="#issue-66cd441f"> ↵ </a></div>
-   <div class="issue"> Write Footprints section.<a href="#issue-e8199220"> ↵ </a></div>
-   <div class="issue"> Write Data Shape Guidance section.<a href="#issue-88b43b72"> ↵ </a></div>
    <div class="issue"> Shape of ACL: https://github.com/solid/specification/issues/169<a href="#issue-e549d761"> ↵ </a></div>
-   <div class="issue"> Write Privacy Considerations section.<a href="#issue-4267249d"> ↵ </a></div>
-   <div class="issue"> Write Identifiable Information section.<a href="#issue-e08c9a5d"> ↵ </a></div>
-   <div class="issue"> Complete <a data-link-type="biblio" href="#biblio-security-privacy-questionnaire">[security-privacy-questionnaire]</a><a href="#issue-4eadf7d9"> ↵ </a></div>
   </div>
   <aside class="dfn-panel" data-for="data-pod">
    <b><a href="#data-pod">#data-pod</a></b><b>Referenced in:</b>
