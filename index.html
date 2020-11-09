@@ -8,7 +8,7 @@
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="Bikeshed version e3b7dea, updated Fri Nov 6 12:09:18 2020 -0800" name="generator">
   <link href="https://solid.github.io/specification/" rel="canonical">
-  <meta content="fe6c1e1f835ec7daaafb3c6484f5aaab363328e9" name="document-revision">
+  <meta content="6bb80e7ad60bf0536903079310b415cfcb0c66dc" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -699,10 +699,9 @@ through POST, using the HTTP <code>Slug</code> header as defined in <a data-link
    <p>When responding to authorized requests:</p>
    <p>Servers MUST indicate their support for HTTP Methods by responding to HTTP <code>GET</code> and <code>HEAD</code> requests for the target resource with the HTTP Method tokens
 in the HTTP response header <code>Allow</code>.</p>
-   <p>Servers MUST indicate supported media types in the HTTP <code>Accept-Patch</code> <a data-link-type="biblio" href="#biblio-rfc5789">[RFC5789]</a> and the <code>Accept-Post</code> <a data-link-type="biblio" href="#biblio-ldp">[LDP]</a> response headers that correspond
-to acceptable HTTP methods listed in <code>Allow</code> header value in response to HTTP <code>GET</code> and <code>HEAD</code> requests.</p>
-   <p>Servers MAY include the HTTP <code>Accept-Patch</code> and <code>Accept-Post</code> headers in the
-response of a <code>OPTIONS *</code> request.</p>
+   <p>Servers MUST indicate supported media types in the HTTP <code>Accept-Patch</code> <a data-link-type="biblio" href="#biblio-rfc5789">[RFC5789]</a>, <code>Accept-Post</code> <a data-link-type="biblio" href="#biblio-ldp">[LDP]</a> and <code>Accept-Put</code> [<a href="#accept-put">§ 3.1.1 The Accept-Put Response Header</a>]
+response headers that correspond to acceptable HTTP methods listed in <code>Allow</code> header value in response to HTTP <code>GET</code> and <code>HEAD</code> requests.</p>
+   <p>Servers MAY include the HTTP <code>Accept-Patch</code>, <code>Accept-Post</code> and <code>Accept-Put</code> headers in the response of a <code>OPTIONS *</code> request.</p>
    <p><a href="https://github.com/solid/specification/issues/85#issuecomment-575386251">[Source</a>] <a href="https://github.com/solid/specification/issues/43">[Source</a>]</p>
    <h4 class="heading settled" data-level="2.4.3" id="write"><span class="secno">2.4.3. </span><span class="content">Writing resources</span><a class="self-link" href="#write"></a></h4>
    <p>When a server supports the HTTP <code>PUT</code>, <code>POST</code> and <code>PATCH</code> methods <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a> this specification imposes the following requirements: <a href="https://github.com/solid/specification/issues/39#issuecomment-538017667">[Source</a>]</p>

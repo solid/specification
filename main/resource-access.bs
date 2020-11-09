@@ -196,12 +196,12 @@ Servers MUST indicate their support for HTTP Methods by responding to HTTP
 in the HTTP response header `Allow`.
 
 Servers MUST indicate supported media types in the HTTP `Accept-Patch`
-[[!RFC5789]] and the `Accept-Post` [[!LDP]] response headers that correspond
-to acceptable HTTP methods listed in `Allow` header value in response to HTTP
-`GET` and `HEAD` requests.
+[[!RFC5789]], `Accept-Post` [[!LDP]] and `Accept-Put` [[[#accept-put]]]
+response headers that correspond to acceptable HTTP methods listed in `Allow`
+header value in response to HTTP `GET` and `HEAD` requests.
 
-Servers MAY include the HTTP `Accept-Patch` and `Accept-Post` headers in the
-response of a `OPTIONS *` request.
+Servers MAY include the HTTP `Accept-Patch`, `Accept-Post` and `Accept-Put`
+headers in the response of a `OPTIONS *` request.
 
 [[Source](https://github.com/solid/specification/issues/85#issuecomment-575386251)]
 [[Source](https://github.com/solid/specification/issues/43)]
