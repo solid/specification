@@ -658,18 +658,23 @@ not assume broad support for any of those additional methods.
 
 ## Web Access Control ## {#wac}
 
-Issue: Write Web Access Control section.
+Web Access Control (WAC) is a decentralized cross-domain access control
+system. The WAC mechanism is concerned with giving access to agents denoted by
+a [[#webid]] to perform various kinds of read-write operations on resources
+identified by URLs. The Access Control List (ACL) vocabulary is used to
+describe authorization policies about authorized agents with modes of access
+on target resources.
 
-Draft:
-A Solid data pod MUST conform to the Web Access Control specification [[!WAC]].
+Servers MUST conform to the Web Access Control specification [[!WAC]].
 
 A resource can advertise an ACL document that is directly associated by using
-the HTTP `Link` header with a `rel` value of `acl`.
+the HTTP `Link` header with a `rel` value of `acl` [[#acl]].
 [[Source](https://github.com/solid/specification/issues/31#issuecomment-548360553)]
 
 In the event that a server can't apply an ACL to a resource, it MUST deny
 access.
 [[Source](https://github.com/solid/specification/issues/130#issue-532777017)]
+
 
 ## Cross-Origin Resource Sharing ## {#cors}
 
