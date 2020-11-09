@@ -627,7 +627,7 @@ send and retrieve the contents of an Inbox [[!LDN]].
 ## WebID ## {#webid}
 
 A *WebID* is a HTTP URI denoting an agent, for example a person, organisation,
-or software [[WEBID]]. When a WebID is dereferenced, server provides a
+or software [[!WEBID]]. When a WebID is dereferenced, server provides a
 representation of the WebID Profile in an *RDF document* [[!RDF11-CONCEPTS]]
 which uniquely describes an agent denoted by a WebID. The WebID Profile can be
 used by controlling agents to link with others to grant access to identity
@@ -640,20 +640,22 @@ When using Web Access Control ([[#wac]]):
 Agents accessing non-public Solid resources need to authenticate with a WebID.
 
 
-### WebID-OIDC ### {#webid-oidc}
+### Solid-OIDC ### {#solid-oidc}
 
-Issue: Write WebID-OIDC section.
-
-Draft:
-A Solid data pod MUST conform to the WebID-OIDC specification [[!WEBID-OIDC]].
+The Solid OpenID Connect (Solid OIDC) specification defines how resource
+servers verify the identity of relying parties and end users based on the
+authentication performed by an OpenID provider [[!SOLID-OIDC]].
 
 
 ### WebID-TLS ### {#webid-tls}
 
-Issue: Write WebID-TLS section.
+<em>This section is non-normative.</em>
 
-Draft:
-A Solid data pod MAY conform to the WebID-TLS specification [[!WEBID-TLS]].
+The Solid ecosystem initially relied on WebID-TLS for authenticated resource
+access [[WEBID-TLS]]. The current recommendation for authentication relies on
+Solid-OIDC ([[#solid-oidc]]). Implementations can use WebID-TLS just as any
+other mechanism as an additional authentication method. Implementations should
+not assume broad support for any of those additional methods.
 
 
 ## Web Access Control ## {#wac}

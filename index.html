@@ -8,7 +8,7 @@
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="Bikeshed version e3b7dea, updated Fri Nov 6 12:09:18 2020 -0800" name="generator">
   <link href="https://solid.github.io/specification/" rel="canonical">
-  <meta content="717fee123938933e6d7d3826c566c9f422c8a36b" name="document-revision">
+  <meta content="43a0cc739fb537988a602326b6fe4493a9f35d10" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -951,14 +951,17 @@ ecosystem and are used as the primary identifier for users and client
 application.</p>
    <p>When using Web Access Control (<a href="#wac">§ 2.8 Web Access Control</a>):</p>
    <p>Agents accessing non-public Solid resources need to authenticate with a WebID.</p>
-   <h4 class="heading settled" data-level="2.7.1" id="webid-oidc"><span class="secno">2.7.1. </span><span class="content">WebID-OIDC</span><a class="self-link" href="#webid-oidc"></a></h4>
-   <p class="issue" id="issue-ba14f105"><a class="self-link" href="#issue-ba14f105"></a> Write WebID-OIDC section.</p>
-   <p>Draft:
-A Solid data pod MUST conform to the WebID-OIDC specification <a data-link-type="biblio" href="#biblio-webid-oidc">[WEBID-OIDC]</a>.</p>
+   <h4 class="heading settled" data-level="2.7.1" id="solid-oidc"><span class="secno">2.7.1. </span><span class="content">Solid-OIDC</span><a class="self-link" href="#solid-oidc"></a></h4>
+   <p>The Solid OpenID Connect (Solid OIDC) specification defines how resource
+servers verify the identity of relying parties and end users based on the
+authentication performed by an OpenID provider <a data-link-type="biblio" href="#biblio-solid-oidc">[SOLID-OIDC]</a>.</p>
    <h4 class="heading settled" data-level="2.7.2" id="webid-tls"><span class="secno">2.7.2. </span><span class="content">WebID-TLS</span><a class="self-link" href="#webid-tls"></a></h4>
-   <p class="issue" id="issue-b2a56341"><a class="self-link" href="#issue-b2a56341"></a> Write WebID-TLS section.</p>
-   <p>Draft:
-A Solid data pod MAY conform to the WebID-TLS specification <a data-link-type="biblio" href="#biblio-webid-tls">[WEBID-TLS]</a>.</p>
+   <p><em>This section is non-normative.</em></p>
+   <p>The Solid ecosystem initially relied on WebID-TLS for authenticated resource
+access <a data-link-type="biblio" href="#biblio-webid-tls">[WEBID-TLS]</a>. The current recommendation for authentication relies on
+Solid-OIDC (<a href="#solid-oidc">§ 2.7.1 Solid-OIDC</a>). Implementations can use WebID-TLS just as any
+other mechanism as an additional authentication method. Implementations should
+not assume broad support for any of those additional methods.</p>
    <h3 class="heading settled" data-level="2.8" id="wac"><span class="secno">2.8. </span><span class="content">Web Access Control</span><a class="self-link" href="#wac"></a></h3>
    <p class="issue" id="issue-d582b7fc"><a class="self-link" href="#issue-d582b7fc"></a> Write Web Access Control section.</p>
    <p>Draft:
@@ -1264,23 +1267,23 @@ error responses SHOULD NOT contain identifiable information.</p>
    <dd>M. Nottingham. <a href="https://httpwg.org/specs/rfc8288.html">Web Linking</a>. October 2017. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc8288.html">https://httpwg.org/specs/rfc8288.html</a>
    <dt id="biblio-shacl">[SHACL]
    <dd>Holger Knublauch; Dimitris Kontokostas. <a href="https://www.w3.org/TR/shacl/">Shapes Constraint Language (SHACL)</a>. 20 July 2017. REC. URL: <a href="https://www.w3.org/TR/shacl/">https://www.w3.org/TR/shacl/</a>
+   <dt id="biblio-solid-oidc">[SOLID-OIDC]
+   <dd><a href="https://solid.github.io/authentication-panel/solid-oidc/">Solid-OIDC</a>. URL: <a href="https://solid.github.io/authentication-panel/solid-oidc/">https://solid.github.io/authentication-panel/solid-oidc/</a>
    <dt id="biblio-turtle">[Turtle]
    <dd>Eric Prud'hommeaux; Gavin Carothers. <a href="https://www.w3.org/TR/turtle/">RDF 1.1 Turtle</a>. 25 February 2014. REC. URL: <a href="https://www.w3.org/TR/turtle/">https://www.w3.org/TR/turtle/</a>
    <dt id="biblio-wac">[WAC]
    <dd><a href="https://solid.github.io/specification/wac/">Web Access Control</a>. URL: <a href="https://solid.github.io/specification/wac/">https://solid.github.io/specification/wac/</a>
    <dt id="biblio-webarch">[WEBARCH]
    <dd>Ian Jacobs; Norman Walsh. <a href="https://www.w3.org/TR/webarch/">Architecture of the World Wide Web, Volume One</a>. 15 December 2004. REC. URL: <a href="https://www.w3.org/TR/webarch/">https://www.w3.org/TR/webarch/</a>
-   <dt id="biblio-webid-oidc">[WEBID-OIDC]
-   <dd><a href="https://solid.github.io/specification/webid-oidc/">WebID-OIDC</a>. URL: <a href="https://solid.github.io/specification/webid-oidc/">https://solid.github.io/specification/webid-oidc/</a>
-   <dt id="biblio-webid-tls">[WEBID-TLS]
-   <dd><a href="https://solid.github.io/specification/webid-tls/">WebID-TLS</a>. URL: <a href="https://solid.github.io/specification/webid-tls/">https://solid.github.io/specification/webid-tls/</a>
+   <dt id="biblio-webid">[WEBID]
+   <dd><a href="https://dvcs.w3.org/hg/WebID/raw-file/tip/spec/identity-respec.html">WebID 1.0 Editors Draft</a>. URL: <a href="https://dvcs.w3.org/hg/WebID/raw-file/tip/spec/identity-respec.html">https://dvcs.w3.org/hg/WebID/raw-file/tip/spec/identity-respec.html</a>
   </dl>
   <h3 class="no-num no-ref heading settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
   <dl>
    <dt id="biblio-security-privacy-questionnaire">[SECURITY-PRIVACY-QUESTIONNAIRE]
    <dd>Theresa O'Connor; Peter Snyder. <a href="https://www.w3.org/TR/security-privacy-questionnaire/">Self-Review Questionnaire: Security and Privacy</a>. 8 May 2020. NOTE. URL: <a href="https://www.w3.org/TR/security-privacy-questionnaire/">https://www.w3.org/TR/security-privacy-questionnaire/</a>
-   <dt id="biblio-webid">[WEBID]
-   <dd><a href="https://dvcs.w3.org/hg/WebID/raw-file/tip/spec/identity-respec.html">WebID 1.0 Editors Draft</a>. URL: <a href="https://dvcs.w3.org/hg/WebID/raw-file/tip/spec/identity-respec.html">https://dvcs.w3.org/hg/WebID/raw-file/tip/spec/identity-respec.html</a>
+   <dt id="biblio-webid-tls">[WEBID-TLS]
+   <dd><a href="https://solid.github.io/specification/webid-tls/">WebID-TLS</a>. URL: <a href="https://solid.github.io/specification/webid-tls/">https://solid.github.io/specification/webid-tls/</a>
   </dl>
   <h2 class="no-num no-ref heading settled" id="issues-index"><span class="content">Issues Index</span><a class="self-link" href="#issues-index"></a></h2>
   <div style="counter-reset:issue">
@@ -1300,8 +1303,6 @@ auxiliary resources, or whether we should have them at all. <a href="https://git
    <div class="issue"> Provide a shape to validate a shape validation auxiliary resource. May
 include the shape language, shape url, and any additional parameters to be used
 in shape validation by the server implementation.<a href="#issue-d5201460"> ↵ </a></div>
-   <div class="issue"> Write WebID-OIDC section.<a href="#issue-ba14f105"> ↵ </a></div>
-   <div class="issue"> Write WebID-TLS section.<a href="#issue-b2a56341"> ↵ </a></div>
    <div class="issue"> Write Web Access Control section.<a href="#issue-d582b7fc"> ↵ </a></div>
    <div class="issue"> Write introduction to the Clients and Apps section.<a href="#issue-428d418b"> ↵ </a></div>
    <div class="issue"> Write Implementation Guidance section.<a href="#issue-1acf634c"> ↵ </a></div>

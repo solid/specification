@@ -83,9 +83,9 @@ any feedback, comments, or questions you might have.
 		"href": "https://solid.github.io/specification/wac/",
 		"title": "Web Access Control"
 	},
-	"webid-oidc": {
-		"href": "https://solid.github.io/specification/webid-oidc/",
-		"title": "WebID-OIDC"
+	"solid-oidc": {
+		"href": "https://solid.github.io/authentication-panel/solid-oidc/",
+		"title": "Solid-OIDC"
 	},
 	"webid-tls": {
 		"href": "https://solid.github.io/specification/webid-tls/",
