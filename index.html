@@ -8,7 +8,7 @@
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="Bikeshed version e3b7dea, updated Fri Nov 6 12:09:18 2020 -0800" name="generator">
   <link href="https://solid.github.io/specification/" rel="canonical">
-  <meta content="c9f0ed71086921d0b8bf4feac2017c20ed012532" name="document-revision">
+  <meta content="8077ba22ab9a09c520327b6e39d44501796eca64" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -487,24 +487,16 @@ dfn > a.self-link::before      { content: "#"; }
       <li><a href="#notifications"><span class="secno">3.4</span> <span class="content">Update Notifications</span></a>
      </ol>
     <li>
-     <a href="#optional"><span class="secno">4</span> <span class="content">Optional Integrations</span></a>
+     <a href="#http-definitions"><span class="secno">4</span> <span class="content">HTTP Definitions</span></a>
      <ol class="toc">
-      <li><a href="#pod-management"><span class="secno">4.1</span> <span class="content">Pod and User Management</span></a>
-      <li><a href="#query"><span class="secno">4.2</span> <span class="content">Query Interfaces</span></a>
-      <li><a href="#content-negotation"><span class="secno">4.3</span> <span class="content">Additional Content Negotiation Dimensions</span></a>
-      <li><a href="#verifiable-credentials"><span class="secno">4.4</span> <span class="content">Verifiable Credentials</span></a>
+      <li><a href="#http-headers"><span class="secno">4.1</span> <span class="content">HTTP Headers</span></a>
+      <li><a href="#link-relations"><span class="secno">4.2</span> <span class="content">Link Relations</span></a>
      </ol>
     <li>
-     <a href="#http-definitions"><span class="secno">5</span> <span class="content">HTTP Definitions</span></a>
+     <a href="#security"><span class="secno">5</span> <span class="content">Security Considerations</span></a>
      <ol class="toc">
-      <li><a href="#http-headers"><span class="secno">5.1</span> <span class="content">HTTP Headers</span></a>
-      <li><a href="#link-relations"><span class="secno">5.2</span> <span class="content">Link Relations</span></a>
-     </ol>
-    <li>
-     <a href="#security"><span class="secno">6</span> <span class="content">Security Considerations</span></a>
-     <ol class="toc">
-      <li><a href="#privacy"><span class="secno">6.1</span> <span class="content">Privacy Considerations</span></a>
-      <li><a href="#security-privacy-review"><span class="secno">6.2</span> <span class="content">Security and Privacy Review</span></a>
+      <li><a href="#privacy"><span class="secno">5.1</span> <span class="content">Privacy Considerations</span></a>
+      <li><a href="#security-privacy-review"><span class="secno">5.2</span> <span class="content">Security and Privacy Review</span></a>
      </ol>
     <li>
      <a href="#w3c-conformance"><span class="secno"></span> <span class="content">Conformance</span></a>
@@ -1063,33 +1055,9 @@ A Solid client MUST conform to the Data Footprints specification <a data-link-ty
    <p class="issue" id="issue-045d0b84"><a class="self-link" href="#issue-045d0b84"></a> Write Update Notification section.</p>
    <p>Draft:
 A Solid client MUST conform to the LDN specification <a data-link-type="biblio" href="#biblio-ldn">[LDN]</a>.</p>
-   <h2 class="heading settled" data-level="4" id="optional"><span class="secno">4. </span><span class="content">Optional Integrations</span><a class="self-link" href="#optional"></a></h2>
-   <p class="issue" id="issue-3c1c981b"><a class="self-link" href="#issue-3c1c981b"></a> Write introduction to the Optional Integrations section.</p>
-   <h3 class="heading settled" data-level="4.1" id="pod-management"><span class="secno">4.1. </span><span class="content">Pod and User Management</span><a class="self-link" href="#pod-management"></a></h3>
-   <p class="issue" id="issue-e248ac8f"><a class="self-link" href="#issue-e248ac8f"></a> Write Pod and User Management section.</p>
-   <p>Draft:
-A Solid data pod MAY conform to the Pod Management specification <a data-link-type="biblio" href="#biblio-pod-management">[POD-MANAGEMENT]</a>.</p>
-   <h3 class="heading settled" data-level="4.2" id="query"><span class="secno">4.2. </span><span class="content">Query Interfaces</span><a class="self-link" href="#query"></a></h3>
-   <p class="issue" id="issue-f16cf911"><a class="self-link" href="#issue-f16cf911"></a> Write Query Interfaces section.</p>
-   <p>Draft:
-A Solid data pod MAY conform to the Triple Pattern Fragments specification <a data-link-type="biblio" href="#biblio-tpf">[TPF]</a>.</p>
-   <h3 class="heading settled" data-level="4.3" id="content-negotation"><span class="secno">4.3. </span><span class="content">Additional Content Negotiation Dimensions</span><a class="self-link" href="#content-negotation"></a></h3>
-   <p class="issue" id="issue-5d4f41c6"><a class="self-link" href="#issue-5d4f41c6"></a> Write Additional Content Negotiation Dimension section.</p>
-   <h4 class="heading settled" data-level="4.3.1" id="memento"><span class="secno">4.3.1. </span><span class="content">Memento</span><a class="self-link" href="#memento"></a></h4>
-   <p class="issue" id="issue-e38039a6"><a class="self-link" href="#issue-e38039a6"></a> Write Memento section.</p>
-   <p>Draft:
-A Solid data pod MAY conform to the Memento specification <a data-link-type="biblio" href="#biblio-rfc7089">[RFC7089]</a>.</p>
-   <h4 class="heading settled" data-level="4.3.2" id="profiles"><span class="secno">4.3.2. </span><span class="content">Profiles</span><a class="self-link" href="#profiles"></a></h4>
-   <p class="issue" id="issue-f726fd8d"><a class="self-link" href="#issue-f726fd8d"></a> Write Profiles section.</p>
-   <p>Draft:
-A Solid data pod MAY conform to the Profile-based Content Negotiation specification <a data-link-type="biblio" href="#biblio-profiles">[PROFILES]</a>.</p>
-   <h3 class="heading settled" data-level="4.4" id="verifiable-credentials"><span class="secno">4.4. </span><span class="content">Verifiable Credentials</span><a class="self-link" href="#verifiable-credentials"></a></h3>
-   <p class="issue" id="issue-c8aeac29"><a class="self-link" href="#issue-c8aeac29"></a> Write Verifiable Credentials section.</p>
-   <p>Draft:
-A Solid data pod MAY conform to the Verifiable Credentials specification <a data-link-type="biblio" href="#biblio-verifiable-credentials">[VERIFIABLE-CREDENTIALS]</a>.</p>
-   <h2 class="heading settled" data-level="5" id="http-definitions"><span class="secno">5. </span><span class="content">HTTP Definitions</span><a class="self-link" href="#http-definitions"></a></h2>
-   <h3 class="heading settled" data-level="5.1" id="http-headers"><span class="secno">5.1. </span><span class="content">HTTP Headers</span><a class="self-link" href="#http-headers"></a></h3>
-   <h4 class="heading settled" data-level="5.1.1" id="accept-put"><span class="secno">5.1.1. </span><span class="content">The Accept-Put Response Header</span><a class="self-link" href="#accept-put"></a></h4>
+   <h2 class="heading settled" data-level="4" id="http-definitions"><span class="secno">4. </span><span class="content">HTTP Definitions</span><a class="self-link" href="#http-definitions"></a></h2>
+   <h3 class="heading settled" data-level="4.1" id="http-headers"><span class="secno">4.1. </span><span class="content">HTTP Headers</span><a class="self-link" href="#http-headers"></a></h3>
+   <h4 class="heading settled" data-level="4.1.1" id="accept-put"><span class="secno">4.1.1. </span><span class="content">The Accept-Put Response Header</span><a class="self-link" href="#accept-put"></a></h4>
    <p>This specification introduces a new HTTP response header <code>Accept-Put</code> used to specify the document formats accepted by the server on HTTP PUT requests. It is modelled after the <code>Accept-Patch</code> header defined in <a data-link-type="biblio" href="#biblio-rfc5789">[RFC5789]</a> and the <code>Accept-Post</code> header defined in <a data-link-type="biblio" href="#biblio-ldp">[LDP]</a>.</p>
    <p>The syntax for <code>Accept-Put</code>, using the ABNF syntax defined in Section 1.2 of <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>, is:</p>
 <pre>Accept-Put = "Accept-Put" ":" # media-range
@@ -1112,9 +1080,9 @@ A Solid data pod MAY conform to the Verifiable Credentials specification <a data
     <dd data-md>
      <p>This specification</p>
    </dl>
-   <h3 class="heading settled" data-level="5.2" id="link-relations"><span class="secno">5.2. </span><span class="content">Link Relations</span><a class="self-link" href="#link-relations"></a></h3>
+   <h3 class="heading settled" data-level="4.2" id="link-relations"><span class="secno">4.2. </span><span class="content">Link Relations</span><a class="self-link" href="#link-relations"></a></h3>
    <p>The intent is that these link relations will be registered with IANA per <a data-link-type="biblio" href="#biblio-rfc8288">[RFC8288]</a>.</p>
-   <h4 class="heading settled" data-level="5.2.1" id="acl"><span class="secno">5.2.1. </span><span class="content">acl</span><a class="self-link" href="#acl"></a></h4>
+   <h4 class="heading settled" data-level="4.2.1" id="acl"><span class="secno">4.2.1. </span><span class="content">acl</span><a class="self-link" href="#acl"></a></h4>
    <p>The contents of this section were originally taken from <a href="https://www.w3.org/wiki/WebAccessControl">Web Access Control</a>.</p>
    <p>The following Link Relationship will be submitted to IANA for review, approval, and inclusion in the IANA Link Relations registry.</p>
    <dl>
@@ -1133,7 +1101,7 @@ A Solid data pod MAY conform to the Verifiable Credentials specification <a data
    </dl>
    <p><a href="https://github.com/solid/specification/issues/54">[Source</a>] <a href="https://github.com/solid/web-access-control-spec/issues/21">[Source</a>]</p>
    <p class="issue" id="issue-e549d761"><a class="self-link" href="#issue-e549d761"></a> Shape of ACL: https://github.com/solid/specification/issues/169</p>
-   <h2 class="heading settled" data-level="6" id="security"><span class="secno">6. </span><span class="content">Security Considerations</span><a class="self-link" href="#security"></a></h2>
+   <h2 class="heading settled" data-level="5" id="security"><span class="secno">5. </span><span class="content">Security Considerations</span><a class="self-link" href="#security"></a></h2>
    <p>Some of the normative references with this specification point to documents
 with a <em>Living Standard</em> or <em>Draft</em> status, meaning their contents can still
 change over time. It is advised to monitor these documents, as such changes
@@ -1180,13 +1148,13 @@ Unsecured TCP connections without TLS MAY be used
 in testing environments
 or when the data pod is behind a reverse proxy
 that terminates a secure connection.</p>
-   <h3 class="heading settled" data-level="6.1" id="privacy"><span class="secno">6.1. </span><span class="content">Privacy Considerations</span><a class="self-link" href="#privacy"></a></h3>
+   <h3 class="heading settled" data-level="5.1" id="privacy"><span class="secno">5.1. </span><span class="content">Privacy Considerations</span><a class="self-link" href="#privacy"></a></h3>
    <p class="issue" id="issue-4267249d"><a class="self-link" href="#issue-4267249d"></a> Write Privacy Considerations section.</p>
-   <h4 class="heading settled" data-level="6.1.1" id="identifiable-information"><span class="secno">6.1.1. </span><span class="content">Identifiable Information</span><a class="self-link" href="#identifiable-information"></a></h4>
+   <h4 class="heading settled" data-level="5.1.1" id="identifiable-information"><span class="secno">5.1.1. </span><span class="content">Identifiable Information</span><a class="self-link" href="#identifiable-information"></a></h4>
    <p class="issue" id="issue-e08c9a5d"><a class="self-link" href="#issue-e08c9a5d"></a> Write Identifiable Information section.</p>
    <p>In order to prevent leakage of non-resource data,
 error responses SHOULD NOT contain identifiable information.</p>
-   <h3 class="heading settled" data-level="6.2" id="security-privacy-review"><span class="secno">6.2. </span><span class="content">Security and Privacy Review</span><a class="self-link" href="#security-privacy-review"></a></h3>
+   <h3 class="heading settled" data-level="5.2" id="security-privacy-review"><span class="secno">5.2. </span><span class="content">Security and Privacy Review</span><a class="self-link" href="#security-privacy-review"></a></h3>
    <p class="issue" id="issue-4eadf7d9"><a class="self-link" href="#issue-4eadf7d9"></a> Complete <a data-link-type="biblio" href="#biblio-security-privacy-questionnaire">[security-privacy-questionnaire]</a></p>
   </main>
   <div data-fill-with="conformance">
@@ -1253,10 +1221,6 @@ error responses SHOULD NOT contain identifiable information.</p>
    <dd>Sarven Capadisli; Amy Guy. <a href="https://www.w3.org/TR/ldn/">Linked Data Notifications</a>. 2 May 2017. REC. URL: <a href="https://www.w3.org/TR/ldn/">https://www.w3.org/TR/ldn/</a>
    <dt id="biblio-ldp">[LDP]
    <dd>Steve Speicher; John Arwe; Ashok Malhotra. <a href="https://www.w3.org/TR/ldp/">Linked Data Platform 1.0</a>. 26 February 2015. REC. URL: <a href="https://www.w3.org/TR/ldp/">https://www.w3.org/TR/ldp/</a>
-   <dt id="biblio-pod-management">[POD-MANAGEMENT]
-   <dd><a href="https://solid.github.io/specification/pod-management/">Data Pod Management</a>. URL: <a href="https://solid.github.io/specification/pod-management/">https://solid.github.io/specification/pod-management/</a>
-   <dt id="biblio-profiles">[PROFILES]
-   <dd>Lars Svensson; Ruben Verborgh. <a href="https://profilenegotiation.github.io/I-D-Profile-Negotiation/I-D-Profile-Negotiation.html">Indicating and Negotiating Profiles in HTTP</a>. URL: <a href="https://profilenegotiation.github.io/I-D-Profile-Negotiation/I-D-Profile-Negotiation.html">https://profilenegotiation.github.io/I-D-Profile-Negotiation/I-D-Profile-Negotiation.html</a>
    <dt id="biblio-rdf-schema">[RDF-SCHEMA]
    <dd>Dan Brickley; Ramanathan Guha. <a href="https://www.w3.org/TR/rdf-schema/">RDF Schema 1.1</a>. 25 February 2014. REC. URL: <a href="https://www.w3.org/TR/rdf-schema/">https://www.w3.org/TR/rdf-schema/</a>
    <dt id="biblio-rdf11-concepts">[RDF11-CONCEPTS]
@@ -1273,8 +1237,6 @@ error responses SHOULD NOT contain identifiable information.</p>
    <dd>L. Dusseault; J. Snell. <a href="https://httpwg.org/specs/rfc5789.html">PATCH Method for HTTP</a>. March 2010. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc5789.html">https://httpwg.org/specs/rfc5789.html</a>
    <dt id="biblio-rfc6454">[RFC6454]
    <dd>A. Barth. <a href="https://tools.ietf.org/html/rfc6454">The Web Origin Concept</a>. December 2011. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc6454">https://tools.ietf.org/html/rfc6454</a>
-   <dt id="biblio-rfc7089">[RFC7089]
-   <dd>H. Van de Sompel; M. Nelson; R. Sanderson. <a href="https://tools.ietf.org/html/rfc7089">HTTP Framework for Time-Based Access to Resource States -- Memento</a>. December 2013. Informational. URL: <a href="https://tools.ietf.org/html/rfc7089">https://tools.ietf.org/html/rfc7089</a>
    <dt id="biblio-rfc7230">[RFC7230]
    <dd>R. Fielding, Ed.; J. Reschke, Ed.. <a href="https://httpwg.org/specs/rfc7230.html">Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing</a>. June 2014. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc7230.html">https://httpwg.org/specs/rfc7230.html</a>
    <dt id="biblio-rfc7231">[RFC7231]
@@ -1293,12 +1255,8 @@ error responses SHOULD NOT contain identifiable information.</p>
    <dd>M. Nottingham. <a href="https://httpwg.org/specs/rfc8288.html">Web Linking</a>. October 2017. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc8288.html">https://httpwg.org/specs/rfc8288.html</a>
    <dt id="biblio-shacl">[SHACL]
    <dd>Holger Knublauch; Dimitris Kontokostas. <a href="https://www.w3.org/TR/shacl/">Shapes Constraint Language (SHACL)</a>. 20 July 2017. REC. URL: <a href="https://www.w3.org/TR/shacl/">https://www.w3.org/TR/shacl/</a>
-   <dt id="biblio-tpf">[TPF]
-   <dd>Ruben Verborgh. <a href="https://www.hydra-cg.com/spec/latest/triple-pattern-fragments/">Triple Pattern Fragments</a>. URL: <a href="https://www.hydra-cg.com/spec/latest/triple-pattern-fragments/">https://www.hydra-cg.com/spec/latest/triple-pattern-fragments/</a>
    <dt id="biblio-turtle">[Turtle]
    <dd>Eric Prud'hommeaux; Gavin Carothers. <a href="https://www.w3.org/TR/turtle/">RDF 1.1 Turtle</a>. 25 February 2014. REC. URL: <a href="https://www.w3.org/TR/turtle/">https://www.w3.org/TR/turtle/</a>
-   <dt id="biblio-verifiable-credentials">[VERIFIABLE-CREDENTIALS]
-   <dd>Manu Sporny; Dave Longley; David Chadwick. <a href="https://www.w3.org/TR/verifiable-claims-data-model/">Verifiable Credentials Data Model 1.0</a>. URL: <a href="https://www.w3.org/TR/verifiable-claims-data-model/">https://www.w3.org/TR/verifiable-claims-data-model/</a>
    <dt id="biblio-wac">[WAC]
    <dd><a href="https://solid.github.io/specification/wac/">Web Access Control</a>. URL: <a href="https://solid.github.io/specification/wac/">https://solid.github.io/specification/wac/</a>
    <dt id="biblio-webarch">[WEBARCH]
@@ -1345,13 +1303,6 @@ in shape validation by the server implementation.<a href="#issue-d5201460"> ↵ 
    <div class="issue"> Write Footprints section.<a href="#issue-e8199220"> ↵ </a></div>
    <div class="issue"> Write Data Shape Guidance section.<a href="#issue-88b43b72"> ↵ </a></div>
    <div class="issue"> Write Update Notification section.<a href="#issue-045d0b84"> ↵ </a></div>
-   <div class="issue"> Write introduction to the Optional Integrations section.<a href="#issue-3c1c981b"> ↵ </a></div>
-   <div class="issue"> Write Pod and User Management section.<a href="#issue-e248ac8f"> ↵ </a></div>
-   <div class="issue"> Write Query Interfaces section.<a href="#issue-f16cf911"> ↵ </a></div>
-   <div class="issue"> Write Additional Content Negotiation Dimension section.<a href="#issue-5d4f41c6"> ↵ </a></div>
-   <div class="issue"> Write Memento section.<a href="#issue-e38039a6"> ↵ </a></div>
-   <div class="issue"> Write Profiles section.<a href="#issue-f726fd8d"> ↵ </a></div>
-   <div class="issue"> Write Verifiable Credentials section.<a href="#issue-c8aeac29"> ↵ </a></div>
    <div class="issue"> Shape of ACL: https://github.com/solid/specification/issues/169<a href="#issue-e549d761"> ↵ </a></div>
    <div class="issue"> Write Privacy Considerations section.<a href="#issue-4267249d"> ↵ </a></div>
    <div class="issue"> Write Identifiable Information section.<a href="#issue-e08c9a5d"> ↵ </a></div>
