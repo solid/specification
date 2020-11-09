@@ -1,9 +1,9 @@
 Introduction {#intro}
 =====================
 
-Solid is a technology, like the Web, but a new level of standard which adds to
-the existing protocols with the motivation to empower an equitable, informed
-and interconnected society.
+<em>Solid</em> is a technology, like the Web, but a new level of standard
+which adds to the existing protocols with the motivation to empower
+individuals in an informed and interconnected society.
 
 The Solid ecosystem encapsulates a set of technical specifications that are
 guided by the principles we have adopted and the priority of our values. We
@@ -11,13 +11,14 @@ acknowledge that each technical decision has ethical implications both for the
 end user (short-term) as well as society (long-term). In order to contribute
 to shared goals on a net positive social benefit, we use the <cite><a
 href="https://www.w3.org/2001/tag/doc/ethical-web-principles/">Ethical Web
-Principles</a></cite> to orient ourselves. The resulting consensus of the
-technical problems are derived from common use cases, implementation
-experience, as well as use.
+Principles</a></cite> to orient ourselves. The consensus on the technical
+designs are informed by common use cases, implementation experience, as well
+as use.
 
 An overarching design goal of the Solid ecosystem is to have decentralised Web
-applications for information exchange where individuals as well as groups can
-have high degree of control of their data and share with consent.
+applications for information exchange where actors can allocate identifiers
+for their content, shape and store data where they have access to, set access
+control policies, and use preferred applications to achieve them.
 
 The general architectural principles of Solid specifications are borrowed from
 the <cite><a href="https://www.w3.org/TR/webarch/">Architecture of the World
@@ -28,16 +29,16 @@ specifications are loosely coupled and indicate which features overlap with
 those governed by another specification. Extensibility as well as variability
 are also taken into account in each specification.
 
-The specifications prescribe components and mechanisms such as transfer
-protocols, identification, authentication and authorization, data formats and
-shapes, as well as query and notification systems, in order to implement
-interoperabile servers and clients.
+The specifications in the ecosystem describe how Solid servers and clients can
+be interoperable by using communication protocols, global identifiers,
+authentication and authorization mechanisms, data formats and shapes, and
+query interfaces.
 
 The specifications explain the easiest way to understand how Solid works, as
-opposed to easiest way for building Solid servers and clients. The
-specifications are accompanied with other documents such as <em>Primers</em>
-and <em>Best Practices and Guidelines</em> to help implementers to form a
-well-rounded understanding of the Solid ecosystem as well as to improve
+opposed to easiest way for building servers and clients. The specifications
+are accompanied with other documents such as <em>Primers</em> and <em>Best
+Practices and Guidelines</em> to help implementers to form a well-rounded
+understanding of the Solid ecosystem as well as ways to improve their
 implementations.
 
 

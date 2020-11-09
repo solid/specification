@@ -8,7 +8,7 @@
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="Bikeshed version e3b7dea, updated Fri Nov 6 12:09:18 2020 -0800" name="generator">
   <link href="https://solid.github.io/specification/" rel="canonical">
-  <meta content="eca0c308216120c5a7d45fd785967f950e17e4ec" name="document-revision">
+  <meta content="c9f0ed71086921d0b8bf4feac2017c20ed012532" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -429,7 +429,7 @@ dfn > a.self-link::before      { content: "#"; }
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">The Solid Ecosystem</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-11-08">8 November 2020</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-11-09">9 November 2020</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -506,7 +506,12 @@ dfn > a.self-link::before      { content: "#"; }
       <li><a href="#privacy"><span class="secno">6.1</span> <span class="content">Privacy Considerations</span></a>
       <li><a href="#security-privacy-review"><span class="secno">6.2</span> <span class="content">Security and Privacy Review</span></a>
      </ol>
-    <li><a href="#conformance"><span class="secno"></span> <span class="content">Conformance</span></a>
+    <li>
+     <a href="#w3c-conformance"><span class="secno"></span> <span class="content">Conformance</span></a>
+     <ol class="toc">
+      <li><a href="#w3c-conventions"><span class="secno"></span> <span class="content">Document conventions</span></a>
+      <li><a href="#w3c-conformant-algorithms"><span class="secno"></span> <span class="content">Conformant Algorithms</span></a>
+     </ol>
     <li>
      <a href="#index"><span class="secno"></span> <span class="content">Index</span></a>
      <ol class="toc">
@@ -523,25 +528,26 @@ dfn > a.self-link::before      { content: "#"; }
   </nav>
   <main>
    <h3 class="heading settled" id="status"><span class="content">Status of This Document</span></h3>
-    <strong>This document is an incomplete draft.</strong> The sections that have been incorporated have been reviewed
-following the <a href="https://github.com/solid/culture/blob/master/README.md">Solid process</a>.
+    The sections that have been incorporated have been reviewed
+following the <a href="https://github.com/solid/process">Solid process</a>.
 However, the information in this document is still subject to change. 
    <p>You are invited to <a href="https://github.com/solid/specification/issues">contribute</a> any feedback, comments, or questions you might have.</p>
    <h2 class="heading settled" data-level="1" id="intro"><span class="secno">1. </span><span class="content">Introduction</span><a class="self-link" href="#intro"></a></h2>
-   <p>Solid is a technology, like the Web, but a new level of standard which adds to
-the existing protocols with the motivation to empower an equitable, informed
-and interconnected society.</p>
+   <p><em>Solid</em> is a technology, like the Web, but a new level of standard
+which adds to the existing protocols with the motivation to empower
+individuals in an informed and interconnected society.</p>
    <p>The Solid ecosystem encapsulates a set of technical specifications that are
 guided by the principles we have adopted and the priority of our values. We
 acknowledge that each technical decision has ethical implications both for the
 end user (short-term) as well as society (long-term). In order to contribute
 to shared goals on a net positive social benefit, we use the <cite><a href="https://www.w3.org/2001/tag/doc/ethical-web-principles/">Ethical Web
-Principles</a></cite> to orient ourselves. The resulting consensus of the
-technical problems are derived from common use cases, implementation
-experience, as well as use.</p>
+Principles</a></cite> to orient ourselves. The consensus on the technical
+designs are informed by common use cases, implementation experience, as well
+as use.</p>
    <p>An overarching design goal of the Solid ecosystem is to have decentralised Web
-applications for information exchange where individuals as well as groups can
-have high degree of control of their data and share with consent.</p>
+applications for information exchange where actors can allocate identifiers
+for their content, shape and store data where they have access to, set access
+control policies, and use preferred applications to achieve them.</p>
    <p>The general architectural principles of Solid specifications are borrowed from
 the <cite><a href="https://www.w3.org/TR/webarch/">Architecture of the World
 Wide Web</a></cite>. The components as described in each specification may
@@ -550,14 +556,15 @@ increase the flexibility and robustness of the Solid ecosystem. With that, the
 specifications are loosely coupled and indicate which features overlap with
 those governed by another specification. Extensibility as well as variability
 are also taken into account in each specification.</p>
-   <p>The specifications prescribe components and mechanisms such as transfer
-protocols, identification, authentication and authorization, data formats and
-shapes, as well as query and notification systems, in order to implement
-interoperabile servers and clients.</p>
+   <p>The specifications in the ecosystem describe how Solid servers and clients can
+be interoperable by using communication protocols, global identifiers,
+authentication and authorization mechanisms, data formats and shapes, and
+query interfaces.</p>
    <p>The specifications explain the easiest way to understand how Solid works, as
-opposed to easiest way for building Solid servers and clients. The
-specifications are accompanied with other documents such as <em>Primers</em> and <em>Best Practices and Guidelines</em> to help implementers to form a
-well-rounded understanding of the Solid ecosystem as well as to improve
+opposed to easiest way for building servers and clients. The specifications
+are accompanied with other documents such as <em>Primers</em> and <em>Best
+Practices and Guidelines</em> to help implementers to form a well-rounded
+understanding of the Solid ecosystem as well as ways to improve their
 implementations.</p>
    <h3 class="heading settled" data-level="1.1" id="definitions"><span class="secno">1.1. </span><span class="content">Definitions</span><a class="self-link" href="#definitions"></a></h3>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="data-pod">data pod</dfn> is a place for storing documents,
@@ -1183,12 +1190,45 @@ error responses SHOULD NOT contain identifiable information.</p>
    <p class="issue" id="issue-4eadf7d9"><a class="self-link" href="#issue-4eadf7d9"></a> Complete <a data-link-type="biblio" href="#biblio-security-privacy-questionnaire">[security-privacy-questionnaire]</a></p>
   </main>
   <div data-fill-with="conformance">
-   <h2 class="no-ref no-num heading settled" id="conformance"><span class="content">Conformance</span><a class="self-link" href="#conformance"></a></h2>
-   <p>Conformance requirements are expressed with a combination of descriptive assertions and RFC 2119 terminology. The key words  “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this document are to be interpreted as described in RFC 2119. All of the text of this specification is normative except sections explicitly marked as non-normative, examples, and notes. <a data-link-type="biblio" href="#biblio-rfc2119">[RFC2119]</a></p>
-   <p>Examples in this specification are introduced with the words “for example” or are set apart from the normative text like this:</p>
-   <div class="example" id="example-ae2b6bc0"><a class="self-link" href="#example-ae2b6bc0"></a> This is an example of an informative example. </div>
-   <p>Informative notes begin with the word “Note” and are set apart from the normative text like this:</p>
-   <div class="note" role="note"> Note, this is an informative note. </div>
+   <h2 class="no-ref no-num heading settled" id="w3c-conformance"><span class="content">Conformance</span><a class="self-link" href="#w3c-conformance"></a></h2>
+   <h3 class="no-ref no-num heading settled" id="w3c-conventions"><span class="content">Document conventions</span><a class="self-link" href="#w3c-conventions"></a></h3>
+   <p>Conformance requirements are expressed
+    with a combination of descriptive assertions
+    and RFC 2119 terminology.
+    The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL”
+    in the normative parts of this document
+    are to be interpreted as described in RFC 2119.
+    However, for readability,
+    these words do not appear in all uppercase letters in this specification. </p>
+   <p>All of the text of this specification is normative
+    except sections explicitly marked as non-normative, examples, and notes. <a data-link-type="biblio" href="#biblio-rfc2119">[RFC2119]</a> </p>
+   <p>Examples in this specification are introduced with the words “for example”
+    or are set apart from the normative text
+    with <code>class="example"</code>,
+    like this: </p>
+   <div class="example" id="w3c-example">
+    <a class="self-link" href="#w3c-example"></a> 
+    <p>This is an example of an informative example. </p>
+   </div>
+   <p>Informative notes begin with the word “Note”
+    and are set apart from the normative text
+    with <code>class="note"</code>,
+    like this: </p>
+   <p class="note" role="note">Note, this is an informative note. </p>
+   <h3 class="no-ref no-num heading settled" id="w3c-conformant-algorithms"><span class="content">Conformant Algorithms</span><a class="self-link" href="#w3c-conformant-algorithms"></a></h3>
+   <p>Requirements phrased in the imperative as part of algorithms
+    (such as "strip any leading space characters"
+    or "return false and abort these steps")
+    are to be interpreted with the meaning of the key word
+    ("must", "should", "may", etc)
+    used in introducing the algorithm. </p>
+   <p>Conformance requirements phrased as algorithms or specific steps
+    can be implemented in any manner,
+    so long as the end result is equivalent.
+    In particular, the algorithms defined in this specification
+    are intended to be easy to understand
+    and are not intended to be performant.
+    Implementers are encouraged to optimize. </p>
   </div>
 <script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script>
   <h2 class="no-num no-ref heading settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
