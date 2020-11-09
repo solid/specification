@@ -1,7 +1,5 @@
-Authenticated Resource Access {#resource-access}
+Resource Access {#resource-access}
 ================================================
-
-Issue: Write introduction to the Authenticated Resource Access section.
 
 ## Hypertext Transfer Protocol ## {#http}
 
