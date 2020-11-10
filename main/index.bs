@@ -25,7 +25,7 @@ Abstract:
 MIT License. Copyright 2019 - 2020 W3C Solid Community Group
 </div>
 
-## Status of This Document ## {#status}
+## Status of This Document ## {#sotd}
 The sections that have been incorporated have been reviewed
 following the [Solid process](https://github.com/solid/process).
 However, the information in this document is still subject to change.
