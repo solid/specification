@@ -25,7 +25,8 @@ Abstract:
 MIT License. Copyright 2019 - 2020 W3C Solid Community Group
 </div>
 
-## Status of This Document ## {#sotd}
+<h2 class="no-num no-toc heading settled" id="sotd">Status of This Document</h2>
+
 The sections that have been incorporated have been reviewed
 following the [Solid process](https://github.com/solid/process).
 However, the information in this document is still subject to change.
