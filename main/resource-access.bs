@@ -221,9 +221,7 @@ Servers MUST allow creating new resources with a `POST` request to URI path
 ending `/`. Servers MUST create a resource with URI path ending `/{id}` in
 container `/`. Servers MUST create a container with URI path ending `/{id}/`
 in container `/` for requests including the HTTP `Link` header with
-`rel="type"` targeting a valid LDP container type. Servers MUST handle
-subsequent requests to the newly created container's URI as if it is a valid
-LDP container type by including the HTTP response's `Link` header.
+`rel="type"` targeting a valid LDP container type.
 [[Source](https://github.com/solid/specification/pull/160#issuecomment-636822687)]
 
 When a `POST` method request targets a resource without an existing
