@@ -6,9 +6,9 @@
   <meta content="w3c/ED" name="w3c-status">
   <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet">
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
-  <meta content="Bikeshed version fc62265, updated Mon Nov 9 15:03:56 2020 -0800" name="generator">
+  <meta content="Bikeshed version 0c267f4, updated Wed Nov 11 16:23:42 2020 -0800" name="generator">
   <link href="https://solid.github.io/specification/" rel="canonical">
-  <meta content="55c4a30267aebf9444b82c163e66550e6fb5ed45" name="document-revision">
+  <meta content="5582f0037d8f9b115287e1b8b64c1fe0cf54d0d0" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -70,113 +70,6 @@ pre .property::before, pre .property::after {
 
 [data-link-type=biblio] {
     white-space: pre;
-}</style>
-<style>/* style-colors */
-
-/* Any --*-text not paired with a --*-bg is assumed to have a transparent bg */
-:root {
-    color-scheme: light dark;
-
-    --text: black;
-    --bg: white;
-
-    --logo-bg: #1a5e9a;
-    --logo-active-bg: #c00;
-    --logo-text: white;
-
-    --tocnav-normal-text: #707070;
-    --tocnav-normal-bg: var(--bg);
-    --tocnav-hover-text: var(--tocnav-normal-text);
-    --tocnav-hover-bg: #f8f8f8;
-    --tocnav-active-text: #c00;
-    --tocnav-active-bg: var(--tocnav-normal-bg);
-
-    --tocsidebar-text: var(--text);
-    --tocsidebar-bg: #f7f8f9;
-    --tocsidebar-shadow: rgba(0,0,0,.1);
-    --tocsidebar-heading-text: hsla(203,20%,40%,.7);
-
-    --toclink-text: var(--text);
-    --toclink-underline: #3980b5;
-    --toclink-visited-text: var(--toclink-text);
-    --toclink-visited-underline: #054572;
-
-    --heading-text: #005a9c;
-
-    --hr-text: var(--text);
-
-    --algo-border: #def;
-
-    --del-text: red;
-    --del-bg: transparent;
-    --ins-text: #080;
-    --ins-bg: transparent;
-
-    --a-normal-text: #034575;
-    --a-normal-underline: #707070;
-    --a-visited-text: var(--a-normal-text);
-    --a-visited-underline: #bbb;
-    --a-hover-bg: rgba(75%, 75%, 75%, .25);
-    --a-active-text: #c00;
-    --a-active-underline: #c00;
-
-    --blockquote-border: silver;
-    --blockquote-bg: transparent;
-    --blockquote-text: currentcolor;
-
-    --issue-border: #e05252;
-    --issue-bg: #fbe9e9;
-    --issue-text: var(--text);
-    --issueheading-text: #831616;
-
-    --example-border: #e0cb52;
-    --example-bg: #fcfaee;
-    --example-text: var(--text);
-    --exampleheading-text: #574b0f;
-
-    --note-border: #52e052;
-    --note-bg: #e9fbe9;
-    --note-text: var(--text);
-    --noteheading-text: hsl(120, 70%, 30%);
-    --notesummary-underline: silver;
-
-    --assertion-border: #aaa;
-    --assertion-bg: #eee;
-    --assertion-text: black;
-
-    --advisement-border: orange;
-    --advisement-bg: #fec;
-    --advisement-text: var(--text);
-    --advisementheading-text: #b35f00;
-
-    --warning-border: red;
-    --warning-bg: hsla(40,100%,50%,0.95);
-    --warning-text: var(--text);
-
-    --amendment-border: #330099;
-    --amendment-bg: #F5F0FF;
-    --amendment-text: var(--text);
-    --amendmentheading-text: #220066;
-
-    --def-border: #8ccbf2;
-    --def-bg: #def;
-    --def-text: var(--text);
-    --defrow-border: #bbd7e9;
-
-    --datacell-border: silver;
-
-    --indexinfo-text: #707070;
-
-    --indextable-hover-text: black;
-    --indextable-hover-bg: #f7f8f9;
-
-    --outdatedspec-bg: rgba(0, 0, 0, .5);
-    --outdatedspec-text: black;
-    --outdated-bg: maroon;
-    --outdated-text: white;
-    --outdated-shadow: red;
-
-    --editedrec-bg: darkorange;
 }</style>
 <style>/* style-counters */
 
@@ -310,130 +203,11 @@ a.self-link::before            { content: "¶"; }
 .heading > a.self-link::before { content: "§"; }
 dfn > a.self-link::before      { content: "#"; }
 </style>
-<style>/* style-darkmode */
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --text: #ddd;
-        --bg: black;
-
-        --logo-bg: #1a5e9a;
-        --logo-active-bg: #c00;
-        --logo-text: white;
-
-        --tocnav-normal-text: #999;
-        --tocnav-normal-bg: var(--bg);
-        --tocnav-hover-text: var(--tocnav-normal-text);
-        --tocnav-hover-bg: #080808;
-        --tocnav-active-text: #f44;
-        --tocnav-active-bg: var(--tocnav-normal-bg);
-
-        --tocsidebar-text: var(--text);
-        --tocsidebar-bg: #080808;
-        --tocsidebar-shadow: rgba(255,255,255,.1);
-        --tocsidebar-heading-text: hsla(203,20%,40%,.7);
-
-        --toclink-text: var(--text);
-        --toclink-underline: #6af;
-        --toclink-visited-text: var(--toclink-text);
-        --toclink-visited-underline: #054572;
-
-        --heading-text: #8af;
-
-        --hr-text: var(--text);
-
-        --algo-border: #456;
-
-        --del-text: #f44;
-        --del-bg: transparent;
-        --ins-text: #4a4;
-        --ins-bg: transparent;
-
-        --a-normal-text: #6af;
-        --a-normal-underline: #555;
-        --a-visited-text: var(--a-normal-text);
-        --a-visited-underline: var(--a-normal-underline);
-        --a-hover-bg: rgba(25%, 25%, 25%, .2);
-        --a-active-text: #f44;
-        --a-active-underline: var(--a-active-text);
-
-        --borderedblock-bg: rgba(255, 255, 255, .05);
-
-        --blockquote-border: silver;
-        --blockquote-bg: var(--borderedblock-bg);
-        --blockquote-text: currentcolor;
-
-        --issue-border: #e05252;
-        --issue-bg: var(--borderedblock-bg);
-        --issue-text: var(--text);
-        --issueheading-text: hsl(0deg, 70%, 70%);
-
-        --example-border: hsl(50deg, 90%, 60%);
-        --example-bg: var(--borderedblock-bg);
-        --example-text: var(--text);
-        --exampleheading-text: hsl(50deg, 70%, 70%);
-
-        --note-border: hsl(120deg, 100%, 35%);
-        --note-bg: var(--borderedblock-bg);
-        --note-text: var(--text);
-        --noteheading-text: hsl(120, 70%, 70%);
-        --notesummary-underline: silver;
-
-        --assertion-border: #444;
-        --assertion-bg: var(--borderedblock-bg);
-        --assertion-text: var(--text);
-
-        --advisement-border: orange;
-        --advisement-bg: #222218;
-        --advisement-text: var(--text);
-        --advisementheading-text: #f84;
-
-        --warning-border: red;
-        --warning-bg: hsla(40,100%,20%,0.95);
-        --warning-text: var(--text);
-
-        --amendment-border: #330099;
-        --amendment-bg: #080010;
-        --amendment-text: var(--text);
-        --amendmentheading-text: #cc00ff;
-
-        --def-border: #8ccbf2;
-        --def-bg: #080818;
-        --def-text: var(--text);
-        --defrow-border: #136;
-
-        --datacell-border: silver;
-
-        --indexinfo-text: #aaa;
-
-        --indextable-hover-text: var(--text);
-        --indextable-hover-bg: #181818;
-
-        --outdatedspec-bg: rgba(255, 255, 255, .5);
-        --outdatedspec-text: black;
-        --outdated-bg: maroon;
-        --outdated-text: white;
-        --outdated-shadow: red;
-
-        --editedrec-bg: darkorange;
-    }
-    /* In case a transparent-bg image doesn't expect to be on a dark bg,
-       which is quite common in practice... */
-    img { background: white; }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --selflink-text: black;
-        --selflink-bg: silver;
-        --selflink-hover-text: white;
-    }
-}
-</style>
  <body class="h-entry">
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">The Solid Ecosystem</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-11-10">10 November 2020</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-11-13">13 November 2020</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -529,21 +303,25 @@ following the <a href="https://github.com/solid/process">Solid process</a>.
 However, the information in this document is still subject to change.</p>
    <p>You are invited to <a href="https://github.com/solid/specification/issues">contribute</a> any feedback, comments, or questions you might have.</p>
    <h2 class="heading settled" data-level="1" id="intro"><span class="secno">1. </span><span class="content">Introduction</span><a class="self-link" href="#intro"></a></h2>
-   <p><em>Solid</em> is a technology, like the Web, but a new level of standard
-which adds to the existing protocols with the motivation to empower
-individuals in an informed and interconnected society.</p>
-   <p>The Solid ecosystem encapsulates a set of technical specifications that are
-guided by the principles we have adopted and the priority of our values. We
-acknowledge that each technical decision has ethical implications both for the
-end user (short-term) as well as society (long-term). In order to contribute
-to shared goals on a net positive social benefit, we use the <cite><a href="https://www.w3.org/2001/tag/doc/ethical-web-principles/">Ethical Web
+   <p>The aims of the Solid project are in line with those of the Web itself:
+empowerment towards <q cite="https://www.w3.org/2001/tag/doc/ethical-web-principles/">an equitable,
+informed and interconnected society</q>. Solid adds to existing Web standards
+to realise a space where individuals can maintain their autonomy, control
+their data and privacy, and choose applications and services to fulfil their
+needs.</p>
+   <p>The Solid ecosystem encapsulates a set of specifications that are guided by
+the principles we have adopted and also the priority of our values. We
+acknowledge that every technical decision has ethical implications both for
+the end user (short-term) as well as society (long-term). To contribute
+towards a net positive social benefit, we use the <cite><a href="https://www.w3.org/2001/tag/doc/ethical-web-principles/">Ethical Web
 Principles</a></cite> to orient ourselves. The consensus on the technical
-designs are informed by common use cases, implementation experience, as well
-as use.</p>
-   <p>An overarching design goal of the Solid ecosystem is to have decentralised Web
-applications for information exchange where actors can allocate identifiers
-for their content, shape and store data where they have access to, set access
-control policies, and use preferred applications to achieve them.</p>
+designs are informed by common use cases, implementation experience, and use.</p>
+   <p>An overarching design goal of the Solid ecosystem is to be evolvable and to
+provide fundamental affordances for decentralised Web applications for
+information exchange in a way that is secure and privacy respecting. In this
+environment, actors allocate identifiers for their content, shape and store
+data where they have access to, set access control policies, and use preferred
+applications and services to achieve them.</p>
    <p>The general architectural principles of Solid specifications are borrowed from
 the <cite><a href="https://www.w3.org/TR/webarch/">Architecture of the World
 Wide Web</a></cite>. The components as described in each specification may
@@ -551,17 +329,14 @@ evolve independently – according to the principle of orthogonality in order to
 increase the flexibility and robustness of the Solid ecosystem. With that, the
 specifications are loosely coupled and indicate which features overlap with
 those governed by another specification. Extensibility as well as variability
-are also taken into account in each specification.</p>
+also are taken into account in each specification.</p>
    <p>The specifications in the ecosystem describe how Solid servers and clients can
-be interoperable by using communication protocols, global identifiers,
+be interoperable by using Web communication protocols, global identifiers,
 authentication and authorization mechanisms, data formats and shapes, and
 query interfaces.</p>
-   <p>The specifications explain the easiest way to understand how Solid works, as
-opposed to easiest way for building servers and clients. The specifications
-are accompanied with other documents such as <em>Primers</em> and <em>Best
-Practices and Guidelines</em> to help implementers to form a well-rounded
-understanding of the Solid ecosystem as well as ways to improve their
-implementations.</p>
+   <p>The specifications are accompanied with supplemental documents, such as <em>Primers</em> and <em>Best Practices and Guidelines</em> to help
+implementers to form a well-rounded understanding of the Solid ecosystem as
+well as ways to improve their implementations.</p>
    <h3 class="heading settled" data-level="1.1" id="definitions"><span class="secno">1.1. </span><span class="content">Definitions</span><a class="self-link" href="#definitions"></a></h3>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="data-pod">data pod</dfn> is a place for storing documents,
 with mechanisms for controlling who can access what.</p>
