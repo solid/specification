@@ -336,6 +336,25 @@ respond with a `307` or `308` status code and `Location` header specifying the
 preferred URI reference.
 [[Source](https://github.com/solid/specification/issues/109)]
 
+## Constraints and Problem Details ## {#constraints-problem-details}
+
+Servers MUST publish any constraints on clients’ ability to create or update
+resources by adding a `Link` header with an appropriate context URI, a link
+relation of `http://www.w3.org/ns/ldp#constrainedBy`, and a target URI
+identifying a set of constraints [[!RFC8288]], to all responses to requests
+that fail due to violation of those constraints. For example, a server that
+refuses resource creation requests via HTTP PUT, POST, or PATCH would return
+this `Link` header on its `4xx` responses to such requests. The same `Link`
+header MAY be provided on other responses. The representation of the
+constraints MUST have an RDF serialisation. The URIs of the constraints that
+are defined by this specification SHOULD be used where applicable. Servers
+MUST NOT allow clients to update or delete constraints under its authority.
+The appropriate context URI can vary based on the request's semantics and
+method; unless the response is otherwise constrained, the default (the
+effective request URI) SHOULD be used.
+[[Source](https://github.com/solid/specification/issues/44#issuecomment-647554318)].
+
+
 ## Auxiliary Resources ## {#rm}
 
 ### Background and Need ### {#ar-need}
