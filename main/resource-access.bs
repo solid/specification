@@ -60,7 +60,7 @@ A Solid client MUST use the `Content-Type` HTTP header in `PUT`, `POST` and
 
 ## Uniform Resource Identifier ## {#uri}
 
-### Shared slash semantics ### {#uri-slash-semantics}
+### URI Slash Semantics ### {#uri-slash-semantics}
 
 The slash character in the URI path indicates hierarchical relationship
 segments, and enables relative referencing [[!RFC3986]]. The semantics of the
@@ -604,8 +604,9 @@ Receiver parts to receive notifications and make Inbox contents available
 [[!LDN]].
 
 A Solid client MUST conform to the LDN specification by implementing the
-Sender or Consumer parts to discover the location of resource's Inbox, and to
-send and retrieve the contents of an Inbox [[!LDN]].
+Sender or Consumer parts to discover the location of a resource's Inbox, and
+to send notifications to an Inbox or retrieve the contents of an Inbox
+[[!LDN]].
 
 ## Cross-Origin Resource Sharing ## {#cors}
 
@@ -633,9 +634,9 @@ that protection is called *Cross-Origin Resource Sharing* or *CORS* [[FETCH]].
 By responding to browser requests with a specific combination of HTTP headers,
 servers can indicate which actions are allowed for a given resource. For a
 Solid data pod, the goal is to allow *all* actions on the CORS level, such
-that the deeper [access control layer](#web-access-control) can exert full control over the
-app's allowed permissions. The next section describes how to achieve this
-through the right HTTP header configuration.
+that the deeper [access control layer](#web-access-control) can exert full
+control over the app's allowed permissions. The next section describes how to
+achieve this through the right HTTP header configuration.
 
 
 ### Required Server-Side Implementation ### {#cors-server}
