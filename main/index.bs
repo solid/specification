@@ -43,7 +43,7 @@ any feedback, comments, or questions you might have.
 
 <pre class=include>path: introduction.bs</pre>
 <pre class=include>path: resource-access.bs</pre>
-<pre class=include>path: web-identity.bs</pre>
+<pre class=include>path: identity.bs</pre>
 <pre class=include>path: authentication.bs</pre>
 <pre class=include>path: authorization.bs</pre>
 

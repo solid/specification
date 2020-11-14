@@ -1,4 +1,4 @@
-Web Identity {#web-identity}
+Identity {#identity}
 ============================
 
 ## WebID ## {#webid}
