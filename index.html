@@ -6,9 +6,9 @@
   <meta content="w3c/ED" name="w3c-status">
   <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet">
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
-  <meta content="Bikeshed version 0c267f4, updated Wed Nov 11 16:23:42 2020 -0800" name="generator">
+  <meta content="Bikeshed version ef4bc2a, updated Fri Nov 13 17:15:45 2020 -0800" name="generator">
   <link href="https://solid.github.io/specification/" rel="canonical">
-  <meta content="5582f0037d8f9b115287e1b8b64c1fe0cf54d0d0" name="document-revision">
+  <meta content="724b7c6559769d173f961183bc9f8c329edafaa5" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -70,6 +70,115 @@ pre .property::before, pre .property::after {
 
 [data-link-type=biblio] {
     white-space: pre;
+}</style>
+<style>/* style-colors */
+
+/* Any --*-text not paired with a --*-bg is assumed to have a transparent bg */
+:root {
+    color-scheme: light dark;
+
+    --text: black;
+    --bg: white;
+
+    --unofficial-watermark: url(https://www.w3.org/StyleSheets/TR/2016/logos/UD-watermark);
+
+    --logo-bg: #1a5e9a;
+    --logo-active-bg: #c00;
+    --logo-text: white;
+
+    --tocnav-normal-text: #707070;
+    --tocnav-normal-bg: var(--bg);
+    --tocnav-hover-text: var(--tocnav-normal-text);
+    --tocnav-hover-bg: #f8f8f8;
+    --tocnav-active-text: #c00;
+    --tocnav-active-bg: var(--tocnav-normal-bg);
+
+    --tocsidebar-text: var(--text);
+    --tocsidebar-bg: #f7f8f9;
+    --tocsidebar-shadow: rgba(0,0,0,.1);
+    --tocsidebar-heading-text: hsla(203,20%,40%,.7);
+
+    --toclink-text: var(--text);
+    --toclink-underline: #3980b5;
+    --toclink-visited-text: var(--toclink-text);
+    --toclink-visited-underline: #054572;
+
+    --heading-text: #005a9c;
+
+    --hr-text: var(--text);
+
+    --algo-border: #def;
+
+    --del-text: red;
+    --del-bg: transparent;
+    --ins-text: #080;
+    --ins-bg: transparent;
+
+    --a-normal-text: #034575;
+    --a-normal-underline: #707070;
+    --a-visited-text: var(--a-normal-text);
+    --a-visited-underline: #bbb;
+    --a-hover-bg: rgba(75%, 75%, 75%, .25);
+    --a-active-text: #c00;
+    --a-active-underline: #c00;
+
+    --blockquote-border: silver;
+    --blockquote-bg: transparent;
+    --blockquote-text: currentcolor;
+
+    --issue-border: #e05252;
+    --issue-bg: #fbe9e9;
+    --issue-text: var(--text);
+    --issueheading-text: #831616;
+
+    --example-border: #e0cb52;
+    --example-bg: #fcfaee;
+    --example-text: var(--text);
+    --exampleheading-text: #574b0f;
+
+    --note-border: #52e052;
+    --note-bg: #e9fbe9;
+    --note-text: var(--text);
+    --noteheading-text: hsl(120, 70%, 30%);
+    --notesummary-underline: silver;
+
+    --assertion-border: #aaa;
+    --assertion-bg: #eee;
+    --assertion-text: black;
+
+    --advisement-border: orange;
+    --advisement-bg: #fec;
+    --advisement-text: var(--text);
+    --advisementheading-text: #b35f00;
+
+    --warning-border: red;
+    --warning-bg: hsla(40,100%,50%,0.95);
+    --warning-text: var(--text);
+
+    --amendment-border: #330099;
+    --amendment-bg: #F5F0FF;
+    --amendment-text: var(--text);
+    --amendmentheading-text: #220066;
+
+    --def-border: #8ccbf2;
+    --def-bg: #def;
+    --def-text: var(--text);
+    --defrow-border: #bbd7e9;
+
+    --datacell-border: silver;
+
+    --indexinfo-text: #707070;
+
+    --indextable-hover-text: black;
+    --indextable-hover-bg: #f7f8f9;
+
+    --outdatedspec-bg: rgba(0, 0, 0, .5);
+    --outdatedspec-text: black;
+    --outdated-bg: maroon;
+    --outdated-text: white;
+    --outdated-shadow: red;
+
+    --editedrec-bg: darkorange;
 }</style>
 <style>/* style-counters */
 
@@ -141,6 +250,40 @@ figcaption:not(.no-marker)::before {
 
 .dfn-paneled { cursor: pointer; }
 </style>
+<style>/* style-line-numbers */
+
+:root {
+    --highlight-hover-bg: rgba(0, 0, 0, .05);
+}
+.line-numbered {
+    display: grid !important;
+    grid-template-columns: min-content 1fr;
+    grid-auto-flow: row;
+}
+.line-numbered > *,
+.line-numbered::before,
+.line-numbered::after {
+    grid-column: 1/-1;
+}
+.line-no {
+    grid-column: 1;
+    color: gray;
+}
+.line {
+    grid-column: 2;
+}
+.line:hover {
+    background: var(--highlight-hover-bg);
+}
+.line-no[data-line]::before {
+    padding: 0 .5em 0 .1em;
+    content: attr(data-line);
+}
+.line-no[data-line-end]::after {
+    padding: 0 .5em 0 .1em;
+    content: attr(data-line-end);
+}
+</style>
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -203,18 +346,144 @@ a.self-link::before            { content: "¶"; }
 .heading > a.self-link::before { content: "§"; }
 dfn > a.self-link::before      { content: "#"; }
 </style>
+<style>/* style-darkmode */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text: #ddd;
+        --bg: black;
+
+        --unofficial-watermark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cg fill='%23100808' transform='translate(200 200) rotate(-45) translate(-200 -200)' stroke='%23100808' stroke-width='3'%3E%3Ctext x='50%25' y='220' style='font: bold 70px sans-serif; text-anchor: middle; letter-spacing: 6px;'%3EUNOFFICIAL%3C/text%3E%3Ctext x='50%25' y='305' style='font: bold 70px sans-serif; text-anchor: middle; letter-spacing: 6px;'%3EDRAFT%3C/text%3E%3C/g%3E%3C/svg%3E");
+
+        --logo-bg: #1a5e9a;
+        --logo-active-bg: #c00;
+        --logo-text: white;
+
+        --tocnav-normal-text: #999;
+        --tocnav-normal-bg: var(--bg);
+        --tocnav-hover-text: var(--tocnav-normal-text);
+        --tocnav-hover-bg: #080808;
+        --tocnav-active-text: #f44;
+        --tocnav-active-bg: var(--tocnav-normal-bg);
+
+        --tocsidebar-text: var(--text);
+        --tocsidebar-bg: #080808;
+        --tocsidebar-shadow: rgba(255,255,255,.1);
+        --tocsidebar-heading-text: hsla(203,20%,40%,.7);
+
+        --toclink-text: var(--text);
+        --toclink-underline: #6af;
+        --toclink-visited-text: var(--toclink-text);
+        --toclink-visited-underline: #054572;
+
+        --heading-text: #8af;
+
+        --hr-text: var(--text);
+
+        --algo-border: #456;
+
+        --del-text: #f44;
+        --del-bg: transparent;
+        --ins-text: #4a4;
+        --ins-bg: transparent;
+
+        --a-normal-text: #6af;
+        --a-normal-underline: #555;
+        --a-visited-text: var(--a-normal-text);
+        --a-visited-underline: var(--a-normal-underline);
+        --a-hover-bg: rgba(25%, 25%, 25%, .2);
+        --a-active-text: #f44;
+        --a-active-underline: var(--a-active-text);
+
+        --borderedblock-bg: rgba(255, 255, 255, .05);
+
+        --blockquote-border: silver;
+        --blockquote-bg: var(--borderedblock-bg);
+        --blockquote-text: currentcolor;
+
+        --issue-border: #e05252;
+        --issue-bg: var(--borderedblock-bg);
+        --issue-text: var(--text);
+        --issueheading-text: hsl(0deg, 70%, 70%);
+
+        --example-border: hsl(50deg, 90%, 60%);
+        --example-bg: var(--borderedblock-bg);
+        --example-text: var(--text);
+        --exampleheading-text: hsl(50deg, 70%, 70%);
+
+        --note-border: hsl(120deg, 100%, 35%);
+        --note-bg: var(--borderedblock-bg);
+        --note-text: var(--text);
+        --noteheading-text: hsl(120, 70%, 70%);
+        --notesummary-underline: silver;
+
+        --assertion-border: #444;
+        --assertion-bg: var(--borderedblock-bg);
+        --assertion-text: var(--text);
+
+        --advisement-border: orange;
+        --advisement-bg: #222218;
+        --advisement-text: var(--text);
+        --advisementheading-text: #f84;
+
+        --warning-border: red;
+        --warning-bg: hsla(40,100%,20%,0.95);
+        --warning-text: var(--text);
+
+        --amendment-border: #330099;
+        --amendment-bg: #080010;
+        --amendment-text: var(--text);
+        --amendmentheading-text: #cc00ff;
+
+        --def-border: #8ccbf2;
+        --def-bg: #080818;
+        --def-text: var(--text);
+        --defrow-border: #136;
+
+        --datacell-border: silver;
+
+        --indexinfo-text: #aaa;
+
+        --indextable-hover-text: var(--text);
+        --indextable-hover-bg: #181818;
+
+        --outdatedspec-bg: rgba(255, 255, 255, .5);
+        --outdatedspec-text: black;
+        --outdated-bg: maroon;
+        --outdated-text: white;
+        --outdated-shadow: red;
+
+        --editedrec-bg: darkorange;
+    }
+    /* In case a transparent-bg image doesn't expect to be on a dark bg,
+       which is quite common in practice... */
+    img { background: white; }
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --selflink-text: black;
+        --selflink-bg: silver;
+        --selflink-hover-text: white;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --highlight-hover-bg: rgba(255, 255, 255, .05);
+    }
+}
+</style>
  <body class="h-entry">
   <div class="head">
-   <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
+   <p data-fill-with="logo"> <a class="logo" href="https://solidproject.org/"><img height="66" src="solid.svg" width="72"></a> </p>
    <h1 class="p-name no-ref" id="title">The Solid Ecosystem</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-11-13">13 November 2020</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-11-14">14 November 2020</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
      <dd><a class="u-url" href="https://solid.github.io/specification/">https://solid.github.io/specification/</a>
      <dt>Issue Tracking:
      <dd><a href="https://github.com/solid/specification/issues/">GitHub</a>
-     <dd><a href="#issues-index">Inline In Spec</a>
      <dt class="editor">Editors:
      <dd class="editor p-author h-card vcard"><span class="p-name fn"><a href="https://www.w3.org/People/Berners-Lee/card#i">Tim Berners-Lee</a></span>
      <dd class="editor p-author h-card vcard"><span class="p-name fn"><a href="https://csarven.ca/#i">Sarven Capadisli</a></span>
@@ -222,7 +491,6 @@ dfn > a.self-link::before      { content: "#"; }
      <dd class="editor p-author h-card vcard"><span class="p-name fn"><a href="http://www.kjetil.kjernsmo.net/foaf#me">Kjetil Kjernsmo</a></span>
      <dd class="editor p-author h-card vcard"><span class="p-name fn"><a href="https://justin.bingham.id/#me">Justin Bingham</a></span>
      <dd class="editor p-author h-card vcard"><span class="p-name fn"><a href="http://computingjoy.com/">Dmitri Zagidulin</a></span>
-     <dd class="editor p-author h-card vcard"><span class="p-name fn"></span>
      <dd class="editor p-author h-card vcard"><span class="p-name fn"></span>
     </dl>
    </div>
@@ -293,15 +561,16 @@ dfn > a.self-link::before      { content: "#"; }
       <li><a href="#normative"><span class="secno"></span> <span class="content">Normative References</span></a>
       <li><a href="#informative"><span class="secno"></span> <span class="content">Informative References</span></a>
      </ol>
-    <li><a href="#issues-index"><span class="secno"></span> <span class="content">Issues Index</span></a>
    </ol>
   </nav>
   <main>
-   <h2 class="no-num no-toc heading settled" id="sotd①">Status of This Document</h2>
-   <p>The sections that have been incorporated have been reviewed
+   <div boilerplate="statustext">
+    <h2 class="no-num no-toc heading settled" id="sotd①">Status of This Document</h2>
+    <p>The sections that have been incorporated have been reviewed
 following the <a href="https://github.com/solid/process">Solid process</a>.
 However, the information in this document is still subject to change.</p>
-   <p>You are invited to <a href="https://github.com/solid/specification/issues">contribute</a> any feedback, comments, or questions you might have.</p>
+    <p>You are invited to <a href="https://github.com/solid/specification/issues">contribute</a> any feedback, comments, or questions you might have.</p>
+   </div>
    <h2 class="heading settled" data-level="1" id="intro"><span class="secno">1. </span><span class="content">Introduction</span><a class="self-link" href="#intro"></a></h2>
    <p>The aims of the Solid project are in line with those of the Web itself:
 empowerment towards <q cite="https://www.w3.org/2001/tag/doc/ethical-web-principles/">an equitable,
@@ -601,16 +870,10 @@ resource URL and inspect the <code>Link</code> headers in the response.</p>
    <div class="example" id="example-e34bcf09">
     <a class="self-link" href="#example-e34bcf09"></a> 
     <p> A client discovers the location of auxiliary resources for <a href="#ar-wac">§ 2.5.4.1 Web Access Control</a> and <a href="#ar-shape">§ 2.5.4.3 Shape Validation</a> through a HEAD request on <code>&lt;https://server.example/resource.ttl>:</code> </p>
-<pre>HEAD https://server.example/resource.ttl
-<code>Link: &lt;https://server.example/acls/24986>; rel="http://www.w3.org/ns/solid/terms#acl"</code>
-<code>Link: &lt;https://server.example/shapes/85432>; rel="http://www.w3.org/ns/solid/terms#shape"</code>
-</pre>
+<pre class="line-numbered"><span class="line-no" data-line="1"></span><span class="line">HEAD https://server.example/resource.ttl</span><span class="line-no" data-line="2"></span><span class="line"><code>Link: &lt;https://server.example/acls/24986>; rel="http://www.w3.org/ns/solid/terms#acl"</code></span><span class="line-no" data-line="3"></span><span class="line"><code>Link: &lt;https://server.example/shapes/85432>; rel="http://www.w3.org/ns/solid/terms#shape"</code></span></pre>
     <p> A client discovers the <a href="#ar-wac">§ 2.5.4.1 Web Access Control</a> and <a href="#ar-description">§ 2.5.4.2 Resource Description</a> auxiliary
     resources through a <code>GET</code> request on <code>&lt;https://server.example/image.png></code>: </p>
-<pre>GET https://server.example/image.png
-<code>Link: &lt;https://server.example/acls/36789>; rel="http://www.w3.org/ns/solid/terms#acl"</code>
-<code>Link: &lt;https://server.example/desc/08744>; rel="https://www.w3.org/ns/iana/link-relations/relation#describedby"</code>
-</pre>
+<pre class="line-numbered"><span class="line-no" data-line="1"></span><span class="line">GET https://server.example/image.png</span><span class="line-no" data-line="2"></span><span class="line"><code>Link: &lt;https://server.example/acls/36789>; rel="http://www.w3.org/ns/solid/terms#acl"</code></span><span class="line-no" data-line="3"></span><span class="line"><code>Link: &lt;https://server.example/desc/08744>; rel="https://www.w3.org/ns/iana/link-relations/relation#describedby"</code></span></pre>
    </div>
    <h5 class="heading settled" data-level="2.5.3.2" id="ar-annotated"><span class="secno">2.5.3.2. </span><span class="content">Discovery of Annotated Solid Resources</span><a class="self-link" href="#ar-annotated"></a></h5>
    <p>Certain auxiliary resource types MAY require the auxiliary resource to link back
@@ -623,9 +886,7 @@ In these instances, the link relation <code>rel=describes</code> or <code>rel=ht
     describes <code>&lt;https://server.example/image.png></code>. A client that performs a GET
     request on <code>&lt;https://server.example/desc/08744></code> would discover the
     following relation in the <code>Link</code> headers returned in the response. </p>
-<pre>GET https://server.example/desc/08744
-<code>Link: &lt;https://server.example/image.png>; rel="https://www.w3.org/ns/iana/link-relations/relation#describes"</code>
-</pre>
+<pre class="line-numbered"><span class="line-no" data-line="1"></span><span class="line">GET https://server.example/desc/08744</span><span class="line-no" data-line="2"></span><span class="line"><code>Link: &lt;https://server.example/image.png>; rel="https://www.w3.org/ns/iana/link-relations/relation#describes"</code></span></pre>
    </div>
    <h4 class="heading settled" data-level="2.5.4" id="ar-reserved"><span class="secno">2.5.4. </span><span class="content">Reserved Auxiliary Resource Types</span><a class="self-link" href="#ar-reserved"></a></h4>
    <p>The following table lists <a href="#ar-reserved">§ 2.5.4 Reserved Auxiliary Resource Types</a> and the associated link relation URIs
@@ -833,8 +1094,7 @@ despite shorter <code>Accept</code> headers being allowed without explicit menti
    <h4 class="heading settled" data-level="3.1.1" id="accept-put"><span class="secno">3.1.1. </span><span class="content">The Accept-Put Response Header</span><a class="self-link" href="#accept-put"></a></h4>
    <p>This specification introduces a new HTTP response header <code>Accept-Put</code> used to specify the document formats accepted by the server on HTTP PUT requests. It is modelled after the <code>Accept-Patch</code> header defined in <a data-link-type="biblio" href="#biblio-rfc5789">[RFC5789]</a> and the <code>Accept-Post</code> header defined in <a data-link-type="biblio" href="#biblio-ldp">[LDP]</a>.</p>
    <p>The syntax for <code>Accept-Put</code>, using the ABNF syntax defined in Section 1.2 of <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>, is:</p>
-<pre>Accept-Put = "Accept-Put" ":" # media-range
-</pre>
+<pre class="line-numbered"><span class="line-no" data-line="1"></span><span class="line">Accept-Put = "Accept-Put" ":" # media-range</span></pre>
    <p>The <code>Accept-Put</code> header specifies a comma-separated list of media ranges (with optional parameters) as defined by <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>, Section 5.3.2. The <code>Accept-Put</code> header, in effect, uses the same syntax as the HTTP <code>Accept</code> header minus the optional <code>accept-params</code> BNF production, since the latter does not apply to <code>Accept-Put</code>.</p>
    <p>The presence of the <code>Accept-Put</code> header in response to any method is an implicit indication that <code>PUT</code> is allowed on the resource identified by the request URI. The presence of a specific document format in this header indicates that that specific format is allowed on <code>PUT</code> requests to the resource identified by the request URI.</p>
    <p><strong>IANA Registration Template:</strong></p>
@@ -1037,24 +1297,6 @@ error responses SHOULD NOT contain identifiable information.</p>
    <dt id="biblio-webid-tls">[WEBID-TLS]
    <dd><a href="https://solid.github.io/specification/webid-tls/">WebID-TLS</a>. URL: <a href="https://solid.github.io/specification/webid-tls/">https://solid.github.io/specification/webid-tls/</a>
   </dl>
-  <h2 class="no-num no-ref heading settled" id="issues-index"><span class="content">Issues Index</span><a class="self-link" href="#issues-index"></a></h2>
-  <div style="counter-reset:issue">
-   <div class="issue"> Pertaining to events and loss of control mitigation:
-https://github.com/solid/specification/issues/41#issuecomment-534679278<a href="#issue-5c4e642f"> ↵ </a></div>
-   <div class="issue"> Is MUST NOT too strong? <a href="https://github.com/solid/specification/issues/176">Related Issue</a><a href="#issue-f351b1a1"> ↵ </a></div>
-   <div class="issue"> Is MUST too strong, as opposed to encouraging via SHOULD instead? <a href="https://github.com/solid/data-interoperability-panel/issues/37">Related Issue</a><a href="#issue-108fe0cc"> ↵ </a></div>
-   <div class="issue"> Agree on specific link relation URIs to use for auxiliary types <a href="https://github.com/solid/specification/issues/172">Related Issue</a><a href="#issue-e6be0bd4"> ↵ </a></div>
-   <div class="issue"> Consider whether a given Solid resource should be allowed to have
-multiple resource description auxiliary resources. <a href="https://github.com/solid/specification/issues/173">Related Issue</a><a href="#issue-da8f0495"> ↵ </a></div>
-   <div class="issue"> Determine what the default permissions should be on resource description
-auxiliary resources, or whether we should have them at all. <a href="https://github.com/solid/specification/issues/174">Related Issue</a><a href="#issue-256a1565"> ↵ </a></div>
-   <div class="issue"> Determine what the default permissions should be on shape validation
-auxiliary resources, or whether we should have them at all. <a href="https://github.com/solid/specification/issues/174">Related Issue</a><a href="#issue-f92a4149"> ↵ </a></div>
-   <div class="issue"> Provide a shape to validate a shape validation auxiliary resource. May
-include the shape language, shape url, and any additional parameters to be used
-in shape validation by the server implementation.<a href="#issue-d5201460"> ↵ </a></div>
-   <div class="issue"> Shape of ACL: https://github.com/solid/specification/issues/169<a href="#issue-e549d761"> ↵ </a></div>
-  </div>
   <aside class="dfn-panel" data-for="data-pod">
    <b><a href="#data-pod">#data-pod</a></b><b>Referenced in:</b>
    <ul>

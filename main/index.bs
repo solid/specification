@@ -5,15 +5,16 @@ Level: 1
 Status: w3c/ED
 Group: W3C Solid Community Group
 URL: https://solid.github.io/specification/
+Boilerplate: issues-index no
 Markup Shorthands: markdown yes
 Max ToC Depth: 2
+Line Numbers: on
 Editor: [Tim Berners-Lee](https://www.w3.org/People/Berners-Lee/card#i)
 Editor: [Sarven Capadisli](https://csarven.ca/#i)
 Editor: [Ruben Verborgh](https://ruben.verborgh.org/profile/#me)
 Editor: [Kjetil Kjernsmo](http://www.kjetil.kjernsmo.net/foaf#me)
 Editor: [Justin Bingham](https://justin.bingham.id/#me)
 Editor: [Dmitri Zagidulin](http://computingjoy.com/)
-
 
 Abstract:
   This document connects a set of specifications that, together,
@@ -25,6 +26,11 @@ Abstract:
 MIT License. Copyright 2019 - 2020 W3C Solid Community Group
 </div>
 
+<div boilerplate="logo">
+<a class="logo" href="https://solidproject.org/"><img src="solid.svg" width="72" height="66" /></a>
+</div>
+
+<div boilerplate="statustext">
 <h2 class="no-num no-toc heading settled" id="sotd">Status of This Document</h2>
 
 The sections that have been incorporated have been reviewed
@@ -33,6 +39,7 @@ However, the information in this document is still subject to change.
 
 You are invited to [contribute](https://github.com/solid/specification/issues)
 any feedback, comments, or questions you might have.
+</div>
 
 <pre class=include>path: introduction.bs</pre>
 <pre class=include>path: resource-access.bs</pre>
@@ -41,47 +48,6 @@ any feedback, comments, or questions you might have.
 
 <pre class=biblio>
 {
-  "footprints": {
-    "href": "https://solid.github.io/specification/footprints/",
-    "title": "Data Footprints"
-  },
-  "pod-management": {
-    "href": "https://solid.github.io/specification/pod-management/",
-    "title": "Data Pod Management"
-  },
-  "profiles": {
-    "href": "https://profilenegotiation.github.io/I-D-Profile-Negotiation/I-D-Profile-Negotiation.html",
-    "title": "Indicating and Negotiating Profiles in HTTP",
-    "authors": [
-      "Lars Svensson",
-      "Ruben Verborgh"
-    ]
-  },
-  "shex": {
-    "href": "https://shex.io/shex-semantics/",
-    "title": "Shape Expressions Language",
-    "authors": [
-      "Eric Prud'hommeaux",
-      "Iovka Boneva",
-      "Jose Emilio Labra Gayo"
-    ]
-  },
-  "tpf": {
-    "href": "https://www.hydra-cg.com/spec/latest/triple-pattern-fragments/",
-    "title": "Triple Pattern Fragments",
-    "authors": [
-      "Ruben Verborgh"
-    ]
-  },
-  "verifiable-credentials": {
-    "href": "https://www.w3.org/TR/verifiable-claims-data-model/",
-    "title": "Verifiable Credentials Data Model 1.0",
-    "authors": [
-      "Manu Sporny",
-      "Dave Longley",
-      "David Chadwick"
-    ]
-  },
   "webid": {
     "href": "https://dvcs.w3.org/hg/WebID/raw-file/tip/spec/identity-respec.html",
     "title": "WebID 1.0 Editors Draft"
