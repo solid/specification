@@ -15,5 +15,4 @@ authentication performed by an OpenID provider [[!SOLID-OIDC]].
 The Solid ecosystem initially relied on WebID-TLS for authenticated resource
 access [[WEBID-TLS]]. The current recommendation for authentication relies on
 Solid-OIDC ([[#solid-oidc]]). Implementations can use WebID-TLS just as any
-other mechanism as an additional authentication method. Implementations should
-not assume broad support for any of those additional methods.
+other mechanism as an additional authentication method.
