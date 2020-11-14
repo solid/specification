@@ -721,12 +721,12 @@ because values longer than 128 characters
 would otherwise be blocked,
 despite shorter `Accept` headers being allowed without explicit mention.
 
-HTTP Definitions {#http-definitions}
-===================================
 
-## HTTP Headers ## {#http-headers}
+## HTTP Definitions ## {#http-definitions}
 
-### The Accept-Put Response Header ### {#accept-put}
+### HTTP Headers ### {#http-headers}
+
+#### The Accept-Put Response Header #### {#accept-put}
 
 This specification introduces a new HTTP response header `Accept-Put` used to specify the document formats accepted by the server on HTTP PUT requests. It is modelled after the `Accept-Patch` header defined in [[!RFC5789]] and the `Accept-Post` header defined in [[!LDP]].
 
@@ -755,11 +755,11 @@ The `Accept-Put` response header must be added to the permanent registry (see [[
 :: This specification
 
 
-## Link Relations ## {#link-relations}
+### Link Relations ### {#link-relations}
 
 The intent is that these link relations will be registered with IANA per [[!RFC8288]]. 
 
-### acl ### {#acl}
+#### acl #### {#acl}
 
 The contents of this section were originally taken from [Web Access Control](https://www.w3.org/wiki/WebAccessControl).
 
@@ -781,8 +781,7 @@ Issue:
 Shape of ACL: https://github.com/solid/specification/issues/169
 
 
-Security Considerations {#security}
-===================================
+## Security Considerations ## {#security}
 
 Some of the normative references with this specification point to documents
 with a *Living Standard* or *Draft* status, meaning their contents can still
@@ -838,11 +837,11 @@ in testing environments
 or when the data pod is behind a reverse proxy
 that terminates a secure connection.
 
-## Privacy Considerations ## {#privacy}
+### Privacy Considerations ### {#privacy}
 
-### Identifiable Information ### {#identifiable-information}
+#### Identifiable Information #### {#identifiable-information}
 
 In order to prevent leakage of non-resource data,
 error responses SHOULD NOT contain identifiable information.
 
-## Security and Privacy Review ## {#security-privacy-review}
+### Security and Privacy Review ### {#security-privacy-review}
