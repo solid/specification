@@ -1,5 +1,5 @@
-Introduction {#intro}
-=====================
+Introduction {#introduction}
+============================
 
 The aims of the Solid project are in line with those of the Web itself:
 empowerment towards <q

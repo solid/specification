@@ -8,7 +8,6 @@ URL: https://solid.github.io/specification/
 Boilerplate: issues-index no
 Markup Shorthands: markdown yes
 Max ToC Depth: 2
-Line Numbers: on
 Editor: [Tim Berners-Lee](https://www.w3.org/People/Berners-Lee/card#i)
 Editor: [Sarven Capadisli](https://csarven.ca/#i)
 Editor: [Ruben Verborgh](https://ruben.verborgh.org/profile/#me)
@@ -43,8 +42,9 @@ any feedback, comments, or questions you might have.
 
 <pre class=include>path: introduction.bs</pre>
 <pre class=include>path: resource-access.bs</pre>
-<pre class=include>path: http-definitions.bs</pre>
-<pre class=include>path: security.bs</pre>
+<pre class=include>path: identity.bs</pre>
+<pre class=include>path: authentication.bs</pre>
+<pre class=include>path: authorization.bs</pre>
 
 <pre class=biblio>
 {

@@ -1,73 +1,58 @@
 Resource Access {#resource-access}
-================================================
+==================================
 
 ## Hypertext Transfer Protocol ## {#http}
 
-### Background and Need ### {#http-need}
-<em>This section is non-normative.</em>
-
 Solid clients and servers need to exchange data securely over the Internet,
-and they do so using the HTTP Web standard.
-This section describes in detail
+and they do so using the HTTP Web standard. This section describes in detail
 which parts of HTTP must be implemented by clients and servers.
 
-### Required server-side implementation ### {#http-server}
+### Required Server-Side Implementation ### {#http-server}
 
-A [=data pod=] MUST be an HTTP/1.1 server [[!RFC7230]][[!RFC7231]].
-It SHOULD additionally be an HTTP/2 server [[!RFC7540]]
-to improve performance,
-especially in cases where individual clients
-are expected to send high numbers of successive requests.
+A [=data pod=] MUST be an HTTP/1.1 server [[!RFC7230]][[!RFC7231]]. It SHOULD
+additionally be an HTTP/2 server [[!RFC7540]] to improve performance,
+especially in cases where individual clients are expected to send high numbers
+of successive requests.
 
-A data pod SHOULD use TLS connections
-through the `https` URI scheme
-in order to secure the communication between clients and servers.
-When both `http` and `https` are supported,
-all `http` URIs MUST redirect to their `https` counterparts
-using a response with a `301` status code and a `Location` header.
+A data pod SHOULD use TLS connections through the `https` URI scheme in order
+to secure the communication between clients and servers. When both `http` and
+`https` are supported, all `http` URIs MUST redirect to their `https`
+counterparts using a response with a `301` status code and a `Location`
+header.
 
-A data pod MUST implement the server part
-of <cite>HTTP/1.1 Conditional Requests</cite> [[!RFC7232]]
-to ensure that updates requested by clients
-will only be applied if given preconditions are met.
-It SHOULD additionally implement the server part
-of <cite>HTTP/1.1 Caching</cite> [[!RFC7234]]
-to improve performance.
-A data pod MAY implement the server part
-of <cite>HTTP/1.1 Range Requests</cite> [[!RFC7233]]
-to further improve performance for large representations.
+A data pod MUST implement the server part of <cite>HTTP/1.1 Conditional
+Requests</cite> [[!RFC7232]] to ensure that updates requested by clients will
+only be applied if given preconditions are met. It SHOULD additionally
+implement the server part of <cite>HTTP/1.1 Caching</cite> [[!RFC7234]] to
+improve performance. A data pod MAY implement the server part of
+<cite>HTTP/1.1 Range Requests</cite> [[!RFC7233]] to further improve
+performance for large representations.
 
-A data pod MUST implement the server part
-of <cite>HTTP/1.1 Authentication</cite> [[!RFC7235]].
-When a client does not provide valid credentials
-when requesting a resource that requires it (see [[#webid]]),
-the data pod MUST send a response with a `401` status code
-(unless `404` is preferred for security reasons).
+A data pod MUST implement the server part of <cite>HTTP/1.1
+Authentication</cite> [[!RFC7235]]. When a client does not provide valid
+credentials when requesting a resource that requires it (see [[#webid]]), the
+data pod MUST send a response with a `401` status code (unless `404` is
+preferred for security reasons).
 
 A Solid server MUST reject `PUT`, `POST` and `PATCH` requests without the
 `Content-Type` header with a status code of `400`.
 [[Source](https://github.com/solid/specification/issues/70#issuecomment-535499628)]
 
-### Required client-side implementation ### {#http-client}
+### Required Client-Side Implementation ### {#http-client}
 
-A Solid client MUST be an HTTP/1.1 client [[!RFC7230]][[!RFC7231]].
-It MAY additionally be an HTTP/2 client [[!RFC7540]]
-to improve performance.
+A Solid client MUST be an HTTP/1.1 client [[!RFC7230]][[!RFC7231]]. It MAY
+additionally be an HTTP/2 client [[!RFC7540]] to improve performance.
 
-A Solid client MAY implement the client parts of
-<cite>HTTP/1.1 Conditional Requests</cite> [[!RFC7232]]
-to only trigger updates when certain preconditions are met.
-It MAY implement
-<cite>HTTP/1.1 Caching</cite> [[!RFC7234]]
-and
-<cite>HTTP/1.1 Range Requests</cite> [[!RFC7233]]
-to improve performance.
+A Solid client MAY implement the client parts of <cite>HTTP/1.1 Conditional
+Requests</cite> [[!RFC7232]] to only trigger updates when certain
+preconditions are met. It MAY implement <cite>HTTP/1.1 Caching</cite>
+[[!RFC7234]] and <cite>HTTP/1.1 Range Requests</cite> [[!RFC7233]] to improve
+performance.
 
-A Solid client MUST implement the client part
-of <cite>HTTP/1.1 Authentication</cite> [[!RFC7235]]
-if it needs to access resources requiring authentication (see [[#webid]]).
-When it receives a response with a `403` or `404` status code,
-it MAY repeat the request with different credentials.
+A Solid client MUST implement the client part of <cite>HTTP/1.1
+Authentication</cite> [[!RFC7235]] if it needs to access resources requiring
+authentication (see [[#webid]]). When it receives a response with a `403` or
+`404` status code, it MAY repeat the request with different credentials.
 
 A Solid client MUST use the `Content-Type` HTTP header in `PUT`, `POST` and
 `PATCH` requests [[!RFC7231]].
@@ -75,7 +60,7 @@ A Solid client MUST use the `Content-Type` HTTP header in `PUT`, `POST` and
 
 ## Uniform Resource Identifier ## {#uri}
 
-### Shared slash semantics ### {#uri-slash-semantics}
+### URI Slash Semantics ### {#uri-slash-semantics}
 
 The slash character in the URI path indicates hierarchical relationship
 segments, and enables relative referencing [[!RFC3986]]. The semantics of the
@@ -90,6 +75,20 @@ a 301 redirect to the former.
 [[Source](https://github.com/solid/specification/issues/107#issuecomment-567482817)].
 Behaviour pertaining to authorization MUST proceed this optional redirect
 [[Source](https://github.com/solid/specification/issues/107#issuecomment-567454889)]
+
+### URI Persistence ### {#uri-persistence}
+<em>This section is non-normative.</em>
+
+Servers should not re-use URIs, regardless of the mechanism by which resources
+are created. Certain specific cases exist where URIs may be reinstated when it
+identifies the same resource, but only when consistent with Web architecture's
+<cite><a href="https://www.w3.org/TR/webarch/#URI-persistence">URI
+persistence</a></cite> [[!WEBARCH]].
+[[Source](https://github.com/solid/specification/issues/46#issuecomment-589619372)]
+
+Note:
+Servers that wish to disable URI re-use may want to use the `410` status
+code.
 
 ## Linked Data ## {#linked-data}
 
@@ -125,7 +124,7 @@ The object of the relation is the storage (`pim:Storage`).
 [[Source](https://github.com/solid/data-interoperability-panel/issues/10#issuecomment-598694029)]
 [[Source](https://github.com/solid/specification/issues/153#issuecomment-624630022)]
 
-When using Web Access Control ([[#wac]]):
+When using Web Access Control ([[#web-access-control]]):
 
 The root container (`pim:Storage`) MUST have an ACL auxiliary resource
 directly associated to it. The associated ACL document MUST include an authorization
@@ -133,7 +132,7 @@ policy with `acl:Control` access privilege.
 
 [[Source](https://github.com/solid/specification/issues/197#issuecomment-699937520)]
 
-### Containment ### {#resource-containment}
+### Resource Containment ### {#resource-containment}
 
 Solid has the notion of containers to represent a collection of linked
 resources to help with resource discovery and lifecycle management.
@@ -149,27 +148,14 @@ The representation and behaviour of containers in Solid corresponds to LDP
 Basic Container and MUST be supported.
 [[Source](https://github.com/solid/specification/issues/47#issuecomment-561675764)]
 
-### Persistence ### {#uri-persistence}
-<em>This section is non-normative.</em>
 
-Servers should not re-use URIs, regardless of the mechanism by which resources
-are created. Certain specific cases exist where URIs may be reinstated when it
-identifies the same resource, but only when consistent with Web architecture's
-<cite><a href="https://www.w3.org/TR/webarch/#URI-persistence">URI
-persistence</a></cite> [[!WEBARCH]].
-[[Source](https://github.com/solid/specification/issues/46#issuecomment-589619372)]
-
-Note:
-Servers that wish to disable URI re-use may want to use the `410` status
-code.
-
-## Reading and Writing Resources ## {#read-write}
+## Reading and Writing Resources ## {#reading-writing-resources}
 
 Servers MUST respond with the `405` status code to requests using HTTP methods
 that are not supported by the target resource.
 [[Source](https://github.com/solid/specification/issues/117)]
 
-### Resource type heuristics ### {#resource-type-heuristics}
+### Resource Type Heuristics ### {#resource-type-heuristics}
 
 When creating new resources, servers can determine an effective request URI's
 type by examining the URI path ending ([[#uri-slash-semantics]]).
@@ -183,7 +169,7 @@ request.
 
 [[Source](https://github.com/solid/specification/pull/160#issuecomment-636822687)].
 
-### Reading resources ### {#read}
+### Reading Resources ### {#reading-resources}
 
 Servers MUST support the HTTP `GET`, `HEAD` and `OPTIONS` methods [[!RFC7231]]
 for clients to read resources or to determine communication options.
@@ -206,7 +192,7 @@ headers in the response of a `OPTIONS *` request.
 [[Source](https://github.com/solid/specification/issues/85#issuecomment-575386251)]
 [[Source](https://github.com/solid/specification/issues/43)]
 
-### Writing resources ### {#write}
+### Writing Resources ### {#writing-resources}
 
 When a server supports the HTTP `PUT`, `POST` and `PATCH` methods [[!RFC7231]]
 this specification imposes the following requirements:
@@ -252,14 +238,14 @@ Servers MAY use the HTTP `ETag` header with a strong validator for RDF bearing
 representations in order to encourage clients to opt-in to using the
 `If-Match` header in their requests.
 
-When using Web Access Control ([[#wac]]):
+When using Web Access Control ([[#web-access-control]]):
 
-To create or update an ACL resource (see [[#ar-wac]]), an `acl:agent` MUST
+To create or update an ACL resource (see [[#auxiliary-resources-wac]]), an `acl:agent` MUST
 have `acl:Control` privileges per the ACL inheritance algorithm on the
 resource directly associated with it.
 [[Source](https://github.com/solid/specification/issues/42#issuecomment-616688848)]
 
-### Deleting Resources ### {#delete}
+### Deleting Resources ### {#deleting-resources}
 
 When a server supports the HTTP `DELETE` method [[!RFC7231]] this
 specification imposes the following requirements:
@@ -277,21 +263,21 @@ resource from the containing container.
 [[Source](https://www.w3.org/TR/ldp#ldpc-del-contremovesconttriple)]
 
 When a contained resource is deleted, the server MUST also delete the
-associated resources (see the [[#rm]] section).
+associated resources (see the [[#auxiliary-resources]] section).
 
-When a `DELETE` request is made to a container, the server MUST delete
-the container if it contains no resources. If the container contains
-resources, the server MUST respond with the `409` status code and response
-body describing the error.
+When a `DELETE` request is made to a container, the server MUST delete the
+container if it contains no resources. If the container contains resources,
+the server MUST respond with the `409` status code and response body
+describing the error.
 [[Source](https://github.com/solid/specification/pull/187/files/b7426e95a1613e08195a853a4d0a403b7030f494#r447130915)]
 
-When using Web Access Control ([[#wac]]):
+When using Web Access Control ([[#web-access-control]]):
 
 To delete a resource, an `acl:agent` MUST have `acl:Write` privilege per the
 ACL inheritance algorithm on the resource and the containing container.
 [[Source](https://github.com/solid/specification/issues/197)]
 
-To delete an ACL resource (see [[#ar-wac]]), an `acl:agent` MUST have
+To delete an ACL resource (see [[#auxiliary-resources-wac]]), an `acl:agent` MUST have
 `acl:Control` privileges per the ACL inheritance algorithm on the resource
 directly associated with it.
 [[Source](https://github.com/solid/specification/issues/145)]
@@ -317,7 +303,7 @@ Issue:
 Pertaining to events and loss of control mitigation:
 https://github.com/solid/specification/issues/41#issuecomment-534679278
 
-### Representations ### {#representations}
+### Resource Representations ### {#resource-representations}
 
 When a server creates a resource on HTTP `PUT`, `POST` or `PATCH` requests
 such that the request's representation data encodes an *RDF document*
@@ -336,15 +322,12 @@ respond with a `307` or `308` status code and `Location` header specifying the
 preferred URI reference.
 [[Source](https://github.com/solid/specification/issues/109)]
 
-## Auxiliary Resources ## {#rm}
-
-### Background and Need ### {#ar-need}
-<em>This section is non-normative.</em>
+## Auxiliary Resources ## {#auxiliary-resources}
 
 An auxiliary resource may provide supplementary information about a given
-Solid resource, or affect how that resource and others associated with it
-are processed, served, or interpreted. Different auxiliary resource types
-provide different capabilities. This section introduces a mechanism for linking
+Solid resource, or affect how that resource and others associated with it are
+processed, served, or interpreted. Different auxiliary resource types provide
+different capabilities. This section introduces a mechanism for linking
 auxiliary resources with regular Solid resources.
 
 Auxiliary resources are needed to influence the configuration, processing, or
@@ -366,25 +349,24 @@ Examples of auxiliary resources in use include:
   auxiliary resource where those configurable parameters reside.</li>
 </ul>
 
-### Required Server-side Implementation ### {#ar-server}
-
+### Required Server-Side Implementation ### {#auxiliary-resources-server}
 
 For any defined auxiliary resource available for a given Solid resource, all
-representations of that resource MUST include an HTTP `Link` header pointing to
-the location of each auxiliary resource.
+representations of that resource MUST include an HTTP `Link` header pointing
+to the location of each auxiliary resource.
 
 The `rel={relation-type}` [[!RFC8288]] will define the relationship to the
 target URL in the HTTP `Link` header. URIs are encouraged to indicate Link
 relation types.
 
-An auxiliary resource linked with a given Solid resource through an HTTP `Link`
-header is considered to be *directly associated* with that resource. It is up
-to the server to determine how that association affects processing based on the
-auxiliary resource type.
+An auxiliary resource linked with a given Solid resource through an HTTP
+`Link` header is considered to be *directly associated* with that resource. It
+is up to the server to determine how that association affects processing based
+on the auxiliary resource type.
 
 A given Solid resource MAY link to zero or more auxiliary resources. A given
-Solid resource MUST NOT link to auxiliary resources on a different server under
-a different authority.
+Solid resource MUST NOT link to auxiliary resources on a different server
+under a different authority.
 
 Issue: Is MUST NOT too strong?
 [Related Issue](https://github.com/solid/specification/issues/176)
@@ -394,12 +376,12 @@ authorization, which MUST be specified as part of the definition for a given
 auxiliary resource type.
 
 An auxiliary resource that resides on a Solid server MUST adhere to the same
-interaction model used by other regular Solid resources, except where specified
-in the definition of that auxiliary resource type.
+interaction model used by other regular Solid resources, except where
+specified in the definition of that auxiliary resource type.
 
-### Required Client-side Implementation ### {#ar-client}
+### Required Client-Side Implementation ### {#auxiliary-resources-client}
 
-#### Discovery of Auxiliary Resources #### {#ar-discovery}
+#### Discovery of Auxiliary Resources #### {#auxiliary-resources-discovery}
 
 To discover the auxiliary resources directly associated with a given Solid
 resource, a Solid client MUST issue a `HEAD` or `GET` request to the target
@@ -407,8 +389,8 @@ resource URL and inspect the `Link` headers in the response.
 
 <div class="example">
   <p>
-    A client discovers the location of auxiliary resources for [[#ar-wac]] and
-    [[#ar-shape]] through a HEAD request on
+    A client discovers the location of auxiliary resources for [[#auxiliary-resources-wac]] and
+    [[#auxiliary-resources-shape]] through a HEAD request on
     `<https://server.example/resource.ttl>:`
   </p>
   <pre>
@@ -417,7 +399,7 @@ resource URL and inspect the `Link` headers in the response.
     `Link: <https://server.example/shapes/85432>; rel="http://www.w3.org/ns/solid/terms#shape"`
   </pre>
   <p>
-    A client discovers the [[#ar-wac]] and [[#ar-description]] auxiliary
+    A client discovers the [[#auxiliary-resources-wac]] and [[#auxiliary-resources-description]] auxiliary
     resources through a `GET` request on `<https://server.example/image.png>`:
   </p>
   <pre>
@@ -427,19 +409,21 @@ resource URL and inspect the `Link` headers in the response.
   </pre>
 </div>
 
-#### Discovery of Annotated Solid Resources #### {#ar-annotated}
+#### Discovery of Annotated Solid Resources #### {#auxiliary-resources-annotated}
 
-Certain auxiliary resource types MAY require the auxiliary resource to link back
-to the Solid resource it is directly associated with, via HTTP `Link` headers.
-In these instances, the link relation `rel=describes` or
-`rel=https://www.w3.org/ns/iana/link-relations/relation#describes` MUST be used.
+Certain auxiliary resource types MAY require the auxiliary resource to link
+back to the Solid resource it is directly associated with, via HTTP `Link`
+headers. In these instances, the link relation `rel=describes` or
+`rel=https://www.w3.org/ns/iana/link-relations/relation#describes` MUST be
+used.
 
 Issue: Is MUST too strong, as opposed to encouraging via SHOULD instead?
-[Related Issue](https://github.com/solid/data-interoperability-panel/issues/37)
+[Related
+Issue](https://github.com/solid/data-interoperability-panel/issues/37)
 
 <div class="example">
   <p>
-    A [[#ar-description]] auxiliary resource
+    A [[#auxiliary-resources-description]] auxiliary resource
     `<https://server.example/desc/08744>` is directly associated with and
     describes `<https://server.example/image.png>`. A client that performs a GET
     request on `<https://server.example/desc/08744>` would discover the
@@ -451,11 +435,12 @@ Issue: Is MUST too strong, as opposed to encouraging via SHOULD instead?
   </pre>
 </div>
 
-### Reserved Auxiliary Resource Types ### {#ar-reserved}
+### Reserved Auxiliary Resource Types ### {#auxiliary-resources-reserved}
 
-The following table lists [[#ar-reserved]] and the associated link relation URIs
-that are used for discovery. Other auxiliary types and relations may also be
-used, and may be added to the reserved set in the future.
+The following table lists [[#auxiliary-resources-reserved]] and the associated
+link relation URIs that are used for discovery. Other auxiliary types and
+relations may also be used, and may be added to the reserved set in the
+future.
 
 <table class="data" align="left">
   <colgroup class="header"></colgroup>
@@ -468,16 +453,16 @@ used, and may be added to the reserved set in the future.
   </thead>
   <tbody>
     <tr>
-      <td>[[#ar-wac]]</td>
+      <td>[[#auxiliary-resources-wac]]</td>
       <td>```"acl"``` or ```http://www.w3.org/ns/solid/terms#acl```</td>
     </tr>
     <tr>
-      <td>[[#ar-description]]</td>
+      <td>[[#auxiliary-resources-description]]</td>
       <td>```"describedby"``` or
 ```https://www.w3.org/ns/iana/link-relations/relation#describedby```</td>
     </tr>
     <tr>
-      <td>[[#ar-shape]]</td>
+      <td>[[#auxiliary-resources-shape]]</td>
       <td>```http://www.w3.org/ns/solid/terms#shape```</td>
     </tr>
   </tbody>
@@ -486,15 +471,16 @@ used, and may be added to the reserved set in the future.
 Issue: Agree on specific link relation URIs to use for auxiliary types
 [Related Issue](https://github.com/solid/specification/issues/172)
 
-#### Web Access Control #### {#ar-wac}
+#### Web Access Control #### {#auxiliary-resources-wac}
 
-ACL resources as defined by [[#wac]] MUST be supported as an auxiliary
-type by Solid servers.
+ACL resources as defined by [[#web-access-control]] MUST be supported as an
+auxiliary type by Solid servers.
 
 The ACL auxiliary resource directly associated with a given resource is
-discovered by the client via the `rel="acl"` `Link` relation in a `Link` header.
+discovered by the client via the `rel="acl"` `Link` relation in a `Link`
+header.
 
-Note: Consider moving some of this information to [[#wac]]
+Note: Consider moving some of this information to [[#web-access-control]]
 
 A given Solid resource MUST NOT be directly associated with more than one ACL
 auxiliary resource. A given ACL auxiliary resource MUST NOT be directly
@@ -504,76 +490,76 @@ To discover, read, create, or modify an ACL auxiliary resource, an
 [acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
 MUST have
 [acl:Control](https://github.com/solid/web-access-control-spec#aclcontrol)
-privileges per the
-[ACL inheritance algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
+privileges per the [ACL inheritance
+algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
 on the resource directly associated with it.
 
-An ACL auxiliary resource MUST be deleted by the Solid server when the resource
-it is directly associated with is also deleted and the Solid server is
-authoritative for both resources.
+An ACL auxiliary resource MUST be deleted by the Solid server when the
+resource it is directly associated with is also deleted and the Solid server
+is authoritative for both resources.
 
 A Solid server SHOULD sanity check ACL auxiliary resources upon creation or
 update to restrict invalid changes, such as by performing shape validation
 against authorization statements therein.
 
-#### Resource Description #### {#ar-description}
+#### Resource Description #### {#auxiliary-resources-description}
 
-Note: Consider where there are any common parameters that would be
-ubiquitous across resource descriptions that should be defined as part of the
+Note: Consider where there are any common parameters that would be ubiquitous
+across resource descriptions that should be defined as part of the
 specification.
 
-Resource description is a general mechanism to provide descriptive metadata for
-a given resource. It MUST be supported as an auxiliary type by Solid
+Resource description is a general mechanism to provide descriptive metadata
+for a given resource. It MUST be supported as an auxiliary type by Solid
 servers.
 
-The Descriptive auxiliary resource directly associated with a given resource is
-discovered by the client via the `rel="describedby"` `Link` relation in a `Link`
-header. Conversely, the resource being described by a Descriptive auxiliary
-resource is discovered by the client via the `rel="describes"` `Link` relation
-in a `Link` header.
+The Descriptive auxiliary resource directly associated with a given resource
+is discovered by the client via the `rel="describedby"` `Link` relation in a
+`Link` header. Conversely, the resource being described by a Descriptive
+auxiliary resource is discovered by the client via the `rel="describes"`
+`Link` relation in a `Link` header.
 
 Issue: Consider whether a given Solid resource should be allowed to have
-multiple resource description auxiliary resources.
-[Related Issue](https://github.com/solid/specification/issues/173)
+multiple resource description auxiliary resources. [Related
+Issue](https://github.com/solid/specification/issues/173)
 
 A given Solid resource MUST NOT be directly associated with more than one
 Descriptive auxiliary resource.
 
-Issue: Determine what the default permissions should be on resource description
-auxiliary resources, or whether we should have them at all.
+Issue: Determine what the default permissions should be on resource
+description auxiliary resources, or whether we should have them at all.
 [Related Issue](https://github.com/solid/specification/issues/174)
 
 To create or modify a Descriptive auxiliary resource, a given
 [acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
 MUST have
 [acl:Write](https://github.com/solid/web-access-control-spec#aclcontrol)
-privileges per the
-[ACL inheritance algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
+privileges per the [ACL inheritance
+algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
 on the resource directly associated with it.
 
 To discover or read a Descriptive auxiliary resource, an
 [acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
 MUST have
 [acl:Read](https://github.com/solid/web-access-control-spec#aclcontrol)
-privileges per the
-[ACL inheritance algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
+privileges per the [ACL inheritance
+algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
 on the resource directly associated with it.
 
 An Descriptive auxiliary resource MUST be deleted by the Solid server when the
-resource it is directly associated with is also deleted and the Solid server is
-authoritative for both resources.
+resource it is directly associated with is also deleted and the Solid server
+is authoritative for both resources.
 
-#### Shape Validation #### {#ar-shape}
+#### Shape Validation #### {#auxiliary-resources-shape}
 
 Shape Validation auxiliary resources as defined by (link to shape validation)
 SHOULD be supported as an auxiliary type by Solid servers.
 
 The Shape validation auxiliary resource directly associated with a given
-resource
-is discovered by the client via the `rel=http://www.w3.org/ns/solid/terms#shape`
-`Link` relation in a `Link` header. Conversely, the resource being described by
-a Shape validation auxiliary resource is discovered by the client via the
-`rel=describes` `Link` relation in a `Link` header.
+resource is discovered by the client via the
+`rel=http://www.w3.org/ns/solid/terms#shape` `Link` relation in a `Link`
+header. Conversely, the resource being described by a Shape validation
+auxiliary resource is discovered by the client via the `rel=describes` `Link`
+relation in a `Link` header.
 
 Note: Consider moving some of this information to the Shape Validation section
 
@@ -581,32 +567,32 @@ A given Solid resource MUST NOT be directly associated with more than one
 Shape Validation auxiliary resource.
 
 Issue: Determine what the default permissions should be on shape validation
-auxiliary resources, or whether we should have them at all.
-[Related Issue](https://github.com/solid/specification/issues/174)
+auxiliary resources, or whether we should have them at all. [Related
+Issue](https://github.com/solid/specification/issues/174)
 
 To create or modify a Shape validation auxiliary resource, an
 [acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
 MUST have
 [acl:Write](https://github.com/solid/web-access-control-spec#aclcontrol)
-privileges per the
-[ACL inheritance algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
+privileges per the [ACL inheritance
+algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
 on the resource directly associated with it.
 
 To discover or read a Shape validation auxiliary resource, an
 [acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
 MUST have
 [acl:Read](https://github.com/solid/web-access-control-spec#aclcontrol)
-privileges per the
-[ACL inheritance algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
+privileges per the [ACL inheritance
+algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
 on the resource directly associated with it.
 
 A Shape validation auxiliary resource MUST be deleted by the Solid server when
-the resource it is directly associated with is also deleted and the Solid server
-is authoritative for both resources.
+the resource it is directly associated with is also deleted and the Solid
+server is authoritative for both resources.
 
 Issue: Provide a shape to validate a shape validation auxiliary resource. May
-include the shape language, shape url, and any additional parameters to be used
-in shape validation by the server implementation.
+include the shape language, shape url, and any additional parameters to be
+used in shape validation by the server implementation.
 
 A Solid server SHOULD sanity check Shape validation auxiliary resources upon
 creation or update to restrict invalid changes.
@@ -614,164 +600,204 @@ creation or update to restrict invalid changes.
 ## Notifications ## {#notifications}
 
 A Solid server MUST conform to the LDN specification by implementing the
-Receiver parts to receive notifications and make Inbox contents
-available [[!LDN]].
+Receiver parts to receive notifications and make Inbox contents available
+[[!LDN]].
 
 A Solid client MUST conform to the LDN specification by implementing the
-Sender or Consumer parts to discover the location of resource's Inbox, and to
-send and retrieve the contents of an Inbox [[!LDN]].
-
-
-## WebID ## {#webid}
-
-A *WebID* is a HTTP URI denoting an agent, for example a person, organisation,
-or software [[!WEBID]]. When a WebID is dereferenced, server provides a
-representation of the WebID Profile in an *RDF document* [[!RDF11-CONCEPTS]]
-which uniquely describes an agent denoted by a WebID. The WebID Profile can be
-used by controlling agents to link with others to grant access to identity
-resources as they see fit. WebIDs are an underpinning component in the Solid
-ecosystem and are used as the primary identifier for users and client
-application.
-
-When using Web Access Control ([[#wac]]):
-
-Agents accessing non-public Solid resources need to authenticate with a WebID.
-
-
-### Solid-OIDC ### {#solid-oidc}
-
-The Solid OpenID Connect (Solid OIDC) specification defines how resource
-servers verify the identity of relying parties and end users based on the
-authentication performed by an OpenID provider [[!SOLID-OIDC]].
-
-
-### WebID-TLS ### {#webid-tls}
-
-<em>This section is non-normative.</em>
-
-The Solid ecosystem initially relied on WebID-TLS for authenticated resource
-access [[WEBID-TLS]]. The current recommendation for authentication relies on
-Solid-OIDC ([[#solid-oidc]]). Implementations can use WebID-TLS just as any
-other mechanism as an additional authentication method. Implementations should
-not assume broad support for any of those additional methods.
-
-
-## Web Access Control ## {#wac}
-
-Web Access Control (WAC) is a decentralized cross-domain access control
-system. The WAC mechanism is concerned with giving access to agents denoted by
-a [[#webid]] to perform various kinds of read-write operations on resources
-identified by URLs. The Access Control List (ACL) vocabulary is used to
-describe authorization policies about authorized agents with modes of access
-on target resources.
-
-Servers MUST conform to the Web Access Control specification [[!WAC]].
-
-A resource can advertise an ACL document that is directly associated by using
-the HTTP `Link` header with a `rel` value of `acl` [[#acl]].
-[[Source](https://github.com/solid/specification/issues/31#issuecomment-548360553)]
-
-In the event that a server can't apply an ACL to a resource, it MUST deny
-access.
-[[Source](https://github.com/solid/specification/issues/130#issue-532777017)]
-
+Sender or Consumer parts to discover the location of a resource's Inbox, and
+to send notifications to an Inbox or to retrieve the contents of an Inbox
+[[!LDN]].
 
 ## Cross-Origin Resource Sharing ## {#cors}
 
-### Background and Need ### {#cors-need}
-<em>This section is non-normative.</em>
+[=Solid apps=] typically access data from multiple sources. However, Web
+browsers by default prevent apps that run on one origin from accessing data on
+other origins. This cross-origin protection is a security mechanism that
+ensures malicious websites cannot simply read your profile or banking details
+from other websites. However, this reasonable default poses a problem even for
+benevolent Solid apps, which might have good reasons to access data from
+different places. For instance, a Solid app at `https://app.example/` would be
+prevented from accessing data on `https://alice-data-pod.example/` or
+`https://bob-data-pod.example/`, even when Alice and Bob have given the user
+of the app their permission to see some of their data.
 
-[=Solid apps=] typically access data from multiple sources.
-However,
-Web browsers by default prevent apps that run on one origin
-from accessing data on other origins.
-This cross-origin protection is a security mechanism
-that ensures malicious websites cannot simply read
-your profile or banking details from other websites.
-However, this reasonable default poses a problem
-even for benevolent Solid apps,
-which might have good reasons to access data from different places.
-For instance,
-a Solid app at `https://app.example/`
-would be prevented from accessing data on
-`https://alice-data-pod.example/` or `https://bob-data-pod.example/`,
-even when Alice and Bob have given the user of the app
-their permission to see some of their data.
+For cases where the other origins have their own access protection mechanism—
+[like within Solid](#web-access-control)— the browser's built-in cross-origin
+protection is actually an obstacle rather than a feature. After all, [=data
+pods=] already ensure through access control that certain documents can only
+be accessed by specific people or applications. Preventively blocking apps
+from different origins thus introduces an unnecessary barrier.
 
-For cases where the other origins
-have their own access protection mechanism—
-[like within Solid](#wac)—
-the browser's built-in cross-origin protection
-is actually an obstacle rather than a feature.
-After all,
-[=data pods=] already ensure through access control
-that certain documents can only be accessed
-by specific people or applications.
-Preventively blocking apps from different origins
-thus introduces an unnecessary barrier.
-
-Fortunately,
-Web servers can indicate to the browser
-that certain documents do not require cross-origin protection.
-This mechanism to selectively disable that protection
-is called *Cross-Origin Resource Sharing* or *CORS* [[FETCH]].
-By responding to browser requests
-with a specific combination of HTTP headers,
-servers can indicate which actions are allowed for a given resource.
-For a Solid data pod,
-the goal is to allow *all* actions on the CORS level,
-such that the deeper [access control layer](#wac)
-can exert full control over the app's allowed permissions.
-The next section describes how to achieve this
-through the right HTTP header configuration.
+Fortunately, Web servers can indicate to the browser that certain documents do
+not require cross-origin protection. This mechanism to selectively disable
+that protection is called *Cross-Origin Resource Sharing* or *CORS* [[FETCH]].
+By responding to browser requests with a specific combination of HTTP headers,
+servers can indicate which actions are allowed for a given resource. For a
+Solid data pod, the goal is to allow *all* actions on the CORS level, such
+that the deeper [access control layer](#web-access-control) can exert full
+control over the app's allowed permissions. The next section describes how to
+achieve this through the right HTTP header configuration.
 
 
-### Required server-side implementation ### {#cors-server}
+### Required Server-Side Implementation ### {#cors-server}
 
-A [=data pod=] MUST implement the CORS protocol [[!FETCH]]
-such that, to the extent possible,
-the browser allows Solid apps
-to send any request and combination of request headers
-to the data pod,
-and the Solid app can read any response and response headers
-received from the data pod.
-If the data pod wishes to block access to a resource,
-this MUST NOT happen via CORS
-but MUST instead be communicated to the Solid app in the browser
-through HTTP status codes such as
-`401`, `403`, or `404` [[!RFC7231]].
+A [=data pod=] MUST implement the CORS protocol [[!FETCH]] such that, to the
+extent possible, the browser allows Solid apps to send any request and
+combination of request headers to the data pod, and the Solid app can read any
+response and response headers received from the data pod. If the data pod
+wishes to block access to a resource, this MUST NOT happen via CORS but MUST
+instead be communicated to the Solid app in the browser through HTTP status
+codes such as `401`, `403`, or `404` [[!RFC7231]].
 
-Note: Since the CORS protocol is part of a Living Standard,
-it might be changed at any point,
-which might necessitate changes to data pod implementations
-for continued prevention of undesired blocking.
-A [proposal](https://github.com/whatwg/fetch/issues/878) to mitigate this
-has been suggested.
+Note: Since the CORS protocol is part of a Living Standard, it might be
+changed at any point, which might necessitate changes to data pod
+implementations for continued prevention of undesired blocking. A
+[proposal](https://github.com/whatwg/fetch/issues/878) to mitigate this has
+been suggested.
 
-Concretely,
-whenever a data pod receives an HTTP request
-containing a valid `Origin` header [[!RFC6454]],
-the server MUST respond with the appropriate `Access-Control-*` headers
-as specified in the CORS protocol [[!FETCH]].
-In particular,
-the data pod MUST set the `Access-Control-Allow-Origin` header
-to the valid `Origin` value from the request
-and list `Origin` in the `Vary` header value.
-The data pod MUST make all used response headers readable for the Solid app
-through `Access-Control-Expose-Headers`
-(with the possible exception of the `Access-Control-*` headers themselves).
-A data pod MUST also support the HTTP `OPTIONS` method [[!RFC7231]]
-such that it can respond appropriately to CORS preflight requests.
+Concretely, whenever a data pod receives an HTTP request containing a valid
+`Origin` header [[!RFC6454]], the server MUST respond with the appropriate
+`Access-Control-*` headers as specified in the CORS protocol [[!FETCH]]. In
+particular, the data pod MUST set the `Access-Control-Allow-Origin` header to
+the valid `Origin` value from the request and list `Origin` in the `Vary`
+header value. The data pod MUST make all used response headers readable for
+the Solid app through `Access-Control-Expose-Headers` (with the possible
+exception of the `Access-Control-*` headers themselves). A data pod MUST also
+support the HTTP `OPTIONS` method [[!RFC7231]] such that it can respond
+appropriately to CORS preflight requests.
 
-Careful attention is warranted,
-especially because of the many edge cases.
-For instance,
-data pods SHOULD explicitly enumerate
-all used response headers under `Access-Control-Expose-Headers`
-rather than resorting to `*`,
-which does not cover all cases (such as credentials mode set to `include`).
-Data pods SHOULD also explicitly list `Accept` under `Access-Control-Allow-Headers`,
-because values longer than 128 characters
-(not uncommon for RDF-based Solid apps)
-would otherwise be blocked,
-despite shorter `Accept` headers being allowed without explicit mention.
+Careful attention is warranted, especially because of the many edge cases. For
+instance, data pods SHOULD explicitly enumerate all used response headers
+under `Access-Control-Expose-Headers` rather than resorting to `*`, which does
+not cover all cases (such as credentials mode set to `include`). Data pods
+SHOULD also explicitly list `Accept` under `Access-Control-Allow-Headers`,
+because values longer than 128 characters (not uncommon for RDF-based Solid
+apps) would otherwise be blocked, despite shorter `Accept` headers being
+allowed without explicit mention.
+
+
+## HTTP Definitions ## {#http-definitions}
+
+### HTTP Headers ### {#http-headers}
+
+#### The Accept-Put Response Header #### {#accept-put}
+
+This specification introduces a new HTTP response header `Accept-Put` used to
+specify the document formats accepted by the server on HTTP PUT requests. It
+is modelled after the `Accept-Patch` header defined in [[!RFC5789]] and the
+`Accept-Post` header defined in [[!LDP]].
+
+The syntax for `Accept-Put`, using the ABNF syntax defined in Section 1.2 of
+[[!RFC7231]], is:
+
+```
+Accept-Put = "Accept-Put" ":" # media-range
+```
+
+The `Accept-Put` header specifies a comma-separated list of media ranges (with
+optional parameters) as defined by [[!RFC7231]], Section 5.3.2. The
+`Accept-Put` header, in effect, uses the same syntax as the HTTP `Accept`
+header minus the optional `accept-params` BNF production, since the latter
+does not apply to `Accept-Put`.
+
+The presence of the `Accept-Put` header in response to any method is an
+implicit indication that `PUT` is allowed on the resource identified by the
+request URI. The presence of a specific document format in this header
+indicates that that specific format is allowed on `PUT` requests to the
+resource identified by the request URI. 
+
+
+**IANA Registration Template:**
+
+The `Accept-Put` response header must be added to the permanent registry (see
+[[!RFC3864]]).
+
+: Header field name
+:: Accept-Put
+: Applicable Protocol
+:: HTTP
+: Author/Change controller
+:: W3C Solid Community Group
+: Specification document
+:: This specification
+
+
+### Link Relations ### {#link-relations}
+
+The intent is that these link relations will be registered with IANA per
+[[!RFC8288]]. 
+
+#### acl #### {#acl}
+
+The contents of this section were originally taken from [Web Access
+Control](https://www.w3.org/wiki/WebAccessControl).
+
+The following Link Relationship will be submitted to IANA for review,
+approval, and inclusion in the IANA Link Relations registry.
+
+: Relation Name
+:: `acl`
+: Description
+:: The relationship `A acl B` asserts that resource B provides access control description of resource A. There are no constraints on the format or representation of either A or B, neither are there any further constraints on either resource.
+
+: Reference
+:: This specification.
+: Notes
+:: Consumers of ACL resources should be aware of the source and chain of custody of the data.
+
+[[Source](https://github.com/solid/specification/issues/54)]
+[[Source](https://github.com/solid/web-access-control-spec/issues/21)]
+
+Issue:
+Shape of ACL: https://github.com/solid/specification/issues/169
+
+
+## Security Considerations ## {#security-considerations}
+
+Some of the normative references with this specification point to documents
+with a *Living Standard* or *Draft* status, meaning their contents can still
+change over time. It is advised to monitor these documents, as such changes
+might have security implications.
+
+A data pod MUST NOT assume that HTTP request headers sent by a client are
+valid, and MUST reject or sanitize invalid header values before processing
+them or incorporating them in messages sent to others. For example, values for
+`Host` and `Origin` MUST NOT be assumed to be free of possibly malicious
+sequences such as `/..` or others, and invalid `Origin` values MUST NOT be
+echoed into the `Access-Control-Allow-Origin` response header.
+
+A data pod MUST NOT assume that the user agent is a regular Web browser, even
+when requests contain familiar values in headers such as `User-Agent` or
+`Origin`. Such an assumption could lead to incorrect conclusions about the
+security model of the application making the request, since the request might
+actually come from a non-browser actor unaffected by browser security
+constraints.
+
+Solid data pods [disable all cross-origin protections](#cors-server) in
+browsers because resource access is governed explicitly by [Web Access
+Control](#web-access-control). As such, data pods MUST NOT rely on
+browser-based cross-origin protection mechanisms for determining the
+authentication status or representation of a resource. In particular, they
+MUST ignore HTTP cookies from untrusted origins. Additional security measures
+MAY be taken to prevent metadata in error responses from leaking. For
+instance, a malicious app could probe multiple servers to check whether the
+response status code is `401` or `403`, or could try to access an error page
+from an intranet server within the user agent's private network to extract
+company names or other data. To mitigate this, when a request from an
+untrusted `Origin` arrives, the data pod MAY set the status code of error
+responses to `404` and/or anonymize or censor their contents.
+
+
+Data pods SHOULD use TLS connections to protect the contents of requests and
+responses from eavesdropping and modification by third parties. Unsecured TCP
+connections without TLS MAY be used in testing environments or when the data
+pod is behind a reverse proxy that terminates a secure connection.
+
+### Privacy Considerations ### {#privacy-considerations}
+
+#### Identifiable Information #### {#identifiable-information}
+
+In order to prevent leakage of non-resource data, error responses SHOULD NOT
+contain identifiable information.
+
+### Security and Privacy Review ### {#security-privacy-review}
