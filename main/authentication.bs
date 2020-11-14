@@ -1,14 +1,14 @@
 Authentication {#authentication}
 ================================
 
-### Solid-OIDC ### {#solid-oidc}
+## Solid-OIDC ## {#solid-oidc}
 
 The Solid OpenID Connect (Solid OIDC) specification defines how resource
 servers verify the identity of relying parties and end users based on the
 authentication performed by an OpenID provider [[!SOLID-OIDC]].
 
 
-### WebID-TLS ### {#webid-tls}
+## WebID-TLS ## {#webid-tls}
 
 <em>This section is non-normative.</em>
 
