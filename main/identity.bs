@@ -12,6 +12,6 @@ resources as they see fit. WebIDs are an underpinning component in the Solid
 ecosystem and are used as the primary identifier for users and client
 application.
 
-When using Web Access Control ([[#wac]]):
+When using Web Access Control ([[#web-access-control]]):
 
 Agents accessing non-public Solid resources need to authenticate with a WebID.

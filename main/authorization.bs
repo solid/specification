@@ -1,7 +1,7 @@
 Authorization {#authorization}
 ==============================
 
-## Web Access Control ## {#wac}
+## Web Access Control ## {#web-access-control}
 
 Web Access Control (WAC) is a decentralized cross-domain access control
 system. The WAC mechanism is concerned with giving access to agents denoted by

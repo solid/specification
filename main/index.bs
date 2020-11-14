@@ -8,7 +8,6 @@ URL: https://solid.github.io/specification/
 Boilerplate: issues-index no
 Markup Shorthands: markdown yes
 Max ToC Depth: 2
-Line Numbers: on
 Editor: [Tim Berners-Lee](https://www.w3.org/People/Berners-Lee/card#i)
 Editor: [Sarven Capadisli](https://csarven.ca/#i)
 Editor: [Ruben Verborgh](https://ruben.verborgh.org/profile/#me)
