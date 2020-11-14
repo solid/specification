@@ -622,22 +622,6 @@ Sender or Consumer parts to discover the location of resource's Inbox, and to
 send and retrieve the contents of an Inbox [[!LDN]].
 
 
-## WebID ## {#webid}
-
-A *WebID* is a HTTP URI denoting an agent, for example a person, organisation,
-or software [[!WEBID]]. When a WebID is dereferenced, server provides a
-representation of the WebID Profile in an *RDF document* [[!RDF11-CONCEPTS]]
-which uniquely describes an agent denoted by a WebID. The WebID Profile can be
-used by controlling agents to link with others to grant access to identity
-resources as they see fit. WebIDs are an underpinning component in the Solid
-ecosystem and are used as the primary identifier for users and client
-application.
-
-When using Web Access Control ([[#wac]]):
-
-Agents accessing non-public Solid resources need to authenticate with a WebID.
-
-
 ### Solid-OIDC ### {#solid-oidc}
 
 The Solid OpenID Connect (Solid OIDC) specification defines how resource
