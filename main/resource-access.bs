@@ -149,7 +149,7 @@ Basic Container and MUST be supported.
 [[Source](https://github.com/solid/specification/issues/47#issuecomment-561675764)]
 
 
-## Reading and Writing Resources ## {#reading-and-writing-resources}
+## Reading and Writing Resources ## {#reading-writing-resources}
 
 Servers MUST respond with the `405` status code to requests using HTTP methods
 that are not supported by the target resource.
@@ -473,8 +473,8 @@ Issue: Agree on specific link relation URIs to use for auxiliary types
 
 #### Web Access Control #### {#auxiliary-resources-wac}
 
-ACL resources as defined by [[#web-access-control]] MUST be supported as an auxiliary type by
-Solid servers.
+ACL resources as defined by [[#web-access-control]] MUST be supported as an
+auxiliary type by Solid servers.
 
 The ACL auxiliary resource directly associated with a given resource is
 discovered by the client via the `rel="acl"` `Link` relation in a `Link`
@@ -490,8 +490,8 @@ To discover, read, create, or modify an ACL auxiliary resource, an
 [acl:agent](https://github.com/solid/web-access-control-spec#describing-agents)
 MUST have
 [acl:Control](https://github.com/solid/web-access-control-spec#aclcontrol)
-privileges per the
-[ACL inheritance algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
+privileges per the [ACL inheritance
+algorithm](https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm)
 on the resource directly associated with it.
 
 An ACL auxiliary resource MUST be deleted by the Solid server when the
@@ -605,7 +605,7 @@ Receiver parts to receive notifications and make Inbox contents available
 
 A Solid client MUST conform to the LDN specification by implementing the
 Sender or Consumer parts to discover the location of a resource's Inbox, and
-to send notifications to an Inbox or retrieve the contents of an Inbox
+to send notifications to an Inbox or to retrieve the contents of an Inbox
 [[!LDN]].
 
 ## Cross-Origin Resource Sharing ## {#cors}
@@ -622,11 +622,11 @@ prevented from accessing data on `https://alice-data-pod.example/` or
 of the app their permission to see some of their data.
 
 For cases where the other origins have their own access protection mechanism—
-[like within Solid](#web-access-control)— the browser's built-in cross-origin protection is
-actually an obstacle rather than a feature. After all, [=data pods=] already
-ensure through access control that certain documents can only be accessed by
-specific people or applications. Preventively blocking apps from different
-origins thus introduces an unnecessary barrier.
+[like within Solid](#web-access-control)— the browser's built-in cross-origin
+protection is actually an obstacle rather than a feature. After all, [=data
+pods=] already ensure through access control that certain documents can only
+be accessed by specific people or applications. Preventively blocking apps
+from different origins thus introduces an unnecessary barrier.
 
 Fortunately, Web servers can indicate to the browser that certain documents do
 not require cross-origin protection. This mechanism to selectively disable
@@ -752,7 +752,7 @@ Issue:
 Shape of ACL: https://github.com/solid/specification/issues/169
 
 
-## Security Considerations ## {#security}
+## Security Considerations ## {#security-considerations}
 
 Some of the normative references with this specification point to documents
 with a *Living Standard* or *Draft* status, meaning their contents can still
@@ -793,7 +793,7 @@ responses from eavesdropping and modification by third parties. Unsecured TCP
 connections without TLS MAY be used in testing environments or when the data
 pod is behind a reverse proxy that terminates a secure connection.
 
-### Privacy Considerations ### {#privacy}
+### Privacy Considerations ### {#privacy-considerations}
 
 #### Identifiable Information #### {#identifiable-information}
 
