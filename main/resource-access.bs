@@ -621,25 +621,6 @@ A Solid client MUST conform to the LDN specification by implementing the
 Sender or Consumer parts to discover the location of resource's Inbox, and to
 send and retrieve the contents of an Inbox [[!LDN]].
 
-
-### Solid-OIDC ### {#solid-oidc}
-
-The Solid OpenID Connect (Solid OIDC) specification defines how resource
-servers verify the identity of relying parties and end users based on the
-authentication performed by an OpenID provider [[!SOLID-OIDC]].
-
-
-### WebID-TLS ### {#webid-tls}
-
-<em>This section is non-normative.</em>
-
-The Solid ecosystem initially relied on WebID-TLS for authenticated resource
-access [[WEBID-TLS]]. The current recommendation for authentication relies on
-Solid-OIDC ([[#solid-oidc]]). Implementations can use WebID-TLS just as any
-other mechanism as an additional authentication method. Implementations should
-not assume broad support for any of those additional methods.
-
-
 ## Web Access Control ## {#wac}
 
 Web Access Control (WAC) is a decentralized cross-domain access control
