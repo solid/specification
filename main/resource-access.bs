@@ -76,6 +76,20 @@ a 301 redirect to the former.
 Behaviour pertaining to authorization MUST proceed this optional redirect
 [[Source](https://github.com/solid/specification/issues/107#issuecomment-567454889)]
 
+### URI Persistence ### {#uri-persistence}
+<em>This section is non-normative.</em>
+
+Servers should not re-use URIs, regardless of the mechanism by which resources
+are created. Certain specific cases exist where URIs may be reinstated when it
+identifies the same resource, but only when consistent with Web architecture's
+<cite><a href="https://www.w3.org/TR/webarch/#URI-persistence">URI
+persistence</a></cite> [[!WEBARCH]].
+[[Source](https://github.com/solid/specification/issues/46#issuecomment-589619372)]
+
+Note:
+Servers that wish to disable URI re-use may want to use the `410` status
+code.
+
 ## Linked Data ## {#linked-data}
 
 ### Storage ### {#storage}
@@ -134,19 +148,6 @@ The representation and behaviour of containers in Solid corresponds to LDP
 Basic Container and MUST be supported.
 [[Source](https://github.com/solid/specification/issues/47#issuecomment-561675764)]
 
-### URI Persistence ### {#uri-persistence}
-<em>This section is non-normative.</em>
-
-Servers should not re-use URIs, regardless of the mechanism by which resources
-are created. Certain specific cases exist where URIs may be reinstated when it
-identifies the same resource, but only when consistent with Web architecture's
-<cite><a href="https://www.w3.org/TR/webarch/#URI-persistence">URI
-persistence</a></cite> [[!WEBARCH]].
-[[Source](https://github.com/solid/specification/issues/46#issuecomment-589619372)]
-
-Note:
-Servers that wish to disable URI re-use may want to use the `410` status
-code.
 
 ## Reading and Writing Resources ## {#reading-and-writing-resources}
 
