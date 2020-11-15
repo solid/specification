@@ -1,5 +1,5 @@
-Resource Access {#resource-access}
-==================================
+Protocol {#protocol}
+====================
 
 ## Hypertext Transfer Protocol ## {#http}
 
