@@ -3,12 +3,14 @@ Authorization {#authorization}
 
 ## Web Access Control ## {#web-access-control}
 
-Web Access Control (WAC) is a decentralized cross-domain access control
-system. The WAC mechanism is concerned with giving access to agents denoted by
-a [[#webid]] to perform various kinds of read-write operations on resources
-identified by URLs. The Access Control List (ACL) vocabulary is used to
-describe authorization policies about authorized agents with modes of access
-on target resources.
+Web Access Control (<abbr title="Web Access Control">WAC</abbr>) is a
+decentralized cross-domain access control system. The WAC mechanism is
+concerned with giving access to agents denoted by a [[#webid]] to perform
+various kinds of read-write operations on resources identified by URLs. The
+<cite><a href="http://www.w3.org/ns/auth/acl">Access Control List</a></cite>
+(<abbr title="Access Control List">ACL</abbr>) ontology is used to describe
+authorization policies about authorized agents with modes of access on target
+resources.
 
 Servers MUST conform to the Web Access Control specification [[!WAC]].
 
@@ -19,3 +21,31 @@ the HTTP `Link` header with a `rel` value of `acl` [[#acl]].
 In the event that a server can't apply an ACL to a resource, it MUST deny
 access.
 [[Source](https://github.com/solid/specification/issues/130#issue-532777017)]
+
+Servers exposing client's access privileges on a resource URL MUST advertise
+by including the `WAC-Allow` HTTP header in the response of HTTP `HEAD` and
+`GET` requests.
+
+The syntax for `WAC-Allow`, using the ABNF syntax is:
+
+```
+WAC-Allow           = "WAC-Allow" ":" OWS permissions OWS
+permissions         = user-permissions OWS "," OWS public-permissions
+user-permissions    = "user=" quoted-access-modes
+public-permissions  = "public=" quoted-access-modes
+quoted-access-modes = DQUOTE *( access-modes / SP ) DQUOTE
+access-modes        = "read" / "write" / "append" / "control"
+OWS                 = *( SP / HTAB )
+```
+
+The `access-modes` corresponds to the modes of access (`acl:Read`,
+`acl:Write`, `acl:Append`, `acl:Control`) as defined in the ACL ontology.
+
+Clients can discover their access privileges on a resource by making an HTTP
+`HEAD` or `GET` request on the target URL, and checking the `WAC-Allow` HTTP
+header value for `user` and `public` paramaters listing the allowed access
+modes.
+
+[[Source](https://github.com/solid/specification/issues/171)]
+[[Source](https://github.com/solid/specification/issues/170)]
+[[Source](https://github.com/solid/specification/issues/181)]
