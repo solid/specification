@@ -1,9 +1,9 @@
 <pre class='metadata'>
 Title: The Solid Ecosystem
-Shortname: solid
+Shortname: solid-ecosystem
 Level: 1
 Status: w3c/ED
-Group: W3C Solid Community Group
+Group: solid
 URL: https://solid.github.io/specification/
 Boilerplate: issues-index no
 Markup Shorthands: markdown yes
@@ -22,7 +22,7 @@ Abstract:
 </pre>
 
 <div boilerplate="copyright">
-MIT License. Copyright 2019 - 2020 W3C Solid Community Group
+MIT License. Copyright 2019–2020 <a href="http://www.w3.org/community/solid/">W3C Solid Community Group</a>.
 </div>
 
 <div boilerplate="logo">
