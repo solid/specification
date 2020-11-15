@@ -68,5 +68,6 @@ An <dfn export>append operation</dfn> entails that information can be added but 
 <tr><td>ldp</td><td>http://www.w3.org/ns/ldp#</td><td>[[!LDP]]</td></tr>
 <tr><td>solid</td><td>http://www.w3.org/ns/solid/terms#</td><td>Solid Terms</td></tr>
 <tr><td>pim</td><td>http://www.w3.org/ns/pim/space#</td><td>Workspace Ontology</td></tr>
+<tr><td>acl</td><td>http://www.w3.org/ns/auth/acl#</td><td>ACL Ontology</td></tr>
 </tbody>
 </table>
