@@ -58,8 +58,8 @@ or `GET` request on the target URL, and checking the `WAC-Allow` header value
 for access parameters listing the allowed access modes per permission group.
 
 Clients' parsing algorithm for the `WAC-Allow` header should incorporate error
-handling. When the received message fails to match an allowed pattern,
-unrecognised access parameters or modes are found, clients MUST ignore the
+handling. When the received message fails to match an allowed pattern, finds 
+unrecognised access parameters or access modes, clients MUST ignore the
 received `WAC-Allow` header-field.
 
 [[Source](https://github.com/solid/specification/issues/171)]
