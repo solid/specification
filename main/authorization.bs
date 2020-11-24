@@ -38,17 +38,29 @@ OWS                 = *(SP / HTAB)
 RWS                 = 1*(SP / HTAB)
 ```
 
-The `access-mode` corresponds to the modes of access (`acl:Read`, `acl:Write`,
-`acl:Append`, `acl:Control`) as defined in the ACL ontology.
+The `WAC-Allow` HTTP header's field-value is a comma-separated list of access
+parameters (`access-param`). `access-param` is a whitespace-separated list of
+access modes ( `access-mode`) granted to a permission group.
 
-Clients can discover their access privileges on a resource by making an HTTP
-`HEAD` or `GET` request on the target URL, and checking the `WAC-Allow` HTTP
-header value for `user` and `public` access paramaters listing the allowed
-access modes.
+This specification defines the following permission groups:
+
+<dl>
+  <dt>`user`</dt>
+  <dd>Permissions granted to the agent requesting the resource.</dd>
+  <dt>`public`</dt>
+  <dd>Permissions granted to the public.</dd>
+</dl>
+
+`access-mode` corresponds to the modes of access as defined in the
+ACL ontology (`acl:Read`, `acl:Write`, `acl:Append`, `acl:Control`).
+
+Clients can discover access privileges on a resource by making an HTTP `HEAD`
+or `GET` request on the target URL, and checking the `WAC-Allow` header value
+for access parameters listing the allowed access modes per permission group.
 
 Clients' parsing algorithm for the `WAC-Allow` header should incorporate error
 handling. When the received message fails to match an allowed pattern,
-unrecognised access paramaters or modes are found, clients MUST ignore the
+unrecognised access parameters or modes are found, clients MUST ignore the
 received `WAC-Allow` header-field.
 
 [[Source](https://github.com/solid/specification/issues/171)]
