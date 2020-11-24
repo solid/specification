@@ -31,18 +31,17 @@ Section 1.2 of [[!RFC7231]], is:
 
 ```
 wac-allow           = "WAC-Allow" ":" OWS #access-param OWS
-access-param        = 1*ALPHA OWS "=" OWS quoted-access-modes
+access-param        = permission-group OWS "=" OWS quoted-access-modes
+permission-group    = 1*ALPHA
 quoted-access-modes = DQUOTE OWS *1(access-mode *(RWS access-mode)) OWS DQUOTE
 access-mode         = "read" / "write" / "append" / "control"
-OWS                 = *(SP / HTAB)
-RWS                 = 1*(SP / HTAB)
 ```
 
-The `WAC-Allow` HTTP header's field-value is a comma-separated list of access
-parameters (`access-param`). `access-param` is a whitespace-separated list of
-access modes ( `access-mode`) granted to a permission group.
+The `WAC-Allow` HTTP header's field-value is a comma-separated list of
+`access-param`s. `access-param` is a whitespace-separated list of `access
+mode`s granted to a `permission-group`.
 
-This specification defines the following permission groups:
+This specification defines the following `permission-group`s:
 
 <dl>
   <dt>`user`</dt>
