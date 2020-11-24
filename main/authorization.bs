@@ -46,6 +46,11 @@ Clients can discover their access privileges on a resource by making an HTTP
 header value for `user` and `public` access paramaters listing the allowed
 access modes.
 
+Clients' parsing algorithm for the `WAC-Allow` header should incorporate error
+handling. When the received message fails to match an allowed pattern,
+unrecognised access paramaters or modes are found, clients MUST ignore the
+received `WAC-Allow` header-field.
+
 [[Source](https://github.com/solid/specification/issues/171)]
 [[Source](https://github.com/solid/specification/issues/170)]
 [[Source](https://github.com/solid/specification/issues/181)]
