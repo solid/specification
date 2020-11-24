@@ -26,25 +26,25 @@ Servers exposing client's access privileges on a resource URL MUST advertise
 by including the `WAC-Allow` HTTP header in the response of HTTP `HEAD` and
 `GET` requests.
 
-The syntax for `WAC-Allow`, using the ABNF syntax is:
+The syntax for the `WAC-Allow` header, using the ABNF syntax defined in
+Section 1.2 of [[!RFC7231]], is:
 
 ```
-WAC-Allow           = "WAC-Allow" ":" OWS permissions OWS
-permissions         = user-permissions OWS "," OWS public-permissions
-user-permissions    = "user=" quoted-access-modes
-public-permissions  = "public=" quoted-access-modes
-quoted-access-modes = DQUOTE *( access-modes / SP ) DQUOTE
-access-modes        = "read" / "write" / "append" / "control"
-OWS                 = *( SP / HTAB )
+wac-allow           = "WAC-Allow" ":" OWS #access-param OWS
+access-param        = 1*ALPHA OWS "=" OWS quoted-access-modes
+quoted-access-modes = DQUOTE OWS *1(access-mode *(RWS access-mode)) OWS DQUOTE
+access-mode         = "read" / "write" / "append" / "control"
+OWS                 = *(SP / HTAB)
+RWS                 = 1*(SP / HTAB)
 ```
 
-The `access-modes` corresponds to the modes of access (`acl:Read`,
-`acl:Write`, `acl:Append`, `acl:Control`) as defined in the ACL ontology.
+The `access-mode` corresponds to the modes of access (`acl:Read`, `acl:Write`,
+`acl:Append`, `acl:Control`) as defined in the ACL ontology.
 
 Clients can discover their access privileges on a resource by making an HTTP
 `HEAD` or `GET` request on the target URL, and checking the `WAC-Allow` HTTP
-header value for `user` and `public` paramaters listing the allowed access
-modes.
+header value for `user` and `public` access paramaters listing the allowed
+access modes.
 
 [[Source](https://github.com/solid/specification/issues/171)]
 [[Source](https://github.com/solid/specification/issues/170)]
