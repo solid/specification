@@ -53,7 +53,7 @@ any feedback, comments, or questions you might have.
     "title": "WebID 1.0 Editors Draft"
   },
   "wac": {
-    "href": "http://solid.github.io/web-access-control-spec/",
+    "href": "https://solid.github.io/web-access-control-spec/",
     "title": "Web Access Control"
   },
   "solid-oidc": {
