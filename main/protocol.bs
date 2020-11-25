@@ -36,7 +36,7 @@ preferred for security reasons).
 
 A Solid server MUST reject `PUT`, `POST` and `PATCH` requests without the
 `Content-Type` header with a status code of `400`.
-[[Source](https://github.com/solid/specification/issues/70#issuecomment-535499628)]
+[[Source](https://github.com/solid/specification/issues/70#issuecomment-547924171)]
 
 ### Required Client-Side Implementation ### {#http-client}
 
