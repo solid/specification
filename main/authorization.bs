@@ -30,16 +30,16 @@ The syntax for the `WAC-Allow` header, using the ABNF syntax defined in
 Section 1.2 of [[!RFC7231]], is:
 
 ```
-wac-allow           = "WAC-Allow" ":" OWS #access-param OWS
-access-param        = permission-group OWS "=" OWS quoted-access-modes
-permission-group    = 1*ALPHA
-quoted-access-modes = DQUOTE OWS *1(access-mode *(RWS access-mode)) OWS DQUOTE
-access-mode         = "read" / "write" / "append" / "control"
+wac-allow        = "WAC-Allow" ":" OWS #access-param OWS
+access-param     = permission-group OWS "=" OWS access-modes
+permission-group = 1*ALPHA
+access-modes     = *1DQUOTE OWS *1(access-mode *(RWS access-mode)) OWS *1DQUOTE
+access-mode      = "read" / "write" / "append" / "control"
 ```
 
 The `WAC-Allow` HTTP header's field-value is a comma-separated list of
 `access-param`s. `access-param` is a whitespace-separated list of `access
-mode`s granted to a `permission-group`.
+modes` granted to a `permission-group`.
 
 This specification defines the following `permission-group`s:
 
@@ -61,6 +61,10 @@ Clients' parsing algorithm for the `WAC-Allow` header should incorporate error
 handling. When the received message fails to match an allowed pattern, finds 
 unrecognised access parameters or access modes, clients MUST ignore the
 received `WAC-Allow` header-field.
+
+The quoted and unquoted values for `access-modes` are equivalent. Servers are
+recommended to use quoted values in the response. Clients' are recommended to
+be able to parse both quoted and unquoted values.
 
 [[Source](https://github.com/solid/specification/issues/171)]
 [[Source](https://github.com/solid/specification/issues/170)]
