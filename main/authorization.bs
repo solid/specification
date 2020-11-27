@@ -38,7 +38,7 @@ access-mode      = "read" / "write" / "append" / "control"
 ```
 
 The `WAC-Allow` HTTP header's field-value is a comma-separated list of
-`access-param`s. `access-param` is a whitespace-separated list of `access
+`access-param`s. `access-param` is a whitespace-separated list of `access-
 modes` granted to a `permission-group`.
 
 This specification defines the following `permission-group`s:
