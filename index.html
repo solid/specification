@@ -8,7 +8,7 @@
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="Bikeshed version 9c52df2, updated Fri Nov 20 15:39:21 2020 -0800" name="generator">
   <link href="https://solid.github.io/specification/" rel="canonical">
-  <meta content="899e260db128a040504fedee85345f7d576fa075" name="document-revision">
+  <meta content="6899d562e3020702714d7d70ede5698a031c3684" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -1139,8 +1139,7 @@ permission-group = 1*ALPHA
 access-modes     = *1DQUOTE OWS *1(access-mode *(RWS access-mode)) OWS *1DQUOTE
 access-mode      = "read" / "write" / "append" / "control"
 </pre>
-   <p>The <code>WAC-Allow</code> HTTP header’s field-value is a comma-separated list of <code>access-param</code>s. <code>access-param</code> is a whitespace-separated list of <code>access-
-modes</code> granted to a <code>permission-group</code>.</p>
+   <p>The <code>WAC-Allow</code> HTTP header’s field-value is a comma-separated list of <code>access-param</code>s. <code>access-param</code> is a whitespace-separated list of <code>access-modes</code> granted to a <code>permission-group</code>.</p>
    <p>This specification defines the following <code>permission-group</code>s:</p>
    <dl>
     <dt><code>user</code>
