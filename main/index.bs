@@ -819,7 +819,7 @@ The presence of the `Accept-Put` header in response to any method is an
 implicit indication that `PUT` is allowed on the resource identified by the
 request URI. The presence of a specific document format in this header
 indicates that that specific format is allowed on `PUT` requests to the
-resource identified by the request URI. 
+resource identified by the request URI.
 
 
 **IANA Registration Template:**
@@ -840,7 +840,7 @@ The `Accept-Put` response header must be added to the permanent registry (see
 ### Link Relations ### {#link-relations}
 
 The intent is that these link relations will be registered with IANA per
-[[!RFC8288]]. 
+[[!RFC8288]].
 
 #### acl #### {#acl}
 
@@ -1017,7 +1017,7 @@ or `GET` request on the target URL, and checking the `WAC-Allow` header value
 for access parameters listing the allowed access modes per permission group.
 
 Clients' parsing algorithm for the `WAC-Allow` header should incorporate error
-handling. When the received message fails to match an allowed pattern, finds 
+handling. When the received message fails to match an allowed pattern, finds
 unrecognised access parameters or access modes, clients MUST ignore the
 received `WAC-Allow` header-field.
 
