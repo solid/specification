@@ -937,7 +937,26 @@ When using Web Access Control ([[#web-access-control]]):
 Agents accessing non-public Solid resources need to authenticate with a WebID.
 
 
-<pre class=include>path: authentication.bs</pre>
+Authentication {#authentication}
+================================
+
+## Solid-OIDC ## {#solid-oidc}
+
+The Solid OpenID Connect (Solid OIDC) specification defines how resource
+servers verify the identity of relying parties and end users based on the
+authentication performed by an OpenID provider [[!SOLID-OIDC]].
+
+
+## WebID-TLS ## {#webid-tls}
+
+<em>This section is non-normative.</em>
+
+The Solid ecosystem initially relied on WebID-TLS for authenticated resource
+access [[WEBID-TLS]]. The current recommendation for authentication relies on
+Solid-OIDC ([[#solid-oidc]]). Implementations can use WebID-TLS just as any
+other mechanism as an additional authentication method.
+
+
 <pre class=include>path: authorization.bs</pre>
 
 <pre class=biblio>
