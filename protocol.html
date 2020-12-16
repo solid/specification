@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>The Solid Protocol</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" media="all" rel="stylesheet" title="W3C-ED" />
+<style>
+body {
+counter-reset:section;
+counter-reset:sub-section;
+}
+em.rfc2119 { color: #900; }
+code { color: #c83500; }
+pre code { color: #333; }
+dfn { font-style:inherit; }
+.do.fragment a { border-bottom:0; }
+.do.fragment a:hover { background:none; border-bottom:0; }
+section figure pre { margin:1em 0; display:block; }
+cite .bibref { font-style: normal; }
+.tabs nav ul li { margin:0; }
+div.issue, div.note, div.warning {
+clear: both;
+margin: 1em 0;
+padding: 1em 1.2em 0.5em;
+position: relative;
+}
+div.issue h4, div.note h4 {
+margin:0;
+text-transform: uppercase;
+font-weight:normal;
+}
+div.issue h4 {
+color:#ae1e1e;
+}
+div.note h4 {
+color:#22bb22;
+}
+figure .example-h {
+margin-top:0;
+text-align: left;
+text-transform: uppercase;
+color:#827017;
+}
+header address a[href] {
+float: right;
+margin: 1rem 0 0.2rem 0.4rem;
+background: transparent none repeat scroll 0 0;
+border: medium none;
+text-decoration: none;
+}
+header address img[src*="logos/W3C"] {
+-moz-border-bottom-colors: none;
+-moz-border-left-colors: none;
+-moz-border-right-colors: none;
+-moz-border-top-colors: none;
+background: #1a5e9a none repeat scroll 0 0;
+border-color: #1a5e9a;
+border-image: none;
+border-radius: 0.4rem;
+border-style: solid;
+border-width: 0.65rem 0.7rem 0.6rem;
+color: white;
+display: block;
+font-weight: bold;
+}
+main article > h1 {
+font-size: 220%;
+font-weight:bold;
+}
+
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]):not([id="exit-criteria"]) {
+counter-increment:section;
+counter-reset:sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$="references"]):not([id="exit-criteria"]) {
+counter-increment:sub-section;
+counter-reset:sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$="references"]):not([id="exit-criteria"]) section {
+counter-increment:sub-sub-section;
+counter-reset:sub-sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$="references"]):not([id="exit-criteria"]) section section {
+counter-increment:sub-sub-sub-section;
+counter-reset:sub-sub-sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]):not([id="exit-criteria"]):not([id^=table-of-]) > h2:before {
+content:counter(section) ".\00a0\00a0\00a0\00a0";
+}
+section:not([id$="references"]):not([id^=change-log]):not([id="exit-criteria"]) > h3:before {
+content:counter(section) "." counter(sub-section) "\00a0\00a0\00a0";
+}
+section > h4:before {
+content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\00a0\00a0\00a0";
+}
+
+aside.note.do blockquote dl.published,
+aside.note.do blockquote dl.license,
+aside.note.do blockquote dl.rights {
+top:-2em;
+left:4.5em;
+}
+
+#acknowledgements ul { padding: 0; margin:0 }
+#acknowledgements li { display:inline; }
+#acknowledgements li:after { content: ", "; }
+#acknowledgements li:last-child:after { content: ""; }
+
+.dfn-panel {
+    position: absolute;
+    z-index: 35;
+    height: auto;
+    width: -webkit-fit-content;
+    width: fit-content;
+    max-width: 300px;
+    max-height: 500px;
+    overflow: auto;
+    padding: 0.5em 0.75em;
+    font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
+    background: #DDDDDD;
+    color: black;
+    border: outset 0.2em;
+}
+.dfn-panel:not(.on) { display: none; }
+.dfn-panel * { margin: 0; padding: 0; text-indent: 0; }
+.dfn-panel > b { display: block; }
+.dfn-panel a { color: black; }
+.dfn-panel a:not(:hover) { text-decoration: none !important; border-bottom: none !important; }
+.dfn-panel > b + b { margin-top: 0.25em; }
+.dfn-panel ul { padding: 0; }
+.dfn-panel li { list-style: inside; }
+.dfn-panel.activated {
+    display: inline-block;
+    position: fixed;
+    left: .5em;
+    bottom: 2em;
+    margin: 0 auto;
+    max-width: calc(100vw - 1.5em - .4em - .5em);
+    max-height: 30vh;
+}
+
+.dfn-paneled { cursor: pointer; }
+</style>
+  </head>
+
+  <body about="" prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# owl: http://www.w3.org/2002/07/owl# xsd: http://www.w3.org/2001/XMLSchema# dcterms: http://purl.org/dc/terms/ skos: http://www.w3.org/2004/02/skos/core# prov: http://www.w3.org/ns/prov# qb: http://purl.org/linked-data/cube# schema: http://schema.org/ doap: http://usefulinc.com/ns/doap# deo: http://purl.org/spar/deo/ fabio: http://purl.org/spar/fabio/ as: https://www.w3.org/ns/activitystreams# ldp: http://www.w3.org/ns/ldp# earl: http://www.w3.org/ns/earl#" typeof="schema:CreativeWork prov:Entity as:Article">
+    <header>
+      <address>
+        <a class="logo" href="https://solidproject.org/"><img height="66" width="72" alt="W3C" src="solid.svg"/></a>
+      </address>
+    </header>
+
+    <main>
+      <article about="" typeof="schema:Article doap:Specification">
+        <h1 property="schema:name">The Solid Protocol</h1>
+        <h2>Editor’s Draft, 2020-12-16</h2>
+
+        <div id="authors">
+          <dl id="author-name">
+            <dt>Editors</dt>
+            <dd id="Sarven-Capadisli"><span about="" rel="schema:creator schema:author"><span about="https://csarven.ca/#i" typeof="schema:Person"><a rel="schema:url" href="https://csarven.ca/"><span about="https://csarven.ca/#i" property="schema:name"><span property="schema:givenName">Sarven</span> <span property="schema:familyName">Capadisli</span></span></a></span></span></dd>
+
+            <dd id="Tim-Berners-Lee"><span about="" rel="schema:author"><span about="https://www.w3.org/People/Berners-Lee/card#i" typeof="schema:Person"><a rel="schema:url" href="https://www.w3.org/People/Berners-Lee/"><span about="https://www.w3.org/People/Berners-Lee/card#i" property="schema:name"><span property="schema:givenName">Tim</span> <span property="schema:familyName">Berners-Lee</span></span></a></span></span></dd>
+
+            <dd id="Ruben-Verborgh"><span about="" rel="schema:author"><span about="https://ruben.verborgh.org/profile/#me" typeof="schema:Person"><a rel="schema:url" href="https://ruben.verborgh.org/"><span about="https://ruben.verborgh.org/profile/#me" property="schema:name"><span property="schema:givenName">Ruben</span> <span property="schema:familyName">Verborgh</span></span></a></span></span></dd>
+
+            <dd id="Kjetil-Kjernsmo"><span about="" rel="schema:author"><span about="http://www.kjetil.kjernsmo.net/foaf#me" typeof="schema:Person"><a rel="schema:url" href="http://www.kjetil.kjernsmo.net/"><span about="http://www.kjetil.kjernsmo.net/foaf#me" property="schema:name"><span property="schema:givenName">Kjetil</span> <span property="schema:familyName">Kjernsmo</span></span></a></span></span></dd>
+
+            <dd id="Justin-Bingham"><span about="" rel="schema:author"><span about="https://justin.bingham.id/#me" typeof="schema:Person"><a rel="schema:url" href="https://justin.bingham.id/"><span about="https://justin.bingham.id/#me" property="schema:name"><span property="schema:givenName">Justin</span> <span property="schema:familyName">Bingham</span></span></a></span></span></dd>
+
+            <dd id="Dmitri-Zagidulin"><span about="" rel="schema:author"><span about="http://computingjoy.com/" typeof="schema:Person"><a rel="schema:url" href="http://computingjoy.com/"><span about="http://computingjoy.com/" property="schema:name"><span property="schema:givenName">Dmitri</span> <span property="schema:familyName">Zagidulin</span></span></a></span></span></dd>
+          </dl>
+        </div>
+
+        <dl id="document-repository">
+          <dt>Repository</dt>
+          <dd><a href="https://github.com/solid/specification" rel="doap:repository">GitHub</a></dd>
+          <dd><a href="https://github.com/solid/specification/issues" rel="doap:bug-database">Issues</a></dd>
+        </dl>
+
+        <p class="copyright">MIT License. Copyright © 2019–2020 <a href="http://www.w3.org/community/solid/">W3C Solid Community Group</a>.</p>
+
+        <div datatype="rdf:HTML" id="content" property="schema:description">
+          <section id="abstract">
+            <h2>Abstract</h2>
+            <div datatype="rdf:HTML" property="schema:abstract">
+              <p>This document connects a set of specifications that, together, provide applications with secure and permissioned access to externally stored data in an interoperable way.</p>
+            </div>
+          </section>
+
+          <section id="sotd" inlist="" rel="schema:hasPart" resource="#sotd">
+            <h2 property="schema:name">Status of This Document</h2>
+            <div property="schema:description" datatype="rdf:HTML">
+              <p>This section describes the status of this document at the time of its publication.</p>
+
+              <p>This document was published by the <a href="https://www.w3.org/community/solid/">Solid Community Group</a> as an Editor’s Draft. The sections that have been incorporated have been reviewed following the <a href="https://github.com/solid/process">Solid process</a>. However, the information in this document is still subject to change. You are invited to <a href="https://github.com/solid/specification/issues">contribute</a> any feedback, comments, or questions you might have.</p>
+
+              <p>Publication as an Editor’s Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.</p>
+
+              <p>This document was produced by a group operating under the <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="http://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available.</p>
+            </div>
+          </section>
+
+          <nav data-fill-with="table-of-contents" id="toc">
+           <h2 class="no-num no-toc no-ref" id="contents">Table of Contents</h2>
+           <ol class="toc" role="directory">
+            <li class="tocline">
+              <a class="tocxref" href="#abstract">Abstract</a>
+            </li>
+            <li class="tocline">
+              <a class="tocxref" href="#sotd">Status of This Document</a>
+            </li>
+            <li>
+             <a href="#introduction"><span class="secno">1</span> <span class="content">Introduction</span></a>
+             <ol class="toc">
+              <li><a href="#definitions"><span class="secno">1.1</span> <span class="content">Definitions</span></a>
+              <li><a href="#namespaces"><span class="secno">1.2</span> <span class="content">Namespaces</span></a>
+             </ol>
+            <li>
+             <a href="#protocol"><span class="secno">2</span> <span class="content">Protocol</span></a>
+             <ol class="toc">
+              <li><a href="#http"><span class="secno">2.1</span> <span class="content">Hypertext Transfer Protocol</span></a>
+              <li><a href="#uri"><span class="secno">2.2</span> <span class="content">Uniform Resource Identifier</span></a>
+              <li><a href="#linked-data"><span class="secno">2.3</span> <span class="content">Linked Data</span></a>
+              <li><a href="#reading-writing-resources"><span class="secno">2.4</span> <span class="content">Reading and Writing Resources</span></a>
+              <li><a href="#auxiliary-resources"><span class="secno">2.5</span> <span class="content">Auxiliary Resources</span></a>
+              <li><a href="#notifications"><span class="secno">2.6</span> <span class="content">Notifications</span></a>
+              <li><a href="#cors"><span class="secno">2.7</span> <span class="content">Cross-Origin Resource Sharing</span></a>
+              <li><a href="#http-definitions"><span class="secno">2.8</span> <span class="content">HTTP Definitions</span></a>
+              <li><a href="#security-considerations"><span class="secno">2.9</span> <span class="content">Security Considerations</span></a>
+             </ol>
+            <li>
+             <a href="#identity"><span class="secno">3</span> <span class="content">Identity</span></a>
+             <ol class="toc">
+              <li><a href="#webid"><span class="secno">3.1</span> <span class="content">WebID</span></a>
+             </ol>
+            <li>
+             <a href="#authentication"><span class="secno">4</span> <span class="content">Authentication</span></a>
+             <ol class="toc">
+              <li><a href="#solid-oidc"><span class="secno">4.1</span> <span class="content">Solid-OIDC</span></a>
+              <li><a href="#webid-tls"><span class="secno">4.2</span> <span class="content">WebID-TLS</span></a>
+             </ol>
+            <li>
+             <a href="#authorization"><span class="secno">5</span> <span class="content">Authorization</span></a>
+             <ol class="toc">
+              <li><a href="#web-access-control"><span class="secno">5.1</span> <span class="content">Web Access Control</span></a>
+             </ol>
+            <li><a href="#conformance"><span class="secno"></span> <span class="content"> Conformance</span></a>
+            <li>
+             <a href="#references"><span class="secno"></span> <span class="content">References</span></a>
+             <ol class="toc">
+              <li><a href="#normative-references"><span class="secno"></span> <span class="content">Normative References</span></a>
+              <li><a href="#informative-references"><span class="secno"></span> <span class="content">Informative References</span></a>
+             </ol>
+           </ol>
+          </nav>
+
+   <div boilerplate="statustext">
+    <h2 class="no-num no-toc heading settled" id="sotd">Status of This Document</h2>
+    <p>The sections that have been incorporated have been reviewed
+following the <a href="https://github.com/solid/process">Solid process</a>.
+However, the information in this document is still subject to change.</p>
+    <p>You are invited to <a href="https://github.com/solid/specification/issues">contribute</a> any feedback, comments, or questions you might have.</p>
+   </div>
+   <h2 class="heading settled" data-level="1" id="introduction"><span class="secno">1. </span><span class="content">Introduction</span><a class="self-link" href="#introduction"></a></h2>
+   <p>The aims of the Solid project are in line with those of the Web itself:
+empowerment towards <q cite="https://www.w3.org/2001/tag/doc/ethical-web-principles/">an equitable,
+informed and interconnected society</q>. Solid adds to existing Web standards
+to realise a space where individuals can maintain their autonomy, control
+their data and privacy, and choose applications and services to fulfil their
+needs.</p>
+   <p>The Solid ecosystem encapsulates a set of specifications that are guided by
+the principles we have adopted and also the priority of our values. We
+acknowledge that every technical decision has ethical implications both for
+the end user (short-term) as well as society (long-term). To contribute
+towards a net positive social benefit, we use the <cite><a href="https://www.w3.org/2001/tag/doc/ethical-web-principles/">Ethical Web
+Principles</a></cite> to orient ourselves. The consensus on the technical
+designs are informed by common use cases, implementation experience, and use.</p>
+   <p>An overarching design goal of the Solid ecosystem is to be evolvable and to
+provide fundamental affordances for decentralised Web applications for
+information exchange in a way that is secure and privacy respecting. In this
+environment, actors allocate identifiers for their content, shape and store
+data where they have access to, set access control policies, and use preferred
+applications and services to achieve them.</p>
+   <p>The general architectural principles of Solid specifications are borrowed from
+the <cite><a href="https://www.w3.org/TR/webarch/">Architecture of the World
+Wide Web</a></cite>. The components as described in each specification may
+evolve independently – according to the principle of orthogonality in order to
+increase the flexibility and robustness of the Solid ecosystem. With that, the
+specifications are loosely coupled and indicate which features overlap with
+those governed by another specification. Extensibility as well as variability
+also are taken into account in each specification.</p>
+   <p>The specifications in the ecosystem describe how Solid servers and clients can
+be interoperable by using Web communication protocols, global identifiers,
+authentication and authorization mechanisms, data formats and shapes, and
+query interfaces.</p>
+   <p>The specifications are accompanied with supplemental documents, such as <em>Primers</em> and <em>Best Practices and Guidelines</em> to help
+implementers to form a well-rounded understanding of the Solid ecosystem as
+well as ways to improve their implementations.</p>
+   <h3 class="heading settled" data-level="1.1" id="definitions"><span class="secno">1.1. </span><span class="content">Definitions</span><a class="self-link" href="#definitions"></a></h3>
+   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="data-pod">data pod</dfn> is a place for storing documents,
+with mechanisms for controlling who can access what.</p>
+   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="solid-app">Solid app</dfn> is an application
+that reads or writes data from one or more <a data-link-type="dfn" href="#data-pod" id="ref-for-data-pod">data pods</a>.</p>
+   <p>A <dfn data-dfn-type="dfn" data-export id="read-operation">read operation<a class="self-link" href="#read-operation"></a></dfn> entails that information about a resource’s existence or its description can be known. <a href="https://github.com/solid/specification/issues/149#issue-568433265">[Source</a>]</p>
+   <p>A <dfn data-dfn-type="dfn" data-export id="write-operation">write operation<a class="self-link" href="#write-operation"></a></dfn> entails that information about resources can be created or removed. <a href="https://github.com/solid/specification/issues/126#issuecomment-569920473">[Source</a>]</p>
+   <p>An <dfn data-dfn-type="dfn" data-export id="append-operation">append operation<a class="self-link" href="#append-operation"></a></dfn> entails that information can be added but not removed. <a href="https://github.com/solid/specification/issues/118#issuecomment-569648485">[Source</a>]</p>
+   <h3 class="heading settled" data-level="1.2" id="namespaces"><span class="secno">1.2. </span><span class="content">Namespaces</span><a class="self-link" href="#namespaces"></a></h3>
+   <table>
+    <tbody>
+     <tr>
+      <th>Prefix
+      <th>Namespace
+      <th>Description
+     <tr>
+      <td>rdf
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#
+      <td><a data-link-type="biblio" href="#biblio-rdf-schema">[rdf-schema]</a>
+     <tr>
+      <td>ldp
+      <td>http://www.w3.org/ns/ldp#
+      <td><a data-link-type="biblio" href="#biblio-ldp">[LDP]</a>
+     <tr>
+      <td>solid
+      <td>http://www.w3.org/ns/solid/terms#
+      <td>Solid Terms
+     <tr>
+      <td>pim
+      <td>http://www.w3.org/ns/pim/space#
+      <td>Workspace Ontology
+     <tr>
+      <td>acl
+      <td>http://www.w3.org/ns/auth/acl#
+      <td>ACL Ontology
+   </table>
+   <h2 class="heading settled" data-level="2" id="protocol"><span class="secno">2. </span><span class="content">Protocol</span><a class="self-link" href="#protocol"></a></h2>
+   <h3 class="heading settled" data-level="2.1" id="http"><span class="secno">2.1. </span><span class="content">Hypertext Transfer Protocol</span><a class="self-link" href="#http"></a></h3>
+   <p>Solid clients and servers need to exchange data securely over the Internet,
+and they do so using the HTTP Web standard. This section describes in detail
+which parts of HTTP must be implemented by clients and servers.</p>
+   <h4 class="heading settled" data-level="2.1.1" id="http-server"><span class="secno">2.1.1. </span><span class="content">Required Server-Side Implementation</span><a class="self-link" href="#http-server"></a></h4>
+   <p>A <a data-link-type="dfn" href="#data-pod" id="ref-for-data-pod①">data pod</a> MUST be an HTTP/1.1 server <a data-link-type="biblio" href="#biblio-rfc7230">[RFC7230]</a><a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>. It SHOULD
+additionally be an HTTP/2 server <a data-link-type="biblio" href="#biblio-rfc7540">[RFC7540]</a> to improve performance,
+especially in cases where individual clients are expected to send high numbers
+of successive requests.</p>
+   <p>A data pod SHOULD use TLS connections through the <code>https</code> URI scheme in order
+to secure the communication between clients and servers. When both <code>http</code> and <code>https</code> are supported, all <code>http</code> URIs MUST redirect to their <code>https</code> counterparts using a response with a <code>301</code> status code and a <code>Location</code> header.</p>
+   <p>A data pod MUST implement the server part of <cite>HTTP/1.1 Conditional
+Requests</cite> <a data-link-type="biblio" href="#biblio-rfc7232">[RFC7232]</a> to ensure that updates requested by clients will
+only be applied if given preconditions are met. It SHOULD additionally
+implement the server part of <cite>HTTP/1.1 Caching</cite> <a data-link-type="biblio" href="#biblio-rfc7234">[RFC7234]</a> to
+improve performance. A data pod MAY implement the server part of <cite>HTTP/1.1 Range Requests</cite> <a data-link-type="biblio" href="#biblio-rfc7233">[RFC7233]</a> to further improve
+performance for large representations.</p>
+   <p>A data pod MUST implement the server part of <cite>HTTP/1.1
+Authentication</cite> <a data-link-type="biblio" href="#biblio-rfc7235">[RFC7235]</a>. When a client does not provide valid
+credentials when requesting a resource that requires it (see <a href="#webid">§ 3.1 WebID</a>), the
+data pod MUST send a response with a <code>401</code> status code (unless <code>404</code> is
+preferred for security reasons).</p>
+   <p>A Solid server MUST reject <code>PUT</code>, <code>POST</code> and <code>PATCH</code> requests without the <code>Content-Type</code> header with a status code of <code>400</code>. <a href="https://github.com/solid/specification/issues/70#issuecomment-547924171">[Source</a>]</p>
+   <h4 class="heading settled" data-level="2.1.2" id="http-client"><span class="secno">2.1.2. </span><span class="content">Required Client-Side Implementation</span><a class="self-link" href="#http-client"></a></h4>
+   <p>A Solid client MUST be an HTTP/1.1 client <a data-link-type="biblio" href="#biblio-rfc7230">[RFC7230]</a><a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>. It MAY
+additionally be an HTTP/2 client <a data-link-type="biblio" href="#biblio-rfc7540">[RFC7540]</a> to improve performance.</p>
+   <p>A Solid client MAY implement the client parts of <cite>HTTP/1.1 Conditional
+Requests</cite> <a data-link-type="biblio" href="#biblio-rfc7232">[RFC7232]</a> to only trigger updates when certain
+preconditions are met. It MAY implement <cite>HTTP/1.1 Caching</cite> <a data-link-type="biblio" href="#biblio-rfc7234">[RFC7234]</a> and <cite>HTTP/1.1 Range Requests</cite> <a data-link-type="biblio" href="#biblio-rfc7233">[RFC7233]</a> to improve
+performance.</p>
+   <p>A Solid client MUST implement the client part of <cite>HTTP/1.1
+Authentication</cite> <a data-link-type="biblio" href="#biblio-rfc7235">[RFC7235]</a> if it needs to access resources requiring
+authentication (see <a href="#webid">§ 3.1 WebID</a>). When it receives a response with a <code>403</code> or <code>404</code> status code, it MAY repeat the request with different credentials.</p>
+   <p>A Solid client MUST use the <code>Content-Type</code> HTTP header in <code>PUT</code>, <code>POST</code> and <code>PATCH</code> requests <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>. <a href="https://github.com/solid/specification/issues/70#issuecomment-547924171">[Source</a>]</p>
+   <h3 class="heading settled" data-level="2.2" id="uri"><span class="secno">2.2. </span><span class="content">Uniform Resource Identifier</span><a class="self-link" href="#uri"></a></h3>
+   <h4 class="heading settled" data-level="2.2.1" id="uri-slash-semantics"><span class="secno">2.2.1. </span><span class="content">URI Slash Semantics</span><a class="self-link" href="#uri-slash-semantics"></a></h4>
+   <p>The slash character in the URI path indicates hierarchical relationship
+segments, and enables relative referencing <a data-link-type="biblio" href="#biblio-rfc3986">[RFC3986]</a>. The semantics of the
+slash character is shared by servers and clients. Paths ending with a slash
+denote a container resource. <a href="https://github.com/solid/specification/issues/35#issuecomment-547949014">[Source</a>]</p>
+   <p>If two URIs differ only in the trailing slash, and the server has associated a
+resource with one of them, then the other URI MUST NOT correspond to another
+resource. Instead, the server MAY respond to requests for the latter URI with
+a 301 redirect to the former. <a href="https://github.com/solid/specification/issues/107#issuecomment-567482817">[Source</a>].
+Behaviour pertaining to authorization MUST proceed this optional redirect <a href="https://github.com/solid/specification/issues/107#issuecomment-567454889">[Source</a>]</p>
+   <h4 class="heading settled" data-level="2.2.2" id="uri-persistence"><span class="secno">2.2.2. </span><span class="content">URI Persistence</span><a class="self-link" href="#uri-persistence"></a></h4>
+    <em>This section is non-normative.</em>
+   <p>Servers should not re-use URIs, regardless of the mechanism by which resources
+are created. Certain specific cases exist where URIs may be reinstated when it
+identifies the same resource, but only when consistent with Web architecture’s <cite><a href="https://www.w3.org/TR/webarch/#URI-persistence">URI
+persistence</a></cite> <a data-link-type="biblio" href="#biblio-webarch">[WEBARCH]</a>. <a href="https://github.com/solid/specification/issues/46#issuecomment-589619372">[Source</a>]</p>
+   <p class="note" role="note"><span>Note:</span> Servers that wish to disable URI re-use may want to use the <code>410</code> status
+code.</p>
+   <h3 class="heading settled" data-level="2.3" id="linked-data"><span class="secno">2.3. </span><span class="content">Linked Data</span><a class="self-link" href="#linked-data"></a></h3>
+   <h4 class="heading settled" data-level="2.3.1" id="storage"><span class="secno">2.3.1. </span><span class="content">Storage</span><a class="self-link" href="#storage"></a></h4>
+   <p>When a server supports a data pod, it MUST provide one or more storages
+(<code>pim:Storage</code>) – a space of URIs in which data can be accessed. A storage is
+the root container for all of its contained resources (see <a href="#resource-containment">§ 2.3.2 Resource Containment</a>).</p>
+   <p>When a server supports multiple storages, the URIs MUST be allocated to
+non-overlapping space.</p>
+   <p>Servers exposing the storage resource MUST advertise by including the HTTP <code>Link</code> header with <code>rel="type"</code> targeting <code>http://www.w3.org/ns/pim/space#Storage</code> when responding to storage’s request
+URI.</p>
+   <p>Clients can determine a resource is of type storage by making an HTTP <code>HEAD</code> or <code>GET</code> request on the target URL, and checking for the <code>Link</code> header with <code>rel="type"</code> targeting <code>http://www.w3.org/ns/pim/space#Storage</code>.</p>
+   <p>Clients can determine the storage of a resource by moving up the URI path
+hierarchy until the response includes a <code>Link</code> header with <code>rel="type"</code> targeting <code>http://www.w3.org/ns/pim/space#Storage</code>. Clients may check the root
+path of a URI for the storage claim at any time.</p>
+   <p>Clients can discover a storage by making an HTTP <code>GET</code> request on the target
+URL to retrieve an RDF representation <a data-link-type="biblio" href="#biblio-rdf11-concepts">[RDF11-CONCEPTS]</a>, whose encoded RDF
+graph contains a relation of type <code>http://www.w3.org/ns/pim/space#storage</code>.
+The object of the relation is the storage (<code>pim:Storage</code>).</p>
+   <p><a href="https://github.com/solid/data-interoperability-panel/issues/10#issuecomment-598694029">[Source</a>] <a href="https://github.com/solid/specification/issues/153#issuecomment-624630022">[Source</a>]</p>
+   <p>When using Web Access Control (<a href="#web-access-control">§ 5.1 Web Access Control</a>):</p>
+   <p>The root container (<code>pim:Storage</code>) MUST have an ACL auxiliary resource
+directly associated to it. The associated ACL document MUST include an authorization
+policy with <code>acl:Control</code> access privilege.</p>
+   <p><a href="https://github.com/solid/specification/issues/197#issuecomment-699937520">[Source</a>]</p>
+   <h4 class="heading settled" data-level="2.3.2" id="resource-containment"><span class="secno">2.3.2. </span><span class="content">Resource Containment</span><a class="self-link" href="#resource-containment"></a></h4>
+   <p>Solid has the notion of containers to represent a collection of linked
+resources to help with resource discovery and lifecycle management.</p>
+   <p>There is a 1-1 correspondence between containment triples and relative
+reference within the path name hierarchy. <a href="https://github.com/solid/specification/issues/98#issuecomment-547506617">[Source</a>].
+It follows that all resources are discoverable from a container and that it is
+not possible to create orphan resources. <a href="https://github.com/solid/specification/issues/97#issuecomment-547459396">[Source</a>]</p>
+   <p>The representation and behaviour of containers in Solid corresponds to LDP
+Basic Container and MUST be supported. <a href="https://github.com/solid/specification/issues/47#issuecomment-561675764">[Source</a>]</p>
+   <h3 class="heading settled" data-level="2.4" id="reading-writing-resources"><span class="secno">2.4. </span><span class="content">Reading and Writing Resources</span><a class="self-link" href="#reading-writing-resources"></a></h3>
+   <p>Servers MUST respond with the <code>405</code> status code to requests using HTTP methods
+that are not supported by the target resource. <a href="https://github.com/solid/specification/issues/117">[Source</a>]</p>
+   <h4 class="heading settled" data-level="2.4.1" id="resource-type-heuristics"><span class="secno">2.4.1. </span><span class="content">Resource Type Heuristics</span><a class="self-link" href="#resource-type-heuristics"></a></h4>
+   <p>When creating new resources, servers can determine an effective request URI’s
+type by examining the URI path ending (<a href="#uri-slash-semantics">§ 2.2.1 URI Slash Semantics</a>).</p>
+   <p>Clients who want to assign a URI to a resource, MUST use <code>PUT</code> and <code>PATCH</code> requests. Servers MAY allow clients to suggest the URI of a resource created
+through POST, using the HTTP <code>Slug</code> header as defined in <a data-link-type="biblio" href="#biblio-rfc5023">[RFC5023]</a>.</p>
+   <p>Clients who want the server to assign a URI of a resource, MUST use the <code>POST</code> request.</p>
+   <p><a href="https://github.com/solid/specification/pull/160#issuecomment-636822687">[Source</a>].</p>
+   <h4 class="heading settled" data-level="2.4.2" id="reading-resources"><span class="secno">2.4.2. </span><span class="content">Reading Resources</span><a class="self-link" href="#reading-resources"></a></h4>
+   <p>Servers MUST support the HTTP <code>GET</code>, <code>HEAD</code> and <code>OPTIONS</code> methods <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a> for clients to read resources or to determine communication options. <a href="https://github.com/solid/specification/issues/39#issuecomment-538017667">[Source</a>]</p>
+   <p>When responding to authorized requests:</p>
+   <p>Servers MUST indicate their support for HTTP Methods by responding to HTTP <code>GET</code> and <code>HEAD</code> requests for the target resource with the HTTP Method tokens
+in the HTTP response header <code>Allow</code>.</p>
+   <p>Servers MUST indicate supported media types in the HTTP <code>Accept-Patch</code> <a data-link-type="biblio" href="#biblio-rfc5789">[RFC5789]</a>, <code>Accept-Post</code> <a data-link-type="biblio" href="#biblio-ldp">[LDP]</a> and <code>Accept-Put</code> [<a href="#accept-put">§ 2.8.1.1 The Accept-Put Response Header</a>]
+response headers that correspond to acceptable HTTP methods listed in <code>Allow</code> header value in response to HTTP <code>GET</code> and <code>HEAD</code> requests.</p>
+   <p>Servers MAY include the HTTP <code>Accept-Patch</code>, <code>Accept-Post</code> and <code>Accept-Put</code> headers in the response of a <code>OPTIONS *</code> request.</p>
+   <p><a href="https://github.com/solid/specification/issues/85#issuecomment-575386251">[Source</a>] <a href="https://github.com/solid/specification/issues/43">[Source</a>]</p>
+   <h4 class="heading settled" data-level="2.4.3" id="writing-resources"><span class="secno">2.4.3. </span><span class="content">Writing Resources</span><a class="self-link" href="#writing-resources"></a></h4>
+   <p>When a server supports the HTTP <code>PUT</code>, <code>POST</code> and <code>PATCH</code> methods <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a> this specification imposes the following requirements: <a href="https://github.com/solid/specification/issues/39#issuecomment-538017667">[Source</a>]</p>
+   <p>Servers MUST create intermediate containers and include corresponding
+containment triples in container representations derived from the URI path
+component of <code>PUT</code> and <code>PATCH</code> requests. <a href="https://github.com/solid/specification/issues/68#issuecomment-561690124">[Source</a>]</p>
+   <p>Servers MUST allow creating new resources with a <code>POST</code> request to URI path
+ending <code>/</code>. Servers MUST create a resource with URI path ending <code>/{id}</code> in
+container <code>/</code>. Servers MUST create a container with URI path ending <code>/{id}/</code> in container <code>/</code> for requests including the HTTP <code>Link</code> header with <code>rel="type"</code> targeting a valid LDP container type. Servers MUST handle
+subsequent requests to the newly created container’s URI as if it is a valid
+LDP container type by including the HTTP response’s <code>Link</code> header. <a href="https://github.com/solid/specification/pull/160#issuecomment-636822687">[Source</a>]</p>
+   <p>When a <code>POST</code> method request targets a resource without an existing
+representation, the server <code>MUST</code> respond with the <code>404</code> status code. <a href="https://github.com/solid/specification/issues/108#issuecomment-549448159">[Source</a>]</p>
+   <p>When a <code>PUT</code> or <code>PATCH</code> method request targets an auxiliary resource, the
+server MUST create or update it. When a <code>POST</code> method request with the <code>Slug</code> header targets an auxiliary resource, the server MUST respond with the <code>403</code> status code and response body describing the error. <a href="https://github.com/solid/specification/issues/42#issuecomment-616688848">[Source</a>]</p>
+   <p>Servers MUST NOT allow HTTP <code>POST</code>, <code>PUT</code> and <code>PATCH</code> to update a container’s
+containment triples; if the server receives such a request, it MUST respond
+with a <code>409</code> status code. <a href="https://github.com/solid/specification/issues/40#issuecomment-573358652">[Source</a>]</p>
+   <p>Clients MAY use the HTTP <code>If-None-Match</code> header with a value of <code>"*"</code> to
+prevent an unsafe request method (eg. <code>PUT</code>, <code>PATCH</code>) from inadvertently
+modifying an existing representation of the target resource when the client
+believes that the resource does not have a current representation. <a href="https://github.com/solid/specification/issues/108#issuecomment-567272797">[Source</a>] <a href="https://github.com/solid/specification/issues/40#issuecomment-566995240">[Source</a>]</p>
+   <p>Servers MAY use the HTTP <code>ETag</code> header with a strong validator for RDF bearing
+representations in order to encourage clients to opt-in to using the <code>If-Match</code> header in their requests.</p>
+   <p>When using Web Access Control (<a href="#web-access-control">§ 5.1 Web Access Control</a>):</p>
+   <p>To create or update an ACL resource (see <a href="#auxiliary-resources-wac">§ 2.5.3.1 Web Access Control</a>), an <code>acl:agent</code> MUST
+have <code>acl:Control</code> privileges per the ACL inheritance algorithm on the
+resource directly associated with it. <a href="https://github.com/solid/specification/issues/42#issuecomment-616688848">[Source</a>]</p>
+   <h4 class="heading settled" data-level="2.4.4" id="deleting-resources"><span class="secno">2.4.4. </span><span class="content">Deleting Resources</span><a class="self-link" href="#deleting-resources"></a></h4>
+   <p>When a server supports the HTTP <code>DELETE</code> method <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a> this
+specification imposes the following requirements: <a href="https://github.com/solid/specification/issues/39#issuecomment-538017667">[Source</a>]</p>
+   <p>When a <code>DELETE</code> request targets storage’s root container or its associated ACL
+resource, the server MUST respond with the <code>405</code> status code. Server MUST
+exclude the <code>DELETE</code> method in the HTTP response header <code>Allow</code> in response to
+safe method requests <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>. <a href="https://github.com/solid/specification/issues/37#issuecomment-627281466">[Source</a>]</p>
+   <p>When a contained resource is deleted, the server MUST also remove the
+corresponding containment triple, which has the effect of removing the deleted
+resource from the containing container. <a href="https://www.w3.org/TR/ldp#ldpc-del-contremovesconttriple">[Source</a>]</p>
+   <p>When a contained resource is deleted, the server MUST also delete the
+associated resources (see the <a href="#auxiliary-resources">§ 2.5 Auxiliary Resources</a> section).</p>
+   <p>When a <code>DELETE</code> request is made to a container, the server MUST delete the
+container if it contains no resources. If the container contains resources,
+the server MUST respond with the <code>409</code> status code and response body
+describing the error. <a href="https://github.com/solid/specification/pull/187/files/b7426e95a1613e08195a853a4d0a403b7030f494#r447130915">[Source</a>]</p>
+   <p>When using Web Access Control (<a href="#web-access-control">§ 5.1 Web Access Control</a>):</p>
+   <p>To delete a resource, an <code>acl:agent</code> MUST have <code>acl:Write</code> privilege per the
+ACL inheritance algorithm on the resource and the containing container. <a href="https://github.com/solid/specification/issues/197">[Source</a>]</p>
+   <p>To delete an ACL resource (see <a href="#auxiliary-resources-wac">§ 2.5.3.1 Web Access Control</a>), an <code>acl:agent</code> MUST have <code>acl:Control</code> privileges per the ACL inheritance algorithm on the resource
+directly associated with it. <a href="https://github.com/solid/specification/issues/145">[Source</a>]</p>
+   <p><em>This section is non-normative.</em></p>
+   <p>The server might perform additional actions, as described in the normative
+references like <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>. For example, the server could remove membership
+triples referring to the deleted resource, perform additional cleanup tasks
+for resources it knows are no longer referenced or have not been accessed for
+some period of time, and so on.</p>
+   <p>Subsequent <code>GET</code> requests to the deleted resource usually result in a <code>404</code> or <code>410</code> status code, although HTTP allows others. <a href="https://github.com/solid/specification/issues/72">[Source</a>] <a href="https://github.com/solid/specification/issues/46">[Source</a>]</p>
+   <p>As deleted resources can be reinstated with the same URI, access controls on
+the reinstated resource can change per the ACL inheritance algorithm. <a href="https://github.com/solid/specification/issues/145#issuecomment-618918284">[Source</a>]</p>
+   <p class="issue" id="issue-5c4e642f"><a class="self-link" href="#issue-5c4e642f"></a> Pertaining to events and loss of control mitigation:
+https://github.com/solid/specification/issues/41#issuecomment-534679278</p>
+   <h4 class="heading settled" data-level="2.4.5" id="resource-representations"><span class="secno">2.4.5. </span><span class="content">Resource Representations</span><a class="self-link" href="#resource-representations"></a></h4>
+   <p>When a server creates a resource on HTTP <code>PUT</code>, <code>POST</code> or <code>PATCH</code> requests
+such that the request’s representation data encodes an <em>RDF document</em> <a data-link-type="biblio" href="#biblio-rdf11-concepts">[RDF11-CONCEPTS]</a> (as determined by the <code>Content-Type</code> header), the server
+MUST accept <code>GET</code> requests on this resource when the value of the <code>Accept</code> header requests a representation in <code>text/turtle</code> or <code>application/ld+json</code> <a data-link-type="biblio" href="#biblio-turtle">[Turtle]</a> <a data-link-type="biblio" href="#biblio-json-ld11">[JSON-LD11]</a>. <a href="https://github.com/solid/specification/issues/45">[Source</a>] <a href="https://github.com/solid/specification/issues/69">[Source</a>] <a href="https://github.com/solid/specification/issues/109">[Source</a>] <a href="https://github.com/solid/specification/issues/195">[Source</a>]</p>
+   <p>When a <code>PUT</code>, <code>POST</code>, <code>PATCH</code> or <code>DELETE</code> method request targets a
+representation URL that is different than the resource URL, the server MUST
+respond with a <code>307</code> or <code>308</code> status code and <code>Location</code> header specifying the
+preferred URI reference. <a href="https://github.com/solid/specification/issues/109">[Source</a>]</p>
+   <h3 class="heading settled" data-level="2.5" id="auxiliary-resources"><span class="secno">2.5. </span><span class="content">Auxiliary Resources</span><a class="self-link" href="#auxiliary-resources"></a></h3>
+   <p>An auxiliary resource may provide supplementary information about a given
+Solid resource, or affect how that resource and others associated with it are
+processed, served, or interpreted. Different auxiliary resource types provide
+different capabilities. This section introduces a mechanism for linking
+auxiliary resources with regular Solid resources.</p>
+   <p>Auxiliary resources are needed to influence the configuration, processing, or
+interpretation of Solid resources without changing the composition of the
+resources themselves. To do so would be undesirable in many cases, and not
+possible in others. Auxiliary resources are not meant to replace the ability
+of a Solid resource to self-describe.</p>
+   <p>Examples of auxiliary resources in use include:</p>
+   <ul>
+    <li>A binary JPEG image linked to an auxiliary resource that includes
+  information describing that binary JPEG.
+    <li>A container linked to an auxiliary resource that includes access control
+  statements for that container and the resources that belong to it.
+    <li>A resource representation whose shape is constrained by a given ShEx
+  schema that links to an auxiliary resource defining that schema.
+    <li>A resource with an associated set of configurable parameters links to an
+  auxiliary resource where those configurable parameters reside.
+   </ul>
+   <h4 class="heading settled" data-level="2.5.1" id="auxiliary-resources-server"><span class="secno">2.5.1. </span><span class="content">Required Server-Side Implementation</span><a class="self-link" href="#auxiliary-resources-server"></a></h4>
+   <p>For any defined auxiliary resource available for a given Solid resource, all
+representations of that resource MUST include an HTTP <code>Link</code> header pointing
+to the location of each auxiliary resource.</p>
+   <p>The <code>rel={relation-type}</code> <a data-link-type="biblio" href="#biblio-rfc8288">[RFC8288]</a> will define the relationship to the
+target URL in the HTTP <code>Link</code> header. URIs are encouraged to indicate Link
+relation types.</p>
+   <p>An auxiliary resource linked with a given Solid resource through an HTTP <code>Link</code> header is considered to be <em>directly associated</em> with that resource. It
+is up to the server to determine how that association affects processing based
+on the auxiliary resource type.</p>
+   <p>A given Solid resource MAY link to zero or more auxiliary resources. A given
+Solid resource MUST NOT link to auxiliary resources on a different server
+under a different authority.</p>
+   <p class="issue" id="issue-f351b1a1"><a class="self-link" href="#issue-f351b1a1"></a> Is MUST NOT too strong? <a href="https://github.com/solid/specification/issues/176">Related Issue</a></p>
+   <p>Access to different types of auxiliary resources require varying levels of
+authorization, which MUST be specified as part of the definition for a given
+auxiliary resource type.</p>
+   <p>An auxiliary resource that resides on a Solid server MUST adhere to the same
+interaction model used by other regular Solid resources, except where
+specified in the definition of that auxiliary resource type.</p>
+   <h4 class="heading settled" data-level="2.5.2" id="auxiliary-resources-client"><span class="secno">2.5.2. </span><span class="content">Required Client-Side Implementation</span><a class="self-link" href="#auxiliary-resources-client"></a></h4>
+   <h5 class="heading settled" data-level="2.5.2.1" id="auxiliary-resources-discovery"><span class="secno">2.5.2.1. </span><span class="content">Discovery of Auxiliary Resources</span><a class="self-link" href="#auxiliary-resources-discovery"></a></h5>
+   <p>To discover the auxiliary resources directly associated with a given Solid
+resource, a Solid client MUST issue a <code>HEAD</code> or <code>GET</code> request to the target
+resource URL and inspect the <code>Link</code> headers in the response.</p>
+   <div class="example" id="example-e34bcf09">
+    <a class="self-link" href="#example-e34bcf09"></a>
+    <p> A client discovers the location of auxiliary resources for <a href="#auxiliary-resources-wac">§ 2.5.3.1 Web Access Control</a> and <a href="#auxiliary-resources-shape">§ 2.5.3.3 Shape Validation</a> through a HEAD request on <code>&lt;https://server.example/resource.ttl>:</code> </p>
+<pre>HEAD https://server.example/resource.ttl
+<code>Link: &lt;https://server.example/acls/24986>; rel="http://www.w3.org/ns/solid/terms#acl"</code>
+<code>Link: &lt;https://server.example/shapes/85432>; rel="http://www.w3.org/ns/solid/terms#shape"</code>
+</pre>
+    <p> A client discovers the <a href="#auxiliary-resources-wac">§ 2.5.3.1 Web Access Control</a> and <a href="#auxiliary-resources-description">§ 2.5.3.2 Resource Description</a> auxiliary
+    resources through a <code>GET</code> request on <code>&lt;https://server.example/image.png></code>: </p>
+<pre>GET https://server.example/image.png
+<code>Link: &lt;https://server.example/acls/36789>; rel="http://www.w3.org/ns/solid/terms#acl"</code>
+<code>Link: &lt;https://server.example/desc/08744>; rel="https://www.w3.org/ns/iana/link-relations/relation#describedby"</code>
+</pre>
+   </div>
+   <h5 class="heading settled" data-level="2.5.2.2" id="auxiliary-resources-annotated"><span class="secno">2.5.2.2. </span><span class="content">Discovery of Annotated Solid Resources</span><a class="self-link" href="#auxiliary-resources-annotated"></a></h5>
+   <p>Certain auxiliary resource types MAY require the auxiliary resource to link
+back to the Solid resource it is directly associated with, via HTTP <code>Link</code> headers. In these instances, the link relation <code>rel=describes</code> or <code>rel=https://www.w3.org/ns/iana/link-relations/relation#describes</code> MUST be
+used.</p>
+   <p class="issue" id="issue-108fe0cc"><a class="self-link" href="#issue-108fe0cc"></a> Is MUST too strong, as opposed to encouraging via SHOULD instead? <a href="https://github.com/solid/data-interoperability-panel/issues/37">Related
+Issue</a></p>
+   <div class="example" id="example-3aea8776">
+    <a class="self-link" href="#example-3aea8776"></a>
+    <p> A <a href="#auxiliary-resources-description">§ 2.5.3.2 Resource Description</a> auxiliary resource <code>&lt;https://server.example/desc/08744></code> is directly associated with and
+    describes <code>&lt;https://server.example/image.png></code>. A client that performs a GET
+    request on <code>&lt;https://server.example/desc/08744></code> would discover the
+    following relation in the <code>Link</code> headers returned in the response. </p>
+<pre>GET https://server.example/desc/08744
+<code>Link: &lt;https://server.example/image.png>; rel="https://www.w3.org/ns/iana/link-relations/relation#describes"</code>
+</pre>
+   </div>
+   <h4 class="heading settled" data-level="2.5.3" id="auxiliary-resources-reserved"><span class="secno">2.5.3. </span><span class="content">Reserved Auxiliary Resource Types</span><a class="self-link" href="#auxiliary-resources-reserved"></a></h4>
+   <p>The following table lists <a href="#auxiliary-resources-reserved">§ 2.5.3 Reserved Auxiliary Resource Types</a> and the associated
+link relation URIs that are used for discovery. Other auxiliary types and
+relations may also be used, and may be added to the reserved set in the
+future.</p>
+   <table align="left" class="data">
+    <colgroup class="header">
+    <colgroup span="2">
+    <thead>
+     <tr>
+      <th>Auxiliary Type
+      <th>Link Relation
+    <tbody>
+     <tr>
+      <td><a href="#auxiliary-resources-wac">§ 2.5.3.1 Web Access Control</a>
+      <td><code>"acl"</code> or <code>http://www.w3.org/ns/solid/terms#acl</code>
+     <tr>
+      <td><a href="#auxiliary-resources-description">§ 2.5.3.2 Resource Description</a>
+      <td><code>"describedby"</code> or <code>https://www.w3.org/ns/iana/link-relations/relation#describedby</code>
+     <tr>
+      <td><a href="#auxiliary-resources-shape">§ 2.5.3.3 Shape Validation</a>
+      <td><code>http://www.w3.org/ns/solid/terms#shape</code>
+   </table>
+   <p class="issue" id="issue-e6be0bd4"><a class="self-link" href="#issue-e6be0bd4"></a> Agree on specific link relation URIs to use for auxiliary types <a href="https://github.com/solid/specification/issues/172">Related Issue</a></p>
+   <h5 class="heading settled" data-level="2.5.3.1" id="auxiliary-resources-wac"><span class="secno">2.5.3.1. </span><span class="content">Web Access Control</span><a class="self-link" href="#auxiliary-resources-wac"></a></h5>
+   <p>ACL resources as defined by <a href="#web-access-control">§ 5.1 Web Access Control</a> MUST be supported as an
+auxiliary type by Solid servers.</p>
+   <p>The ACL auxiliary resource directly associated with a given resource is
+discovered by the client via the <code>rel="acl"</code> <code>Link</code> relation in a <code>Link</code> header.</p>
+   <p class="note" role="note"><span>Note:</span> Consider moving some of this information to <a href="#web-access-control">§ 5.1 Web Access Control</a></p>
+   <p>A given Solid resource MUST NOT be directly associated with more than one ACL
+auxiliary resource. A given ACL auxiliary resource MUST NOT be directly
+associated with more than one Solid resource.</p>
+   <p>To discover, read, create, or modify an ACL auxiliary resource, an <a href="https://github.com/solid/web-access-control-spec#describing-agents">acl:agent</a> MUST have <a href="https://github.com/solid/web-access-control-spec#aclcontrol">acl:Control</a> privileges per the <a href="https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm">ACL inheritance
+algorithm</a> on the resource directly associated with it.</p>
+   <p>An ACL auxiliary resource MUST be deleted by the Solid server when the
+resource it is directly associated with is also deleted and the Solid server
+is authoritative for both resources.</p>
+   <p>A Solid server SHOULD sanity check ACL auxiliary resources upon creation or
+update to restrict invalid changes, such as by performing shape validation
+against authorization statements therein.</p>
+   <h5 class="heading settled" data-level="2.5.3.2" id="auxiliary-resources-description"><span class="secno">2.5.3.2. </span><span class="content">Resource Description</span><a class="self-link" href="#auxiliary-resources-description"></a></h5>
+   <p class="note" role="note"><span>Note:</span> Consider where there are any common parameters that would be ubiquitous
+across resource descriptions that should be defined as part of the
+specification.</p>
+   <p>Resource description is a general mechanism to provide descriptive metadata
+for a given resource. It MUST be supported as an auxiliary type by Solid
+servers.</p>
+   <p>The Descriptive auxiliary resource directly associated with a given resource
+is discovered by the client via the <code>rel="describedby"</code> <code>Link</code> relation in a <code>Link</code> header. Conversely, the resource being described by a Descriptive
+auxiliary resource is discovered by the client via the <code>rel="describes"</code> <code>Link</code> relation in a <code>Link</code> header.</p>
+   <p class="issue" id="issue-da8f0495"><a class="self-link" href="#issue-da8f0495"></a> Consider whether a given Solid resource should be allowed to have
+multiple resource description auxiliary resources. <a href="https://github.com/solid/specification/issues/173">Related
+Issue</a></p>
+   <p>A given Solid resource MUST NOT be directly associated with more than one
+Descriptive auxiliary resource.</p>
+   <p class="issue" id="issue-256a1565"><a class="self-link" href="#issue-256a1565"></a> Determine what the default permissions should be on resource
+description auxiliary resources, or whether we should have them at all. <a href="https://github.com/solid/specification/issues/174">Related Issue</a></p>
+   <p>To create or modify a Descriptive auxiliary resource, a given <a href="https://github.com/solid/web-access-control-spec#describing-agents">acl:agent</a> MUST have <a href="https://github.com/solid/web-access-control-spec#aclcontrol">acl:Write</a> privileges per the <a href="https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm">ACL inheritance
+algorithm</a> on the resource directly associated with it.</p>
+   <p>To discover or read a Descriptive auxiliary resource, an <a href="https://github.com/solid/web-access-control-spec#describing-agents">acl:agent</a> MUST have <a href="https://github.com/solid/web-access-control-spec#aclcontrol">acl:Read</a> privileges per the <a href="https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm">ACL inheritance
+algorithm</a> on the resource directly associated with it.</p>
+   <p>An Descriptive auxiliary resource MUST be deleted by the Solid server when the
+resource it is directly associated with is also deleted and the Solid server
+is authoritative for both resources.</p>
+   <h5 class="heading settled" data-level="2.5.3.3" id="auxiliary-resources-shape"><span class="secno">2.5.3.3. </span><span class="content">Shape Validation</span><a class="self-link" href="#auxiliary-resources-shape"></a></h5>
+   <p>Shape Validation auxiliary resources as defined by (link to shape validation)
+SHOULD be supported as an auxiliary type by Solid servers.</p>
+   <p>The Shape validation auxiliary resource directly associated with a given
+resource is discovered by the client via the <code>rel=http://www.w3.org/ns/solid/terms#shape</code> <code>Link</code> relation in a <code>Link</code> header. Conversely, the resource being described by a Shape validation
+auxiliary resource is discovered by the client via the <code>rel=describes</code> <code>Link</code> relation in a <code>Link</code> header.</p>
+   <p class="note" role="note"><span>Note:</span> Consider moving some of this information to the Shape Validation section</p>
+   <p>A given Solid resource MUST NOT be directly associated with more than one
+Shape Validation auxiliary resource.</p>
+   <p class="issue" id="issue-f92a4149"><a class="self-link" href="#issue-f92a4149"></a> Determine what the default permissions should be on shape validation
+auxiliary resources, or whether we should have them at all. <a href="https://github.com/solid/specification/issues/174">Related
+Issue</a></p>
+   <p>To create or modify a Shape validation auxiliary resource, an <a href="https://github.com/solid/web-access-control-spec#describing-agents">acl:agent</a> MUST have <a href="https://github.com/solid/web-access-control-spec#aclcontrol">acl:Write</a> privileges per the <a href="https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm">ACL inheritance
+algorithm</a> on the resource directly associated with it.</p>
+   <p>To discover or read a Shape validation auxiliary resource, an <a href="https://github.com/solid/web-access-control-spec#describing-agents">acl:agent</a> MUST have <a href="https://github.com/solid/web-access-control-spec#aclcontrol">acl:Read</a> privileges per the <a href="https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm">ACL inheritance
+algorithm</a> on the resource directly associated with it.</p>
+   <p>A Shape validation auxiliary resource MUST be deleted by the Solid server when
+the resource it is directly associated with is also deleted and the Solid
+server is authoritative for both resources.</p>
+   <p class="issue" id="issue-d5201460"><a class="self-link" href="#issue-d5201460"></a> Provide a shape to validate a shape validation auxiliary resource. May
+include the shape language, shape url, and any additional parameters to be
+used in shape validation by the server implementation.</p>
+   <p>A Solid server SHOULD sanity check Shape validation auxiliary resources upon
+creation or update to restrict invalid changes.</p>
+   <h3 class="heading settled" data-level="2.6" id="notifications"><span class="secno">2.6. </span><span class="content">Notifications</span><a class="self-link" href="#notifications"></a></h3>
+   <p>A Solid server MUST conform to the LDN specification by implementing the
+Receiver parts to receive notifications and make Inbox contents available <a data-link-type="biblio" href="#biblio-ldn">[LDN]</a>.</p>
+   <p>A Solid client MUST conform to the LDN specification by implementing the
+Sender or Consumer parts to discover the location of a resource’s Inbox, and
+to send notifications to an Inbox or to retrieve the contents of an Inbox <a data-link-type="biblio" href="#biblio-ldn">[LDN]</a>.</p>
+   <h3 class="heading settled" data-level="2.7" id="cors"><span class="secno">2.7. </span><span class="content">Cross-Origin Resource Sharing</span><a class="self-link" href="#cors"></a></h3>
+   <p><a data-link-type="dfn" href="#solid-app" id="ref-for-solid-app">Solid apps</a> typically access data from multiple sources. However, Web
+browsers by default prevent apps that run on one origin from accessing data on
+other origins. This cross-origin protection is a security mechanism that
+ensures malicious websites cannot simply read your profile or banking details
+from other websites. However, this reasonable default poses a problem even for
+benevolent Solid apps, which might have good reasons to access data from
+different places. For instance, a Solid app at <code>https://app.example/</code> would be
+prevented from accessing data on <code>https://alice-data-pod.example/</code> or <code>https://bob-data-pod.example/</code>, even when Alice and Bob have given the user
+of the app their permission to see some of their data.</p>
+   <p>For cases where the other origins have their own access protection mechanism—<wbr><a href="#web-access-control">like within Solid</a>— the browser’s built-in cross-origin
+protection is actually an obstacle rather than a feature. After all, <a data-link-type="dfn" href="#data-pod" id="ref-for-data-pod②">data
+pods</a> already ensure through access control that certain documents can only
+be accessed by specific people or applications. Preventively blocking apps
+from different origins thus introduces an unnecessary barrier.</p>
+   <p>Fortunately, Web servers can indicate to the browser that certain documents do
+not require cross-origin protection. This mechanism to selectively disable
+that protection is called <em>Cross-Origin Resource Sharing</em> or <em>CORS</em> <a data-link-type="biblio" href="#biblio-fetch">[FETCH]</a>.
+By responding to browser requests with a specific combination of HTTP headers,
+servers can indicate which actions are allowed for a given resource. For a
+Solid data pod, the goal is to allow <em>all</em> actions on the CORS level, such
+that the deeper <a href="#web-access-control">access control layer</a> can exert full
+control over the app’s allowed permissions. The next section describes how to
+achieve this through the right HTTP header configuration.</p>
+   <h4 class="heading settled" data-level="2.7.1" id="cors-server"><span class="secno">2.7.1. </span><span class="content">Required Server-Side Implementation</span><a class="self-link" href="#cors-server"></a></h4>
+   <p>A <a data-link-type="dfn" href="#data-pod" id="ref-for-data-pod③">data pod</a> MUST implement the CORS protocol <a data-link-type="biblio" href="#biblio-fetch">[FETCH]</a> such that, to the
+extent possible, the browser allows Solid apps to send any request and
+combination of request headers to the data pod, and the Solid app can read any
+response and response headers received from the data pod. If the data pod
+wishes to block access to a resource, this MUST NOT happen via CORS but MUST
+instead be communicated to the Solid app in the browser through HTTP status
+codes such as <code>401</code>, <code>403</code>, or <code>404</code> <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>.</p>
+   <p class="note" role="note"><span>Note:</span> Since the CORS protocol is part of a Living Standard, it might be
+changed at any point, which might necessitate changes to data pod
+implementations for continued prevention of undesired blocking. A <a href="https://github.com/whatwg/fetch/issues/878">proposal</a> to mitigate this has
+been suggested.</p>
+   <p>Concretely, whenever a data pod receives an HTTP request containing a valid <code>Origin</code> header <a data-link-type="biblio" href="#biblio-rfc6454">[RFC6454]</a>, the server MUST respond with the appropriate <code>Access-Control-*</code> headers as specified in the CORS protocol <a data-link-type="biblio" href="#biblio-fetch">[FETCH]</a>. In
+particular, the data pod MUST set the <code>Access-Control-Allow-Origin</code> header to
+the valid <code>Origin</code> value from the request and list <code>Origin</code> in the <code>Vary</code> header value. The data pod MUST make all used response headers readable for
+the Solid app through <code>Access-Control-Expose-Headers</code> (with the possible
+exception of the <code>Access-Control-*</code> headers themselves). A data pod MUST also
+support the HTTP <code>OPTIONS</code> method <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a> such that it can respond
+appropriately to CORS preflight requests.</p>
+   <p>Careful attention is warranted, especially because of the many edge cases. For
+instance, data pods SHOULD explicitly enumerate all used response headers
+under <code>Access-Control-Expose-Headers</code> rather than resorting to <code>*</code>, which does
+not cover all cases (such as credentials mode set to <code>include</code>). Data pods
+SHOULD also explicitly list <code>Accept</code> under <code>Access-Control-Allow-Headers</code>,
+because values longer than 128 characters (not uncommon for RDF-based Solid
+apps) would otherwise be blocked, despite shorter <code>Accept</code> headers being
+allowed without explicit mention.</p>
+   <h3 class="heading settled" data-level="2.8" id="http-definitions"><span class="secno">2.8. </span><span class="content">HTTP Definitions</span><a class="self-link" href="#http-definitions"></a></h3>
+   <h4 class="heading settled" data-level="2.8.1" id="http-headers"><span class="secno">2.8.1. </span><span class="content">HTTP Headers</span><a class="self-link" href="#http-headers"></a></h4>
+   <h5 class="heading settled" data-level="2.8.1.1" id="accept-put"><span class="secno">2.8.1.1. </span><span class="content">The Accept-Put Response Header</span><a class="self-link" href="#accept-put"></a></h5>
+   <p>This specification introduces a new HTTP response header <code>Accept-Put</code> used to
+specify the document formats accepted by the server on HTTP PUT requests. It
+is modelled after the <code>Accept-Patch</code> header defined in <a data-link-type="biblio" href="#biblio-rfc5789">[RFC5789]</a> and the <code>Accept-Post</code> header defined in <a data-link-type="biblio" href="#biblio-ldp">[LDP]</a>.</p>
+   <p>The syntax for <code>Accept-Put</code>, using the ABNF syntax defined in Section 1.2 of <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>, is:</p>
+<pre>Accept-Put = "Accept-Put" ":" # media-range
+</pre>
+   <p>The <code>Accept-Put</code> header specifies a comma-separated list of media ranges (with
+optional parameters) as defined by <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>, Section 5.3.2. The <code>Accept-Put</code> header, in effect, uses the same syntax as the HTTP <code>Accept</code> header minus the optional <code>accept-params</code> BNF production, since the latter
+does not apply to <code>Accept-Put</code>.</p>
+   <p>The presence of the <code>Accept-Put</code> header in response to any method is an
+implicit indication that <code>PUT</code> is allowed on the resource identified by the
+request URI. The presence of a specific document format in this header
+indicates that that specific format is allowed on <code>PUT</code> requests to the
+resource identified by the request URI.</p>
+   <p><strong>IANA Registration Template:</strong></p>
+   <p>The <code>Accept-Put</code> response header must be added to the permanent registry (see <a data-link-type="biblio" href="#biblio-rfc3864">[RFC3864]</a>).</p>
+   <dl>
+    <dt data-md>Header field name
+    <dd data-md>
+     <p>Accept-Put</p>
+    <dt data-md>Applicable Protocol
+    <dd data-md>
+     <p>HTTP</p>
+    <dt data-md>Author/Change controller
+    <dd data-md>
+     <p>W3C Solid Community Group</p>
+    <dt data-md>Specification document
+    <dd data-md>
+     <p>This specification</p>
+   </dl>
+   <h4 class="heading settled" data-level="2.8.2" id="link-relations"><span class="secno">2.8.2. </span><span class="content">Link Relations</span><a class="self-link" href="#link-relations"></a></h4>
+   <p>The intent is that these link relations will be registered with IANA per <a data-link-type="biblio" href="#biblio-rfc8288">[RFC8288]</a>.</p>
+   <h5 class="heading settled" data-level="2.8.2.1" id="acl"><span class="secno">2.8.2.1. </span><span class="content">acl</span><a class="self-link" href="#acl"></a></h5>
+   <p>The contents of this section were originally taken from <a href="https://www.w3.org/wiki/WebAccessControl">Web Access
+Control</a>.</p>
+   <p>The following Link Relationship will be submitted to IANA for review,
+approval, and inclusion in the IANA Link Relations registry.</p>
+   <dl>
+    <dt data-md>Relation Name
+    <dd data-md>
+     <p><code>acl</code></p>
+    <dt data-md>Description
+    <dd data-md>
+     <p>The relationship <code>A acl B</code> asserts that resource B provides access control description of resource A. There are no constraints on the format or representation of either A or B, neither are there any further constraints on either resource.</p>
+    <dt data-md>Reference
+    <dd data-md>
+     <p>This specification.</p>
+    <dt data-md>Notes
+    <dd data-md>
+     <p>Consumers of ACL resources should be aware of the source and chain of custody of the data.</p>
+   </dl>
+   <p><a href="https://github.com/solid/specification/issues/54">[Source</a>] <a href="https://github.com/solid/web-access-control-spec/issues/21">[Source</a>]</p>
+   <p class="issue" id="issue-e549d761"><a class="self-link" href="#issue-e549d761"></a> Shape of ACL: https://github.com/solid/specification/issues/169</p>
+   <h3 class="heading settled" data-level="2.9" id="security-considerations"><span class="secno">2.9. </span><span class="content">Security Considerations</span><a class="self-link" href="#security-considerations"></a></h3>
+   <p>Some of the normative references with this specification point to documents
+with a <em>Living Standard</em> or <em>Draft</em> status, meaning their contents can still
+change over time. It is advised to monitor these documents, as such changes
+might have security implications.</p>
+   <p>A data pod MUST NOT assume that HTTP request headers sent by a client are
+valid, and MUST reject or sanitize invalid header values before processing
+them or incorporating them in messages sent to others. For example, values for <code>Host</code> and <code>Origin</code> MUST NOT be assumed to be free of possibly malicious
+sequences such as <code>/..</code> or others, and invalid <code>Origin</code> values MUST NOT be
+echoed into the <code>Access-Control-Allow-Origin</code> response header.</p>
+   <p>A data pod MUST NOT assume that the user agent is a regular Web browser, even
+when requests contain familiar values in headers such as <code>User-Agent</code> or <code>Origin</code>. Such an assumption could lead to incorrect conclusions about the
+security model of the application making the request, since the request might
+actually come from a non-browser actor unaffected by browser security
+constraints.</p>
+   <p>Solid data pods <a href="#cors-server">disable all cross-origin protections</a> in
+browsers because resource access is governed explicitly by <a href="#web-access-control">Web Access
+Control</a>. As such, data pods MUST NOT rely on
+browser-based cross-origin protection mechanisms for determining the
+authentication status or representation of a resource. In particular, they
+MUST ignore HTTP cookies from untrusted origins. Additional security measures
+MAY be taken to prevent metadata in error responses from leaking. For
+instance, a malicious app could probe multiple servers to check whether the
+response status code is <code>401</code> or <code>403</code>, or could try to access an error page
+from an intranet server within the user agent’s private network to extract
+company names or other data. To mitigate this, when a request from an
+untrusted <code>Origin</code> arrives, the data pod MAY set the status code of error
+responses to <code>404</code> and/or anonymize or censor their contents.</p>
+   <p>Data pods SHOULD use TLS connections to protect the contents of requests and
+responses from eavesdropping and modification by third parties. Unsecured TCP
+connections without TLS MAY be used in testing environments or when the data
+pod is behind a reverse proxy that terminates a secure connection.</p>
+   <h4 class="heading settled" data-level="2.9.1" id="privacy-considerations"><span class="secno">2.9.1. </span><span class="content">Privacy Considerations</span><a class="self-link" href="#privacy-considerations"></a></h4>
+   <h5 class="heading settled" data-level="2.9.1.1" id="identifiable-information"><span class="secno">2.9.1.1. </span><span class="content">Identifiable Information</span><a class="self-link" href="#identifiable-information"></a></h5>
+   <p>In order to prevent leakage of non-resource data, error responses SHOULD NOT
+contain identifiable information.</p>
+   <h4 class="heading settled" data-level="2.9.2" id="security-privacy-review"><span class="secno">2.9.2. </span><span class="content">Security and Privacy Review</span><a class="self-link" href="#security-privacy-review"></a></h4>
+   <h2 class="heading settled" data-level="3" id="identity"><span class="secno">3. </span><span class="content">Identity</span><a class="self-link" href="#identity"></a></h2>
+   <h3 class="heading settled" data-level="3.1" id="webid"><span class="secno">3.1. </span><span class="content">WebID</span><a class="self-link" href="#webid"></a></h3>
+   <p>A <em>WebID</em> is a HTTP URI denoting an agent, for example a person, organisation,
+or software <a data-link-type="biblio" href="#biblio-webid">[WEBID]</a>. When a WebID is dereferenced, server provides a
+representation of the WebID Profile in an <em>RDF document</em> <a data-link-type="biblio" href="#biblio-rdf11-concepts">[RDF11-CONCEPTS]</a> which uniquely describes an agent denoted by a WebID. The WebID Profile can be
+used by controlling agents to link with others to grant access to identity
+resources as they see fit. WebIDs are an underpinning component in the Solid
+ecosystem and are used as the primary identifier for users and client
+application.</p>
+   <p>When using Web Access Control (<a href="#web-access-control">§ 5.1 Web Access Control</a>):</p>
+   <p>Agents accessing non-public Solid resources need to authenticate with a WebID.</p>
+   <h2 class="heading settled" data-level="4" id="authentication"><span class="secno">4. </span><span class="content">Authentication</span><a class="self-link" href="#authentication"></a></h2>
+   <h3 class="heading settled" data-level="4.1" id="solid-oidc"><span class="secno">4.1. </span><span class="content">Solid-OIDC</span><a class="self-link" href="#solid-oidc"></a></h3>
+   <p>The Solid OpenID Connect (Solid OIDC) specification defines how resource
+servers verify the identity of relying parties and end users based on the
+authentication performed by an OpenID provider <a data-link-type="biblio" href="#biblio-solid-oidc">[SOLID-OIDC]</a>.</p>
+   <h3 class="heading settled" data-level="4.2" id="webid-tls"><span class="secno">4.2. </span><span class="content">WebID-TLS</span><a class="self-link" href="#webid-tls"></a></h3>
+   <p><em>This section is non-normative.</em></p>
+   <p>The Solid ecosystem initially relied on WebID-TLS for authenticated resource
+access <a data-link-type="biblio" href="#biblio-webid-tls">[WEBID-TLS]</a>. The current recommendation for authentication relies on
+Solid-OIDC (<a href="#solid-oidc">§ 4.1 Solid-OIDC</a>). Implementations can use WebID-TLS just as any
+other mechanism as an additional authentication method.</p>
+   <h2 class="heading settled" data-level="5" id="authorization"><span class="secno">5. </span><span class="content">Authorization</span><a class="self-link" href="#authorization"></a></h2>
+   <h3 class="heading settled" data-level="5.1" id="web-access-control"><span class="secno">5.1. </span><span class="content">Web Access Control</span><a class="self-link" href="#web-access-control"></a></h3>
+   <p>Web Access Control (<abbr title="Web Access Control">WAC</abbr>) is a
+decentralized cross-domain access control system. The WAC mechanism is
+concerned with giving access to agents denoted by a <a href="#webid">§ 3.1 WebID</a> to perform
+various kinds of read-write operations on resources identified by URLs. The <cite><a href="http://www.w3.org/ns/auth/acl">Access Control List</a></cite> (<abbr title="Access Control List">ACL</abbr>) ontology is used to describe
+authorization policies about authorized agents with modes of access on target
+resources.</p>
+   <p>Servers MUST conform to the Web Access Control specification <a data-link-type="biblio" href="#biblio-wac">[WAC]</a>.</p>
+   <p>A resource can advertise an ACL document that is directly associated by using
+the HTTP <code>Link</code> header with a <code>rel</code> value of <code>acl</code> <a href="#acl">§ 2.8.2.1 acl</a>. <a href="https://github.com/solid/specification/issues/31#issuecomment-548360553">[Source</a>]</p>
+   <p>In the event that a server can’t apply an ACL to a resource, it MUST deny
+access. <a href="https://github.com/solid/specification/issues/130#issue-532777017">[Source</a>]</p>
+   <p>Servers exposing client’s access privileges on a resource URL MUST advertise
+by including the <code>WAC-Allow</code> HTTP header in the response of HTTP <code>HEAD</code> and <code>GET</code> requests.</p>
+   <p>The syntax for the <code>WAC-Allow</code> header, using the ABNF syntax defined in
+Section 1.2 of <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>, is:</p>
+<pre>wac-allow        = "WAC-Allow" ":" OWS #access-param OWS
+access-param     = permission-group OWS "=" OWS access-modes
+permission-group = 1*ALPHA
+access-modes     = *1DQUOTE OWS *1(access-mode *(RWS access-mode)) OWS *1DQUOTE
+access-mode      = "read" / "write" / "append" / "control"
+</pre>
+   <p>The <code>WAC-Allow</code> HTTP header’s field-value is a comma-separated list of <code>access-param</code>s. <code>access-param</code> is a whitespace-separated list of <code>access-modes</code> granted to a <code>permission-group</code>.</p>
+   <p>This specification defines the following <code>permission-group</code>s:</p>
+   <dl>
+    <dt><code>user</code>
+    <dd>Permissions granted to the agent requesting the resource.
+    <dt><code>public</code>
+    <dd>Permissions granted to the public.
+   </dl>
+   <p><code>access-mode</code> corresponds to the modes of access as defined in the
+ACL ontology (<code>acl:Read</code>, <code>acl:Write</code>, <code>acl:Append</code>, <code>acl:Control</code>).</p>
+   <p>Clients can discover access privileges on a resource by making an HTTP <code>HEAD</code> or <code>GET</code> request on the target URL, and checking the <code>WAC-Allow</code> header value
+for access parameters listing the allowed access modes per permission group.</p>
+   <p>Clients' parsing algorithm for the <code>WAC-Allow</code> header should incorporate error
+handling. When the received message fails to match an allowed pattern, finds
+unrecognised access parameters or access modes, clients MUST ignore the
+received <code>WAC-Allow</code> header-field.</p>
+   <p>The quoted and unquoted values for <code>access-modes</code> are equivalent. Servers are
+recommended to use quoted values in the response. Clients' are recommended to
+be able to parse both quoted and unquoted values.</p>
+   <p><a href="https://github.com/solid/specification/issues/171">[Source</a>] <a href="https://github.com/solid/specification/issues/170">[Source</a>] <a href="https://github.com/solid/specification/issues/181">[Source</a>]</p>
+  </main>
+  <div data-fill-with="conformance">
+   <h2 class="no-ref no-num heading settled" id="conformance"><span class="content"> Conformance</span><a class="self-link" href="#conformance"></a></h2>
+   <p> Conformance requirements are expressed with a combination of descriptive assertions and RFC 2119 terminology.
+            The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL”
+            in the normative parts of this document
+            are to be interpreted as described in RFC 2119.
+            However, for readability,
+            these words do not appear in all uppercase letters in this specification. </p>
+   <p> All of the text of this specification is normative
+            except sections explicitly marked as non-normative, examples, and notes. <a data-link-type="biblio" href="#biblio-rfc2119">[RFC2119]</a> </p>
+   <p> Examples in this specification are introduced with the words “for example”
+            or are set apart from the normative text with <code>class="example"</code>, like this: </p>
+   <div class="example" id="example-example"><a class="self-link" href="#example-example"></a> This is an example of an informative example. </div>
+   <p> Informative notes begin with the word “Note”
+            and are set apart from the normative text with <code>class="note"</code>, like this: </p>
+   <p class="note" role="note"> Note, this is an informative note. </p>
+  </div>
+
+          <section class="appendix" id="references" inlist="" rel="schema:hasPart" resource="#references">
+            <h2>References</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <section id="normative-references" inlist="" rel="schema:hasPart" resource="#normative-references">
+                <h3 property="schema:name">Normative References</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <dl class="bibliography" resource="">
+                    <dt id="biblio-fetch">[FETCH]</dt>
+                    <dd>Anne van Kesteren. <a href="https://fetch.spec.whatwg.org/">Fetch Standard</a>. Living Standard. URL: <a href="https://fetch.spec.whatwg.org/">https://fetch.spec.whatwg.org/</a></dd>
+                    <dt id="biblio-json-ld11">[JSON-LD11]</dt>
+                    <dd>Gregg Kellogg; Pierre-Antoine Champin. <a href="https://www.w3.org/TR/json-ld11/">JSON-LD 1.1</a>. 9 September 2019. WD. URL: <a href="https://www.w3.org/TR/json-ld11/">https://www.w3.org/TR/json-ld11/</a></dd>
+                    <dt id="biblio-ldn">[LDN]</dt>
+                    <dd>Sarven Capadisli; Amy Guy. <a href="https://www.w3.org/TR/ldn/">Linked Data Notifications</a>. 2 May 2017. REC. URL: <a href="https://www.w3.org/TR/ldn/">https://www.w3.org/TR/ldn/</a></dd>
+                    <dt id="biblio-ldp">[LDP]</dt>
+                    <dd>Steve Speicher; John Arwe; Ashok Malhotra. <a href="https://www.w3.org/TR/ldp/">Linked Data Platform 1.0</a>. 26 February 2015. REC. URL: <a href="https://www.w3.org/TR/ldp/">https://www.w3.org/TR/ldp/</a></dd>
+                    <dt id="biblio-rdf-schema">[RDF-SCHEMA]</dt>
+                    <dd>Dan Brickley; Ramanathan Guha. <a href="https://www.w3.org/TR/rdf-schema/">RDF Schema 1.1</a>. 25 February 2014. REC. URL: <a href="https://www.w3.org/TR/rdf-schema/">https://www.w3.org/TR/rdf-schema/</a></dd>
+                    <dt id="biblio-rdf11-concepts">[RDF11-CONCEPTS]</dt>
+                    <dd>Richard Cyganiak; David Wood; Markus Lanthaler. <a href="https://www.w3.org/TR/rdf11-concepts/">RDF 1.1 Concepts and Abstract Syntax</a>. 25 February 2014. REC. URL: <a href="https://www.w3.org/TR/rdf11-concepts/">https://www.w3.org/TR/rdf11-concepts/</a></dd>
+                    <dt id="biblio-rfc2119">[RFC2119]</dt>
+                    <dd>S. Bradner. <a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a></dd>
+                    <dt id="biblio-rfc3864">[RFC3864]</dt>
+                    <dd>G. Klyne; M. Nottingham; J. Mogul. <a href="https://tools.ietf.org/html/rfc3864">Registration Procedures for Message Header Fields</a>. September 2004. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc3864">https://tools.ietf.org/html/rfc3864</a></dd>
+                    <dt id="biblio-rfc3986">[RFC3986]</dt>
+                    <dd>T. Berners-Lee; R. Fielding; L. Masinter. <a href="https://tools.ietf.org/html/rfc3986">Uniform Resource Identifier (URI): Generic Syntax</a>. January 2005. Internet Standard. URL: <a href="https://tools.ietf.org/html/rfc3986">https://tools.ietf.org/html/rfc3986</a></dd>
+                    <dt id="biblio-rfc5023">[RFC5023]</dt>
+                    <dd>J. Gregorio, Ed.; B. de hOra, Ed.. <a href="https://tools.ietf.org/html/rfc5023">The Atom Publishing Protocol</a>. October 2007. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc5023">https://tools.ietf.org/html/rfc5023</a></dd>
+                    <dt id="biblio-rfc5789">[RFC5789]</dt>
+                    <dd>L. Dusseault; J. Snell. <a href="https://httpwg.org/specs/rfc5789.html">PATCH Method for HTTP</a>. March 2010. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc5789.html">https://httpwg.org/specs/rfc5789.html</a></dd>
+                    <dt id="biblio-rfc6454">[RFC6454]</dt>
+                    <dd>A. Barth. <a href="https://tools.ietf.org/html/rfc6454">The Web Origin Concept</a>. December 2011. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc6454">https://tools.ietf.org/html/rfc6454</a></dd>
+                    <dt id="biblio-rfc7230">[RFC7230]</dt>
+                    <dd>R. Fielding, Ed.; J. Reschke, Ed.. <a href="https://httpwg.org/specs/rfc7230.html">Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing</a>. June 2014. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc7230.html">https://httpwg.org/specs/rfc7230.html</a></dd>
+                    <dt id="biblio-rfc7231">[RFC7231]</dt>
+                    <dd>R. Fielding, Ed.; J. Reschke, Ed.. <a href="https://httpwg.org/specs/rfc7231.html">Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content</a>. June 2014. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc7231.html">https://httpwg.org/specs/rfc7231.html</a></dd>
+                    <dt id="biblio-rfc7232">[RFC7232]</dt>
+                    <dd>R. Fielding, Ed.; J. Reschke, Ed.. <a href="https://httpwg.org/specs/rfc7232.html">Hypertext Transfer Protocol (HTTP/1.1): Conditional Requests</a>. June 2014. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc7232.html">https://httpwg.org/specs/rfc7232.html</a></dd>
+                    <dt id="biblio-rfc7233">[RFC7233]</dt>
+                    <dd>R. Fielding, Ed.; Y. Lafon, Ed.; J. Reschke, Ed.. <a href="https://httpwg.org/specs/rfc7233.html">Hypertext Transfer Protocol (HTTP/1.1): Range Requests</a>. June 2014. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc7233.html">https://httpwg.org/specs/rfc7233.html</a></dd>
+                    <dt id="biblio-rfc7234">[RFC7234]</dt>
+                    <dd>R. Fielding, Ed.; M. Nottingham, Ed.; J. Reschke, Ed.. <a href="https://httpwg.org/specs/rfc7234.html">Hypertext Transfer Protocol (HTTP/1.1): Caching</a>. June 2014. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc7234.html">https://httpwg.org/specs/rfc7234.html</a></dd>
+                    <dt id="biblio-rfc7235">[RFC7235]</dt>
+                    <dd>R. Fielding, Ed.; J. Reschke, Ed.. <a href="https://httpwg.org/specs/rfc7235.html">Hypertext Transfer Protocol (HTTP/1.1): Authentication</a>. June 2014. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc7235.html">https://httpwg.org/specs/rfc7235.html</a></dd>
+                    <dt id="biblio-rfc7540">[RFC7540]</dt>
+                    <dd>M. Belshe; R. Peon; M. Thomson, Ed.. <a href="https://httpwg.org/specs/rfc7540.html">Hypertext Transfer Protocol Version 2 (HTTP/2)</a>. May 2015. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc7540.html">https://httpwg.org/specs/rfc7540.html</a></dd>
+                    <dt id="biblio-rfc8288">[RFC8288]</dt>
+                    <dd>M. Nottingham. <a href="https://httpwg.org/specs/rfc8288.html">Web Linking</a>. October 2017. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc8288.html">https://httpwg.org/specs/rfc8288.html</a></dd>
+                    <dt id="biblio-solid-oidc">[SOLID-OIDC]</dt>
+                    <dd><a href="https://solid.github.io/authentication-panel/solid-oidc/">Solid-OIDC</a>. URL: <a href="https://solid.github.io/authentication-panel/solid-oidc/">https://solid.github.io/authentication-panel/solid-oidc/</a></dd>
+                    <dt id="biblio-turtle">[Turtle]</dt>
+                    <dd>Eric Prud'hommeaux; Gavin Carothers. <a href="https://www.w3.org/TR/turtle/">RDF 1.1 Turtle</a>. 25 February 2014. REC. URL: <a href="https://www.w3.org/TR/turtle/">https://www.w3.org/TR/turtle/</a></dd>
+                    <dt id="biblio-wac">[WAC]</dt>
+                    <dd><a href="https://solid.github.io/web-access-control-spec/">Web Access Control</a>. URL: <a href="https://solid.github.io/web-access-control-spec/">https://solid.github.io/web-access-control-spec/</a></dd>
+                    <dt id="biblio-webarch">[WEBARCH]</dt>
+                    <dd>Ian Jacobs; Norman Walsh. <a href="https://www.w3.org/TR/webarch/">Architecture of the World Wide Web, Volume One</a>. 15 December 2004. REC. URL: <a href="https://www.w3.org/TR/webarch/">https://www.w3.org/TR/webarch/</a></dd>
+                  </dl>
+                </div>
+              </section>
+
+              <section id="informative-references" inlist="" rel="schema:hasPart" resource="#informative-references">
+                <h3 property="schema:name">Informative References</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <dl class="bibliography" resource="">
+                    <dt id="biblio-webid">[WEBID]</dt>
+                    <dd><a href="https://dvcs.w3.org/hg/WebID/raw-file/tip/spec/identity-respec.html">WebID 1.0 Editors Draft</a>. URL: <a href="https://dvcs.w3.org/hg/WebID/raw-file/tip/spec/identity-respec.html">https://dvcs.w3.org/hg/WebID/raw-file/tip/spec/identity-respec.html</a></dd>
+                  </dl>
+                </div>
+              </section>
+            </div>
+          </section>
+        </div>
+  <aside class="dfn-panel" data-for="data-pod">
+   <b><a href="#data-pod">#data-pod</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-data-pod">1.1. Definitions</a>
+    <li><a href="#ref-for-data-pod①">2.1.1. Required Server-Side Implementation</a>
+    <li><a href="#ref-for-data-pod②">2.7. Cross-Origin Resource Sharing</a>
+    <li><a href="#ref-for-data-pod③">2.7.1. Required Server-Side Implementation</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="solid-app">
+   <b><a href="#solid-app">#solid-app</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-solid-app">2.7. Cross-Origin Resource Sharing</a>
+   </ul>
+  </aside>
+      </article>
+    </main>
+    <p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to top">↑</abbr></a></p>
+    <script src="//www.w3.org/scripts/TR/2016/fixup.js"></script>
+<script>/* script-dfn-panel */
+
+document.body.addEventListener("click", function(e) {
+    var queryAll = function(sel) { return [].slice.call(document.querySelectorAll(sel)); }
+    // Find the dfn element or panel, if any, that was clicked on.
+    var el = e.target;
+    var target;
+    var hitALink = false;
+    while(el.parentElement) {
+        if(el.tagName == "A") {
+            // Clicking on a link in a <dfn> shouldn't summon the panel
+            hitALink = true;
+        }
+        if(el.classList.contains("dfn-paneled")) {
+            target = "dfn";
+            break;
+        }
+        if(el.classList.contains("dfn-panel")) {
+            target = "dfn-panel";
+            break;
+        }
+        el = el.parentElement;
+    }
+    if(target != "dfn-panel") {
+        // Turn off any currently "on" or "activated" panels.
+        queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(function(el){
+            el.classList.remove("on");
+            el.classList.remove("activated");
+        });
+    }
+    if(target == "dfn" && !hitALink) {
+        // open the panel
+        var dfnPanel = document.querySelector(".dfn-panel[data-for='" + el.id + "']");
+        if(dfnPanel) {
+            dfnPanel.classList.add("on");
+            var rect = el.getBoundingClientRect();
+            dfnPanel.style.left = window.scrollX + rect.right + 5 + "px";
+            dfnPanel.style.top = window.scrollY + rect.top + "px";
+            var panelRect = dfnPanel.getBoundingClientRect();
+            var panelWidth = panelRect.right - panelRect.left;
+            if(panelRect.right > document.body.scrollWidth && (rect.left - (panelWidth + 5)) > 0) {
+                // Reposition, because the panel is overflowing
+                dfnPanel.style.left = window.scrollX + rect.left - (panelWidth + 5) + "px";
+            }
+        } else {
+            console.log("Couldn't find .dfn-panel[data-for='" + el.id + "']");
+        }
+    } else if(target == "dfn-panel") {
+        // Switch it to "activated" state, which pins it.
+        el.classList.add("activated");
+        el.style.left = null;
+        el.style.top = null;
+    }
+
+});
+</script>
+  </body>
+</html>

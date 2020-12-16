@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>The Solid Ecosystem</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" media="all" rel="stylesheet" title="W3C-ED" />
+<style>
+body {
+counter-reset:section;
+counter-reset:sub-section;
+}
+em.rfc2119 { color: #900; }
+code { color: #c83500; }
+pre code { color: #333; }
+dfn { font-style:inherit; }
+.do.fragment a { border-bottom:0; }
+.do.fragment a:hover { background:none; border-bottom:0; }
+section figure pre { margin:1em 0; display:block; }
+cite .bibref { font-style: normal; }
+.tabs nav ul li { margin:0; }
+div.issue, div.note, div.warning {
+clear: both;
+margin: 1em 0;
+padding: 1em 1.2em 0.5em;
+position: relative;
+}
+div.issue h4, div.note h4 {
+margin:0;
+text-transform: uppercase;
+font-weight:normal;
+}
+div.issue h4 {
+color:#ae1e1e;
+}
+div.note h4 {
+color:#22bb22;
+}
+figure .example-h {
+margin-top:0;
+text-align: left;
+text-transform: uppercase;
+color:#827017;
+}
+header address a[href] {
+float: right;
+margin: 1rem 0 0.2rem 0.4rem;
+background: transparent none repeat scroll 0 0;
+border: medium none;
+text-decoration: none;
+}
+header address img[src*="logos/W3C"] {
+-moz-border-bottom-colors: none;
+-moz-border-left-colors: none;
+-moz-border-right-colors: none;
+-moz-border-top-colors: none;
+background: #1a5e9a none repeat scroll 0 0;
+border-color: #1a5e9a;
+border-image: none;
+border-radius: 0.4rem;
+border-style: solid;
+border-width: 0.65rem 0.7rem 0.6rem;
+color: white;
+display: block;
+font-weight: bold;
+}
+main article > h1 {
+font-size: 220%;
+font-weight:bold;
+}
+
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]):not([id="exit-criteria"]) {
+counter-increment:section;
+counter-reset:sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$="references"]):not([id="exit-criteria"]) {
+counter-increment:sub-section;
+counter-reset:sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$="references"]):not([id="exit-criteria"]) section {
+counter-increment:sub-sub-section;
+counter-reset:sub-sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$="references"]):not([id="exit-criteria"]) section section {
+counter-increment:sub-sub-sub-section;
+counter-reset:sub-sub-sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]):not([id="exit-criteria"]):not([id^=table-of-]) > h2:before {
+content:counter(section) ".\00a0\00a0\00a0\00a0";
+}
+section:not([id$="references"]):not([id^=change-log]):not([id="exit-criteria"]) > h3:before {
+content:counter(section) "." counter(sub-section) "\00a0\00a0\00a0";
+}
+section > h4:before {
+content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\00a0\00a0\00a0";
+}
+
+aside.note.do blockquote dl.published,
+aside.note.do blockquote dl.license,
+aside.note.do blockquote dl.rights {
+top:-2em;
+left:4.5em;
+}
+
+#acknowledgements ul { padding: 0; margin:0 }
+#acknowledgements li { display:inline; }
+#acknowledgements li:after { content: ", "; }
+#acknowledgements li:last-child:after { content: ""; }
+</style>
+  </head>
+
+  <body about="" prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# owl: http://www.w3.org/2002/07/owl# xsd: http://www.w3.org/2001/XMLSchema# dcterms: http://purl.org/dc/terms/ skos: http://www.w3.org/2004/02/skos/core# prov: http://www.w3.org/ns/prov# schema: http://schema.org/ doap: http://usefulinc.com/ns/doap# as: https://www.w3.org/ns/activitystreams#" typeof="schema:CreativeWork prov:Entity as:Article">
+    <header>
+      <address>
+        <a class="logo" href="https://solidproject.org/"><img height="66" width="72" alt="W3C" src="solid.svg"/></a>
+      </address>
+    </header>
+
+    <main>
+      <article about="" typeof="schema:Article doap:Specification">
+        <h1 property="schema:name">The Solid Ecosystem</h1>
+        <h2>Editor’s Draft, 2020-12-16</h2>
+
+        <div id="authors">
+          <dl id="author-name">
+            <dt>Editors</dt>
+            <dd id="w3c-solid-community-group-participants"><a href="https://www.w3.org/groups/cg/solid/participants" rel="cito:credits">W3C Solid Community Group</a></dd>
+          </dl>
+        </div>
+
+        <dl id="document-published">
+          <dt>Published</dt>
+          <dd><time content="2020-12-16T00:00:00Z" datatype="xsd:dateTime" datetime="2020-12-16T00:00:00Z" property="schema:dateModified">2020-12-16</time></dd>
+        </dl>
+
+        <dl id="document-modified">
+          <dt>Modified</dt>
+          <dd><time content="2020-12-16T00:00:00Z" datatype="xsd:dateTime" datetime="2020-12-16T00:00:00Z" property="schema:dateModified">2020-12-16</time></dd>
+        </dl>
+
+        <dl id="document-repository">
+          <dt>Repository</dt>
+          <dd><a href="https://github.com/solid/specification" rel="doap:repository">GitHub</a></dd>
+          <dd><a href="https://github.com/solid/specification/issues" rel="doap:bug-database">Issues</a></dd>
+        </dl>
+
+        <p class="copyright">MIT License. Copyright © 2019–2020 <a href="http://www.w3.org/community/solid/">W3C Solid Community Group</a>.</p>
+
+        <div datatype="rdf:HTML" id="content" property="schema:description">
+          <section id="abstract">
+            <h2>Abstract</h2>
+            <div datatype="rdf:HTML" property="schema:abstract">
+              <p>This document connects a set of specifications that, together, provide applications with secure and permissioned access to externally stored data in an interoperable way.</p>
+            </div>
+          </section>
+
+          <section id="sotd" inlist="" rel="schema:hasPart" resource="#sotd">
+            <h2 property="schema:name">Status of This Document</h2>
+            <div property="schema:description" datatype="rdf:HTML">
+              <p>This section describes the status of this document at the time of its publication.</p>
+
+              <p>This document was published by the <a href="https://www.w3.org/community/solid/">Solid Community Group</a> as an Editor’s Draft. The sections that have been incorporated have been reviewed following the <a href="https://github.com/solid/process">Solid process</a>. However, the information in this document is still subject to change. You are invited to <a href="https://github.com/solid/specification/issues">contribute</a> any feedback, comments, or questions you might have.</p>
+
+              <p>Publication as an Editor’s Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.</p>
+
+              <p>This document was produced by a group operating under the <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="http://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available.</p>
+            </div>
+          </section>
+
+          <nav id="toc">
+            <h2 id="table-of-contents">Table of Contents</h2>
+            <div>
+              <ol class="toc">
+                <li class="tocline">
+                  <a class="tocxref" href="#abstract">Abstract</a>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#sotd">Status of This Document</a>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#introduction"><span class="secno">1. </span>Introduction</a>
+                </li>
+              </ol>
+            </div>
+          </nav>
+
+          <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction">
+            <h2 about="#introduction" property="schema:name" typeof="deo:Introduction">Introduction</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p>The aims of the Solid project are in line with those of the Web itself: empowerment towards <q cite="https://www.w3.org/2001/tag/doc/ethical-web-principles/">an equitable, informed and interconnected society</q>. Solid adds to existing Web standards to realise a space where individuals can maintain their autonomy, control their data and privacy, and choose applications and services to fulfil their needs.</p>
+
+              <p>The Solid ecosystem encapsulates a set of specifications that are guided by the principles we have adopted and also the priority of our values. We acknowledge that every technical decision has ethical implications both for the end user (short-term) as well as society (long-term). To contribute towards a net positive social benefit, we use the <cite><a href="https://www.w3.org/2001/tag/doc/ethical-web-principles/">Ethical Web Principles</a></cite> to orient ourselves. The consensus on the technical designs are informed by common use cases, implementation experience, and use.</p>
+
+              <p>An overarching design goal of the Solid ecosystem is to be evolvable and to provide fundamental affordances for decentralised Web applications for information exchange in a way that is secure and privacy respecting. In this environment, actors allocate identifiers for their content, shape and store data where they have access to, set access control policies, and use preferred applications and services to achieve them.</p>
+
+              <p>The general architectural principles of Solid specifications are borrowed from the <cite><a href="https://www.w3.org/TR/webarch/">Architecture of the World Wide Web</a></cite>. The components as described in each specification may evolve independently – according to the principle of orthogonality in order to increase the flexibility and robustness of the Solid ecosystem. With that, the specifications are loosely coupled and indicate which features overlap with those governed by another specification. Extensibility as well as variability also are taken into account in each specification.</p>
+
+              <p>The specifications in the ecosystem describe how Solid servers and clients can be interoperable by using Web communication protocols, global identifiers, authentication and authorization mechanisms, data formats and shapes, and query interfaces.</p>
+
+              <p>The specifications are accompanied with supplemental documents, such as <em>Primers</em> and <em>Best Practices and Guidelines</em> to help implementers to form a well-rounded understanding of the Solid ecosystem as well as ways to improve their implementations.</p>
+            </div>
+          </section>
+        </div>
+      </article>
+    </main>
+
+    <p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to top">↑</abbr></a></p>
+    <script src="//www.w3.org/scripts/TR/2016/fixup.js"></script>
+  </body>
+</html>
