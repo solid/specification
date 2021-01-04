@@ -819,17 +819,23 @@ pod is behind a reverse proxy that terminates a secure connection.</p>
    <p>In order to prevent leakage of non-resource data, error responses SHOULD NOT
 contain identifiable information.</p>
    <h4 class="heading settled" data-level="2.9.2" id="security-privacy-review"><span class="secno">2.9.2. </span><span class="content">Security and Privacy Review</span><a class="self-link" href="#security-privacy-review"></a></h4>
-   <h2 class="heading settled" data-level="3" id="identity"><span class="secno">3. </span><span class="content">Identity</span><a class="self-link" href="#identity"></a></h2>
-   <h3 class="heading settled" data-level="3.1" id="webid"><span class="secno">3.1. </span><span class="content">WebID</span><a class="self-link" href="#webid"></a></h3>
-   <p>A <em>WebID</em> is a HTTP URI denoting an agent, for example a person, organisation,
-or software <a data-link-type="biblio" href="#biblio-webid">[WEBID]</a>. When a WebID is dereferenced, server provides a
-representation of the WebID Profile in an <em>RDF document</em> <a data-link-type="biblio" href="#biblio-rdf11-concepts">[RDF11-CONCEPTS]</a> which uniquely describes an agent denoted by a WebID. The WebID Profile can be
-used by controlling agents to link with others to grant access to identity
-resources as they see fit. WebIDs are an underpinning component in the Solid
-ecosystem and are used as the primary identifier for users and client
-application.</p>
-   <p>When using Web Access Control (<a href="#web-access-control">§ 5.1 Web Access Control</a>):</p>
-   <p>Agents accessing non-public Solid resources need to authenticate with a WebID.</p>
+
+          <section id="identity" inlist="" rel="schema:hasPart" resource="#identity">
+            <h2 property="schema:name">Identity</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <section id="webid" inlist="" rel="schema:hasPart" resource="#webid">
+                <h3 property="schema:name">WebID</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>A <em>WebID</em> is a HTTP URI denoting an agent, for example a person, organisation, or software <a data-link-type="biblio" href="#biblio-webid">[WEBID]</a>. When a WebID is dereferenced, server provides a representation of the WebID Profile in an <em>RDF document</em> <a data-link-type="biblio" href="#biblio-rdf11-concepts">[RDF11-CONCEPTS]</a> which uniquely describes an agent denoted by a WebID. The WebID Profile can be used by controlling agents to link with others to grant access to identity resources as they see fit. WebIDs are an underpinning component in the Solid ecosystem and are used as the primary identifier for users and client application.</p>
+
+                  <p>When using Web Access Control (<a href="#web-access-control">§ 5.1 Web Access Control</a>):</p>
+
+                  <p>Agents accessing non-public Solid resources need to authenticate with a WebID.</p>
+                </div>
+              </section>
+            </div>
+          </section>
+
    <h2 class="heading settled" data-level="4" id="authentication"><span class="secno">4. </span><span class="content">Authentication</span><a class="self-link" href="#authentication"></a></h2>
    <h3 class="heading settled" data-level="4.1" id="solid-oidc"><span class="secno">4.1. </span><span class="content">Solid-OIDC</span><a class="self-link" href="#solid-oidc"></a></h3>
    <p>The Solid OpenID Connect (Solid OIDC) specification defines how resource
