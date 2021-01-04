@@ -782,43 +782,41 @@ approval, and inclusion in the IANA Link Relations registry.</p>
    </dl>
    <p><a href="https://github.com/solid/specification/issues/54">[Source</a>] <a href="https://github.com/solid/web-access-control-spec/issues/21">[Source</a>]</p>
    <p class="issue" id="issue-e549d761"><a class="self-link" href="#issue-e549d761"></a> Shape of ACL: https://github.com/solid/specification/issues/169</p>
-   <h3 class="heading settled" data-level="2.9" id="security-considerations"><span class="secno">2.9. </span><span class="content">Security Considerations</span><a class="self-link" href="#security-considerations"></a></h3>
-   <p>Some of the normative references with this specification point to documents
-with a <em>Living Standard</em> or <em>Draft</em> status, meaning their contents can still
-change over time. It is advised to monitor these documents, as such changes
-might have security implications.</p>
-   <p>A data pod MUST NOT assume that HTTP request headers sent by a client are
-valid, and MUST reject or sanitize invalid header values before processing
-them or incorporating them in messages sent to others. For example, values for <code>Host</code> and <code>Origin</code> MUST NOT be assumed to be free of possibly malicious
-sequences such as <code>/..</code> or others, and invalid <code>Origin</code> values MUST NOT be
-echoed into the <code>Access-Control-Allow-Origin</code> response header.</p>
-   <p>A data pod MUST NOT assume that the user agent is a regular Web browser, even
-when requests contain familiar values in headers such as <code>User-Agent</code> or <code>Origin</code>. Such an assumption could lead to incorrect conclusions about the
-security model of the application making the request, since the request might
-actually come from a non-browser actor unaffected by browser security
-constraints.</p>
-   <p>Solid data pods <a href="#cors-server">disable all cross-origin protections</a> in
-browsers because resource access is governed explicitly by <a href="#web-access-control">Web Access
-Control</a>. As such, data pods MUST NOT rely on
-browser-based cross-origin protection mechanisms for determining the
-authentication status or representation of a resource. In particular, they
-MUST ignore HTTP cookies from untrusted origins. Additional security measures
-MAY be taken to prevent metadata in error responses from leaking. For
-instance, a malicious app could probe multiple servers to check whether the
-response status code is <code>401</code> or <code>403</code>, or could try to access an error page
-from an intranet server within the user agent’s private network to extract
-company names or other data. To mitigate this, when a request from an
-untrusted <code>Origin</code> arrives, the data pod MAY set the status code of error
-responses to <code>404</code> and/or anonymize or censor their contents.</p>
-   <p>Data pods SHOULD use TLS connections to protect the contents of requests and
-responses from eavesdropping and modification by third parties. Unsecured TCP
-connections without TLS MAY be used in testing environments or when the data
-pod is behind a reverse proxy that terminates a secure connection.</p>
-   <h4 class="heading settled" data-level="2.9.1" id="privacy-considerations"><span class="secno">2.9.1. </span><span class="content">Privacy Considerations</span><a class="self-link" href="#privacy-considerations"></a></h4>
-   <h5 class="heading settled" data-level="2.9.1.1" id="identifiable-information"><span class="secno">2.9.1.1. </span><span class="content">Identifiable Information</span><a class="self-link" href="#identifiable-information"></a></h5>
-   <p>In order to prevent leakage of non-resource data, error responses SHOULD NOT
-contain identifiable information.</p>
-   <h4 class="heading settled" data-level="2.9.2" id="security-privacy-review"><span class="secno">2.9.2. </span><span class="content">Security and Privacy Review</span><a class="self-link" href="#security-privacy-review"></a></h4>
+
+          <section id="security-considerations" inlist="" rel="schema:hasPart" resource="security-considerations">
+            <h2 property="schema:name">Security Considerations</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p>Some of the normative references with this specification point to documents with a <em>Living Standard</em> or <em>Draft</em> status, meaning their contents can still change over time. It is advised to monitor these documents, as such changes might have security implications.</p>
+
+              <p>A data pod MUST NOT assume that HTTP request headers sent by a client are valid, and MUST reject or sanitize invalid header values before processing them or incorporating them in messages sent to others. For example, values for <code>Host</code> and <code>Origin</code> MUST NOT be assumed to be free of possibly malicious sequences such as <code>/..</code> or others, and invalid <code>Origin</code> values MUST NOT be echoed into the <code>Access-Control-Allow-Origin</code> response header.</p>
+
+              <p>A data pod MUST NOT assume that the user agent is a regular Web browser, even when requests contain familiar values in headers such as <code>User-Agent</code> or <code>Origin</code>. Such an assumption could lead to incorrect conclusions about the security model of the application making the request, since the request might actually come from a non-browser actor unaffected by browser security constraints.</p>
+
+              <p>Solid data pods <a href="#cors-server">disable all cross-origin protections</a> in browsers because resource access is governed explicitly by <a href="#web-access-control">Web Access Control</a>. As such, data pods MUST NOT rely on browser-based cross-origin protection mechanisms for determining the authentication status or representation of a resource. In particular, they MUST ignore HTTP cookies from untrusted origins. Additional security measures MAY be taken to prevent metadata in error responses from leaking. For instance, a malicious app could probe multiple servers to check whether the response status code is <code>401</code> or <code>403</code>, or could try to access an error page from an intranet server within the user agent’s private network to extract company names or other data. To mitigate this, when a request from an untrusted <code>Origin</code> arrives, the data pod MAY set the status code of error responses to <code>404</code> and/or anonymize or censor their contents.</p>
+
+              <p>Data pods SHOULD use TLS connections to protect the contents of requests and responses from eavesdropping and modification by third parties. Unsecured TCP connections without TLS MAY be used in testing environments or when the data pod is behind a reverse proxy that terminates a secure connection.</p>
+
+              <section id="privacy-considerations" inlist="" rel="schema:hasPart" resource="privacy-considerations">
+                <h3 property="schema:name">Privacy Considerations</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <section id="identifiable-information" inlist="" rel="schema:hasPart" resource="identifiable-information">
+                    <h4 property="schema:name">Identifiable Information</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>In order to prevent leakage of non-resource data, error responses SHOULD NOT contain identifiable information.</p>
+                    </div>
+                  </section>
+                </div>
+              </section>
+
+              <section id="security-privacy-review" inlist="" rel="schema:hasPart" resource="security-privacy-review">
+                <h3 property="schema:name">Security and Privacy Review</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>..</p>
+                </div>
+              </section>
+            </div>
+          </section>
+
 
           <section id="identity" inlist="" rel="schema:hasPart" resource="#identity">
             <h2 property="schema:name">Identity</h2>
