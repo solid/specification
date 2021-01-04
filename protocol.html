@@ -202,68 +202,75 @@ left:4.5em;
             </div>
           </section>
 
-          <nav data-fill-with="table-of-contents" id="toc">
-           <h2 class="no-num no-toc no-ref" id="contents">Table of Contents</h2>
-           <ol class="toc" role="directory">
-            <li class="tocline">
-              <a class="tocxref" href="#abstract">Abstract</a>
-            </li>
-            <li class="tocline">
-              <a class="tocxref" href="#sotd">Status of This Document</a>
-            </li>
-            <li>
-             <a href="#introduction"><span class="secno">1</span> <span class="content">Introduction</span></a>
-             <ol class="toc">
-              <li><a href="#definitions"><span class="secno">1.1</span> <span class="content">Definitions</span></a>
-              <li><a href="#namespaces"><span class="secno">1.2</span> <span class="content">Namespaces</span></a>
-              <li><a href="#conformance"><span class="secno">1.3</span> <span class="content"> Conformance</span></a>
-             </ol>
-            <li>
-             <a href="#protocol"><span class="secno">2</span> <span class="content">Protocol</span></a>
-             <ol class="toc">
-              <li><a href="#http"><span class="secno">2.1</span> <span class="content">Hypertext Transfer Protocol</span></a>
-              <li><a href="#uri"><span class="secno">2.2</span> <span class="content">Uniform Resource Identifier</span></a>
-              <li><a href="#linked-data"><span class="secno">2.3</span> <span class="content">Linked Data</span></a>
-              <li><a href="#reading-writing-resources"><span class="secno">2.4</span> <span class="content">Reading and Writing Resources</span></a>
-              <li><a href="#auxiliary-resources"><span class="secno">2.5</span> <span class="content">Auxiliary Resources</span></a>
-              <li><a href="#notifications"><span class="secno">2.6</span> <span class="content">Notifications</span></a>
-              <li><a href="#cors"><span class="secno">2.7</span> <span class="content">Cross-Origin Resource Sharing</span></a>
-              <li><a href="#http-definitions"><span class="secno">2.8</span> <span class="content">HTTP Definitions</span></a>
-             </ol>
-            <li>
-             <a href="#identity"><span class="secno">3</span> <span class="content">Identity</span></a>
-             <ol class="toc">
-              <li><a href="#webid"><span class="secno">3.1</span> <span class="content">WebID</span></a>
-             </ol>
-            <li>
-             <a href="#authentication"><span class="secno">4</span> <span class="content">Authentication</span></a>
-             <ol class="toc">
-              <li><a href="#solid-oidc"><span class="secno">4.1</span> <span class="content">Solid-OIDC</span></a>
-              <li><a href="#webid-tls"><span class="secno">4.2</span> <span class="content">WebID-TLS</span></a>
-             </ol>
-            <li>
-             <a href="#authorization"><span class="secno">5</span> <span class="content">Authorization</span></a>
-             <ol class="toc">
-              <li><a href="#web-access-control"><span class="secno">5.1</span> <span class="content">Web Access Control</span></a>
-             </ol>
-
-            <li>
-             <a href="#considerations"><span class="secno">6</span> <span class="content">Considerations</span></a>
-             <ol class="toc">
-              <li><a href="#security-considerations"><span class="secno">6.1</span> <span class="content">Security Considerations</span></a>
-              <li><a href="#privacy-considerations"><span class="secno">6.2</span> <span class="content">Privacy Considerations</span></a>
-              <li><a href="#accessibility-considerations"><span class="secno">6.3</span> <span class="content">Accessibility Considerations</span></a>
-              <li><a href="#internationalization-considerations"><span class="secno">6.4</span> <span class="content">Internationalization Considerations</span></a>
-              <li><a href="#security-privacy-review"><span class="secno">6.5</span> <span class="content">Security and Privacy Review</span></a>
-             </ol>
-
-            <li>
-             <a href="#references"><span class="secno"></span> <span class="content">References</span></a>
-             <ol class="toc">
-              <li><a href="#normative-references"><span class="secno"></span> <span class="content">Normative References</span></a>
-              <li><a href="#informative-references"><span class="secno"></span> <span class="content">Informative References</span></a>
-             </ol>
-           </ol>
+          <nav id="toc">
+            <h2 id="table-of-contents">Table of Contents</h2>
+            <div>
+              <ol class="toc">
+                <li class="tocline">
+                  <a class="tocxref" href="#abstract">Abstract</a>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#sotd">Status of This Document</a>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#introduction"><span class="secno">1</span> <span class="content">Introduction</span></a>
+                  <ol>
+                    <li><a href="#definitions"><span class="secno">1.1</span> <span class="content">Definitions</span></a>
+                    <li><a href="#namespaces"><span class="secno">1.2</span> <span class="content">Namespaces</span></a>
+                    <li><a href="#conformance"><span class="secno">1.3</span> <span class="content">Conformance</span></a>
+                  </ol>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#protocol"><span class="secno">2</span> <span class="content">Protocol</span></a>
+                  <ol>
+                    <li><a href="#http"><span class="secno">2.1</span> <span class="content">Hypertext Transfer Protocol</span></a></li>
+                    <li><a href="#uri"><span class="secno">2.2</span> <span class="content">Uniform Resource Identifier</span></a></li>
+                    <li><a href="#linked-data"><span class="secno">2.3</span> <span class="content">Linked Data</span></a></li>
+                    <li><a href="#reading-writing-resources"><span class="secno">2.4</span> <span class="content">Reading and Writing Resources</span></a></li>
+                    <li><a href="#auxiliary-resources"><span class="secno">2.5</span> <span class="content">Auxiliary Resources</span></a></li>
+                    <li><a href="#notifications"><span class="secno">2.6</span> <span class="content">Notifications</span></a></li>
+                    <li><a href="#cors"><span class="secno">2.7</span> <span class="content">Cross-Origin Resource Sharing</span></a></li>
+                  </ol>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#identity"><span class="secno">3</span> <span class="content">Identity</span></a>
+                  <ol>
+                    <li><a href="#webid"><span class="secno">3.1</span> <span class="content">WebID</span></a></li>
+                  </ol>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#authentication"><span class="secno">4</span> <span class="content">Authentication</span></a></li>
+                  <ol>
+                    <li><a href="#solid-oidc"><span class="secno">4.1</span> <span class="content">Solid-OIDC</span></a></li>
+                    <li><a href="#webid-tls"><span class="secno">4.2</span> <span class="content">WebID-TLS</span></a></li>
+                  </ol>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#authorization"><span class="secno">5</span> <span class="content">Authorization</span></a>
+                  <ol>
+                    <li><a href="#web-access-control"><span class="secno">5.1</span> <span class="content">Web Access Control</span></a></li>
+                  </ol>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#considerations"><span class="secno">6</span> <span class="content">Considerations</span></a>
+                  <ol>
+                    <li><a href="#iana-considerations"><span class="secno">6.1</span> <span class="content">IANA Considerations</span></a></li>
+                    <li><a href="#security-considerations"><span class="secno">6.2</span> <span class="content">Security Considerations</span></a>
+                    <li><a href="#privacy-considerations"><span class="secno">6.3</span> <span class="content">Privacy Considerations</span></a>
+                    <li><a href="#accessibility-considerations"><span class="secno">6.4</span> <span class="content">Accessibility Considerations</span></a>
+                    <li><a href="#internationalization-considerations"><span class="secno">6.5</span> <span class="content">Internationalization Considerations</span></a>
+                    <li><a href="#security-privacy-review"><span class="secno">6.6</span> <span class="content">Security and Privacy Review</span></a>
+                  </ol>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#references"><span class="secno"></span> <span class="content">References</span></a>
+                  <ol>
+                    <li><a href="#normative-references"><span class="secno"></span> <span class="content">Normative References</span></a></li>
+                    <li><a href="#informative-references"><span class="secno"></span> <span class="content">Informative References</span></a></li>
+                  </ol>
+                </li>
+              </div>
+            </ol>
           </nav>
 
           <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction">
@@ -745,7 +752,7 @@ SHOULD also explicitly list <code>Accept</code> under <code>Access-Control-Allow
 because values longer than 128 characters (not uncommon for RDF-based Solid
 apps) would otherwise be blocked, despite shorter <code>Accept</code> headers being
 allowed without explicit mention.</p>
-   <h3 class="heading settled" data-level="2.8" id="http-definitions"><span class="secno">2.8. </span><span class="content">HTTP Definitions</span><a class="self-link" href="#http-definitions"></a></h3>
+   <h3 class="heading settled" data-level="2.8" id="iana-considerations"><span class="secno">2.8. </span><span class="content">IANA Considerations</span><a class="self-link" href="#iana-considerations"></a></h3>
    <h4 class="heading settled" data-level="2.8.1" id="http-headers"><span class="secno">2.8.1. </span><span class="content">HTTP Headers</span><a class="self-link" href="#http-headers"></a></h4>
    <h5 class="heading settled" data-level="2.8.1.1" id="accept-put"><span class="secno">2.8.1.1. </span><span class="content">The Accept-Put Response Header</span><a class="self-link" href="#accept-put"></a></h5>
    <p>This specification introduces a new HTTP response header <code>Accept-Put</code> used to
