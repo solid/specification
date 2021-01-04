@@ -836,17 +836,27 @@ contain identifiable information.</p>
             </div>
           </section>
 
-   <h2 class="heading settled" data-level="4" id="authentication"><span class="secno">4. </span><span class="content">Authentication</span><a class="self-link" href="#authentication"></a></h2>
-   <h3 class="heading settled" data-level="4.1" id="solid-oidc"><span class="secno">4.1. </span><span class="content">Solid-OIDC</span><a class="self-link" href="#solid-oidc"></a></h3>
-   <p>The Solid OpenID Connect (Solid OIDC) specification defines how resource
-servers verify the identity of relying parties and end users based on the
-authentication performed by an OpenID provider <a data-link-type="biblio" href="#biblio-solid-oidc">[SOLID-OIDC]</a>.</p>
-   <h3 class="heading settled" data-level="4.2" id="webid-tls"><span class="secno">4.2. </span><span class="content">WebID-TLS</span><a class="self-link" href="#webid-tls"></a></h3>
-   <p><em>This section is non-normative.</em></p>
-   <p>The Solid ecosystem initially relied on WebID-TLS for authenticated resource
-access <a data-link-type="biblio" href="#biblio-webid-tls">[WEBID-TLS]</a>. The current recommendation for authentication relies on
-Solid-OIDC (<a href="#solid-oidc">§ 4.1 Solid-OIDC</a>). Implementations can use WebID-TLS just as any
-other mechanism as an additional authentication method.</p>
+          <section id="authentication" inlist="" rel="schema:hasPart" resource="#authentication">
+            <h2 property="schema:name">Authentication</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <section id="solid-oidc" inlist="" rel="schema:hasPart" resource="#solid-oidc">
+                <h3 property="schema:name">Solid-OIDC</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>The Solid OpenID Connect (Solid OIDC) specification defines how resource servers verify the identity of relying parties and end users based on the authentication performed by an OpenID provider <a data-link-type="biblio" href="#biblio-solid-oidc">[SOLID-OIDC]</a>.</p>
+                </div>
+              </section>
+
+              <section id="webid-tls" inlist="" rel="schema:hasPart" resource="#webid-tls">
+                <h3 property="schema:name">WebID-TLS</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p><em>This section is non-normative.</em></p>
+
+                  <p>The Solid ecosystem initially relied on WebID-TLS for authenticated resource access <a data-link-type="biblio" href="#biblio-webid-tls">[WEBID-TLS]</a>. The current recommendation for authentication relies on Solid-OIDC (<a href="#solid-oidc">§ 4.1 Solid-OIDC</a>). Implementations can use WebID-TLS just as any other mechanism as an additional authentication method.</p>
+                </div>
+              </section>
+            </div>
+          </section>
+
    <h2 class="heading settled" data-level="5" id="authorization"><span class="secno">5. </span><span class="content">Authorization</span><a class="self-link" href="#authorization"></a></h2>
    <h3 class="heading settled" data-level="5.1" id="web-access-control"><span class="secno">5.1. </span><span class="content">Web Access Control</span><a class="self-link" href="#web-access-control"></a></h3>
    <p>Web Access Control (<abbr title="Web Access Control">WAC</abbr>) is a
