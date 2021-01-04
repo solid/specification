@@ -328,6 +328,15 @@ left:4.5em;
                   </table>
                 </div>
               </section>
+
+              <section id="conformance" inlist="" rel="schema:hasPart" resource="#conformance">
+                <h3 property="schema:name">Conformance</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>All assertions, diagrams, examples, and notes are non-normative, as are all sections explicitly marked non-normative. Everything else is normative.</p>
+
+                  <p>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” are to be interpreted as described in <a href="https://tools.ietf.org/html/bcp14">BCP 14</a> <a data-link-type="biblio" href="#biblio-rfc2119">[RFC2119]</a> <a data-link-type="biblio" href="#biblio-rfc8174">[RFC8174]</a> when, and only when, they appear in all capitals, as shown here.</p>
+                </div>
+              </section>
             </div>
           </section>
 
@@ -926,23 +935,6 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
           </section>
 
   </main>
-  <div data-fill-with="conformance">
-   <h2 class="no-ref no-num heading settled" id="conformance"><span class="content"> Conformance</span><a class="self-link" href="#conformance"></a></h2>
-   <p> Conformance requirements are expressed with a combination of descriptive assertions and RFC 2119 terminology.
-            The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL”
-            in the normative parts of this document
-            are to be interpreted as described in RFC 2119.
-            However, for readability,
-            these words do not appear in all uppercase letters in this specification. </p>
-   <p> All of the text of this specification is normative
-            except sections explicitly marked as non-normative, examples, and notes. <a data-link-type="biblio" href="#biblio-rfc2119">[RFC2119]</a> </p>
-   <p> Examples in this specification are introduced with the words “for example”
-            or are set apart from the normative text with <code>class="example"</code>, like this: </p>
-   <div class="example" id="example-example"><a class="self-link" href="#example-example"></a> This is an example of an informative example. </div>
-   <p> Informative notes begin with the word “Note”
-            and are set apart from the normative text with <code>class="note"</code>, like this: </p>
-   <p class="note" role="note"> Note, this is an informative note. </p>
-  </div>
 
           <section class="appendix" id="references" inlist="" rel="schema:hasPart" resource="#references">
             <h2>References</h2>
@@ -989,6 +981,8 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                     <dd>R. Fielding, Ed.; J. Reschke, Ed.. <a href="https://httpwg.org/specs/rfc7235.html">Hypertext Transfer Protocol (HTTP/1.1): Authentication</a>. June 2014. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc7235.html">https://httpwg.org/specs/rfc7235.html</a></dd>
                     <dt id="biblio-rfc7540">[RFC7540]</dt>
                     <dd>M. Belshe; R. Peon; M. Thomson, Ed.. <a href="https://httpwg.org/specs/rfc7540.html">Hypertext Transfer Protocol Version 2 (HTTP/2)</a>. May 2015. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc7540.html">https://httpwg.org/specs/rfc7540.html</a></dd>
+                    <dt id="biblio-rfc8174">[RFC8174]</dt>
+                    <dd><a href="https://tools.ietf.org/html/rfc8174"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc8174">https://tools.ietf.org/html/rfc8174</a></dd>
                     <dt id="biblio-rfc8288">[RFC8288]</dt>
                     <dd>M. Nottingham. <a href="https://httpwg.org/specs/rfc8288.html">Web Linking</a>. October 2017. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc8288.html">https://httpwg.org/specs/rfc8288.html</a></dd>
                     <dt id="biblio-solid-oidc">[SOLID-OIDC]</dt>
