@@ -252,14 +252,20 @@ left:4.5em;
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#considerations"><span class="secno">6</span> <span class="content">Considerations</span></a>
+                  <a class="tocxref" href="#http-definitions"><span class="secno">6</span> <span class="content">HTTP Definitions</span></a>
                   <ol>
-                    <li><a href="#iana-considerations"><span class="secno">6.1</span> <span class="content">IANA Considerations</span></a></li>
-                    <li><a href="#security-considerations"><span class="secno">6.2</span> <span class="content">Security Considerations</span></a>
-                    <li><a href="#privacy-considerations"><span class="secno">6.3</span> <span class="content">Privacy Considerations</span></a>
-                    <li><a href="#accessibility-considerations"><span class="secno">6.4</span> <span class="content">Accessibility Considerations</span></a>
-                    <li><a href="#internationalization-considerations"><span class="secno">6.5</span> <span class="content">Internationalization Considerations</span></a>
-                    <li><a href="#security-privacy-review"><span class="secno">6.6</span> <span class="content">Security and Privacy Review</span></a>
+                    <li><a href="#http-headers"><span class="secno">6.1</span> <span class="content">HTTP Headers</span></a></li>
+                    <li><a href="#link-relations"><span class="secno">6.2</span> <span class="content">Link Relations</span></a></li>
+                  </ol>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#considerations"><span class="secno">7</span> <span class="content">Considerations</span></a>
+                  <ol>
+                    <li><a href="#security-considerations"><span class="secno">7.2</span> <span class="content">Security Considerations</span></a>
+                    <li><a href="#privacy-considerations"><span class="secno">7.3</span> <span class="content">Privacy Considerations</span></a>
+                    <li><a href="#accessibility-considerations"><span class="secno">7.4</span> <span class="content">Accessibility Considerations</span></a>
+                    <li><a href="#internationalization-considerations"><span class="secno">7.5</span> <span class="content">Internationalization Considerations</span></a>
+                    <li><a href="#security-privacy-review"><span class="secno">7.6</span> <span class="content">Security and Privacy Review</span></a>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -752,62 +758,6 @@ SHOULD also explicitly list <code>Accept</code> under <code>Access-Control-Allow
 because values longer than 128 characters (not uncommon for RDF-based Solid
 apps) would otherwise be blocked, despite shorter <code>Accept</code> headers being
 allowed without explicit mention.</p>
-   <h3 class="heading settled" data-level="2.8" id="iana-considerations"><span class="secno">2.8. </span><span class="content">IANA Considerations</span><a class="self-link" href="#iana-considerations"></a></h3>
-   <h4 class="heading settled" data-level="2.8.1" id="http-headers"><span class="secno">2.8.1. </span><span class="content">HTTP Headers</span><a class="self-link" href="#http-headers"></a></h4>
-   <h5 class="heading settled" data-level="2.8.1.1" id="accept-put"><span class="secno">2.8.1.1. </span><span class="content">The Accept-Put Response Header</span><a class="self-link" href="#accept-put"></a></h5>
-   <p>This specification introduces a new HTTP response header <code>Accept-Put</code> used to
-specify the document formats accepted by the server on HTTP PUT requests. It
-is modelled after the <code>Accept-Patch</code> header defined in <a data-link-type="biblio" href="#biblio-rfc5789">[RFC5789]</a> and the <code>Accept-Post</code> header defined in <a data-link-type="biblio" href="#biblio-ldp">[LDP]</a>.</p>
-   <p>The syntax for <code>Accept-Put</code>, using the ABNF syntax defined in Section 1.2 of <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>, is:</p>
-<pre>Accept-Put = "Accept-Put" ":" # media-range
-</pre>
-   <p>The <code>Accept-Put</code> header specifies a comma-separated list of media ranges (with
-optional parameters) as defined by <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>, Section 5.3.2. The <code>Accept-Put</code> header, in effect, uses the same syntax as the HTTP <code>Accept</code> header minus the optional <code>accept-params</code> BNF production, since the latter
-does not apply to <code>Accept-Put</code>.</p>
-   <p>The presence of the <code>Accept-Put</code> header in response to any method is an
-implicit indication that <code>PUT</code> is allowed on the resource identified by the
-request URI. The presence of a specific document format in this header
-indicates that that specific format is allowed on <code>PUT</code> requests to the
-resource identified by the request URI.</p>
-   <p><strong>IANA Registration Template:</strong></p>
-   <p>The <code>Accept-Put</code> response header must be added to the permanent registry (see <a data-link-type="biblio" href="#biblio-rfc3864">[RFC3864]</a>).</p>
-   <dl>
-    <dt data-md>Header field name
-    <dd data-md>
-     <p>Accept-Put</p>
-    <dt data-md>Applicable Protocol
-    <dd data-md>
-     <p>HTTP</p>
-    <dt data-md>Author/Change controller
-    <dd data-md>
-     <p>W3C Solid Community Group</p>
-    <dt data-md>Specification document
-    <dd data-md>
-     <p>This specification</p>
-   </dl>
-   <h4 class="heading settled" data-level="2.8.2" id="link-relations"><span class="secno">2.8.2. </span><span class="content">Link Relations</span><a class="self-link" href="#link-relations"></a></h4>
-   <p>The intent is that these link relations will be registered with IANA per <a data-link-type="biblio" href="#biblio-rfc8288">[RFC8288]</a>.</p>
-   <h5 class="heading settled" data-level="2.8.2.1" id="acl"><span class="secno">2.8.2.1. </span><span class="content">acl</span><a class="self-link" href="#acl"></a></h5>
-   <p>The contents of this section were originally taken from <a href="https://www.w3.org/wiki/WebAccessControl">Web Access
-Control</a>.</p>
-   <p>The following Link Relationship will be submitted to IANA for review,
-approval, and inclusion in the IANA Link Relations registry.</p>
-   <dl>
-    <dt data-md>Relation Name
-    <dd data-md>
-     <p><code>acl</code></p>
-    <dt data-md>Description
-    <dd data-md>
-     <p>The relationship <code>A acl B</code> asserts that resource B provides access control description of resource A. There are no constraints on the format or representation of either A or B, neither are there any further constraints on either resource.</p>
-    <dt data-md>Reference
-    <dd data-md>
-     <p>This specification.</p>
-    <dt data-md>Notes
-    <dd data-md>
-     <p>Consumers of ACL resources should be aware of the source and chain of custody of the data.</p>
-   </dl>
-   <p><a href="https://github.com/solid/specification/issues/54">[Source</a>] <a href="https://github.com/solid/web-access-control-spec/issues/21">[Source</a>]</p>
-   <p class="issue" id="issue-e549d761"><a class="self-link" href="#issue-e549d761"></a> Shape of ACL: https://github.com/solid/specification/issues/169</p>
 
           <section id="identity" inlist="" rel="schema:hasPart" resource="#identity">
             <h2 property="schema:name">Identity</h2>
@@ -896,10 +846,82 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
             </div>
           </section>
 
+          <section id="http-definitions" inlist="" rel="schema:hasPart" resource="#http-definitions">
+            <h2 property="schema:name">HTTP Definitions</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <section id="http-headers" inlist="" rel="schema:hasPart" resource="#http-headers">
+                <h3 property="schema:name">HTTP Headers</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <section id="accept-put" inlist="" rel="schema:hasPart" resource="#accept-put">
+                    <h4 property="schema:name">The Accept-Put Response Header</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>This specification introduces a new HTTP response header <code>Accept-Put</code> used to specify the document formats accepted by the server on HTTP PUT requests. It is modelled after the <code>Accept-Patch</code> header defined in <a data-link-type="biblio" href="#biblio-rfc5789">[RFC5789]</a> and the <code>Accept-Post</code> header defined in <a data-link-type="biblio" href="#biblio-ldp">[LDP]</a>.</p>
+
+                      <p>The syntax for <code>Accept-Put</code>, using the ABNF syntax defined in Section 1.2 of <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>, is:</p>
+
+                      <pre class="def">Accept-Put = "Accept-Put" ":" # media-range</pre>
+
+                      <p>The <code>Accept-Put</code> header specifies a comma-separated list of media ranges (with optional parameters) as defined by <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>, Section 5.3.2. The <code>Accept-Put</code> header, in effect, uses the same syntax as the HTTP <code>Accept</code> header minus the optional <code>accept-params</code> BNF production, since the latter does not apply to <code>Accept-Put</code>.</p>
+
+                      <p>The presence of the <code>Accept-Put</code> header in response to any method is an implicit indication that <code>PUT</code> is allowed on the resource identified by the request URI. The presence of a specific document format in this header indicates that that specific format is allowed on <code>PUT</code> requests to the resource identified by the request URI.</p>
+
+                      <p><strong>IANA Registration Template:</strong></p>
+
+                      <p>The <code>Accept-Put</code> response header must be added to the permanent registry (see <a data-link-type="biblio" href="#biblio-rfc3864">[RFC3864]</a>).</p>
+
+                     <dl>
+                      <dt>Header field name</dt>
+                      <dd>Accept-Put</dd>
+                      <dt>Applicable Protocol</dt>
+                      <dd>HTTP</dd>
+                      <dt>Author/Change controller</dt>
+                      <dd>W3C Solid Community Group</dd>
+                      <dt>Specification document</dt>
+                      <dd>This specification</dd>
+                     </dl>
+                    </div>
+                  </section>
+                </div>
+              </section>
+
+              <section id="link-relations" inlist="" rel="schema:hasPart" resource="#link-relations">
+                <h3 property="schema:name">Link Relations</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>The intent is that these link relations will be registered with IANA per <a data-link-type="biblio" href="#biblio-rfc8288">[RFC8288]</a>.</p>
+
+                  <section id="acl" inlist="" rel="schema:hasPart" resource="#acl">
+                    <h4 property="schema:name">acl</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>The contents of this section were originally taken from <a href="https://www.w3.org/wiki/WebAccessControl">Web Access
+                      Control</a>.</p>
+
+                      <p>The following Link Relationship will be submitted to IANA for review, approval, and inclusion in the IANA Link Relations registry.</p>
+
+                      <dl>
+                        <dt>Relation Name</dt>
+                        <dd><code>acl</code></dd>
+                        <dt>Description</dt>
+                        <dd>The relationship <code>A acl B</code> asserts that resource B provides access control description of resource A. There are no constraints on the format or representation of either A or B, neither are there any further constraints on either resource.</dd>
+                        <dt>Reference</dt>
+                        <dd>This specification.</dd>
+                        <dt>Notes</dt>
+                        <dd>Consumers of ACL resources should be aware of the source and chain of custody of the data.</dd>
+                      </dl>
+
+                      <p><a href="https://github.com/solid/specification/issues/54">[Source</a>] <a href="https://github.com/solid/web-access-control-spec/issues/21">[Source</a>]</p>
+
+                      <p class="issue" id="issue-e549d761"><a class="self-link" href="#issue-e549d761"></a> Shape of ACL: https://github.com/solid/specification/issues/169</p>
+                    </div>
+                  </section>
+                 </div>
+              </section>
+            </div>
+          </section>
+
           <section id="considerations" inlist="" rel="schema:hasPart" resource="#considerations">
             <h2 property="schema:name">Considerations</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p>This section details general and specific security, privacy, accessibility, and internationalization considerations.</p>
+              <p>This section details security, privacy, accessibility and internationalization considerations.</p>
 
               <section id="security-considerations" inlist="" rel="schema:hasPart" resource="#security-considerations">
                 <h3 property="schema:name">Security Considerations</h3>
