@@ -857,49 +857,55 @@ contain identifiable information.</p>
             </div>
           </section>
 
-   <h2 class="heading settled" data-level="5" id="authorization"><span class="secno">5. </span><span class="content">Authorization</span><a class="self-link" href="#authorization"></a></h2>
-   <h3 class="heading settled" data-level="5.1" id="web-access-control"><span class="secno">5.1. </span><span class="content">Web Access Control</span><a class="self-link" href="#web-access-control"></a></h3>
-   <p>Web Access Control (<abbr title="Web Access Control">WAC</abbr>) is a
-decentralized cross-domain access control system. The WAC mechanism is
-concerned with giving access to agents denoted by a <a href="#webid">§ 3.1 WebID</a> to perform
-various kinds of read-write operations on resources identified by URLs. The <cite><a href="http://www.w3.org/ns/auth/acl">Access Control List</a></cite> (<abbr title="Access Control List">ACL</abbr>) ontology is used to describe
-authorization policies about authorized agents with modes of access on target
-resources.</p>
-   <p>Servers MUST conform to the Web Access Control specification <a data-link-type="biblio" href="#biblio-wac">[WAC]</a>.</p>
-   <p>A resource can advertise an ACL document that is directly associated by using
-the HTTP <code>Link</code> header with a <code>rel</code> value of <code>acl</code> <a href="#acl">§ 2.8.2.1 acl</a>. <a href="https://github.com/solid/specification/issues/31#issuecomment-548360553">[Source</a>]</p>
-   <p>In the event that a server can’t apply an ACL to a resource, it MUST deny
-access. <a href="https://github.com/solid/specification/issues/130#issue-532777017">[Source</a>]</p>
-   <p>Servers exposing client’s access privileges on a resource URL MUST advertise
-by including the <code>WAC-Allow</code> HTTP header in the response of HTTP <code>HEAD</code> and <code>GET</code> requests.</p>
-   <p>The syntax for the <code>WAC-Allow</code> header, using the ABNF syntax defined in
-Section 1.2 of <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>, is:</p>
-<pre>wac-allow        = "WAC-Allow" ":" OWS #access-param OWS
+
+          <section id="authorization" inlist="" rel="schema:hasPart" resource="#authorization">
+            <h2 property="schema:name">Authorization</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <section id="web-access-control" inlist="" rel="schema:hasPart" resource="#web-access-control">
+                <h3 property="schema:name">Web Access Control</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>Web Access Control (<abbr title="Web Access Control">WAC</abbr>) is a decentralized cross-domain access control system. The WAC mechanism is concerned with giving access to agents denoted by a <a href="#webid">§ 3.1 WebID</a> to perform various kinds of read-write operations on resources identified by URLs. The <cite><a href="http://www.w3.org/ns/auth/acl">Access Control List</a></cite> (<abbr title="Access Control List">ACL</abbr>) ontology is used to describe authorization policies about authorized agents with modes of access on target resources.</p>
+
+                  <p>Servers MUST conform to the Web Access Control specification <a data-link-type="biblio" href="#biblio-wac">[WAC]</a>.</p>
+
+                  <p>A resource can advertise an ACL document that is directly associated by using the HTTP <code>Link</code> header with a <code>rel</code> value of <code>acl</code> <a href="#acl">§ 2.8.2.1 acl</a>. <a href="https://github.com/solid/specification/issues/31#issuecomment-548360553">[Source</a>]</p>
+
+                  <p>In the event that a server can’t apply an ACL to a resource, it MUST deny access. <a href="https://github.com/solid/specification/issues/130#issue-532777017">[Source</a>]</p>
+
+                  <p>Servers exposing client’s access privileges on a resource URL MUST advertise by including the <code>WAC-Allow</code> HTTP header in the response of HTTP <code>HEAD</code> and <code>GET</code> requests.</p>
+
+                  <p>The syntax for the <code>WAC-Allow</code> header, using the ABNF syntax defined in Section 1.2 of <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>, is:</p>
+
+<pre class="def">wac-allow        = "WAC-Allow" ":" OWS #access-param OWS
 access-param     = permission-group OWS "=" OWS access-modes
 permission-group = 1*ALPHA
 access-modes     = *1DQUOTE OWS *1(access-mode *(RWS access-mode)) OWS *1DQUOTE
-access-mode      = "read" / "write" / "append" / "control"
-</pre>
-   <p>The <code>WAC-Allow</code> HTTP header’s field-value is a comma-separated list of <code>access-param</code>s. <code>access-param</code> is a whitespace-separated list of <code>access-modes</code> granted to a <code>permission-group</code>.</p>
-   <p>This specification defines the following <code>permission-group</code>s:</p>
-   <dl>
-    <dt><code>user</code>
-    <dd>Permissions granted to the agent requesting the resource.
-    <dt><code>public</code>
-    <dd>Permissions granted to the public.
-   </dl>
-   <p><code>access-mode</code> corresponds to the modes of access as defined in the
-ACL ontology (<code>acl:Read</code>, <code>acl:Write</code>, <code>acl:Append</code>, <code>acl:Control</code>).</p>
-   <p>Clients can discover access privileges on a resource by making an HTTP <code>HEAD</code> or <code>GET</code> request on the target URL, and checking the <code>WAC-Allow</code> header value
-for access parameters listing the allowed access modes per permission group.</p>
-   <p>Clients' parsing algorithm for the <code>WAC-Allow</code> header should incorporate error
-handling. When the received message fails to match an allowed pattern, finds
-unrecognised access parameters or access modes, clients MUST ignore the
-received <code>WAC-Allow</code> header-field.</p>
-   <p>The quoted and unquoted values for <code>access-modes</code> are equivalent. Servers are
-recommended to use quoted values in the response. Clients' are recommended to
-be able to parse both quoted and unquoted values.</p>
-   <p><a href="https://github.com/solid/specification/issues/171">[Source</a>] <a href="https://github.com/solid/specification/issues/170">[Source</a>] <a href="https://github.com/solid/specification/issues/181">[Source</a>]</p>
+access-mode      = "read" / "write" / "append" / "control"</pre>
+
+                  <p>The <code>WAC-Allow</code> HTTP header’s field-value is a comma-separated list of <code>access-param</code>s. <code>access-param</code> is a whitespace-separated list of <code>access-modes</code> granted to a <code>permission-group</code>.</p>
+
+                  <p>This specification defines the following <code>permission-group</code>s:</p>
+
+                  <dl>
+                    <dt><code>user</code>
+                    <dd>Permissions granted to the agent requesting the resource.
+                    <dt><code>public</code>
+                    <dd>Permissions granted to the public.
+                  </dl>
+
+                  <p><code>access-mode</code> corresponds to the modes of access as defined in the ACL ontology (<code>acl:Read</code>, <code>acl:Write</code>, <code>acl:Append</code>, <code>acl:Control</code>).</p>
+
+                  <p>Clients can discover access privileges on a resource by making an HTTP <code>HEAD</code> or <code>GET</code> request on the target URL, and checking the <code>WAC-Allow</code> header value for access parameters listing the allowed access modes per permission group.</p>
+
+                  <p>Clients' parsing algorithm for the <code>WAC-Allow</code> header should incorporate error handling. When the received message fails to match an allowed pattern, finds unrecognised access parameters or access modes, clients MUST ignore the received <code>WAC-Allow</code> header-field.</p>
+
+                  <p>The quoted and unquoted values for <code>access-modes</code> are equivalent. Servers are recommended to use quoted values in the response. Clients' are recommended to be able to parse both quoted and unquoted values.</p>
+
+                  <p><a href="https://github.com/solid/specification/issues/171">[Source</a>] <a href="https://github.com/solid/specification/issues/170">[Source</a>] <a href="https://github.com/solid/specification/issues/181">[Source</a>]</p>
+                </div>
+              </section>
+            </div>
+          </section>
   </main>
   <div data-fill-with="conformance">
    <h2 class="no-ref no-num heading settled" id="conformance"><span class="content"> Conformance</span><a class="self-link" href="#conformance"></a></h2>
