@@ -28,6 +28,12 @@ counter-reset:sub-section;
 article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]):not([id="exit-criteria"]):not([id^=table-of-]) > h2:before {
 content:counter(section) ".\00a0\00a0\00a0\00a0";
 }
+table {
+border-collapse: collapse;
+}
+caption, tbody, tfoot {
+border-bottom: 2pt solid #000;
+}
 </style>
   </head>
 
@@ -89,23 +95,148 @@ content:counter(section) ".\00a0\00a0\00a0\00a0";
 
               <p>The TRs incorporated have been reviewed following the <cite><a href="https://github.com/solid/process" rel="cito:citesAsAuthority">Solid Process</a></cite>. However, the information in these documents may be subject to change, therefore please see each document’s publication status and versions for further details. You are invited to <a href="https://github.com/solid/specification/issues" rel="cito:discusses">contribute</a> any feedback, comments, or questions you might have.</p>
 
-              <dl>
-                <dt>The Solid Ecosystem</dt>
-                <dd><a href="ecosystem" rel="cito:citesForInformation">TR/ecosystem</a></dd>
-                <dt>The Solid Protocol</dt>
-                <dd><a href="protocol" rel="cito:citesForInformation">TR/protocol</a></dd>
-                <dt>TBA</dt>
-                <dd>..</dd>
-              </dl>
+              <table id="work-item-technical-reports">
+                <caption>Technical Reports</caption>
+                <thead>
+                  <tr>
+                    <th>Work Item</th>
+                    <th>Repository</th>
+                    <th>Current Stage</th>
+                    <th>Next Stage</th>
+                    <th>Target</th>
+                    <td>Expected Completion</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a href="ecosystem" rel="cito:citesForInformation">Solid Ecosystem</a></td>
+                    <td><a href="https://github.com/solid/specification">https://github.com/solid/specification</a></td>
+                    <td>Editor’s Draft</td>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                  </tr>
+                  <tr>
+                    <td><a href="protocol" rel="cito:citesForInformation">Solid Protocol</a></td>
+                    <td><a href="https://github.com/solid/specification">https://github.com/solid/specification</a></td>
+                    <td>Editor’s Draft</td>
+                    <td>Published Draft</td>
+                    <td>Community Report</td>
+                    <td><time datetime="2021-06-30">2021-06-30</time></td>
+                  </tr>
+                </tbody>
+
+                <tbody>
+                  <tr>
+                    <td><a href="https://solid.github.io/authentication-panel/solid-oidc/" rel="cito:citesForInformation">Solid OIDC</a></td>
+                    <td><a href="https://github.com/solid/authentication-panel">https://github.com/solid/authentication-panel</a></td>
+                    <td>Editor’s Draft</td>
+                    <td>Ecosystem Proposal</td>
+                    <td>Community Report</td>
+                    <td><time datetime="2021-03-31">2021-06-30</time></td>
+                  </tr>
+                  <tr>
+                    <td><a href="https://solid.github.io/web-access-control-spec/" rel="cito:citesForInformation">Web Access Control</a></td>
+                    <td><a href="https://github.com/solid/web-access-control-spec/">https://github.com/solid/web-access-control-spec/</a></td>
+                    <td>Unofficial Draft</td>
+                    <td>Editor’s Draft</td>
+                    <td>Community Report</td>
+                    <td><time datetime="2021-03-31">2021-06-30</time></td>
+                  </tr>
+                  <tr>
+                    <td><a href="https://solid.github.io/data-interoperability-panel/specification/" rel="cito:citesForInformation">Solid Application Interoperability</a></td>
+                    <td><a href="https://github.com/solid/data-interoperability-panel">https://github.com/solid/data-interoperability-panel</a></td>
+                    <td>Editor’s Draft</td>
+                    <td>Ecosystem Proposal</td>
+                    <td>Community Report</td>
+                    <td><time datetime="2021-03-31">2021-06-30</time></td>
+                  </tr>
+                  <tr>
+                    <td><a href="https://shapetrees.github.io/specification/spec" rel="cito:citesForInformation">Shape Trees</a></td>
+                    <td><a href="https://github.com/shapetrees/specification">https://github.com/shapetrees/specification</a></td>
+                    <td>Editor’s Draft</td>
+                    <td>Ecosystem Proposal</td>
+                    <td>Community Report</td>
+                    <td><time datetime="2021-03-31">2021-06-30</time></td>
+                  </tr>
+                </tbody>
+
+                <tbody>
+                  <tr>
+                    <td><a href="https://solid.github.io/authentication-panel/solid-oidc-primer/" rel="cito:citesForInformation">Solid OIDC Primer</a></td>
+                    <td><a href="https://github.com/solid/authentication-panel">https://github.com/solid/authentication-panel</a></td>
+                    <td>Editor’s Draft</td>
+                    <td>Ecosystem Proposal</td>
+                    <td>Community Report</td>
+                    <td><time datetime="2021-03-31">2021-06-30</time></td>
+                  </tr>
+                  <tr>
+                    <td><a href="https://solid.github.io/authorization-panel/wac-ucr/" rel="cito:citesForInformation">Authorization Use Cases and Requirements</a></td>
+                    <td><a href="https://github.com/solid/authorization-panel">https://github.com/solid/authorization-panel</a></td>
+                    <td>Unofficial Draft</td>
+                    <td>Editor’s Draft</td>
+                    <td>Community Report</td>
+                    <td>TBD</td>
+                  </tr>
+                  <tr>
+                    <td><a href="https://github.com/solid/authorization-panel/blob/master/proposals/wac-ucr/uc-survey.md">Authorization Use Cases Survey</a></td>
+                    <td><a href="https://github.com/solid/authorization-panel">https://github.com/solid/authorization-panel</a></td>
+                    <td>Unofficial Draft</td>
+                    <td>Editor’s Draft</td>
+                    <td>Community Report</td>
+                    <td>TBD</td>
+                  </tr>
+                  <tr>
+                    <td><a href="https://solid.github.io/data-interoperability-panel/primer/" rel="cito:citesForInformation">Solid Application Interoperability Primer</a></td>
+                    <td><a href="https://github.com/solid/data-interoperability-panel">https://github.com/solid/data-interoperability-panel</a></td>
+                    <td>Editor’s Draft</td>
+                    <td>Ecosystem Proposal</td>
+                    <td>Community Report</td>
+                    <td><time datetime="2021-03-31">2021-06-30</time></td>
+                  </tr>
+                </tbody>
+
+                <tfoot>
+                  <tr>
+                    <td colspan="6">"Expected Completion" date refers to the publication status of "Target". Completion date for "Next Stage" is roughly midway point.</td>
+                  </tr>
+                </tfoot>
+              </table>
+
+              <p>The Test Suites support the Technical Reports. We list them here for completeness.</p>
+
+              <table id="work-item-test-suites">
+                <caption>Test Suites</caption>
+                <thead>
+                  <tr>
+                    <th>Work Item</th>
+                    <th>Repository</th>
+                    <th>Current Stage</th>
+                    <th>Next Stage</th>
+                    <th>Target</th>
+                    <td>Expected Completion</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a href="https://github.com/solid/test-suite" rel="cito:citesForInformation">Test Suite</a></td>
+                    <td><a href="https://github.com/solid/test-suite">https://github.com/solid/test-suite</a></td>
+                    <td>TBD</td>
+                    <td>TBD</td>
+                    <td>TBD</td>
+                    <td><time datetime="2021-03-31">2021-03-31</time></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </section>
 
           <section id="participate" inlist="" rel="schema:hasPart" resource="#participate">
             <h2 property="schema:name">Participate</h2>
             <div property="schema:description" datatype="rdf:HTML">
-              <p>It’s easy to <a href="https://www.w3.org/community/solid/join">join the CG</a> if you’d like to contribute to the Solid project. Please note that, in order to join, you’ll need to <a href=https://www.w3.org/accounts/request>request a W3C account</a> if you don’t already have one.</p>
+              <p>It’s easy to <a href="https://www.w3.org/community/solid/join">join the CG</a> if you’d like to contribute to the Solid project. Please note that, in order to join, you’ll need to <a href="https://www.w3.org/accounts/request">request a W3C account</a> if you don’t already have one.</p>
 
-              <p>We publish a list of <a href="https://www.w3.org/groups/cg/solid/participants">current participants</a> on our <a href="https://www.w3.org/community/solid/">W3C page</a>.
+              <p>We publish a list of <a href="https://www.w3.org/groups/cg/solid/participants">current participants</a> on our <a href="https://www.w3.org/community/solid/">W3C page</a>.</p>
 
               <p>The Solid CG conducts all technical work in public, mainly in various <a href="https://github.com/solid/">repositories of the Solid organisation</a> but also in text chat, periodic teleconferences and face-to-face meetings.</p>
             </div>
