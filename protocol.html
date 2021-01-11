@@ -86,13 +86,13 @@ counter-increment:sub-sub-sub-section;
 counter-reset:sub-sub-sub-sub-section;
 }
 article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]):not([id="exit-criteria"]):not([id^=table-of-]) > h2:before {
-content:counter(section) ".\00a0\00a0\00a0\00a0";
+content:counter(section) ".\00a0";
 }
 section:not([id$="references"]):not([id^=change-log]):not([id="exit-criteria"]) > h3:before {
-content:counter(section) "." counter(sub-section) "\00a0\00a0\00a0";
+content:counter(section) "." counter(sub-section) "\00a0";
 }
 section > h4:before {
-content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\00a0\00a0\00a0";
+content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\00a0";
 }
 
 aside.note.do blockquote dl.published,
@@ -235,48 +235,55 @@ left:4.5em;
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#reading-writing-resources"><span class="secno">x</span> <span class="content">Reading and Writing Resources</span></a>
-                </li>
-                <li class="tocline">
-                  <a class="tocxref" href="#notifications"><span class="secno">x</span> <span class="content">Notifications</span></a>
-                </li>
-                <li class="tocline">
-                  <a class="tocxref" href="#cors"><span class="secno">x</span> <span class="content">Cross-Origin Resource Sharing</span></a>
-                </li>
-                <li class="tocline">
-                  <a class="tocxref" href="#identity"><span class="secno">3</span> <span class="content">Identity</span></a>
+                  <a class="tocxref" href="#reading-writing-resources"><span class="secno">5</span> <span class="content">Reading and Writing Resources</span></a>
                   <ol>
-                    <li><a href="#webid"><span class="secno">3.1</span> <span class="content">WebID</span></a></li>
+                    <li><a href="#resource-type-heuristics"><span class="secno">5.1</span> <span class="content">Resource Type Heuristics</span></a></li>
+                    <li><a href="#reading-resources"><span class="secno">5.2</span> <span class="content">Reading Resources</span></a></li>
+                    <li><a href="#writing-resources"><span class="secno">5.3</span> <span class="content">Writing Resources</span></a></li>
+                    <li><a href="#deleting-resources"><span class="secno">5.4</span> <span class="content">Deleting Resources</span></a></li>
+                    <li><a href="#resource-representations"><span class="secno">5.5</span> <span class="content">Resource Representations</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#authentication"><span class="secno">4</span> <span class="content">Authentication</span></a>
+                  <a class="tocxref" href="#notifications"><span class="secno">6</span> <span class="content">Notifications</span></a>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#cors"><span class="secno">7</span> <span class="content">Cross-Origin Resource Sharing</span></a>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#identity"><span class="secno">8</span> <span class="content">Identity</span></a>
                   <ol>
-                    <li><a href="#solid-oidc"><span class="secno">4.1</span> <span class="content">Solid-OIDC</span></a></li>
-                    <li><a href="#webid-tls"><span class="secno">4.2</span> <span class="content">WebID-TLS</span></a></li>
+                    <li><a href="#webid"><span class="secno">8.1</span> <span class="content">WebID</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#authorization"><span class="secno">5</span> <span class="content">Authorization</span></a>
+                  <a class="tocxref" href="#authentication"><span class="secno">9</span> <span class="content">Authentication</span></a>
                   <ol>
-                    <li><a href="#web-access-control"><span class="secno">5.1</span> <span class="content">Web Access Control</span></a></li>
+                    <li><a href="#solid-oidc"><span class="secno">9.1</span> <span class="content">Solid-OIDC</span></a></li>
+                    <li><a href="#webid-tls"><span class="secno">9.2</span> <span class="content">WebID-TLS</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#http-definitions"><span class="secno">6</span> <span class="content">HTTP Definitions</span></a>
+                  <a class="tocxref" href="#authorization"><span class="secno">10</span> <span class="content">Authorization</span></a>
                   <ol>
-                    <li><a href="#http-headers"><span class="secno">6.1</span> <span class="content">HTTP Headers</span></a></li>
-                    <li><a href="#link-relations"><span class="secno">6.2</span> <span class="content">Link Relations</span></a></li>
+                    <li><a href="#web-access-control"><span class="secno">10.1</span> <span class="content">Web Access Control</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#considerations"><span class="secno">7</span> <span class="content">Considerations</span></a>
+                  <a class="tocxref" href="#http-definitions"><span class="secno">11</span> <span class="content">HTTP Definitions</span></a>
                   <ol>
-                    <li><a href="#security-considerations"><span class="secno">7.2</span> <span class="content">Security Considerations</span></a></li>
-                    <li><a href="#privacy-considerations"><span class="secno">7.3</span> <span class="content">Privacy Considerations</span></a></li>
-                    <li><a href="#accessibility-considerations"><span class="secno">7.4</span> <span class="content">Accessibility Considerations</span></a></li>
-                    <li><a href="#internationalization-considerations"><span class="secno">7.5</span> <span class="content">Internationalization Considerations</span></a></li>
-                    <li><a href="#security-privacy-review"><span class="secno">7.6</span> <span class="content">Security and Privacy Review</span></a></li>
+                    <li><a href="#http-headers"><span class="secno">11.1</span> <span class="content">HTTP Headers</span></a></li>
+                    <li><a href="#link-relations"><span class="secno">11.2</span> <span class="content">Link Relations</span></a></li>
+                  </ol>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#considerations"><span class="secno">12</span> <span class="content">Considerations</span></a>
+                  <ol>
+                    <li><a href="#security-considerations"><span class="secno">12.1</span> <span class="content">Security Considerations</span></a></li>
+                    <li><a href="#privacy-considerations"><span class="secno">12.2</span> <span class="content">Privacy Considerations</span></a></li>
+                    <li><a href="#accessibility-considerations"><span class="secno">12.3</span> <span class="content">Accessibility Considerations</span></a></li>
+                    <li><a href="#internationalization-considerations"><span class="secno">12.4</span> <span class="content">Internationalization Considerations</span></a></li>
+                    <li><a href="#security-privacy-review"><span class="secno">12.5</span> <span class="content">Security and Privacy Review</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
