@@ -224,9 +224,11 @@ left:4.5em;
                   <a class="tocxref" href="#http"><span class="secno">2</span> <span class="content">Hypertext Transfer Protocol</span></a>
                 </li>
                 <li class="tocline">
+                  <a class="tocxref" href="#uri"><span class="secno">3</span> <span class="content">Uniform Resource Identifier</span></a>
+                </li>
+                <li class="tocline">
                   <a class="tocxref" href="#protocol"><span class="secno">2</span> <span class="content">Protocol</span></a>
                   <ol>
-                    <li><a href="#uri"><span class="secno">2.2</span> <span class="content">Uniform Resource Identifier</span></a></li>
                     <li><a href="#linked-data"><span class="secno">2.3</span> <span class="content">Linked Data</span></a></li>
                     <li><a href="#auxiliary-resources"><span class="secno">2.5</span> <span class="content">Auxiliary Resources</span></a></li>
                   </ol>
@@ -406,25 +408,32 @@ left:4.5em;
             </div>
           </section>
 
-   <h3 class="heading settled" data-level="2.2" id="uri"><span class="secno">2.2. </span><span class="content">Uniform Resource Identifier</span><a class="self-link" href="#uri"></a></h3>
-   <h4 class="heading settled" data-level="2.2.1" id="uri-slash-semantics"><span class="secno">2.2.1. </span><span class="content">URI Slash Semantics</span><a class="self-link" href="#uri-slash-semantics"></a></h4>
-   <p>The slash character in the URI path indicates hierarchical relationship
-segments, and enables relative referencing <a data-link-type="biblio" href="#biblio-rfc3986">[RFC3986]</a>. The semantics of the
-slash character is shared by servers and clients. Paths ending with a slash
-denote a container resource. <a href="https://github.com/solid/specification/issues/35#issuecomment-547949014">[Source</a>]</p>
-   <p>If two URIs differ only in the trailing slash, and the server has associated a
-resource with one of them, then the other URI MUST NOT correspond to another
-resource. Instead, the server MAY respond to requests for the latter URI with
-a 301 redirect to the former. <a href="https://github.com/solid/specification/issues/107#issuecomment-567482817">[Source</a>].
-Behaviour pertaining to authorization MUST proceed this optional redirect <a href="https://github.com/solid/specification/issues/107#issuecomment-567454889">[Source</a>]</p>
-   <h4 class="heading settled" data-level="2.2.2" id="uri-persistence"><span class="secno">2.2.2. </span><span class="content">URI Persistence</span><a class="self-link" href="#uri-persistence"></a></h4>
-    <em>This section is non-normative.</em>
-   <p>Servers should not re-use URIs, regardless of the mechanism by which resources
-are created. Certain specific cases exist where URIs may be reinstated when it
-identifies the same resource, but only when consistent with Web architecture’s <cite><a href="https://www.w3.org/TR/webarch/#URI-persistence">URI
-persistence</a></cite> <a data-link-type="biblio" href="#biblio-webarch">[WEBARCH]</a>. <a href="https://github.com/solid/specification/issues/46#issuecomment-589619372">[Source</a>]</p>
-   <p class="note" role="note"><span>Note:</span> Servers that wish to disable URI re-use may want to use the <code>410</code> status
-code.</p>
+          <section id="uri" inlist="" rel="schema:hasPart" resource="#uri">
+            <h2 property="schema:name">Uniform Resource Identifier</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <section id="uri-slash-semantics" inlist="" rel="schema:hasPart" resource="#uri-slash-semantics">
+                <h3 property="schema:name">URI Slash Semantics</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>The slash character in the URI path indicates hierarchical relationship segments, and enables relative referencing <a data-link-type="biblio" href="#biblio-rfc3986">[RFC3986]</a>. The semantics of the slash character is shared by servers and clients. Paths ending with a slash denote a container resource. <a href="https://github.com/solid/specification/issues/35#issuecomment-547949014">[Source</a>]</p>
+
+                  <p>If two URIs differ only in the trailing slash, and the server has associated a resource with one of them, then the other URI MUST NOT correspond to another resource. Instead, the server MAY respond to requests for the latter URI with a 301 redirect to the former. <a href="https://github.com/solid/specification/issues/107#issuecomment-567482817">[Source</a>]. Behaviour pertaining to authorization MUST proceed this optional redirect <a href="https://github.com/solid/specification/issues/107#issuecomment-567454889">[Source</a>]</p>
+                </div>
+              </section>
+
+              <section id="uri-persistence" inlist="" rel="schema:hasPart" resource="#uri-persistence">
+                <h3 property="schema:name">URI Persistence</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <em>This section is non-normative.</em>
+
+                  <p>Servers should not re-use URIs, regardless of the mechanism by which resources are created. Certain specific cases exist where URIs may be reinstated when it identifies the same resource, but only when consistent with Web architecture’s <cite><a href="https://www.w3.org/TR/webarch/#URI-persistence">URI persistence</a></cite> <a data-link-type="biblio" href="#biblio-webarch">[WEBARCH]</a>. <a href="https://github.com/solid/specification/issues/46#issuecomment-589619372">[Source</a>]</p>
+
+                  <p class="note" role="note"><span>Note:</span> Servers that wish to disable URI re-use may want to use the <code>410</code> status code.</p>
+                </div>
+              </section>
+            </div>
+          </section>
+
+
    <h3 class="heading settled" data-level="2.3" id="linked-data"><span class="secno">2.3. </span><span class="content">Linked Data</span><a class="self-link" href="#linked-data"></a></h3>
    <h4 class="heading settled" data-level="2.3.1" id="storage"><span class="secno">2.3.1. </span><span class="content">Storage</span><a class="self-link" href="#storage"></a></h4>
    <p>When a server supports a data pod, it MUST provide one or more storages
