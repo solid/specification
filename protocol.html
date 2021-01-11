@@ -215,9 +215,9 @@ left:4.5em;
                 <li class="tocline">
                   <a class="tocxref" href="#introduction"><span class="secno">1</span> <span class="content">Introduction</span></a>
                   <ol>
-                    <li><a href="#definitions"><span class="secno">1.1</span> <span class="content">Definitions</span></a>
-                    <li><a href="#namespaces"><span class="secno">1.2</span> <span class="content">Namespaces</span></a>
-                    <li><a href="#conformance"><span class="secno">1.3</span> <span class="content">Conformance</span></a>
+                    <li><a href="#definitions"><span class="secno">1.1</span> <span class="content">Definitions</span></a></li>
+                    <li><a href="#namespaces"><span class="secno">1.2</span> <span class="content">Namespaces</span></a></li>
+                    <li><a href="#conformance"><span class="secno">1.3</span> <span class="content">Conformance</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -272,11 +272,11 @@ left:4.5em;
                 <li class="tocline">
                   <a class="tocxref" href="#considerations"><span class="secno">7</span> <span class="content">Considerations</span></a>
                   <ol>
-                    <li><a href="#security-considerations"><span class="secno">7.2</span> <span class="content">Security Considerations</span></a>
-                    <li><a href="#privacy-considerations"><span class="secno">7.3</span> <span class="content">Privacy Considerations</span></a>
-                    <li><a href="#accessibility-considerations"><span class="secno">7.4</span> <span class="content">Accessibility Considerations</span></a>
-                    <li><a href="#internationalization-considerations"><span class="secno">7.5</span> <span class="content">Internationalization Considerations</span></a>
-                    <li><a href="#security-privacy-review"><span class="secno">7.6</span> <span class="content">Security and Privacy Review</span></a>
+                    <li><a href="#security-considerations"><span class="secno">7.2</span> <span class="content">Security Considerations</span></a></li>
+                    <li><a href="#privacy-considerations"><span class="secno">7.3</span> <span class="content">Privacy Considerations</span></a></li>
+                    <li><a href="#accessibility-considerations"><span class="secno">7.4</span> <span class="content">Accessibility Considerations</span></a></li>
+                    <li><a href="#internationalization-considerations"><span class="secno">7.5</span> <span class="content">Internationalization Considerations</span></a></li>
+                    <li><a href="#security-privacy-review"><span class="secno">7.6</span> <span class="content">Security and Privacy Review</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -286,8 +286,8 @@ left:4.5em;
                     <li><a href="#informative-references"><span class="secno"></span> <span class="content">Informative References</span></a></li>
                   </ol>
                 </li>
-              </div>
-            </ol>
+              </ol>
+            </div>
           </nav>
 
           <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction">
@@ -308,15 +308,15 @@ left:4.5em;
               <section id="definitions" inlist="" rel="schema:hasPart" resource="#definitions">
                 <h3 property="schema:name">Definitions</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="data-pod">data pod</dfn> is a place for storing documents, with mechanisms for controlling who can access what.</p>
+                  <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" id="data-pod">data pod</dfn> is a place for storing documents, with mechanisms for controlling who can access what.</p>
 
-                  <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="solid-app">Solid app</dfn> is an application that reads or writes data from one or more <a data-link-type="dfn" href="#data-pod" id="ref-for-data-pod">data pods</a>.</p>
+                  <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" id="solid-app">Solid app</dfn> is an application that reads or writes data from one or more <a data-link-type="dfn" href="#data-pod" id="ref-for-data-pod">data pods</a>.</p>
 
-                  <p>A <dfn data-dfn-type="dfn" data-export id="read-operation">read operation<a class="self-link" href="#read-operation"></a></dfn> entails that information about a resource’s existence or its description can be known. <a href="https://github.com/solid/specification/issues/149#issue-568433265">[Source</a>]</p>
+                  <p>A <dfn data-dfn-type="dfn" id="read-operation">read operation<a class="self-link" href="#read-operation"></a></dfn> entails that information about a resource’s existence or its description can be known. <a href="https://github.com/solid/specification/issues/149#issue-568433265">[Source</a>]</p>
 
-                  <p>A <dfn data-dfn-type="dfn" data-export id="write-operation">write operation<a class="self-link" href="#write-operation"></a></dfn> entails that information about resources can be created or removed. <a href="https://github.com/solid/specification/issues/126#issuecomment-569920473">[Source</a>]</p>
+                  <p>A <dfn data-dfn-type="dfn" id="write-operation">write operation<a class="self-link" href="#write-operation"></a></dfn> entails that information about resources can be created or removed. <a href="https://github.com/solid/specification/issues/126#issuecomment-569920473">[Source</a>]</p>
 
-                  <p>An <dfn data-dfn-type="dfn" data-export id="append-operation">append operation<a class="self-link" href="#append-operation"></a></dfn> entails that information can be added but not removed. <a href="https://github.com/solid/specification/issues/118#issuecomment-569648485">[Source</a>]</p>
+                  <p>An <dfn data-dfn-type="dfn" id="append-operation">append operation<a class="self-link" href="#append-operation"></a></dfn> entails that information can be added but not removed. <a href="https://github.com/solid/specification/issues/118#issuecomment-569648485">[Source</a>]</p>
                 </div>
               </section>
 
@@ -558,14 +558,12 @@ left:4.5em;
                       <p>The following table lists <a href="#auxiliary-resources-reserved">§ 2.5.3 Reserved Auxiliary Resource Types</a> and the associated link relation URIs that are used for discovery. Other auxiliary types and relations may also be used, and may be added to the reserved set in the future.</p>
 
                       <table align="left" class="data">
-                        <colgroup class="header">
-                        <colgroup span="2">
                         <thead>
                           <tr>
                             <th>Auxiliary Type</th>
                             <th>Link Relation</th>
                           </tr>
-                        </th>
+                        </thead>
                         <tbody>
                           <tr>
                             <td><a href="#auxiliary-resources-wac">§ 2.5.3.1 Web Access Control</a></td>
@@ -771,7 +769,7 @@ left:4.5em;
             <div datatype="rdf:HTML" property="schema:description">
               <p><a data-link-type="dfn" href="#solid-app" id="ref-for-solid-app">Solid apps</a> typically access data from multiple sources. However, Web browsers by default prevent apps that run on one origin from accessing data on other origins. This cross-origin protection is a security mechanism that ensures malicious websites cannot simply read your profile or banking details from other websites. However, this reasonable default poses a problem even for benevolent Solid apps, which might have good reasons to access data from different places. For instance, a Solid app at <code>https://app.example/</code> would be prevented from accessing data on <code>https://alice-data-pod.example/</code> or <code>https://bob-data-pod.example/</code>, even when Alice and Bob have given the user of the app their permission to see some of their data.</p>
 
-              <p>For cases where the other origins have their own access protection mechanism—<wbr><a href="#web-access-control">like within Solid</a>— the browser’s built-in cross-origin protection is actually an obstacle rather than a feature. After all, <a data-link-type="dfn" href="#data-pod" id="ref-for-data-pod②">data pods</a> already ensure through access control that certain documents can only be accessed by specific people or applications. Preventively blocking apps from different origins thus introduces an unnecessary barrier.</p>
+              <p>For cases where the other origins have their own access protection mechanism—<wbr><a href="#web-access-control">like within Solid</a></wbr>— the browser’s built-in cross-origin protection is actually an obstacle rather than a feature. After all, <a data-link-type="dfn" href="#data-pod" id="ref-for-data-pod②">data pods</a> already ensure through access control that certain documents can only be accessed by specific people or applications. Preventively blocking apps from different origins thus introduces an unnecessary barrier.</p>
 
               <p>Fortunately, Web servers can indicate to the browser that certain documents do not require cross-origin protection. This mechanism to selectively disable that protection is called <em>Cross-Origin Resource Sharing</em> or <em>CORS</em> <a data-link-type="biblio" href="#biblio-fetch">[FETCH]</a>. By responding to browser requests with a specific combination of HTTP headers, servers can indicate which actions are allowed for a given resource. For a Solid data pod, the goal is to allow <em>all</em> actions on the CORS level, such that the deeper <a href="#web-access-control">access control layer</a> can exert full control over the app’s allowed permissions. The next section describes how to achieve this through the right HTTP header configuration.</p>
 
@@ -846,7 +844,7 @@ left:4.5em;
 
                   <p>The syntax for the <code>WAC-Allow</code> header, using the ABNF syntax defined in Section 1.2 of <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>, is:</p>
 
-<pre class="def">wac-allow        = "WAC-Allow" ":" OWS #access-param OWS
+                  <pre class="def">wac-allow        = "WAC-Allow" ":" OWS #access-param OWS
 access-param     = permission-group OWS "=" OWS access-modes
 permission-group = 1*ALPHA
 access-modes     = *1DQUOTE OWS *1(access-mode *(RWS access-mode)) OWS *1DQUOTE
@@ -857,10 +855,10 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                   <p>This specification defines the following <code>permission-group</code>s:</p>
 
                   <dl>
-                    <dt><code>user</code>
-                    <dd>Permissions granted to the agent requesting the resource.
-                    <dt><code>public</code>
-                    <dd>Permissions granted to the public.
+                    <dt><code>user</code></dt>
+                    <dd>Permissions granted to the agent requesting the resource.</dd>
+                    <dt><code>public</code></dt>
+                    <dd>Permissions granted to the public.</dd>
                   </dl>
 
                   <p><code>access-mode</code> corresponds to the modes of access as defined in the ACL ontology (<code>acl:Read</code>, <code>acl:Write</code>, <code>acl:Append</code>, <code>acl:Control</code>).</p>
@@ -1004,8 +1002,6 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
             </div>
           </section>
 
-  </main>
-
           <section class="appendix" id="references" inlist="" rel="schema:hasPart" resource="#references">
             <h2>References</h2>
             <div datatype="rdf:HTML" property="schema:description">
@@ -1079,27 +1075,32 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
             </div>
           </section>
         </div>
-  <aside class="dfn-panel" data-for="data-pod">
-   <b><a href="#data-pod">#data-pod</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-data-pod">1.1. Definitions</a>
-    <li><a href="#ref-for-data-pod①">2.1.1. Required Server-Side Implementation</a>
-    <li><a href="#ref-for-data-pod②">2.7. Cross-Origin Resource Sharing</a>
-    <li><a href="#ref-for-data-pod③">2.7.1. Required Server-Side Implementation</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="solid-app">
-   <b><a href="#solid-app">#solid-app</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-solid-app">2.7. Cross-Origin Resource Sharing</a>
-   </ul>
-  </aside>
+
+        <aside class="dfn-panel" data-for="data-pod">
+          <b><a href="#data-pod">#data-pod</a></b><b>Referenced in:</b>
+          <ul>
+            <li><a href="#ref-for-data-pod">1.1. Definitions</a></li>
+            <li><a href="#ref-for-data-pod①">2.1.1. Required Server-Side Implementation</a></li>
+            <li><a href="#ref-for-data-pod②">2.7. Cross-Origin Resource Sharing</a></li>
+            <li><a href="#ref-for-data-pod③">2.7.1. Required Server-Side Implementation</a></li>
+          </ul>
+        </aside>
+
+        <aside class="dfn-panel" data-for="solid-app">
+          <b><a href="#solid-app">#solid-app</a></b><b>Referenced in:</b>
+          <ul>
+            <li><a href="#ref-for-solid-app">2.7. Cross-Origin Resource Sharing</a></li>
+          </ul>
+        </aside>
       </article>
     </main>
-    <p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to top">↑</abbr></a></p>
-    <script src="//www.w3.org/scripts/TR/2016/fixup.js"></script>
-<script>/* script-dfn-panel */
 
+    <p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to top">↑</abbr></a></p>
+
+    <script src="//www.w3.org/scripts/TR/2016/fixup.js"></script>
+
+    <script type="text/javascript">// <![CDATA[
+/* script-dfn-panel */
 document.body.addEventListener("click", function(e) {
     var queryAll = function(sel) { return [].slice.call(document.querySelectorAll(sel)); }
     // Find the dfn element or panel, if any, that was clicked on.
@@ -1153,6 +1154,6 @@ document.body.addEventListener("click", function(e) {
     }
 
 });
-</script>
+    // ]]></script>
   </body>
 </html>
