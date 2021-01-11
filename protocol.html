@@ -221,9 +221,11 @@ left:4.5em;
                   </ol>
                 </li>
                 <li class="tocline">
+                  <a href="#http"><span class="secno">2.1</span> <span class="content">Hypertext Transfer Protocol</span></a>
+                </li>
+                <li class="tocline">
                   <a class="tocxref" href="#protocol"><span class="secno">2</span> <span class="content">Protocol</span></a>
                   <ol>
-                    <li><a href="#http"><span class="secno">2.1</span> <span class="content">Hypertext Transfer Protocol</span></a></li>
                     <li><a href="#uri"><span class="secno">2.2</span> <span class="content">Uniform Resource Identifier</span></a></li>
                     <li><a href="#linked-data"><span class="secno">2.3</span> <span class="content">Linked Data</span></a></li>
                     <li><a href="#auxiliary-resources"><span class="secno">2.5</span> <span class="content">Auxiliary Resources</span></a></li>
@@ -369,41 +371,41 @@ left:4.5em;
             </div>
           </section>
 
-   <h2 class="heading settled" data-level="2" id="protocol"><span class="secno">2. </span><span class="content">Protocol</span><a class="self-link" href="#protocol"></a></h2>
-   <h3 class="heading settled" data-level="2.1" id="http"><span class="secno">2.1. </span><span class="content">Hypertext Transfer Protocol</span><a class="self-link" href="#http"></a></h3>
-   <p>Solid clients and servers need to exchange data securely over the Internet,
-and they do so using the HTTP Web standard. This section describes in detail
-which parts of HTTP must be implemented by clients and servers.</p>
-   <h4 class="heading settled" data-level="2.1.1" id="http-server"><span class="secno">2.1.1. </span><span class="content">Required Server-Side Implementation</span><a class="self-link" href="#http-server"></a></h4>
-   <p>A <a data-link-type="dfn" href="#data-pod" id="ref-for-data-pod①">data pod</a> MUST be an HTTP/1.1 server <a data-link-type="biblio" href="#biblio-rfc7230">[RFC7230]</a><a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>. It SHOULD
-additionally be an HTTP/2 server <a data-link-type="biblio" href="#biblio-rfc7540">[RFC7540]</a> to improve performance,
-especially in cases where individual clients are expected to send high numbers
-of successive requests.</p>
-   <p>A data pod SHOULD use TLS connections through the <code>https</code> URI scheme in order
-to secure the communication between clients and servers. When both <code>http</code> and <code>https</code> are supported, all <code>http</code> URIs MUST redirect to their <code>https</code> counterparts using a response with a <code>301</code> status code and a <code>Location</code> header.</p>
-   <p>A data pod MUST implement the server part of <cite>HTTP/1.1 Conditional
-Requests</cite> <a data-link-type="biblio" href="#biblio-rfc7232">[RFC7232]</a> to ensure that updates requested by clients will
-only be applied if given preconditions are met. It SHOULD additionally
-implement the server part of <cite>HTTP/1.1 Caching</cite> <a data-link-type="biblio" href="#biblio-rfc7234">[RFC7234]</a> to
-improve performance. A data pod MAY implement the server part of <cite>HTTP/1.1 Range Requests</cite> <a data-link-type="biblio" href="#biblio-rfc7233">[RFC7233]</a> to further improve
-performance for large representations.</p>
-   <p>A data pod MUST implement the server part of <cite>HTTP/1.1
-Authentication</cite> <a data-link-type="biblio" href="#biblio-rfc7235">[RFC7235]</a>. When a client does not provide valid
-credentials when requesting a resource that requires it (see <a href="#webid">§ 3.1 WebID</a>), the
-data pod MUST send a response with a <code>401</code> status code (unless <code>404</code> is
-preferred for security reasons).</p>
-   <p>A Solid server MUST reject <code>PUT</code>, <code>POST</code> and <code>PATCH</code> requests without the <code>Content-Type</code> header with a status code of <code>400</code>. <a href="https://github.com/solid/specification/issues/70#issuecomment-547924171">[Source</a>]</p>
-   <h4 class="heading settled" data-level="2.1.2" id="http-client"><span class="secno">2.1.2. </span><span class="content">Required Client-Side Implementation</span><a class="self-link" href="#http-client"></a></h4>
-   <p>A Solid client MUST be an HTTP/1.1 client <a data-link-type="biblio" href="#biblio-rfc7230">[RFC7230]</a><a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>. It MAY
-additionally be an HTTP/2 client <a data-link-type="biblio" href="#biblio-rfc7540">[RFC7540]</a> to improve performance.</p>
-   <p>A Solid client MAY implement the client parts of <cite>HTTP/1.1 Conditional
-Requests</cite> <a data-link-type="biblio" href="#biblio-rfc7232">[RFC7232]</a> to only trigger updates when certain
-preconditions are met. It MAY implement <cite>HTTP/1.1 Caching</cite> <a data-link-type="biblio" href="#biblio-rfc7234">[RFC7234]</a> and <cite>HTTP/1.1 Range Requests</cite> <a data-link-type="biblio" href="#biblio-rfc7233">[RFC7233]</a> to improve
-performance.</p>
-   <p>A Solid client MUST implement the client part of <cite>HTTP/1.1
-Authentication</cite> <a data-link-type="biblio" href="#biblio-rfc7235">[RFC7235]</a> if it needs to access resources requiring
-authentication (see <a href="#webid">§ 3.1 WebID</a>). When it receives a response with a <code>403</code> or <code>404</code> status code, it MAY repeat the request with different credentials.</p>
-   <p>A Solid client MUST use the <code>Content-Type</code> HTTP header in <code>PUT</code>, <code>POST</code> and <code>PATCH</code> requests <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>. <a href="https://github.com/solid/specification/issues/70#issuecomment-547924171">[Source</a>]</p>
+          <section id="http" inlist="" rel="schema:hasPart" resource="#http">
+            <h2 property="schema:name">Hypertext Transfer Protocol</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p>Solid clients and servers need to exchange data securely over the Internet, and they do so using the HTTP Web standard. This section describes in detail which parts of HTTP must be implemented by clients and servers.</p>
+
+              <section id="http-server" inlist="" rel="schema:hasPart" resource="#http-server">
+                <h3 property="schema:name">Required Server-Side Implementation</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>A <a data-link-type="dfn" href="#data-pod" id="ref-for-data-pod①">data pod</a> MUST be an HTTP/1.1 server <a data-link-type="biblio" href="#biblio-rfc7230">[RFC7230]</a><a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>. It SHOULD additionally be an HTTP/2 server <a data-link-type="biblio" href="#biblio-rfc7540">[RFC7540]</a> to improve performance, especially in cases where individual clients are expected to send high numbers of successive requests.</p>
+
+                  <p>A data pod SHOULD use TLS connections through the <code>https</code> URI scheme in order to secure the communication between clients and servers. When both <code>http</code> and <code>https</code> are supported, all <code>http</code> URIs MUST redirect to their <code>https</code> counterparts using a response with a <code>301</code> status code and a <code>Location</code> header.</p>
+
+                  <p>A data pod MUST implement the server part of <cite>HTTP/1.1 Conditional Requests</cite> <a data-link-type="biblio" href="#biblio-rfc7232">[RFC7232]</a> to ensure that updates requested by clients will only be applied if given preconditions are met. It SHOULD additionally implement the server part of <cite>HTTP/1.1 Caching</cite> <a data-link-type="biblio" href="#biblio-rfc7234">[RFC7234]</a> to improve performance. A data pod MAY implement the server part of <cite>HTTP/1.1 Range Requests</cite> <a data-link-type="biblio" href="#biblio-rfc7233">[RFC7233]</a> to further improve performance for large representations.</p>
+
+                  <p>A data pod MUST implement the server part of <cite>HTTP/1.1 Authentication</cite> <a data-link-type="biblio" href="#biblio-rfc7235">[RFC7235]</a>. When a client does not provide valid credentials when requesting a resource that requires it (see <a href="#webid">§ 3.1 WebID</a>), the data pod MUST send a response with a <code>401</code> status code (unless <code>404</code> is preferred for security reasons).</p>
+
+                  <p>A Solid server MUST reject <code>PUT</code>, <code>POST</code> and <code>PATCH</code> requests without the <code>Content-Type</code> header with a status code of <code>400</code>. <a href="https://github.com/solid/specification/issues/70#issuecomment-547924171">[Source</a>]</p>
+                </div>
+              </section>
+
+              <section id="http-client" inlist="" rel="schema:hasPart" resource="#http-client">
+                <h3 property="schema:name">Required Client-Side Implementation</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>A Solid client MUST be an HTTP/1.1 client <a data-link-type="biblio" href="#biblio-rfc7230">[RFC7230]</a><a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>. It MAY additionally be an HTTP/2 client <a data-link-type="biblio" href="#biblio-rfc7540">[RFC7540]</a> to improve performance.</p>
+
+                  <p>A Solid client MAY implement the client parts of <cite>HTTP/1.1 Conditional Requests</cite> <a data-link-type="biblio" href="#biblio-rfc7232">[RFC7232]</a> to only trigger updates when certain preconditions are met. It MAY implement <cite>HTTP/1.1 Caching</cite> <a data-link-type="biblio" href="#biblio-rfc7234">[RFC7234]</a> and <cite>HTTP/1.1 Range Requests</cite> <a data-link-type="biblio" href="#biblio-rfc7233">[RFC7233]</a> to improve performance.</p>
+
+                  <p>A Solid client MUST implement the client part of <cite>HTTP/1.1 Authentication</cite> <a data-link-type="biblio" href="#biblio-rfc7235">[RFC7235]</a> if it needs to access resources requiring authentication (see <a href="#webid">§ 3.1 WebID</a>). When it receives a response with a <code>403</code> or <code>404</code> status code, it MAY repeat the request with different credentials.</p>
+
+                  <p>A Solid client MUST use the <code>Content-Type</code> HTTP header in <code>PUT</code>, <code>POST</code> and <code>PATCH</code> requests <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>. <a href="https://github.com/solid/specification/issues/70#issuecomment-547924171">[Source</a>]</p>
+                </div>
+              </section>
+            </div>
+          </section>
+
    <h3 class="heading settled" data-level="2.2" id="uri"><span class="secno">2.2. </span><span class="content">Uniform Resource Identifier</span><a class="self-link" href="#uri"></a></h3>
    <h4 class="heading settled" data-level="2.2.1" id="uri-slash-semantics"><span class="secno">2.2.1. </span><span class="content">URI Slash Semantics</span><a class="self-link" href="#uri-slash-semantics"></a></h4>
    <p>The slash character in the URI path indicates hierarchical relationship
