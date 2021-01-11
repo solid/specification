@@ -228,8 +228,10 @@ left:4.5em;
                     <li><a href="#linked-data"><span class="secno">2.3</span> <span class="content">Linked Data</span></a></li>
                     <li><a href="#reading-writing-resources"><span class="secno">2.4</span> <span class="content">Reading and Writing Resources</span></a></li>
                     <li><a href="#auxiliary-resources"><span class="secno">2.5</span> <span class="content">Auxiliary Resources</span></a></li>
-                    <li><a href="#notifications"><span class="secno">2.6</span> <span class="content">Notifications</span></a></li>
                   </ol>
+                </li>
+                <li class="tocline">
+                  <a href="#notifications"><span class="secno">x</span> <span class="content">Notifications</span></a>
                 </li>
                 <li class="tocline">
                   <a href="#cors"><span class="secno">x</span> <span class="content">Cross-Origin Resource Sharing</span></a>
@@ -703,13 +705,15 @@ include the shape language, shape url, and any additional parameters to be
 used in shape validation by the server implementation.</p>
    <p>A Solid server SHOULD sanity check Shape validation auxiliary resources upon
 creation or update to restrict invalid changes.</p>
-   <h3 class="heading settled" data-level="2.6" id="notifications"><span class="secno">2.6. </span><span class="content">Notifications</span><a class="self-link" href="#notifications"></a></h3>
-   <p>A Solid server MUST conform to the LDN specification by implementing the
-Receiver parts to receive notifications and make Inbox contents available <a data-link-type="biblio" href="#biblio-ldn">[LDN]</a>.</p>
-   <p>A Solid client MUST conform to the LDN specification by implementing the
-Sender or Consumer parts to discover the location of a resource’s Inbox, and
-to send notifications to an Inbox or to retrieve the contents of an Inbox <a data-link-type="biblio" href="#biblio-ldn">[LDN]</a>.</p>
 
+          <section id="notifications" inlist="" rel="schema:hasPart" resource="#notifications">
+            <h2 property="schema:name">Notifications</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p>A Solid server MUST conform to the LDN specification by implementing the Receiver parts to receive notifications and make Inbox contents available <a data-link-type="biblio" href="#biblio-ldn">[LDN]</a>.</p>
+
+              <p>A Solid client MUST conform to the LDN specification by implementing the Sender or Consumer parts to discover the location of a resource’s Inbox, and to send notifications to an Inbox or to retrieve the contents of an Inbox <a data-link-type="biblio" href="#biblio-ldn">[LDN]</a>.</p>
+            </div>
+          </section>
 
           <section id="cors" inlist="" rel="schema:hasPart" resource="#cors">
             <h2 property="schema:name">Cross-Origin Resource Sharing</h2>
