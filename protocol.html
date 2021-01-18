@@ -492,7 +492,6 @@ left:4.5em;
                   <ul>
                     <li>A binary JPEG image linked to an auxiliary resource that includes information describing that binary JPEG.</li>
                     <li>A container linked to an auxiliary resource that includes access control statements for that container and the resources that belong to it.</li>
-                    <li>A resource representation whose shape is constrained by a given ShEx schema that links to an auxiliary resource defining that schema.</li>
                     <li>A resource with an associated set of configurable parameters links to an auxiliary resource where those configurable parameters reside.</li>
                   </ul>
 
@@ -524,11 +523,10 @@ left:4.5em;
                           <p>To discover the auxiliary resources directly associated with a given Solid resource, a Solid client MUST issue a <code>HEAD</code> or <code>GET</code> request to the target resource URL and inspect the <code>Link</code> headers in the response.</p>
 
                           <div class="example" id="example-e34bcf09">
-                            <p> A client discovers the location of auxiliary resources for <a href="#auxiliary-resources-wac">§ 2.5.3.1 Web Access Control</a> and <a href="#auxiliary-resources-shape">§ 2.5.3.3 Shape Validation</a> through a HEAD request on <code>&lt;https://server.example/resource.ttl>:</code> </p>
+                            <p> A client discovers the location of auxiliary resources for <a href="#auxiliary-resources-wac">§ 2.5.3.1 Web Access Control</a> through a HEAD request on <code>&lt;https://server.example/resource.ttl>:</code> </p>
 
                             <pre>HEAD https://server.example/resource.ttl
-<code>Link: &lt;https://server.example/acls/24986>; rel="http://www.w3.org/ns/solid/terms#acl"</code>
-<code>Link: &lt;https://server.example/shapes/85432>; rel="http://www.w3.org/ns/solid/terms#shape"</code></pre>
+<code>Link: &lt;https://server.example/acls/24986>; rel="http://www.w3.org/ns/solid/terms#acl"</code></pre>
 
                             <p>A client discovers the <a href="#auxiliary-resources-wac">§ 2.5.3.1 Web Access Control</a> and <a href="#auxiliary-resources-description">§ 2.5.3.2 Resource Description</a> auxiliary resources through a <code>GET</code> request on <code>&lt;https://server.example/image.png></code>:</p>
 
@@ -580,10 +578,6 @@ left:4.5em;
                             <td><a href="#auxiliary-resources-description">§ 2.5.3.2 Resource Description</a></td>
                             <td><code>"describedby"</code> or <code>https://www.w3.org/ns/iana/link-relations/relation#describedby</code></td>
                           </tr>
-                          <tr>
-                            <td><a href="#auxiliary-resources-shape">§ 2.5.3.3 Shape Validation</a></td>
-                            <td><code>http://www.w3.org/ns/solid/terms#shape</code></td>
-                          </tr>
                         </tbody>
                       </table>
 
@@ -628,31 +622,6 @@ left:4.5em;
                           <p>To discover or read a Descriptive auxiliary resource, an <a href="https://github.com/solid/web-access-control-spec#describing-agents">acl:agent</a> MUST have <a href="https://github.com/solid/web-access-control-spec#aclcontrol">acl:Read</a> privileges per the <a href="https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm">ACL inheritance algorithm</a> on the resource directly associated with it.</p>
 
                           <p>An Descriptive auxiliary resource MUST be deleted by the Solid server when the resource it is directly associated with is also deleted and the Solid server is authoritative for both resources.</p>
-                        </div>
-                      </section>
-
-                      <section id="auxiliary-resources-shape" inlist="" rel="schema:hasPart" resource="#auxiliary-resources-shape">
-                        <h5 property="schema:name">Shape Validation</h5>
-                        <div datatype="rdf:HTML" property="schema:description">
-                          <p>Shape Validation auxiliary resources as defined by (link to shape validation) SHOULD be supported as an auxiliary type by Solid servers.</p>
-
-                          <p>The Shape validation auxiliary resource directly associated with a given resource is discovered by the client via the <code>rel=http://www.w3.org/ns/solid/terms#shape</code> <code>Link</code> relation in a <code>Link</code> header. Conversely, the resource being described by a Shape validation auxiliary resource is discovered by the client via the <code>rel=describes</code> <code>Link</code> relation in a <code>Link</code> header.</p>
-
-                          <p class="note" role="note"><span>Note:</span> Consider moving some of this information to the Shape Validation section</p>
-
-                          <p>A given Solid resource MUST NOT be directly associated with more than one Shape Validation auxiliary resource.</p>
-
-                          <p class="issue" id="issue-f92a4149"><a class="self-link" href="#issue-f92a4149"></a> Determine what the default permissions should be on shape validation auxiliary resources, or whether we should have them at all. <a href="https://github.com/solid/specification/issues/174">Related Issue</a></p>
-
-                          <p>To create or modify a Shape validation auxiliary resource, an <a href="https://github.com/solid/web-access-control-spec#describing-agents">acl:agent</a> MUST have <a href="https://github.com/solid/web-access-control-spec#aclcontrol">acl:Write</a> privileges per the <a href="https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm">ACL inheritance algorithm</a> on the resource directly associated with it.</p>
-
-                          <p>To discover or read a Shape validation auxiliary resource, an <a href="https://github.com/solid/web-access-control-spec#describing-agents">acl:agent</a> MUST have <a href="https://github.com/solid/web-access-control-spec#aclcontrol">acl:Read</a> privileges per the <a href="https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm">ACL inheritance algorithm</a> on the resource directly associated with it.</p>
-
-                          <p>A Shape validation auxiliary resource MUST be deleted by the Solid server when the resource it is directly associated with is also deleted and the Solid server is authoritative for both resources.</p>
-
-                          <p class="issue" id="issue-d5201460"><a class="self-link" href="#issue-d5201460"></a> Provide a shape to validate a shape validation auxiliary resource. May include the shape language, shape url, and any additional parameters to be used in shape validation by the server implementation.</p>
-
-                          <p>A Solid server SHOULD sanity check Shape validation auxiliary resources upon creation or update to restrict invalid changes.</p>
                         </div>
                       </section>
                     </div>
