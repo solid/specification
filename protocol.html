@@ -319,11 +319,11 @@ left:4.5em;
 
                   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" id="solid-app">Solid app</dfn> is an application that reads or writes data from one or more <a data-link-type="dfn" href="#data-pod" id="ref-for-data-pod">data pods</a>.</p>
 
-                  <p>A <dfn data-dfn-type="dfn" id="read-operation">read operation<a class="self-link" href="#read-operation"></a></dfn> entails that information about a resource’s existence or its description can be known. <a href="https://github.com/solid/specification/issues/149#issue-568433265">[Source</a>]</p>
+                  <p>A <dfn data-dfn-type="dfn" id="read-operation">read operation<a class="self-link" href="#read-operation"></a></dfn> entails that information about a resource’s existence or its description can be known. <a href="https://github.com/solid/specification/issues/149#issue-568433265">[Source]</a></p>
 
-                  <p>A <dfn data-dfn-type="dfn" id="write-operation">write operation<a class="self-link" href="#write-operation"></a></dfn> entails that information about resources can be created or removed. <a href="https://github.com/solid/specification/issues/126#issuecomment-569920473">[Source</a>]</p>
+                  <p>A <dfn data-dfn-type="dfn" id="write-operation">write operation<a class="self-link" href="#write-operation"></a></dfn> entails that information about resources can be created or removed. <a href="https://github.com/solid/specification/issues/126#issuecomment-569920473">[Source]</a></p>
 
-                  <p>An <dfn data-dfn-type="dfn" id="append-operation">append operation<a class="self-link" href="#append-operation"></a></dfn> entails that information can be added but not removed. <a href="https://github.com/solid/specification/issues/118#issuecomment-569648485">[Source</a>]</p>
+                  <p>An <dfn data-dfn-type="dfn" id="append-operation">append operation<a class="self-link" href="#append-operation"></a></dfn> entails that information can be added but not removed. <a href="https://github.com/solid/specification/issues/118#issuecomment-569648485">[Source]</a></p>
                 </div>
               </section>
 
@@ -397,7 +397,7 @@ left:4.5em;
 
                   <p>A data pod MUST implement the server part of <cite>HTTP/1.1 Authentication</cite> <a data-link-type="biblio" href="#biblio-rfc7235">[RFC7235]</a>. When a client does not provide valid credentials when requesting a resource that requires it (see <a href="#webid">§ 3.1 WebID</a>), the data pod MUST send a response with a <code>401</code> status code (unless <code>404</code> is preferred for security reasons).</p>
 
-                  <p>A Solid server MUST reject <code>PUT</code>, <code>POST</code> and <code>PATCH</code> requests without the <code>Content-Type</code> header with a status code of <code>400</code>. <a href="https://github.com/solid/specification/issues/70#issuecomment-547924171">[Source</a>]</p>
+                  <p>A Solid server MUST reject <code>PUT</code>, <code>POST</code> and <code>PATCH</code> requests without the <code>Content-Type</code> header with a status code of <code>400</code>. <a href="https://github.com/solid/specification/issues/70#issuecomment-547924171">[Source]</a></p>
                 </div>
               </section>
 
@@ -410,7 +410,7 @@ left:4.5em;
 
                   <p>A Solid client MUST implement the client part of <cite>HTTP/1.1 Authentication</cite> <a data-link-type="biblio" href="#biblio-rfc7235">[RFC7235]</a> if it needs to access resources requiring authentication (see <a href="#webid">§ 3.1 WebID</a>). When it receives a response with a <code>403</code> or <code>404</code> status code, it MAY repeat the request with different credentials.</p>
 
-                  <p>A Solid client MUST use the <code>Content-Type</code> HTTP header in <code>PUT</code>, <code>POST</code> and <code>PATCH</code> requests <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>. <a href="https://github.com/solid/specification/issues/70#issuecomment-547924171">[Source</a>]</p>
+                  <p>A Solid client MUST use the <code>Content-Type</code> HTTP header in <code>PUT</code>, <code>POST</code> and <code>PATCH</code> requests <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>. <a href="https://github.com/solid/specification/issues/70#issuecomment-547924171">[Source]</a></p>
                 </div>
               </section>
             </div>
@@ -422,9 +422,9 @@ left:4.5em;
               <section id="uri-slash-semantics" inlist="" rel="schema:hasPart" resource="#uri-slash-semantics">
                 <h3 property="schema:name">URI Slash Semantics</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>The slash character in the URI path indicates hierarchical relationship segments, and enables relative referencing <a data-link-type="biblio" href="#biblio-rfc3986">[RFC3986]</a>. The semantics of the slash character is shared by servers and clients. Paths ending with a slash denote a container resource. <a href="https://github.com/solid/specification/issues/35#issuecomment-547949014">[Source</a>]</p>
+                  <p>The slash character in the URI path indicates hierarchical relationship segments, and enables relative referencing <a data-link-type="biblio" href="#biblio-rfc3986">[RFC3986]</a>. The semantics of the slash character is shared by servers and clients. Paths ending with a slash denote a container resource. <a href="https://github.com/solid/specification/issues/35#issuecomment-547949014">[Source]</a></p>
 
-                  <p>If two URIs differ only in the trailing slash, and the server has associated a resource with one of them, then the other URI MUST NOT correspond to another resource. Instead, the server MAY respond to requests for the latter URI with a 301 redirect to the former. <a href="https://github.com/solid/specification/issues/107#issuecomment-567482817">[Source</a>]. Behaviour pertaining to authorization MUST proceed this optional redirect <a href="https://github.com/solid/specification/issues/107#issuecomment-567454889">[Source</a>]</p>
+                  <p>If two URIs differ only in the trailing slash, and the server has associated a resource with one of them, then the other URI MUST NOT correspond to another resource. Instead, the server MAY respond to requests for the latter URI with a 301 redirect to the former. <a href="https://github.com/solid/specification/issues/107#issuecomment-567482817">[Source]</a>. Behaviour pertaining to authorization MUST proceed this optional redirect <a href="https://github.com/solid/specification/issues/107#issuecomment-567454889">[Source]</a></p>
                 </div>
               </section>
 
@@ -433,7 +433,7 @@ left:4.5em;
                 <div datatype="rdf:HTML" property="schema:description">
                   <em>This section is non-normative.</em>
 
-                  <p>Servers should not re-use URIs, regardless of the mechanism by which resources are created. Certain specific cases exist where URIs may be reinstated when it identifies the same resource, but only when consistent with Web architecture’s <cite><a href="https://www.w3.org/TR/webarch/#URI-persistence">URI persistence</a></cite> <a data-link-type="biblio" href="#biblio-webarch">[WEBARCH]</a>. <a href="https://github.com/solid/specification/issues/46#issuecomment-589619372">[Source</a>]</p>
+                  <p>Servers should not re-use URIs, regardless of the mechanism by which resources are created. Certain specific cases exist where URIs may be reinstated when it identifies the same resource, but only when consistent with Web architecture’s <cite><a href="https://www.w3.org/TR/webarch/#URI-persistence">URI persistence</a></cite> <a data-link-type="biblio" href="#biblio-webarch">[WEBARCH]</a>. <a href="https://github.com/solid/specification/issues/46#issuecomment-589619372">[Source]</a></p>
 
                   <p class="note" role="note"><span>Note:</span> Servers that wish to disable URI re-use may want to use the <code>410</code> status code.</p>
                 </div>
@@ -459,13 +459,13 @@ left:4.5em;
 
                   <p>Clients can discover a storage by making an HTTP <code>GET</code> request on the target URL to retrieve an RDF representation <a data-link-type="biblio" href="#biblio-rdf11-concepts">[RDF11-CONCEPTS]</a>, whose encoded RDF graph contains a relation of type <code>http://www.w3.org/ns/pim/space#storage</code>. The object of the relation is the storage (<code>pim:Storage</code>).</p>
 
-                  <p><a href="https://github.com/solid/data-interoperability-panel/issues/10#issuecomment-598694029">[Source</a>] <a href="https://github.com/solid/specification/issues/153#issuecomment-624630022">[Source</a>]</p>
+                  <p><a href="https://github.com/solid/data-interoperability-panel/issues/10#issuecomment-598694029">[Source]</a> <a href="https://github.com/solid/specification/issues/153#issuecomment-624630022">[Source]</a></p>
 
                   <p>When using Web Access Control (<a href="#web-access-control">§ 5.1 Web Access Control</a>):</p>
 
                   <p>The root container (<code>pim:Storage</code>) MUST have an ACL auxiliary resource directly associated to it. The associated ACL document MUST include an authorization policy with <code>acl:Control</code> access privilege.</p>
 
-                  <p><a href="https://github.com/solid/specification/issues/197#issuecomment-699937520">[Source</a>]</p>
+                  <p><a href="https://github.com/solid/specification/issues/197#issuecomment-699937520">[Source]</a></p>
                 </div>
               </section>
 
@@ -474,9 +474,9 @@ left:4.5em;
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>Solid has the notion of containers to represent a collection of linked resources to help with resource discovery and lifecycle management.</p>
 
-                  <p>There is a 1-1 correspondence between containment triples and relative reference within the path name hierarchy. <a href="https://github.com/solid/specification/issues/98#issuecomment-547506617">[Source</a>]. It follows that all resources are discoverable from a container and that it is not possible to create orphan resources. <a href="https://github.com/solid/specification/issues/97#issuecomment-547459396">[Source</a>]</p>
+                  <p>There is a 1-1 correspondence between containment triples and relative reference within the path name hierarchy. <a href="https://github.com/solid/specification/issues/98#issuecomment-547506617">[Source]</a>. It follows that all resources are discoverable from a container and that it is not possible to create orphan resources. <a href="https://github.com/solid/specification/issues/97#issuecomment-547459396">[Source]</a></p>
 
-                  <p>The representation and behaviour of containers in Solid corresponds to LDP Basic Container and MUST be supported. <a href="https://github.com/solid/specification/issues/47#issuecomment-561675764">[Source</a>]</p>
+                  <p>The representation and behaviour of containers in Solid corresponds to LDP Basic Container and MUST be supported. <a href="https://github.com/solid/specification/issues/47#issuecomment-561675764">[Source]</a></p>
                 </div>
               </section>
 
@@ -634,7 +634,7 @@ left:4.5em;
           <section id="reading-writing-resources" inlist="" rel="schema:hasPart" resource="#reading-writing-resources">
             <h2 property="schema:name">Reading and Writing Resources</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p>Servers MUST respond with the <code>405</code> status code to requests using HTTP methods that are not supported by the target resource. <a href="https://github.com/solid/specification/issues/117">[Source</a>]</p>
+              <p>Servers MUST respond with the <code>405</code> status code to requests using HTTP methods that are not supported by the target resource. <a href="https://github.com/solid/specification/issues/117">[Source]</a></p>
 
               <section id="resource-type-heuristics" inlist="" rel="schema:hasPart" resource="#resource-type-heuristics">
                 <h3 property="schema:name">Resource Type Heuristics</h3>
@@ -645,14 +645,14 @@ left:4.5em;
 
                   <p>Clients who want the server to assign a URI of a resource, MUST use the <code>POST</code> request.</p>
 
-                  <p><a href="https://github.com/solid/specification/pull/160#issuecomment-636822687">[Source</a>].</p>
+                  <p><a href="https://github.com/solid/specification/pull/160#issuecomment-636822687">[Source]</a>.</p>
                 </div>
               </section>
 
               <section id="reading-resources" inlist="" rel="schema:hasPart" resource="#reading-resources">
                 <h3 property="schema:name">Reading Resources</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>Servers MUST support the HTTP <code>GET</code>, <code>HEAD</code> and <code>OPTIONS</code> methods <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a> for clients to read resources or to determine communication options. <a href="https://github.com/solid/specification/issues/39#issuecomment-538017667">[Source</a>]</p>
+                  <p>Servers MUST support the HTTP <code>GET</code>, <code>HEAD</code> and <code>OPTIONS</code> methods <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a> for clients to read resources or to determine communication options. <a href="https://github.com/solid/specification/issues/39#issuecomment-538017667">[Source]</a></p>
 
                   <p>When responding to authorized requests:</p>
 
@@ -662,59 +662,59 @@ left:4.5em;
 
                   <p>Servers MAY include the HTTP <code>Accept-Patch</code>, <code>Accept-Post</code> and <code>Accept-Put</code> headers in the response of a <code>OPTIONS *</code> request.</p>
 
-                  <p><a href="https://github.com/solid/specification/issues/85#issuecomment-575386251">[Source</a>] <a href="https://github.com/solid/specification/issues/43">[Source</a>]</p>
+                  <p><a href="https://github.com/solid/specification/issues/85#issuecomment-575386251">[Source]</a> <a href="https://github.com/solid/specification/issues/43">[Source]</a></p>
                 </div>
               </section>
 
               <section id="writing-resources" inlist="" rel="schema:hasPart" resource="#writing-resources">
                 <h3 property="schema:name">Writing Resources</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>When a server supports the HTTP <code>PUT</code>, <code>POST</code> and <code>PATCH</code> methods <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a> this specification imposes the following requirements: <a href="https://github.com/solid/specification/issues/39#issuecomment-538017667">[Source</a>]</p>
+                  <p>When a server supports the HTTP <code>PUT</code>, <code>POST</code> and <code>PATCH</code> methods <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a> this specification imposes the following requirements: <a href="https://github.com/solid/specification/issues/39#issuecomment-538017667">[Source]</a></p>
 
-                  <p>Servers MUST create intermediate containers and include corresponding containment triples in container representations derived from the URI path component of <code>PUT</code> and <code>PATCH</code> requests. <a href="https://github.com/solid/specification/issues/68#issuecomment-561690124">[Source</a>]</p>
+                  <p>Servers MUST create intermediate containers and include corresponding containment triples in container representations derived from the URI path component of <code>PUT</code> and <code>PATCH</code> requests. <a href="https://github.com/solid/specification/issues/68#issuecomment-561690124">[Source]</a></p>
 
-                  <p>Servers MUST allow creating new resources with a <code>POST</code> request to URI path ending <code>/</code>. Servers MUST create a resource with URI path ending <code>/{id}</code> in container <code>/</code>. Servers MUST create a container with URI path ending <code>/{id}/</code> in container <code>/</code> for requests including the HTTP <code>Link</code> header with <code>rel="type"</code> targeting a valid LDP container type. Servers MUST handle subsequent requests to the newly created container’s URI as if it is a valid LDP container type by including the HTTP response’s <code>Link</code> header. <a href="https://github.com/solid/specification/pull/160#issuecomment-636822687">[Source</a>]</p>
+                  <p>Servers MUST allow creating new resources with a <code>POST</code> request to URI path ending <code>/</code>. Servers MUST create a resource with URI path ending <code>/{id}</code> in container <code>/</code>. Servers MUST create a container with URI path ending <code>/{id}/</code> in container <code>/</code> for requests including the HTTP <code>Link</code> header with <code>rel="type"</code> targeting a valid LDP container type. Servers MUST handle subsequent requests to the newly created container’s URI as if it is a valid LDP container type by including the HTTP response’s <code>Link</code> header. <a href="https://github.com/solid/specification/pull/160#issuecomment-636822687">[Source]</a></p>
 
-                  <p>When a <code>POST</code> method request targets a resource without an existing representation, the server <code>MUST</code> respond with the <code>404</code> status code. <a href="https://github.com/solid/specification/issues/108#issuecomment-549448159">[Source</a>]</p>
+                  <p>When a <code>POST</code> method request targets a resource without an existing representation, the server <code>MUST</code> respond with the <code>404</code> status code. <a href="https://github.com/solid/specification/issues/108#issuecomment-549448159">[Source]</a></p>
 
-                  <p>When a <code>PUT</code> or <code>PATCH</code> method request targets an auxiliary resource, the server MUST create or update it. When a <code>POST</code> method request with the <code>Slug</code> header targets an auxiliary resource, the server MUST respond with the <code>403</code> status code and response body describing the error. <a href="https://github.com/solid/specification/issues/42#issuecomment-616688848">[Source</a>]</p>
+                  <p>When a <code>PUT</code> or <code>PATCH</code> method request targets an auxiliary resource, the server MUST create or update it. When a <code>POST</code> method request with the <code>Slug</code> header targets an auxiliary resource, the server MUST respond with the <code>403</code> status code and response body describing the error. <a href="https://github.com/solid/specification/issues/42#issuecomment-616688848">[Source]</a></p>
 
-                  <p>Servers MUST NOT allow HTTP <code>POST</code>, <code>PUT</code> and <code>PATCH</code> to update a container’s containment triples; if the server receives such a request, it MUST respond with a <code>409</code> status code. <a href="https://github.com/solid/specification/issues/40#issuecomment-573358652">[Source</a>]</p>
+                  <p>Servers MUST NOT allow HTTP <code>POST</code>, <code>PUT</code> and <code>PATCH</code> to update a container’s containment triples; if the server receives such a request, it MUST respond with a <code>409</code> status code. <a href="https://github.com/solid/specification/issues/40#issuecomment-573358652">[Source]</a></p>
 
-                  <p>Clients MAY use the HTTP <code>If-None-Match</code> header with a value of <code>"*"</code> to prevent an unsafe request method (eg. <code>PUT</code>, <code>PATCH</code>) from inadvertently modifying an existing representation of the target resource when the client believes that the resource does not have a current representation. <a href="https://github.com/solid/specification/issues/108#issuecomment-567272797">[Source</a>] <a href="https://github.com/solid/specification/issues/40#issuecomment-566995240">[Source</a>]</p>
+                  <p>Clients MAY use the HTTP <code>If-None-Match</code> header with a value of <code>"*"</code> to prevent an unsafe request method (eg. <code>PUT</code>, <code>PATCH</code>) from inadvertently modifying an existing representation of the target resource when the client believes that the resource does not have a current representation. <a href="https://github.com/solid/specification/issues/108#issuecomment-567272797">[Source]</a> <a href="https://github.com/solid/specification/issues/40#issuecomment-566995240">[Source]</a></p>
 
                   <p>Servers MAY use the HTTP <code>ETag</code> header with a strong validator for RDF bearing representations in order to encourage clients to opt-in to using the <code>If-Match</code> header in their requests.</p>
 
                   <p>When using Web Access Control (<a href="#web-access-control">§ 5.1 Web Access Control</a>):</p>
 
-                  <p>To create or update an ACL resource (see <a href="#auxiliary-resources-wac">§ 2.5.3.1 Web Access Control</a>), an <code>acl:agent</code> MUST have <code>acl:Control</code> privileges per the ACL inheritance algorithm on the resource directly associated with it. <a href="https://github.com/solid/specification/issues/42#issuecomment-616688848">[Source</a>]</p>
+                  <p>To create or update an ACL resource (see <a href="#auxiliary-resources-wac">§ 2.5.3.1 Web Access Control</a>), an <code>acl:agent</code> MUST have <code>acl:Control</code> privileges per the ACL inheritance algorithm on the resource directly associated with it. <a href="https://github.com/solid/specification/issues/42#issuecomment-616688848">[Source]</a></p>
                 </div>
               </section>
 
               <section id="deleting-resources" inlist="" rel="schema:hasPart" resource="#deleting-resources">
                 <h3 property="schema:name">Deleting Resources</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>When a server supports the HTTP <code>DELETE</code> method <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a> this specification imposes the following requirements: <a href="https://github.com/solid/specification/issues/39#issuecomment-538017667">[Source</a>]</p>
+                  <p>When a server supports the HTTP <code>DELETE</code> method <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a> this specification imposes the following requirements: <a href="https://github.com/solid/specification/issues/39#issuecomment-538017667">[Source]</a></p>
 
-                  <p>When a <code>DELETE</code> request targets storage’s root container or its associated ACL resource, the server MUST respond with the <code>405</code> status code. Server MUST exclude the <code>DELETE</code> method in the HTTP response header <code>Allow</code> in response to safe method requests <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>. <a href="https://github.com/solid/specification/issues/37#issuecomment-627281466">[Source</a>]</p>
+                  <p>When a <code>DELETE</code> request targets storage’s root container or its associated ACL resource, the server MUST respond with the <code>405</code> status code. Server MUST exclude the <code>DELETE</code> method in the HTTP response header <code>Allow</code> in response to safe method requests <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>. <a href="https://github.com/solid/specification/issues/37#issuecomment-627281466">[Source]</a></p>
 
-                  <p>When a contained resource is deleted, the server MUST also remove the corresponding containment triple, which has the effect of removing the deleted resource from the containing container. <a href="https://www.w3.org/TR/ldp#ldpc-del-contremovesconttriple">[Source</a>]</p>
+                  <p>When a contained resource is deleted, the server MUST also remove the corresponding containment triple, which has the effect of removing the deleted resource from the containing container. <a href="https://www.w3.org/TR/ldp#ldpc-del-contremovesconttriple">[Source]</a></p>
 
                   <p>When a contained resource is deleted, the server MUST also delete the associated resources (see the <a href="#auxiliary-resources">§ 2.5 Auxiliary Resources</a> section).</p>
 
-                  <p>When a <code>DELETE</code> request is made to a container, the server MUST delete the container if it contains no resources. If the container contains resources, the server MUST respond with the <code>409</code> status code and response body describing the error. <a href="https://github.com/solid/specification/pull/187/files/b7426e95a1613e08195a853a4d0a403b7030f494#r447130915">[Source</a>]</p>
+                  <p>When a <code>DELETE</code> request is made to a container, the server MUST delete the container if it contains no resources. If the container contains resources, the server MUST respond with the <code>409</code> status code and response body describing the error. <a href="https://github.com/solid/specification/pull/187/files/b7426e95a1613e08195a853a4d0a403b7030f494#r447130915">[Source]</a></p>
 
                   <p>When using Web Access Control (<a href="#web-access-control">§ 5.1 Web Access Control</a>):</p>
 
-                  <p>To delete a resource, an <code>acl:agent</code> MUST have <code>acl:Write</code> privilege per the ACL inheritance algorithm on the resource and the containing container. <a href="https://github.com/solid/specification/issues/197">[Source</a>]</p> <p>To delete an ACL resource (see <a href="#auxiliary-resources-wac">§ 2.5.3.1 Web Access Control</a>), an <code>acl:agent</code> MUST have <code>acl:Control</code> privileges per the ACL inheritance algorithm on the resource directly associated with it. <a href="https://github.com/solid/specification/issues/145">[Source</a>]</p>
+                  <p>To delete a resource, an <code>acl:agent</code> MUST have <code>acl:Write</code> privilege per the ACL inheritance algorithm on the resource and the containing container. <a href="https://github.com/solid/specification/issues/197">[Source]</a></p> <p>To delete an ACL resource (see <a href="#auxiliary-resources-wac">§ 2.5.3.1 Web Access Control</a>), an <code>acl:agent</code> MUST have <code>acl:Control</code> privileges per the ACL inheritance algorithm on the resource directly associated with it. <a href="https://github.com/solid/specification/issues/145">[Source]</a></p>
 
                   <p><em>This section is non-normative.</em></p>
 
                   <p>The server might perform additional actions, as described in the normative references like <a data-link-type="biblio" href="#biblio-rfc7231">[RFC7231]</a>. For example, the server could remove membership triples referring to the deleted resource, perform additional cleanup tasks for resources it knows are no longer referenced or have not been accessed for some period of time, and so on.</p>
 
-                  <p>Subsequent <code>GET</code> requests to the deleted resource usually result in a <code>404</code> or <code>410</code> status code, although HTTP allows others. <a href="https://github.com/solid/specification/issues/72">[Source</a>] <a href="https://github.com/solid/specification/issues/46">[Source</a>]</p>
+                  <p>Subsequent <code>GET</code> requests to the deleted resource usually result in a <code>404</code> or <code>410</code> status code, although HTTP allows others. <a href="https://github.com/solid/specification/issues/72">[Source]</a> <a href="https://github.com/solid/specification/issues/46">[Source]</a></p>
 
-                  <p>As deleted resources can be reinstated with the same URI, access controls on the reinstated resource can change per the ACL inheritance algorithm. <a href="https://github.com/solid/specification/issues/145#issuecomment-618918284">[Source</a>]</p>
+                  <p>As deleted resources can be reinstated with the same URI, access controls on the reinstated resource can change per the ACL inheritance algorithm. <a href="https://github.com/solid/specification/issues/145#issuecomment-618918284">[Source]</a></p>
 
                   <p class="issue" id="issue-5c4e642f"><a class="self-link" href="#issue-5c4e642f"></a> Pertaining to events and loss of control mitigation: https://github.com/solid/specification/issues/41#issuecomment-534679278</p>
                 </div>
@@ -723,9 +723,9 @@ left:4.5em;
               <section id="resource-representations" inlist="" rel="schema:hasPart" resource="#resource-representations">
                 <h3 property="schema:name">Resource Representations</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>When a server creates a resource on HTTP <code>PUT</code>, <code>POST</code> or <code>PATCH</code> requests such that the request’s representation data encodes an <em>RDF document</em> <a data-link-type="biblio" href="#biblio-rdf11-concepts">[RDF11-CONCEPTS]</a> (as determined by the <code>Content-Type</code> header), the server MUST accept <code>GET</code> requests on this resource when the value of the <code>Accept</code> header requests a representation in <code>text/turtle</code> or <code>application/ld+json</code> <a data-link-type="biblio" href="#biblio-turtle">[Turtle]</a> <a data-link-type="biblio" href="#biblio-json-ld11">[JSON-LD11]</a>. <a href="https://github.com/solid/specification/issues/45">[Source</a>] <a href="https://github.com/solid/specification/issues/69">[Source</a>] <a href="https://github.com/solid/specification/issues/109">[Source</a>] <a href="https://github.com/solid/specification/issues/195">[Source</a>]</p>
+                  <p>When a server creates a resource on HTTP <code>PUT</code>, <code>POST</code> or <code>PATCH</code> requests such that the request’s representation data encodes an <em>RDF document</em> <a data-link-type="biblio" href="#biblio-rdf11-concepts">[RDF11-CONCEPTS]</a> (as determined by the <code>Content-Type</code> header), the server MUST accept <code>GET</code> requests on this resource when the value of the <code>Accept</code> header requests a representation in <code>text/turtle</code> or <code>application/ld+json</code> <a data-link-type="biblio" href="#biblio-turtle">[Turtle]</a> <a data-link-type="biblio" href="#biblio-json-ld11">[JSON-LD11]</a>. <a href="https://github.com/solid/specification/issues/45">[Source]</a> <a href="https://github.com/solid/specification/issues/69">[Source]</a> <a href="https://github.com/solid/specification/issues/109">[Source]</a> <a href="https://github.com/solid/specification/issues/195">[Source]</a></p>
 
-                  <p>When a <code>PUT</code>, <code>POST</code>, <code>PATCH</code> or <code>DELETE</code> method request targets a representation URL that is different than the resource URL, the server MUST respond with a <code>307</code> or <code>308</code> status code and <code>Location</code> header specifying the preferred URI reference. <a href="https://github.com/solid/specification/issues/109">[Source</a>]</p>
+                  <p>When a <code>PUT</code>, <code>POST</code>, <code>PATCH</code> or <code>DELETE</code> method request targets a representation URL that is different than the resource URL, the server MUST respond with a <code>307</code> or <code>308</code> status code and <code>Location</code> header specifying the preferred URI reference. <a href="https://github.com/solid/specification/issues/109">[Source]</a></p>
                 </div>
               </section>
             </div>
@@ -812,9 +812,9 @@ left:4.5em;
 
                   <p>Servers MUST conform to the Web Access Control specification <a data-link-type="biblio" href="#biblio-wac">[WAC]</a>.</p>
 
-                  <p>A resource can advertise an ACL document that is directly associated by using the HTTP <code>Link</code> header with a <code>rel</code> value of <code>acl</code> <a href="#acl">§ 2.8.2.1 acl</a>. <a href="https://github.com/solid/specification/issues/31#issuecomment-548360553">[Source</a>]</p>
+                  <p>A resource can advertise an ACL document that is directly associated by using the HTTP <code>Link</code> header with a <code>rel</code> value of <code>acl</code> <a href="#acl">§ 2.8.2.1 acl</a>. <a href="https://github.com/solid/specification/issues/31#issuecomment-548360553">[Source]</a></p>
 
-                  <p>In the event that a server can’t apply an ACL to a resource, it MUST deny access. <a href="https://github.com/solid/specification/issues/130#issue-532777017">[Source</a>]</p>
+                  <p>In the event that a server can’t apply an ACL to a resource, it MUST deny access. <a href="https://github.com/solid/specification/issues/130#issue-532777017">[Source]</a></p>
 
                   <p>Servers exposing client’s access privileges on a resource URL MUST advertise by including the <code>WAC-Allow</code> HTTP header in the response of HTTP <code>HEAD</code> and <code>GET</code> requests.</p>
 
@@ -845,7 +845,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 
                   <p>The quoted and unquoted values for <code>access-modes</code> are equivalent. Servers are recommended to use quoted values in the response. Clients' are recommended to be able to parse both quoted and unquoted values.</p>
 
-                  <p><a href="https://github.com/solid/specification/issues/171">[Source</a>] <a href="https://github.com/solid/specification/issues/170">[Source</a>] <a href="https://github.com/solid/specification/issues/181">[Source</a>]</p>
+                  <p><a href="https://github.com/solid/specification/issues/171">[Source]</a> <a href="https://github.com/solid/specification/issues/170">[Source]</a> <a href="https://github.com/solid/specification/issues/181">[Source]</a></p>
                 </div>
               </section>
             </div>
@@ -913,7 +913,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                         <dd>Consumers of ACL resources should be aware of the source and chain of custody of the data.</dd>
                       </dl>
 
-                      <p><a href="https://github.com/solid/specification/issues/54">[Source</a>] <a href="https://github.com/solid/web-access-control-spec/issues/21">[Source</a>]</p>
+                      <p><a href="https://github.com/solid/specification/issues/54">[Source]</a> <a href="https://github.com/solid/web-access-control-spec/issues/21">[Source]</a></p>
 
                       <p class="issue" id="issue-e549d761"><a class="self-link" href="#issue-e549d761"></a> Shape of ACL: https://github.com/solid/specification/issues/169</p>
                     </div>
