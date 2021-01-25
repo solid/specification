@@ -154,7 +154,7 @@ left:4.5em;
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">The Solid Protocol</h1>
-        <h2>Editor’s Draft, 2021-01-11</h2>
+        <h2>Editor’s Draft, 2021-01-25</h2>
 
         <div id="authors">
           <dl id="author-name">
@@ -483,147 +483,89 @@ left:4.5em;
               <section id="auxiliary-resources" inlist="" rel="schema:hasPart" resource="#auxiliary-resources">
                 <h3 property="schema:name">Auxiliary Resources</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>An auxiliary resource may provide supplementary information about a given Solid resource, or affect how that resource and others associated with it are processed, served, or interpreted. Different auxiliary resource types provide different capabilities. This section introduces a mechanism for linking auxiliary resources with regular Solid resources.</p>
+                  <p>Solid has the notion of <em>auxiliary resources</em> to provide supplementary information such as descriptive metadata, authorization policies, data shape constraints, digital rights or provenance record about a given resource (hereafter referred as the <em>subject resource</em>), and affects how resources and others associated with it are processed, served or interpreted.</p>
 
-                  <p>Auxiliary resources are needed to influence the configuration, processing, or interpretation of Solid resources without changing the composition of the resources themselves. To do so would be undesirable in many cases, and not possible in others. Auxiliary resources are not meant to replace the ability of a Solid resource to self-describe.</p>
+                  <p>Auxiliary resources are represented as <em>RDF document</em>s <a data-link-type="biblio" href="#biblio-rdf11-concepts">[RDF11-CONCEPTS]</a>.</p>
 
-                  <p>Examples of auxiliary resources in use include:</p>
+                  <p class="note" role="note"><span>Note:</span> Where applicable, to promote <a href="https://www.w3.org/2001/tag/doc/selfDescribingDocuments.html">self-describing resources</a>, implementations and authors are encouraged to use the subject resource instead of the associated auxiliary resource.</p>
+
+                  <p>Servers exposing auxiliary resources that are defined by this specification MUST have the same "origin" for both the resource and the associated auxiliary resource <a href="https://tools.ietf.org/html/rfc6454">[RFC6454]</a>.</p>
+
+                  <p>As per <a href="#deleting-resources">Deleting Resources</a>, the lifecycle of auxiliary resources defined by this specification depend on the lifecycle of the subject resource.</p>
+
+                  <p>This specification defines the following types of auxiliary resources:</p>
 
                   <ul>
-                    <li>A binary JPEG image linked to an auxiliary resource that includes information describing that binary JPEG.</li>
-                    <li>A container linked to an auxiliary resource that includes access control statements for that container and the resources that belong to it.</li>
-                    <li>A resource with an associated set of configurable parameters links to an auxiliary resource where those configurable parameters reside.</li>
+                    <li><a href="#auxiliary-resources-web-access-control">Web Access Control</a></li>
+                    <li><a href="#auxiliary-resources-description-resource">Resource Description</a></li>
                   </ul>
 
-                  <section id="auxiliary-resources-server" inlist="" rel="schema:hasPart" resource="#auxiliary-resources-server">
-                    <h4 property="schema:name">Required Server-Side Implementation</h4>
+                  <p>Clients can discover auxiliary resources associated with a subject resource by making an HTTP <code>HEAD</code> or <code>GET</code> request on the target URL, and checking the HTTP <code>Link</code> header with the <code>rel</code> parameter <a data-link-type="biblio" href="#biblio-rfc8288">[RFC8288]</a>.</p>
+
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Auxiliary Type</th>
+                        <th>Link Relation</th>
+                        <th>Definitions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><a href="#auxiliary-resources-web-access-control">Web Access Control</a></td>
+                        <td><code>acl</code></td>
+                        <td><a href="#link-relation-acl">[Solid-acl]</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="#auxiliary-resources-description-resource">Description Resource</a></td>
+                        <td><code>describedby</code></td>
+                        <td><a href="https://www.w3.org/TR/ldp/#link-relation-describedby">[LDP-describedby]</a></td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <td colspan="3">
+                          <div class="issue">
+                            <p>The possibility of using URIs as relation types interchangeably or as alternate to the tokens above are under consideration:</p>
+
+                            <ul>
+                              <li><code>http://www.w3.org/ns/auth/acl#accessControl</code></li>
+                              <li><code>https://www.w3.org/ns/iana/link-relations/relation#describedby</code></li>
+                              <li><code>https://www.w3.org/ns/iana/link-relations/relation#describes</code></li>
+                            </ul>
+
+                            <p><a href="https://github.com/solid/specification/issues/172">Issue</a></p>
+                          </div>
+                        </td>
+                      </tr>
+                    </tfoot>
+                  </table>
+
+                  <section id="auxiliary-resources-web-access-control" inlist="" rel="schema:hasPart" resource="#auxiliary-resources-web-access-control">
+                    <h4 property="schema:name">Web Access Control</h4>
                     <div datatype="rdf:HTML" property="schema:description">
-                      <p>For any defined auxiliary resource available for a given Solid resource, all representations of that resource MUST include an HTTP <code>Link</code> header pointing to the location of each auxiliary resource.</p>
+                      <p>An auxiliary resource of type <em>Web Access Control</em> provides access control description of a subject resource (<a href="#web-access-control">Web Access Control</a>).</p>
 
-                      <p>The <code>rel={relation-type}</code> <a data-link-type="biblio" href="#biblio-rfc8288">[RFC8288]</a> will define the relationship to the target URL in the HTTP <code>Link</code> header. URIs are encouraged to indicate Link relation types.</p>
+                      <p>Servers MUST NOT directly associate more than one ACL auxiliary resource to a subject resource.</p>
 
-                      <p>An auxiliary resource linked with a given Solid resource through an HTTP <code>Link</code> header is considered to be <em>directly associated</em> with that resource. It is up to the server to determine how that association affects processing based on the auxiliary resource type.</p>
+                      <p>To discover, read, create, or modify an ACL auxiliary resource, an <a href="https://github.com/solid/web-access-control-spec#describing-agents">acl:agent</a> MUST have <a href="https://github.com/solid/web-access-control-spec#aclcontrol">acl:Control</a> privileges per the <a href="https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm">ACL inheritance algorithm</a> on the resource directly associated with it.</p>
 
-                      <p>A given Solid resource MAY link to zero or more auxiliary resources. A given Solid resource MUST NOT link to auxiliary resources on a different server under a different authority.</p>
-
-                      <p class="issue" id="issue-f351b1a1"><a class="self-link" href="#issue-f351b1a1"></a> Is MUST NOT too strong? <a href="https://github.com/solid/specification/issues/176">Related Issue</a></p>
-
-                      <p>Access to different types of auxiliary resources require varying levels of authorization, which MUST be specified as part of the definition for a given auxiliary resource type.</p>
-
-                      <p>An auxiliary resource that resides on a Solid server MUST adhere to the same interaction model used by other regular Solid resources, except where specified in the definition of that auxiliary resource type.</p>
+                      <p>A Solid server SHOULD sanity check ACL auxiliary resources upon creation or update to restrict invalid changes, such as by performing shape validation against authorization statements therein.</p>
                     </div>
                   </section>
 
-                  <section id="auxiliary-resources-client" inlist="" rel="schema:hasPart" resource="#auxiliary-resources-client">
-                    <h4 property="schema:name">Required Client-Side Implementation</h4>
+                  <section id="auxiliary-resources-description-resource" inlist="" rel="schema:hasPart" resource="#auxiliary-resources-description-resource">
+                    <h4 property="schema:name">Description Resource</h4>
                     <div datatype="rdf:HTML" property="schema:description">
-                      <section id="auxiliary-resources-discovery" inlist="" rel="schema:hasPart" resource="#auxiliary-resources-discovery">
-                        <h5 property="schema:name">Discovery of Auxiliary Resources</h5>
-                        <div datatype="rdf:HTML" property="schema:description">
-                          <p>To discover the auxiliary resources directly associated with a given Solid resource, a Solid client MUST issue a <code>HEAD</code> or <code>GET</code> request to the target resource URL and inspect the <code>Link</code> headers in the response.</p>
+                      <p>An auxiliary resource of type <em>Description Resource</em> provides a description of a subject resource (<a href="https://www.w3.org/TR/ldp/#link-relation-describedby">[LDP-describedby]</a>).</p>
 
-                          <div class="example" id="example-e34bcf09">
-                            <p> A client discovers the location of auxiliary resources for <a href="#auxiliary-resources-wac">§ 2.5.3.1 Web Access Control</a> through a HEAD request on <code>&lt;https://server.example/resource.ttl>:</code> </p>
+                      <p>Servers MUST NOT directly associate more than one description resource to a subject resource.</p>
 
-                            <pre>HEAD https://server.example/resource.ttl
-<code>Link: &lt;https://server.example/acls/24986>; rel="http://www.w3.org/ns/solid/terms#acl"</code></pre>
+                      <p>To create or modify a description resource, an <a href="https://github.com/solid/web-access-control-spec#describing-agents">acl:agent</a> MUST have <a href="https://github.com/solid/web-access-control-spec#aclcontrol">acl:Write</a> privileges per the <a href="https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm">ACL inheritance algorithm</a> on the resource directly associated with it.</p>
 
-                            <p>A client discovers the <a href="#auxiliary-resources-wac">§ 2.5.3.1 Web Access Control</a> and <a href="#auxiliary-resources-description">§ 2.5.3.2 Resource Description</a> auxiliary resources through a <code>GET</code> request on <code>&lt;https://server.example/image.png></code>:</p>
+                      <p>To discover or read a description resource, an <a href="https://github.com/solid/web-access-control-spec#describing-agents">acl:agent</a> MUST have <a href="https://github.com/solid/web-access-control-spec#aclcontrol">acl:Read</a> privileges per the <a href="https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm">ACL inheritance algorithm</a> on the resource directly associated with it.</p>
 
-                            <pre>GET https://server.example/image.png
-<code>Link: &lt;https://server.example/acls/36789>; rel="http://www.w3.org/ns/solid/terms#acl"</code>
-<code>Link: &lt;https://server.example/desc/08744>; rel="https://www.w3.org/ns/iana/link-relations/relation#describedby"</code></pre>
-                          </div>
-
-                        </div>
-                      </section>
-
-                      <section id="auxiliary-resources-description" inlist="" rel="schema:hasPart" resource="#auxiliary-resources-description">
-                        <h5 property="schema:name">Discovery of Annotated Solid Resources</h5>
-                        <div datatype="rdf:HTML" property="schema:description">
-                          <p>Certain auxiliary resource types MAY require the auxiliary resource to link back to the Solid resource it is directly associated with, via HTTP <code>Link</code> headers. In these instances, the link relation <code>rel=describes</code> or <code>rel=https://www.w3.org/ns/iana/link-relations/relation#describes</code> MUST be used.</p>
-
-                          <p class="issue" id="issue-108fe0cc"><a class="self-link" href="#issue-108fe0cc"></a> Is MUST too strong, as opposed to encouraging via SHOULD instead? <a href="https://github.com/solid/data-interoperability-panel/issues/37">Related Issue</a></p>
-
-                          <div class="example" id="example-3aea8776">
-                            <p>A <a href="#auxiliary-resources-description">§ 2.5.3.2 Resource Description</a> auxiliary resource <code>&lt;https://server.example/desc/08744></code> is directly associated with and describes <code>&lt;https://server.example/image.png></code>. A client that performs a GET request on <code>&lt;https://server.example/desc/08744></code> would discover the following relation in the <code>Link</code> headers returned in the response. </p>
-
-                            <pre>GET https://server.example/desc/08744
-<code>Link: &lt;https://server.example/image.png>; rel="https://www.w3.org/ns/iana/link-relations/relation#describes"</code></pre>
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </section>
-
-                  <section id="auxiliary-resources-reserved" inlist="" rel="schema:hasPart" resource="#auxiliary-resources-reserved">
-                    <h4 property="schema:name">Reserved Auxiliary Resource Types</h4>
-                    <div datatype="rdf:HTML" property="schema:description">
-
-                      <p>The following table lists <a href="#auxiliary-resources-reserved">§ 2.5.3 Reserved Auxiliary Resource Types</a> and the associated link relation URIs that are used for discovery. Other auxiliary types and relations may also be used, and may be added to the reserved set in the future.</p>
-
-                      <table align="left" class="data">
-                        <thead>
-                          <tr>
-                            <th>Auxiliary Type</th>
-                            <th>Link Relation</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td><a href="#auxiliary-resources-wac">§ 2.5.3.1 Web Access Control</a></td>
-                            <td><code>"acl"</code> or <code>http://www.w3.org/ns/solid/terms#acl</code></td>
-                          </tr>
-                          <tr>
-                            <td><a href="#auxiliary-resources-description">§ 2.5.3.2 Resource Description</a></td>
-                            <td><code>"describedby"</code> or <code>https://www.w3.org/ns/iana/link-relations/relation#describedby</code></td>
-                          </tr>
-                        </tbody>
-                      </table>
-
-                      <p class="issue" id="issue-e6be0bd4"><a class="self-link" href="#issue-e6be0bd4"></a> Agree on specific link relation URIs to use for auxiliary types <a href="https://github.com/solid/specification/issues/172">Related Issue</a></p>
-
-                      <section id="auxiliary-resources-wac" inlist="" rel="schema:hasPart" resource="#auxiliary-resources-wac">
-                        <h5 property="schema:name">Web Access Control</h5>
-                        <div datatype="rdf:HTML" property="schema:description">
-                          <p>ACL resources as defined by <a href="#web-access-control">§ 5.1 Web Access Control</a> MUST be supported as an auxiliary type by Solid servers.</p>
-
-                          <p>The ACL auxiliary resource directly associated with a given resource is discovered by the client via the <code>rel="acl"</code> <code>Link</code> relation in a <code>Link</code> header.</p>
-
-                          <p class="note" role="note"><span>Note:</span> Consider moving some of this information to <a href="#web-access-control">§ 5.1 Web Access Control</a></p>
-
-                          <p>A given Solid resource MUST NOT be directly associated with more than one ACL auxiliary resource. A given ACL auxiliary resource MUST NOT be directly associated with more than one Solid resource.</p>
-
-                          <p>To discover, read, create, or modify an ACL auxiliary resource, an <a href="https://github.com/solid/web-access-control-spec#describing-agents">acl:agent</a> MUST have <a href="https://github.com/solid/web-access-control-spec#aclcontrol">acl:Control</a> privileges per the <a href="https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm">ACL inheritance algorithm</a> on the resource directly associated with it.</p>
-
-                          <p>An ACL auxiliary resource MUST be deleted by the Solid server when the resource it is directly associated with is also deleted and the Solid server is authoritative for both resources.</p>
-
-                          <p>A Solid server SHOULD sanity check ACL auxiliary resources upon creation or update to restrict invalid changes, such as by performing shape validation against authorization statements therein.</p>
-                        </div>
-                      </section>
-
-                      <section id="auxiliary-resources-description" inlist="" rel="schema:hasPart" resource="#auxiliary-resources-description">
-                        <h5 property="schema:name">Resource Description</h5>
-                        <div datatype="rdf:HTML" property="schema:description">
-                          <p class="note" role="note"><span>Note:</span> Consider where there are any common parameters that would be ubiquitous across resource descriptions that should be defined as part of the specification.</p>
-
-                          <p>Resource description is a general mechanism to provide descriptive metadata for a given resource. It MUST be supported as an auxiliary type by Solid servers.</p>
-
-                          <p>The Descriptive auxiliary resource directly associated with a given resource is discovered by the client via the <code>rel="describedby"</code> <code>Link</code> relation in a <code>Link</code> header. Conversely, the resource being described by a Descriptive auxiliary resource is discovered by the client via the <code>rel="describes"</code> <code>Link</code> relation in a <code>Link</code> header.</p>
-
-                          <p class="issue" id="issue-da8f0495"><a class="self-link" href="#issue-da8f0495"></a> Consider whether a given Solid resource should be allowed to have multiple resource description auxiliary resources. <a href="https://github.com/solid/specification/issues/173">Related Issue</a></p>
-
-                          <p>A given Solid resource MUST NOT be directly associated with more than one Descriptive auxiliary resource.</p>
-
-                          <p class="issue" id="issue-256a1565"><a class="self-link" href="#issue-256a1565"></a> Determine what the default permissions should be on resource description auxiliary resources, or whether we should have them at all. <a href="https://github.com/solid/specification/issues/174">Related Issue</a></p>
-
-                          <p>To create or modify a Descriptive auxiliary resource, a given <a href="https://github.com/solid/web-access-control-spec#describing-agents">acl:agent</a> MUST have <a href="https://github.com/solid/web-access-control-spec#aclcontrol">acl:Write</a> privileges per the <a href="https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm">ACL inheritance algorithm</a> on the resource directly associated with it.</p>
-
-                          <p>To discover or read a Descriptive auxiliary resource, an <a href="https://github.com/solid/web-access-control-spec#describing-agents">acl:agent</a> MUST have <a href="https://github.com/solid/web-access-control-spec#aclcontrol">acl:Read</a> privileges per the <a href="https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm">ACL inheritance algorithm</a> on the resource directly associated with it.</p>
-
-                          <p>An Descriptive auxiliary resource MUST be deleted by the Solid server when the resource it is directly associated with is also deleted and the Solid server is authoritative for both resources.</p>
-                        </div>
-                      </section>
+                      <p>Clients can discover resources that are described by description resources by making an HTTP <code>HEAD</code> or <code>GET</code> request on the target URL, and checking the HTTP <code>Link</code> header with a <code>rel</code> value of <code>describes</code> (inverse of the <code>describedby</code> relation) <a href="https://tools.ietf.org/html/rfc6892">[RFC6892]</a>.</p>
                     </div>
                   </section>
                 </div>
@@ -687,7 +629,7 @@ left:4.5em;
 
                   <p>When using Web Access Control (<a href="#web-access-control">§ 5.1 Web Access Control</a>):</p>
 
-                  <p>To create or update an ACL resource (see <a href="#auxiliary-resources-wac">§ 2.5.3.1 Web Access Control</a>), an <code>acl:agent</code> MUST have <code>acl:Control</code> privileges per the ACL inheritance algorithm on the resource directly associated with it. <a href="https://github.com/solid/specification/issues/42#issuecomment-616688848">[Source]</a></p>
+                  <p>To create or update an ACL resource (see <a href="#auxiliary-resources-web-access-control">§ 2.5.3.1 Web Access Control</a>), an <code>acl:agent</code> MUST have <code>acl:Control</code> privileges per the ACL inheritance algorithm on the resource directly associated with it. <a href="https://github.com/solid/specification/issues/42#issuecomment-616688848">[Source]</a></p>
                 </div>
               </section>
 
@@ -700,13 +642,13 @@ left:4.5em;
 
                   <p>When a contained resource is deleted, the server MUST also remove the corresponding containment triple, which has the effect of removing the deleted resource from the containing container. <a href="https://www.w3.org/TR/ldp#ldpc-del-contremovesconttriple">[Source]</a></p>
 
-                  <p>When a contained resource is deleted, the server MUST also delete the associated resources (see the <a href="#auxiliary-resources">§ 2.5 Auxiliary Resources</a> section).</p>
+                  <p>When a contained resource is deleted, the server MUST also delete the associated auxiliary resources (see the <a href="#auxiliary-resources">Auxiliary Resources</a> section).</p>
 
                   <p>When a <code>DELETE</code> request is made to a container, the server MUST delete the container if it contains no resources. If the container contains resources, the server MUST respond with the <code>409</code> status code and response body describing the error. <a href="https://github.com/solid/specification/pull/187/files/b7426e95a1613e08195a853a4d0a403b7030f494#r447130915">[Source]</a></p>
 
                   <p>When using Web Access Control (<a href="#web-access-control">§ 5.1 Web Access Control</a>):</p>
 
-                  <p>To delete a resource, an <code>acl:agent</code> MUST have <code>acl:Write</code> privilege per the ACL inheritance algorithm on the resource and the containing container. <a href="https://github.com/solid/specification/issues/197">[Source]</a></p> <p>To delete an ACL resource (see <a href="#auxiliary-resources-wac">§ 2.5.3.1 Web Access Control</a>), an <code>acl:agent</code> MUST have <code>acl:Control</code> privileges per the ACL inheritance algorithm on the resource directly associated with it. <a href="https://github.com/solid/specification/issues/145">[Source]</a></p>
+                  <p>To delete a resource, an <code>acl:agent</code> MUST have <code>acl:Write</code> privilege per the ACL inheritance algorithm on the resource and the containing container. <a href="https://github.com/solid/specification/issues/197">[Source]</a></p> <p>To delete an ACL resource (see <a href="#auxiliary-resources-web-access-control">§ 2.5.3.1 Web Access Control</a>), an <code>acl:agent</code> MUST have <code>acl:Control</code> privileges per the ACL inheritance algorithm on the resource directly associated with it. <a href="https://github.com/solid/specification/issues/145">[Source]</a></p>
 
                   <p><em>This section is non-normative.</em></p>
 
@@ -894,7 +836,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>The intent is that these link relations will be registered with IANA per <a data-link-type="biblio" href="#biblio-rfc8288">[RFC8288]</a>.</p>
 
-                  <section id="acl" inlist="" rel="schema:hasPart" resource="#acl">
+                  <section id="link-relation-acl" inlist="" rel="schema:hasPart" resource="#link-relation-acl">
                     <h4 property="schema:name">acl</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>The contents of this section were originally taken from <a href="https://www.w3.org/wiki/WebAccessControl">Web Access
