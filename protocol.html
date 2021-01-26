@@ -765,7 +765,7 @@ left:4.5em;
                   <pre class="def">wac-allow        = "WAC-Allow" ":" OWS #access-param OWS
 access-param     = permission-group OWS "=" OWS access-modes
 permission-group = 1*ALPHA
-access-modes     = *1DQUOTE OWS *1(access-mode *(RWS access-mode)) OWS *1DQUOTE
+access-modes     = DQUOTE OWS *1(access-mode *(RWS access-mode)) OWS DQUOTE
 access-mode      = "read" / "write" / "append" / "control"</pre>
 
                   <p>The <code>WAC-Allow</code> HTTP header’s field-value is a comma-separated list of <code>access-param</code>s. <code>access-param</code> is a whitespace-separated list of <code>access-modes</code> granted to a <code>permission-group</code>.</p>
@@ -785,9 +785,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 
                   <p>Clients' parsing algorithm for the <code>WAC-Allow</code> header should incorporate error handling. When the received message fails to match an allowed pattern, finds unrecognised access parameters or access modes, clients MUST ignore the received <code>WAC-Allow</code> header-field.</p>
 
-                  <p>The quoted and unquoted values for <code>access-modes</code> are equivalent. Servers are recommended to use quoted values in the response. Clients' are recommended to be able to parse both quoted and unquoted values.</p>
-
-                  <p><a href="https://github.com/solid/specification/issues/171">[Source]</a> <a href="https://github.com/solid/specification/issues/170">[Source]</a> <a href="https://github.com/solid/specification/issues/181">[Source]</a></p>
+                  <p><a href="https://github.com/solid/specification/issues/171">[Source]</a> <a href="https://github.com/solid/specification/issues/170">[Source]</a> <a href="https://github.com/solid/specification/issues/181">[Source]</a> <a href="https://gitter.im/solid/specification?at=60101295d8bdab47395e6775">[Source]</a></p>
                 </div>
               </section>
             </div>
