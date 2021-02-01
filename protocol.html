@@ -638,7 +638,7 @@ left:4.5em;
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>When a server supports the HTTP <code>DELETE</code> method [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>] this specification imposes the following requirements: [<a href="https://github.com/solid/specification/issues/39#issuecomment-538017667">Source</a>]</p>
 
-                  <p>When a <code>DELETE</code> request targets storage’s root container or its associated ACL resource, the server MUST respond with the <code>405</code> status code. Server MUST exclude the <code>DELETE</code> method in the HTTP response header <code>Allow</code> in response to safe method requests [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>]. [<a href="https://github.com/solid/specification/issues/37#issuecomment-627281466">Source</a>]</p>
+                  <p>When a <code>DELETE</code> request targets storage’s root container or its associated ACL resource, the server MUST respond with the <code>405</code> status code. Server MUST exclude the <code>DELETE</code> method in the HTTP response header <code>Allow</code> in response to requests [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>]. [<a href="https://github.com/solid/specification/issues/37#issuecomment-627281466">Source</a>]</p>
 
                   <p>When a contained resource is deleted, the server MUST also remove the corresponding containment triple, which has the effect of removing the deleted resource from the containing container. [<a href="https://www.w3.org/TR/ldp#ldpc-del-contremovesconttriple">Source</a>]</p>
 
