@@ -1,22 +1,22 @@
-# Solid specification repository
+# Solid specifications
 
-* Editor's Draft: https://solid.github.io/specification/
-* Latest Published: https://solid.github.io/specification/
-* Working Drafts:
-  * Currently in progress
-* Test Suite:
-  * Source: https://github.com/solid/test-suite
+This repository contains the source code of the work on [Solid Technical Reports](https://solidproject.org/TR/) (TR) of the [W3C Solid Community Group](https://www.w3.org/community/solid/) (CG) to meet the needs of the [Solid Project](https://solidproject.org/).
 
-This repository contains the source code of the [Solid specification](https://solid.github.io/specification/),
-which aims to be a clear, unambiguous, and implementable rewrite of the [Unofficial Draft](https://github.com/solid/solid-spec/).
+The TRs include specifications, use cases and requirements, best practices and guidelines, primers and notes about the Solid ecosystem. The CG's Work Items are linked from the TR homepage.
 
-For the time being, while the migration is in progress, please refer to the existing draft documents if you want to implement a pod server or a solid app.
+## Participation
 
-A fair number of spec improvements are currently in the making. If you want to contribute, please refer to a relevant [Solid panel](https://github.com/solid/culture/blob/master/panels.md).
+All substantive contributors to any Work Items must be members of the Solid CG. It’s easy to [join the CG](https://www.w3.org/community/solid/join) if you’d like to contribute.
 
-Please join the chat room for spec-related issues at https://gitter.im/solid/specification. Feel free to ask any question you may have about the Solid spec, or just say hi!
+Anyone can join the (Solid ecosystem chat](https://gitter.im/solid/specification).
 
-Background: https://lists.w3.org/Archives/Public/public-solid/2019May/0009.html . On Solid ecosystem and spec orthogonality: https://lists.w3.org/Archives/Public/public-solid/2019May/0015.html
+Solid Panels focus on specific problems, with an aim to propose technical reports for the Solid ecosystem:
 
-## Editing and building the specification
-The specification is built using [Bikeshed](https://tabatkins.github.io/bikeshed/).
+* https://github.com/solid/authentication-panel
+* https://github.com/solid/authorization-panel
+* https://github.com/solid/data-interoperability-panel
+* https://github.com/solid/test-suite-panel
+
+## Code of Conduct
+
+All work and communication within the Solid CG is covered by the [Solid Code of Conduct](https://github.com/solid/process/blob/master/code-of-conduct.md) as well as the [Positive Work Environment at W3C: Code of Ethics and Professional Conduct](https://www.w3.org/Consortium/cepc/).
