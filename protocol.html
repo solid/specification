@@ -896,7 +896,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 
                   <p>Data pods SHOULD use TLS connections to protect the contents of requests and responses from eavesdropping and modification by third parties. Unsecured TCP connections without TLS MAY be used in testing environments or when the data pod is behind a reverse proxy that terminates a secure connection.</p>
 
-                  <p>When a server responds to an authorized HTTP <code>GET</code> request, the response MUST NOT expose unauthorized information about resources to the agent. For example, when a <code>GET</code> method request targets a container, the server MUST NOT include information beyond containment statements about the contained resources in the response. Last modification time, size, type, creator or label are examples of what is not allowed without proper authorization.</p>
+                  <p>Servers MUST NOT expose information more than the minimum amount necessary to power a feature. For example, when a <code>GET</code> method request targets a container, the server MUST NOT include information beyond containment statements about the contained resources in the response. Last modification time, size, type, creator or label are examples of what is not allowed without proper authorization.</p>
                 </div>
               </section>
 
