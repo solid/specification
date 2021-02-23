@@ -439,7 +439,7 @@ left:4.5em;
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>The slash character in the URI path indicates hierarchical relationship segments, and enables relative referencing [<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>]. The semantics of the slash character is shared by servers and clients. Paths ending with a slash denote a container resource. [<a href="https://github.com/solid/specification/issues/35#issuecomment-547949014">Source</a>]</p>
 
-                  <p>If two URIs differ only in the trailing slash, and the server has associated a resource with one of them, then the other URI MUST NOT correspond to another resource. Instead, the server MAY respond to requests for the latter URI with a 301 redirect to the former. [<a href="https://github.com/solid/specification/issues/107#issuecomment-567482817">Source</a>]. Behaviour pertaining to authorization MUST proceed this optional redirect [<a href="https://github.com/solid/specification/issues/107#issuecomment-567454889">Source</a>]</p>
+                  <p>If two URIs differ only in the trailing slash, and the server has associated a resource with one of them, then the other URI MUST NOT correspond to another resource. Instead, the server MAY respond to requests for the latter URI with a 301 redirect to the former. [<a href="https://github.com/solid/specification/issues/107#issuecomment-567482817">Source</a>]. Behaviour pertaining to authorization MUST precede this optional redirect [<a href="https://github.com/solid/specification/issues/107#issuecomment-567454889">Source</a>]</p>
                 </div>
               </section>
 
