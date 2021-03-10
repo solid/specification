@@ -565,6 +565,8 @@ left:4.5em;
 
                       <p>To read, create, or modify an ACL auxiliary resource, an <code>acl:agent</code> MUST have <code>acl:Control</code> privileges per the <a href="https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm">ACL inheritance algorithm</a> on the resource directly associated with it.</p>
 
+                      <p>Whether or not <code>acl:Control</code> is also required to *discover* an ACL auxiliary resource, is left up to the server implementer.</p>
+
                       <p>A Solid server SHOULD sanity check ACL auxiliary resources upon creation or update to restrict invalid changes, such as by performing shape validation against authorization statements therein.</p>
                     </div>
                   </section>
