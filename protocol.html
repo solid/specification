@@ -572,7 +572,7 @@ left:4.5em;
 
                       <p>Servers MUST NOT directly associate more than one description resource to a subject resource.</p>
 
-                      <p>When a HTTP request targets a description resource, the server MUST apply the authorization policy that is used for the subject resource that the description resource is associated with.</p>
+                      <p>When an HTTP request targets a description resource, the server MUST apply the authorization policy that is used for the subject resource with which the description resource is associated.</p>
 
                       <p>Clients can discover resources that are described by description resources by making an HTTP <code>HEAD</code> or <code>GET</code> request on the target URL, and checking the HTTP <code>Link</code> header with a <code>rel</code> value of <code>describes</code> (inverse of the <code>describedby</code> relation) [<cite><a class="bibref" href="#bib-rfc6892">RFC6892</a></cite>].</p>
                     </div>
