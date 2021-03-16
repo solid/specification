@@ -562,10 +562,6 @@ left:4.5em;
                       <p>An auxiliary resource of type <em>Web Access Control</em> provides access control description of a subject resource (<a href="#web-access-control">Web Access Control</a>).</p>
 
                       <p>Servers MUST NOT directly associate more than one ACL auxiliary resource to a subject resource.</p>
-
-                      <p>To discover, read, create, or modify an ACL auxiliary resource, an <code>acl:agent</code> MUST have <code>acl:Control</code> privileges per the <a href="https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm">ACL inheritance algorithm</a> on the resource directly associated with it.</p>
-
-                      <p>A Solid server SHOULD sanity check ACL auxiliary resources upon creation or update to restrict invalid changes, such as by performing shape validation against authorization statements therein.</p>
                     </div>
                   </section>
 
@@ -576,9 +572,7 @@ left:4.5em;
 
                       <p>Servers MUST NOT directly associate more than one description resource to a subject resource.</p>
 
-                      <p>To create or modify a description resource, an <code>acl:agent</code> MUST have <code>acl:Write</code> privileges per the <a href="https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm">ACL inheritance algorithm</a> on the resource directly associated with it.</p>
-
-                      <p>To discover or read a description resource, an <code>acl:agent</code> MUST have <code>acl:Read</code> privileges per the <a href="https://github.com/solid/web-access-control-spec#acl-inheritance-algorithm">ACL inheritance algorithm</a> on the resource directly associated with it.</p>
+                      <p>When a HTTP request targets a description resource, the server MUST apply the authorization policy that is used for the subject resource that the description resource is associated with.</p>
 
                       <p>Clients can discover resources that are described by description resources by making an HTTP <code>HEAD</code> or <code>GET</code> request on the target URL, and checking the HTTP <code>Link</code> header with a <code>rel</code> value of <code>describes</code> (inverse of the <code>describedby</code> relation) [<cite><a class="bibref" href="#bib-rfc6892">RFC6892</a></cite>].</p>
                     </div>
