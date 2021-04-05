@@ -688,6 +688,29 @@ left:4.5em;
               <p>A Solid server MUST conform to the LDN specification by implementing the Receiver parts to receive notifications and make Inbox contents available [<cite><a class="bibref" href="#bib-ldn">LDN</a></cite>].</p>
 
               <p>A Solid client MUST conform to the LDN specification by implementing the Sender or Consumer parts to discover the location of a resource’s Inbox, and to send notifications to an Inbox or to retrieve the contents of an Inbox [<cite><a class="bibref" href="#bib-ldn">LDN</a></cite>].</p>
+
+              <section id="inbox-discovery-client-error" inlist="" rel="schema:hasPart" resource="#inbox-discovery-client-error">
+                <h3 property="schema:name">Inbox Discovery on Client Error</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>This section extends the LDN protocol to allow the discovery of the Inbox URL of a target resource on client errors (HTTP responses with <code>4xx</code> status codes) [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>][<cite><a class="bibref" href="#bib-ldn">LDN</a></cite>].</p>
+
+                  <p>Servers who want to advertise the Inbox URL in a HTTP response with a <code>4xx</code> status code, <code>MUST</code> do one of the following:</p>
+
+                  <ul>
+                    <li>include the <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#inbox</code>.</li>
+                    <li>include an RDF representation [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>], whose encoded RDF graph contains a relation of type <code>http://www.w3.org/ns/ldp#inbox</code>. The subject of that relation is target and the object is the Inbox.</li>
+                  </ul>
+
+                  <p>Senders and consumers do the following to discover the Inbox URL in a HTTP response with a <code>4xx</code> status code:</p>
+
+                  <ul>
+                    <li>use the <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#inbox</code>.</li>
+                    <li>parse an RDF representation [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>], whose encoded RDF graph contains a relation of type <code>http://www.w3.org/ns/ldp#inbox</code>. The subject of that relation is target and the object is the Inbox.</li>
+                  </ul>
+
+                  <p>These may be carried out in either order, but if the first fails to result in an Inbox the second MUST be tried.</p>
+                </div>
+              </section>
             </div>
           </section>
 
