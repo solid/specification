@@ -446,7 +446,7 @@ left:4.5em;
               <section id="uri-persistence" inlist="" rel="schema:hasPart" resource="#uri-persistence">
                 <h3 property="schema:name">URI Persistence</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <em>This section is non-normative.</em>
+                  <p><em>This section is non-normative.</em></p>
 
                   <p>Servers should not re-use URIs, regardless of the mechanism by which resources are created. Certain specific cases exist where URIs may be reinstated when it identifies the same resource, but only when consistent with Web architecture’s <cite><a href="https://www.w3.org/TR/webarch/#URI-persistence">URI persistence</a></cite> [<cite><a class="bibref" href="#bib-webarch">WEBARCH</a></cite>]. [<a href="https://github.com/solid/specification/issues/46#issuecomment-589619372" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
@@ -896,11 +896,11 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
             <div datatype="rdf:HTML" property="schema:description">
               <p>This section details security, privacy, accessibility and internationalization considerations.</p>
 
+              <p>Some of the normative references with this specification point to documents with a <em>Living Standard</em> or <em>Draft</em> status, meaning their contents can still change over time. It is advised to monitor these documents, as such changes might have implications.</p>
+
               <section id="security-considerations" inlist="" rel="schema:hasPart" resource="#security-considerations">
                 <h3 property="schema:name">Security Considerations</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>Some of the normative references with this specification point to documents with a <em>Living Standard</em> or <em>Draft</em> status, meaning their contents can still change over time. It is advised to monitor these documents, as such changes might have security implications.</p>
-
                   <p>A data pod MUST NOT assume that HTTP request headers sent by a client are valid, and MUST reject or sanitize invalid header values before processing them or incorporating them in messages sent to others. For example, values for <code>Host</code> and <code>Origin</code> MUST NOT be assumed to be free of possibly malicious sequences such as <code>/..</code> or others, and invalid <code>Origin</code> values MUST NOT be echoed into the <code>Access-Control-Allow-Origin</code> response header.</p>
 
                   <p>A data pod MUST NOT assume that the user agent is a regular Web browser, even when requests contain familiar values in headers such as <code>User-Agent</code> or <code>Origin</code>. Such an assumption could lead to incorrect conclusions about the security model of the application making the request, since the request might actually come from a non-browser actor unaffected by browser security constraints.</p>
