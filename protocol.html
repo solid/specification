@@ -709,6 +709,17 @@ left:4.5em;
                   </ul>
 
                   <p>These may be carried out in either order, but if the first fails to result in an Inbox the second MUST be tried.</p>
+
+                  <figure class="listing example" id="discovery-put-example-403" rel="schema:hasPart" resource="#discovery-turtle-example-webid">
+                    <p class="example-h">Discovery example: Client error</p>
+                    <pre about="#discovery-put-example-403" property="schema:description" typeof="fabio:Script"><code>PUT /article HTTP/1.1</code>
+<code>Host: example.org</code>
+<code>Content-Type: text/html;charset=utf-8</code>
+<code></code>
+<code>HTTP/1.1 403 Forbidden</code>
+<code>Link: &lt;http://example.org/inbox/&gt; rel="http://www.w3.org/ns/ldp#inbox"</code></pre>
+                    <figcaption>Discovering an Inbox in the response of a rejected request.</figcaption>
+                  </figure>
                 </div>
               </section>
             </div>
