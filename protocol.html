@@ -698,14 +698,14 @@ left:4.5em;
 
                   <ul>
                     <li>include the <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#inbox</code>.</li>
-                    <li>include an RDF representation [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>], whose encoded RDF graph contains a relation of type <code>http://www.w3.org/ns/ldp#inbox</code>. The subject of that relation is target and the object is the Inbox.</li>
+                    <li>return an RDF representation [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>], whose encoded RDF graph contains a relation of type <code>http://www.w3.org/ns/ldp#inbox</code>. The subject of that relation is the target resource and the object is the Inbox.</li>
                   </ul>
 
-                  <p>Senders and consumers do the following to discover the Inbox URL in a HTTP response with a <code>4xx</code> status code:</p>
+                  <p>Senders do the following to discover the Inbox URL in a HTTP response with a <code>4xx</code> status code:</p>
 
                   <ul>
                     <li>use the <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#inbox</code>.</li>
-                    <li>parse an RDF representation [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>], whose encoded RDF graph contains a relation of type <code>http://www.w3.org/ns/ldp#inbox</code>. The subject of that relation is target and the object is the Inbox.</li>
+                    <li>parse an RDF representation [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>], whose encoded RDF graph contains a relation of type <code>http://www.w3.org/ns/ldp#inbox</code>. The subject of that relation is the target resource and the object is the Inbox.</li>
                   </ul>
 
                   <p>These may be carried out in either order, but if the first fails to result in an Inbox the second MUST be tried.</p>
