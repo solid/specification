@@ -413,6 +413,8 @@ left:4.5em;
                   <p>A data pod MUST implement the server part of <cite>HTTP/1.1 Authentication</cite> [<cite><a class="bibref" href="#bib-rfc7235">RFC7235</a></cite>]. When a client does not provide valid credentials when requesting a resource that requires it (see <a href="#webid">WebID</a>), the data pod MUST send a response with a <code>401</code> status code (unless <code>404</code> is preferred for security reasons).</p>
 
                   <p>A Solid server MUST reject <code>PUT</code>, <code>POST</code> and <code>PATCH</code> requests without the <code>Content-Type</code> header with a status code of <code>400</code>. [<a href="https://github.com/solid/specification/issues/70#issuecomment-547924171" rel="cito:citesAsSourceDocument">Source</a>]</p>
+
+                  <p>When a server includes the <code>ETag</code> and/or <code>Last-Modified</code> headers, the server MUST include the <code>Cache-Control</code> header with the <code>no-cache</code> (alternative: <code>must-revalidate, max-age=0</code>) directive. In addition, for resources fetched with authentication, the server MUST include the <code>private</code> directive.</code>
                 </div>
               </section>
 
