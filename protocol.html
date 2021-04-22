@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>The Solid Protocol</title>
+    <title>Solid Protocol</title>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" media="all" rel="stylesheet" title="W3C-ED" />
 <style>
@@ -153,7 +153,7 @@ left:4.5em;
 
     <main>
       <article about="" typeof="schema:Article doap:Specification">
-        <h1 property="schema:name">The Solid Protocol</h1>
+        <h1 property="schema:name">Solid Protocol</h1>
         <h2>Editor’s Draft, 2021-04-07</h2>
 
         <dl id="document-identifier">
@@ -437,7 +437,7 @@ left:4.5em;
               <section id="uri-slash-semantics" inlist="" rel="schema:hasPart" resource="#uri-slash-semantics">
                 <h3 property="schema:name">URI Slash Semantics</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>The slash character in the URI path indicates hierarchical relationship segments, and enables relative referencing [<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>]. The semantics of the slash character is shared by servers and clients. Paths ending with a slash denote a container resource. [<a href="https://github.com/solid/specification/issues/35#issuecomment-547949014" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                  <p>The slash (<code>/</code>) character in the URI path indicates hierarchical relationship segments, and enables relative referencing [<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>]. The semantics of the slash character is shared by servers and clients. Paths ending with a slash denote a container resource. [<a href="https://github.com/solid/specification/issues/35#issuecomment-547949014" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
                   <p>If two URIs differ only in the trailing slash, and the server has associated a resource with one of them, then the other URI MUST NOT correspond to another resource. Instead, the server MAY respond to requests for the latter URI with a 301 redirect to the former. [<a href="https://github.com/solid/specification/issues/107#issuecomment-567482817" rel="cito:citesAsSourceDocument">Source</a>]. Behaviour pertaining to authorization MUST precede this optional redirect [<a href="https://github.com/solid/specification/issues/107#issuecomment-567454889" rel="cito:citesAsSourceDocument">Source</a>]</p>
                 </div>
