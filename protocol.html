@@ -592,9 +592,9 @@ left:4.5em;
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>When creating new resources, servers can determine an effective request URI’s type by examining the URI path ending (<a href="#uri-slash-semantics">URI Slash Semantics</a>).</p>
 
-                  <p>Clients who want to assign a URI to a resource, MUST use <code>PUT</code> and <code>PATCH</code> requests.</p>
+                  <p>If a client creates a resource through a <code>PUT</code> or <code>PATCH</code> request, the server MUST preserve the resource URI chosen by the client.</p>
 
-                  <p>Clients who want the server to assign a URI of a resource, MUST use the <code>POST</code> request. Servers MAY allow clients to suggest the URI of a resource created through POST, using the HTTP <code>Slug</code> header as defined in [<cite><a class="bibref" href="#bib-rfc5023">RFC5023</a></cite>].</p>
+                  <p>If a client creates a resource through a <code>POST</code> request, the server MUST assign a URI to that resource. Servers MAY allow clients to suggest the URI of a resource created through POST, using the HTTP <code>Slug</code> header as defined in [<cite><a class="bibref" href="#bib-rfc5023">RFC5023</a></cite>].</p>
 
                   <p>[<a href="https://github.com/solid/specification/pull/160#issuecomment-636822687" rel="cito:citesAsSourceDocument">Source</a>].</p>
                 </div>
