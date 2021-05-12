@@ -596,7 +596,9 @@ left:4.5em;
 
                   <p>When a successful <code>POST</code> request creates a resource, the server MUST assign a URI to that resource. Servers MAY allow clients to suggest the URI of a resource created through <code>POST</code>, using the HTTP <code>Slug</code> header as defined in [<cite><a class="bibref" href="#bib-rfc5023">RFC5023</a></cite>].</p>
 
-                  <p>[<a href="https://github.com/solid/specification/pull/160#issuecomment-636822687" rel="cito:citesAsSourceDocument">Source</a>].</p>
+                  <p class="note" role="note"><span>Note:</span> Clients can use <code>PUT</code> and <code>PATCH</code> requests to assign a URI to a resource. Clients can use <code>POST</code> requests to have the server assign a URI to a resource.</p>
+
+                  <p>[<a href="https://github.com/solid/specification/pull/160#issuecomment-636822687" rel="cito:citesAsSourceDocument">Source</a>][<a href="https://github.com/solid/specification/pull/263" rel="cito:citesAsSourceDocument">Source</a>].</p>
                 </div>
               </section>
 
