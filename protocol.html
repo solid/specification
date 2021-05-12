@@ -592,7 +592,7 @@ left:4.5em;
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>When creating new resources, servers can determine an effective request URI’s type by examining the URI path ending (<a href="#uri-slash-semantics">URI Slash Semantics</a>).</p>
 
-                  <p>If a client creates a resource through a <code>PUT</code> or <code>PATCH</code> request, the server MUST preserve the resource URI chosen by the client.</p>
+                  <p>When a successful <code>PUT</code> or <code>PATCH</code> request creates a resource, the server MUST use the effective request URI to assign the URI to that resource.</p>
 
                   <p>If a client creates a resource through a <code>POST</code> request, the server MUST assign a URI to that resource. Servers MAY allow clients to suggest the URI of a resource created through POST, using the HTTP <code>Slug</code> header as defined in [<cite><a class="bibref" href="#bib-rfc5023">RFC5023</a></cite>].</p>
 
