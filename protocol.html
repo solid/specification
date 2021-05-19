@@ -334,7 +334,7 @@ left:4.5em;
 
                   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" id="solid-app">Solid app</dfn> is an application that reads or writes data from one or more <a data-link-type="dfn" href="#data-pod" id="ref-for-data-pod">data pods</a>.</p>
 
-                  <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="owner">owner</dfn> is a person or a social entity identified by a URI that has implicit control of a data pod.</p>
+                  <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="owner">owner</dfn> is a person or a social entity that is considered to have the rights and responsibilities of a data storage. An owner is identified by a URI, and implicitly has control over all data in a storage. An owner is first set at storage provisioning time and can be changed.</p>
 
                   <p>A <dfn data-dfn-type="dfn" id="read-operation">read operation</dfn> entails that information about a resource’s existence or its description can be known. [<a href="https://github.com/solid/specification/issues/149#issue-568433265" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
@@ -480,7 +480,7 @@ left:4.5em;
 
                   <p>[<a href="https://github.com/solid/data-interoperability-panel/issues/10#issuecomment-598694029" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/153#issuecomment-624630022" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
-                  <p>Servers MUST keep track at least one <a data-link-type="dfn" href="#owner" id="ref-for-owner">owner</a> of a storage in an implementation defined way. The owner is first set at storage provisioning time and can be changed. The owner is allowed implicit control access on every resource in a storage.</p>
+                  <p>Servers MUST keep track of at least one <a data-link-type="dfn" href="#owner" id="ref-for-owner">owner</a> of a storage in an implementation defined way.</p>
 
                   <p>When a server wants to advertise the owner of a storage, the server MUST include the <code>Link</code> header with <code>rel="http://www.w3.org/ns/solid/terms#owner"</code> targeting the URI of the owner in the response of HTTP <code>HEAD</code> or <code>GET</code> requests targeting the root container.</p>
 
