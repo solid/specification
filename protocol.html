@@ -402,7 +402,7 @@ left:4.5em;
               <p>Solid clients and servers need to exchange data securely over the Internet, and they do so using the HTTP Web standard. This section describes in detail which parts of HTTP must be implemented by clients and servers.</p>
 
               <section id="http-server" inlist="" rel="schema:hasPart" resource="#http-server">
-                <h3 property="schema:name">Required Server-Side Implementation</h3>
+                <h3 property="schema:name">HTTP Server</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>A <a data-link-type="dfn" href="#data-pod" id="ref-for-data-pod①">data pod</a> MUST be an HTTP/1.1 server [<cite><a class="bibref" href="#bib-rfc7230">RFC7230</a></cite>][<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>]. It SHOULD additionally be an HTTP/2 server [<cite><a class="bibref" href="#bib-rfc7540">RFC7540</a></cite>] to improve performance, especially in cases where individual clients are expected to send high numbers of successive requests.</p>
 
@@ -417,7 +417,7 @@ left:4.5em;
               </section>
 
               <section id="http-client" inlist="" rel="schema:hasPart" resource="#http-client">
-                <h3 property="schema:name">Required Client-Side Implementation</h3>
+                <h3 property="schema:name">HTTP Client</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>A Solid client MUST be an HTTP/1.1 client [<cite><a class="bibref" href="#bib-rfc7230">RFC7230</a></cite>][<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>]. It MAY additionally be an HTTP/2 client [<cite><a class="bibref" href="#bib-rfc7540">RFC7540</a></cite>] to improve performance.</p>
 
@@ -722,7 +722,7 @@ left:4.5em;
               <p>Fortunately, Web servers can indicate to the browser that certain documents do not require cross-origin protection. This mechanism to selectively disable that protection is called <em>Cross-Origin Resource Sharing</em> or <em>CORS</em> [<cite><a class="bibref" href="#bib-fetch">FETCH</a></cite>]. By responding to browser requests with a specific combination of HTTP headers, servers can indicate which actions are allowed for a given resource. For a Solid data pod, the goal is to allow <em>all</em> actions on the CORS level, such that the deeper <a href="#web-access-control">access control layer</a> can exert full control over the app’s allowed permissions. The next section describes how to achieve this through the right HTTP header configuration.</p>
 
               <section id="cors-server" inlist="" rel="schema:hasPart" resource="#cors-server">
-                <h3 property="schema:name">Required Server-Side Implementation</h3>
+                <h3 property="schema:name">CORS Server</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>A <a data-link-type="dfn" href="#data-pod" id="ref-for-data-pod③">data pod</a> MUST implement the CORS protocol [<cite><a class="bibref" href="#bib-fetch">FETCH</a></cite>] such that, to the extent possible, the browser allows Solid apps to send any request and combination of request headers to the data pod, and the Solid app can read any response and response headers received from the data pod. If the data pod wishes to block access to a resource, this MUST NOT happen via CORS but MUST instead be communicated to the Solid app in the browser through HTTP status codes such as <code>401</code>, <code>403</code>, or <code>404</code> [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>].</p>
 
