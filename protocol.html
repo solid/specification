@@ -334,6 +334,8 @@ left:4.5em;
 
                   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" id="solid-app">Solid app</dfn> is an application that reads or writes data from one or more <a data-link-type="dfn" href="#data-pod" id="ref-for-data-pod">data pods</a>.</p>
 
+                  <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="owner">owner</dfn> is a person or a social entity that is considered to have the rights and responsibilities of a data storage. An owner is identified by a URI, and implicitly has control over all data in a storage. An owner is first set at storage provisioning time and can be changed.</p>
+
                   <p>A <dfn data-dfn-type="dfn" id="read-operation">read operation</dfn> entails that information about a resource’s existence or its description can be known. [<a href="https://github.com/solid/specification/issues/149#issue-568433265" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
                   <p>A <dfn data-dfn-type="dfn" id="write-operation">write operation</dfn> entails that information about resources can be created or removed. [<a href="https://github.com/solid/specification/issues/126#issuecomment-569920473" rel="cito:citesAsSourceDocument">Source</a>]</p>
@@ -434,6 +436,8 @@ left:4.5em;
           <section id="uri" inlist="" rel="schema:hasPart" resource="#uri">
             <h2 property="schema:name">Uniform Resource Identifier</h2>
             <div datatype="rdf:HTML" property="schema:description">
+              <p class="note" role="note"><span>Note</span>: This specification does not describe the relationship between a Solid data pod <q>owner</q> and Web architecture’s <cite><a href="https://www.w3.org/TR/webarch/#uri-ownership">URI ownership</a></cite> [<cite><a class="bibref" href="#bib-webarch">WEBARCH</a></cite>].</p>
+
               <section id="uri-slash-semantics" inlist="" rel="schema:hasPart" resource="#uri-slash-semantics">
                 <h3 property="schema:name">URI Slash Semantics</h3>
                 <div datatype="rdf:HTML" property="schema:description">
@@ -475,6 +479,14 @@ left:4.5em;
                   <p>Clients can discover a storage by making an HTTP <code>GET</code> request on the target URL to retrieve an RDF representation [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>], whose encoded RDF graph contains a relation of type <code>http://www.w3.org/ns/pim/space#storage</code>. The object of the relation is the storage (<code>pim:Storage</code>).</p>
 
                   <p>[<a href="https://github.com/solid/data-interoperability-panel/issues/10#issuecomment-598694029" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/153#issuecomment-624630022" rel="cito:citesAsSourceDocument">Source</a>]</p>
+
+                  <p>Servers MUST keep track of at least one <a data-link-type="dfn" href="#owner" id="ref-for-owner">owner</a> of a storage in an implementation defined way.</p>
+
+                  <p>When a server wants to advertise the owner of a storage, the server MUST include the <code>Link</code> header with <code>rel="http://www.w3.org/ns/solid/terms#owner"</code> targeting the URI of the owner in the response of HTTP <code>HEAD</code> or <code>GET</code> requests targeting the root container.</p>
+
+                  <p class="note" role="note"><span>Note</span>: When a server supports multiple storages, there must be complete trust between its owners.</p>
+
+                  <p>[<a href="https://github.com/solid/specification/issues/67" rel="cito:citesAsSourceDocument">Source</a>][<a href=" https://github.com/solid/specification/issues/132" rel="cito:citesAsSourceDocument">Source</a>][<a href="https://github.com/solid/specification/issues/153" rel="cito:citesAsSourceDocument">Source</a>][<a href="https://github.com/solid/specification/issues/197" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
                   <p>When using Web Access Control (<a href="#web-access-control">Web Access Control</a>):</p>
 
