@@ -1,0 +1,6 @@
+@prefix mem: <http://mementoweb.org/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<> a mem:TimeMap .
+<https://solidproject.org/TR/wac> mem:memento <https://solidproject.org/TR/2021/wac-20210711> .
+<https://solidproject.org/TR/2021/wac-20210711> mem:mementoDateTime "2021-07-11T00:00:00Z"^^xsd:dateTimeStamp .
