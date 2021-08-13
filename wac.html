@@ -765,7 +765,7 @@ content: "";
 
                       <p id="server-read-resource">When an operation requests to read a resource, the server MUST match an Authorization allowing the <code>acl:Read</code> access privilege on the resource.</p>
 
-                      <p id="server-create-operation">When an operation requests to create a resource as a member of a container resource, the server MUST match an Authorization allowing the <code>acl:Append</code> or <code>acl:Write</code> access privilege on the container for new members.</p>
+                      <p id="server-create-operation">When an operation requests to create a resource as a member of a container resource, the server MUST match an Authorization allowing the <code>acl:Append</code> or <code>acl:Write</code> access privilege on the container identified via <code>acl:default</code>.</p>
 
                       <p id="server-update-operation">When an operation requests to update a resource, the server MUST match an Authorization allowing the <code>acl:Append</code> or <code>acl:Write</code> access privilege on the resource.</p>
 
