@@ -466,23 +466,23 @@ left:4.5em;
               <section id="storage" inlist="" rel="schema:hasPart" resource="#storage">
                 <h3 property="schema:name">Storage</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>When a server supports a data pod, it MUST provide one or more storages (<code>pim:Storage</code>) – a space of URIs in which data can be accessed. A storage is the root container for all of its contained resources (see <a href="#resource-containment">Resource Containment</a>).</p>
+                  <p id="sr-resources-storage">When a server supports a data pod, it MUST provide one or more storages (<code>pim:Storage</code>) – a space of URIs in which data can be accessed. A storage is the root container for all of its contained resources (see <a href="#resource-containment">Resource Containment</a>).</p>
 
-                  <p>When a server supports multiple storages, the URIs MUST be allocated to non-overlapping space.</p>
+                  <p id="sr-resources-non-overlap">When a server supports multiple storages, the URIs MUST be allocated to non-overlapping space.</p>
 
-                  <p>Servers exposing the storage resource MUST advertise by including the HTTP <code>Link</code> header with <code>rel="type"</code> targeting <code>http://www.w3.org/ns/pim/space#Storage</code> when responding to storage’s request URI.</p>
+                  <p id="sr-resources-link-storage">Servers exposing the storage resource MUST advertise by including the HTTP <code>Link</code> header with <code>rel="type"</code> targeting <code>http://www.w3.org/ns/pim/space#Storage</code> when responding to storage’s request URI.</p>
 
                   <p>Clients can determine a resource is of type storage by making an HTTP <code>HEAD</code> or <code>GET</code> request on the target URL, and checking for the <code>Link</code> header with <code>rel="type"</code> targeting <code>http://www.w3.org/ns/pim/space#Storage</code>.</p>
 
                   <p>Clients can determine the storage of a resource by moving up the URI path hierarchy until the response includes a <code>Link</code> header with <code>rel="type"</code> targeting <code>http://www.w3.org/ns/pim/space#Storage</code>. Clients may check the root path of a URI for the storage claim at any time.</p>
 
-                  <p>Clients can discover a storage by making an HTTP <code>GET</code> request on the target URL to retrieve an RDF representation [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>], whose encoded RDF graph contains a relation of type <code>http://www.w3.org/ns/pim/space#storage</code>. The object of the relation is the storage (<code>pim:Storage</code>).</p>
+                  <p id="sr-resources-storage-is-rdf">Clients can discover a storage by making an HTTP <code>GET</code> request on the target URL to retrieve an RDF representation [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>], whose encoded RDF graph contains a relation of type <code>http://www.w3.org/ns/pim/space#storage</code>. The object of the relation is the storage (<code>pim:Storage</code>).</p>
 
                   <p>[<a href="https://github.com/solid/data-interoperability-panel/issues/10#issuecomment-598694029" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/153#issuecomment-624630022" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
                   <p>Servers MUST keep track of at least one <a data-link-type="dfn" href="#owner" id="ref-for-owner">owner</a> of a storage in an implementation defined way.</p>
 
-                  <p>When a server wants to advertise the owner of a storage, the server MUST include the <code>Link</code> header with <code>rel="http://www.w3.org/ns/solid/terms#owner"</code> targeting the URI of the owner in the response of HTTP <code>HEAD</code> or <code>GET</code> requests targeting the root container.</p>
+                  <p id="sr-resources-owner-advertise">When a server wants to advertise the owner of a storage, the server MUST include the <code>Link</code> header with <code>rel="http://www.w3.org/ns/solid/terms#owner"</code> targeting the URI of the owner in the response of HTTP <code>HEAD</code> or <code>GET</code> requests targeting the root container.</p>
 
                   <p class="note" role="note"><span>Note</span>: When a server supports multiple storages, there must be complete trust between its owners.</p>
 
@@ -495,9 +495,9 @@ left:4.5em;
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>Solid has the notion of containers to represent a collection of linked resources to help with resource discovery and lifecycle management.</p>
 
-                  <p>There is a 1-1 correspondence between containment triples and relative reference within the path name hierarchy. [<a href="https://github.com/solid/specification/issues/98#issuecomment-547506617" rel="cito:citesAsSourceDocument">Source</a>]. It follows that all resources are discoverable from a container and that it is not possible to create orphan resources. [<a href="https://github.com/solid/specification/issues/97#issuecomment-547459396" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                  <p id="sr-resources-no-orphans">There is a 1-1 correspondence between containment triples and relative reference within the path name hierarchy. [<a href="https://github.com/solid/specification/issues/98#issuecomment-547506617" rel="cito:citesAsSourceDocument">Source</a>]. It follows that all resources are discoverable from a container and that it is not possible to create orphan resources. [<a href="https://github.com/solid/specification/issues/97#issuecomment-547459396" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
-                  <p>The representation and behaviour of containers in Solid corresponds to LDP Basic Container and MUST be supported. [<a href="https://github.com/solid/specification/issues/47#issuecomment-561675764" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                  <p id="sr-resources-basic-container">The representation and behaviour of containers in Solid corresponds to LDP Basic Container and MUST be supported. [<a href="https://github.com/solid/specification/issues/47#issuecomment-561675764" rel="cito:citesAsSourceDocument">Source</a>]</p>
                 </div>
               </section>
 
@@ -588,16 +588,16 @@ left:4.5em;
           <section id="reading-writing-resources" inlist="" rel="schema:hasPart" resource="#reading-writing-resources">
             <h2 property="schema:name">Reading and Writing Resources</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p>Servers MUST respond with the <code>405</code> status code to requests using HTTP methods that are not supported by the target resource. [<a href="https://github.com/solid/specification/issues/117" rel="cito:citesAsSourceDocument">Source</a>]</p>
+              <p id="sr-rw-invalid-methods">Servers MUST respond with the <code>405</code> status code to requests using HTTP methods that are not supported by the target resource. [<a href="https://github.com/solid/specification/issues/117" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
               <section id="resource-type-heuristics" inlist="" rel="schema:hasPart" resource="#resource-type-heuristics">
                 <h3 property="schema:name">Resource Type Heuristics</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>When creating new resources, servers can determine an effective request URI’s type by examining the URI path ending (<a href="#uri-slash-semantics">URI Slash Semantics</a>).</p>
 
-                  <p>When a successful <code>PUT</code> or <code>PATCH</code> request creates a resource, the server MUST use the effective request URI to assign the URI to that resource.</p>
+                  <p id="sr-rw-put-patch-uri">When a successful <code>PUT</code> or <code>PATCH</code> request creates a resource, the server MUST use the effective request URI to assign the URI to that resource.</p>
 
-                  <p>When a successful <code>POST</code> request creates a resource, the server MUST assign a URI to that resource. Servers MAY allow clients to suggest the URI of a resource created through <code>POST</code>, using the HTTP <code>Slug</code> header as defined in [<cite><a class="bibref" href="#bib-rfc5023">RFC5023</a></cite>].</p>
+                  <p><span id="sr-rw-post-assign">When a successful <code>POST</code> request creates a resource, the server MUST assign a URI to that resource</span>. <span id="sr-rw-slug-suggest">Servers MAY allow clients to suggest the URI of a resource created through <code>POST</code>, using the HTTP <code>Slug</code> header as defined in [<cite><a class="bibref" href="#bib-rfc5023">RFC5023</a></cite>]</span>.</p>
 
                   <p class="note" role="note"><span>Note:</span> Clients can use <code>PUT</code> and <code>PATCH</code> requests to assign a URI to a resource. Clients can use <code>POST</code> requests to have the server assign a URI to a resource.</p>
 
@@ -608,15 +608,15 @@ left:4.5em;
               <section id="reading-resources" inlist="" rel="schema:hasPart" resource="#reading-resources">
                 <h3 property="schema:name">Reading Resources</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>Servers MUST support the HTTP <code>GET</code>, <code>HEAD</code> and <code>OPTIONS</code> methods [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>] for clients to read resources or to determine communication options. [<a href="https://github.com/solid/specification/issues/39#issuecomment-538017667" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                  <p id="sr-rw-basic-methods">Servers MUST support the HTTP <code>GET</code>, <code>HEAD</code> and <code>OPTIONS</code> methods [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>] for clients to read resources or to determine communication options. [<a href="https://github.com/solid/specification/issues/39#issuecomment-538017667" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
                   <p>When responding to authorized requests:</p>
 
-                  <p>Servers MUST indicate their support for HTTP Methods by responding to HTTP <code>GET</code> and <code>HEAD</code> requests for the target resource with the HTTP Method tokens in the HTTP response header <code>Allow</code>.</p>
+                  <p id="sr-rw-allow-methods">Servers MUST indicate their support for HTTP Methods by responding to HTTP <code>GET</code> and <code>HEAD</code> requests for the target resource with the HTTP Method tokens in the HTTP response header <code>Allow</code>.</p>
 
-                  <p>Servers MUST indicate supported media types in the HTTP <code>Accept-Patch</code> [<cite><a class="bibref" href="#bib-rfc5789">RFC5789</a></cite>], <code>Accept-Post</code> [<cite><a class="bibref" href="#bib-ldp">LDP</a></cite>] and <code>Accept-Put</code> [<cite><a href="#accept-put">The Accept-Put Response Header</a></cite>] response headers that correspond to acceptable HTTP methods listed in <code>Allow</code> header value in response to HTTP <code>GET</code> and <code>HEAD</code> requests.</p>
+                  <p id="sr-rw-accept-headers">Servers MUST indicate supported media types in the HTTP <code>Accept-Patch</code> [<cite><a class="bibref" href="#bib-rfc5789">RFC5789</a></cite>], <code>Accept-Post</code> [<cite><a class="bibref" href="#bib-ldp">LDP</a></cite>] and <code>Accept-Put</code> [<cite><a href="#accept-put">The Accept-Put Response Header</a></cite>] response headers that correspond to acceptable HTTP methods listed in <code>Allow</code> header value in response to HTTP <code>GET</code> and <code>HEAD</code> requests.</p>
 
-                  <p>Servers MAY include the HTTP <code>Accept-Patch</code>, <code>Accept-Post</code> and <code>Accept-Put</code> headers in the response of a <code>OPTIONS *</code> request.</p>
+                  <p id="sr-rw-accept-to-options-asteriks">Servers MAY include the HTTP <code>Accept-Patch</code>, <code>Accept-Post</code> and <code>Accept-Put</code> headers in the response of a <code>OPTIONS *</code> request.</p>
 
                   <p>[<a href="https://github.com/solid/specification/issues/85#issuecomment-575386251" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/43" rel="cito:citesAsSourceDocument">Source</a>]</p>
                 </div>
@@ -627,19 +627,19 @@ left:4.5em;
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>When a server supports the HTTP <code>PUT</code>, <code>POST</code> and <code>PATCH</code> methods [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>] this specification imposes the following requirements: [<a href="https://github.com/solid/specification/issues/39#issuecomment-538017667" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
-                  <p>Servers MUST create intermediate containers and include corresponding containment triples in container representations derived from the URI path component of <code>PUT</code> and <code>PATCH</code> requests. [<a href="https://github.com/solid/specification/issues/68#issuecomment-561690124" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                  <p id="sr-rw-intermediate-containers">Servers MUST create intermediate containers and include corresponding containment triples in container representations derived from the URI path component of <code>PUT</code> and <code>PATCH</code> requests. [<a href="https://github.com/solid/specification/issues/68#issuecomment-561690124" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
-                  <p>Servers MUST allow creating new resources with a <code>POST</code> request to URI path ending <code>/</code>. Servers MUST create a resource with URI path ending <code>/{id}</code> in container <code>/</code>. Servers MUST create a container with URI path ending <code>/{id}/</code> in container <code>/</code> for requests including the HTTP <code>Link</code> header with <code>rel="type"</code> targeting a valid LDP container type. Servers MUST handle subsequent requests to the newly created container’s URI as if it is a valid LDP container type by including the HTTP response’s <code>Link</code> header. [<a href="https://github.com/solid/specification/pull/160#issuecomment-636822687" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                  <p><span id="sr-rw-new-post">Servers MUST allow creating new resources with a <code>POST</code> request to URI path ending <code>/</code></span>. <span id="sr-rw-resource-name-resource">Servers MUST create a resource with URI path ending <code>/{id}</code> in container <code>/</code></span>. <span id="sr-resource-name-container">Servers MUST create a container with URI path ending <code>/{id}/</code> in container <code>/</code> for requests including the HTTP <code>Link</code> header with <code>rel="type"</code> targeting a valid LDP container type</span>. <span id="sr-rw-resource-return-container-link">Servers MUST handle subsequent requests to the newly created container’s URI as if it is a valid LDP container type by including the HTTP response’s <code>Link</code> header</span>. [<a href="https://github.com/solid/specification/pull/160#issuecomment-636822687" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
-                  <p>When a <code>POST</code> method request targets a resource without an existing representation, the server <code>MUST</code> respond with the <code>404</code> status code. [<a href="https://github.com/solid/specification/issues/108#issuecomment-549448159" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                  <p id="sr-rw-not-found">When a <code>POST</code> method request targets a resource without an existing representation, the server <code>MUST</code> respond with the <code>404</code> status code. [<a href="https://github.com/solid/specification/issues/108#issuecomment-549448159" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
-                  <p>When a <code>PUT</code> or <code>PATCH</code> method request targets an auxiliary resource, the server MUST create or update it. When a <code>POST</code> method request with the <code>Slug</code> header targets an auxiliary resource, the server MUST respond with the <code>403</code> status code and response body describing the error. [<a href="https://github.com/solid/specification/issues/42#issuecomment-616688848" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                  <p><span id="sr-rw-put-patch-aux">When a <code>PUT</code> or <code>PATCH</code> method request targets an auxiliary resource, the server MUST create or update it</span>. <span id="sr-rw-post-aux">When a <code>POST</code> method request with the <code>Slug</code> header targets an auxiliary resource, the server MUST respond with the <code>403</code> status code and response body describing the error</span>. [<a href="https://github.com/solid/specification/issues/42#issuecomment-616688848" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
-                  <p>Servers MUST NOT allow HTTP <code>POST</code>, <code>PUT</code> and <code>PATCH</code> to update a container’s containment triples; if the server receives such a request, it MUST respond with a <code>409</code> status code. [<a href="https://github.com/solid/specification/issues/40#issuecomment-573358652" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                  <p id="sr-rw-protect-containment">Servers MUST NOT allow HTTP <code>POST</code>, <code>PUT</code> and <code>PATCH</code> to update a container’s containment triples; if the server receives such a request, it MUST respond with a <code>409</code> status code. [<a href="https://github.com/solid/specification/issues/40#issuecomment-573358652" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
                   <p class="note" role="note"><span>Note:</span>Clients are encouraged to use the HTTP <code>If-None-Match</code> header with a value of <code>"*"</code> to prevent an unsafe request method (e.g., <code>PUT</code>, <code>PATCH</code>) from inadvertently modifying an existing representation of the target resource when the client believes that the resource does not have a current representation. [<a href="https://github.com/solid/specification/issues/108#issuecomment-567272797" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/40#issuecomment-566995240" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/pull/292" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
-                  <p>Servers MAY use the HTTP <code>ETag</code> header with a strong validator for RDF bearing representations in order to encourage clients to opt-in to using the <code>If-Match</code> header in their requests.</p>
+                  <p id="sr-rw-use-etag">Servers MAY use the HTTP <code>ETag</code> header with a strong validator for RDF bearing representations in order to encourage clients to opt-in to using the <code>If-Match</code> header in their requests.</p>
                 </div>
               </section>
 
@@ -648,13 +648,13 @@ left:4.5em;
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>When a server supports the HTTP <code>DELETE</code> method [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>] this specification imposes the following requirements: [<a href="https://github.com/solid/specification/issues/39#issuecomment-538017667" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
-                  <p>When a <code>DELETE</code> request targets storage’s root container or its associated ACL resource, the server MUST respond with the <code>405</code> status code. Server MUST exclude the <code>DELETE</code> method in the HTTP response header <code>Allow</code> in response to requests [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>]. [<a href="https://github.com/solid/specification/issues/37#issuecomment-627281466" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                  <p><span id="sr-rw-protect-root">When a <code>DELETE</code> request targets storage’s root container or its associated ACL resource, the server MUST respond with the <code>405</code> status code</span>. <span id="sr-rw-disallow-delete">Server MUST exclude the <code>DELETE</code> method in the HTTP response header <code>Allow</code> in response to requests [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>]</span>. [<a href="https://github.com/solid/specification/issues/37#issuecomment-627281466" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
-                  <p>When a contained resource is deleted, the server MUST also remove the corresponding containment triple, which has the effect of removing the deleted resource from the containing container. [<a href="https://www.w3.org/TR/ldp#ldpc-del-contremovesconttriple" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                  <p id="sr-rw-remove-containment">When a contained resource is deleted, the server MUST also remove the corresponding containment triple, which has the effect of removing the deleted resource from the containing container. [<a href="https://www.w3.org/TR/ldp#ldpc-del-contremovesconttriple" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
-                  <p>When a contained resource is deleted, the server MUST also delete the associated auxiliary resources (see the <a href="#auxiliary-resources">Auxiliary Resources</a> section).</p>
+                  <p id="sr-rw-remove-aux">When a contained resource is deleted, the server MUST also delete the associated auxiliary resources (see the <a href="#auxiliary-resources">Auxiliary Resources</a> section).</p>
 
-                  <p>When a <code>DELETE</code> request is made to a container, the server MUST delete the container if it contains no resources. If the container contains resources, the server MUST respond with the <code>409</code> status code and response body describing the error. [<a href="https://github.com/solid/specification/pull/187/files/b7426e95a1613e08195a853a4d0a403b7030f494#r447130915" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                  <p><span id="sr-rw-remove-empty">When a <code>DELETE</code> request is made to a container, the server MUST delete the container if it contains no resources</span>. <span id="sr-rw-protect-nonempty">If the container contains resources, the server MUST respond with the <code>409</code> status code and response body describing the error</span>. [<a href="https://github.com/solid/specification/pull/187/files/b7426e95a1613e08195a853a4d0a403b7030f494#r447130915" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
                   <p><em>This section is non-normative.</em></p>
 
@@ -669,9 +669,9 @@ left:4.5em;
               <section id="resource-representations" inlist="" rel="schema:hasPart" resource="#resource-representations">
                 <h3 property="schema:name">Resource Representations</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>When a server creates a resource on HTTP <code>PUT</code>, <code>POST</code> or <code>PATCH</code> requests such that the request’s representation data encodes an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>] (as determined by the <code>Content-Type</code> header), the server MUST accept <code>GET</code> requests on this resource when the value of the <code>Accept</code> header requests a representation in <code>text/turtle</code> or <code>application/ld+json</code> [<cite><a class="bibref" href="#bib-turtle">Turtle</a></cite>] [<cite><a class="bibref" href="#bib-json-ld11">JSON-LD11</a></cite>]. [<a href="https://github.com/solid/specification/issues/45" rel="cito:citesAsSourceDocument">Source</a>] <a href="https://github.com/solid/specification/issues/69" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/109" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/195" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                  <p id="sr-rw-support-jsonld-turtle">When a server creates a resource on HTTP <code>PUT</code>, <code>POST</code> or <code>PATCH</code> requests such that the request’s representation data encodes an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>] (as determined by the <code>Content-Type</code> header), the server MUST accept <code>GET</code> requests on this resource when the value of the <code>Accept</code> header requests a representation in <code>text/turtle</code> or <code>application/ld+json</code> [<cite><a class="bibref" href="#bib-turtle">Turtle</a></cite>] [<cite><a class="bibref" href="#bib-json-ld11">JSON-LD11</a></cite>]. [<a href="https://github.com/solid/specification/issues/45" rel="cito:citesAsSourceDocument">Source</a>] <a href="https://github.com/solid/specification/issues/69" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/109" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/195" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
-                  <p>When a <code>PUT</code>, <code>POST</code>, <code>PATCH</code> or <code>DELETE</code> method request targets a representation URL that is different than the resource URL, the server MUST respond with a <code>307</code> or <code>308</code> status code and <code>Location</code> header specifying the preferred URI reference. [<a href="https://github.com/solid/specification/issues/109" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                  <p id="sr-rw-support-redirects">When a <code>PUT</code>, <code>POST</code>, <code>PATCH</code> or <code>DELETE</code> method request targets a representation URL that is different than the resource URL, the server MUST respond with a <code>307</code> or <code>308</code> status code and <code>Location</code> header specifying the preferred URI reference. [<a href="https://github.com/solid/specification/issues/109" rel="cito:citesAsSourceDocument">Source</a>]</p>
                 </div>
               </section>
             </div>
