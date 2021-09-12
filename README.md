@@ -15,6 +15,7 @@ Solid Panels focus on specific problems, with an aim to propose technical report
 * https://github.com/solid/authentication-panel
 * https://github.com/solid/authorization-panel
 * https://github.com/solid/data-interoperability-panel
+* https://github.com/solid/notifications-panel
 * https://github.com/solid/test-suite-panel
 
 ## Code of Conduct
