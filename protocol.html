@@ -230,7 +230,7 @@ left:4.5em;
                 <li class="tocline">
                   <a class="tocxref" href="#introduction"><span class="secno">1</span> <span class="content">Introduction</span></a>
                   <ol>
-                    <li><a href="#definitions"><span class="secno">1.1</span> <span class="content">Definitions</span></a></li>
+                    <li><a href="#terminology"><span class="secno">1.1</span> <span class="content">Terminology</span></a></li>
                     <li><a href="#namespaces"><span class="secno">1.2</span> <span class="content">Namespaces</span></a></li>
                     <li><a href="#conformance"><span class="secno">1.3</span> <span class="content">Conformance</span></a></li>
                   </ol>
@@ -327,20 +327,34 @@ left:4.5em;
 
               <p>The specifications are accompanied with supplemental documents, such as <em>Primers</em> and <em>Best Practices and Guidelines</em> to help implementers to form a well-rounded understanding of the Solid ecosystem as well as ways to improve their implementations.</p>
 
-              <section id="definitions" inlist="" rel="schema:hasPart" resource="#definitions">
-                <h3 property="schema:name">Definitions</h3>
+              <section id="terminology" inlist="" rel="schema:hasPart" resource="#terminology" typeof="skos:ConceptScheme">
+                <h3 property="schema:name skos:prefLabel">Terminology</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>A <dfn id="data-pod">data pod</dfn> is a place for storing documents, with mechanisms for controlling who can access what.</p>
+                  <p><em>This section is non-normative.</em></p>
 
-                  <p>A <dfn id="solid-app">Solid app</dfn> is an application that reads or writes data from one or more <a href="#data-pod">data pods</a>.</p>
+                  <p property="skos:definition">The Solid Protocol specification defines the following terms. These terms are referenced throughout this specification.</p>
 
-                  <p>An <dfn id="owner">owner</dfn> is a person or a social entity that is considered to have the rights and responsibilities of a data storage. An owner is identified by a URI, and implicitly has control over all data in a storage. An owner is first set at storage provisioning time and can be changed.</p>
+                  <span rel="skos:hasTopConcept"><span resource="#data-pod"></span><span resource="#solid-app"></span><span resource="#owner"></span><span resource="#read-operation"></span><span resource="#write-operation"></span><span resource="#append-operation"></span></span>
 
-                  <p>A <dfn id="read-operation">read operation</dfn> entails that information about a resource’s existence or its description can be known. [<a href="https://github.com/solid/specification/issues/149#issue-568433265" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                  <dl>
+                    <dt about="#data-pod" property="skos:prefLabel" typeof="skos:Concept"><dfn id="data-pod">data pod</dfn></dt>
+                    <dd about="#data-pod" property="skos:definition">A data pod is a place for storing documents, with mechanisms for controlling who can access what.</dd>
 
-                  <p>A <dfn id="write-operation">write operation</dfn> entails that information about resources can be created or removed. [<a href="https://github.com/solid/specification/issues/126#issuecomment-569920473" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                    <dt about="#solid-app" property="skos:prefLabel" typeof="skos:Concept"><dfn id="solid-app">Solid app</dfn></dt>
+                    <dd about="#solid-app" property="skos:definition">A Solid app is an application that reads or writes data from one or more <a href="#data-pod">data pods</a>.</dd>
 
-                  <p>An <dfn id="append-operation">append operation</dfn> entails that information can be added but not removed. [<a href="https://github.com/solid/specification/issues/118#issuecomment-569648485" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                    <dt about="#owner" property="skos:prefLabel" typeof="skos:Concept"><dfn id="owner">owner</dfn></dt>
+                    <dd about="#owner" property="skos:definition">An owner is a person or a social entity that is considered to have the rights and responsibilities of a data storage. An owner is identified by a URI, and implicitly has control over all data in a storage. An owner is first set at storage provisioning time and can be changed.</dd>
+
+                    <dt about="#read-operation" property="skos:prefLabel" typeof="skos:Concept"><dfn id="read-operation">read operation</dfn></dt>
+                    <dd about="#read-operation" property="skos:definition">A read operation entails that information about a resource’s existence or its description can be known. [<a href="https://github.com/solid/specification/issues/149#issue-568433265" rel="cito:citesAsSourceDocument">Source</a>]</dd>
+
+                    <dt about="#write-operation" property="skos:prefLabel" typeof="skos:Concept"><dfn id="write-operation">write operation</dfn></dt>
+                    <dd about="#write-operation" property="skos:definition">A write operation entails that information about resources can be created or removed. [<a href="https://github.com/solid/specification/issues/126#issuecomment-569920473" rel="cito:citesAsSourceDocument">Source</a>]</dd>
+
+                    <dt about="#append-operation" property="skos:prefLabel" typeof="skos:Concept"><dfn id="append-operation">append operation</dfn></dt>
+                    <dd about="#append-operation" property="skos:definition">An append operation entails that information can be added but not removed. [<a href="https://github.com/solid/specification/issues/118#issuecomment-569648485" rel="cito:citesAsSourceDocument">Source</a>]</dd>
+                  </dl>
                 </div>
               </section>
 
