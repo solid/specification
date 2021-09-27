@@ -330,17 +330,17 @@ left:4.5em;
               <section id="definitions" inlist="" rel="schema:hasPart" resource="#definitions">
                 <h3 property="schema:name">Definitions</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" id="data-pod">data pod</dfn> is a place for storing documents, with mechanisms for controlling who can access what.</p>
+                  <p>A <dfn id="data-pod">data pod</dfn> is a place for storing documents, with mechanisms for controlling who can access what.</p>
 
-                  <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" id="solid-app">Solid app</dfn> is an application that reads or writes data from one or more <a data-link-type="dfn" href="#data-pod" id="ref-for-data-pod">data pods</a>.</p>
+                  <p>A <dfn id="solid-app">Solid app</dfn> is an application that reads or writes data from one or more <a href="#data-pod">data pods</a>.</p>
 
-                  <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="owner">owner</dfn> is a person or a social entity that is considered to have the rights and responsibilities of a data storage. An owner is identified by a URI, and implicitly has control over all data in a storage. An owner is first set at storage provisioning time and can be changed.</p>
+                  <p>An <dfn id="owner">owner</dfn> is a person or a social entity that is considered to have the rights and responsibilities of a data storage. An owner is identified by a URI, and implicitly has control over all data in a storage. An owner is first set at storage provisioning time and can be changed.</p>
 
-                  <p>A <dfn data-dfn-type="dfn" id="read-operation">read operation</dfn> entails that information about a resource’s existence or its description can be known. [<a href="https://github.com/solid/specification/issues/149#issue-568433265" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                  <p>A <dfn id="read-operation">read operation</dfn> entails that information about a resource’s existence or its description can be known. [<a href="https://github.com/solid/specification/issues/149#issue-568433265" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
-                  <p>A <dfn data-dfn-type="dfn" id="write-operation">write operation</dfn> entails that information about resources can be created or removed. [<a href="https://github.com/solid/specification/issues/126#issuecomment-569920473" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                  <p>A <dfn id="write-operation">write operation</dfn> entails that information about resources can be created or removed. [<a href="https://github.com/solid/specification/issues/126#issuecomment-569920473" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
-                  <p>An <dfn data-dfn-type="dfn" id="append-operation">append operation</dfn> entails that information can be added but not removed. [<a href="https://github.com/solid/specification/issues/118#issuecomment-569648485" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                  <p>An <dfn id="append-operation">append operation</dfn> entails that information can be added but not removed. [<a href="https://github.com/solid/specification/issues/118#issuecomment-569648485" rel="cito:citesAsSourceDocument">Source</a>]</p>
                 </div>
               </section>
 
@@ -406,7 +406,7 @@ left:4.5em;
               <section id="http-server" inlist="" rel="schema:hasPart" resource="#http-server">
                 <h3 property="schema:name">HTTP Server</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>A <span about="" id="server-http-11" rel="spec:requirement" resource="#server-http-11"><span property="spec:statement"><a data-link-type="dfn" href="#data-pod" id="ref-for-data-pod①">data pod</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> be an HTTP/1.1 <span rel="spec:requirementSubject" resource="spec:Server">server</span> [<cite><a class="bibref" href="#bib-rfc7230">RFC7230</a></cite>][<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>].</span></span> <span about="" id="server-http-2" rel="spec:requirement" resource="#server-http-2"><span property="spec:statement">It <span rel="spec:requirementLevel" resource="spec:SHOULD">SHOULD</span> additionally be an HTTP/2  <span rel="spec:requirementSubject" resource="spec:Server">server</span> [<cite><a class="bibref" href="#bib-rfc7540">RFC7540</a></cite>]</span></span> to improve performance, especially in cases where individual clients are expected to send high numbers of successive requests.</p>
+                  <p>A <span about="" id="server-http-11" rel="spec:requirement" resource="#server-http-11"><span property="spec:statement">data pod <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> be an HTTP/1.1 <span rel="spec:requirementSubject" resource="spec:Server">server</span> [<cite><a class="bibref" href="#bib-rfc7230">RFC7230</a></cite>][<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>].</span></span> <span about="" id="server-http-2" rel="spec:requirement" resource="#server-http-2"><span property="spec:statement">It <span rel="spec:requirementLevel" resource="spec:SHOULD">SHOULD</span> additionally be an HTTP/2  <span rel="spec:requirementSubject" resource="spec:Server">server</span> [<cite><a class="bibref" href="#bib-rfc7540">RFC7540</a></cite>]</span></span> to improve performance, especially in cases where individual clients are expected to send high numbers of successive requests.</p>
 
                   <p><span about="" id="server-tls-https" rel="spec:requirement" resource="#server-tls-https"><span property="spec:statement">A data pod <span rel="spec:requirementLevel" resource="spec:SHOULD">SHOULD</span> use TLS connections through the <code>https</code> URI scheme in order to secure the communication between clients and <span rel="spec:requirementSubject" resource="spec:Server">server</span>.</span></span> <span about="" id="server-tls-https-redirect" rel="spec:requirement" resource="#server-tls-https-redirect"><span property="spec:statement">When both <code>http</code> and <code>https</code> are supported, the <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> redirect all <code>http</code> URIs to their <code>https</code> counterparts using a response with a <code>301</code> status code and a <code>Location</code> header.</span></span></p>
 
@@ -480,7 +480,7 @@ left:4.5em;
 
                   <p>[<a href="https://github.com/solid/data-interoperability-panel/issues/10#issuecomment-598694029" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/153#issuecomment-624630022" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
-                  <p><span about="" id="server-storage-track-owner" rel="spec:requirement" resource="#server-storage-track-owner"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> keep track of at least one <a data-link-type="dfn" href="#owner" id="ref-for-owner">owner</a> of a storage in an implementation defined way.</span></span></p>
+                  <p><span about="" id="server-storage-track-owner" rel="spec:requirement" resource="#server-storage-track-owner"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> keep track of at least one <a href="#owner">owner</a> of a storage in an implementation defined way.</span></span></p>
 
                   <p><span about="" id="server-storage-link-owner" rel="spec:requirement" resource="#server-storage-link-owner"><span property="spec:statement">When a <span rel="spec:requirementSubject" resource="spec:Server">server</span> wants to advertise the owner of a storage, the server <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> include the <code>Link</code> header with <code>rel="http://www.w3.org/ns/solid/terms#owner"</code> targeting the URI of the owner in the response of HTTP <code>HEAD</code> or <code>GET</code> requests targeting the root container.</span></span></p>
 
@@ -708,9 +708,9 @@ left:4.5em;
           <section id="cors" inlist="" rel="schema:hasPart" resource="#cors">
             <h2 property="schema:name">Cross-Origin Resource Sharing</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p><a data-link-type="dfn" href="#solid-app" id="ref-for-solid-app">Solid apps</a> typically access data from multiple sources. However, Web browsers by default prevent apps that run on one origin from accessing data on other origins. This cross-origin protection is a security mechanism that ensures malicious websites cannot simply read your profile or banking details from other websites. However, this reasonable default poses a problem even for benevolent Solid apps, which might have good reasons to access data from different places. For instance, a Solid app at <code>https://app.example/</code> would be prevented from accessing data on <code>https://guinan.example/</code> or <code>https://darmok.example/</code>, even when Guinan and Darmok have given the user of the app their permission to see some of their data.</p>
+              <p><a href="#solid-app">Solid apps</a> typically access data from multiple sources. However, Web browsers by default prevent apps that run on one origin from accessing data on other origins. This cross-origin protection is a security mechanism that ensures malicious websites cannot simply read your profile or banking details from other websites. However, this reasonable default poses a problem even for benevolent Solid apps, which might have good reasons to access data from different places. For instance, a Solid app at <code>https://app.example/</code> would be prevented from accessing data on <code>https://guinan.example/</code> or <code>https://darmok.example/</code>, even when Guinan and Darmok have given the user of the app their permission to see some of their data.</p>
 
-              <p>For cases where the other origins have their own access protection mechanism — <a href="#authorization">like within Solid</a> — the browser’s built-in cross-origin protection is actually an obstacle rather than a feature. After all, <a data-link-type="dfn" href="#data-pod" id="ref-for-data-pod②">data pods</a> already ensure through access control that certain documents can only be accessed by specific people or applications. Preventively blocking apps from different origins thus introduces an unnecessary barrier.</p>
+              <p>For cases where the other origins have their own access protection mechanism — <a href="#authorization">like within Solid</a> — the browser’s built-in cross-origin protection is actually an obstacle rather than a feature. After all, data pods already ensure through access control that certain documents can only be accessed by specific people or applications. Preventively blocking apps from different origins thus introduces an unnecessary barrier.</p>
 
               <p>Fortunately, Web servers can indicate to the browser that certain documents do not require cross-origin protection. This mechanism to selectively disable that protection is called <em>Cross-Origin Resource Sharing</em> or <em>CORS</em> [<cite><a class="bibref" href="#bib-fetch">FETCH</a></cite>]. By responding to browser requests with a specific combination of HTTP headers, servers can indicate which actions are allowed for a given resource. For a Solid data pod, the goal is to allow <em>all</em> actions on the CORS level, such that the deeper <a href="#authorization">Authorization</a> layer can exert full control over the app’s allowed permissions. The next section describes how to achieve this through the right HTTP header configuration.</p>
 
@@ -1059,85 +1059,11 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
             </div>
           </section>
         </div>
-
-        <aside class="dfn-panel" data-for="data-pod">
-          <b><a href="#data-pod">#data-pod</a></b><b>Referenced in:</b>
-          <ul>
-            <li><a href="#ref-for-data-pod">Definitions</a></li>
-            <li><a href="#ref-for-data-pod①">Required Server-Side Implementation</a></li>
-            <li><a href="#ref-for-data-pod②">Cross-Origin Resource Sharing</a></li>
-            <li><a href="#ref-for-data-pod③">Required Server-Side Implementation</a></li>
-          </ul>
-        </aside>
-
-        <aside class="dfn-panel" data-for="solid-app">
-          <b><a href="#solid-app">#solid-app</a></b><b>Referenced in:</b>
-          <ul>
-            <li><a href="#ref-for-solid-app">Cross-Origin Resource Sharing</a></li>
-          </ul>
-        </aside>
       </article>
     </main>
 
     <p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to top">↑</abbr></a></p>
 
     <script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script>
-
-    <script>// <![CDATA[
-/* script-dfn-panel */
-document.body.addEventListener("click", function(e) {
-    var queryAll = function(sel) { return [].slice.call(document.querySelectorAll(sel)); }
-    // Find the dfn element or panel, if any, that was clicked on.
-    var el = e.target;
-    var target;
-    var hitALink = false;
-    while(el.parentElement) {
-        if(el.tagName == "A") {
-            // Clicking on a link in a <dfn> shouldn't summon the panel
-            hitALink = true;
-        }
-        if(el.classList.contains("dfn-paneled")) {
-            target = "dfn";
-            break;
-        }
-        if(el.classList.contains("dfn-panel")) {
-            target = "dfn-panel";
-            break;
-        }
-        el = el.parentElement;
-    }
-    if(target != "dfn-panel") {
-        // Turn off any currently "on" or "activated" panels.
-        queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(function(el){
-            el.classList.remove("on");
-            el.classList.remove("activated");
-        });
-    }
-    if(target == "dfn" && !hitALink) {
-        // open the panel
-        var dfnPanel = document.querySelector(".dfn-panel[data-for='" + el.id + "']");
-        if(dfnPanel) {
-            dfnPanel.classList.add("on");
-            var rect = el.getBoundingClientRect();
-            dfnPanel.style.left = window.scrollX + rect.right + 5 + "px";
-            dfnPanel.style.top = window.scrollY + rect.top + "px";
-            var panelRect = dfnPanel.getBoundingClientRect();
-            var panelWidth = panelRect.right - panelRect.left;
-            if(panelRect.right > document.body.scrollWidth && (rect.left - (panelWidth + 5)) > 0) {
-                // Reposition, because the panel is overflowing
-                dfnPanel.style.left = window.scrollX + rect.left - (panelWidth + 5) + "px";
-            }
-        } else {
-            console.log("Couldn't find .dfn-panel[data-for='" + el.id + "']");
-        }
-    } else if(target == "dfn-panel") {
-        // Switch it to "activated" state, which pins it.
-        el.classList.add("activated");
-        el.style.left = null;
-        el.style.top = null;
-    }
-
-});
-    // ]]></script>
   </body>
 </html>
