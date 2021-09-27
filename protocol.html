@@ -25,16 +25,23 @@ margin: 1em 0;
 padding: 1em 1.2em 0.5em;
 position: relative;
 }
-div.issue h4, div.note h4 {
+div.issue h3, div.note h3,
+div.issue h4, div.note h4,
+div.issue h5, div.note h5 {
 margin:0;
-text-transform: uppercase;
 font-weight:normal;
+font-style:normal;
 }
-div.issue h4 {
+div.issue h3 > span, div.note h3 > span,
+div.issue h4 > span, div.note h4 > span,
+div.issue h5 > span, div.note h5 > span {
+text-transform: uppercase;
+}
+div.issue h3, div.issue h4, div.issue h5 {
 color:#ae1e1e;
 }
-div.note h4 {
-color:#22bb22;
+div.note h3, div.note h4, div.note h5 {
+color:#178217;
 }
 figure .example-h {
 margin-top:0;
