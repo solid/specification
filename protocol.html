@@ -450,7 +450,12 @@ left:4.5em;
           <section id="uri" inlist="" rel="schema:hasPart" resource="#uri">
             <h2 property="schema:name">Uniform Resource Identifier</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p class="note" role="note"><span>Note</span>: This specification does not describe the relationship between a Solid data pod <q>owner</q> and Web architecture’s <cite><a href="https://www.w3.org/TR/webarch/#uri-ownership">URI ownership</a></cite> [<cite><a class="bibref" href="#bib-webarch">WEBARCH</a></cite>].</p>
+              <div class="note" id="storage-owner-uri-ownership" inlist="" rel="schema:hasPart" resource="#storage-owner-uri-ownership">
+                <h3 property="schema:name"><span>Note</span>: Storage Owner and URI Ownership</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>This specification does not describe the relationship between a Solid storage <q>owner</q> and Web architecture’s <cite><a href="https://www.w3.org/TR/webarch/#uri-ownership">URI ownership</a></cite> [<cite><a class="bibref" href="#bib-webarch">WEBARCH</a></cite>].</p>
+                </div>
+              </div>
 
               <section id="uri-slash-semantics" inlist="" rel="schema:hasPart" resource="#uri-slash-semantics">
                 <h3 property="schema:name">URI Slash Semantics</h3>
@@ -468,7 +473,12 @@ left:4.5em;
 
                   <p>Servers should not re-use URIs, regardless of the mechanism by which resources are created. Certain specific cases exist where URIs may be reinstated when it identifies the same resource, but only when consistent with Web architecture’s <cite><a href="https://www.w3.org/TR/webarch/#URI-persistence">URI persistence</a></cite> [<cite><a class="bibref" href="#bib-webarch">WEBARCH</a></cite>]. [<a href="https://github.com/solid/specification/issues/46#issuecomment-589619372" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
-                  <p class="note" role="note"><span>Note:</span> Servers that wish to disable URI re-use may want to use the <code>410</code> status code.</p>
+                  <div class="note" id="uri-reuse" inlist="" rel="schema:hasPart" resource="#uri-reuse">
+                    <h4 property="schema:name"><span>Note</span>: URI Reuse</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>Servers that wish to disable URI re-use may want to use the <code>410</code> status code.</p>
+                    </div>
+                  </div>
                 </div>
               </section>
             </div>
@@ -498,7 +508,12 @@ left:4.5em;
 
                   <p><span about="" id="server-storage-link-owner" rel="spec:requirement" resource="#server-storage-link-owner"><span property="spec:statement">When a <span rel="spec:requirementSubject" resource="spec:Server">server</span> wants to advertise the owner of a storage, the server <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> include the <code>Link</code> header with <code>rel="http://www.w3.org/ns/solid/terms#owner"</code> targeting the URI of the owner in the response of HTTP <code>HEAD</code> or <code>GET</code> requests targeting the root container.</span></span></p>
 
-                  <p class="note" role="note"><span>Note</span>: When a server supports multiple storages, there must be complete trust between its owners.</p>
+                  <div class="note" id="trust-between-owners" inlist="" rel="schema:hasPart" resource="#trust-between-owners">
+                    <h4 property="schema:name"><span>Note</span>: Trust Between Owners</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>When a server supports multiple storages, there must be complete trust between its owners.</p>
+                    </div>
+                  </div>
 
                   <p>[<a href="https://github.com/solid/specification/issues/67" rel="cito:citesAsSourceDocument">Source</a>][<a href=" https://github.com/solid/specification/issues/132" rel="cito:citesAsSourceDocument">Source</a>][<a href="https://github.com/solid/specification/issues/153" rel="cito:citesAsSourceDocument">Source</a>][<a href="https://github.com/solid/specification/issues/197" rel="cito:citesAsSourceDocument">Source</a>]</p>
                 </div>
@@ -524,7 +539,12 @@ left:4.5em;
 
                   <p id="auxiliary-resources-rdf-document">Auxiliary resources are represented as <em>RDF document</em>s [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>]. HTTP interactions on auxiliary resources are subject to the requirements as per <cite><a href="#reading-writing-resources">Reading and Writing Resources</a></cite>.</p>
 
-                  <p class="note" role="note"><span>Note:</span> Where applicable, to promote <a href="https://www.w3.org/2001/tag/doc/selfDescribingDocuments">self-describing resources</a>, implementations and authors are encouraged to use the subject resource instead of the associated auxiliary resource.</p>
+                  <div class="note" id="" inlist="self-describing-resources" rel="schema:hasPart" resource="#self-describing-resources">
+                    <h4 property="schema:name"><span>Note</span>: Self-describing Resources</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>Where applicable, to promote <a href="https://www.w3.org/2001/tag/doc/selfDescribingDocuments">self-describing resources</a>, implementations and authors are encouraged to use the subject resource instead of the associated auxiliary resource.</p>
+                    </div>
+                  </div>
 
                   <p>This specification defines the following types of auxiliary resources:</p>
 
@@ -613,7 +633,12 @@ left:4.5em;
 
                   <p><span about="" id="server-post-uri-assignment" rel="spec:requirement" resource="#server-post-uri-assignment"><span property="spec:statement">When a successful <code>POST</code> request creates a resource, the <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> assign a URI to that resource.</span></span> <span about="" id="server-slug-uri-assignment" rel="spec:requirement" resource="#server-slug-uri-assignment"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MAY">MAY</span> allow clients to suggest the URI of a resource created through <code>POST</code>, using the HTTP <code>Slug</code> header as defined in [<cite><a class="bibref" href="#bib-rfc5023">RFC5023</a></cite>].</span></span></p>
 
-                  <p class="note" role="note"><span>Note:</span> Clients can use <code>PUT</code> and <code>PATCH</code> requests to assign a URI to a resource. Clients can use <code>POST</code> requests to have the server assign a URI to a resource.</p>
+                  <div class="note" id="uri-allocation" inlist="" rel="schema:hasPart" resource="#uri-allocation">
+                    <h4 property="schema:name"><span>Note</span>: URI Allocation</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>Clients can use <code>PUT</code> and <code>PATCH</code> requests to assign a URI to a resource. Clients can use <code>POST</code> requests to have the server assign a URI to a resource.</p>
+                    </div>
+                  </div>
 
                   <p>[<a href="https://github.com/solid/specification/pull/160#issuecomment-636822687" rel="cito:citesAsSourceDocument">Source</a>][<a href="https://github.com/solid/specification/pull/263" rel="cito:citesAsSourceDocument">Source</a>].</p>
                 </div>
@@ -651,7 +676,12 @@ left:4.5em;
 
                   <p><span about="" id="server-protect-containment" rel="spec:requirement" resource="#server-protect-containment"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> NOT allow HTTP <code>POST</code>, <code>PUT</code> and <code>PATCH</code> to update a container’s containment triples; if the server receives such a request, it <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>409</code> status code.</span></span> [<a href="https://github.com/solid/specification/issues/40#issuecomment-573358652" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
-                  <p class="note" role="note"><span>Note:</span>Clients are encouraged to use the HTTP <code>If-None-Match</code> header with a value of <code>"*"</code> to prevent an unsafe request method (e.g., <code>PUT</code>, <code>PATCH</code>) from inadvertently modifying an existing representation of the target resource when the client believes that the resource does not have a current representation. [<a href="https://github.com/solid/specification/issues/108#issuecomment-567272797" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/40#issuecomment-566995240" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/pull/292" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                  <div class="note" id="preconditioned-update" inlist="" rel="schema:hasPart" resource="#preconditioned-update">
+                    <h4 property="schema:name"><span>Note</span>: Preconditioned Update</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>Clients are encouraged to use the HTTP <code>If-None-Match</code> header with a value of <code>"*"</code> to prevent an unsafe request method (e.g., <code>PUT</code>, <code>PATCH</code>) from inadvertently modifying an existing representation of the target resource when the client believes that the resource does not have a current representation. [<a href="https://github.com/solid/specification/issues/108#issuecomment-567272797" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/40#issuecomment-566995240" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/pull/292" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                    </div>
+                  </div>
 
                   <p><span about="" id="server-etag" rel="spec:requirement" resource="#server-etag"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MAY">MAY</span> use the HTTP <code>ETag</code> header with a strong validator for RDF bearing representations in order to encourage clients to opt-in to using the <code>If-Match</code> header in their requests.</span></span></p>
                 </div>
@@ -733,7 +763,12 @@ left:4.5em;
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><span about="" id="server-cors" rel="spec:requirement" resource="#server-cors"><span property="spec:statement">A <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> implement the CORS protocol [<cite><a class="bibref" href="#bib-fetch">FETCH</a></cite>] such that, to the extent possible, the browser allows Solid apps to send any request and combination of request headers to the data pod, and the Solid app can read any response and response headers received from the data pod. If the data pod wishes to block access to a resource, this MUST NOT happen via CORS but MUST instead be communicated to the Solid app in the browser through HTTP status codes such as <code>401</code>, <code>403</code>, or <code>404</code> [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>].</span></span></p>
 
-                  <p class="note" role="note"><span>Note:</span> Since the CORS protocol is part of a Living Standard, it might be changed at any point, which might necessitate changes to data pod implementations for continued prevention of undesired blocking. A <a href="https://github.com/whatwg/fetch/issues/878">proposal</a> to mitigate this has been suggested.</p>
+                  <div class="note" id="cors-protocol-blocking" inlist="" rel="schema:hasPart" resource="#cors-protocol-blocking">
+                    <h4 property="schema:name"><span>Note</span>: CORS Protocol Blocking</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>Since the CORS protocol is part of a Living Standard, it might be changed at any point, which might necessitate changes to data pod implementations for continued prevention of undesired blocking. A <a href="https://github.com/whatwg/fetch/issues/878">proposal</a> to mitigate this has been suggested.</p>
+                    </div>
+                  </div>
 
                   <p>Concretely, <span about="" id="server-cors-access-control-headers" rel="spec:requirement" resource="#server-cors-access-control-headers"><span property="spec:statement">whenever a <span rel="spec:requirementSubject" resource="spec:Server">server</span> receives an HTTP request containing a valid <code>Origin</code> header [<cite><a class="bibref" href="#bib-rfc6454">RFC6454</a></cite>], the server <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with the appropriate <code>Access-Control-*</code> headers as specified in the CORS protocol [<cite><a class="bibref" href="#bib-fetch">FETCH</a></cite>].</span></span> In particular, <span about="" id="server-cors-acao-vary" rel="spec:requirement" resource="#server-cors-acao-vary"><span property="spec:statement">the <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> set the <code>Access-Control-Allow-Origin</code> header to the valid <code>Origin</code> value from the request and list <code>Origin</code> in the <code>Vary</code> header value.</span></span> <span about="" id="server-cors-aceh" rel="spec:requirement" resource="#server-cors-aceh"><span property="spec:statement">The <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> make all used response headers readable for the Solid app through <code>Access-Control-Expose-Headers</code> (with the possible exception of the <code>Access-Control-*</code> headers themselves).</span></span> <span about="" id="server-cors-options" rel="spec:requirement" resource="#server-cors-options"><span property="spec:statement">A <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> also support the HTTP <code>OPTIONS</code> method [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>] such that it can respond appropriately to CORS preflight requests.</span></span></p>
 
