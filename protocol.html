@@ -683,8 +683,8 @@ left:4.5em;
 
                   <p><span about="" id="server-protect-containment" rel="spec:requirement" resource="#server-protect-containment"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> NOT allow HTTP <code>POST</code>, <code>PUT</code> and <code>PATCH</code> to update a container’s containment triples; if the server receives such a request, it <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>409</code> status code.</span></span> [<a href="https://github.com/solid/specification/issues/40#issuecomment-573358652" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
-                  <div class="note" id="preconditioned-update" inlist="" rel="schema:hasPart" resource="#preconditioned-update">
-                    <h4 property="schema:name"><span>Note</span>: Preconditioned Update</h4>
+                  <div class="note" id="conditional-update" inlist="" rel="schema:hasPart" resource="#conditional-update">
+                    <h4 property="schema:name"><span>Note</span>: Conditional Update</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>Clients are encouraged to use the HTTP <code>If-None-Match</code> header with a value of <code>"*"</code> to prevent an unsafe request method (e.g., <code>PUT</code>, <code>PATCH</code>) from inadvertently modifying an existing representation of the target resource when the client believes that the resource does not have a current representation. [<a href="https://github.com/solid/specification/issues/108#issuecomment-567272797" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/40#issuecomment-566995240" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/pull/292" rel="cito:citesAsSourceDocument">Source</a>]</p>
                     </div>
