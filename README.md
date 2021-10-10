@@ -20,4 +20,4 @@ Solid Panels focus on specific problems, with an aim to propose technical report
 
 ## Code of Conduct
 
-All work and communication within the Solid CG is covered by the [Solid Code of Conduct](https://github.com/solid/process/blob/master/code-of-conduct.md) as well as the [Positive Work Environment at W3C: Code of Ethics and Professional Conduct](https://www.w3.org/Consortium/cepc/).
+All work and communication within the Solid CG is covered by the [Solid Code of Conduct](https://github.com/solid/process/blob/main/code-of-conduct.md) as well as the [Positive Work Environment at W3C: Code of Ethics and Professional Conduct](https://www.w3.org/Consortium/cepc/).
