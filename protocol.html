@@ -1076,13 +1076,13 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 			<td><code>[38p]  </code></td>
 			<td><code><a id="rInsertData" name="rInsertData">InsertData</a></code></td>
 			<td>  ::=  </td>
-			<td><code><span class="token">'INSERT DATA'</span> <a href="#rTripleData">TripleData</a></code></td>
+			<td><code><span class="token">'INSERT DATA'</span> <span class="token">'{'</span>  <a href="#rTripleData">TripleData</a> <span class="token">'}'</span> </code></td>
 		      </tr>
 		      <tr valign="baseline">
 			<td><code>[39p]  </code></td>
 			<td><code><a id="rDeleteData" name="rDeleteData">DeleteData</a></code></td>
 			<td>  ::=  </td>
-			<td><code><span class="token">'DELETE DATA'</span> <a href="#rTripleData">TripleData</a></code></td>
+			<td><code><span class="token">'DELETE DATA'</span> <span class="token">'{'</span> <a href="#rTripleData">TripleData</a> <span class="token">'}'</span> </code></td>
 		      </tr>
 		      <tr valign="baseline">
 			<td><code>[41p]  </code></td>
@@ -1094,13 +1094,13 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 			<td><code>[42p]  </code></td>
 			<td><code><a id="rDeleteClause" name="rDeleteClause">DeleteClause</a></code></td>
 			<td>  ::=  </td>
-			<td><code><span class="token">'DELETE'</span> <a href="https://www.w3.org/TR/sparql11-query/#rTriplesTemplate">TriplesTemplate</a></code></td>
+			<td><code><span class="token">'DELETE'</span> <span class="token">'{'</span>  <a href="https://www.w3.org/TR/sparql11-query/#rTriplesTemplate">TriplesTemplate</a> <span class="token">'}'</span> </code></td>
 		      </tr>
 		      <tr valign="baseline">
 			<td><code>[43p]  </code></td>
 			<td><code><a id="rInsertClause" name="rInsertClause">InsertClause</a></code></td>
 			<td>  ::=  </td>
-			<td><code><span class="token">'INSERT'</span> <a href="https://www.w3.org/TR/sparql11-query/#rTriplesTemplate">TriplesTemplate</a></code></td>
+			<td><code><span class="token">'INSERT'</span> <span class="token">'{'</span> <a href="https://www.w3.org/TR/sparql11-query/#rTriplesTemplate">TriplesTemplate</a> <span class="token">'}'</span> </code></td>
 		      </tr>
 		      <tr valign="baseline">
 			<td><code>[52d]  </code></td>
