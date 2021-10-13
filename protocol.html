@@ -1088,7 +1088,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 			<td><code>[41p]  </code></td>
 			<td><code><a id="rModify" name="rModify">Modify</a></code></td>
 			<td>  ::=  </td>
-			<td><code>( <a href="#rDeleteClause">DeleteClause</a> <a href="#rInsertClause">InsertClause</a>? | <a href="#rInsertClause">InsertClause</a> )  <span class="token">'WHERE'</span> <a href="#rGroupGraphPattern">GroupGraphPattern</a></code></td>
+			<td><code>( <a href="#rDeleteClause">DeleteClause</a> <a href="#rInsertClause">InsertClause</a>? | <a href="#rInsertClause">InsertClause</a> )  <span class="token">'WHERE'</span> <span class="token">'{'</span>  <a href="https://www.w3.org/TR/sparql11-query/#rTriplesTemplate">TriplesTemplate</a> <span class="token">'}'</span> </code></td>
 		      </tr>
 		      <tr valign="baseline">
 			<td><code>[42p]  </code></td>
@@ -1107,24 +1107,6 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 			<td><code><a id="rTripleData" name="rTripleData">TripleData</a></code></td>
 			<td>  ::=  </td>
 			<td><code><a href="#rTriplesDataSameSubject">TriplesDataSameSubject</a> ( <span class="token">'.'</span> <a href="#rTripleData">TripleData</a>? )?</code></td>
-		      </tr>
-		      <tr valign="baseline">
-			<td><code>[53p]  </code></td>
-			<td><code><a id="rGroupGraphPattern" name="rGroupGraphPattern">GroupGraphPattern</a></code></td>
-			<td>  ::=  </td>
-			<td><code><span class="token">'{'</span> <a href="#rGroupGraphPatternSub">GroupGraphPatternSub</a> ) <span class="token">'}'</span></code></td>
-		      </tr>
-		      <tr valign="baseline">
-			<td><code>[54p]  </code></td>
-			<td><code><a id="rGroupGraphPatternSub" name="rGroupGraphPatternSub">GroupGraphPatternSub</a></code></td>
-			<td>  ::=  </td>
-			<td><code><a href="#rTriplesBlock">TriplesBlock</a></code></td>
-		      </tr>
-		      <tr valign="baseline">
-			<td><code>[55p]  </code></td>
-			<td><code><a id="rTriplesBlock" name="rTriplesBlock">TriplesBlock</a></code></td>
-			<td>  ::=  </td>
-			<td><code><a href="https://www.w3.org/TR/sparql11-query/#rTriplesSameSubject">TriplesSameSubject</a> ( <span class="token">'.'</span> <a href="#rTriplesBlock">TriplesBlock</a>? )?</code></td>
 		      </tr>
 		      <tr valign="baseline">
 			<td><code>[75d]  </code></td>
