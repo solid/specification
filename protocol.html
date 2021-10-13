@@ -1070,7 +1070,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 			<td><code>[30p]  </code></td>
 			<td><code><a id="rUpdate1" name="rUpdate1">Update1</a></code></td>
 			<td>  ::=  </td>
-			<td><code><a href="https://www.w3.org/TR/sparql11-query/#rPrologue">Prologue</a> ( <a href="#rInsertData">InsertData</a> | <a href="#rDeleteData">DeleteData</a> |  <a href="#rModify">Modify</a> ) </code></td> 
+			<td><code><a href="https://www.w3.org/TR/sparql11-query/#rPrologue">Prologue</a> ( <a href="#rInsertData">InsertData</a> | <a href="#rDeleteData">DeleteData</a> | <a href="https://www.w3.org/TR/sparql11-query/#rDeleteWhere">DeleteWhere</a> | <a href="#rModify">Modify</a> ) </code></td> 
 		      </tr>
 		      <tr valign="baseline">
 			<td><code>[38p]  </code></td>
@@ -1084,6 +1084,12 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 			<td>  ::=  </td>
 			<td><code><span class="token">'DELETE DATA'</span> <span class="token">'{'</span> <a href="#rTripleData">TripleData</a> <span class="token">'}'</span> </code></td>
 		      </tr>
+		      <tr valign="baseline">
+			<td><code>[40p]  </code></td>
+			<td><code><a id="rDeleteWhere" name="rDeleteWhere">DeleteWhere</a></code></td>
+			<td>  ::=  </td>
+			<td><code><span class="token">'DELETE WHERE'</span> <span class="token">'{'</span>  <a href="https://www.w3.org/TR/sparql11-query/#rTriplesTemplate">TriplesTemplate</a> <span class="token">'}'</span> </code></td>
+      </tr>
 		      <tr valign="baseline">
 			<td><code>[41p]  </code></td>
 			<td><code><a id="rModify" name="rModify">Modify</a></code></td>
