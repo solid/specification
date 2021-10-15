@@ -1054,6 +1054,16 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
           <section class="appendix" id="sparql-update-subset" inlist="" rel="schema:hasPart" resource="#sparql-update-subset">
             <h2 property="schema:name">Appendix - A subset of SPARQL Update for Solid</h2>
             <div datatype="rdf:HTML" property="schema:description">
+              <section id="sparql-subset-overview" inlist="" rel="schema:hasPart" resource="#sparql-subset-overview">
+                <h3 property="schema:name">Overview</h3>
+		 <div datatype="rdf:HTML" property="schema:description">
+                   <p><em>This section is non-normative.</em></p>
+
+		   <p>The objective of the subset is to identify a subset of SPARQL 1.1 Update [<cite><a class="bibref" href="#bib-sparql-overview">SPARQL</a></cite>] that is relatively easy to implement and contains features that are most commonly used. It thus takes variations of the <code>INSERT</code> and <code>DELETE</code> operations and allows operations on basic triple patterns only. The subset is compatible with SPARQL 1.1 Update and is defined in terms of a <a href="#sparql-subset-grammar">grammar</a>. To further examine the definition, see <a href="https://services.w3.org/yacker/uploads/SPARQL_patch_solid?lang=perl&markup=html">the Yacker validator</a>.
+		   </p>
+		 </div>
+	      </section>
+
               <section id="sparql-subset-grammar" inlist="" rel="schema:hasPart" resource="#sparql-subset-grammar">
                 <h3 property="schema:name">Grammar</h3>
 		<div class="note" id="sparql-subset-definition-note" inlist="" rel="schema:hasPart" resource="#sparql-subset-definition-note">
