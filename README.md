@@ -8,7 +8,7 @@ The TRs include specifications, use cases and requirements, best practices and g
 
 All substantive contributors to any Work Items must be members of the Solid CG. It’s easy to [join the CG](https://www.w3.org/community/solid/join) if you’d like to contribute.
 
-Anyone can join the [Solid ecosystem chat](https://gitter.im/solid/specification).
+Anyone can join the [Solid specification chat](https://gitter.im/solid/specification).
 
 Solid Panels focus on specific problems, with an aim to propose technical reports for the Solid ecosystem:
 
@@ -16,7 +16,7 @@ Solid Panels focus on specific problems, with an aim to propose technical report
 * https://github.com/solid/authorization-panel
 * https://github.com/solid/data-interoperability-panel
 * https://github.com/solid/notifications-panel
-* https://github.com/solid/test-suite-panel
+* https://github.com/solid/test-suite
 
 ## Code of Conduct
 
