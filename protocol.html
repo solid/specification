@@ -713,6 +713,10 @@ left:4.5em;
 		  </p>
 
 		  <p>
+		    <span about="" id="server-patch-sparql-outside-subset" rel="spec:requirement" resource="#server-patch-sparql-outside-subset"><span property="spec:statement">If <span rel="spec:requirementSubject" resource="spec:Server">servers</span> that process <code>DELETE/INSERT</code> queries (as defined in SPARQL 1.1 Section 3.1.3, [<cite><a class="bibref" href="#bib-sparql-overview">SPARQL</a></cite>]), finds any solution that produces a triple containing an unbound variable or an illegal RDF construct, then the server <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> abort any modifications and respond with a <code>409</code> status code.</span></span>
+		  </p>
+
+		  <p>
 		    <span about="" id="server-patch-sparql-insert" rel="spec:requirement" resource="#server-patch-sparql-insert"><span property="spec:statement">When the request body of a <code>PATCH</code> request has a SPARQL Update query that contains an <code>INSERT</code> keyword, <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> treat the request as an <a href="#append-operation">Append operation</a>.</span></span>
 		    <span about="" id="server-patch-sparql-where" rel="spec:requirement" resource="#server-patch-sparql-where"><span property="spec:statement">When the query contains a <code>WHERE</code> keyword, <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> treat the request as a <a href="#read-operation">Read operation</a>.</span></span>
 		    <span about="" id="server-patch-sparql-delete" rel="spec:requirement" resource="#server-patch-sparql-delete"><span property="spec:statement">When the query contains a <code>DELETE</code> keyword, <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> treat the request as a <a href="#read-operation">Read</a> and <a href="#write-operation">Write operation</a>.</span></span>
