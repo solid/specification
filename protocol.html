@@ -704,25 +704,6 @@ left:4.5em;
 
                   <p><span about="" id="server-post-target-not-found" rel="spec:requirement" resource="#server-post-target-not-found"><span property="spec:statement">When a <code>POST</code> method request targets a resource without an existing representation, the <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with the <code>404</code> status code.</span></span> [<a href="https://github.com/solid/specification/issues/108#issuecomment-549448159" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
-		  <p>
-		    <span about="" id="server-patch-sparql-update" rel="spec:requirement" resource="#server-patch-sparql-update"><span property="spec:statement">When the target resource of a <code>PATCH</code> request is represented by an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>], <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> support changing the representation using the request body containing a subset of SPARQL Update as defined in the <a href="#sparql-update-subset">Appendix</a>.</span></span>
-		    <span about="" id="server-patch-sparql-all" rel="spec:requirement" resource="#server-patch-sparql-all"><span property="spec:statement"> <span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MAY">MAY</span> further support SPARQL 1.1 Update [<cite><a class="bibref" href="#bib-sparql-overview">SPARQL</a></cite>],</span></span>
-		    <span about="" id="server-patch-sparql-not-other" rel="spec:requirement" resource="#server-patch-sparql-not-other"><span property="spec:statement"> except that <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> allow a request with a <code>PATCH</code> method to change other resources than the target resource.</span></span> [<a href="https://github.com/solid/specification/issues/125#issuecomment-873035679" rel="cito:citesAsSourceDocument">Source</a>]
-		    <span about="" id="server-patch-sparql-outside-subset" rel="spec:requirement" resource="#server-patch-sparql-outside-subset"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> that receives a request body containing a SPARQL query that falls outside of the subset they are able to process <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>422</code> status code [<cite><a class="bibref" href="#bib-rfc4918">RFC4918</a></cite>] and a message body that explains the error.</span></span>
-
-		  </p>
-
-		  <p>
-		    <span about="" id="server-patch-sparql-abort-on-solutions" rel="spec:requirement" resource="#server-patch-sparql-abort-on-solutions"><span property="spec:statement">If <span rel="spec:requirementSubject" resource="spec:Server">servers</span> that process <code>DELETE/INSERT</code> queries (as defined in SPARQL 1.1 Section 3.1.3, [<cite><a class="bibref" href="#bib-sparql11-update">SPARQL11-UPDATE</a></cite>]), finds any solution that produces a triple containing an unbound variable or an illegal RDF construct, or more than one solution, then the server <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> abort any modifications and respond with a <code>409</code> status code.</span></span>
-		    <span about="" id="server-patch-sparql-abort-on-data" rel="spec:requirement" resource="#server-patch-sparql-abort-on-data"><span property="spec:statement">If <span rel="spec:requirementSubject" resource="spec:Server">servers</span> that process a request that first contains a <code>DELETE DATA</code> and then a <code>INSERT DATA</code> operation, finds that the first operation does not delete any triples, then the server <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> abort any modifications and respond with a <code>409</code> status code.</span></span>
-		  </p>
-
-		  <p>
-		    <span about="" id="server-patch-sparql-insert" rel="spec:requirement" resource="#server-patch-sparql-insert"><span property="spec:statement">When the request body of a <code>PATCH</code> request has a SPARQL Update query that contains an <code>INSERT</code> keyword, <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> treat the request as an <a href="#append-operation">Append operation</a>.</span></span>
-		    <span about="" id="server-patch-sparql-where" rel="spec:requirement" resource="#server-patch-sparql-where"><span property="spec:statement">When the query contains a <code>WHERE</code> keyword, <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> treat the request as a <a href="#read-operation">Read operation</a>.</span></span>
-		    <span about="" id="server-patch-sparql-delete" rel="spec:requirement" resource="#server-patch-sparql-delete"><span property="spec:statement">When the query contains a <code>DELETE</code> keyword, <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> treat the request as a <a href="#read-operation">Read</a> and <a href="#write-operation">Write operation</a>.</span></span>
-		  </p>
-
                   <p><span about="" id="server-put-patch-auxiliary-resource" rel="spec:requirement" resource="#server-put-patch-auxiliary-resource"><span property="spec:statement">When a <code>PUT</code> or <code>PATCH</code> method request targets an auxiliary resource, the <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> create or update it.</span></span> <span about="" id="server-post-slug-auxiliary-resource" rel="spec:requirement" resource="#server-post-slug-auxiliary-resource"><span property="spec:statement">When a <code>POST</code> method request with the <code>Slug</code> header targets an auxiliary resource, the <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with the <code>403</code> status code and response body describing the error.</span></span> [<a href="https://github.com/solid/specification/issues/42#issuecomment-616688848" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
                   <p><span about="" id="server-protect-containment" rel="spec:requirement" resource="#server-protect-containment"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> NOT allow HTTP <code>POST</code>, <code>PUT</code> and <code>PATCH</code> to update a container’s containment triples; if the server receives such a request, it <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>409</code> status code.</span></span> [<a href="https://github.com/solid/specification/issues/40#issuecomment-573358652" rel="cito:citesAsSourceDocument">Source</a>]</p>
@@ -736,7 +717,33 @@ left:4.5em;
 
                   <p><span about="" id="server-etag" rel="spec:requirement" resource="#server-etag"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MAY">MAY</span> use the HTTP <code>ETag</code> header with a strong validator for RDF bearing representations in order to encourage clients to opt-in to using the <code>If-Match</code> header in their requests.</span></span></p>
                 </div>
-              </section>
+
+		<section id="sparql-patching-resources" inlist="" rel="schema:hasPart" resource="#sparql-patching-resources">
+                  <h4 property="schema:name">Using SPARQL to Patch Resources</h4>
+		  <div datatype="rdf:HTML" property="schema:description">
+		    <p>
+		      <span about="" id="server-patch-sparql-update" rel="spec:requirement" resource="#server-patch-sparql-update"><span property="spec:statement">When the target resource of a <code>PATCH</code> request is represented by an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>], <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> support changing the representation using the request body containing a variation of SPARQL Update as defined in the <a href="#sparql-update-variant">Appendix</a>.</span></span>
+		      <span about="" id="server-patch-sparql-all" rel="spec:requirement" resource="#server-patch-sparql-all"><span property="spec:statement"> <span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MAY">MAY</span> further support SPARQL 1.1 Update [<cite><a class="bibref" href="#bib-sparql-overview">SPARQL</a></cite>],</span></span>
+		      <span about="" id="server-patch-sparql-not-other" rel="spec:requirement" resource="#server-patch-sparql-not-other"><span property="spec:statement"> except that <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> allow a request with a <code>PATCH</code> method to change other resources than the target resource.</span></span> [<a href="https://github.com/solid/specification/issues/125#issuecomment-873035679" rel="cito:citesAsSourceDocument">Source</a>]
+		      <span about="" id="server-patch-sparql-outside" rel="spec:requirement" resource="#server-patch-sparql-outside"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> that receives a request body containing a SPARQL query that falls outside of the what they are able to process <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>422</code> status code [<cite><a class="bibref" href="#bib-rfc4918">RFC4918</a></cite>] and a message body that explains the error.</span></span>
+		    </p>
+
+		    <p>
+		      <span about="" id="server-patch-sparql-abort-on-solutions" rel="spec:requirement" resource="#server-patch-sparql-abort-on-solutions"><span property="spec:statement">If <span rel="spec:requirementSubject" resource="spec:Server">servers</span> that process <code>REMOVE/INSERT</code> queries (as defined in the <a href="#sparql-update-variant">Appendix</a>), finds any solution that produces a triple containing an unbound variable or an illegal RDF construct, or more than one solution, then the server <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> abort any modifications and respond with a <code>409</code> status code.</span></span>
+		      <span about="" id="server-patch-sparql-abort-on-data" rel="spec:requirement" resource="#server-patch-sparql-abort-on-data"><span property="spec:statement">If <span rel="spec:requirementSubject" resource="spec:Server">servers</span> that process a request that first contains a <code>REMOVE DATA</code> and then a <code>INSERT DATA</code> operation, finds that the first operation does not delete any triples, then the server <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> abort any modifications and respond with a <code>409</code> status code.</span></span>
+		    </p>
+
+		    <p>
+		      <span about="" id="server-patch-sparql-insert" rel="spec:requirement" resource="#server-patch-sparql-insert"><span property="spec:statement">When the request body of a <code>PATCH</code> request has a SPARQL Update query that contains an <code>INSERT</code> keyword, <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> treat the request as an <a href="#append-operation">Append operation</a>.</span></span>
+		      <span about="" id="server-patch-sparql-where" rel="spec:requirement" resource="#server-patch-sparql-where"><span property="spec:statement">When the query contains a <code>WHERE</code> keyword, <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> treat the request as a <a href="#read-operation">Read operation</a>.</span></span>
+		      <span about="" id="server-patch-sparql-delete" rel="spec:requirement" resource="#server-patch-sparql-delete"><span property="spec:statement">When the query contains a <code>DELETE</code> keyword, <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> treat the request as a <a href="#write-operation">Write operation</a>.</span></span>
+		      <span about="" id="server-patch-sparql-delete" rel="spec:requirement" resource="#server-patch-sparql-delete"><span property="spec:statement">When the query contains a <code>REMOVE</code> keyword, <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> treat the request as a <a href="#read-operation">Read</a> and <a href="#write-operation">Write operation</a>.</span></span>
+		    </p>
+
+		  </div>
+		</section>
+
+	      </section>
 
               <section id="deleting-resources" inlist="" rel="schema:hasPart" resource="#deleting-resources">
                 <h3 property="schema:name">Deleting Resources</h3>
@@ -1064,23 +1071,23 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
             </div>
           </section>
 
-          <section class="appendix" id="sparql-update-subset" inlist="" rel="schema:hasPart" resource="#sparql-update-subset">
-            <h2 property="schema:name">Appendix - A subset of SPARQL Update for Solid</h2>
+          <section class="appendix" id="sparql-update-variant" inlist="" rel="schema:hasPart" resource="#sparql-update-variant">
+            <h2 property="schema:name">Appendix - A variant of SPARQL Update for Solid</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <section id="sparql-subset-overview" inlist="" rel="schema:hasPart" resource="#sparql-subset-overview">
+              <section id="sparql-variant-overview" inlist="" rel="schema:hasPart" resource="#sparql-variant-overview">
                 <h3 property="schema:name">Overview</h3>
 		 <div datatype="rdf:HTML" property="schema:description">
                    <p><em>This section is non-normative.</em></p>
 
-		   <p>The objective of the subset is to identify a subset of SPARQL 1.1 Update [<cite><a class="bibref" href="#bib-sparql11-update">SPARQL11-UPDATE</a></cite>] that is relatively easy to implement and contains features that are most commonly used. It thus takes variations of the <code>INSERT</code> and <code>DELETE</code> operations and allows operations on basic triple patterns only. The subset is compatible with SPARQL 1.1 Update and is defined in terms of a <a href="#sparql-subset-grammar">grammar</a>. To further examine the definition, see <a href="https://services.w3.org/yacker/uploads/SPARQL_patch_solid?lang=perl&markup=html">the Yacker validator</a>.
+		   <p>The objective of the variant is to identify a variant of SPARQL 1.1 Update [<cite><a class="bibref" href="#bib-sparql11-update">SPARQL11-UPDATE</a></cite>] that is relatively easy to implement and contains features that are most commonly used. It thus takes variations of the <code>INSERT</code> and <code>DELETE</code> operations and allows operations on basic triple patterns only. The variant is compatible with SPARQL 1.1 Update and is defined in terms of a <a href="#sparql-variant-grammar">grammar</a>. To further examine the definition, see <a href="https://services.w3.org/yacker/uploads/SPARQL_patch_solid?lang=perl&markup=html">the Yacker validator</a>.
 		   </p>
 		 </div>
 	      </section>
 
-              <section id="sparql-subset-grammar" inlist="" rel="schema:hasPart" resource="#sparql-subset-grammar">
+              <section id="sparql-variant-grammar" inlist="" rel="schema:hasPart" resource="#sparql-variant-grammar">
                 <h3 property="schema:name">Grammar</h3>
-		<div class="note" id="sparql-subset-definition-note" inlist="" rel="schema:hasPart" resource="#sparql-subset-definition-note">
-                    <h4 property="schema:name"><span>Note</span>: Definition of SPARQL Update Subset</h4>
+		<div class="note" id="sparql-variant-definition-note" inlist="" rel="schema:hasPart" resource="#sparql-variant-definition-note">
+                    <h4 property="schema:name"><span>Note</span>: Definition of SPARQL Update Variant</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>This specification alters the grammar of 8 rules in the original grammar of the SPARQL 1.1 Query Language [<cite><a class="bibref" href="#bib-sparql-overview">SPARQL</a></cite>] grammar and introduces another 10 new rules to accommodate for <code>INSERT DATA</code> and <code>DELETE DATA</code>, which was defined in the language definition but not precisely defined in the grammar. This specification references the original grammar definition where no changes were made.
 		    </div>
