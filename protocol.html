@@ -1091,7 +1091,9 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 		  <code>REMOVE DATA</code> differs from <code>DELETE DATA</code> as defined in SPARQL 1.1 Update [<cite><a class="bibref" href="#bib-sparql11-update">SPARQL11-UPDATE</a></cite>] in that the deletion of non-existing data results in a <em>failure</em>.
 		</p>
 
-
+		<p>
+		  <code>REMOVE</code> differs from <code>DELETE</code> as defined in SPARQL 1.1 Update [<cite><a class="bibref" href="#bib-sparql11-update">SPARQL11-UPDATE</a></cite>] in that when the corresponding <code>WHERE</code> clause does not match exactly one solution, it results in a <em>failure</em>.
+		</p>
 
 	      </section>
 
