@@ -1079,9 +1079,19 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 		 <div datatype="rdf:HTML" property="schema:description">
                    <p><em>This section is non-normative.</em></p>
 
-		   <p>The objective of the variant is to identify a variant of SPARQL 1.1 Update [<cite><a class="bibref" href="#bib-sparql11-update">SPARQL11-UPDATE</a></cite>] that is relatively easy to implement and contains features that are most commonly used. It thus takes variations of the <code>INSERT</code> and <code>DELETE</code> operations and allows operations on basic triple patterns only. The variant is compatible with SPARQL 1.1 Update and is defined in terms of a <a href="#sparql-variant-grammar">grammar</a>. To further examine the definition, see <a href="https://services.w3.org/yacker/uploads/SPARQL_patch_solid?lang=perl&markup=html">the Yacker validator</a>.
+		   <p>The objective of this variant is two-fold: Firstly, it is a variant of SPARQL 1.1 Update [<cite><a class="bibref" href="#bib-sparql11-update">SPARQL11-UPDATE</a></cite>] that is relatively easy to implement and contains features that are most commonly used. Secondly, it seeks to enable a semaphore mechanism that exploits that if a delete operation does not remove any triples, it may have been due to an edit conflict. Since this is incompatible with SPARQL 1.1 as defined, it introduces a <code>REMOVE</code> keyword. To further examine the <a href="#sparql-variant-grammar">grammar</a> definition, see <a href="https://services.w3.org/yacker/uploads/SPARQL_patch_solid?lang=perl&markup=html">the Yacker validator</a>.
 		   </p>
 		 </div>
+	      </section>
+
+              <section id="sparql-variant-definition" inlist="" rel="schema:hasPart" resource="#sparql-variant-definition">
+                <h3 property="schema:name">Definition</h3>
+
+		<p>
+		  <code>REMOVE DATA</code> differs from <code>DELETE DATA</code> as defined in SPARQL 1.1 Update [<cite><a class="bibref" href="#bib-sparql11-update">SPARQL11-UPDATE</a></cite>] only in that the deletion of non-existing data results in a <em>failure</em>.
+		</p>
+
+
 	      </section>
 
               <section id="sparql-variant-grammar" inlist="" rel="schema:hasPart" resource="#sparql-variant-grammar">
