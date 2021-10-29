@@ -671,6 +671,15 @@ left:4.5em;
 		     [<a href="https://github.com/solid/specification/issues/301" rel="cito:citesAsSourceDocument">Source</a>]
 		  </p>
 
+                  <div class="note" id="resource-type-interpretation" inlist="" rel="schema:hasPart" resource="#resource-type-interpretation">
+                    <h4 property="schema:name"><span>Note</span>: Interpretation of Resource Types</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>
+			Clients and servers may indicate resource types using a HTTP <code>Link</code> headers with <code>rel="type"</code>, but should be aware that they come with assumptions as to what media types can be associated with them. In particular, Solid requires containers to be represented by a <em>RDF Document</em>, which again requires an appropriate RDF serialization with a corresponding media type for consistency. Other media types may have similar consistency requirements.
+		      </p>
+                    </div>
+                  </div>
+
                   <div class="note" id="uri-allocation" inlist="" rel="schema:hasPart" resource="#uri-allocation">
                     <h4 property="schema:name"><span>Note</span>: URI Allocation</h4>
                     <div datatype="rdf:HTML" property="schema:description">
