@@ -719,6 +719,37 @@ left:4.5em;
 
                   <p><span about="" id="server-etag" rel="spec:requirement" resource="#server-etag"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MAY">MAY</span> use the HTTP <code>ETag</code> header with a strong validator for RDF bearing representations in order to encourage clients to opt-in to using the <code>If-Match</code> header in their requests.</span></span></p>
                 </div>
+
+                <section id="n3-patch" inlist="" rel="schema:hasPart" resource="#n3-patch">
+                  <h4 property="schema:name">Modifying Resources Using N3 Patches</h4>
+                  <div datatype="rdf:HTML" property="schema:description">
+                    <p><span about="" id="server-patch-n3" rel="spec:requirement" resource="#server-patch-n3"><span property="spec:statement">When the target resource of a <code>PATCH</code> request is an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>], <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> support modifying that resource using a request body containing an <em>N3 Patch</em>.</span></span> [<a href="https://github.com/solid/specification/issues/125#issuecomment-959518598" rel="cito:citesAsSourceDocument">Source</a>]</p>
+
+                    <p>An <em>N3 Patch</em> is a document in the <em>Notation3 (N3)</em> format [<cite><a class="bibref" href="#bib-notation3">N3</a></cite>], identified by the MIME type <code>text/n3</code>, conforming to the following structural constraints:</p>
+
+                    <ul>
+                      <li>The patch document can contain patch resources identified by a triple <code>?patch solid:patches ?target</code>, in which <code>?patch</code> is a freely chosen identifier for a patch resource and <code>?target</code> is the URI of the RDF document to be modified.</li>
+                      <li>A patch resource contains at most one triple of the form <code>?patch solid:deletes ?deletions</code>.</li>
+                      <li>A patch resource contains at most one triple of the form <code>?patch solid:inserts ?insertions</code>.</li>
+                      <li>A patch resource contains at most one triple of the form <code>?patch solid:where ?conditions</code>.</li>
+                      <li>When present, <code>?deletions</code>, <code>?insertions</code>, and <code>?conditions</code> must be non-nested <em>cited formulae</em> [<cite><a class="bibref" href="#bib-notation3">N3</a></cite>] consisting only of triples and/or triple patterns. When not present, they are presumed to be the empty formula <code>{}</code>.</li>
+                    </ul>
+
+                    <p>While other specifications might provide a structure and interpretation for a wider class of N3 Patch documents, the present specification only governs the application of N3 Patch documents that additionally adhere to the following structural constraints:</p>
+
+                    <ul>
+                      <li>The patch document contains exactly one patch resource.</li>
+                      <li>The <code>?target</code> is an exact match with the request URI.</li>
+                      <li>The patch resource may optionally contain one triple of the form <code>?patch solid:matchingStrategy solid:SingleMatch</code>.</li>
+                      <li>The <code>?insertions</code> and <code>?deletions</code> formulae may only contain variables that also occur in the <code>?conditions</code> formula.</li>
+                      <li>The patch document does not contain any other triples.</li>
+                    </ul>
+
+                    <p><span about="" id="server-patch-n3-invalid" rel="spec:requirement" resource="#server-patch-n3-invalid"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>400</code> status code if a patch document does not satisfy all of the above constraints.</span></span></p>
+
+                    <p><span about="" id="server-patch-n3-semantics" rel="spec:requirement" resource="#server-patch-n3-semantics"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> process an N3 Patch document against the RDF dataset in the target document as follows, creating an empty RDF dataset if the resource does not exist yet. If <code>?conditions</code> is non-empty, then the dataset should contain exactly one match of its contents after variable substitution; if not, the <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>409</code> status code. The resulting (possibly empty) variable mapping must be propagated to the <code>?deletions</code> and <code>?insertions</code> formulae. Then, the resulting triples in <code>?deletions</code> must be removed from the RDF dataset if there is exactly one match; if not, the <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>409</code> status code. Finally, the resulting triples in <code>?deletions</code> must be added to the RDF graph. The combination of the deletions and insertions then forms the new resource state of the RDF document, and the server responds with the appropriate status code.</span></span></p>
+                  </div>
+                </section>
               </section>
 
               <section id="deleting-resources" inlist="" rel="schema:hasPart" resource="#deleting-resources">
@@ -1062,6 +1093,8 @@ left:4.5em;
                     <dd><a href="https://www.w3.org/TR/ldn/" rel="cito:citesAsAuthority"><cite>Linked Data Notifications</cite></a>. Sarven Capadisli; Amy Guy.  W3C. 2 May 2017. W3C Recommendation. URL: <a href="https://www.w3.org/TR/ldn/">https://www.w3.org/TR/ldn/</a></dd>
                     <dt id="bib-ldp">[LDP]</dt>
                     <dd><a href="https://www.w3.org/TR/ldp/" rel="cito:citesAsAuthority"><cite>Linked Data Platform 1.0</cite></a>. Steve Speicher; John Arwe; Ashok Malhotra.  W3C. 26 February 2015. W3C Recommendation. URL: <a href="https://www.w3.org/TR/ldp/">https://www.w3.org/TR/ldp/</a></dd>
+                    <dt id="bib-notation3">[N3]</dt>
+                    <dd><a href="https://w3c.github.io/N3/spec/" rel="cito:citesAsAuthority"><cite>Notation3</cite></a>. Dörthe Arndt; William Van Woensel;Dominik Tomaszuk; Gregg Kellogg.  W3C. 5 September 2021. Draft Community Group Report. URL: <a href="https://w3c.github.io/N3/spec/">https://w3c.github.io/N3/spec/</a></dd>
                     <dt id="bib-rdf-schema">[RDF-SCHEMA]</dt>
                     <dd><a href="https://www.w3.org/TR/rdf-schema/" rel="cito:citesAsAuthority"><cite>RDF Schema 1.1</cite></a>. Dan Brickley; Ramanathan Guha.  W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/rdf-schema/">https://www.w3.org/TR/rdf-schema/</a></dd>
                     <dt id="bib-rdf11-concepts">[RDF11-CONCEPTS]</dt>
