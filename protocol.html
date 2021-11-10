@@ -46,8 +46,10 @@ color:#178217;
 figure .example-h {
 margin-top:0;
 text-align: left;
-text-transform: uppercase;
 color:#827017;
+}
+figure .example-h > span {
+text-transform: uppercase;
 }
 header address a[href] {
 float: right;
@@ -749,6 +751,18 @@ left:4.5em;
 
                     <p><span about="" id="server-patch-n3-semantics" rel="spec:requirement" resource="#server-patch-n3-semantics"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> process a patch resource against the RDF dataset in the target document as follows, creating an empty RDF dataset if the target resource does not exist yet. If <code>?conditions</code> is non-empty, then the dataset must contain exactly one match of its contents after variable substitution; if not, the <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>409</code> status code. The resulting (possibly empty) variable mapping must be propagated to the <code>?deletions</code> and <code>?insertions</code> formulae. Then, the resulting triples in <code>?deletions</code> must be removed from the RDF dataset if there is exactly one match; if not, the <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>409</code> status code. Finally, the resulting triples in <code>?insertions</code> must be added to the RDF dataset, where any blank nodes must result in newly created blank nodes. The combination of the deletions and insertions then forms the new resource state of the RDF document, and the server responds with the appropriate status code.</span></span></p>
                   </div>
+
+                  <figure id="n3-patch-example" class="example listing" rel="schema:hasPart" resource="#n3-patch-example">
+                    <p class="example-h"><span>Example</span>: Applying an N3 patch.</p>
+                    <pre about="#n3-patch-example" property="schema:description" typeof="fabio:Script">
+<code>@prefix solid: &lt;http://www.w3.org/ns/solid/terms#&gt;.
+@prefix ex: &lt;http://www.example.org/terms#&gt;.
+
+&lt;&gt; solid:where   { ?person ex:familyName "Anchor". };
+   solid:inserts { ?person ex:givenName "An". };
+   solid:deletes { ?person ex:givenName "Bob". }.</code></pre>
+                    <figcaption property="schema:name">This N3 Patch instructs to rename <em>An Anchor</em> into <em>Bob Anchor</em>, on the condition that no other Anchor family members are present in the target RDF document.</figcaption>
+                  </figure>
                 </section>
               </section>
 
