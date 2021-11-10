@@ -731,6 +731,7 @@ left:4.5em;
 
                     <ul>
                       <li>The patch document can contain patch resources identified by a URI <code>?patch</code> which can be chosen freely.</li>
+                      <li>A patch resource may contain a triple <code>?patch rdf:type solid:Patch</code>.</li>
                       <li>A patch resource contains at most one triple of the form <code>?patch solid:deletes ?deletions</code>.</li>
                       <li>A patch resource contains at most one triple of the form <code>?patch solid:inserts ?insertions</code>.</li>
                       <li>A patch resource contains at most one triple of the form <code>?patch solid:where ?conditions</code>.</li>
@@ -758,7 +759,8 @@ left:4.5em;
 <code>@prefix solid: &lt;http://www.w3.org/ns/solid/terms#&gt;.
 @prefix ex: &lt;http://www.example.org/terms#&gt;.
 
-&lt;&gt; solid:where   { ?person ex:familyName "Anchor". };
+&lt;&gt; a solid:Patch;
+   solid:where   { ?person ex:familyName "Anchor". };
    solid:inserts { ?person ex:givenName "An". };
    solid:deletes { ?person ex:givenName "Bob". }.</code></pre>
                     <figcaption property="schema:name">This N3 Patch instructs to rename <em>An Anchor</em> into <em>Bob Anchor</em>, on the condition that no other Anchor family members are present in the target RDF document.</figcaption>
