@@ -753,11 +753,12 @@ left:4.5em;
                     <p><span about="" id="server-patch-n3-semantics" rel="spec:requirement" resource="#server-patch-n3-semantics"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> process a patch resource against the target document as follows:</span></span></p>
                     <ol>
                       <li>Start from the RDF dataset in the target document, or an empty RDF dataset if the target resources does not exist yet.</li>
-                      <li>If <code>?conditions</code> is non-empty, then the dataset must contain exactly one match of its contents after variable substitution; if not, the <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>409</code> status code.</li>
-                      <li>The resulting (possibly empty) variable mapping is propagated to the <code>?deletions</code> and <code>?insertions</code> formulae.</li>
-                      <li>Then, the resulting triples in <code>?deletions</code> are removed from the RDF dataset if there is exactly one match; if not, the <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>409</code> status code.</li>
-                      <li>Finally, the resulting triples in <code>?insertions</code> are added to the RDF dataset, where any blank nodes result in newly created blank nodes.</li>
-                      <li>The combination of deletions and insertions then forms the new resource state of the RDF document, and the server responds with the appropriate status code.</li>
+                      <li>If <code>?conditions</code> is non-empty, find all (possibly empty) variable mappings such that all of the resulting triples occur in the dataset. If no such mapping exists, or if multiple mappings exist, the <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>409</code> status code.
+                      <li>The resulting variable mapping is propagated to the <code>?deletions</code> and <code>?insertions</code> formulae to obtain two sets of resulting triples.</li>
+                      <li>If the set of triples resulting from <code>?deletions</code> is non-empty and the dataset does not contain <em>all</em> of these triples, the <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>409</code> status code.
+                      <li>The triples resulting from <code>?deletions</code> are to be removed from the RDF dataset.</li>
+                      <li>The triples resulting from <code>?insertions</code> are to be added to the RDF dataset, where any blank nodes result in newly created blank nodes.</li>
+                      <li>The combination of deletions followed by insertions then forms the new resource state of the RDF document, and the server responds with the appropriate status code.</li>
                     </ol>
                   </div>
 
