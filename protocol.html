@@ -819,7 +819,7 @@ left:4.5em;
                       <li>The resulting variable mapping is propagated to the <code>?deletions</code> and <code>?insertions</code> formulae to obtain two sets of resulting triples.</li>
                       <li>If the set of triples resulting from <code>?deletions</code> is non-empty and the dataset does not contain <em>all</em> of these triples, the <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>409</code> status code.
                       <li>The triples resulting from <code>?deletions</code> are to be removed from the RDF dataset.</li>
-                      <li>The triples resulting from <code>?insertions</code> are to be added to the RDF dataset, where any blank nodes result in newly created blank nodes.</li>
+                      <li>The triples resulting from <code>?insertions</code> are to be added to the RDF dataset, with each blank node from <code>?insertions</code> resulting in a newly created blank node.</li>
                       <li>The combination of deletions followed by insertions then forms the new resource state of the RDF document, and the server responds with the appropriate status code.</li>
                     </ol>
                   </div>
