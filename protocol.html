@@ -572,6 +572,40 @@ left:4.5em;
                   <p id="server-hierarchical-containment">There is a 1-1 correspondence between containment triples and relative reference within the path name hierarchy. [<a href="https://github.com/solid/specification/issues/98#issuecomment-547506617" rel="cito:citesAsSourceDocument">Source</a>]. It follows that all resources are discoverable from a container and that it is not possible to create orphan resources. [<a href="https://github.com/solid/specification/issues/97#issuecomment-547459396" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
                   <p><span about="" id="server-basic-container" rel="spec:requirement" resource="#server-basic-container"><span property="spec:statement">The representation and behaviour of containers in Solid corresponds to LDP Basic Container and <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> be supported by <span rel="spec:requirementSubject" resource="spec:Server">server</span>.</span></span> [<a href="https://github.com/solid/specification/issues/47#issuecomment-561675764" rel="cito:citesAsSourceDocument">Source</a>]</p>
+
+                  <section id="authoritative-resource-data" inlist="" rel="schema:hasPart" resource="#authoritative-resource-data">
+                    <h4 property="schema:name">Authoritative Resource Data</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>Container descriptions are not limited to containment triples. To further support client navigation and application interaction, servers can include <a href="#authoritative-information">authoritative information</a> about contained resources as part of the container description.</p>
+
+                      <p><span about="" id="authoritative-contained-resource-data" rel="spec:requirement" resource="authoritative-contained-resource-data"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> include the following information about contained resources as part of the container description, unless that information does not exist or is expensive to determine:</span></span></p>
+
+                      <dl>
+                        <dt><code>rdf:type</code></dt>
+                        <dd>A class whose URI formed by concatenating <code>http://www.w3.org/ns/iana/media-types/</code>, the IANA Media Type [<cite><a class="bibref" href="#bib-iana-media-types">IANA-MEDIA-TYPES</a></cite>] of the resource, and <code>#Resource</code>.</dd>
+                        <dt><code>stat:size</code></dt>
+                        <dd>A non-negative integer giving the size of the resource in bytes.</dd>
+                        <dt><code>dcterms:modified</code></dt>
+                        <dd>The time when the resource was last modified.</dd>
+                        <dt><code>stat:mtime</code></dt>
+                        <dd>The Unix time when the resource was last modified.</dd>
+                      </dl>
+
+                      <div class="note" id="authoritative-resource-data-logically-part-of-container-description" inlist="" rel="schema:hasPart" resource="#authoritative-resource-data-logically-part-of-container-description">
+                        <h5 property="schema:name"><span>Note</span>: Authoritative Resource Data Logically Part of Container Description</h5>
+                        <div datatype="rdf:HTML" property="schema:description">
+                          <p>Authoritative data about contained resources is logically part of the container. Servers are encouraged to consider omitting authoritative data about a contained resource when agent is unauthorized to read the contained resource.</p>
+                        </div>
+                      </div>
+
+                      <p><span about="" id="contained-resource-state-cascading" rel="spec:requirement" resource="#contained-resource-state-cascading"><span property="spec:statement">When the state of a contained resource changes, the <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST-NOT">MUST NOT</span> expose any authoritative information that has a cascading potential to its immediate container.</span></span></p>
+
+                      <p>Authoritative data about contained resources is <a href="#server-protect-authoritative-resource-data">protected by the server</a>.</p>
+
+                      <p>[<a href="https://github.com/solid/specification/issues/227" rel="cito:citesAsSourceDocument">Source</a>]
+                      [<a href="https://github.com/solid/specification/issues/343" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                    </div>
+                  </section>
                 </div>
               </section>
 
@@ -720,6 +754,8 @@ left:4.5em;
                   <p><span about="" id="server-put-patch-auxiliary-resource" rel="spec:requirement" resource="#server-put-patch-auxiliary-resource"><span property="spec:statement">When a <code>PUT</code> or <code>PATCH</code> method request targets an auxiliary resource, the <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> create or update it.</span></span> <span about="" id="server-post-slug-auxiliary-resource" rel="spec:requirement" resource="#server-post-slug-auxiliary-resource"><span property="spec:statement">When a <code>POST</code> method request with the <code>Slug</code> header targets an auxiliary resource, the <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with the <code>403</code> status code and response body describing the error.</span></span> [<a href="https://github.com/solid/specification/issues/42#issuecomment-616688848" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
                   <p><span about="" id="server-protect-containment" rel="spec:requirement" resource="#server-protect-containment"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> NOT allow HTTP <code>POST</code>, <code>PUT</code> and <code>PATCH</code> to update a container’s containment triples; if the server receives such a request, it <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>409</code> status code.</span></span> [<a href="https://github.com/solid/specification/issues/40#issuecomment-573358652" rel="cito:citesAsSourceDocument">Source</a>]</p>
+
+                  <p><span about="" id="server-protect-authoritative-resource-data" rel="spec:requirement" resource="#server-protect-authoritative-resource-data"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> NOT allow HTTP <code>POST</code>, <code>PUT</code> and <code>PATCH</code> to update the <a href="#authoritative-resource-data">authoritative resource data</a>; if the server receives such a request, it MUST respond with a <code>409</code> status code.</span></span> [<a href="https://github.com/solid/specification/issues/227#issuecomment-919312592" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
                   <div class="note" id="conditional-update" inlist="" rel="schema:hasPart" resource="#conditional-update">
                     <h4 property="schema:name"><span>Note</span>: Conditional Update</h4>
