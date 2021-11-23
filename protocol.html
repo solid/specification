@@ -580,9 +580,9 @@ left:4.5em;
 
                       <p><span about="" id="authoritative-contained-resource-data" rel="spec:requirement" resource="authoritative-contained-resource-data"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> include the following information about contained resources as part of the container description, unless that information does not exist or is expensive to determine:</span></span></p>
 
-                      <dl>
+                      <dl id="authoritative-contained-resource-statements">
                         <dt><code>rdf:type</code></dt>
-                        <dd>A class whose URI formed by concatenating <code>http://www.w3.org/ns/iana/media-types/</code>, the IANA Media Type [<cite><a class="bibref" href="#bib-iana-media-types">IANA-MEDIA-TYPES</a></cite>] of the resource, and <code>#Resource</code>.</dd>
+                        <dd>A class whose URI is based on the <em>URI Template</em> [<cite><a class="bibref" href="#bib-rfc6570">RFC6570</a></cite>] syntax: <code>http://www.w3.org/ns/iana/media-types/{iana-media-type}#Resource</code>, where <code>iana-media-type</code> expands to a value that is part of IANA Media Types [<cite><a class="bibref" href="#bib-iana-media-types">IANA-MEDIA-TYPES</a></cite>].</dd>
                         <dt><code>stat:size</code></dt>
                         <dd>A non-negative integer giving the size of the resource in bytes.</dd>
                         <dt><code>dcterms:modified</code></dt>
