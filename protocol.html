@@ -773,10 +773,10 @@ left:4.5em;
 @prefix ex: &lt;http://www.example.org/terms#&gt;.
 
 _:rename a solid:Patch;
-   solid:where   { ?person ex:familyName "Anchor". };
-   solid:inserts { ?person ex:givenName "An". };
-   solid:deletes { ?person ex:givenName "Bob". }.</code></pre>
-                    <figcaption property="schema:name">This N3 Patch instructs to rename <em>An Anchor</em> into <em>Bob Anchor</em>, on the condition that no other Anchor family members are present in the target RDF document.</figcaption>
+   solid:where   { ?person ex:familyName "Garcia". };
+   solid:inserts { ?person ex:givenName "Alex". };
+   solid:deletes { ?person ex:givenName "Claudia". }.</code></pre>
+                    <figcaption property="schema:name">This N3 Patch instructs to rename <em>Claudia Garcia</em> into <em>Alex Garcia</em>, on the condition that no other Garcia family members are present in the target RDF document.</figcaption>
                   </figure>
                 </section>
               </section>
