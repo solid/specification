@@ -727,7 +727,7 @@ left:4.5em;
                   <div datatype="rdf:HTML" property="schema:description">
                     <p><span about="" id="server-patch-n3" rel="spec:requirement" resource="#server-patch-n3"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> support a <code>PATCH</code> request with an <em>N3 Patch</em> body when the target of the request is an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>], and indicate such support by listing <code>text/n3</code> as a value of the <code>Accept-Patch</code> header [<cite><a class="bibref" href="#bib-rfc5789">RFC5789</a></cite>] of relevant responses.</span></span> [<a href="https://github.com/solid/specification/issues/125#issuecomment-959518598" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
-                    <p>An <em>N3 Patch</em> is a document in the <em>Notation3 (N3)</em> format [<cite><a class="bibref" href="#bib-notation3">N3</a></cite>], identified by the media type <code>text/n3</code>, conforming to the following structural constraints:</p>
+                    <p>An <em>N3 Patch</em> is a document in the <em>Notation3 (N3)</em> format [<cite><a class="bibref" href="#bib-notation3">N3</a></cite>], identified by the media type <code>text/n3</code>, conforming to the following constraints:</p>
 
                     <ul>
                       <li id="server-patch-n3-patches" rel="spec:requirement" resource="#server-patch-n3-patches"><span property="spec:statement">A patch document <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> contain one or more patch resources.</span></li>
@@ -739,7 +739,7 @@ left:4.5em;
                       <li id="server-patch-n3-formulae" rel="spec:requirement" resource="#server-patch-n3-formulae"><span property="spec:statement">When present, <code>?deletions</code>, <code>?insertions</code>, and <code>?conditions</code> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> be non-nested <em>cited formulae</em> [<cite><a class="bibref" href="#bib-notation3">N3</a></cite>] consisting only of triples and/or triple patterns [<cite><a class="bibref" href="#bib-sparql11-query">SPARQL11-QUERY</a></cite>]. When not present, they are presumed to be the empty formula <code>{}</code>.</span></li>
                     </ul>
 
-                    <p>While other specifications might provide a structure and interpretation for a wider class of N3 Patch documents, the present specification only governs the application of N3 Patch documents that additionally adhere to the following structural constraints:</p>
+                    <p>While other specifications might provide a structure and interpretation for a wider class of N3 Patch documents, the present specification only governs the application of N3 Patch documents that additionally adhere to the following constraints:</p>
 
                     <ul>
                       <li id="server-patch-n3-single" rel="spec:requirement" resource="#server-patch-n3-single"><span property="spec:statement">The patch document <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> contain exactly one patch resource, identified by one or more of the triple patterns described above, which all share the same <code>?patch</code> subject.</span></li>
