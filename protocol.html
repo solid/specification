@@ -573,6 +573,8 @@ left:4.5em;
 
                   <p><span about="" id="server-basic-container" rel="spec:requirement" resource="#server-basic-container"><span property="spec:statement">The representation and behaviour of containers in Solid corresponds to LDP Basic Container and <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> be supported by <span rel="spec:requirementSubject" resource="spec:Server">server</span>.</span></span> [<a href="https://github.com/solid/specification/issues/47#issuecomment-561675764" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
+                  <p id="server-container-last-modified">Servers can determine the value of the HTTP <code>Last-Modified</code> header field in response to <code>HEAD</code> and <code>GET</code> requests targeting a container based on modifications to the selected representation or changes to containment triples.</p>
+
                   <section id="authoritative-resource-data" inlist="" rel="schema:hasPart" resource="#authoritative-resource-data">
                     <h4 property="schema:name">Authoritative Resource Data</h4>
                     <div datatype="rdf:HTML" property="schema:description">
