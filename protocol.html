@@ -593,6 +593,8 @@ left:4.5em;
                         <dd>The Unix time when the resource was last modified.</dd>
                       </dl>
 
+                      <p id="dcterms-modified-corresponds-last-modified">The <code>dcterms:modified</code> value of a contained resource corresponds with the <code>Last-Modified</code> header value of the contained resource, if one were to perform <code>HEAD</code> or <code>GET</code> requests on the URI of the contained resource at the time of the HTTP message’s generation, then a response with the <code>200</code> status code including the <code>Last-Modified</code> header would indicate the same date and time.</p>
+
                       <div class="note" id="authoritative-resource-data-considerations" inlist="" rel="schema:hasPart" resource="#authoritative-resource-data-considerations">
                         <h5 property="schema:name"><span>Note</span>: Authoritative Resource Data Considerations</h5>
                         <div datatype="rdf:HTML" property="schema:description">
