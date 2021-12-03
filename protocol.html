@@ -717,7 +717,32 @@ left:4.5em;
 
                   <p><span about="" id="server-etag" rel="spec:requirement" resource="#server-etag"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MAY">MAY</span> use the HTTP <code>ETag</code> header with a strong validator for RDF bearing representations in order to encourage clients to opt-in to using the <code>If-Match</code> header in their requests.</span></span></p>
                 </div>
-              </section>
+
+		<section id="sparql-patching-resources" inlist="" rel="schema:hasPart" resource="#sparql-patching-resources">
+                  <h4 property="schema:name">Using SPARQL to Patch Resources</h4>
+		  <div datatype="rdf:HTML" property="schema:description">
+		    <p>
+		      <span about="" id="server-patch-sparql-update" rel="spec:requirement" resource="#server-patch-sparql-update"><span property="spec:statement">When the target resource of a <code>PATCH</code> request is represented by an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>], <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> support changing the representation using the request body containing a variation of SPARQL Update as defined in the <a href="#sparql-update-variant">Appendix</a>.</span></span>
+		      <span about="" id="server-patch-sparql-all" rel="spec:requirement" resource="#server-patch-sparql-all"><span property="spec:statement"> <span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MAY">MAY</span> further support SPARQL 1.1 Update [<cite><a class="bibref" href="#bib-sparql-overview">SPARQL</a></cite>],</span></span>
+		      <span about="" id="server-patch-sparql-not-other" rel="spec:requirement" resource="#server-patch-sparql-not-other"><span property="spec:statement"> except that <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> allow a request with a <code>PATCH</code> method to change other resources than the target resource.</span></span> [<a href="https://github.com/solid/specification/issues/125#issuecomment-873035679" rel="cito:citesAsSourceDocument">Source</a>]
+		      <span about="" id="server-patch-sparql-outside" rel="spec:requirement" resource="#server-patch-sparql-outside"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> that receives a request body containing a SPARQL query that falls outside of the what they are able to process <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>422</code> status code [<cite><a class="bibref" href="#bib-rfc4918">RFC4918</a></cite>] and a message body that explains the error.</span></span>
+		    </p>
+
+		    <p>
+		      <span about="" id="server-patch-sparql-abort" rel="spec:requirement" resource="#server-patch-sparql-abort"><span property="spec:statement">When <span rel="spec:requirementSubject" resource="spec:Server">servers</span> that process requests containing <code>REMOVE</code> or <code>REMOVE DATA</code> operations as defined in the <a href="#sparql-update-variant">Appendix</a> detects a <em>failure</em> resulting from the processing of these operations, then the server <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> abort any modifications and respond with a <code>409</code> status code.</span></span>
+		    </p>
+
+		    <p>
+		      <span about="" id="server-patch-sparql-insert" rel="spec:requirement" resource="#server-patch-sparql-insert"><span property="spec:statement">When the request body of a <code>PATCH</code> request has a SPARQL Update query that contains an <code>INSERT</code> keyword, <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> treat the request as an <a href="#append-operation">Append operation</a>.</span></span>
+		      <span about="" id="server-patch-sparql-where" rel="spec:requirement" resource="#server-patch-sparql-where"><span property="spec:statement">When the query contains a <code>WHERE</code> keyword, <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> treat the request as a <a href="#read-operation">Read operation</a>.</span></span>
+		      <span about="" id="server-patch-sparql-delete" rel="spec:requirement" resource="#server-patch-sparql-delete"><span property="spec:statement">When the query contains a <code>DELETE</code> keyword, <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> treat the request as a <a href="#write-operation">Write operation</a>.</span></span>
+		      <span about="" id="server-patch-sparql-delete" rel="spec:requirement" resource="#server-patch-sparql-delete"><span property="spec:statement">When the query contains a <code>REMOVE</code> keyword, <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> treat the request as a <a href="#read-operation">Read</a> and <a href="#write-operation">Write operation</a>.</span></span>
+		    </p>
+
+		  </div>
+		</section>
+
+	      </section>
 
               <section id="deleting-resources" inlist="" rel="schema:hasPart" resource="#deleting-resources">
                 <h3 property="schema:name">Deleting Resources</h3>
@@ -1045,6 +1070,169 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
             </div>
           </section>
 
+          <section class="appendix" id="sparql-update-variant" inlist="" rel="schema:hasPart" resource="#sparql-update-variant">
+            <h2 property="schema:name">Appendix - A variant of SPARQL Update for Solid</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <section id="sparql-variant-overview" inlist="" rel="schema:hasPart" resource="#sparql-variant-overview">
+                <h3 property="schema:name">Overview</h3>
+		 <div datatype="rdf:HTML" property="schema:description">
+                   <p><em>This section is non-normative.</em></p>
+
+		   <p>The objective of this variant is two-fold: Firstly, it is a variant of SPARQL 1.1 Update [<cite><a class="bibref" href="#bib-sparql11-update">SPARQL11-UPDATE</a></cite>] that is relatively easy to implement and contains features that are most commonly used. Secondly, it seeks to enable a semaphore mechanism that exploits that if a delete operation does not remove any triples, it may have been due to an edit conflict. Since this is incompatible with SPARQL 1.1 as defined, it introduces a <code>REMOVE</code> keyword. The variant operates over triples and triple patterns only, and uses basic graph patterns, and does not include more advanced features. To further examine the <a href="#sparql-variant-grammar">grammar</a> definition, see <a href="https://services.w3.org/yacker/uploads/SPARQL_patch_solid?lang=perl&markup=html">the Yacker validator</a>. 
+		   </p>
+		 </div>
+	      </section>
+
+              <section id="sparql-variant-definition" inlist="" rel="schema:hasPart" resource="#sparql-variant-definition">
+                <h3 property="schema:name">Definition</h3>
+
+		<p>
+		  <code>REMOVE DATA</code> differs from <code>DELETE DATA</code> as defined in SPARQL 1.1 Update [<cite><a class="bibref" href="#bib-sparql11-update">SPARQL11-UPDATE</a></cite>] in that the deletion of non-existing data results in a <em>failure</em>.
+		</p>
+
+		<p>
+		  <code>REMOVE</code> differs from <code>DELETE</code> as defined in SPARQL 1.1 Update [<cite><a class="bibref" href="#bib-sparql11-update">SPARQL11-UPDATE</a></cite>] in that when the corresponding <code>WHERE</code> clause does not match exactly one solution, it results in a <em>failure</em>.
+		</p>
+
+		<p>
+		  The Internet Media Type / MIME Type for this variant is "<code>application/vnd.solid.sparql-patch</code>".
+		</p>
+		
+	      </section>
+
+              <section id="sparql-variant-grammar" inlist="" rel="schema:hasPart" resource="#sparql-variant-grammar">
+                <h3 property="schema:name">Grammar</h3>
+		<div class="note" id="sparql-variant-definition-note" inlist="" rel="schema:hasPart" resource="#sparql-variant-definition-note">
+                    <h4 property="schema:name"><span>Note</span>: Definition of SPARQL Update Variant</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>This specification alters the grammar of 8 rules in the original grammar of the SPARQL 1.1 Query Language [<cite><a class="bibref" href="#bib-sparql-overview">SPARQL</a></cite>] grammar and introduces another 11 new rules to accommodate for <code>INSERT DATA</code> and <code>REMOVE DATA</code>, as the corresponding operations were defined in the language definition but not precisely defined in the grammar. This specification references the original grammar definition where no changes were made.
+		    </div>
+		</div>
+
+                <div class="grammarTable" datatype="rdf:HTML" property="schema:description">
+		  <table>
+		    <tbody>
+		      <tr valign="baseline">
+			<td><code>[30p]  </code></td>
+			<td><code><a id="rUpdate1" name="rUpdate1">Update1</a></code></td>
+			<td>  ::=  </td>
+			<td><code><a href="https://www.w3.org/TR/sparql11-query/#rPrologue">Prologue</a> ( <a href="#rInsertData">InsertData</a> | <a href="#rRemoveData">RemoveData</a> | <a href="#rUpdateData">UpdateData</a> | <a href="#rRemoveWhere">RemoveWhere</a> | <a href="#rModify">Modify</a> ) </code></td> 
+		      </tr>
+		      <tr valign="baseline">
+			<td><code>[31d]  </code></td>
+			<td><code><a id="rUpdateData" name="rUpdateData">UpdateData</a></code></td>
+			<td>  ::=  </td>
+			<td><code><a href="#rRemoveData">RemoveData</a> <span class="token">';'</span> <a href="#rInsertData">InsertData</a> </code></td>
+		      </tr>
+		      <tr valign="baseline">
+			<td><code>[38p]  </code></td>
+			<td><code><a id="rInsertData" name="rInsertData">InsertData</a></code></td>
+			<td>  ::=  </td>
+			<td><code><span class="token">'INSERT DATA'</span> <span class="token">'{'</span>  <a href="#rTripleData">TripleData</a> <span class="token">'}'</span> </code></td>
+		      </tr>
+		      <tr valign="baseline">
+			<td><code>[39p]  </code></td>
+			<td><code><a id="rRemoveData" name="rRemoveData">RemoveData</a></code></td>
+			<td>  ::=  </td>
+			<td><code><span class="token">'REMOVE DATA'</span> <span class="token">'{'</span> <a href="#rTripleData">TripleData</a> <span class="token">'}'</span> </code></td>
+		      </tr>
+		      <tr valign="baseline">
+			<td><code>[40p]  </code></td>
+			<td><code><a id="rRemoveWhere" name="rRemoveWhere">RemoveWhere</a></code></td>
+			<td>  ::=  </td>
+			<td><code><span class="token">'REMOVE WHERE'</span> <span class="token">'{'</span>  <a href="https://www.w3.org/TR/sparql11-query/#rTriplesTemplate">TriplesTemplate</a> <span class="token">'}'</span> </code></td>
+      </tr>
+		      <tr valign="baseline">
+			<td><code>[41p]  </code></td>
+			<td><code><a id="rModify" name="rModify">Modify</a></code></td>
+			<td>  ::=  </td>
+			<td><code>( <a href="#rRemoveClause">RemoveClause</a> <a href="#rInsertClause">InsertClause</a>? | <a href="#rInsertClause">InsertClause</a> )  <span class="token">'WHERE'</span> <span class="token">'{'</span>  <a href="https://www.w3.org/TR/sparql11-query/#rTriplesTemplate">TriplesTemplate</a> <span class="token">'}'</span> </code></td>
+		      </tr>
+		      <tr valign="baseline">
+			<td><code>[42p]  </code></td>
+			<td><code><a id="rRemoveClause" name="rRemoveClause">RemoveClause</a></code></td>
+			<td>  ::=  </td>
+			<td><code><span class="token">'REMOVE'</span> <span class="token">'{'</span>  <a href="https://www.w3.org/TR/sparql11-query/#rTriplesTemplate">TriplesTemplate</a> <span class="token">'}'</span> </code></td>
+		      </tr>
+		      <tr valign="baseline">
+			<td><code>[43p]  </code></td>
+			<td><code><a id="rInsertClause" name="rInsertClause">InsertClause</a></code></td>
+			<td>  ::=  </td>
+			<td><code><span class="token">'INSERT'</span> <span class="token">'{'</span> <a href="https://www.w3.org/TR/sparql11-query/#rTriplesTemplate">TriplesTemplate</a> <span class="token">'}'</span> </code></td>
+		      </tr>
+		      <tr valign="baseline">
+			<td><code>[52d]  </code></td>
+			<td><code><a id="rTripleData" name="rTripleData">TripleData</a></code></td>
+			<td>  ::=  </td>
+			<td><code><a href="#rTriplesDataSameSubject">TriplesDataSameSubject</a> ( <span class="token">'.'</span> <a href="#rTripleData">TripleData</a>? )?</code></td>
+		      </tr>
+		      <tr valign="baseline">
+			<td><code>[75d]  </code></td>
+			<td><code><a id="rTriplesDataSameSubject" name="rTriplesDataSameSubject">TriplesDataSameSubject</a></code></td>
+			<td>  ::=  </td>
+			<td><code><a href="https://www.w3.org/TR/sparql11-query/#rGraphTerm">GraphTerm</a> <a href="#rPropertyDataListNotEmpty">PropertyDataListNotEmpty</a> |	<a href="#rTriplesDataNode">TriplesDataNode</a> <a href="#rPropertyDataList">PropertyDataList</a></code></td>
+		      </tr>
+		      <tr valign="baseline">
+			<td><code>[76d]  </code></td>
+			<td><code><a id="rPropertyDataList" name="rPropertyDataList">PropertyDataList</a></code></td>
+			<td>  ::=  </td>
+			<td><code><a href="#rPropertyDataListNotEmpty">PropertyDataListNotEmpty</a>?</code></td>
+		      </tr>
+		      <tr valign="baseline">
+			<td><code>[77d]  </code></td>
+			<td><code><a id="rPropertyDataListNotEmpty" name="rPropertyDataListNotEmpty">PropertyDataListNotEmpty</a></code></td>
+			<td>  ::=  </td>
+			<td><code><a href="#rVerb">Verb</a> <a href="#rObjectDataList">ObjectDataList</a> ( <span class="token">';'</span> ( <a href="#rVerb">Verb</a> <a href="#rObjectDataList">ObjectDataList</a> )? )*</code></td>
+		      </tr>
+		      <tr valign="baseline">
+			<td><code>[78p]  </code></td>
+			<td><code><a id="rVerb" name="rVerb">Verb</a></code></td>
+			<td>  ::=  </td>
+			<td><code><a href="https://www.w3.org/TR/sparql11-query/#riri">iri</a> | <span class="token">'a'</span></code></td>
+		      </tr>
+		      <tr valign="baseline">
+			<td><code>[79d]  </code></td>
+			<td><code><a id="rObjectDataList" name="rObjectDataList">ObjectDataList</a></code></td>
+			<td>  ::=  </td>
+			<td><code><a href="#rObjectData">ObjectData</a> ( <span class="token">','</span> <a href="#rObjectData">ObjectData</a> )*</code></td>
+		      </tr>
+		      <tr valign="baseline">
+			<td><code>[80d]  </code></td>
+			<td><code><a id="rObjectData" name="rObjectData">ObjectData</a></code></td>
+			<td>  ::=  </td>
+			<td><code><a href="#rGraphDataNode">GraphDataNode</a></code></td>
+		      </tr>
+		      <tr valign="baseline">
+			<td><code>[98d]  </code></td>
+			<td><code><a id="rTriplesDataNode" name="rTriplesDataNode">TriplesDataNode</a></code></td>
+			<td>  ::=  </td>
+			<td><code><a href="#rCollectionData">CollectionData</a> |	<a href="#rBlankNodeDataPropertyList">BlankNodeDataPropertyList</a></code></td>
+		      </tr>
+		      <tr valign="baseline">
+			<td><code>[99d]  </code></td>
+			<td><code><a id="rBlankNodeDataPropertyList" name="rBlankNodeDataPropertyList">BlankNodeDataPropertyList</a></code></td>
+			<td>  ::=  </td>
+			<td><code><span class="token">'['</span> <a href="#rPropertyDataListNotEmpty">PropertyDataListNotEmpty</a> <span class="token">']'</span></code></td>
+		      </tr>
+		      <tr valign="baseline">
+			<td><code>[102d]  </code></td>
+			<td><code><a id="rCollectionData" name="rCollectionData">CollectionData</a></code></td>
+			<td>  ::=  </td>
+			<td><code><span class="token">'('</span> <a href="#rGraphDataNode">GraphDataNode</a>+ <span class="token">')'</span></code></td>
+		      </tr>
+		      <tr valign="baseline">
+			<td><code>[104d]  </code></td>
+			<td><code><a id="rGraphDataNode" name="rGraphDataNode">GraphDataNode</a></code></td>
+			<td>  ::=  </td>
+			<td><code><a href="https://www.w3.org/TR/sparql11-query/#rGraphTerm">GraphTerm</a> |	<a href="#rTriplesDataNode">TriplesDataNode</a></code></td>
+		      </tr>
+		    </tbody>
+		  </table>
+		</div>
+	      </section>
+	    </div>
+	  </section>
+
           <section class="appendix" id="references" inlist="" rel="schema:hasPart" resource="#references">
             <h2 property="schema:name">References</h2>
             <div datatype="rdf:HTML" property="schema:description">
@@ -1070,6 +1258,8 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                     <dd><a href="https://datatracker.ietf.org/doc/html/rfc3864" rel="cito:citesAsAuthority"><cite>Registration Procedures for Message Header Fields</cite></a>. G. Klyne; M. Nottingham; J. Mogul.  IETF. September 2004. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc3864">https://datatracker.ietf.org/doc/html/rfc3864</a></dd>
                     <dt id="bib-rfc3986">[RFC3986]</dt>
                     <dd><a href="https://datatracker.ietf.org/doc/html/rfc3986" rel="cito:citesAsAuthority"><cite>Uniform Resource Identifier (URI): Generic Syntax</cite></a>. T. Berners-Lee; R. Fielding; L. Masinter.  IETF. January 2005. Internet Standard. URL: <a href="https://datatracker.ietf.org/doc/html/rfc3986">https://datatracker.ietf.org/doc/html/rfc3986</a></dd>
+                    <dt id="bib-rfc4918">[RFC4918]</dt>
+                    <dd><a href="https://datatracker.ietf.org/doc/html/rfc4918" rel="cito:citesAsAuthority"><cite>HTTP Extensions for Web Distributed Authoring and Versioning (WebDAV)</cite></a>. L. Dusseault, Ed..  IETF. June 2007. Proposed Standard. URL: <a href="https://datatracker.ietf.org/doc/html/rfc4918">https://datatracker.ietf.org/doc/html/rfc4918</a></dd>
                     <dt id="bib-rfc5023">[RFC5023]</dt>
                     <dd><a href="https://datatracker.ietf.org/doc/html/rfc5023" rel="cito:citesAsAuthority"><cite>The Atom Publishing Protocol</cite></a>. J. Gregorio, Ed.; B. de hOra, Ed..  IETF. October 2007. Proposed Standard. URL: <a href="https://datatracker.ietf.org/doc/html/rfc5023">https://datatracker.ietf.org/doc/html/rfc5023</a></dd>
                     <dt id="bib-rfc5789">[RFC5789]</dt>
@@ -1100,6 +1290,10 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                     <dd><a href="https://httpwg.org/specs/rfc8288.html" rel="cito:citesAsAuthority"><cite>Web Linking</cite></a>. M. Nottingham.  IETF. October 2017. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc8288.html">https://httpwg.org/specs/rfc8288.html</a></dd>
                     <dt id="bib-solid-oidc">[SOLID-OIDC]</dt>
                     <dd><a href="https://solid.github.io/solid-oidc/" rel="cito:citesAsAuthority"><cite>SOLID-OIDC</cite></a>. Aaron Coburn; elf Pavlik; Dmitri Zagidulin.  W3C Solid Community Group. W3C Editor's Draft. URL: <a href="https://solid.github.io/solid-oidc/">https://solid.github.io/solid-oidc/</a></dd>
+                    <dt id="bib-sparql-overview">[SPARQL]</dt>
+                    <dd><a href="https://www.w3.org/TR/sparql11-overview/" rel="cito:citesAsAuthority"><cite>SPARQL 1.1 Overview</cite></a>. The W3C SPARQL Working Group.  W3C. 21 March 2013. W3C Recommendation. URL: <a href="https://www.w3.org/TR/sparql11-overview/">https://www.w3.org/TR/sparql11-overview/</a></dd>
+		    <dt id="bib-sparql11-update">[SPARQL11-UPDATE]</dt>
+                    <dd><a href="https://www.w3.org/TR/sparql11-update/" rel="cito:citesAsAuthority"><cite>SPARQL 1.1 Update</cite></a>. Paula Gearon; Alexandre Passant; Axel Polleres.  W3C. 21 March 2013. W3C Recommendation. URL: <a href="https://www.w3.org/TR/sparql11-update/">https://www.w3.org/TR/sparql11-update/</a></dd>
                     <dt id="bib-turtle">[Turtle]</dt>
                     <dd><a href="https://www.w3.org/TR/turtle/" rel="cito:citesAsAuthority"><cite>RDF 1.1 Turtle</cite></a>. Eric Prud'hommeaux; Gavin Carothers.  W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/turtle/">https://www.w3.org/TR/turtle/</a></dd>
                     <dt id="bib-w3c-html">[W3C-HTML]</dt>
