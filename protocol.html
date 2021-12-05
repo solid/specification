@@ -580,17 +580,19 @@ left:4.5em;
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>Container descriptions are not limited to containment triples. To further support client navigation and application interaction, servers can include <a href="#resource-metadata">resource metadata</a> about contained resources as part of the container description.</p>
 
-                      <p><span about="" id="server-contained-resource-metadata" rel="spec:requirement" resource="#server-contained-resource-metadata"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> include <a href="#contained-resource-metadata-statements" rel="rdfs:seeAlso">resource metadata about contained resources</a> as part of the container description, unless that information is inapplicable to the server:</span></span></p>
+                      <p><span about="" id="server-contained-resource-metadata" rel="spec:requirement" resource="#server-contained-resource-metadata"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> include <a href="#contained-resource-metadata-statements" rel="rdfs:seeAlso">resource metadata about contained resources</a> as part of the container description, unless that information is inapplicable to the server.</span></span></p>
 
-                      <dl id="contained-resource-metadata-statements">
-                        <dt><code>rdf:type</code></dt>
-                        <dd>A class whose URI is based on the <em>URI Template</em> [<cite><a class="bibref" href="#bib-rfc6570">RFC6570</a></cite>] syntax: <code>http://www.w3.org/ns/iana/media-types/{iana-media-type}#Resource</code>, where <code>iana-media-type</code> expands to a value that is part of IANA Media Types [<cite><a class="bibref" href="#bib-iana-media-types">IANA-MEDIA-TYPES</a></cite>].</dd>
-                        <dt><code>stat:size</code></dt>
-                        <dd>A non-negative integer giving the size of the resource in bytes.</dd>
-                        <dt><code>dcterms:modified</code></dt>
-                        <dd>The date and time when the resource was last modified.</dd>
-                        <dt><code>stat:mtime</code></dt>
-                        <dd>The Unix time when the resource was last modified.</dd>
+                      <p id="contained-resource-metadata-statements" about="#contained-resource-metadata-statements" typeof="skos:Collection"><span property="skos:prefLabel">Contained resource metadata statements</span> include the properties:</p>
+
+                      <dl about="#contained-resource-metadata-statements" rel="skos:member">
+                        <dt about="#contained-resource-metadata-rdf-type" id="contained-resource-metadata-rdf-type" property="skos:prefLabel"><code>rdf:type</code></dt>
+                        <dd about="#contained-resource-metadata-rdf-type" property="skos:definition">A class whose URI is based on the <em>URI Template</em> [<cite><a class="bibref" href="#bib-rfc6570">RFC6570</a></cite>] syntax: <code>http://www.w3.org/ns/iana/media-types/{iana-media-type}#Resource</code>, where <code>iana-media-type</code> expands to a value that is part of IANA Media Types [<cite><a class="bibref" href="#bib-iana-media-types">IANA-MEDIA-TYPES</a></cite>].</dd>
+                        <dt about="#contained-resource-metadata-stat-size" id="contained-resource-metadata-stat-size" property="skos:prefLabel"><code>stat:size</code></dt>
+                        <dd about="#contained-resource-metadata-stat-size" property="skos:definition">A non-negative integer giving the size of the resource in bytes.</dd>
+                        <dt about="#contained-resource-metadata-dcterms-modified" id="contained-resource-metadata-dcterms-modified" property="skos:prefLabel"><code>dcterms:modified</code></dt>
+                        <dd about="#contained-resource-metadata-dcterms-modified" property="skos:definition">The date and time when the resource was last modified.</dd>
+                        <dt about="#contained-resource-metadata-stat-mtime" id="contained-resource-metadata-stat-mtime" property="skos:prefLabel"><code>stat:mtime</code></dt>
+                        <dd about="#contained-resource-metadata-stat-mtime" property="skos:definition">The Unix time when the resource was last modified.</dd>
                       </dl>
 
                       <p id="dcterms-modified-corresponds-last-modified">The <code>dcterms:modified</code> value of a contained resource corresponds with the <code>Last-Modified</code> header value of the contained resource. If one were to perform <code>HEAD</code> or <code>GET</code> requests on the URI of the contained resource at the time of the HTTP message’s generation, then a response with the <code>200</code> status code including the <code>Last-Modified</code> header would indicate the same date and time.</p>
