@@ -731,9 +731,9 @@ left:4.5em;
 
                     <ul>
                       <li id="server-patch-n3-patches" rel="spec:requirement" resource="#server-patch-n3-patches"><span property="spec:statement">A patch document <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> contain one or more patch resources.</span></li>
-                      <li id="server-patch-n3-patch-identifier" rel="spec:requirement" resource="#server-patch-n3-path-identifier"><span property="spec:statement">A patch resource <span rel="spec:requirementLevel" resource="spec:MAY">MUST</span> be identified by a URI or blank node, which we refer to as <code>?patch</code> in the remainder of this section.</span></li>
-                      <li id="server-patch-n3-type" rel="spec:requirement" resource="#server-patch-n3-identifier">A patch resource <span rel="spec:requirementLevel" resource="spec:MAY">MAY</span> contain a triple [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>] <code><span property="spec:statement">?patch rdf:type solid:Patch</span></code>.</li>
-                      <li id="server-patch-n3-identifier" rel="spec:requirement" resource="#server-patch-n3-deletes"><span property="spec:statement">A patch resource <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> contain at most one triple of the form <code>?patch solid:deletes ?deletions</code>.</span></li>
+                      <li id="server-patch-n3-patch-identifier" rel="spec:requirement" resource="#server-patch-n3-patch-identifier"><span property="spec:statement">A patch resource <span rel="spec:requirementLevel" resource="spec:MAY">MUST</span> be identified by a URI or blank node, which we refer to as <code>?patch</code> in the remainder of this section.</span></li>
+                      <li id="server-patch-n3-type" rel="spec:requirement" resource="#server-patch-n3-type">A patch resource <span rel="spec:requirementLevel" resource="spec:MAY">MAY</span> contain a triple [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>] <code><span property="spec:statement">?patch rdf:type solid:Patch</span></code>.</li>
+                      <li id="server-patch-n3-deletes" rel="spec:requirement" resource="#server-patch-n3-deletes"><span property="spec:statement">A patch resource <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> contain at most one triple of the form <code>?patch solid:deletes ?deletions</code>.</span></li>
                       <li id="server-patch-n3-inserts" rel="spec:requirement" resource="#server-patch-n3-inserts">A patch resource <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> contain at most one triple of the form <code>?patch solid:inserts ?insertions</code>.</li>
                       <li id="server-patch-n3-where" rel="spec:requirement" resource="#server-patch-n3-where"><span property="spec:statement">A patch resource <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> contain at most one triple of the form <code>?patch solid:where ?conditions</code>.</span></li>
                       <li id="server-patch-n3-formulae" rel="spec:requirement" resource="#server-patch-n3-formulae"><span property="spec:statement">When present, <code>?deletions</code>, <code>?insertions</code>, and <code>?conditions</code> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> be non-nested <em>cited formulae</em> [<cite><a class="bibref" href="#bib-notation3">N3</a></cite>] consisting only of triples and/or triple patterns [<cite><a class="bibref" href="#bib-sparql11-query">SPARQL11-QUERY</a></cite>]. When not present, they are presumed to be the empty formula <code>{}</code>.</span></li>
@@ -746,7 +746,7 @@ left:4.5em;
                       <li id="server-patch-n3-matching-strategy" rel="spec:requirement" resource="#server-patch-n3-matching-strategy"><span property="spec:statement">The patch resource <span rel="spec:requirementLevel" resource="spec:MAY">MAY</span> contain one triple of the form <code>?patch solid:matchingStrategy solid:SingleMatch</code>.</span></li>
                       <li id="server-patch-n3-variables" rel="spec:requirement" resource="#server-patch-n3-variables"><span property="spec:statement">The <code>?insertions</code> and <code>?deletions</code> formulae <span rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> contain variables that do not occur in the <code>?conditions</code> formula.</span></li>
                       <li id="server-patch-n3-blank-nodes" rel="spec:requirement" resource="#server-patch-n3-blank-nodes"><span property="spec:statement">The <code>?insertions</code> and <code>?deletions</code> formulae <span rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> contain blank nodes.</span></li>
-                      <li id="server-patch-n3-other-triples" rel="spec:requirement" resource="#server-patch-n3-identifier"><span property="spec:statement">The patch document <span rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> contain any other triples.</span></li>
+                      <li id="server-patch-n3-other-triples" rel="spec:requirement" resource="#server-patch-n3-other-triples"><span property="spec:statement">The patch document <span rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> contain any other triples.</span></li>
                     </ul>
 
                     <p><span about="" id="server-patch-n3-invalid" rel="spec:requirement" resource="#server-patch-n3-invalid"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>422</code> status code [<cite><a class="bibref" href="#bib-rfc4918">RFC4918</a></cite>] if a patch document does not satisfy all of the above constraints.</span></span></p>
@@ -754,6 +754,7 @@ left:4.5em;
                     <p><span about="" id="server-n3-patch-where" rel="spec:requirement" resource="#server-n3-patch-where"><span property="spec:statement">When <code>?conditions</code> is non-empty, <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> treat the request as a <a href="#read-operation">Read operation</a>.</span></span> <span about="" id="server-n3-patch-insert" rel="spec:requirement" resource="#server-n3-patch-insert"><span property="spec:statement">When <code>?insertions</code> is non-empty, <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> (also) treat the request as an <a href="#append-operation">Append operation</a>.</span></span> <span about="" id="server-n3-patch-delete" rel="spec:requirement" resource="#server-n3-patch-delete"><span property="spec:statement">When <code>?deletions</code> is non-empty, <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> treat the request as a <a href="#read-operation">Read</a> and <a href="#write-operation">Write operation</a>.</span></span></p>
 
                     <p><span about="" id="server-patch-n3-semantics" rel="spec:requirement" resource="#server-patch-n3-semantics"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> process a patch resource against the target document as follows:</span></span></p>
+
                     <ol>
                       <li>Start from the RDF dataset in the target document, or an empty RDF dataset if the target resource does not exist yet.</li>
                       <li>If <code>?conditions</code> is non-empty, find all (possibly empty) variable mappings such that all of the resulting triples occur in the dataset.</li>
@@ -768,14 +769,13 @@ left:4.5em;
 
                   <figure id="n3-patch-example" class="example listing" rel="schema:hasPart" resource="#n3-patch-example">
                     <p class="example-h"><span>Example</span>: Applying an N3 patch.</p>
-                    <pre about="#n3-patch-example" property="schema:description" typeof="fabio:Script">
-<code>@prefix solid: &lt;http://www.w3.org/ns/solid/terms#&gt;.
-@prefix ex: &lt;http://www.example.org/terms#&gt;.
-
-_:rename a solid:Patch;
-   solid:where   { ?person ex:familyName "Garcia". };
-   solid:inserts { ?person ex:givenName "Alex". };
-   solid:deletes { ?person ex:givenName "Claudia". }.</code></pre>
+                    <pre about="#n3-patch-example" property="schema:description" typeof="fabio:Script"><code>@prefix solid: &lt;http://www.w3.org/ns/solid/terms#&gt;.</code>
+<code>@prefix ex: &lt;http://www.example.org/terms#&gt;.</code>
+<code></code>
+<code>_:rename a solid:Patch;</code>
+<code>  solid:where   { ?person ex:familyName "Garcia". };</code>
+<code>  solid:inserts { ?person ex:givenName "Alex". };</code>
+<code>  solid:deletes { ?person ex:givenName "Claudia". }.</code></pre>
                     <figcaption property="schema:name">This N3 Patch instructs to rename <em>Claudia Garcia</em> into <em>Alex Garcia</em>, on the condition that no other Garcia family members are present in the target RDF document.</figcaption>
                   </figure>
                 </section>
