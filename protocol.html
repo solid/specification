@@ -580,7 +580,7 @@ left:4.5em;
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>Container descriptions are not limited to containment triples. To further support client navigation and application interaction, servers can include <a href="#resource-metadata">resource metadata</a> about contained resources as part of the container description.</p>
 
-                      <p><span about="" id="server-contained-resource-metadata" rel="spec:requirement" resource="#server-contained-resource-metadata"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> include <a href="#contained-resource-metadata-statements">resource metadata about contained resources</a> as part of the container description, unless that information is inapplicable to the server:</span></span></p>
+                      <p><span about="" id="server-contained-resource-metadata" rel="spec:requirement" resource="#server-contained-resource-metadata"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> include <a href="#contained-resource-metadata-statements" rel="rdfs:seeAlso">resource metadata about contained resources</a> as part of the container description, unless that information is inapplicable to the server:</span></span></p>
 
                       <dl id="contained-resource-metadata-statements">
                         <dt><code>rdf:type</code></dt>
@@ -593,7 +593,7 @@ left:4.5em;
                         <dd>The Unix time when the resource was last modified.</dd>
                       </dl>
 
-                      <p id="dcterms-modified-corresponds-last-modified">The <code>dcterms:modified</code> value of a contained resource corresponds with the <code>Last-Modified</code> header value of the contained resource, if one were to perform <code>HEAD</code> or <code>GET</code> requests on the URI of the contained resource at the time of the HTTP message’s generation, then a response with the <code>200</code> status code including the <code>Last-Modified</code> header would indicate the same date and time.</p>
+                      <p id="dcterms-modified-corresponds-last-modified">The <code>dcterms:modified</code> value of a contained resource corresponds with the <code>Last-Modified</code> header value of the contained resource. If one were to perform <code>HEAD</code> or <code>GET</code> requests on the URI of the contained resource at the time of the HTTP message’s generation, then a response with the <code>200</code> status code including the <code>Last-Modified</code> header would indicate the same date and time.</p>
 
                       <div class="note" id="contained-resource-metadata-considerations" inlist="" rel="schema:hasPart" resource="#contained-resource-metadata-considerations">
                         <h5 property="schema:name"><span>Note</span>: Contained Resource Metadata Considerations</h5>
@@ -602,7 +602,7 @@ left:4.5em;
                         </div>
                       </div>
 
-                      <p>Contained resource metadata is <a href="#server-protect-contained-resource-metadata">protected by the server</a>.</p>
+                      <p>Contained resource metadata is <a href="#server-protect-contained-resource-metadata" rel="cito:discusses">protected by the server</a>.</p>
 
                       <p>[<a href="https://github.com/solid/specification/issues/227" rel="cito:citesAsSourceDocument">Source</a>]
                       [<a href="https://github.com/solid/specification/issues/343" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/pull/352" rel="cito:citesAsSourceDocument">Source</a>]</p>
