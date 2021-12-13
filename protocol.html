@@ -599,7 +599,7 @@ left:4.5em;
                       <tr>
                         <td><a href="#auxiliary-resources-web-access-control">Web Access Control</a></td>
                         <td><code>acl</code></td>
-                        <td>[<cite><a href="#link-relation-acl">Solid Protocol</a></cite>]</td>
+                        <td>[<cite><a class="bibref" href="#bib-wac">WAC</a></cite>]</td>
                       </tr>
                       <tr>
                         <td><a href="#auxiliary-resources-description-resource">Description Resource</a></td>
@@ -854,36 +854,7 @@ left:4.5em;
 
                   <p><span about="" id="server-wac" rel="spec:requirement" resource="#server-wac"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> conform to the Web Access Control specification [<cite><a class="bibref" href="#bib-wac">WAC</a></cite>].</span></span></p>
 
-                  <p><span about="" id="server-link-acl" rel="spec:requirement" resource="#server-link-acl"><span property="spec:statement">When a server wants to enable applications to discover the authorization rules associated with a given <a href="#resource">resource</a>, the <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> advertise the <a href="#acl-resource">ACL resource</a> that is associated with a resource by responding to an HTTP request including a <code>Link</code> header with the <code>rel</code> value of <code>acl</code> (<cite><a href="#link-relation-acl" rel="rdfs:seeAlso">acl Link Relation</a></cite>) and the ACL resource as link target [<cite><a class="bibref" href="#bib-rfc8288">RFC8288</a></cite>].</span></span> [<a href="https://github.com/solid/specification/issues/31#issuecomment-548360553" rel="cito:citesAsSourceDocument">Source</a>]</p>
-
-                  <p><span about="" id="server-inapplicable-acl" rel="spec:requirement" resource="#server-inapplicable-acl"><span property="spec:statement">In the event that a <span rel="spec:requirementSubject" resource="spec:Server">server</span> can’t apply an ACL to a resource, it <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> deny access.</span></span> [<a href="https://github.com/solid/specification/issues/130#issue-532777017" rel="cito:citesAsSourceDocument">Source</a>]</p>
-
-                  <p><span about="" id="server-wac-allow" rel="spec:requirement" resource="#server-wac-allow"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> exposing client’s access privileges on a resource URL <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> advertise by including the <code>WAC-Allow</code> HTTP header in the response of HTTP <code>HEAD</code> and <code>GET</code> requests.</span></span></p>
-
-                  <p>The syntax for the <code>WAC-Allow</code> header, using the ABNF syntax defined in Section 1.2 of [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>], is:</p>
-
-                  <pre class="def">wac-allow        = "WAC-Allow" ":" OWS #access-param OWS
-access-param     = permission-group OWS "=" OWS access-modes
-permission-group = 1*ALPHA
-access-modes     = DQUOTE OWS *1(access-mode *(RWS access-mode)) OWS DQUOTE
-access-mode      = "read" / "write" / "append" / "control"</pre>
-
-                  <p>The <code>WAC-Allow</code> HTTP header’s field-value is a comma-separated list of <code>access-param</code>s. <code>access-param</code> is a whitespace-separated list of <code>access-modes</code> granted to a <code>permission-group</code>.</p>
-
-                  <p>This specification defines the following <code>permission-group</code>s:</p>
-
-                  <dl>
-                    <dt><code>user</code></dt>
-                    <dd>Permissions granted to the agent requesting the resource.</dd>
-                    <dt><code>public</code></dt>
-                    <dd>Permissions granted to the public.</dd>
-                  </dl>
-
-                  <p><code>access-mode</code> corresponds to the modes of access as defined in the ACL ontology (<code>acl:Read</code>, <code>acl:Write</code>, <code>acl:Append</code>, <code>acl:Control</code>).</p>
-
-                  <p><span about="" id="client-wac-allow" rel="spec:requirement" resource="#client-wac-allow">Clients can discover access privileges on a resource by making an HTTP <code>HEAD</code> or <code>GET</code> request on the target URL, and checking the <code>WAC-Allow</code> header value for access parameters listing the allowed access modes per permission group.</span></p>
-
-                  <p><span about="" id="client-wac-allow-parsing" rel="spec:requirement" resource="#client-wac-allow-parsing"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Client">Client</span> parsing algorithms for <code>WAC-Allow</code> header field-values <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> incorporate error handling. When the received message fails to match an allowed pattern, clients MUST ignore the received <code>WAC-Allow</code> header-field. When unrecognised access parameters (such as permission groups or access modes) are found, clients MUST continue processing the access parameters as if those properties were not present.</span></span></p>
+                  <p><span about="" id="client-wac" rel="spec:requirement" resource="#client-wac"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Client">Clients</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> conform to the Web Access Control specification [<cite><a class="bibref" href="#bib-wac">WAC</a></cite>].</span></span></p>
 
                   <p>[<a href="https://github.com/solid/specification/issues/171" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/170" rel="cito:citesAsSourceDocument">Source</a>] <a href="https://github.com/solid/specification/issues/181" rel="cito:citesAsSourceDocument">Source</a>] <a href="https://gitter.im/solid/specification?at=60101295d8bdab47395e6775" rel="cito:citesAsSourceDocument">Source</a>]</p>
                 </div>
@@ -1105,7 +1076,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                     <dt id="bib-w3c-html">[W3C-HTML]</dt>
                     <dd><a href="https://www.w3.org/TR/html/" rel="cito:citesAsAuthority"><cite>HTML</cite></a>.  W3C. 28 January 2021. W3C Recommendation. URL: <a href="https://www.w3.org/TR/html/">https://www.w3.org/TR/html/</a></dd>
                     <dt id="bib-wac">[WAC]</dt>
-                    <dd><a href="https://solidproject.org/TR/wac" rel="cito:citesAsAuthority"><cite>Web Access Control</cite></a>.  Sarven Capadisli.  W3C Solid Community Group. Draft. URL: <a href="https://solidproject.org/TR/wac">https://solidproject.org/TR/wac</a></dd>
+                    <dd><a href="https://solidproject.org/TR/wac" rel="cito:citesAsAuthority"><cite>Web Access Control</cite></a>.  Sarven Capadisli.  W3C Solid Community Group. 11 July 2021. Draft. URL: <a href="https://solidproject.org/TR/wac">https://solidproject.org/TR/wac</a></dd>
                     <dt id="bib-webarch">[WEBARCH]</dt>
                     <dd><a href="https://www.w3.org/TR/webarch/" rel="cito:citesAsAuthority"><cite>Architecture of the World Wide Web, Volume One</cite></a>. Ian Jacobs; Norman Walsh.  W3C. 15 December 2004. W3C Recommendation. URL: <a href="https://www.w3.org/TR/webarch/">https://www.w3.org/TR/webarch/</a></dd>
                     <dt id="bib-webid">[WEBID]</dt>
