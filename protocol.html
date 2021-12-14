@@ -710,6 +710,11 @@ left:4.5em;
 
                   <p><span about="" id="server-protect-containment" rel="spec:requirement" resource="#server-protect-containment"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST-NOT">MUST NOT</span> allow HTTP <code>PUT</code> or <code>PATCH</code> on a container to update its containment triples; if the server receives such a request, it <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>409</code> status code.</span></span> [<a href="https://github.com/solid/specification/issues/40#issuecomment-573358652" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
+		  <p>
+		    <span about="" id="server-patch-not-other" rel="spec:requirement" resource="#server-patch-not-other"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST-NOT">MUST NOT</span> allow a client to explicitly request multi-resource changes via the <code>PATCH</code> method, but the server is permitted to propagate side-effects of a change to the target resource to other resources.</span></span> [<a href="https://github.com/solid/specification/issues/125#issuecomment-873035679" rel="cito:citesAsSourceDocument">Source</a>]
+		    <span about="" id="server-patch-not-other-response" rel="spec:requirement" resource="#server-patch-not-other-response"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:SHOULD">SHOULD</span> respond with a <code>422</code> status code [<cite><a class="bibref" href="#bib-rfc4918">RFC4918</a></cite>] and a message body that explains the error if it determines that such an instruction is attempted.</span></span>
+		  </p>
+
                   <div class="note" id="conditional-update" inlist="" rel="schema:hasPart" resource="#conditional-update">
                     <h4 property="schema:name"><span>Note</span>: Conditional Update</h4>
                     <div datatype="rdf:HTML" property="schema:description">
@@ -1072,6 +1077,8 @@ left:4.5em;
                     <dd><a href="https://datatracker.ietf.org/doc/html/rfc3864" rel="cito:citesAsAuthority"><cite>Registration Procedures for Message Header Fields</cite></a>. G. Klyne; M. Nottingham; J. Mogul.  IETF. September 2004. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc3864">https://datatracker.ietf.org/doc/html/rfc3864</a></dd>
                     <dt id="bib-rfc3986">[RFC3986]</dt>
                     <dd><a href="https://datatracker.ietf.org/doc/html/rfc3986" rel="cito:citesAsAuthority"><cite>Uniform Resource Identifier (URI): Generic Syntax</cite></a>. T. Berners-Lee; R. Fielding; L. Masinter.  IETF. January 2005. Internet Standard. URL: <a href="https://datatracker.ietf.org/doc/html/rfc3986">https://datatracker.ietf.org/doc/html/rfc3986</a></dd>
+                    <dt id="bib-rfc4918">[RFC4918]</dt>
+                    <dd><a href="https://datatracker.ietf.org/doc/html/rfc4918" rel="cito:citesAsAuthority"><cite>HTTP Extensions for Web Distributed Authoring and Versioning (WebDAV)</cite></a>. L. Dusseault, Ed..  IETF. June 2007. Proposed Standard. URL: <a href="https://datatracker.ietf.org/doc/html/rfc4918">https://datatracker.ietf.org/doc/html/rfc4918</a></dd>
                     <dt id="bib-rfc5023">[RFC5023]</dt>
                     <dd><a href="https://datatracker.ietf.org/doc/html/rfc5023" rel="cito:citesAsAuthority"><cite>The Atom Publishing Protocol</cite></a>. J. Gregorio, Ed.; B. de hOra, Ed..  IETF. October 2007. Proposed Standard. URL: <a href="https://datatracker.ietf.org/doc/html/rfc5023">https://datatracker.ietf.org/doc/html/rfc5023</a></dd>
                     <dt id="bib-rfc5789">[RFC5789]</dt>
