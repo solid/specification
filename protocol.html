@@ -161,7 +161,7 @@ left:4.5em;
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Solid Protocol</h1>
-        <h2>Editor’s Draft, 2021-11-29</h2>
+        <h2>Editor’s Draft, 2021-12-14</h2>
 
         <dl id="document-identifier">
           <dt>This version</dt>
@@ -192,7 +192,7 @@ left:4.5em;
 
         <dl id="document-modified">
           <dt>Modified</dt>
-          <dd><time content="2021-11-29T00:00:00Z" datatype="xsd:dateTime" datetime="2021-11-29T00:00:00Z" property="schema:dateModified">2021-11-29</time></dd>
+          <dd><time content="2021-12-14T00:00:00Z" datatype="xsd:dateTime" datetime="2021-12-14T00:00:00Z" property="schema:dateModified">2021-12-14</time></dd>
         </dl>
 
         <dl id="document-repository">
@@ -1010,7 +1010,65 @@ left:4.5em;
               <section id="security-privacy-review" inlist="" rel="schema:hasPart" resource="#security-privacy-review">
                 <h3 property="schema:name">Security and Privacy Review</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>..</p>
+                  <p><em>This section is non-normative.</em></p>
+
+                  <p>These questions provide an overview of security and privacy considerations for this specification as guided by [<cite><a class="bibref" href="#bib-security-privacy-questionnaire">SECURITY-PRIVACY-QUESTIONNAIRE</a></cite>].</p>
+
+                  <dl rel="schema:hasPart">
+                    <dt about="#security-privacy-review-purpose" id="security-privacy-review-purpose"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#purpose" rel="cito:repliesTo">What information might this feature expose to Web sites or other parties, and for what purposes is that exposure necessary?</a></dt>
+                    <dd about="#security-privacy-review-purpose" datatype="rdf:HTML" property="schema:description">..</dd>
+
+                    <dt about="#security-privacy-review-minimum-data" id="security-privacy-review-minimum-data"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#minimum-data" rel="cito:repliesTo">Do features in your specification expose the minimum amount of information necessary to enable their intended uses?</a></dt>
+                    <dd about="#security-privacy-review-minimum-data" datatype="rdf:HTML" property="schema:description">..</dd>
+
+                    <dt about="#security-privacy-review-personal-data" id="security-privacy-review-personal-data"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#personal-data" rel="cito:repliesTo">How do the features in your specification deal with personal information, personally-identifiable information (PII), or information derived from them?</a></dt>
+                    <dd about="#security-privacy-review-personal-data" datatype="rdf:HTML" property="schema:description">..</dd>
+
+                    <dt about="#security-privacy-review-sensitive-data" id="security-privacy-review-sensitive-data"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#sensitive-data" rel="cito:repliesTo">How do the features in your specification deal with sensitive information?</a></dt>
+                    <dd about="#security-privacy-review-sensitive-data" datatype="rdf:HTML" property="schema:description">..</dd>
+
+                    <dt about="#security-privacy-review-persistent-origin-specific-state" id="security-privacy-review-persistent-origin-specific-state"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#persistent-origin-specific-state" rel="cito:repliesTo">Do the features in your specification introduce new state for an origin that persists across browsing sessions?</a></dt>
+                    <dd about="#security-privacy-review-persistent-origin-specific-state" datatype="rdf:HTML" property="schema:description">..</dd>
+
+                    <dt about="#security-privacy-review-underlying-platform-data" id="security-privacy-review-underlying-platform-data"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#underlying-platform-data" rel="cito:repliesTo">Do the features in your specification expose information about the underlying platform to origins?</a></dt>
+                    <dd about="#security-privacy-review-underlying-platform-data" datatype="rdf:HTML" property="schema:description">..</dd>
+
+                    <dt about="#security-privacy-review-send-to-platform" id="security-privacy-review-send-to-platform"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#send-to-platform" rel="cito:repliesTo">Does this specification allow an origin to send data to the underlying platform?</a></dt>
+                    <dd about="#security-privacy-review-send-to-platform" datatype="rdf:HTML" property="schema:description">..</dd>
+
+                    <dt about="#security-privacy-review-sensor-data" id="security-privacy-review-sensor-data"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#sensor-data" rel="cito:repliesTo">Do features in this specification allow an origin access to sensors on a user’s device</a></dt>
+                    <dd about="#security-privacy-review-sensor-data" datatype="rdf:HTML" property="schema:description">..</dd>
+
+                    <dt about="#security-privacy-review-other-data" id="security-privacy-review-other-data"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#other-data" rel="cito:repliesTo">What data do the features in this specification expose to an origin? Please also document what data is identical to data exposed by other features, in the same or different contexts.</a></dt>
+                    <dd about="#security-privacy-review-other-data" datatype="rdf:HTML" property="schema:description">..</dd>
+
+                    <dt about="#security-privacy-review-string-to-script" id="security-privacy-review-string-to-script"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#string-to-script" rel="cito:repliesTo">Do features in this specification enable new script execution/loading mechanisms?</a></dt>
+                    <dd about="#security-privacy-review-string-to-script" datatype="rdf:HTML" property="schema:description">..</dd>
+
+                    <dt about="#security-privacy-review-remote-device" id="security-privacy-review-remote-device"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#remote-device" rel="cito:repliesTo">Do features in this specification allow an origin to access other devices?</a></dt>
+                    <dd about="#security-privacy-review-remote-device" datatype="rdf:HTML" property="schema:description">..</dd>
+
+                    <dt about="#security-privacy-review-native-ui" id="security-privacy-review-native-ui"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#native-ui" rel="cito:repliesTo">Do features in this specification allow an origin some measure of control over a user agent’s native UI?</a></dt>
+                    <dd about="#security-privacy-review-native-ui" datatype="rdf:HTML" property="schema:description">..</dd>
+
+                    <dt about="#security-privacy-review-temporary-id" id="security-privacy-review-temporary-id"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#temporary-id" rel="cito:repliesTo">What temporary identifiers do the features in this specification create or expose to the web?</a></dt>
+                    <dd about="#security-privacy-review-temporary-id" datatype="rdf:HTML" property="schema:description">..</dd>
+
+                    <dt about="#security-privacy-review-first-third-party" id="security-privacy-review-first-third-party"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#first-third-party" rel="cito:repliesTo">How does this specification distinguish between behaviour in first-party and third-party contexts?</a></dt>
+                    <dd about="#security-privacy-review-first-third-party" datatype="rdf:HTML" property="schema:description">..</dd>
+
+                    <dt about="#security-privacy-review-private-browsing" id="security-privacy-review-private-browsing"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#private-browsing" rel="cito:repliesTo">How do the features in this specification work in the context of a browser’s Private Browsing or Incognito mode?</a></dt>
+                    <dd about="#security-privacy-review-private-browsing" datatype="rdf:HTML" property="schema:description">..</dd>
+
+                    <dt about="#security-privacy-review-considerations" id="security-privacy-review-considerations"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#considerations" rel="cito:repliesTo">Does this specification have both "Security Considerations" and "Privacy Considerations" sections?</a></dt>
+                    <dd about="#security-privacy-review-considerations" datatype="rdf:HTML" property="schema:description">..</dd>
+
+                    <dt about="#security-privacy-review-relaxed-sop" id="security-privacy-review-relaxed-sop"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#relaxed-sop" rel="cito:repliesTo">Do features in your specification enable origins to downgrade default security protections?</a></dt>
+                    <dd about="#security-privacy-review-relaxed-sop" datatype="rdf:HTML" property="schema:description">..</dd>
+
+                    <dt about="#security-privacy-review-non-fully-active" id="security-privacy-review-relaxed-sop"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#non-fully-active" rel="cito:repliesTo">How does your feature handle non-"fully active" documents?</a></dt>
+                    <dd about="#security-privacy-review-non-fully-active" datatype="rdf:HTML" property="schema:description">..</dd>
+                  </dl>
                 </div>
               </section>
             </div>
