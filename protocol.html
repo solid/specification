@@ -161,7 +161,7 @@ left:4.5em;
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Solid Protocol</h1>
-        <h2>Editor’s Draft, 2021-12-14</h2>
+        <h2>Editor’s Draft, 2021-12-15</h2>
 
         <dl id="document-identifier">
           <dt>This version</dt>
@@ -192,7 +192,7 @@ left:4.5em;
 
         <dl id="document-modified">
           <dt>Modified</dt>
-          <dd><time content="2021-12-14T00:00:00Z" datatype="xsd:dateTime" datetime="2021-12-14T00:00:00Z" property="schema:dateModified">2021-12-14</time></dd>
+          <dd><time content="2021-12-15T00:00:00Z" datatype="xsd:dateTime" datetime="2021-12-15T00:00:00Z" property="schema:dateModified">2021-12-15</time></dd>
         </dl>
 
         <dl id="document-repository">
@@ -350,7 +350,7 @@ left:4.5em;
 
                   <p property="skos:definition">The Solid Protocol specification defines the following terms. These terms are referenced throughout this specification.</p>
 
-                  <span rel="skos:hasTopConcept"><span resource="#data-pod"></span><span resource="#solid-app"></span><span resource="#uri"></span><span resource="#resource"></span><span resource="#container-resource"></span><span resource="#root-container"></span><span resource="#agent"></span><span resource="#owner"></span><span resource="#origin"></span><span resource="#read-operation"></span><span resource="#write-operation"></span><span resource="#append-operation"></span></span>
+                  <span rel="skos:hasTopConcept"><span resource="#data-pod"></span><span resource="#solid-app"></span><span resource="#uri"></span><span resource="#resource"></span><span resource="#container-resource"></span><span resource="#root-container"></span><span resource="#resource-metadata"></span><span resource="#agent"></span><span resource="#owner"></span><span resource="#origin"></span><span resource="#read-operation"></span><span resource="#write-operation"></span><span resource="#append-operation"></span></span>
 
                   <dl>
                     <dt about="#data-pod" property="skos:prefLabel" typeof="skos:Concept"><dfn id="data-pod">data pod</dfn></dt>
@@ -370,6 +370,9 @@ left:4.5em;
 
                     <dt about="#root-container" property="skos:prefLabel" typeof="skos:Concept"><dfn id="root-container">root container</dfn></dt>
                     <dd about="#root-container" property="skos:definition">A root container is a container resource that is at the highest level of the collection hierarchy.</dd>
+
+                    <dt about="#resource-metadata" property="skos:prefLabel" typeof="skos:Concept"><dfn id="resource-metadata">resource metadata</dfn></dt>
+                    <dd about="#resource-metadata" property="skos:definition">Resource metadata encompasses data about resources described by means of RDF statements [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>].</dd>
 
                     <dt about="#agent" property="skos:prefLabel" typeof="skos:Concept"><dfn id="agent">agent</dfn></dt>
                     <dd about="#agent" property="skos:definition">An agent is a person, social entity, or software identified by a URI; e.g., a WebID denotes an agent [<cite><a class="bibref" href="#bib-webid">WEBID</a></cite>].</dd>
@@ -429,6 +432,16 @@ left:4.5em;
                         <td>acl</td>
                         <td>http://www.w3.org/ns/auth/acl#</td>
                         <td>ACL Ontology</td>
+                      </tr>
+                      <tr>
+                        <td>dcterms</td>
+                        <td>http://purl.org/dc/terms/</td>
+                        <td>[<cite><a class="bibref" href="#bib-dc-terms">DC-TERMS</a></cite>]</td>
+                      </tr>
+                      <tr>
+                        <td>stat</td>
+                        <td>http://www.w3.org/ns/posix/stat</td>
+                        <td>POSIX File Status</td>
                       </tr>
                     </tbody>
                   </table>
@@ -561,6 +574,51 @@ left:4.5em;
                   <p id="server-hierarchical-containment">There is a 1-1 correspondence between containment triples and relative reference within the path name hierarchy. [<a href="https://github.com/solid/specification/issues/98#issuecomment-547506617" rel="cito:citesAsSourceDocument">Source</a>]. It follows that all resources are discoverable from a container and that it is not possible to create orphan resources. [<a href="https://github.com/solid/specification/issues/97#issuecomment-547459396" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
                   <p><span about="" id="server-basic-container" rel="spec:requirement" resource="#server-basic-container"><span property="spec:statement">The representation and behaviour of containers in Solid corresponds to LDP Basic Container and <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> be supported by <span rel="spec:requirementSubject" resource="spec:Server">server</span>.</span></span> [<a href="https://github.com/solid/specification/issues/47#issuecomment-561675764" rel="cito:citesAsSourceDocument">Source</a>]</p>
+
+                  <p id="server-container-last-modified">Servers can determine the value of the HTTP <code>Last-Modified</code> header field in response to <code>HEAD</code> and <code>GET</code> requests targeting a container based on changes to containment triples.</p>
+
+                  <div class="note" id="" inlist="container-last-modified-comparison" rel="schema:hasPart" resource="#container-last-modified-comparison">
+                    <h4 property="schema:name"><span>Note</span>: Container Last-Modified Comparison</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>The <code>Last-Modified</code> of a container will not change when other parts of the container changes. This is to avoid instant propagation of changes all the way to the root container. As <code>Last-Modified</code> cannot be reliably used to check whether the container representation has changed in any way. In future versions of this specification, this design may be revisited.</p>
+                    </div>
+                  </div>
+
+                  <section id="contained-resource-metadata" inlist="" rel="schema:hasPart" resource="#contained-resource-metadata">
+                    <h4 property="schema:name">Contained Resource Metadata</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>Container descriptions are not limited to containment triples. To further support client navigation and application interaction, servers can include <a href="#resource-metadata">resource metadata</a> about contained resources as part of the container description, as described below.</p>
+
+                      <p><span about="" id="server-contained-resource-metadata" rel="spec:requirement" resource="#server-contained-resource-metadata"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:SHOULD">SHOULD</span> include <a href="#contained-resource-metadata-statements" rel="rdfs:seeAlso">resource metadata about contained resources</a> as part of the container description, unless that information is inapplicable to the server.</span></span></p>
+
+                      <p id="contained-resource-metadata-statements" about="#contained-resource-metadata-statements" typeof="skos:Collection"><span property="skos:prefLabel">Contained resource metadata statements</span> include the properties:</p>
+
+                      <dl about="#contained-resource-metadata-statements" rel="skos:member">
+                        <dt about="#contained-resource-metadata-rdf-type" id="contained-resource-metadata-rdf-type" property="skos:prefLabel"><code>rdf:type</code></dt>
+                        <dd about="#contained-resource-metadata-rdf-type" property="skos:definition">A class whose URI is the expansion of the <em>URI Template</em> [<cite><a class="bibref" href="#bib-rfc6570">RFC6570</a></cite>] <code>http://www.w3.org/ns/iana/media-types/{+iana-media-type}#Resource</code>, where <code>iana-media-type</code> corresponds to a value from the IANA Media Types [<cite><a class="bibref" href="#bib-iana-media-types">IANA-MEDIA-TYPES</a></cite>].</dd>
+                        <dt about="#contained-resource-metadata-stat-size" id="contained-resource-metadata-stat-size" property="skos:prefLabel"><code>stat:size</code></dt>
+                        <dd about="#contained-resource-metadata-stat-size" property="skos:definition">A non-negative integer giving the size of the resource in bytes.</dd>
+                        <dt about="#contained-resource-metadata-dcterms-modified" id="contained-resource-metadata-dcterms-modified" property="skos:prefLabel"><code>dcterms:modified</code></dt>
+                        <dd about="#contained-resource-metadata-dcterms-modified" property="skos:definition">The date and time when the resource was last modified.</dd>
+                        <dt about="#contained-resource-metadata-stat-mtime" id="contained-resource-metadata-stat-mtime" property="skos:prefLabel"><code>stat:mtime</code></dt>
+                        <dd about="#contained-resource-metadata-stat-mtime" property="skos:definition">The Unix time when the resource was last modified.</dd>
+                      </dl>
+
+                      <p id="dcterms-modified-corresponds-last-modified">The <code>dcterms:modified</code> value of a contained resource corresponds with the <code>Last-Modified</code> header value of the contained resource. If one were to perform <code>HEAD</code> or <code>GET</code> requests on the URI of the contained resource at the time of the HTTP message’s generation, then a response with the <code>200</code> status code including the <code>Last-Modified</code> header would indicate the same date and time.</p>
+
+                      <div class="note" id="contained-resource-metadata-considerations" inlist="" rel="schema:hasPart" resource="#contained-resource-metadata-considerations">
+                        <h5 property="schema:name"><span>Note</span>: Contained Resource Metadata Considerations</h5>
+                        <div datatype="rdf:HTML" property="schema:description">
+                          <p>The generation of contained resource metadata may be inapplicable to some servers, for example, when that information does not exist or is expensive to determine.</p>
+                        </div>
+                      </div>
+
+                      <p>Contained resource metadata is <a href="#server-protect-contained-resource-metadata" rel="cito:discusses">protected by the server</a>.</p>
+
+                      <p>[<a href="https://github.com/solid/specification/issues/227" rel="cito:citesAsSourceDocument">Source</a>]
+                      [<a href="https://github.com/solid/specification/issues/343" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/pull/352" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                    </div>
+                  </section>
                 </div>
               </section>
 
@@ -709,6 +767,8 @@ left:4.5em;
                   <p><span about="" id="server-put-patch-auxiliary-resource" rel="spec:requirement" resource="#server-put-patch-auxiliary-resource"><span property="spec:statement">When a <code>PUT</code> or <code>PATCH</code> method request targets an auxiliary resource, the <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> create or update it.</span></span> <span about="" id="server-post-slug-auxiliary-resource" rel="spec:requirement" resource="#server-post-slug-auxiliary-resource"><span property="spec:statement">When a <code>POST</code> method request with the <code>Slug</code> header targets an auxiliary resource, the <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with the <code>403</code> status code and response body describing the error.</span></span> [<a href="https://github.com/solid/specification/issues/42#issuecomment-616688848" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
                   <p><span about="" id="server-protect-containment" rel="spec:requirement" resource="#server-protect-containment"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST-NOT">MUST NOT</span> allow HTTP <code>PUT</code> or <code>PATCH</code> on a container to update its containment triples; if the server receives such a request, it <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>409</code> status code.</span></span> [<a href="https://github.com/solid/specification/issues/40#issuecomment-573358652" rel="cito:citesAsSourceDocument">Source</a>]</p>
+
+                  <p><span about="" id="server-protect-contained-resource-metadata" rel="spec:requirement" resource="#server-protect-contained-resource-metadata"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST-NOT">MUST NOT</span> allow HTTP <code>POST</code>, <code>PUT</code> and <code>PATCH</code> to update a container’s <a href="#contained-resource-metadata-statements">resource metadata statements</a>; if the server receives such a request, it MUST respond with a <code>409</code> status code.</span></span> [<a href="https://github.com/solid/specification/issues/227#issuecomment-919312592" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
                   <div class="note" id="conditional-update" inlist="" rel="schema:hasPart" resource="#conditional-update">
                     <h4 property="schema:name"><span>Note</span>: Conditional Update</h4>
@@ -1054,8 +1114,12 @@ left:4.5em;
                 <h3 property="schema:name">Normative References</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <dl class="bibliography" resource="">
+                    <dt id="bib-dc-terms">[DC-TERMS]</dt>
+                    <dd><a href="http://dublincore.org/documents/2010/10/11/dcmi-terms/" rel="cito:citesAsAuthority"><cite>Dublin Core Metadata Terms, version 1.1</cite></a>. DCMI Usage Board.  DCMI. 11 October 2010. DCMI Recommendation. URL: <a href="http://dublincore.org/documents/2010/10/11/dcmi-terms/">http://dublincore.org/documents/2010/10/11/dcmi-terms/</a></dd>
                     <dt id="bib-fetch">[FETCH]</dt>
                     <dd><a href="https://fetch.spec.whatwg.org/" rel="cito:citesAsAuthority"><cite>Fetch Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://fetch.spec.whatwg.org/">https://fetch.spec.whatwg.org/</a></dd>
+                    <dt id="bib-iana-media-types">[IANA-MEDIA-TYPES]</dt>
+                    <dd><a href="https://www.iana.org/assignments/media-types/" rel="cito:citesAsAuthority"><cite>Media Types</cite></a>.  IANA. URL: <a href="https://www.iana.org/assignments/media-types/">https://www.iana.org/assignments/media-types/</a></dd>
                     <dt id="bib-json-ld11">[JSON-LD11]</dt>
                     <dd><a href="https://www.w3.org/TR/json-ld11/" rel="cito:citesAsAuthority"><cite>JSON-LD 1.1</cite></a>. Gregg Kellogg; Pierre-Antoine Champin; Dave Longley.  W3C. 16 July 2020. W3C Recommendation. URL: <a href="https://www.w3.org/TR/json-ld11/">https://www.w3.org/TR/json-ld11/</a></dd>
                     <dt id="bib-ldn">[LDN]</dt>
@@ -1080,6 +1144,7 @@ left:4.5em;
                     <dd><a href="https://datatracker.ietf.org/doc/html/rfc6454" rel="cito:citesAsAuthority"><cite>The Web Origin Concept</cite></a>. A. Barth.  IETF. December 2011. Proposed Standard. URL: <a href="https://datatracker.ietf.org/doc/html/rfc6454">https://datatracker.ietf.org/doc/html/rfc6454</a></dd>
                     <dt id="bib-rfc6455">[RFC6455]</dt>
                     <dd><a href="https://datatracker.ietf.org/doc/html/rfc6455" rel="cito:citesAsAuthority"><cite>The WebSocket Protocol</cite></a>. I. Fette; A. Melnikov.  IETF. December 2011. Proposed Standard. URL: <a href="https://datatracker.ietf.org/doc/html/rfc6455">https://datatracker.ietf.org/doc/html/rfc6455</a></dd>
+                    <dt id="bib-rfc6570">[RFC6570]</dt><dd><a href="https://www.rfc-editor.org/rfc/rfc6570" rel="cito:citesAsAuthority"><cite>URI Template</cite></a>. J. Gregorio; R. Fielding; M. Hadley; M. Nottingham; D. Orchard.  IETF. March 2012. Proposed Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc6570">https://www.rfc-editor.org/rfc/rfc6570</a></dd>
                     <dt id="bib-rfc6892">[RFC6892]</dt>
                     <dd><a href="https://datatracker.ietf.org/doc/html/rfc6892" rel="cito:citesAsAuthority"><cite>The 'describes' Link Relation Type</cite></a>. E. Wilde.  IETF. March 2013. Informational. URL: <a href="https://datatracker.ietf.org/doc/html/rfc6892">https://datatracker.ietf.org/doc/html/rfc6892</a></dd>
                     <dt id="bib-rfc7230">[RFC7230]</dt>
