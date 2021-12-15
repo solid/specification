@@ -585,7 +585,8 @@ left:4.5em;
                   <ul>
                     <li><a href="#auxiliary-resources-web-access-control">Web Access Control</a></li>
                     <li><a href="#auxiliary-resources-description-resource">Resource Description</a></li>
-                  </ul>
+                    <li><a href="#auxiliary-resources-stat-resource">Server Metadata Description Resource</a></li>
+		  </ul>
 
                   <p><span about="" id="client-link-auxiliary-type" rel="spec:requirement" resource="#client-link-auxiliary-type">Clients can discover auxiliary resources associated with a subject resource by making an HTTP <code>HEAD</code> or <code>GET</code> request on the target URL, and checking the HTTP <code>Link</code> header with the <code>rel</code> parameter [<cite><a class="bibref" href="#bib-rfc8288">RFC8288</a></cite>].</span></p>
 
@@ -607,6 +608,11 @@ left:4.5em;
                         <td><a href="#auxiliary-resources-description-resource">Description Resource</a></td>
                         <td><code>describedby</code></td>
                         <td>[<cite><a class="bibref" href="#bib-ldp">LDP</a></cite>]</td>
+                      </tr>
+		      <tr>
+                        <td><a href="#auxiliary-resources-stat-resource">Server Metadata Description Resource</a></td>
+                        <td><code>http://www.w3.org/ns/solid/terms#statResource</code></td>
+                        <td></td>
                       </tr>
                     </tbody>
                     <tfoot>
@@ -648,6 +654,34 @@ left:4.5em;
                       <p><span about="" id="client-link-describes" rel="spec:requirement" resource="#client-link-describes">Clients can discover resources that are described by description resources by making an HTTP <code>HEAD</code> or <code>GET</code> request on the target URL, and checking the HTTP <code>Link</code> header with a <code>rel</code> value of <code>describes</code> (inverse of the <code>describedby</code> relation) [<cite><a class="bibref" href="#bib-rfc6892">RFC6892</a></cite>].</span></p>
                     </div>
                   </section>
+
+                  <section id="auxiliary-resources-stat-resource" inlist="" rel="schema:hasPart" resource="#auxiliary-resources-stat-resource">
+                    <h4 property="schema:name">Server Metadata Description Resource</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>
+			An auxiliary resource of type <em>Server Metadata Description Resource</em> provides server-maintained metadata about contained resources.
+		      </p>
+		      <p about="" id="server-stat-resource-discovery" rel="spec:requirement" resource="#server-stat-resource-discovery"><span property="spec:statement">When a read operation targets a container, <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> advertize the existence of this type of resource using a HTTP <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/solid/terms#statResource</code>.
+		      </span></p>
+		      <p>
+			<span about="" id="server-stat-resource-data" rel="spec:requirement" resource="#server-stat-resource-discovery-data"><span property="spec:statement">When a read operation targets a <em>Server Metadata Description Resource</em>, <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> supply the following metadata about a representation of each contained resource of the corresponding container:</span>
+			  <ul>
+			    <li about="" id="server-stat-resource-data-type" rel="spec:requirement" resource="#server-stat-resource-discovery-data-type"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> use the predicate <code>rdf:type</code> and a class whose URI is the expansion of the <em>URI Template</em> [<cite><a class="bibref" href="#bib-rfc6570">RFC6570</a></cite>] <code>http://www.w3.org/ns/iana/media-types/{+iana-media-type}#Resource</code>, where <code>iana-media-type</code> corresponds to a value from the IANA Media Types [<cite><a class="bibref" href="#bib-iana-media-types">IANA-MEDIA-TYPES</a></cite>].</span></li>
+			    <li about="" id="server-stat-resource-data-mtime" rel="spec:requirement" resource="#server-stat-resource-discovery-data-mtime"><div property="spec:statement">The date and time when the contained resource was last modified. <span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> express this using two properties:
+				<ul>
+				  <li><code>dct:modified</code> using a <code>xsd:dateTime</code> data type; and </li>
+				  <li><code>stat:mtime</code> given as a UNIX timestamp.</li>
+			      </ul></div>
+			    </li>
+			    <li about="" id="server-stat-resource-data-mtime" rel="spec:requirement" resource="#server-stat-resource-discovery-data-size"><span property="spec:statement"> <span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> supply the size in bytes as a non-negative integer using the <code>stat:size</code> predicate.</span></li>
+			  </ul>
+		      </p>
+		      <p about="" id="server-stat-resource-reject-non-read" rel="spec:requirement" resource="#server-stat-resource-reject-non-read"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST-NOT">MUST NOT</span> allow non-read operations and reject requests using methods other than <code>GET</code>, <code>HEAD</code> and <code>OPTIONS</code> using a <code>405</code> status code.</span></p>
+		      <p about="" id="server-stat-resource-own-access-control" rel="spec:requirement" resource="#server-stat-resource-own-access-control"><span property="spec:statement">By default, the server uses the authorization rule for the corresponding container for the server metadata description resource. However, <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MAY">MAY</span> associate an explicit authorization rule with the server metadata description resource that further restricts access to the resource.</span>
+		      </p>
+                    </div>
+                  </section>
+
                 </div>
               </section>
             </div>
@@ -1056,6 +1090,8 @@ left:4.5em;
                   <dl class="bibliography" resource="">
                     <dt id="bib-fetch">[FETCH]</dt>
                     <dd><a href="https://fetch.spec.whatwg.org/" rel="cito:citesAsAuthority"><cite>Fetch Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://fetch.spec.whatwg.org/">https://fetch.spec.whatwg.org/</a></dd>
+		    <dt id="bib-iana-media-types">[IANA-MEDIA-TYPES]</dt>
+                    <dd><a href="https://www.iana.org/assignments/media-types/" rel="cito:citesAsAuthority"><cite>Media Types</cite></a>.  IANA. URL: <a href="https://www.iana.org/assignments/media-types/">https://www.iana.org/assignments/media-types/</a></dd>
                     <dt id="bib-json-ld11">[JSON-LD11]</dt>
                     <dd><a href="https://www.w3.org/TR/json-ld11/" rel="cito:citesAsAuthority"><cite>JSON-LD 1.1</cite></a>. Gregg Kellogg; Pierre-Antoine Champin; Dave Longley.  W3C. 16 July 2020. W3C Recommendation. URL: <a href="https://www.w3.org/TR/json-ld11/">https://www.w3.org/TR/json-ld11/</a></dd>
                     <dt id="bib-ldn">[LDN]</dt>
@@ -1080,6 +1116,7 @@ left:4.5em;
                     <dd><a href="https://datatracker.ietf.org/doc/html/rfc6454" rel="cito:citesAsAuthority"><cite>The Web Origin Concept</cite></a>. A. Barth.  IETF. December 2011. Proposed Standard. URL: <a href="https://datatracker.ietf.org/doc/html/rfc6454">https://datatracker.ietf.org/doc/html/rfc6454</a></dd>
                     <dt id="bib-rfc6455">[RFC6455]</dt>
                     <dd><a href="https://datatracker.ietf.org/doc/html/rfc6455" rel="cito:citesAsAuthority"><cite>The WebSocket Protocol</cite></a>. I. Fette; A. Melnikov.  IETF. December 2011. Proposed Standard. URL: <a href="https://datatracker.ietf.org/doc/html/rfc6455">https://datatracker.ietf.org/doc/html/rfc6455</a></dd>
+		    <dt id="bib-rfc6570">[RFC6570]</dt><dd><a href="https://www.rfc-editor.org/rfc/rfc6570" rel="cito:citesAsAuthority"><cite>URI Template</cite></a>. J. Gregorio; R. Fielding; M. Hadley; M. Nottingham; D. Orchard. IETF. March 2012. Proposed Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc6570">https://www.rfc-editor.org/rfc/rfc6570</a></dd>
                     <dt id="bib-rfc6892">[RFC6892]</dt>
                     <dd><a href="https://datatracker.ietf.org/doc/html/rfc6892" rel="cito:citesAsAuthority"><cite>The 'describes' Link Relation Type</cite></a>. E. Wilde.  IETF. March 2013. Informational. URL: <a href="https://datatracker.ietf.org/doc/html/rfc6892">https://datatracker.ietf.org/doc/html/rfc6892</a></dd>
                     <dt id="bib-rfc7230">[RFC7230]</dt>
