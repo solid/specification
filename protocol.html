@@ -585,7 +585,7 @@ left:4.5em;
                   <ul>
                     <li><a href="#auxiliary-resources-web-access-control">Web Access Control</a></li>
                     <li><a href="#auxiliary-resources-description-resource">Resource Description</a></li>
-                    <li><a href="#auxiliary-resources-stat-resource">Server Metadata Description Resource</a></li>
+                    <li><a href="#auxiliary-resources-stat-resource">Container Metadata Resource</a></li>
 		  </ul>
 
                   <p><span about="" id="client-link-auxiliary-type" rel="spec:requirement" resource="#client-link-auxiliary-type">Clients can discover auxiliary resources associated with a subject resource by making an HTTP <code>HEAD</code> or <code>GET</code> request on the target URL, and checking the HTTP <code>Link</code> header with the <code>rel</code> parameter [<cite><a class="bibref" href="#bib-rfc8288">RFC8288</a></cite>].</span></p>
@@ -610,7 +610,7 @@ left:4.5em;
                         <td>[<cite><a class="bibref" href="#bib-ldp">LDP</a></cite>]</td>
                       </tr>
 		      <tr>
-                        <td><a href="#auxiliary-resources-stat-resource">Server Metadata Description Resource</a></td>
+                        <td><a href="#auxiliary-resources-stat-resource">Container Metadata Resource</a></td>
                         <td><code>http://www.w3.org/ns/solid/terms#statResource</code></td>
                         <td></td>
                       </tr>
@@ -656,15 +656,15 @@ left:4.5em;
                   </section>
 
                   <section id="auxiliary-resources-stat-resource" inlist="" rel="schema:hasPart" resource="#auxiliary-resources-stat-resource">
-                    <h4 property="schema:name">Server Metadata Description Resource</h4>
+                    <h4 property="schema:name">Container Metadata Resource</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>
-			An auxiliary resource of type <em>Server Metadata Description Resource</em> provides server-maintained metadata about contained resources.
+			An auxiliary resource of type <em>Container Metadata Resource</em> provides server-maintained metadata about contained resources.
 		      </p>
 		      <p about="" id="server-stat-resource-discovery" rel="spec:requirement" resource="#server-stat-resource-discovery"><span property="spec:statement">When a read operation targets a container, <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> advertize the existence of this type of resource using a HTTP <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/solid/terms#statResource</code>.
 		      </span></p>
 		      <p>
-			<span about="" id="server-stat-resource-data" rel="spec:requirement" resource="#server-stat-resource-discovery-data"><span property="spec:statement">When a read operation targets a <em>Server Metadata Description Resource</em>, <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> supply the following metadata about a representation of each contained resource of the corresponding container:</span>
+			<span about="" id="server-stat-resource-data" rel="spec:requirement" resource="#server-stat-resource-discovery-data"><span property="spec:statement">When a read operation targets a <em>Container Metadata Resource</em>, <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> supply the following metadata about a representation of each contained resource of the corresponding container:</span>
 			  <ul>
 			    <li about="" id="server-stat-resource-data-type" rel="spec:requirement" resource="#server-stat-resource-discovery-data-type"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> use the predicate <code>rdf:type</code> and a class whose URI is the expansion of the <em>URI Template</em> [<cite><a class="bibref" href="#bib-rfc6570">RFC6570</a></cite>] <code>http://www.w3.org/ns/iana/media-types/{+iana-media-type}#Resource</code>, where <code>iana-media-type</code> corresponds to a value from the IANA Media Types [<cite><a class="bibref" href="#bib-iana-media-types">IANA-MEDIA-TYPES</a></cite>].</span></li>
 			    <li about="" id="server-stat-resource-data-mtime" rel="spec:requirement" resource="#server-stat-resource-discovery-data-mtime"><div property="spec:statement">The date and time when the contained resource was last modified. <span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> express this using two properties:
@@ -677,7 +677,7 @@ left:4.5em;
 			  </ul>
 		      </p>
 		      <p about="" id="server-stat-resource-reject-non-read" rel="spec:requirement" resource="#server-stat-resource-reject-non-read"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST-NOT">MUST NOT</span> allow non-read operations and reject requests using methods other than <code>GET</code>, <code>HEAD</code> and <code>OPTIONS</code> using a <code>405</code> status code.</span></p>
-		      <p about="" id="server-stat-resource-own-access-control" rel="spec:requirement" resource="#server-stat-resource-own-access-control"><span property="spec:statement">By default, the server uses the authorization rule for the corresponding container for the server metadata description resource. However, <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MAY">MAY</span> associate an explicit authorization rule with the server metadata description resource that further restricts access to the resource.</span>
+		      <p about="" id="server-stat-resource-own-access-control" rel="spec:requirement" resource="#server-stat-resource-own-access-control"><span property="spec:statement">By default, the server uses the authorization rule for the corresponding container for the container metadata resource. However, <span rel="spec:requirementSubject" resource="spec:Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MAY">MAY</span> associate an explicit authorization rule with the container metadata resource that further restricts access to the resource.</span>
 		      </p>
                     </div>
                   </section>
