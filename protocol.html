@@ -573,7 +573,14 @@ left:4.5em;
 
                   <p><span about="" id="server-basic-container" rel="spec:requirement" resource="#server-basic-container"><span property="spec:statement">The representation and behaviour of containers in Solid corresponds to LDP Basic Container and <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> be supported by <span rel="spec:requirementSubject" resource="spec:Server">server</span>.</span></span> [<a href="https://github.com/solid/specification/issues/47#issuecomment-561675764" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
-                  <p id="server-container-last-modified">Servers can determine the value of the HTTP <code>Last-Modified</code> header field in response to <code>HEAD</code> and <code>GET</code> requests targeting a container based on modifications to the selected representation or changes to containment triples.</p>
+                  <p id="server-container-last-modified">Servers can determine the value of the HTTP <code>Last-Modified</code> header field in response to <code>HEAD</code> and <code>GET</code> requests targeting a container based on changes to containment triples.</p>
+
+                  <div class="note" id="" inlist="container-last-modified-comparison" rel="schema:hasPart" resource="#container-last-modified-comparison">
+                    <h4 property="schema:name"><span>Note</span>: Container Last-Modified Comparison</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>The <code>Last-Modified</code> of a container will not change when other parts of the container changes. This is to avoid the instant propagation of changes all the way to the root container. As <code>Last-Modified</code> cannot be reliably used to check whether the container representation has changed in any way. In future versions of this specification, this design may be revisited.</p>
+                    </div>
+                  </div>
 
                   <section id="contained-resource-metadata" inlist="" rel="schema:hasPart" resource="#contained-resource-metadata">
                     <h4 property="schema:name">Contained Resource Metadata</h4>
