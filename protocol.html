@@ -163,7 +163,7 @@ left:4.5em;
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Solid Protocol</h1>
-        <h2>Editor’s Draft, 2021-12-15</h2>
+        <h2>Editor’s Draft, 2021-12-17</h2>
 
         <dl id="document-identifier">
           <dt>This version</dt>
@@ -194,7 +194,7 @@ left:4.5em;
 
         <dl id="document-modified">
           <dt>Modified</dt>
-          <dd><time content="2021-12-15T00:00:00Z" datatype="xsd:dateTime" datetime="2021-12-15T00:00:00Z" property="schema:dateModified">2021-12-15</time></dd>
+          <dd><time content="2021-12-17T00:00:00Z" datatype="xsd:dateTime" datetime="2021-12-17T00:00:00Z" property="schema:dateModified">2021-12-17</time></dd>
         </dl>
 
         <dl id="document-repository">
@@ -272,7 +272,7 @@ left:4.5em;
                   <a class="tocxref" href="#notifications"><span class="secno">6</span> <span class="content">Notifications</span></a>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#websockets"><span class="secno">7</span> <span class="content">WebSockets</span></a>
+                  <a class="tocxref" href="#live-update"><span class="secno">7</span> <span class="content">Live Update</span></a>
                 </li>
                 <li class="tocline">
                   <a class="tocxref" href="#cors"><span class="secno">8</span> <span class="content">Cross-Origin Resource Sharing</span></a>
@@ -883,20 +883,25 @@ left:4.5em;
             </div>
           </section>
 
-          <section id="websockets" inlist="" rel="schema:hasPart" resource="#websockets">
-            <h2 property="schema:name">WebSockets</h2>
+          <section id="live-update" inlist="" rel="schema:hasPart" resource="#live-update">
+            <h2 property="schema:name">Live Update</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p>For real-time communication between client and server about changes affecting a resource, Solid uses the WebSocket API [<cite><a class="bibref" href="#bib-w3c-html">W3C-HTML</a></cite>] and the WebSocket Protocol.</p>
-
-              <section id="websockets-pub-sub" inlist="" rel="schema:hasPart" resource="#websockets-pub-sub">
-                <h3 property="schema:name">WebSockets Pub-Sub</h3>
+              <section id="websockets" inlist="" rel="schema:hasPart" resource="#websockets">
+                <h3 property="schema:name">WebSockets</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                </div>
-              </section>
+                  <p>For real-time collaborative communication between client and server about changes affecting a resource, this Solid Protocol uses the WebSocket API [<cite><a class="bibref" href="#bib-w3c-html">W3C-HTML</a></cite>] and the WebSocket Protocol.</p>
 
-              <section id="websockets-patching" inlist="" rel="schema:hasPart" resource="#websockets-patching">
-                <h3 property="schema:name">WebSockets Patching</h3>
-                <div datatype="rdf:HTML" property="schema:description">
+                  <p><span about="" id="server-websockets-api" rel="spec:requirement" resource="#server-websockets-api"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:SHOULD">SHOULD</span> implement the <cite><a href="https://github.com/solid/solid-spec/blob/master/api-websockets.md">Solid WebSockets API</a></cite> [<cite><a class="bibref" href="#bib-solid-websockets-api">SOLID-WEBSOCKETS-API</a></cite>].</span></span></p>
+
+                  <p><span about="" id="client-websockets-api" rel="spec:requirement" resource="#client-websockets-api"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Client">Clients</span> <span rel="spec:requirementLevel" resource="spec:SHOULD">SHOULD</span> implement the <cite><a href="https://github.com/solid/solid-spec/blob/master/api-websockets.md">Solid WebSockets API</a></cite> [<cite><a class="bibref" href="#bib-solid-websockets-api">SOLID-WEBSOCKETS-API</a></cite>].</span></span></p>
+
+                  <p><em>The following is non-normative.</em></p>
+
+                  <p>The <cite>Solid WebSockets API</cite> (Unofficial Draft) has been the common protocol for many years. That draft does not include an authentication mechanism, and therefore the Protocol will transition to a new design. The new design is currently at <cite><a href="https://solid.github.io/notifications/protocol" rel="cito:citesAsPotentialSolution">Solid Notifications Protocol</a></cite> [<cite><a class="bibref" href="#bib-solid-notifications-protocol">SOLID-NOTIFICATIONS-PROTOCOL</a></cite>]. It is planned to include both security through authentication, and also common formats with other forms of real-time notification in the Solid ecosystem.</p>
+
+                  <p>Both client and server implementations should provide the existing protocol, and should transition to providing both protocols as the new one becomes available..</p>
+
+                  <p>The future directions of the protocol include moving from a simple one-bit notification that a resource has changed, requiring the client to reload the resource, to adding <code>PATCH</code> information in the notification so the client can calculate the new state immediately.</p>
                 </div>
               </section>
             </div>
@@ -1228,6 +1233,8 @@ left:4.5em;
                     <dd><a href="https://datatracker.ietf.org/doc/html/rfc8174" rel="cito:citesAsAuthority"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc8174">https://datatracker.ietf.org/doc/html/rfc8174</a></dd>
                     <dt id="bib-rfc8288">[RFC8288]</dt>
                     <dd><a href="https://httpwg.org/specs/rfc8288.html" rel="cito:citesAsAuthority"><cite>Web Linking</cite></a>. M. Nottingham.  IETF. October 2017. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc8288.html">https://httpwg.org/specs/rfc8288.html</a></dd>
+                    <dt id="bib-solid-websockets-api">[SOLID-WEBSOCKETS-API]</dt>
+                    <dd><a href="https://github.com/solid/solid-spec/blob/master/api-websockets.md" rel="cito:citesAsAuthority"><cite>Solid WebSockets API</cite></a>. Dmitri Zagidulin; Ruben Verborgh.  W3C Solid Community Group. 6 March 2021. Unofficial Draft. URL: <a href="https://github.com/solid/solid-spec/blob/master/api-websockets.md">https://github.com/solid/solid-spec/blob/master/api-websockets.md</a></dd>
                     <dt id="bib-solid-oidc">[SOLID-OIDC]</dt>
                     <dd><a href="https://solid.github.io/solid-oidc/" rel="cito:citesAsAuthority"><cite>SOLID-OIDC</cite></a>. Aaron Coburn; elf Pavlik; Dmitri Zagidulin.  W3C Solid Community Group. W3C Editor's Draft. URL: <a href="https://solid.github.io/solid-oidc/">https://solid.github.io/solid-oidc/</a></dd>
                     <dt id="bib-sparql11-query">[SPARQL11-QUERY]</dt>
@@ -1260,6 +1267,8 @@ left:4.5em;
                     <dd><a href="https://www.w3.org/TR/graphics-aria-1.0/" rel="cito:citesAsPotentialSolution"><cite>WAI-ARIA Graphics Module</cite></a>. Amelia Bellamy-Royds; Joanmarie Diggs; Michael Cooper.  W3C. 2 October 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/graphics-aria-1.0/">https://www.w3.org/TR/graphics-aria-1.0/</a></dd>
                     <dt id="bib-security-privacy-questionnaire">[SECURITY-PRIVACY-QUESTIONNAIRE]</dt>
                     <dd><a href="https://www.w3.org/TR/security-privacy-questionnaire/" rel="cito:citesAsPotentialSolution"><cite>Self-Review Questionnaire: Security and Privacy</cite></a>. Theresa O'Connor; Peter Snyder.  W3C. 23 March 2021. W3C Note. URL: <a href="https://www.w3.org/TR/security-privacy-questionnaire/">https://www.w3.org/TR/security-privacy-questionnaire/</a></dd>
+                    <dt id="bib-solid-notifications-protocol">[SOLID-NOTIFICATIONS-PROTOCOL]</dt>
+                    <dd><a href="https://solid.github.io/notifications/protocol" rel="cito:citesAsPotentialSolution"><cite>Solid Notifications Protocol</cite></a>. Aaron Coburn; Sarven Capadisli.  W3C Solid Community Group. 16 December 2021. W3C Editor’s Draft. URL: <a href="https://solid.github.io/notifications/protocol">https://solid.github.io/notifications/protocol</a></dd>
                     <dt id="bib-uaag20">[UAAG20]</dt>
                     <dd><a href="https://www.w3.org/TR/UAAG20/" rel="cito:citesAsPotentialSolution"><cite>User Agent Accessibility Guidelines (UAAG) 2.0</cite></a>. James Allan; Greg Lowney; Kimberly Patch; Jeanne F Spellman.  W3C. 15 December 2015. W3C Note. URL: <a href="https://www.w3.org/TR/UAAG20/">https://www.w3.org/TR/UAAG20/</a></dd>
                     <dt id="bib-wai-aria-1.2">[WAI-ARIA-1.2]</dt>
