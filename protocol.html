@@ -11,9 +11,9 @@ counter-reset:section;
 counter-reset:sub-section;
 }
 em.rfc2119 { color: #900; }
-code { color: #c83500; }
-pre code { color: #333; }
-dfn { font-style:inherit; }
+code, samp { color: #c83500; }
+pre code, pre samp { color: #000; }
+dfn { font-weight:inherit; }
 .do.fragment a { border-bottom:0; }
 .do.fragment a:hover { background:none; border-bottom:0; }
 section figure pre { margin:1em 0; display:block; }
@@ -59,10 +59,6 @@ border: medium none;
 text-decoration: none;
 }
 header address img[src*="logos/W3C"] {
--moz-border-bottom-colors: none;
--moz-border-left-colors: none;
--moz-border-right-colors: none;
--moz-border-top-colors: none;
 background: #1a5e9a none repeat scroll 0 0;
 border-color: #1a5e9a;
 border-image: none;
@@ -78,78 +74,45 @@ font-size: 220%;
 font-weight:bold;
 }
 
-article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]):not([id="exit-criteria"]) {
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]):not([id=exit-criteria]) {
 counter-increment:section;
 counter-reset:sub-section;
 }
-article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$="references"]):not([id="exit-criteria"]) {
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$=references]):not([id=exit-criteria]) {
 counter-increment:sub-section;
 counter-reset:sub-sub-section;
 }
-article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$="references"]):not([id="exit-criteria"]) section {
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$=references]):not([id=exit-criteria]) section {
 counter-increment:sub-sub-section;
 counter-reset:sub-sub-sub-section;
 }
-article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$="references"]):not([id="exit-criteria"]) section section {
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$=references]):not([id=exit-criteria]) section section {
 counter-increment:sub-sub-sub-section;
 counter-reset:sub-sub-sub-sub-section;
 }
-article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]):not([id="exit-criteria"]):not([id^=table-of-]) > h2:before {
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]):not([id=exit-criteria]):not([id^=table-of-]) > h2:before {
 content:counter(section) ".\00a0";
 }
-section:not([id$="references"]):not([id^=change-log]):not([id="exit-criteria"]) > h3:before {
+section:not([id$=references]):not([id^=change-log]):not([id=exit-criteria]) > h3:before {
 content:counter(section) "." counter(sub-section) "\00a0";
 }
 section > h4:before {
 content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\00a0";
 }
-
-aside.note.do blockquote dl.published,
-aside.note.do blockquote dl.license,
-aside.note.do blockquote dl.rights {
-top:-2em;
-left:4.5em;
-}
-
 #acknowledgements ul { padding: 0; margin:0 }
 #acknowledgements li { display:inline; }
 #acknowledgements li:after { content: ", "; }
 #acknowledgements li:last-child:after { content: ""; }
-
-.dfn-panel {
-    position: absolute;
-    z-index: 35;
-    height: auto;
-    width: -webkit-fit-content;
-    width: fit-content;
-    max-width: 300px;
-    max-height: 500px;
-    overflow: auto;
-    padding: 0.5em 0.75em;
-    font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
-    background: #DDDDDD;
-    color: black;
-    border: outset 0.2em;
+dl [rel~="odrl:action"],
+dl [rel~="odrl:action"] li {
+display: inline;
 }
-.dfn-panel:not(.on) { display: none; }
-.dfn-panel * { margin: 0; padding: 0; text-indent: 0; }
-.dfn-panel > b { display: block; }
-.dfn-panel a { color: black; }
-.dfn-panel a:not(:hover) { text-decoration: none !important; border-bottom: none !important; }
-.dfn-panel > b + b { margin-top: 0.25em; }
-.dfn-panel ul { padding: 0; }
-.dfn-panel li { list-style: inside; }
-.dfn-panel.activated {
-    display: inline-block;
-    position: fixed;
-    left: .5em;
-    bottom: 2em;
-    margin: 0 auto;
-    max-width: calc(100vw - 1.5em - .4em - .5em);
-    max-height: 30vh;
+dl [rel~="odrl:action"] li:after {
+content: ",";
 }
-
-.dfn-paneled { cursor: pointer; }
+dl [rel~="odrl:action"] li:last-child:after {
+content: "";
+}
 </style>
   </head>
 
