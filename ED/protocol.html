@@ -131,7 +131,7 @@ content: "";
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Solid Protocol</h1>
-        <h2>Editor’s Draft, 2021-12-22</h2>
+        <h2>Editor’s Draft, 2021-12-27</h2>
 
         <details open="">
           <summary>More details about this document</summary>
@@ -178,7 +178,7 @@ content: "";
 
           <dl id="document-modified">
             <dt>Modified</dt>
-            <dd><time content="2021-12-22T00:00:00Z" datatype="xsd:dateTime" datetime="2021-12-22T00:00:00Z" property="schema:dateModified">2021-12-22</time></dd>
+            <dd><time content="2021-12-27T00:00:00Z" datatype="xsd:dateTime" datetime="2021-12-27T00:00:00Z" property="schema:dateModified">2021-12-27</time></dd>
           </dl>
 
           <dl id="document-repository">
@@ -801,9 +801,7 @@ content: "";
 
                   <p><span about="" id="server-allow-methods" rel="spec:requirement" resource="#server-allow-methods"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> indicate their support for HTTP Methods by responding to HTTP <code>GET</code> and <code>HEAD</code> requests for the target resource with the HTTP Method tokens in the HTTP response header <code>Allow</code>.</span></span></p>
 
-                  <p><span about="" id="server-accept-headers" rel="spec:requirement" resource="#server-accept-headers"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> indicate supported media types in the HTTP <code>Accept-Patch</code> [<cite><a class="bibref" href="#bib-rfc5789">RFC5789</a></cite>], <code>Accept-Post</code> [<cite><a class="bibref" href="#bib-ldp">LDP</a></cite>] and <code>Accept-Put</code> [<cite><a href="#accept-put">The Accept-Put Response Header</a></cite>] response headers that correspond to acceptable HTTP methods listed in <code>Allow</code> header value in response to HTTP <code>GET</code> and <code>HEAD</code> requests.</span></span></p>
-
-                  <p><span about="" id="server-options-asterisk-accept-headers" rel="spec:requirement" resource="#server-options-asterisk-accept-headers"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MAY">MAY</span> include the HTTP <code>Accept-Patch</code>, <code>Accept-Post</code> and <code>Accept-Put</code> headers in the response of a <code>OPTIONS *</code> request.</span></span></p>
+                  <p><span about="" id="server-accept-headers" rel="spec:requirement" resource="#server-accept-headers"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> indicate supported media types in the HTTP <code>Accept-Patch</code> [<cite><a class="bibref" href="#bib-rfc5789">RFC5789</a></cite>], <code>Accept-Post</code> [<cite><a class="bibref" href="#bib-ldp">LDP</a></cite>] and <code>Accept-Put</code> [<cite><a href="#accept-put">The Accept-Put Response Header</a></cite>] response headers that correspond to acceptable HTTP methods listed in <code>Allow</code> header value in response to HTTP <code>GET</code>, <code>HEAD</code> and <code>OPTIONS</code> requests.</span></span></p>
 
                   <p>[<a href="https://github.com/solid/specification/issues/85#issuecomment-575386251" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/43" rel="cito:citesAsSourceDocument">Source</a>]</p>
                 </div>
