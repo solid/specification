@@ -131,7 +131,7 @@ content: "";
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Solid Protocol</h1>
-        <h2>Editor’s Draft, 2021-12-27</h2>
+        <h2>Editor’s Draft, 2022-01-06</h2>
 
         <details open="">
           <summary>More details about this document</summary>
@@ -178,7 +178,7 @@ content: "";
 
           <dl id="document-modified">
             <dt>Modified</dt>
-            <dd><time content="2021-12-27T00:00:00Z" datatype="xsd:dateTime" datetime="2021-12-27T00:00:00Z" property="schema:dateModified">2021-12-27</time></dd>
+            <dd><time content="2022-01-06T00:00:00Z" datatype="xsd:dateTime" datetime="2022-01-06T00:00:00Z" property="schema:dateModified">2022-01-06</time></dd>
           </dl>
 
           <dl id="document-repository">
@@ -683,7 +683,7 @@ content: "";
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>Solid has the notion of <em>auxiliary resources</em> to provide supplementary information such as descriptive metadata, authorization conditions, data shape constraints, digital rights or provenance record about a given resource (hereafter referred as the <em>subject resource</em>), and affects how resources and others associated with it are processed, served or interpreted.</p>
 
-                  <p id="auxiliary-resources-management">Server manages the association between a subject resource and auxiliary resources defined by this specification. The lifecycle of auxiliary resources defined by this specification depend on the lifecycle of the subject resource that they are associated with.</p>
+                  <p><span about=""  id="server-auxiliary-resources-management" rel="spec:requirement" resource="#server-auxiliary-resources-management"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> support auxiliary resources defined by this specification and manage the association between a subject resource and auxiliary resources. The lifecycle of auxiliary resources defined by this specification depend on the lifecycle of the subject resource that they are associated with.</span></span></p>
 
                   <p id="auxiliary-resources-rdf-document">Auxiliary resources are represented as <em>RDF document</em>s [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>]. HTTP interactions on auxiliary resources are subject to the requirements as per <cite><a href="#reading-writing-resources">Reading and Writing Resources</a></cite>.</p>
 
@@ -700,6 +700,8 @@ content: "";
                     <li><a href="#auxiliary-resources-web-access-control">Web Access Control</a></li>
                     <li><a href="#auxiliary-resources-description-resource">Resource Description</a></li>
                   </ul>
+
+                  <p><span about="" id="server-link-auxiliary-type" rel="spec:requirement" resource="#server-link-auxiliary-type"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> advertise auxiliary resources associated with a subject resource by responding to <code>HEAD</code> and <code>GET</code> requests including the HTTP <code>Link</code> header with the <code>rel</code> parameter [<cite><a class="bibref" href="#bib-rfc8288">RFC8288</a></cite>].</span></span></p>
 
                   <p><span about="" id="client-link-auxiliary-type" rel="spec:requirement" resource="#client-link-auxiliary-type">Clients can discover auxiliary resources associated with a subject resource by making an HTTP <code>HEAD</code> or <code>GET</code> request on the target URL, and checking the HTTP <code>Link</code> header with the <code>rel</code> parameter [<cite><a class="bibref" href="#bib-rfc8288">RFC8288</a></cite>].</span></p>
 
