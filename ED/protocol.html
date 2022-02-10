@@ -903,7 +903,7 @@ content: "";
 
                   <p><em>This section is non-normative.</em></p>
 
-                  <p id="server-delete-side-effects">The server might perform additional actions, as described in the normative references like [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>]. For example, the server could remove membership triples referring to the deleted resource, perform additional cleanup tasks for resources it knows are no longer referenced or have not been accessed for some period of time, and so on.</p>
+                  <p id="server-delete-side-effects">The server might perform additional actions, as described in the normative references like [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>]. For example, the server could remove containment triples referring to the deleted resource, perform additional cleanup tasks for resources it knows are no longer referenced or have not been accessed for some period of time, and so on.</p>
 
                   <p id="server-delete-get">Subsequent <code>GET</code> requests to the deleted resource usually result in a <code>404</code> or <code>410</code> status code, although HTTP allows others. [<a href="https://github.com/solid/specification/issues/72" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/46" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
