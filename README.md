@@ -4,6 +4,11 @@ This repository contains the source code of the work on [Solid Technical Reports
 
 The TRs include specifications, use cases and requirements, best practices and guidelines, primers and notes about the Solid ecosystem. The CG's Work Items are linked from the TR homepage.
 
+The Solid Protocol is available from the following URLs:
+* Latest version: https://solidproject.org/TR/protocol
+* Persistent version 0.9.0: https://solidproject.org/TR/2021/protocol-20211217
+* Editor's draft: https://solidproject.org/ED/protocol
+
 ## Participation
 
 All substantive contributors to any Work Items must be members of the Solid CG. It’s easy to [join the CG](https://www.w3.org/community/solid/join) if you’d like to contribute.
