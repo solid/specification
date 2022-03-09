@@ -11,7 +11,7 @@ The Solid Protocol is available from the following URLs:
 
 ## Participation
 
-All substantive contributors to any Work Items must be members of the Solid CG. It’s easy to [join the CG](https://www.w3.org/community/solid/join) if you’d like to contribute.
+All substantive contributors to Work Items must be members of the Solid CG. It’s easy to [join the CG](https://www.w3.org/community/solid/join) if you’d like to contribute. Guests are welcome but do not have voting rights.
 
 Anyone can join the [Solid specification chat](https://gitter.im/solid/specification).
 
