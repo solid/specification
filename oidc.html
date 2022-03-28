@@ -1,0 +1,914 @@
+<!doctype html><html lang="en">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+  <title>Solid-OIDC</title>
+  <meta content="w3c/CG-DRAFT" name="w3c-status">
+  <link href="https://www.w3.org/StyleSheets/TR/2021/cg-draft" rel="stylesheet">
+  <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
+  <meta content="Bikeshed version fb1e763a4, updated Tue Mar 1 13:13:50 2022 -0800" name="generator">
+  <link href="https://solid.github.io/solid-oidc/" rel="canonical">
+  <link href="https://solid.github.io/solid-oidc/solid.svg" rel="icon">
+  <meta content="4b2c4244d3a9df4680d875d240a8defbf33aaa81" name="document-revision">
+<style>/* style-autolinks */
+
+.css.css, .property.property, .descriptor.descriptor {
+    color: var(--a-normal-text);
+    font-size: inherit;
+    font-family: inherit;
+}
+.css::before, .property::before, .descriptor::before {
+    content: "‘";
+}
+.css::after, .property::after, .descriptor::after {
+    content: "’";
+}
+.property, .descriptor {
+    /* Don't wrap property and descriptor names */
+    white-space: nowrap;
+}
+.type { /* CSS value <type> */
+    font-style: italic;
+}
+pre .property::before, pre .property::after {
+    content: "";
+}
+[data-link-type="property"]::before,
+[data-link-type="propdesc"]::before,
+[data-link-type="descriptor"]::before,
+[data-link-type="value"]::before,
+[data-link-type="function"]::before,
+[data-link-type="at-rule"]::before,
+[data-link-type="selector"]::before,
+[data-link-type="maybe"]::before {
+    content: "‘";
+}
+[data-link-type="property"]::after,
+[data-link-type="propdesc"]::after,
+[data-link-type="descriptor"]::after,
+[data-link-type="value"]::after,
+[data-link-type="function"]::after,
+[data-link-type="at-rule"]::after,
+[data-link-type="selector"]::after,
+[data-link-type="maybe"]::after {
+    content: "’";
+}
+
+[data-link-type].production::before,
+[data-link-type].production::after,
+.prod [data-link-type]::before,
+.prod [data-link-type]::after {
+    content: "";
+}
+
+[data-link-type=element],
+[data-link-type=element-attr] {
+    font-family: Menlo, Consolas, "DejaVu Sans Mono", monospace;
+    font-size: .9em;
+}
+[data-link-type=element]::before { content: "<" }
+[data-link-type=element]::after  { content: ">" }
+
+[data-link-type=biblio] {
+    white-space: pre;
+}</style>
+<style>/* style-colors */
+
+/* Any --*-text not paired with a --*-bg is assumed to have a transparent bg */
+:root {
+    color-scheme: light dark;
+
+    --text: black;
+    --bg: white;
+
+    --unofficial-watermark: url(https://www.w3.org/StyleSheets/TR/2016/logos/UD-watermark);
+
+    --logo-bg: #1a5e9a;
+    --logo-active-bg: #c00;
+    --logo-text: white;
+
+    --tocnav-normal-text: #707070;
+    --tocnav-normal-bg: var(--bg);
+    --tocnav-hover-text: var(--tocnav-normal-text);
+    --tocnav-hover-bg: #f8f8f8;
+    --tocnav-active-text: #c00;
+    --tocnav-active-bg: var(--tocnav-normal-bg);
+
+    --tocsidebar-text: var(--text);
+    --tocsidebar-bg: #f7f8f9;
+    --tocsidebar-shadow: rgba(0,0,0,.1);
+    --tocsidebar-heading-text: hsla(203,20%,40%,.7);
+
+    --toclink-text: var(--text);
+    --toclink-underline: #3980b5;
+    --toclink-visited-text: var(--toclink-text);
+    --toclink-visited-underline: #054572;
+
+    --heading-text: #005a9c;
+
+    --hr-text: var(--text);
+
+    --algo-border: #def;
+
+    --del-text: red;
+    --del-bg: transparent;
+    --ins-text: #080;
+    --ins-bg: transparent;
+
+    --a-normal-text: #034575;
+    --a-normal-underline: #bbb;
+    --a-visited-text: var(--a-normal-text);
+    --a-visited-underline: #707070;
+    --a-hover-bg: rgba(75%, 75%, 75%, .25);
+    --a-active-text: #c00;
+    --a-active-underline: #c00;
+
+    --blockquote-border: silver;
+    --blockquote-bg: transparent;
+    --blockquote-text: currentcolor;
+
+    --issue-border: #e05252;
+    --issue-bg: #fbe9e9;
+    --issue-text: var(--text);
+    --issueheading-text: #831616;
+
+    --example-border: #e0cb52;
+    --example-bg: #fcfaee;
+    --example-text: var(--text);
+    --exampleheading-text: #574b0f;
+
+    --note-border: #52e052;
+    --note-bg: #e9fbe9;
+    --note-text: var(--text);
+    --noteheading-text: hsl(120, 70%, 30%);
+    --notesummary-underline: silver;
+
+    --assertion-border: #aaa;
+    --assertion-bg: #eee;
+    --assertion-text: black;
+
+    --advisement-border: orange;
+    --advisement-bg: #fec;
+    --advisement-text: var(--text);
+    --advisementheading-text: #b35f00;
+
+    --warning-border: red;
+    --warning-bg: hsla(40,100%,50%,0.95);
+    --warning-text: var(--text);
+
+    --amendment-border: #330099;
+    --amendment-bg: #F5F0FF;
+    --amendment-text: var(--text);
+    --amendmentheading-text: #220066;
+
+    --def-border: #8ccbf2;
+    --def-bg: #def;
+    --def-text: var(--text);
+    --defrow-border: #bbd7e9;
+
+    --datacell-border: silver;
+
+    --indexinfo-text: #707070;
+
+    --indextable-hover-text: black;
+    --indextable-hover-bg: #f7f8f9;
+
+    --outdatedspec-bg: rgba(0, 0, 0, .5);
+    --outdatedspec-text: black;
+    --outdated-bg: maroon;
+    --outdated-text: white;
+    --outdated-shadow: red;
+
+    --editedrec-bg: darkorange;
+}</style>
+<style>/* style-counters */
+
+body {
+    counter-reset: example figure issue;
+}
+.issue {
+    counter-increment: issue;
+}
+.issue:not(.no-marker)::before {
+    content: "Issue " counter(issue);
+}
+
+.example {
+    counter-increment: example;
+}
+.example:not(.no-marker)::before {
+    content: "Example " counter(example);
+}
+.invalid.example:not(.no-marker)::before,
+.illegal.example:not(.no-marker)::before {
+    content: "Invalid Example" counter(example);
+}
+
+figcaption {
+    counter-increment: figure;
+}
+figcaption:not(.no-marker)::before {
+    content: "Figure " counter(figure) " ";
+}</style>
+<style>/* style-issues */
+
+a[href].issue-return {
+    float: right;
+    float: inline-end;
+    color: var(--issueheading-text);
+    font-weight: bold;
+    text-decoration: none;
+}
+</style>
+<style>/* style-md-lists */
+
+/* This is a weird hack for me not yet following the commonmark spec
+   regarding paragraph and lists. */
+[data-md] > :first-child {
+    margin-top: 0;
+}
+[data-md] > :last-child {
+    margin-bottom: 0;
+}</style>
+<style>/* style-selflinks */
+
+:root {
+    --selflink-text: white;
+    --selflink-bg: gray;
+    --selflink-hover-text: black;
+}
+.heading, .issue, .note, .example, li, dt {
+    position: relative;
+}
+a.self-link {
+    position: absolute;
+    top: 0;
+    left: calc(-1 * (3.5rem - 26px));
+    width: calc(3.5rem - 26px);
+    height: 2em;
+    text-align: center;
+    border: none;
+    transition: opacity .2s;
+    opacity: .5;
+}
+a.self-link:hover {
+    opacity: 1;
+}
+.heading > a.self-link {
+    font-size: 83%;
+}
+li > a.self-link {
+    left: calc(-1 * (3.5rem - 26px) - 2em);
+}
+dfn > a.self-link {
+    top: auto;
+    left: auto;
+    opacity: 0;
+    width: 1.5em;
+    height: 1.5em;
+    background: var(--selflink-bg);
+    color: var(--selflink-text);
+    font-style: normal;
+    transition: opacity .2s, background-color .2s, color .2s;
+}
+dfn:hover > a.self-link {
+    opacity: 1;
+}
+dfn > a.self-link:hover {
+    color: var(--selflink-hover-text);
+}
+
+a.self-link::before            { content: "¶"; }
+.heading > a.self-link::before { content: "§"; }
+dfn > a.self-link::before      { content: "#"; }
+</style>
+<style>/* style-syntax-highlighting */
+
+code.highlight { padding: .1em; border-radius: .3em; }
+pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em 0; overflow: auto; border-radius: 0; }
+
+.highlight:not(.idl) { background: rgba(0, 0, 0, .03); }
+c-[a] { color: #990055 } /* Keyword.Declaration */
+c-[b] { color: #990055 } /* Keyword.Type */
+c-[c] { color: #708090 } /* Comment */
+c-[d] { color: #708090 } /* Comment.Multiline */
+c-[e] { color: #0077aa } /* Name.Attribute */
+c-[f] { color: #669900 } /* Name.Tag */
+c-[g] { color: #222222 } /* Name.Variable */
+c-[k] { color: #990055 } /* Keyword */
+c-[l] { color: #000000 } /* Literal */
+c-[m] { color: #000000 } /* Literal.Number */
+c-[n] { color: #0077aa } /* Name */
+c-[o] { color: #999999 } /* Operator */
+c-[p] { color: #999999 } /* Punctuation */
+c-[s] { color: #a67f59 } /* Literal.String */
+c-[t] { color: #a67f59 } /* Literal.String.Single */
+c-[u] { color: #a67f59 } /* Literal.String.Double */
+c-[cp] { color: #708090 } /* Comment.Preproc */
+c-[c1] { color: #708090 } /* Comment.Single */
+c-[cs] { color: #708090 } /* Comment.Special */
+c-[kc] { color: #990055 } /* Keyword.Constant */
+c-[kn] { color: #990055 } /* Keyword.Namespace */
+c-[kp] { color: #990055 } /* Keyword.Pseudo */
+c-[kr] { color: #990055 } /* Keyword.Reserved */
+c-[ld] { color: #000000 } /* Literal.Date */
+c-[nc] { color: #0077aa } /* Name.Class */
+c-[no] { color: #0077aa } /* Name.Constant */
+c-[nd] { color: #0077aa } /* Name.Decorator */
+c-[ni] { color: #0077aa } /* Name.Entity */
+c-[ne] { color: #0077aa } /* Name.Exception */
+c-[nf] { color: #0077aa } /* Name.Function */
+c-[nl] { color: #0077aa } /* Name.Label */
+c-[nn] { color: #0077aa } /* Name.Namespace */
+c-[py] { color: #0077aa } /* Name.Property */
+c-[ow] { color: #999999 } /* Operator.Word */
+c-[mb] { color: #000000 } /* Literal.Number.Bin */
+c-[mf] { color: #000000 } /* Literal.Number.Float */
+c-[mh] { color: #000000 } /* Literal.Number.Hex */
+c-[mi] { color: #000000 } /* Literal.Number.Integer */
+c-[mo] { color: #000000 } /* Literal.Number.Oct */
+c-[sb] { color: #a67f59 } /* Literal.String.Backtick */
+c-[sc] { color: #a67f59 } /* Literal.String.Char */
+c-[sd] { color: #a67f59 } /* Literal.String.Doc */
+c-[se] { color: #a67f59 } /* Literal.String.Escape */
+c-[sh] { color: #a67f59 } /* Literal.String.Heredoc */
+c-[si] { color: #a67f59 } /* Literal.String.Interpol */
+c-[sx] { color: #a67f59 } /* Literal.String.Other */
+c-[sr] { color: #a67f59 } /* Literal.String.Regex */
+c-[ss] { color: #a67f59 } /* Literal.String.Symbol */
+c-[vc] { color: #0077aa } /* Name.Variable.Class */
+c-[vg] { color: #0077aa } /* Name.Variable.Global */
+c-[vi] { color: #0077aa } /* Name.Variable.Instance */
+c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
+</style>
+ <body class="h-entry">
+  <div class="head">
+   <p data-fill-with="logo"><a class="logo" href="https://solidproject.org/TR/"> <img alt="Solid" src="https://solid.github.io/solid-oidc/solid.svg" width="72"> </a> </p>
+   <h1 class="p-name no-ref" id="title">Solid-OIDC</h1>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#CG-DRAFT">Draft Community Group Report</a>, <time class="dt-updated" datetime="2022-03-28">28 March 2022</time></p>
+   <details open>
+    <summary>More details about this document</summary>
+    <div data-fill-with="spec-metadata">
+     <dl>
+      <dt>This version:
+      <dd><a class="u-url" href="https://solidproject.org/TR/oidc">https://solidproject.org/TR/oidc</a>
+      <dt>Test Suite:
+      <dd><a href="https://solid.github.io/solid-oidc-tests/">https://solid.github.io/solid-oidc-tests/</a>
+      <dt>Editor's Draft:
+      <dd><a class="u-url" href="https://solid.github.io/solid-oidc/">https://solid.github.io/solid-oidc/</a>
+      <dt>Issue Tracking:
+      <dd><a href="https://github.com/solid/solid-oidc/issues/">GitHub</a>
+      <dt class="editor">Editors:
+      <dd class="editor p-author h-card vcard"><span class="p-name fn"><a href="https://people.apache.org/~acoburn/#i">Aaron Coburn</a> (<a href="https://inrupt.com">Inrupt</a>)</span>
+      <dd class="editor p-author h-card vcard"><span class="p-name fn"><a href="https://elf-pavlik.hackers4peace.net/">elf Pavlik</a></span>
+      <dd class="editor p-author h-card vcard"><span class="p-name fn"><a href="http://computingjoy.com/">Dmitri Zagidulin</a></span>
+      <dt class="editor">Former Editors:
+      <dd class="editor p-author h-card vcard"><span class="p-name fn"><a href="https://migusgroup.com/about/">Adam Migus</a> (<a href="https://migusgroup.com/">The Migus Group</a>)</span>
+      <dd class="editor p-author h-card vcard"><span class="p-name fn"><a href="https://endlesstrax.com">Ricky White</a> (<a href="https://migusgroup.com/">The Migus Group</a>)</span>
+     </dl>
+    </div>
+   </details>
+   <div data-fill-with="warning"></div>
+   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2022 <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>, <a href="https://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document" rel="license">permissive document license</a> rules apply. </p>
+   <hr title="Separator for header">
+  </div>
+  <div class="p-summary" data-fill-with="abstract">
+   <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
+   <p>A key challenge on the path toward re-decentralizing user data on the Worldwide Web is the need to
+
+  access multiple potentially untrusted resources servers securely. This document aims to address that
+  challenge by building on top of current and future web standards, to allow entities to authenticate
+  within a Solid ecosystem.</p>
+  </div>
+  <h2 class="no-num no-toc no-ref heading settled" id="sotd"><span class="content">Status of this document</span></h2>
+  <div data-fill-with="status">
+   <p></p>
+   <p>This section describes the status of this document at the time of its publication.</p>
+   <p>This document was published by the <a href="https://www.w3.org/community/solid/">Solid Community Group</a> as
+
+an Editor’s Draft. The sections that have been incorporated have been reviewed following the <a href="https://github.com/solid/process">Solid process</a>. However, the information in this document is
+still subject to change. You are invited to <a href="https://github.com/solid/solid-oidc/issues">contribute</a> any feedback, comments, or questions you might have.</p>
+   <p>Publication as an Editor’s Draft does not imply endorsement by the W3C Membership. This is a draft
+
+document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate
+to cite this document as other than work in progress.</p>
+   <p>This document was produced by a group operating under the <a href="https://www.w3.org/community/about/process/cla/">W3C Community Contributor License Agreement
+
+(CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/process/cla-deed/">summary</a> is available.</p>
+  </div>
+  <div data-fill-with="at-risk"></div>
+  <nav data-fill-with="table-of-contents" id="toc">
+   <h2 class="no-num no-toc no-ref" id="contents">Table of Contents</h2>
+   <ol class="toc" role="directory">
+    <li>
+     <a href="#intro"><span class="secno">1</span> <span class="content">Introduction</span></a>
+     <ol class="toc">
+      <li><a href="#intro-out-of-scope"><span class="secno">1.1</span> <span class="content">Out of Scope</span></a>
+     </ol>
+    <li><a href="#terms"><span class="secno">2</span> <span class="content">Terminology</span></a>
+    <li>
+     <a href="#concepts"><span class="secno">3</span> <span class="content">Core Concepts</span></a>
+     <ol class="toc">
+      <li><a href="#concepts-webids"><span class="secno">3.1</span> <span class="content">WebIDs</span></a>
+     </ol>
+    <li><a href="#basic-flow"><span class="secno">4</span> <span class="content">Basic Flow</span></a>
+    <li>
+     <a href="#clientids"><span class="secno">5</span> <span class="content">Client Identifiers</span></a>
+     <ol class="toc">
+      <li><a href="#clientids-document"><span class="secno">5.1</span> <span class="content">Client ID Document</span></a>
+      <li><a href="#clientids-oidc"><span class="secno">5.2</span> <span class="content">OIDC Registration</span></a>
+     </ol>
+    <li>
+     <a href="#webid-profile"><span class="secno">6</span> <span class="content">WebID Profile</span></a>
+     <ol class="toc">
+      <li><a href="#oidc-issuer-discovery"><span class="secno">6.1</span> <span class="content">OIDC Issuer Discovery</span></a>
+     </ol>
+    <li><a href="#webid-scope"><span class="secno">7</span> <span class="content">Requesting the WebID Claim using a Scope Value</span></a>
+    <li>
+     <a href="#tokens"><span class="secno">8</span> <span class="content">Token Instantiation</span></a>
+     <ol class="toc">
+      <li><a href="#tokens-id"><span class="secno">8.1</span> <span class="content">DPoP-bound OIDC ID Token</span></a>
+     </ol>
+    <li>
+     <a href="#resource"><span class="secno">9</span> <span class="content">Resource Access</span></a>
+     <ol class="toc">
+      <li><a href="#authorization-server-discovery"><span class="secno">9.1</span> <span class="content">Authorization Server Discovery</span></a>
+      <li><a href="#obtaining-access-token"><span class="secno">9.2</span> <span class="content">Obtaining an Access Token</span></a>
+      <li><a href="#dpop-validation"><span class="secno">9.3</span> <span class="content">DPoP Validation</span></a>
+     </ol>
+    <li><a href="#discovery"><span class="secno">10</span> <span class="content">Solid-OIDC Conformance Discovery</span></a>
+    <li>
+     <a href="#security"><span class="secno">11</span> <span class="content">Security Considerations</span></a>
+     <ol class="toc">
+      <li><a href="#security-tls"><span class="secno">11.1</span> <span class="content">TLS Requirements</span></a>
+      <li><a href="#security-client-ids"><span class="secno">11.2</span> <span class="content">Client IDs</span></a>
+      <li><a href="#security-client-secrets"><span class="secno">11.3</span> <span class="content">Client Secrets</span></a>
+      <li><a href="#security-client-trust"><span class="secno">11.4</span> <span class="content">Client Trust</span></a>
+     </ol>
+    <li>
+     <a href="#privacy"><span class="secno">12</span> <span class="content">Privacy Considerations</span></a>
+     <ol class="toc">
+      <li><a href="#privacy-token-reuse"><span class="secno">12.1</span> <span class="content">OIDC ID Token Reuse</span></a>
+     </ol>
+    <li><a href="#acknowledgments"><span class="secno">13</span> <span class="content">Acknowledgments</span></a>
+    <li><a href="#full-jsonld-context"><span class="secno"></span> <span class="content">Appendix A: Full JSON-LD context</span></a>
+    <li>
+     <a href="#w3c-conformance"><span class="secno"></span> <span class="content">Conformance</span></a>
+     <ol class="toc">
+      <li><a href="#w3c-conventions"><span class="secno"></span> <span class="content">Document conventions</span></a>
+      <li><a href="#w3c-conformant-algorithms"><span class="secno"></span> <span class="content">Conformant Algorithms</span></a>
+     </ol>
+    <li>
+     <a href="#references"><span class="secno"></span> <span class="content">References</span></a>
+     <ol class="toc">
+      <li><a href="#normative"><span class="secno"></span> <span class="content">Normative References</span></a>
+     </ol>
+   </ol>
+  </nav>
+  <main>
+   <h2 class="heading settled" data-level="1" id="intro"><span class="secno">1. </span><span class="content">Introduction</span><a class="self-link" href="#intro"></a></h2>
+   <p><em>This section is non-normative</em></p>
+   <p>The <a href="https://solidproject.org/">Solid project</a> aims to change the way web applications work today to
+improve privacy and user control of personal data by utilizing current standards, protocols, and
+tools, to facilitate building extensible and modular decentralized applications based on <a href="https://www.w3.org/standards/semanticweb/data">Linked Data</a> principles.</p>
+   <p>This specification is written for Authorization and Resource Server owners intending to implement
+Solid-OIDC. It is also useful to Solid application developers charged with implementing a Solid-OIDC
+client.</p>
+   <p>The OAuth 2.0 <a data-link-type="biblio" href="#biblio-rfc6749">[RFC6749]</a> and OpenID Connect Core 1.0 <a data-link-type="biblio" href="#biblio-oidccore">[OIDC.Core]</a> web standards were
+published in October 2012 and November 2014, respectively. Since publication they’ve seen rapid and
+widespread adoption across the industry, in turn gaining extensive <em>"real-world"</em> data and
+experience. The strengths of the protocols are now clear; however, in a changing eco-system where
+privacy and control of digital identities are becoming more pressing concerns, it is also clear
+that additional functionality is required.</p>
+   <p>The additional functionality documented herein aims to address:</p>
+   <ol>
+    <li data-md>
+     <p>Resource servers and their Authorization servers having no existing trust relationship with identity providers.</p>
+    <li data-md>
+     <p>Ephemeral Clients as a first-order use-case.</p>
+   </ol>
+   <h3 class="heading settled" data-level="1.1" id="intro-out-of-scope"><span class="secno">1.1. </span><span class="content">Out of Scope</span><a class="self-link" href="#intro-out-of-scope"></a></h3>
+   <p><em>This section is non-normative</em></p>
+   <p>At the time of writing, there is no demonstrated use case for a strongly asserted identity; however,
+it is likely that authorization requirements will necessitate it.</p>
+   <h2 class="heading settled" data-level="2" id="terms"><span class="secno">2. </span><span class="content">Terminology</span><a class="self-link" href="#terms"></a></h2>
+   <p><em>This section is non-normative</em></p>
+   <p>This specification uses the terms "access token", "authorization server", "resource server" (RS), "token endpoint",
+"grant type", and "client" as defined by The OAuth 2.0 Authorization Framework <a data-link-type="biblio" href="#biblio-rfc6749">[RFC6749]</a>.</p>
+   <p>Throughout this specification, we will use the term OpenID Provider (OP) in line with the
+terminology used in the Open ID Connect Core 1.0 specification (OIDC) <a data-link-type="biblio" href="#biblio-oidccore">[OIDC.Core]</a>.
+It should be noted that this is distinct from the entity referred to as an Authorization Server
+by the OAuth 2.0 Authorization Framework (OAuth) <a data-link-type="biblio" href="#biblio-rfc6749">[RFC6749]</a>.</p>
+   <p>This specification also uses the following terms:</p>
+   <dl>
+    <dt><em>WebID</em> as defined by <a data-link-type="biblio" href="#biblio-webid">[WebID]</a> 
+    <dd> A WebID is a URI with an HTTP or HTTPS scheme which denotes an Agent (Person, Organization, Group,
+    Device, etc.). 
+    <dt><em>JSON Web Token (JWT)</em> as defined by <a data-link-type="biblio" href="#biblio-rfc7519">[RFC7519]</a> 
+    <dd> A string representing a set of claims as a JSON object that is encoded in a JWS or JWE, enabling the
+    claims to be digitally signed or MACed and/or encrypted. 
+    <dt><em>JSON Web Key (JWK)</em> as defined by <a data-link-type="biblio" href="#biblio-rfc7517">[RFC7517]</a> 
+    <dd> A JSON object that represents a cryptographic key. The members of the object represent properties of
+    the key, including its value. 
+    <dt><em>Demonstration of Proof-of-Possession at the Application Layer (DPoP)</em> as defined by <a data-link-type="biblio" href="#biblio-dpop">[DPOP]</a> 
+    <dd> A mechanism for sender-constraining OAuth tokens via a proof-of-possession mechanism on the
+    application level. 
+    <dt><em>DPoP Proof</em> as defined by <a data-link-type="biblio" href="#biblio-dpop">[DPOP]</a> 
+    <dd> A DPoP proof is a JWT that is signed (using JWS) using a private key chosen by the client. 
+    <dt><em>Proof Key for Code Exchange (PKCE)</em> as defined by <a data-link-type="biblio" href="#biblio-rfc7636">[RFC7636]</a> 
+    <dd> An extension to the Authorization Code flow which mitigates the risk of an authorization code
+    interception attack. 
+   </dl>
+   <h2 class="heading settled" data-level="3" id="concepts"><span class="secno">3. </span><span class="content">Core Concepts</span><a class="self-link" href="#concepts"></a></h2>
+   <p><em>This section is non-normative</em></p>
+   <p>In a decentralized ecosystem, such as Solid, an OP may be an identity-as-a-service vendor or, at
+the other end of the spectrum, a user-controlled OP. In any case, the user may be authenticating
+from a browser or an application.</p>
+   <p>Therefore, this specification assumes the use of the <a href="https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowSteps">Authorization Code Flow</a> with
+PKCE, in accordance with OAuth and OIDC best practices. It is also assumed that there are no
+preexisting trust relationships with the OP. This means that client registration, whether dynamic,
+or static, is entirely optional.</p>
+   <h3 class="heading settled" data-level="3.1" id="concepts-webids"><span class="secno">3.1. </span><span class="content">WebIDs</span><a class="self-link" href="#concepts-webids"></a></h3>
+   <p><em>This section is non-normative</em></p>
+   <p>In line with Linked Data principles, a WebID is a HTTP URI that,
+when dereferenced, resolves to a profile document that is structured data in an <a href="https://www.w3.org/TR/rdf11-concepts/">RDF 1.1 format</a>. This profile document allows
+people to link with others to grant access to identity resources as they see fit. WebIDs underpin
+Solid and are used as a primary identifier for Users in this specification.</p>
+   <h2 class="heading settled" data-level="4" id="basic-flow"><span class="secno">4. </span><span class="content">Basic Flow</span><a class="self-link" href="#basic-flow"></a></h2>
+   <p><em>This section is non-normative</em></p>
+   <p>Details of the flow are available in <a data-link-type="biblio" href="#biblio-solidoidcprimer">[Solid.OIDC.Primer]</a></p>
+   <figure id="fig-signature">
+     <img src="oidc-sequence.mmd.svg"> 
+    <figcaption>Basic sequence of authenticating the user and the client.</figcaption>
+   </figure>
+   <h2 class="heading settled" data-level="5" id="clientids"><span class="secno">5. </span><span class="content">Client Identifiers</span><a class="self-link" href="#clientids"></a></h2>
+   <p>OAuth and OIDC require the Client application to identify itself to the OP and RS by presenting a <a href="https://tools.ietf.org/html/rfc6749#section-2.2">client identifier</a> (Client ID). Solid applications
+SHOULD use a URI that can be dereferenced as a <a href="#clientids-document">Client ID Document</a>.</p>
+   <div class="issue no-marker" id="issue-d41d8cd9"><a class="self-link" href="#issue-d41d8cd9"></a><a class="marker" href="https://github.com/solid/solid-oidc/issues/78" style="text-transform:none">solid/solid-oidc/78</a><a href="https://github.com/solid/solid-oidc/issues/78">Specify the client authentication method when using a Client Identifier</a></div>
+   <h3 class="heading settled" data-level="5.1" id="clientids-document"><span class="secno">5.1. </span><span class="content">Client ID Document</span><a class="self-link" href="#clientids-document"></a></h3>
+   <p>When a Client Identifier is dereferenced, the resource MUST be serialized as an <code>application/ld+json</code> document
+unless content negotiation requires a different outcome.</p>
+   <p>The serialized JSON form of a Client ID Document MUST use the normative JSON-LD <code>@context</code> provided at <code>https://www.w3.org/ns/solid/oidc-context.jsonld</code> such that the resulting
+document produces a JSON serialization of an OIDC client registration, per the
+definition of client registration metadata from <a data-link-type="biblio" href="#biblio-rfc7591">[RFC7591]</a> section 2.</p>
+   <p>Also, the OP MUST dereference the Client ID Document and match any Client-supplied parameters
+with the values in the Client ID Document.</p>
+   <p>Further, the <code>redirect_uri</code> provided by the Client MUST be included in the registration <code>redirect_uris</code> list.</p>
+   <p>This example uses <a href="https://www.w3.org/TR/json-ld11/">JSON-LD </a> for the Client ID Document:</p>
+   <div class="example" id="example-9e406e39">
+    <a class="self-link" href="#example-9e406e39"></a> 
+    <p>https://app.example/id</p>
+<pre class="highlight"><c- p>{</c->
+  <c- nd>"@context"</c-><c- p>:</c-> <c- p>[</c-><c- u>"https://www.w3.org/ns/solid/oidc-context.jsonld"</c-><c- p>],</c->
+
+  <c- f>"client_id"</c-><c- p>:</c-> <c- u>"https://app.example/id"</c-><c- p>,</c->
+  <c- f>"client_name"</c-><c- p>:</c-> <c- u>"Solid Application Name"</c-><c- p>,</c->
+  <c- f>"redirect_uris"</c-><c- p>:</c-> <c- p>[</c-><c- u>"https://app.example/callback"</c-><c- p>],</c->
+  <c- f>"post_logout_redirect_uris"</c-><c- p>:</c-> <c- p>[</c-><c- u>"https://app.example/logout"</c-><c- p>],</c->
+  <c- f>"client_uri"</c-><c- p>:</c-> <c- u>"https://app.example/"</c-><c- p>,</c->
+  <c- f>"logo_uri"</c-> <c- p>:</c-> <c- u>"https://app.example/logo.png"</c-><c- p>,</c->
+  <c- f>"tos_uri"</c-> <c- p>:</c-> <c- u>"https://app.example/tos.html"</c-><c- p>,</c->
+  <c- f>"scope"</c-> <c- p>:</c-> <c- u>"openid profile offline_access webid"</c-><c- p>,</c->
+  <c- f>"grant_types"</c-> <c- p>:</c-> <c- p>[</c-><c- u>"refresh_token"</c-><c- p>,</c-><c- u>"authorization_code"</c-><c- p>],</c->
+  <c- f>"response_types"</c-> <c- p>:</c-> <c- p>[</c-><c- u>"code"</c-><c- p>],</c->
+  <c- f>"default_max_age"</c-> <c- p>:</c-> <c- mi>3600</c-><c- p>,</c->
+  <c- f>"require_auth_time"</c-> <c- p>:</c-> <c- kc>true</c->
+<c- p>}</c->
+</pre>
+   </div>
+   <div class="issue no-marker" id="issue-d41d8cd9①"><a class="self-link" href="#issue-d41d8cd9①"></a><a class="marker" href="https://github.com/solid/solid-oidc/issues/95" style="text-transform:none">solid/solid-oidc/95</a><a href="https://github.com/solid/solid-oidc/issues/95">Hosting Client ID Document on Solid Storage</a></div>
+   <h4 class="heading settled" data-level="5.1.1" id="jsonld-context"><span class="secno">5.1.1. </span><span class="content">JSON-LD context</span><a class="self-link" href="#jsonld-context"></a></h4>
+   <p>This specification defines a JSON-LD context for use with OIDC Client ID Documents. This context is
+available at <code>https://www.w3.org/ns/solid/oidc-context.jsonld</code>. Client ID Documents that reference
+this JSON-LD context MUST use the HTTPS scheme.</p>
+   <p class="note" role="note"><span>NOTE:</span> the <code>oidc</code> vocabulary that is part of this context uses the HTTP scheme.</p>
+   <p>Full content of JSON-LD context can be also seen in <a href="#full-jsonld-context">Appendix A: Full JSON-LD context</a></p>
+   <h3 class="heading settled" data-level="5.2" id="clientids-oidc"><span class="secno">5.2. </span><span class="content">OIDC Registration</span><a class="self-link" href="#clientids-oidc"></a></h3>
+   <p>If the Client does not use an identifier that can be dereferenced, then it MUST present a client identifier
+registered with the OP via either OIDC dynamic or static registration.
+See also <a data-link-type="biblio" href="#biblio-oidcdynamicclientregistration">[OIDC.DynamicClientRegistration]</a>.</p>
+   <h2 class="heading settled" data-level="6" id="webid-profile"><span class="secno">6. </span><span class="content">WebID Profile</span><a class="self-link" href="#webid-profile"></a></h2>
+   <p>Dereferencing the WebID URL results in a WebID Profile.</p>
+   <div class="issue no-marker" id="issue-d41d8cd9②"><a class="self-link" href="#issue-d41d8cd9②"></a><a class="marker" href="https://github.com/solid/solid-oidc/issues/76" style="text-transform:none">solid/solid-oidc/76</a><a href="https://github.com/solid/solid-oidc/issues/76">WebIDs MUST use a secure protocol</a></div>
+   <h3 class="heading settled" data-level="6.1" id="oidc-issuer-discovery"><span class="secno">6.1. </span><span class="content">OIDC Issuer Discovery</span><a class="self-link" href="#oidc-issuer-discovery"></a></h3>
+   <p>A WebID Profile lists the OpenID Providers who are trusted to issue tokens on behalf
+of the agent who controls the WebID. This prevents a malicious OpenID Provider from issuing
+otherwise valid ID Tokens for arbitrary WebIDs. An entity that verifies ID Tokens will use this
+mechanism to determine if the issuer is authoritative for the given WebID.</p>
+   <figure class="example" id="example-75c9f7b4">
+    <a class="self-link" href="#example-75c9f7b4"></a> 
+<pre class="highlight"><c- k>PREFIX</c-> <c- nn>solid:</c-> <c- g>&lt;http://www.w3.org/ns/solid/terms#></c->
+
+<c- g>&lt;#id></c-> <c- nn>solid</c-><c- p>:</c-><c- f>oidcIssuer</c-> <c- g>&lt;https://oidc.example></c-> <c- p>.</c->
+</pre>
+    <figcaption>WebID Profile specifying an OIDC issuer</figcaption>
+   </figure>
+   <p>To discover a list of valid issuers, the WebID Profile MUST be checked for the existence of statements matching</p>
+<pre class="highlight"><c- g>?webid</c-> <c- nl>&lt;http://www.w3.org/ns/solid/terms#oidcIssuer></c-> <c- g>?iss</c-> <c- p>.</c->
+</pre>
+   <p>where <code>?webid</code> is set to WebID. The <code>?iss</code> will result in an IRI denoting valid issuer for that WebID.
+The WebID Profile Document MUST include one or more statements matching the OIDC issuer pattern.</p>
+   <div class="issue no-marker" id="issue-d41d8cd9③"><a class="self-link" href="#issue-d41d8cd9③"></a><a class="marker" href="https://github.com/solid/solid-oidc/issues/80" style="text-transform:none">solid/solid-oidc/80</a><a href="https://github.com/solid/solid-oidc/issues/80">OIDC issuer discovery when WebID is not publicly readable</a></div>
+   <div class="issue no-marker" id="issue-d41d8cd9④"><a class="self-link" href="#issue-d41d8cd9④"></a><a class="marker" href="https://github.com/solid/solid-oidc/issues/92" style="text-transform:none">solid/solid-oidc/92</a><a href="https://github.com/solid/solid-oidc/issues/92">In some cases OIDC issuer can't be disclosed in WebID Profile</a></div>
+   <div class="issue no-marker" id="issue-d41d8cd9⑤"><a class="self-link" href="#issue-d41d8cd9⑤"></a><a class="marker" href="https://github.com/solid/solid-oidc/issues/91" style="text-transform:none">solid/solid-oidc/91</a><a href="https://github.com/solid/solid-oidc/issues/91">consider support for OIDC self-issuer</a></div>
+   <h4 class="heading settled" data-level="6.1.1" id="oidc-issuer-discovery-link-headers"><span class="secno">6.1.1. </span><span class="content">OIDC Issuer Discovery via Link Headers</span><a class="self-link" href="#oidc-issuer-discovery-link-headers"></a></h4>
+   <p>A server hosting a WebID Profile Document MAY transmit the <code>http://www.w3.org/ns/solid/terms#oidcIssuer</code> values via Link Headers, but they MUST be the same as in the RDF representation.
+A client MUST treat the RDF in the body of the WebID Profile as canonical
+but MAY use the Link Header values as an optimization.</p>
+   <figure class="example" id="example-3821d21b">
+    <a class="self-link" href="#example-3821d21b"></a> 
+<pre class="highlight">Link: &lt;https://oidc.example>;
+      rel="http://www.w3.org/ns/solid/terms#oidcIssuer";
+      anchor="#id"
+</pre>
+    <figcaption>HTTP response Link Header (line breaks added for readibility)</figcaption>
+   </figure>
+   <h2 class="heading settled" data-level="7" id="webid-scope"><span class="secno">7. </span><span class="content">Requesting the WebID Claim using a Scope Value</span><a class="self-link" href="#webid-scope"></a></h2>
+   <p>In OpenID Connect, <code>scope</code> values are used to request that particular information be make available as claim values.</p>
+   <p>Solid-OIDC defines the following <code>scope</code> value for use with claim requests:</p>
+   <dl>
+    <dt><em>webid</em> 
+    <dd> REQUIRED. This scope requests access to the End-User’s <code>webid</code> Claim. 
+   </dl>
+   <h2 class="heading settled" data-level="8" id="tokens"><span class="secno">8. </span><span class="content">Token Instantiation</span><a class="self-link" href="#tokens"></a></h2>
+   <p>Assuming one of the following options</p>
+   <ul>
+    <li data-md>
+     <p>Client ID and Secret, and valid DPoP Proof (for dynamic and static registration)</p>
+    <li data-md>
+     <p>Dereferencable Client Identifier with a proper Client ID Document and valid DPoP Proof (for a Solid client identifier)</p>
+   </ul>
+   <p>the OP MUST return A DPoP-bound OIDC ID Token.</p>
+   <h3 class="heading settled" data-level="8.1" id="tokens-id"><span class="secno">8.1. </span><span class="content">DPoP-bound OIDC ID Token</span><a class="self-link" href="#tokens-id"></a></h3>
+   <p>When requesting a DPoP-bound OIDC ID Token, the Client MUST send a DPoP proof JWT
+that is valid according to the <a href="https://tools.ietf.org/html/draft-ietf-oauth-dpop#section-5">OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP) § section-5</a>. The DPoP proof JWT is used to
+bind the OIDC ID Token to a public key. See also: <a data-link-type="biblio" href="#biblio-dpop">[DPOP]</a>.</p>
+   <p>With the <code>webid</code> scope, the DPoP-bound OIDC ID Token payload MUST contain these claims:</p>
+   <ul>
+    <li data-md>
+     <p><code>webid</code> — The WebID claim MUST be the user’s WebID.</p>
+    <li data-md>
+     <p><code>iss</code> — The issuer claim MUST be a valid URL of the OP
+instantiating this token.</p>
+    <li data-md>
+     <p><code>aud</code> — The audience claim MUST be an array of values.
+The values MUST include the authorized party claim <code>azp</code> and the string <code>solid</code>.
+In the decentralized world
+of Solid OIDC, the audience of an ID Token is not only the client (<code>azp</code>),
+but also any Solid Authorization Server at any accessible address
+on the world wide web (<code>solid</code>). See also: <a href="https://www.rfc-editor.org/rfc/rfc7519#section-4.1.3">JSON Web Token (JWT) § section-4.1.3</a>.</p>
+    <li data-md>
+     <p><code>azp</code> - The authorized party claim is used to identify the client
+(See also: <a href="#clientids">section 5. Client Identifiers</a>).</p>
+    <li data-md>
+     <p><code>iat</code> — The issued-at claim is the time at which the DPoP-bound
+OIDC ID Token was issued.</p>
+    <li data-md>
+     <p><code>exp</code> — The expiration claim is the time at which the DPoP-bound
+OIDC ID Token becomes invalid.</p>
+    <li data-md>
+     <p><code>cnf</code> — The confirmation claim is used to identify the DPoP Public
+Key bound to the OIDC ID Token. See also: <a href="https://tools.ietf.org/html/draft-ietf-oauth-dpop#section-7">OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP) § section-7</a>.</p>
+   </ul>
+   <div class="example" id="example-0f51afca">
+    <a class="self-link" href="#example-0f51afca"></a> 
+    <p>An example OIDC ID Token: </p>
+<pre class="highlight"><c- p>{</c->
+    <c- f>"webid"</c-><c- p>:</c-> <c- u>"https://janedoe.com/web#id"</c-><c- p>,</c->
+    <c- f>"iss"</c-><c- p>:</c-> <c- u>"https://idp.example.com"</c-><c- p>,</c->
+    <c- f>"sub"</c-><c- p>:</c-> <c- u>"janedoe"</c-><c- p>,</c->
+    <c- f>"aud"</c-><c- p>:</c-> <c- p>[</c-><c- u>"https://client.example.com/web#id"</c-><c- p>,</c-> <c- u>"solid"</c-><c- p>],</c->
+    <c- f>"azp"</c-><c- p>:</c-> <c- u>"https://client.example.com/web#id"</c-><c- p>,</c->
+    <c- f>"iat"</c-><c- p>:</c-> <c- mi>1311280970</c-><c- p>,</c->
+    <c- f>"exp"</c-><c- p>:</c-> <c- mi>1311281970</c-><c- p>,</c->
+    <c- f>"cnf"</c-><c- p>:{</c->
+      <c- f>"jkt"</c-><c- p>:</c-><c- u>"0ZcOCORZNYy-DWpqq30jZyJGHTN0d2HglBV3uiguA4I"</c->
+    <c- p>}</c->
+<c- p>}</c->
+</pre>
+   </div>
+   <div class="issue no-marker" id="issue-d41d8cd9⑥"><a class="self-link" href="#issue-d41d8cd9⑥"></a><a class="marker" href="https://github.com/solid/solid-oidc/issues/26" style="text-transform:none">solid/solid-oidc/26</a><a href="https://github.com/solid/solid-oidc/issues/26">Proposal: change webid claim to solid</a></div>
+   <div class="issue no-marker" id="issue-d41d8cd9⑦"><a class="self-link" href="#issue-d41d8cd9⑦"></a><a class="marker" href="https://github.com/solid/solid-oidc/issues/47" style="text-transform:none">solid/solid-oidc/47</a><a href="https://github.com/solid/solid-oidc/issues/47">Presenting multiple WebIDs in an ID Token</a></div>
+   <h4 class="heading settled" data-level="8.1.1" id="id-token-validation"><span class="secno">8.1.1. </span><span class="content">ID Token Validation</span><a class="self-link" href="#id-token-validation"></a></h4>
+   <p>An ID Token must be validated according to <a href="https://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation">OIDC.Core, Section 3.1.3.7</a></p>
+   <p>The Verifying party MUST perform <a href="#oidc-issuer-discovery">§ 6.1 OIDC Issuer Discovery</a> using the value of the <code>webid</code> claim
+to dereference the WebID Profile Document.</p>
+   <p>Unless the verifying party acquires OP keys through some other means, or it chooses to reject tokens issued by this OP,
+the verifying party MUST follow OpenID Connect Discovery 1.0 <a data-link-type="biblio" href="#biblio-oidcdiscovery">[OIDC.Discovery]</a> to find an OP’s signing keys (JWK).</p>
+   <h2 class="heading settled" data-level="9" id="resource"><span class="secno">9. </span><span class="content">Resource Access</span><a class="self-link" href="#resource"></a></h2>
+   <h3 class="heading settled" data-level="9.1" id="authorization-server-discovery"><span class="secno">9.1. </span><span class="content">Authorization Server Discovery</span><a class="self-link" href="#authorization-server-discovery"></a></h3>
+   <p>When a Client performs an unauthenticated request to a protected resource,
+the Resource Server MUST respond with the HTTP <code>401</code> status code,
+and a <code>WWW-Authenticate</code> HTTP header. See also: <a href="https://httpwg.org/specs/rfc7235.html#section-4.1">Hypertext Transfer Protocol (HTTP/1.1): Authentication § section-4.1</a></p>
+   <p>The <code>WWW-Authenticate</code> HTTP header MUST include an <code>as_uri</code> parameter unless the authentication scheme requires a different mechanism
+for discovering an associated authorization server.</p>
+   <p>Authorization Servers SHOULD implement User-Managed Access (UMA) 2.0 Grant for
+OAuth 2.0 Authorization <a data-link-type="biblio" href="#biblio-uma">[UMA]</a>.</p>
+   <h3 class="heading settled" data-level="9.2" id="obtaining-access-token"><span class="secno">9.2. </span><span class="content">Obtaining an Access Token</span><a class="self-link" href="#obtaining-access-token"></a></h3>
+   <p>For Authorization Servers that conform to <a data-link-type="biblio" href="#biblio-uma">[UMA]</a>, the <code>http://openid.net/specs/openid-connect-core-1_0.html#IDToken</code> profile MUST
+be supported. This profile MUST be advertised in the <code>uma_profiles_supported</code> metadata of the Authorization Server discovery document <a href="https://docs.kantarainitiative.org/uma/wg/rec-oauth-uma-grant-2.0.html#rfc.section.2">User-Managed Access (UMA) 2.0 Grant for OAuth 2.0 Authorization § rfc.section.2</a>.</p>
+   <p>When using the <code>http://openid.net/specs/openid-connect-core-1_0.html#IDToken</code> profile with an UMA-based Authorization Server, the Authorization Server MUST be capable
+of exchanging a valid Solid-OIDC ID Token <a href="#tokens-id">§ 8.1 DPoP-bound OIDC ID Token</a> for an OAuth 2.0 Access Token.</p>
+   <p class="note" role="note"><span>Note:</span> Clients can push additional claims by requesting an upgraded RPT <a href="https://docs.kantarainitiative.org/uma/wg/rec-oauth-uma-grant-2.0.html#rfc.section.3.3.1">User-Managed Access (UMA) 2.0 Grant for OAuth 2.0 Authorization § rfc.section.3.3.1</a></p>
+   <p>Authorization Server MUST pefrom <a href="#dpop-validation">§ 9.3 DPoP Validation</a> and <a href="#id-token-validation">§ 8.1.1 ID Token Validation</a></p>
+   <h3 class="heading settled" data-level="9.3" id="dpop-validation"><span class="secno">9.3. </span><span class="content">DPoP Validation</span><a class="self-link" href="#dpop-validation"></a></h3>
+   <p>A DPoP Proof that is valid according to <a href="https://tools.ietf.org/html/draft-ietf-oauth-dpop-04#section-4.3">DPoP Internet-Draft, Section 4.3</a>,
+MUST be present when a DPoP-bound OIDC ID Token is used.</p>
+   <p>The DPoP-bound OIDC ID Token MUST be validated according to <a href="https://tools.ietf.org/html/draft-ietf-oauth-dpop-04#section-6">DPoP Internet-Draft, Section 6</a>,
+but the AS MAY perform additional verification in order to determine whether to grant access to the
+requested resource.</p>
+   <h2 class="heading settled" data-level="10" id="discovery"><span class="secno">10. </span><span class="content">Solid-OIDC Conformance Discovery</span><a class="self-link" href="#discovery"></a></h2>
+   <p>An OpenID Provider that conforms to the Solid-OIDC specification MUST advertise it in the OpenID Connect
+Discovery 1.0 <a data-link-type="biblio" href="#biblio-oidcdiscovery">[OIDC.Discovery]</a> resource by including <code>webid</code> in its <code>scopes_supported</code> metadata property.</p>
+   <div class="example" id="example-b42af25e">
+    <a class="self-link" href="#example-b42af25e"></a> 
+<pre class="highlight"><c- p>{</c->
+    <c- f>"scopes_supported"</c-><c- p>:</c-> <c- p>[</c-><c- u>"openid"</c-><c- p>,</c-> <c- u>"offline_access"</c-><c- p>,</c-> <c- u>"webid"</c-><c- p>]</c->
+<c- p>}</c->
+</pre>
+   </div>
+   <h2 class="heading settled" data-level="11" id="security"><span class="secno">11. </span><span class="content">Security Considerations</span><a class="self-link" href="#security"></a></h2>
+   <p><em>This section is non-normative</em></p>
+   <p>As this specification builds upon existing web standards, security considerations from OAuth, OIDC,
+PKCE, and the DPoP specifications may also apply unless otherwise indicated. The following
+considerations should be reviewed by implementors and system/s architects of this specification.</p>
+   <p>Some of the references within this specification point to documents with a
+Living Standard or Draft status, meaning their contents can still change over
+time. It is advised to monitor these documents, as such changes might have
+security implications.</p>
+   <p>In addition to above considerations, implementors should consider the Security
+Considerations in context of the Solid Protocol <a data-link-type="biblio" href="#biblio-solidprotocol">[Solid.Protocol]</a>.</p>
+   <h3 class="heading settled" data-level="11.1" id="security-tls"><span class="secno">11.1. </span><span class="content">TLS Requirements</span><a class="self-link" href="#security-tls"></a></h3>
+   <p>All TLS requirements outlined in <a href="https://tools.ietf.org/html/bcp195">[BCP195</a>] apply to this
+specification.</p>
+   <p>All tokens, Client, and User credentials MUST only be transmitted over TLS.</p>
+   <h3 class="heading settled" data-level="11.2" id="security-client-ids"><span class="secno">11.2. </span><span class="content">Client IDs</span><a class="self-link" href="#security-client-ids"></a></h3>
+   <p>An AS SHOULD assign a fixed set of low trust policies to any client identified as anonymous.</p>
+   <p>Implementors SHOULD expire ephemeral Client IDs that are kept in server storage to mitigate the
+potential for a bad actor to fill server storage with unexpired or otherwise useless Client IDs.</p>
+   <h3 class="heading settled" data-level="11.3" id="security-client-secrets"><span class="secno">11.3. </span><span class="content">Client Secrets</span><a class="self-link" href="#security-client-secrets"></a></h3>
+   <p>Client secrets SHOULD NOT be stored in browser local storage. Doing so will increase the risk of
+data leaks should an attacker gain access to Client credentials.</p>
+   <h3 class="heading settled" data-level="11.4" id="security-client-trust"><span class="secno">11.4. </span><span class="content">Client Trust</span><a class="self-link" href="#security-client-trust"></a></h3>
+   <p><em>This section is non-normative</em></p>
+   <p>Clients are ephemeral, client registration is optional, and most Clients cannot keep secrets. These,
+among other factors, are what makes Client trust challenging.</p>
+   <h2 class="heading settled" data-level="12" id="privacy"><span class="secno">12. </span><span class="content">Privacy Considerations</span><a class="self-link" href="#privacy"></a></h2>
+   <h3 class="heading settled" data-level="12.1" id="privacy-token-reuse"><span class="secno">12.1. </span><span class="content">OIDC ID Token Reuse</span><a class="self-link" href="#privacy-token-reuse"></a></h3>
+   <p><em>This section is non-normative</em></p>
+   <p>With JWTs being extendable by design, there is potential for a privacy breach if OIDC ID Tokens get
+reused across multiple authorization servers. It is not unimaginable that a custom claim is added to the
+OIDC ID Token on instantiation. This addition may unintentionally give other authorization servers
+consuming the OIDC ID Token information about the user that they may not wish to share outside of the
+intended AS.</p>
+   <h2 class="heading settled" data-level="13" id="acknowledgments"><span class="secno">13. </span><span class="content">Acknowledgments</span><a class="self-link" href="#acknowledgments"></a></h2>
+   <p><em>This section is non-normative</em></p>
+   <p>The Solid Community Group would like to thank the following individuals for reviewing and providing
+feedback on the specification (in alphabetical order):</p>
+   <p>Tim Berners-Lee, Justin Bingham, Sarven Capadisli, Aaron Coburn, Matthias Evering, Jamie Fiedler,
+Michiel de Jong, Ted Thibodeau Jr, Kjetil Kjernsmo, Mitzi László, Pat McBennett, Adam Migus, Jackson Morgan, Davi
+Ottenheimer, Justin Richer, severin-dsr, Henry Story, Michael Thornburgh, Emmet Townsend, Ruben
+Verborgh, Ricky White, Paul Worrall, Dmitri Zagidulin.</p>
+   <h2 class="heading settled" id="full-jsonld-context"><span class="content">Appendix A: Full JSON-LD context</span><a class="self-link" href="#full-jsonld-context"></a></h2>
+   <p>The JSON-LD context is defined as:</p>
+<pre class="highlight"><c- p>{</c->
+  <c- nd>"@context"</c-><c- p>:</c-> <c- p>{</c->
+    <c- nd>"@version"</c-><c- p>:</c-> <c- mf>1.1</c-><c- p>,</c->
+    <c- nd>"@protected"</c-><c- p>:</c-> <c- kc>true</c-><c- p>,</c->
+    <c- f>"oidc"</c-><c- p>:</c-> <c- u>"http://www.w3.org/ns/solid/oidc#"</c-><c- p>,</c->
+    <c- f>"xsd"</c-><c- p>:</c-> <c- u>"http://www.w3.org/2001/XMLSchema#"</c-><c- p>,</c->
+    <c- f>"client_id"</c-><c- p>:</c-> <c- p>{</c->
+      <c- nd>"@id"</c-><c- p>:</c-> <c- u>"@id"</c-><c- p>,</c->
+      <c- nd>"@type"</c-><c- p>:</c-> <c- u>"@id"</c->
+    <c- p>},</c->
+    <c- f>"client_uri"</c-><c- p>:</c-> <c- p>{</c->
+      <c- nd>"@id"</c-><c- p>:</c-> <c- u>"oidc:client_uri"</c-><c- p>,</c->
+      <c- nd>"@type"</c-><c- p>:</c-> <c- u>"@id"</c->
+    <c- p>},</c->
+    <c- f>"logo_uri"</c-><c- p>:</c-> <c- p>{</c->
+      <c- nd>"@id"</c-><c- p>:</c-> <c- u>"oidc:logo_uri"</c-><c- p>,</c->
+      <c- nd>"@type"</c-><c- p>:</c-> <c- u>"@id"</c->
+    <c- p>},</c->
+    <c- f>"policy_uri"</c-><c- p>:</c-> <c- p>{</c->
+      <c- nd>"@id"</c-><c- p>:</c-> <c- u>"oidc:policy_uri"</c-><c- p>,</c->
+      <c- nd>"@type"</c-><c- p>:</c-> <c- u>"@id"</c->
+    <c- p>},</c->
+    <c- f>"tos_uri"</c-><c- p>:</c-> <c- p>{</c->
+      <c- nd>"@id"</c-><c- p>:</c-> <c- u>"oidc:tos_uri"</c-><c- p>,</c->
+      <c- nd>"@type"</c-><c- p>:</c-> <c- u>"@id"</c->
+    <c- p>},</c->
+    <c- f>"redirect_uris"</c-><c- p>:</c-> <c- p>{</c->
+      <c- nd>"@id"</c-><c- p>:</c-> <c- u>"oidc:redirect_uris"</c-><c- p>,</c->
+      <c- nd>"@type"</c-><c- p>:</c-> <c- u>"@id"</c-><c- p>,</c->
+      <c- nd>"@container"</c-><c- p>:</c-> <c- p>[</c->
+        <c- u>"@id"</c-><c- p>,</c->
+        <c- u>"@set"</c->
+      <c- p>]</c->
+    <c- p>},</c->
+    <c- f>"require_auth_time"</c-><c- p>:</c-> <c- p>{</c->
+      <c- nd>"@id"</c-><c- p>:</c-> <c- u>"oidc:require_auth_time"</c-><c- p>,</c->
+      <c- nd>"@type"</c-><c- p>:</c-> <c- u>"xsd:boolean"</c->
+    <c- p>},</c->
+    <c- f>"default_max_age"</c-><c- p>:</c-> <c- p>{</c->
+      <c- nd>"@id"</c-><c- p>:</c-> <c- u>"oidc:default_max_age"</c-><c- p>,</c->
+      <c- nd>"@type"</c-><c- p>:</c-> <c- u>"xsd:integer"</c->
+    <c- p>},</c->
+    <c- f>"application_type"</c-><c- p>:</c-> <c- p>{</c->
+      <c- nd>"@id"</c-><c- p>:</c-> <c- u>"oidc:application_type"</c->
+    <c- p>},</c->
+    <c- f>"client_name"</c-><c- p>:</c-> <c- p>{</c->
+      <c- nd>"@id"</c-><c- p>:</c-> <c- u>"oidc:client_name"</c->
+    <c- p>},</c->
+    <c- f>"contacts"</c-><c- p>:</c-> <c- p>{</c->
+      <c- nd>"@id"</c-><c- p>:</c-> <c- u>"oidc:contacts"</c->
+    <c- p>},</c->
+    <c- f>"grant_types"</c-><c- p>:</c-> <c- p>{</c->
+      <c- nd>"@id"</c-><c- p>:</c-> <c- u>"oidc:grant_types"</c->
+    <c- p>},</c->
+    <c- f>"response_types"</c-><c- p>:</c-> <c- p>{</c->
+      <c- nd>"@id"</c-><c- p>:</c-> <c- u>"oidc:response_types"</c->
+    <c- p>},</c->
+    <c- f>"scope"</c-><c- p>:</c-> <c- p>{</c->
+      <c- nd>"@id"</c-><c- p>:</c-> <c- u>"oidc:scope"</c->
+    <c- p>},</c->
+    <c- f>"token_endpoint_auth_method"</c-><c- p>:</c-> <c- p>{</c->
+      <c- nd>"@id"</c-><c- p>:</c-> <c- u>"oidc:token_endpoint_auth_method"</c->
+    <c- p>}</c->
+  <c- p>}</c->
+<c- p>}</c->
+</pre>
+  </main>
+  <div data-fill-with="conformance">
+   <h2 class="no-ref no-num heading settled" id="w3c-conformance"><span class="content">Conformance</span><a class="self-link" href="#w3c-conformance"></a></h2>
+   <h3 class="no-ref no-num heading settled" id="w3c-conventions"><span class="content">Document conventions</span><a class="self-link" href="#w3c-conventions"></a></h3>
+   <p>Conformance requirements are expressed
+    with a combination of descriptive assertions
+    and RFC 2119 terminology.
+    The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL”
+    in the normative parts of this document
+    are to be interpreted as described in RFC 2119.
+    However, for readability,
+    these words do not appear in all uppercase letters in this specification. </p>
+   <p>All of the text of this specification is normative
+    except sections explicitly marked as non-normative, examples, and notes. <a data-link-type="biblio" href="#biblio-rfc2119">[RFC2119]</a> </p>
+   <p>Examples in this specification are introduced with the words “for example”
+    or are set apart from the normative text
+    with <code>class="example"</code>,
+    like this: </p>
+   <div class="example" id="w3c-example">
+    <a class="self-link" href="#w3c-example"></a> 
+    <p>This is an example of an informative example. </p>
+   </div>
+   <p>Informative notes begin with the word “Note”
+    and are set apart from the normative text
+    with <code>class="note"</code>,
+    like this: </p>
+   <p class="note" role="note">Note, this is an informative note. </p>
+   <h3 class="no-ref no-num heading settled" id="w3c-conformant-algorithms"><span class="content">Conformant Algorithms</span><a class="self-link" href="#w3c-conformant-algorithms"></a></h3>
+   <p>Requirements phrased in the imperative as part of algorithms
+    (such as "strip any leading space characters"
+    or "return false and abort these steps")
+    are to be interpreted with the meaning of the key word
+    ("must", "should", "may", etc)
+    used in introducing the algorithm. </p>
+   <p>Conformance requirements phrased as algorithms or specific steps
+    can be implemented in any manner,
+    so long as the end result is equivalent.
+    In particular, the algorithms defined in this specification
+    are intended to be easy to understand
+    and are not intended to be performant.
+    Implementers are encouraged to optimize. </p>
+  </div>
+<script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script>
+  <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
+  <h3 class="no-num no-ref heading settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
+  <dl>
+   <dt id="biblio-dpop">[DPOP]
+   <dd>D. Fett; et al. <a href="https://tools.ietf.org/html/draft-ietf-oauth-dpop"><cite>OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)</cite></a>. URL: <a href="https://tools.ietf.org/html/draft-ietf-oauth-dpop">https://tools.ietf.org/html/draft-ietf-oauth-dpop</a>
+   <dt id="biblio-oidccore">[OIDC.Core]
+   <dd>N. Sakimura; et al. <a href="https://openid.net/specs/openid-connect-core-1_0.html"><cite>OpenID Connect Core 1.0</cite></a>. URL: <a href="https://openid.net/specs/openid-connect-core-1_0.html">https://openid.net/specs/openid-connect-core-1_0.html</a>
+   <dt id="biblio-oidcdiscovery">[OIDC.Discovery]
+   <dd>N. Sakimura; et al. <a href="https://openid.net/specs/openid-connect-discovery-1_0.html"><cite>OpenID Connect Discovery 1.0</cite></a>. URL: <a href="https://openid.net/specs/openid-connect-discovery-1_0.html">https://openid.net/specs/openid-connect-discovery-1_0.html</a>
+   <dt id="biblio-oidcdynamicclientregistration">[OIDC.DynamicClientRegistration]
+   <dd>N. Sakimura; J. Bradley; M.B. Jones. <a href="https://openid.net/specs/openid-connect-registration-1_0.html"><cite>OpenID Connect Dynamic Client Registration 1.0</cite></a>. URL: <a href="https://openid.net/specs/openid-connect-registration-1_0.html">https://openid.net/specs/openid-connect-registration-1_0.html</a>
+   <dt id="biblio-rfc2119">[RFC2119]
+   <dd>S. Bradner. <a href="https://datatracker.ietf.org/doc/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc2119">https://datatracker.ietf.org/doc/html/rfc2119</a>
+   <dt id="biblio-rfc6749">[RFC6749]
+   <dd>D. Hardt, Ed.. <a href="https://www.rfc-editor.org/rfc/rfc6749"><cite>The OAuth 2.0 Authorization Framework</cite></a>. October 2012. Proposed Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc6749">https://www.rfc-editor.org/rfc/rfc6749</a>
+   <dt id="biblio-rfc7517">[RFC7517]
+   <dd>M. Jones. <a href="https://www.rfc-editor.org/rfc/rfc7517"><cite>JSON Web Key (JWK)</cite></a>. May 2015. Proposed Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc7517">https://www.rfc-editor.org/rfc/rfc7517</a>
+   <dt id="biblio-rfc7519">[RFC7519]
+   <dd>M. Jones; J. Bradley; N. Sakimura. <a href="https://www.rfc-editor.org/rfc/rfc7519"><cite>JSON Web Token (JWT)</cite></a>. May 2015. Proposed Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc7519">https://www.rfc-editor.org/rfc/rfc7519</a>
+   <dt id="biblio-rfc7591">[RFC7591]
+   <dd>J. Richer, Ed.; et al. <a href="https://www.rfc-editor.org/rfc/rfc7591"><cite>OAuth 2.0 Dynamic Client Registration Protocol</cite></a>. July 2015. Proposed Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc7591">https://www.rfc-editor.org/rfc/rfc7591</a>
+   <dt id="biblio-rfc7636">[RFC7636]
+   <dd>N. Sakimura, Ed.; J. Bradley; N. Agarwal. <a href="https://www.rfc-editor.org/rfc/rfc7636"><cite>Proof Key for Code Exchange by OAuth Public Clients</cite></a>. September 2015. Proposed Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc7636">https://www.rfc-editor.org/rfc/rfc7636</a>
+   <dt id="biblio-solidoidcprimer">[Solid.OIDC.Primer]
+   <dd>Jackson Morgan; Aaron Coburn; Matthieu Bosquet. <a href="https://solid.github.io/solid-oidc/primer/"><cite>Solid-OIDC Primer</cite></a>. URL: <a href="https://solid.github.io/solid-oidc/primer/">https://solid.github.io/solid-oidc/primer/</a>
+   <dt id="biblio-solidprotocol">[Solid.Protocol]
+   <dd>Sarven Capadisli; et al. <a href="https://solidproject.org/TR/protocol"><cite>Solid Protocol</cite></a>. URL: <a href="https://solidproject.org/TR/protocol">https://solidproject.org/TR/protocol</a>
+   <dt id="biblio-uma">[UMA]
+   <dd>Eve Maler; Maciej Machulak; Justin Richer. <a href="https://docs.kantarainitiative.org/uma/wg/rec-oauth-uma-grant-2.0.html"><cite>User-Managed Access (UMA) 2.0 Grant for OAuth 2.0 Authorization</cite></a>. URL: <a href="https://docs.kantarainitiative.org/uma/wg/rec-oauth-uma-grant-2.0.html">https://docs.kantarainitiative.org/uma/wg/rec-oauth-uma-grant-2.0.html</a>
+   <dt id="biblio-webid">[WebID]
+   <dd>Andrei Sambra; Henry Story; Tim Berners-Lee. <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/"><cite>WebID 1.0</cite></a>. URL: <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/">https://www.w3.org/2005/Incubator/webid/spec/identity/</a>
+  </dl>
