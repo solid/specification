@@ -120,7 +120,9 @@ For content changes, make sure that you:
 * [ ] Confirm that the changes meet the user experience and goals outlined in
   the content design plan (if there is one).
 * [ ] Compare your pull request's source changes to staging to confirm that the
-  output matches the source and that everything is rendering as expected.
+  output matches the source and that everything is rendering as expected. The
+  W3C service to [creating diff between HTML pages](https://services.w3.org/htmldiff)
+  can also be used.
 * [ ] Review the content for technical accuracy.
 * [ ] Review the entire pull request using the [localization
   checklist](https://github.com/github/docs/blob/main/contributing/localization-checklist.md)
