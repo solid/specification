@@ -22,16 +22,15 @@ and respectable.
 
 ## Contributions
 
-All substantive contributors must be members of the CG. It’s easy to [join the
-CG](https://www.w3.org/community/solid/join) if you’d like to contribute. People
-agree to the [W3C Community License Agreement
+In order to be a substantive contributor to work items, you must be a member of
+the CG. It’s easy to [join the CG](https://www.w3.org/community/solid/join) if
+you’d like to contribute. People agree to the [W3C Community License Agreement
 (CLA)](http://www.w3.org/community/about/agreements/cla/) upon joining the CG.
 
 The works in this repository use the [MIT
 license](https://github.com/solid/specification/blob/main/LICENSE.md).
 
-We accept different types of contributions, including some that don't require
-you to write a single line of code:
+We accept different types of contributions as described below.
 
 ### Discussions
 
