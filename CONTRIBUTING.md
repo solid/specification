@@ -71,6 +71,12 @@ The latest and persistent version of technical reports (see [publishing
 technical reports](#publishing-technical-reports) published at this repository
 are intended to be read-only snapshots of the CG work items.
 
+[Solid
+Panels](https://github.com/solid/specification/blob/main/README.md#solid-panels)
+focus on certain work streams, with an aim to propose technical reports for
+the Solid ecosystem.
+
+
 ## Creating and solving issues
 
 ### Create a new issue
