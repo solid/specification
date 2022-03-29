@@ -63,12 +63,21 @@ languages. The source content in this repository is written in English. We
 accept contributions to localize the English content.
 
 
+## Contributions at source repository
+
+Technical reports published at this repository are intended to be read-only
+snapshots of the CG work items.
+
+Each work item may have its own original repository any issues and PRs should
+be made there (instead of this repository `solid/specification`).
+
+
 ## Creating and solving issues
 
 ### Create a new issue
 
-If you spot a problem with the technical reports published in this repository or
-would like to request a feature, [search if an issue already
+If you spot a problem with the technical reports being worked on in this
+repository or would like to request a feature, [search if an issue already
 exists](https://docs.github.com/en/github/searching-for-information-on-github/searching-on-github/searching-issues-and-pull-requests#search-by-the-title-body-or-comments).
 If a related issue doesn't exist, you can open a new issue. In the issue,
 include relevant information that can help others, e.g., links to
@@ -122,8 +131,8 @@ For content changes, make sure that you:
 
 ## Creating a pull request
 
-When you're finished with the changes, create a pull request, also known as a
-PR.
+When you're finished with the changes to documents that are maintained in this
+repository, create a pull request, also known as a PR.
 
 * Include atomic commits, small PRs: "one concern, one PR".
 * In the PR comment, provide as much context and evidence to help reviewers
