@@ -64,12 +64,12 @@ accept contributions to localize the English content.
 
 ## Contributions at source repository
 
-Technical reports published at this repository are intended to be read-only
-snapshots of the CG work items.
+Each CG work item has its own repository and any issues and PRs should be made
+at their source.
 
-Each work item may have its own original repository and any issues and PRs
-should be made there (instead of this repository `solid/specification`).
-
+The latest and persistent version of technical reports (see [publishing
+technical reports](#publishing-technical-reports) published at this repository
+are intended to be read-only snapshots of the CG work items.
 
 ## Creating and solving issues
 
