@@ -25,8 +25,7 @@ and respectable.
 All substantive contributors must be members of the CG. It’s easy to [join the
 CG](https://www.w3.org/community/solid/join) if you’d like to contribute. People
 agree to the [W3C Community License Agreement
-(CLA)](http://www.w3.org/community/about/agreements/cla/) upon joining the the
-CG.
+(CLA)](http://www.w3.org/community/about/agreements/cla/) upon joining the CG.
 
 The works in this repository use the [MIT
 license](https://github.com/solid/specification/blob/main/LICENSE.md).
@@ -64,9 +63,7 @@ languages. The source content in this repository is written in English. We
 accept contributions to localize the English content.
 
 
-## Issues
-
-How to create and solve issues:
+## Creating and solving issues
 
 ### Create a new issue
 
@@ -129,7 +126,8 @@ When you're finished with the changes, create a pull request, also known as a
 PR.
 
 * Include atomic commits, small PRs: "one concern, one PR".
-* In the PR comment, provide as much context to help reviewers evaluate the PR.
+* In the PR comment, provide as much context and evidence to help reviewers
+  evaluate the PR.
 * Don't forget to [link PR to
   issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue)
   if you are solving one.
@@ -145,7 +143,7 @@ PR.
   tutorial](https://lab.github.com/githubtraining/managing-merge-conflicts) to
   help you resolve merge conflicts and other issues.
 * If you are not the sole contributor, please identify all contributors in the
-  pull request comment. To add a contributor (other than yourself), mark the one
+  pull request comment. To add a contributor (other than yourself), mark them one
   per line as follows: `+@github_username`.
 
 ### Your PR is merged!
@@ -223,6 +221,6 @@ https://solidproject.org/ED/protocol .
 
 ## Technical Report index
 
-When a new technical report is added, removed, or the status of the document is
-modified, a PR should include an update to the [Technical Report
-index](https://github.com/solid/specification/blob/main/index.html).
+When a new technical report is added, information about it is modified, or a
+new work item is being worked on by the CG, a PR should update the [Technical
+Report index](https://github.com/solid/specification/blob/main/index.html).
