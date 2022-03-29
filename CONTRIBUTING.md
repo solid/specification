@@ -171,7 +171,7 @@ published on the Solid website.
 * Content: the full content of the technical report must be human-readable with
   HTML alone. Any CSS and JavaScript should not interfere with the accessibility
   of the content.
-* Offline-friendly: there must not be any external dependencies (e.g., a network
+* Offline-friendly: there must not be any mandatory external dependencies (e.g., a network
   connection) to retrieve, to render, or to manipulate the content of the
   article.
 * Privacy: scripts must not be used to identify or track readers.
