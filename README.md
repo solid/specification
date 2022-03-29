@@ -15,7 +15,8 @@ All substantive contributors to Work Items must be members of the Solid CG. Itâ€
 
 Anyone can join the [Solid specification chat](https://gitter.im/solid/specification).
 
-Solid Panels focus on specific problems, with an aim to propose technical reports for the Solid ecosystem:
+<span id="solid-panels">Solid Panels</span> focus on certain work streams, with an aim to propose technical reports for
+the Solid ecosystem:
 
 * https://github.com/solid/authentication-panel
 * https://github.com/solid/authorization-panel
