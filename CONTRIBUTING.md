@@ -11,7 +11,7 @@ The TRs include specifications, use cases and requirements, best practices and
 guidelines, primers and notes about the Solid ecosystem.
 
 
-## Code of Conduct
+## Code of conduct
 
 Read the [Solid Code of
 Conduct](https://github.com/solid/process/blob/main/code-of-conduct.md) and the
@@ -35,7 +35,7 @@ you to write a single line of code:
 
 ### Discussions
 
-If you'd like help troubleshooting a pull request you're working on, have a
+If you'd like help troubleshooting a pull request (PR) you're working on, have a
 great new idea, or want to share implementation feedback, join us in [Solid
 specification chat](https://gitter.im/solid/specification).
 
@@ -68,8 +68,8 @@ accept contributions to localize the English content.
 Technical reports published at this repository are intended to be read-only
 snapshots of the CG work items.
 
-Each work item may have its own original repository any issues and PRs should
-be made there (instead of this repository `solid/specification`).
+Each work item may have its own original repository and any issues and PRs
+should be made there (instead of this repository `solid/specification`).
 
 
 ## Creating and solving issues
@@ -89,8 +89,8 @@ Scan through our [existing
 issues](https://github.com/solid/specification/issues/) to find one that
 interests you. You can narrow down the search using `labels` as filters. See
 [Labels](https://github.com/github/docs/blob/main/contributing/how-to-use-labels.md)
-for more information. If you find an issue to work on, you are welcome to open a
-pull request (PR) with a fix.
+for more information. If you find an issue to work on, you are welcome to open
+a PR with a fix.
 
 
 ## Make changes
@@ -119,12 +119,12 @@ For content changes, make sure that you:
 
 * [ ] Confirm that the changes meet the user experience and goals outlined in
   the content design plan (if there is one).
-* [ ] Compare your pull request's source changes to staging to confirm that the
+* [ ] Compare your PR's source changes to staging to confirm that the
   output matches the source and that everything is rendering as expected. The
   W3C service to [creating diff between HTML pages](https://services.w3.org/htmldiff)
   can also be used.
 * [ ] Review the content for technical accuracy.
-* [ ] Review the entire pull request using the [localization
+* [ ] Review the entire PR using the [localization
   checklist](https://github.com/github/docs/blob/main/contributing/localization-checklist.md)
   and the [W3C Manual of Style](https://www.w3.org/2001/06/manual/) as guides.
 * [ ] If there are any failing checks in your PR, troubleshoot them until
@@ -134,7 +134,7 @@ For content changes, make sure that you:
 ## Creating a pull request
 
 When you're finished with the changes to documents that are maintained in this
-repository, create a pull request, also known as a PR.
+repository, create a PR.
 
 * Include atomic commits, small PRs: "one concern, one PR".
 * In the PR comment, provide as much context and evidence to help reviewers
@@ -145,17 +145,16 @@ repository, create a pull request, also known as a PR.
 * We may ask for changes to be made before a PR can be merged, either using
   [suggested
   changes](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/incorporating-feedback-in-your-pull-request)
-  or pull request comments. You can apply suggested changes directly through the
-  UI. You can make any other changes in your fork, then commit them to your
-  branch.
+  or PR comments. You can apply suggested changes directly through the UI. You
+  can make any other changes in your fork, then commit them to your branch.
 * As you update your PR and apply changes, mark each conversation as
   [resolved](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/commenting-on-a-pull-request#resolving-conversations).
 * If you run into any merge issues, checkout this [git
   tutorial](https://lab.github.com/githubtraining/managing-merge-conflicts) to
   help you resolve merge conflicts and other issues.
 * If you are not the sole contributor, please identify all contributors in the
-  pull request comment. To add a contributor (other than yourself), mark them one
-  per line as follows: `+@github_username`.
+  PR comment. To add a contributor (other than yourself), mark them one per
+  line as follows: `+@github_username`.
 
 ### Your PR is merged!
 
