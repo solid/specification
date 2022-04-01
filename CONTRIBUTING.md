@@ -77,6 +77,9 @@ Panels](https://github.com/solid/specification/blob/main/README.md#solid-panels)
 focus on certain work streams, with an aim to propose technical reports for
 the Solid ecosystem.
 
+To build shared understanding, [user
+stories](https://github.com/solid/user-stories) can also be submitted.
+
 
 ## Creating and solving issues
 
