@@ -1,6 +1,6 @@
 # Solid Technical Reports Contributing Guide
 
-Thank you for investing your time into contributing to the Solid project!
+Thank you for investing your time in contribution to the Solid project!
 
 This repository contains the source code of the work on [Solid Technical
 Reports](https://solidproject.org/TR/) (TR) of the [W3C Solid Community
