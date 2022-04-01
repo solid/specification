@@ -64,12 +64,13 @@ accept contributions to localize the English content.
 
 ## Contributions at source repository
 
-Each CG work item has its own repository and any issues and PRs should be made
-at their source.
+Each CG work item listed at [Solid Technical
+Reports](https://solidproject.org/TR/) has its own repository and any issues
+and PRs should be made at their source.
 
-The latest and persistent version of technical reports (see [publishing
-technical reports](#publishing-technical-reports) published at this repository
-are intended to be read-only snapshots of the CG work items.
+The persistent version of technical reports published in this repository (see
+[publishing technical reports](#publishing-technical-reports) are intended to
+be read-only snapshots of the CG work items.
 
 [Solid
 Panels](https://github.com/solid/specification/blob/main/README.md#solid-panels)
