@@ -77,8 +77,8 @@ Panels](https://github.com/solid/specification/blob/main/README.md#solid-panels)
 focus on certain work streams, with an aim to propose technical reports for
 the Solid ecosystem.
 
-To build shared understanding, [user
-stories](https://github.com/solid/user-stories) can also be submitted.
+A low-barrier way to add concrete suggestions is to submit a [user
+story](https://github.com/solid/user-stories). User stories are descriptions of desired features written in a special way, see the description there for details. User stories may then be used when formulating use cases and requirements.
 
 
 ## Creating and solving issues
