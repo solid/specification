@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Solid Notifications: WebSocketSubscription2021</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link href="https://www.w3.org/StyleSheets/TR/2021/base.css" media="all" rel="stylesheet" title="W3C-Base" />
+<style>
+body {
+counter-reset:section;
+counter-reset:sub-section;
+}
+em.rfc2119 { color: #900; }
+code, samp { color: #c83500; }
+pre code, pre samp { color: #000; }
+dfn { font-weight:inherit; }
+.do.fragment a { border-bottom:0; }
+.do.fragment a:hover { background:none; border-bottom:0; }
+section figure pre { margin:1em 0; display:block; }
+cite .bibref { font-style: normal; }
+.tabs nav ul li { margin:0; }
+div.issue, div.note, div.warning {
+clear: both;
+margin: 1em 0;
+padding: 1em 1.2em 0.5em;
+position: relative;
+}
+div.issue h3, div.note h3,
+div.issue h4, div.note h4,
+div.issue h5, div.note h5 {
+margin:0;
+font-weight:normal;
+font-style:normal;
+}
+div.issue h3 > span, div.note h3 > span,
+div.issue h4 > span, div.note h4 > span,
+div.issue h5 > span, div.note h5 > span {
+text-transform: uppercase;
+}
+div.issue h3, div.issue h4, div.issue h5 {
+color:#ae1e1e;
+}
+div.note h3, div.note h4, div.note h5 {
+color:#178217;
+}
+figure .example-h {
+margin-top:0;
+text-align: left;
+color:#827017;
+}
+figure .example-h > span {
+text-transform: uppercase;
+}
+
+header address a[href] {
+float: right;
+margin: 1rem 0 0.2rem 0.4rem;
+background: transparent none repeat scroll 0 0;
+border: medium none;
+text-decoration: none;
+}
+header address img[src*="logos/W3C"] {
+background: #1a5e9a none repeat scroll 0 0;
+border-color: #1a5e9a;
+border-image: none;
+border-radius: 0.4rem;
+border-style: solid;
+border-width: 0.65rem 0.7rem 0.6rem;
+color: white;
+display: block;
+font-weight: bold;
+}
+main article > h1 {
+font-size: 220%;
+font-weight:bold;
+}
+
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]):not([id=exit-criteria]) {
+counter-increment:section;
+counter-reset:sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$=references]):not([id=exit-criteria]) {
+counter-increment:sub-section;
+counter-reset:sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$=references]):not([id=exit-criteria]) section {
+counter-increment:sub-sub-section;
+counter-reset:sub-sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$=references]):not([id=exit-criteria]) section section {
+counter-increment:sub-sub-sub-section;
+counter-reset:sub-sub-sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]):not([id=exit-criteria]):not([id^=table-of-]) > h2:before {
+content:counter(section) ".\00a0";
+}
+section:not([id$=references]):not([id^=change-log]):not([id=exit-criteria]) > h3:before {
+content:counter(section) "." counter(sub-section) "\00a0";
+}
+section > h4:before {
+content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\00a0";
+}
+#acknowledgements ul { padding: 0; margin:0 }
+#acknowledgements li { display:inline; }
+#acknowledgements li:after { content: ", "; }
+#acknowledgements li:last-child:after { content: ""; }
+
+dl[id^="document-"] ul {
+padding-left:0;
+list-style-type:none;
+}
+dl [rel~="odrl:action"],
+dl [rel~="odrl:action"] li {
+display: inline;
+}
+dl [rel~="odrl:action"] li:after {
+content: ",";
+}
+dl [rel~="odrl:action"] li:last-child:after {
+content: "";
+}
+</style>
+  </head>
+
+  <body about="" prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# owl: http://www.w3.org/2002/07/owl# xsd: http://www.w3.org/2001/XMLSchema# dcterms: http://purl.org/dc/terms/ skos: http://www.w3.org/2004/02/skos/core# prov: http://www.w3.org/ns/prov# mem: http://mementoweb.org/ns# qb: http://purl.org/linked-data/cube# schema: http://schema.org/ doap: http://usefulinc.com/ns/doap# deo: http://purl.org/spar/deo/ fabio: http://purl.org/spar/fabio/ cito: http://purl.org/spar/cito/ as: https://www.w3.org/ns/activitystreams# ldp: http://www.w3.org/ns/ldp# earl: http://www.w3.org/ns/earl# spec: http://www.w3.org/ns/spec# rel: https://www.w3.org/ns/iana/link-relations/relation# odrl: http://www.w3.org/ns/odrl/2/" typeof="schema:CreativeWork prov:Entity as:Article">
+    <header>
+      <address>
+        <a class="logo" href="https://solidproject.org/"><img height="66" width="72" alt="Solid Project" src="https://solidproject.org/TR/solid.svg"/></a>
+      </address>
+    </header>
+
+    <main>
+      <article about="" typeof="schema:Article doap:Specification">
+        <h1 property="schema:name">WebSocketSubscription2021</h1>
+        <h2>Version <span property="doap:revision">1.0.0</span>, 2022-04-01</h2>
+
+        <details open="">
+          <summary>More details about this document</summary>
+
+          <dl id="document-identifier">
+            <dt>This version</dt>
+            <dd><a href="https://solidproject.org/TR/2022/websocket-subscription-2021-20220401" rel="owl:sameAs mem:memento">https://solidproject.org/TR/2022/websocket-subscription-2021-20220401</a></dd>
+          </dl>
+
+          <dl id="document-latest-version">
+            <dt>Latest version</dt>
+            <dd><a href="https://solidproject.org/TR/websocket-subscription-2021" rel="rel:latest-version">https://solidproject.org/TR/websocket-subscription-2021</a></dd>
+          </dl>
+
+          <dl id="document-editors-draft">
+            <dt>Editor’s draft</dt>
+            <dd><a href="https://solid.github.io/notifications/websocket-subscription-2021" rel="rdfs:seeAlso">https://solid.github.io/notifications/websocket-subscription-2021</a></dd>
+          </dl>
+
+          <div id="authors">
+            <dl id="author-name">
+              <dt>Editors</dt>
+              <dd id="Aaron-Coburn"><span about="" rel="schema:editor schema:author"><span about="https://people.apache.org/~acoburn/#i" typeof="schema:Person"><a rel="schema:url" href="https://people.apache.org/~acoburn/"><span about="https://people.apache.org/~acoburn/#i" property="schema:name"><span property="schema:givenName">Aaron</span> <span property="schema:familyName">Coburn</span></span></a></span></span></dd>
+            </dl>
+          </div>
+
+          <dl id="document-created">
+            <dt>Created</dt>
+            <dd><time content="2022-04-01T00:00:00Z" datatype="xsd:dateTime" datetime="2022-04-01T00:00:00Z" property="schema:dateCreated">2022-04-01</time></dd>
+          </dl>
+
+          <dl id="document-published">
+            <dt>Published</dt>
+            <dd><time content="2022-04-01T00:00:00Z" datatype="xsd:dateTime" datetime="2022-04-01T00:00:00Z" property="schema:datePublished">2022-04-01</time></dd>
+          </dl>
+
+          <dl id="document-modified">
+            <dt>Modified</dt>
+            <dd><time content="2022-04-01T00:00:00Z" datatype="xsd:dateTime" datetime="2022-04-01T00:00:00Z" property="schema:dateModified">2022-04-01</time></dd>
+          </dl>
+
+          <dl id="document-repository">
+            <dt>Repository</dt>
+            <dd><a href="https://github.com/solid/notifications" rel="doap:repository">GitHub</a></dd>
+            <dd><a href="https://github.com/solid/notifications/issues" rel="doap:bug-database">Issues</a></dd>
+          </dl>
+
+          <dl id="document-language">
+            <dt>Language</dt>
+            <dd><span content="en" lang="" property="dcterms:language" xml:lang="">English</span></dd>
+          </dl>
+
+          <dl id="document-license">
+            <dt>License</dt>
+            <dd><a href="http://purl.org/NET/rdflicense/MIT1.0" rel="schema:license">MIT License</a></dd>
+          </dl>
+
+          <dl id="document-status">
+            <dt>Document Status</dt>
+            <dd prefix="pso: http://purl.org/spar/pso/" rel="pso:holdsStatusInTime" resource="#f94617f8-b3a0-11ec-bb08-07d478a415ca"><span rel="pso:withStatus" resource="http://purl.org/spar/pso/published" typeof="pso:PublicationStatus">Published</span></dd>
+          </dl>
+
+          <dl id="document-in-reply-to">
+            <dt>In Reply To</dt>
+            <dd><a href="https://solidproject.org/origin" rel="as:inReplyTo">Solid Origin</a></dd>
+            <dd><a href="https://solidproject.org/TR/notifications-protocol" rel="as:inReplyTo">Solid Notifications Protocol</a></dd>
+            <dd><a href="https://github.com/solid/process/blob/main/notifications-panel-charter.md" rel="as:inReplyTo">Notifications Panel Charter</a></dd>
+          </dl>
+
+          <dl id="document-policy">
+            <dt>Policy</dt>
+            <dd>
+              <dl id="document-policy-offer" rel="odrl:hasPolicy" resource="#document-policy-offer" typeof="odrl:Policy">
+                <dt>Rule</dt>
+                <dd><a about="#document-policy-offer" href="https://www.w3.org/TR/odrl-vocab/#term-Offer" typeof="odrl:Offer">Offer</a></dd>
+                <dt>Unique Identifier</dt>
+                <dd><a href="https://solidproject.org/TR/websocket-subscription-2021#document-policy-offer" rel="odrl:uid">https://solidproject.org/TR/websocket-subscription-2021#document-policy-offer</a></dd>
+                <dt>Target</dt>
+                <dd><a href="https://solidproject.org/TR/websocket-subscription-2021" rel="odrl:target">https://solidproject.org/TR/websocket-subscription-2021</a></dd>
+                <dt>Permission</dt>
+                <dd>
+                  <dl id="document-permission" rel="odrl:permission" resource="#document-permission" typeof="odrl:Permission">
+                    <dt>Assigner</dt>
+                    <dd><a rel="odrl:assigner" href="https://www.w3.org/community/solid/">W3C Solid Community Group</a></dd>
+                    <dt>Action</dt>
+                    <dd>
+                      <ul rel="odrl:action">
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-aggregate" resource="odrl:aggregate">Aggregate</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-archive" resource="odrl:archive">Archive</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-concurrentUse" resource="odrl:concurrentUse">Concurrent Use</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-DerivativeWorks" resource="http://creativecommons.org/ns#DerivativeWorks">Derivative Works</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-derive" resource="odrl:derive">Derive</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-digitize" resource="odrl:digitize">Digitize</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-display" resource="odrl:display">Display</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-Distribution" resource="http://creativecommons.org/ns#Distribution">Distribution</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-index" resource="odrl:index">Index</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-inform" resource="odrl:inform">Inform</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-install" resource="odrl:install">Install</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-Notice" resource="http://creativecommons.org/ns#Notice">Notice</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-present" resource="odrl:present">Present</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-print" resource="odrl:print">Print</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-read" resource="odrl:read">Read</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-reproduce" resource="odrl:reproduce">Reproduce</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-Reproduction" resource="http://creativecommons.org/ns#Reproduction">Reproduction</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-stream" resource="odrl:stream">Stream</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-synchronize" resource="odrl:synchronize">Synchronize</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-textToSpeech" resource="odrl:textToSpeech">Text-to-speech</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-transform" resource="odrl:transform">Transform</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-translate" resource="odrl:translate">Translate</a></li>
+                      </ul>
+                    </dd>
+                  </dl>
+                </dd>
+              </dl>
+            </dd>
+          </dl>
+        </details>
+
+        <p class="copyright">MIT License. Copyright © 2022 <a href="http://www.w3.org/community/solid/">W3C Solid Community Group</a>.</p>
+
+        <div datatype="rdf:HTML" id="content" property="schema:description">
+          <section id="abstract">
+            <h2>Abstract</h2>
+            <div datatype="rdf:HTML" property="schema:abstract">
+              <p>The <cite><a href="https://solidproject.org/TR/notifications-protocol">Solid Notifications Protocol</a></cite> defines a set of interaction patterns for agents to establish subscriptions to resources in a Solid Storage.</p>
+              <p>This specification defines a subscription type that applies these patterns to the WebSocket Web API.</p>
+            </div>
+          </section>
+
+          <section id="sotd" inlist="" rel="schema:hasPart" resource="#sotd">
+            <h2 property="schema:name">Status of This Document</h2>
+            <div property="schema:description" datatype="rdf:HTML">
+              <p>This section describes the status of this document at the time of its publication.</p>
+
+              <p>This document was published by the <a href="https://www.w3.org/community/solid/">Solid Community Group</a> as <em>Version 1.0.0</em>. The sections that have been incorporated have been reviewed following the <a href="https://github.com/solid/process">Solid process</a>. However, the information in this document is still subject to change. You are invited to <a href="https://github.com/solid/notifications/issues">contribute</a> any feedback, comments, or questions you might have.</p>
+
+              <p>Publication as <em>Version 1.0.0</em> does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.</p>
+
+              <p>This document was produced by a group operating under the <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available.</p>
+            </div>
+          </section>
+
+          <nav id="toc">
+            <h2 id="table-of-contents">Table of Contents</h2>
+            <div>
+              <ol class="toc">
+                <li class="tocline">
+                  <a class="tocxref" href="#abstract">Abstract</a>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#sotd">Status of This Document</a>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#introduction"><span class="secno">1</span> <span class="content">Introduction</span></a>
+                  <ol>
+                    <li><a href="#terminology"><span class="secno">1.2</span> <span class="content">Terminology</span></a></li>
+                    <li><a href="#overview"><span class="secno">1.3</span> <span class="content">Overview</span></a></li>
+                    <li><a href="#conformance"><span class="secno">1.4</span> <span class="content">Conformance</span></a></li>
+                  </ol>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#subscription-type"><span class="secno">2</span> <span class="content">WebSocketSubscription2021 Type</span></a>
+                  <ol>
+                    <li class="tocline">
+                      <a class="tocxref" href="#websocket-subscription"><span class="secno">2.1</span> Subscription Example</a>
+                    </li>
+                  </ol>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#authentication-authorization"><span class="secno">3</span> <span class="content">Authentication and Authorization</span></a>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#references"><span class="secno"></span> <span class="content">References</span></a>
+                  <ol>
+                    <li><a href="#normative-references"><span class="secno"></span> <span class="content">Normative References</span></a></li>
+                  </ol>
+                </li>
+              </ol>
+            </div>
+          </nav>
+
+          <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction">
+            <h2 about="#introduction" property="schema:name" typeof="deo:Introduction">Introduction</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p><em>This section is non-normative.</em></p>
+
+              <p id="motivation" rel="schema:hasPart" resource="#motivation" typeof="deo:Motivation"><span datatype="rdf:HTML" property="schema:description">The <cite><a href="https://solidproject.org/TR/notifications-protocol">Solid Notifications Protocol</a></cite> describes a general pattern by which agents can be notified when a Solid Resource changes. In the context of a Web Browser, the WebSocket API provides a convenient mechanism for a Solid Storage to alert a subscribing client of these changes.</span></p>
+
+              <p>This document describes a Solid Notifications subscription type that makes use of the WebSocket Web API.</p>
+
+              <p>This specification is for:</p>
+
+              <ul rel="schema:audience">
+                <li><a href="http://data.europa.eu/esco/occupation/a7c1d23d-aeca-4bee-9a08-5993ed98b135">Resource server developers</a> who wish to enable clients to listen for updates to particular resources.</li>
+                <li><a href="http://data.europa.eu/esco/occupation/c40a2919-48a9-40ea-b506-1f34f693496d">Application developers</a> who wish to implement a client to listen for updates to particular resources.</li>
+              </ul>
+
+              <!-- TODO define terminology -->
+              <section id="terminology" inlist="" rel="schema:hasPart" resource="#terminology" typeof="skos:ConceptScheme">
+                <h3 property="schema:name skos:prefLabel">Terminology</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p><em>This section is non-normative.</em></p>
+
+                  <p>This document uses terminology from the <cite><a href="https://solidproject.org/TR/notifications-protocol">Solid Notification Protocol</a></cite>, including <q cite="https://solidproject.org/TR/notifications-protocol#notification-subscription-api">subscription API</q>, <q cite="https://solidproject.org/TR/notifications-protocol#notification-gateway-api">gateway API</q>. This document also uses terms from <cite><a href="https://datatracker.ietf.org/doc/html/rfc6749">The OAuth 2.0 Authorization Framework</a></cite> specification, including <q>resource server</q>, <q>authorization server</q>, <q>access token</q>, and <q>client</q>, as well as terms from the <cite><a href="https://www.w3.org/TR/websub/">WebSub</a></cite> specification, including <q cite="https://www.w3.org/TR/websub/#dfn-topic">topic</q>.</p>
+                </div>
+              </section>
+
+              <section id="overview" inlist="" rel="schema:hasPart" resource="#overview">
+                <h3 property="schema:name">Overview</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p><em>This section is non-normative.</em></p>
+
+                  <p>The following diagram shows the high-level interactions involved in this flow. How a client retrieves an access token for step 5 is outside the scope of this document.</p>
+
+                  <figure id="solid-websocket-flow" rel="schema:hasPart" resource="#solid-websocket-flow">
+                    <img src="websocket-subscription-2021-flow.svg" rel="schema:image" width="800" />
+
+                    <figcaption property="schema:name">Solid WebSocketSubscription2021 Flow</figcaption>
+                  </figure>
+                </div>
+              </section>
+
+              <section id="conformance" inlist="" rel="schema:hasPart" resource="#conformance">
+                <h3 property="schema:name">Conformance</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>All assertions, diagrams, examples, and notes are non-normative, as are all sections explicitly marked non-normative. Everything else is normative.</p>
+
+                  <p>The key words “MUST” and “MUST NOT” are to be interpreted as described in <cite><a href="https://tools.ietf.org/html/bcp14" rel="rdfs:seeAlso">BCP 14</a></cite> [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>] [<cite><a class="bibref" href="#bib-rfc8174">RFC8174</a></cite>] when, and only when, they appear in all capitals, as shown here.</p>
+                </div>
+              </section>
+            </div>
+          </section>
+
+          <section id="subscription-type" inlist="" rel="schema:hasPart" resource="#subscription-type">
+            <h2 property="schema:name">WebSocketSubscription2021 Type</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p>This specification defines the <code>WebSocketSubscription2021</code> type for use with Solid Notifications subscriptions that use the WebSocket Web API. The URI of the subscription type is <code>http://www.w3.org/ns/solid/notification#WebSocketSubscription2021</code>.</p>
+              <p>An <code>WebSocketSubscription2021</code> API MUST conform to the <cite><a href="https://solidproject.org/TR/notifications-protocol#discovery">Solid Notifications Protocol</a></cite>. [<cite><a class="bibref" href="#bib-solid-notifications">SOLID-NOTIFICATIONS</a></cite>]</p>
+
+              <p>An <code>WebSocketSubscription2021</code> API SHOULD support the <cite><a href="https://solidproject.org/TR/notifications-protocol#notification-features">Solid Notifications Features</a></cite>.</p>
+
+              <p property="skos:definition">The <code>WebSocketSubscription2021</code> type defines the following properties:</p>
+
+              <span rel="skos:hasTopConcept"><span resource="#websocketsubscription2021-source"></span></span>
+
+              <dl>
+                <dt about="#websocketsubscription2021-source" property="skos:prefLabel" typeof="skos:Concept"><dfn id="websocketsubscription2021-source">source</dfn></dt>
+                <dd about="#websocketsubscription2021-source" property="skos:definition"><span about="" id="websocketsubscription2021-source-wss" rel="spec:requirement" resource="#websocketsubscription2021-source-wss"><span property="spec:statement">The <code>source</code> property is used in the body of the subscription response. The value of this property <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> be a URI, using the <code>wss</code> scheme.</span></span> A JavaScript client would use the entire value as input to the WebSocket constructor.</dd>
+              </dl>
+
+              <p>A client establishes a subscription using the <code>WebSocketSubscription2021</code> type by sending an authenticated subscription request to the hypermedia API retrieved via <cite><a href="https://solidproject.org/TR/notifications-protocol#discovery">Solid Notifications discovery</a></cite>.</p>
+
+              <p>For <code>WebSocketSubscription2021</code> interactions, the client sends a JSON-LD payload to the appropriate hypermedia API via <code>POST</code>. The only required fields in this interaction are <code>type</code> and <code>topic</code>. <span about="" id="client-subcription-type" rel="spec:requirement" resource="#client-subscription-type"><span property="spec:statement">The <code>type</code> field <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> contain the type of subscription being requested.</span></span> <span about="" id="client-subscription-feature" rel="spec:requirement" resource="#client-subscription-feature"><span property="spec:statement">The <code>topic</code> field <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> contain the URL of the resource a client wishes to subscribe to changes.</span></span></p>
+
+              <section id="websocket-subscription" inlist="" rel="schema:hasPart" resource="#websocket-subscription">
+                <h3 property="schema:name">Subscription Example</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p><em>This section is non-normative.</em></p>
+
+                  <p>An example <code>POST</code> request using a <code>DPoP</code> bound access token is below:</p>
+
+                  <figure id="notification-subscription-request" class="example listing" rel="schema:hasPart" resource="#notification-subscription-request">
+                    <p class="example-h"><span>Example</span>: Requesting an WebSocket subscription URL from the Notification Subscription.</p>
+
+                    <pre about="#notification-subscription-request" property="schema:description" typeof="fabio:Script"><code>POST /subscription</code>
+<code>Authorization: DPoP &lt;token&gt;</code>
+<code>DPoP: &lt;proof&gt;</code>
+<code>Content-Type: application/ld+json</code>
+<code></code>
+<code>{</code>
+<code>  "@context": ["https://www.w3.org/ns/solid/notification/v1"],</code>
+<code>  "type": "WebSocketSubscription2021",</code>
+<code>  "topic": "https://storage.example/resource",</code>
+<code>  "state": "opaque-state",</code>
+<code>  "expiration": "2021-12-23T12:37:15Z",</code>
+<code>  "rate": "PT10s"</code>
+<code>}</code></pre>
+
+                    <figcaption property="schema:name"><code>POST</code> request including <code>type</code> and <code>topic</code> targeting the Notification Subscription API.</figcaption>
+                  </figure>
+
+                  <p>A successful response will contain a URL to the subscription API that can be used directly with a JavaScript client.</p>
+
+                  <figure id="notification-subscription-response" class="example listing" rel="schema:hasPart" resource="#notification-subscription-response">
+                    <p class="example-h"><span>Example</span>: Response from the Notification Subscription including the WebSocket subscription URL.</p>
+
+                    <pre about="#notification-subscription-response" property="schema:description" typeof="fabio:Script"><code>HTTP/2</code>
+<code>Content-Type: application/ld+json</code>
+<code></code>
+<code>{</code>
+<code>  "@context": "https://www.w3.org/ns/solid/notification/v1",</code>
+<code>  "type": "WebSocketSubscription2021",</code>
+<code>  "source": "https://websocket.example/?auth=Ys3KiUq"</code>
+<code>}</code></pre>
+
+                    <figcaption property="schema:name">Response to the <code>POST</code> request including <code>type</code> and <code>source</code>.</figcaption>
+                  </figure>
+
+                  <p>In JavaScript, a client can use the data in the response to establish a connection to the WebSocket hypermedia API.</p>
+
+                  <figure id="websocket-new" class="example listing" rel="schema:hasPart" resource="#websocket-new">
+                    <p class="example-h"><span>Example</span>: Establishing a new WebSocket connection.</p>
+
+                    <pre about="#websocket-new" property="schema:description" typeof="fabio:Script"><code>const ws = new WebSocket(url, type);</code></pre>
+
+                    <figcaption property="schema:name">JavaScript code to establish a <code>new WebSocket</code> connection</figcaption>
+                  </figure>
+
+                  <p>A client will define how to handle events, especially the <code>onclose</code> and <code>onmessage</code> events.</p>
+
+                  <figure id="websocket-onclose-onmessage" class="example listing" rel="schema:hasPart" resource="#websocket-onclose-onmessage">
+                    <p class="example-h"><span>Example</span>: Handling WebSocket events after the connection is established.</p>
+
+                    <pre about="#websocket-onclose-onmessage" property="schema:description" typeof="fabio:Script"><code>ws.onclose(evt => reconnect(evt));</code>
+<code>ws.onmessage(evt => console.log("Message received: ", evt))</code></pre>
+
+                    <figcaption property="schema:name">JavaScript code to handle <code>onclose</code> and <code>onmessage</code> events</figcaption>
+                  </figure>
+                </div>
+              </section>
+            </div>
+          </section>
+
+          <section id="authentication-authorization" inlist="" rel="schema:hasPart" resource="#authentication-authorization">
+            <h2 property="schema:name">Authentication and Authorization</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p>As described by the Solid Notifications Protocol section on <cite><a href="https://solidproject.org/TR/notifications-protocol#authentication-authorization" rel="cito:discusses">Authorization</a></cite>, the WebSocket subscription API requires authorization and follows the guidance of the Solid Protocol sections on <cite><a href="https://solidproject.org/TR/protocol#authentication" rel="cito:discusses">Authentication</a></cite> and <cite><a href="https://solidproject.org/TR/protocol#authorization" rel="cito:discusses">Authorization</a></cite> [<cite><a class="bibref" href="#bib-solid-protocol">SOLID-PROTOCOL</a></cite>].</p>
+
+              <p>It is beyond the scope of this document to describe how a client fetches an access token. <cite><a href="https://solid.github.io/solid-oidc/" rel="cito:discusses">Solid-OIDC</a></cite> is one example of an authentication mechanism that could be used with Solid Notifications [<cite><a class="bibref" href="#bib-solid-oidc">SOLID-OIDC</a></cite>].</p>
+            </div>
+          </section>
+
+          <section class="appendix" id="references" inlist="" rel="schema:hasPart" resource="#references">
+            <h2 property="schema:name">References</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <section id="normative-references" inlist="" rel="schema:hasPart" resource="#normative-references">
+                <h3 property="schema:name">Normative References</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <dl class="bibliography" resource="">
+                    <dt id="bib-rfc2119">[RFC2119]</dt>
+                    <dd><a href="https://datatracker.ietf.org/doc/html/rfc2119" rel="cito:citesAsAuthority"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc2119">https://datatracker.ietf.org/doc/html/rfc2119</a></dd>
+                    <dt id="bib-rfc8174">[RFC8274]</dt>
+                    <dd><a href="https://datatracker.ietf.org/doc/html/rfc8174" rel="cito:citesAsAuthority"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc8174">https://datatracker.ietf.org/doc/html/rfc8174</a></dd>
+                    <dt id="bib-solid-notifications">[SOLID-NOTIFICATIONS]</dt>
+                    <dd><a href="https://solidproject.org/TR/notifications-protocol" rel="cito:citesAsAuthority"><cite>Solid Notifications</cite></a>. Aaron Coburn; Sarven Capadisli. W3C Solid Community Group. Version 0.1.0. URL: <a href="https://solidproject.org/TR/notifications-protocol">https://solidproject.org/TR/notifications-protocol</a></dd>
+                    <dt id="bib-solid-oidc">[SOLID-OIDC]</dt>
+                    <dd><a href="https://solid.github.io/solid-oidc/" rel="cito:citesAsAuthority"><cite>SOLID-OIDC</cite></a>. Aaron Coburn; elf Pavlik; Dmitri Zagidulin.  W3C Solid Community Group. W3C Editor's Draft. URL: <a href="https://solid.github.io/solid-oidc/">https://solid.github.io/solid-oidc/</a></dd>
+                    <dt id="bib-solid-protocol">[SOLID-PROTOCOL]</dt>
+                    <dd><a href="https://solidproject.org/TR/protocol" rel="cito:citesAsAuthority"><cite>Solid Protocol</cite></a>. Sarven Capadisli; Tim Berners-Lee; Ruben Verborgh; Kjetil Kjernsmo.  W3C Solid Community Group. W3C Editor’s Draft. URL: <a href="https://solidproject.org/TR/protocol">https://solidproject.org/TR/protocol</a></dd>
+                  </dl>
+                </div>
+              </section>
+            </div>
+          </section>
+        </div>
+      </article>
+    </main>
+
+    <p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to top">↑</abbr></a></p>
+
+    <script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script>
+  </body>
+</html>
