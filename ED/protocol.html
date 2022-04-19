@@ -131,7 +131,7 @@ content: "";
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Solid Protocol</h1>
-        <h2>Editor’s Draft, 2022-02-09</h2>
+        <h2>Editor’s Draft, 2022-04-19</h2>
 
         <details open="">
           <summary>More details about this document</summary>
@@ -178,7 +178,7 @@ content: "";
 
           <dl id="document-modified">
             <dt>Modified</dt>
-            <dd><time content="2022-02-09T00:00:00Z" datatype="xsd:dateTime" datetime="2022-02-09T00:00:00Z" property="schema:dateModified">2022-02-09</time></dd>
+            <dd><time content="2022-04-19T00:00:00Z" datatype="xsd:dateTime" datetime="2022-04-19T00:00:00Z" property="schema:dateModified">2022-04-19</time></dd>
           </dl>
 
           <dl id="document-repository">
@@ -906,8 +906,6 @@ content: "";
                   <p id="server-delete-side-effects">The server might perform additional actions, as described in the normative references like [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>]. For example, the server could remove containment triples referring to the deleted resource, perform additional cleanup tasks for resources it knows are no longer referenced or have not been accessed for some period of time, and so on.</p>
 
                   <p id="server-delete-get">Subsequent <code>GET</code> requests to the deleted resource usually result in a <code>404</code> or <code>410</code> status code, although HTTP allows others. [<a href="https://github.com/solid/specification/issues/72" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/46" rel="cito:citesAsSourceDocument">Source</a>]</p>
-
-                  <p class="issue">Pertaining to events and loss of control mitigation: https://github.com/solid/specification/issues/41#issuecomment-534679278</p>
                 </div>
               </section>
 
