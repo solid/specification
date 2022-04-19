@@ -138,6 +138,7 @@ For content changes, make sure that you:
   and the [W3C Manual of Style](https://www.w3.org/2001/06/manual/) as guides.
 * [ ] If there are any failing checks in your PR, troubleshoot them until
   they're all passing.
+* [ ] Follow the [Publication Rules](#publication-rules)
 
 
 ## Creating a pull request
@@ -201,24 +202,24 @@ Published documents will be publicly accessible under the paths
 The PR for a versioned technical report must include two HTML documents:
 
 1. "Latest version" of the TR under the root (`/`) directory.
-2. "Persistent version" of the TR under the `/{yyyy}/` (year in 4 digits)
-   directory.
+2. "This version" (also known as the persistent version) of the TR under
+   the `/{YYYY}/` (year in 4 digits) directory.
 
 We recommend that the latest version of the technical reports use a
 `{shortname}`, e.g., `protocol`, `wac`, and the persistent version of the
-technical report follows the following form: `{shortname}-{yyyymmdd}`.
+technical report follows the following form: `{shortname}-{YYYYMMDD}`.
 
 All files use common file name extensions, e.g., `.html`.
 
 The documents will be published under the path `https://solidproject.org/TR/`.
 
 For example, the *Solid Protocol* is available from the following URLs:
+* This version: https://solidproject.org/TR/2021/protocol-20211217
 * Latest version: https://solidproject.org/TR/protocol
-* Persistent version: https://solidproject.org/TR/2021/protocol-20211217
 
-When a new version of the technical report is made available, we follow the same
-process. The new "latest version" will then link to the new "persistent
-version". Every persistent version will link to the latest version.
+When a new version of the technical report is made available, we follow the
+same process. The updated "latest version" document will then link to the new
+latest persistent version. All persistent versions link to the latest version.
 
 ### Non-versioned technical report
 
@@ -243,3 +244,25 @@ https://solidproject.org/ED/protocol .
 When a new technical report is added, information about it is modified, or a
 new work item is being worked on by the CG, a PR should update the [Technical
 Report index](https://github.com/solid/specification/blob/main/index.html).
+
+## Publication Rules
+
+W3C CG reports (including W3C Solid CG's) are not required to follow the same
+publication requirements as W3C's Technical Reports. However, we recommend
+using the [W3C's Publication rules for Recommendation (“REC”)](https://www.w3.org/pubrules/doc/rules/?profile=REC) as a
+guideline. Solid CG's technical reports differ along the lines of document
+status, rights, identifiers. To help readers already familiar with W3C
+specifications, there shouldn't be major differences to stylesheets used.
+
+See also the [W3C Manual of Style](https://www.w3.org/2001/06/manual/) guide containing best current practice,
+written for editors and authors of W3C technical reports.
+
+We also make the following recommendations:
+
+* Valid HTML5 document (see also the [W3C Markup Validation Service](https://validator.w3.org/)).
+* Include published and modified dates (`YYYY-MM-DD`).
+* Must use the MIT License (with URL: http://purl.org/NET/rdflicense/MIT1.0 )
+* Follow the [Linked Data](https://www.w3.org/DesignIssues/LinkedData) design principles - give all significant
+  units of information (e.g., concepts, requirements) an identifier and
+  provide a description using a concrete RDF syntax
+  (see also [Spec Terms](http://www.w3.org/ns/spec)).
