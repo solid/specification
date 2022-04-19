@@ -78,7 +78,10 @@ focus on certain work streams, with an aim to propose technical reports for
 the Solid ecosystem.
 
 A low-barrier way to add concrete suggestions is to submit a [user
-story](https://github.com/solid/user-stories). User stories are descriptions of desired features written in a special way, see the description there for details. User stories may then be used when formulating use cases and requirements.
+story](https://github.com/solid/user-stories). User stories are descriptions of
+desired features written in a special way, see the description there for
+details. User stories may then be used when formulating use cases and
+requirements.
 
 
 ## Creating and solving issues
@@ -182,9 +185,9 @@ published on the Solid website.
 * Content: the full content of the technical report must be human-readable with
   HTML alone. Any CSS and JavaScript should not interfere with the accessibility
   of the content.
-* Offline-friendly: there must not be any mandatory external dependencies (e.g., a network
-  connection) to retrieve, to render, or to manipulate the content of the
-  article.
+* Offline-friendly: there must not be any mandatory external dependencies (e.g.,
+  a network connection) to retrieve, to render, or to manipulate the content of
+  the article.
 * Privacy: scripts must not be used to identify or track readers.
 
 There are two parts to publishing a technical report that applies to all
@@ -248,21 +251,22 @@ Report index](https://github.com/solid/specification/blob/main/index.html).
 ## Publication Rules
 
 W3C CG reports (including W3C Solid CG's) are not required to follow the same
-publication requirements as W3C's Technical Reports. However, we recommend
-using the [W3C's Publication rules for Recommendation (“REC”)](https://www.w3.org/pubrules/doc/rules/?profile=REC) as a
-guideline. Solid CG's technical reports differ along the lines of document
+publication requirements as W3C's Technical Reports. However, we recommend using
+the [W3C's Publication rules for Recommendation (“REC”)](https://www.w3.org/pubrules/doc/rules/?profile=REC)
+as a guideline. Solid CG's technical reports differ along the lines of document
 status, rights, identifiers. To help readers already familiar with W3C
 specifications, there shouldn't be major differences to stylesheets used.
 
-See also the [W3C Manual of Style](https://www.w3.org/2001/06/manual/) guide containing best current practice,
-written for editors and authors of W3C technical reports.
+See also the [W3C Manual of Style](https://www.w3.org/2001/06/manual/)
+guide containing best current practice, written for editors and authors of W3C
+technical reports.
 
 We also make the following recommendations:
 
 * Valid HTML5 document (see also the [W3C Markup Validation Service](https://validator.w3.org/)).
 * Include published and modified dates (`YYYY-MM-DD`).
 * Must use the MIT License (with URL: http://purl.org/NET/rdflicense/MIT1.0 )
-* Follow the [Linked Data](https://www.w3.org/DesignIssues/LinkedData) design principles - give all significant
-  units of information (e.g., concepts, requirements) an identifier and
-  provide a description using a concrete RDF syntax
-  (see also [Spec Terms](http://www.w3.org/ns/spec)).
+* Follow the [Linked Data](https://www.w3.org/DesignIssues/LinkedData) design
+  principles - give all significant units of information, e.g., concepts,
+  requirements) an identifier and provide a description using a concrete RDF
+  syntax (see also [Spec Terms](http://www.w3.org/ns/spec)).
