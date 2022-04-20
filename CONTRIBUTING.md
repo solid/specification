@@ -270,3 +270,5 @@ We also make the following recommendations:
   principles - give all significant units of information, e.g., concepts,
   requirements) an identifier and provide a description using a concrete RDF
   syntax (see also [Spec Terms](http://www.w3.org/ns/spec)).
+* Cite the source resource in which consensus was reached for a given
+  statement.
