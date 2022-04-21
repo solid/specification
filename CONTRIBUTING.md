@@ -250,12 +250,13 @@ Report index](https://github.com/solid/specification/blob/main/index.html).
 
 ## Publication Rules
 
-W3C CG reports (including W3C Solid CG's) are not required to follow the same
-publication requirements as W3C's Technical Reports. However, we recommend using
-the [W3C's Publication rules for Recommendation (“REC”)](https://www.w3.org/pubrules/doc/rules/?profile=REC)
+W3C CG reports are not required to follow the publication requirements as
+W3C reports [on the standards track](https://www.w3.org/TR/). However, we
+recommend using the [W3C's Publication rules for Recommendation
+(“REC”)](https://www.w3.org/pubrules/doc/rules/?profile=REC)
 as a guideline. Solid CG's technical reports differ along the lines of document
 status, rights, identifiers. To help readers already familiar with W3C
-specifications, there shouldn't be major differences to stylesheets used.
+technical reports, it is recommended to maintain the same look and feel.
 
 See also the [W3C Manual of Style](https://www.w3.org/2001/06/manual/)
 guide containing best current practice, written for editors and authors of W3C
