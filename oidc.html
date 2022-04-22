@@ -3,8 +3,7 @@
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
   <title>Solid-OIDC</title>
-  <meta content="w3c/CG-DRAFT" name="w3c-status">
-  <link href="https://www.w3.org/StyleSheets/TR/2021/cg-draft" rel="stylesheet">
+  <link href="https://www.w3.org/StyleSheets/TR/2021/base.css" rel="stylesheet">
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="Bikeshed version fb1e763a4, updated Tue Mar 1 13:13:50 2022 -0800" name="generator">
   <link href="https://solidproject.org/TR/oidc" rel="canonical">
@@ -345,17 +344,19 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://solidproject.org/TR/"> <img alt="Solid" src="https://solidproject.org/TR/solid.svg" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Solid-OIDC</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#CG-DRAFT">Draft Community Group Report</a>, <time class="dt-updated" datetime="2022-03-28">28 March 2022</time></p>
+   <h2>Version 0.1.0, 2022-03-28</h2>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
      <dl>
       <dt>This version:
+      <dd><a class="u-url" href="https://solidproject.org/TR/2022/oidc-20220328">https://solidproject.org/TR/2022/oidc-20220328</a>
+      <dt>Latest published version:
       <dd><a class="u-url" href="https://solidproject.org/TR/oidc">https://solidproject.org/TR/oidc</a>
-      <dt>Test Suite:
-      <dd><a href="https://solid.github.io/solid-oidc-tests/">https://solid.github.io/solid-oidc-tests/</a>
       <dt>Editor's Draft:
       <dd><a class="u-url" href="https://solid.github.io/solid-oidc/">https://solid.github.io/solid-oidc/</a>
+      <dt>Test Suite:
+      <dd><a href="https://solid.github.io/solid-oidc-tests/">https://solid.github.io/solid-oidc-tests/</a>
       <dt>Issue Tracking:
       <dd><a href="https://github.com/solid/solid-oidc/issues/">GitHub</a>
       <dt class="editor">Editors:
@@ -369,7 +370,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </div>
    </details>
    <div data-fill-with="warning"></div>
-   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2022 <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>, <a href="https://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document" rel="license">permissive document license</a> rules apply. </p>
+   <p class="copyright" data-fill-with="copyright">MIT License. Copyright © 2019–2022 <a href="http://www.w3.org/community/solid/">W3C Solid Community Group</a>.</p>
    <hr title="Separator for header">
   </div>
   <div class="p-summary" data-fill-with="abstract">
@@ -382,19 +383,13 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   </div>
   <h2 class="no-num no-toc no-ref heading settled" id="sotd"><span class="content">Status of this document</span></h2>
   <div data-fill-with="status">
-   <p></p>
-   <p>This section describes the status of this document at the time of its publication.</p>
-   <p>This document was published by the <a href="https://www.w3.org/community/solid/">Solid Community Group</a> as
+    <p>This section describes the status of this document at the time of its publication.</p>
 
-an Editor’s Draft. The sections that have been incorporated have been reviewed following the <a href="https://github.com/solid/process">Solid process</a>. However, the information in this document is
-still subject to change. You are invited to <a href="https://github.com/solid/solid-oidc/issues">contribute</a> any feedback, comments, or questions you might have.</p>
-   <p>Publication as an Editor’s Draft does not imply endorsement by the W3C Membership. This is a draft
+    <p>This document was published by the <a href="https://www.w3.org/community/solid/">Solid Community Group</a> as <em>Version 0.1.0</em>. The sections that have been incorporated have been reviewed following the <a href="https://github.com/solid/process">Solid process</a>. However, the information in this document is still subject to change. You are invited to <a href="https://github.com/solid/solid-oidc/issues">contribute</a> any feedback, comments, or questions you might have.</p>
 
-document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate
-to cite this document as other than work in progress.</p>
-   <p>This document was produced by a group operating under the <a href="https://www.w3.org/community/about/process/cla/">W3C Community Contributor License Agreement
+    <p>Publication as <em>Version 0.1.0</em> does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.</p>
 
-(CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/process/cla-deed/">summary</a> is available.</p>
+    <p>This document was produced by a group operating under the <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available.</p>
   </div>
   <div data-fill-with="at-risk"></div>
   <nav data-fill-with="table-of-contents" id="toc">
