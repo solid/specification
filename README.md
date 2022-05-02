@@ -22,7 +22,7 @@ the Solid ecosystem:
 * https://github.com/solid/authorization-panel
 * https://github.com/solid/data-interoperability-panel
 * https://github.com/solid/notifications-panel
-* https://github.com/solid/test-suite
+* https://github.com/solid/test-suite-panel
 
 ## Contributing
 
