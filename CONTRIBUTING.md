@@ -273,3 +273,4 @@ We also make the following recommendations:
   syntax (see also [Spec Terms](http://www.w3.org/ns/spec)).
 * Cite the source resource in which consensus was reached for a given
   statement.
+* Changelog from previous published releases (if applicable).
