@@ -29,7 +29,7 @@ they appear in all capitals, as shown here.
 
 ## Contributions
 
-In order to be a substantive contributor to work items, you must be a member of
+In order to be a substantive contributor to work items, you MUST be a member of
 the CG. It’s easy to [join the CG](https://www.w3.org/community/solid/join) if
 you’d like to contribute. People agree to the [W3C Community License Agreement
 (CLA)](http://www.w3.org/community/about/agreements/cla/) upon joining the CG.
@@ -49,12 +49,13 @@ specification chat](https://gitter.im/solid/specification).
 
 [Issues](https://docs.github.com/en/github/managing-your-work-on-github/about-issues)
 are used to track tasks that contributors can help with. If an issue has a
-triage label, we haven't reviewed it yet and you shouldn't begin work on it.
+triage label, we haven't reviewed it yet and so you are not encouraged to
+begin work on it.
 
-If you've found something in the content or the website that should be updated,
-search open issues to see if someone else has reported the same thing. If it's
-something new, open an issue. We'll use the issue to have a conversation about
-the problem you want to fix.
+If you've found something in the content or the website that might need to be
+updated, search open issues to see if someone else has reported the same
+thing. If it's something new, open an issue. We'll use the issue to have a
+conversation about the problem you want to fix.
 
 ### Pull requests
 
@@ -72,8 +73,8 @@ accept contributions to localize the English content.
 ## Contributions at source repository
 
 Each CG work item listed at [Solid Technical
-Reports](https://solidproject.org/TR/) has its own repository and any issues
-and PRs should be made at their source.
+Reports](https://solidproject.org/TR/) has its own repository. It is strongly
+encouraged that any issues and PRs are made at their source.
 
 The persistent version of technical reports published in this repository (see
 [publishing technical reports](#publishing-technical-reports) are intended to
@@ -87,7 +88,7 @@ the Solid ecosystem.
 A low-barrier way to add concrete suggestions is to submit a [user
 story](https://github.com/solid/user-stories). User stories are descriptions of
 desired features written in a special way, see the description there for
-details. User stories may then be used when formulating use cases and
+details. User stories might then be used when formulating use cases and
 requirements.
 
 
@@ -132,7 +133,7 @@ speed up the review process:zap:.
 
 ### Self-review
 
-You should always review your own PR first.
+You are strongly encouraged to review your own PR first.
 
 For content changes, make sure that you:
 
@@ -162,7 +163,7 @@ repository, create a PR.
 * Don't forget to [link PR to
   issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue)
   if you are solving one.
-* We may ask for changes to be made before a PR can be merged, either using
+* We can ask for changes to be made before a PR can be merged, either using
   [suggested
   changes](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/incorporating-feedback-in-your-pull-request)
   or PR comments. You can apply suggested changes directly through the UI. You
@@ -189,13 +190,13 @@ published on the Solid website.
 
 ### General guidance
 
-* Content: the full content of the technical report must be human-readable with
-  HTML alone. Any CSS and JavaScript should not interfere with the accessibility
-  of the content.
-* Offline-friendly: there must not be any mandatory external dependencies (e.g.,
+* Content: the full content of the technical report MUST be human-readable with
+  HTML alone. It is strongly discouraged that any CSS and JavaScript interferes
+  with the accessibility of the content.
+* Offline-friendly: there MUST not be any mandatory external dependencies (e.g.,
   a network connection) to retrieve, to render, or to manipulate the content of
   the article.
-* Privacy: scripts must not be used to identify or track readers.
+* Privacy: scripts MUST not be used to identify or track readers.
 
 There are two parts to publishing a technical report that applies to all
 reports:
@@ -209,7 +210,7 @@ Published documents will be publicly accessible under the paths
 
 ### Versioned technical report
 
-The PR for a versioned technical report must include two HTML documents:
+The PR for a versioned technical report MUST include two HTML documents:
 
 1. "Latest version" of the TR under the root (`/`) directory.
 2. "This version" (also known as the persistent version) of the TR under
@@ -233,7 +234,7 @@ latest persistent version. All persistent versions link to the latest version.
 
 ### Non-versioned technical report
 
-The PR for a non-versioned technical report must include one HTML document and
+The PR for a non-versioned technical report MUST include one HTML document and
 follow the same requirements as in "latest version" (see [versioned technical
 report](#versioned-technical-report)).
 
@@ -241,7 +242,7 @@ The documents will be published under the path `https://solidproject.org/TR/`.
 
 ### Editor's draft
 
-The PR for a non-versioned technical report must include one HTML document and
+The PR for a non-versioned technical report MUST include one HTML document and
 follow the same requirements as in "latest version" (see [versioned technical
 report](#versioned-technical-report)).
 
@@ -252,7 +253,8 @@ https://solidproject.org/ED/protocol .
 ## Technical Report index
 
 When a new technical report is added, information about it is modified, or a
-new work item is being worked on by the CG, a PR should update the [Technical
+new work item is being worked on by the CG, a follow-up can PR can be made
+to update the [Technical
 Report index](https://github.com/solid/specification/blob/main/index.html).
 
 ## Publication Rules
@@ -273,7 +275,7 @@ We also make the following recommendations:
 
 * Valid HTML5 document (see also the [W3C Markup Validation Service](https://validator.w3.org/)).
 * Include published and modified dates (`YYYY-MM-DD`).
-* Must use the MIT License (with URL: http://purl.org/NET/rdflicense/MIT1.0 )
+* MUST use the MIT License (with URL: http://purl.org/NET/rdflicense/MIT1.0 )
 * Follow the [Linked Data](https://www.w3.org/DesignIssues/LinkedData) design
   principles - give all significant units of information, e.g., concepts,
   requirements) an identifier and provide a description using a concrete RDF
