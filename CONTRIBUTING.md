@@ -19,6 +19,13 @@ Conduct](https://github.com/solid/process/blob/main/code-of-conduct.md) and the
 Conduct](https://www.w3.org/Consortium/cepc/) to keep our community approachable
 and respectable.
 
+## Conformance
+
+The key words “MUST” and “MUST NOT” are to be interpreted as described in [BCP
+14](https://tools.ietf.org/html/bcp14)
+[RFC2119](https://datatracker.ietf.org/doc/html/rfc2119)
+[RFC8174](https://datatracker.ietf.org/doc/html/rfc8174) when, and only when,
+they appear in all capitals, as shown here.
 
 ## Contributions
 
