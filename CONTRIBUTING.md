@@ -273,12 +273,13 @@ technical reports.
 
 We also make the following recommendations:
 
-* Valid HTML5 document (see also the [W3C Markup Validation Service](https://validator.w3.org/)).
-* Include published and modified dates (`YYYY-MM-DD`).
-* MUST use the MIT License (with URL: http://purl.org/NET/rdflicense/MIT1.0 )
+* MUST be a valid HTML5 document (see also the [W3C Markup Validation
+  Service](https://validator.w3.org/)).
+* MUST include published and modified dates (`YYYY-MM-DD`).
+* MUST use the MIT License (with URL: http://purl.org/NET/rdflicense/MIT1.0 ).
 * Follow the [Linked Data](https://www.w3.org/DesignIssues/LinkedData) design
-  principles - give all significant units of information, e.g., concepts,
-  requirements) an identifier and provide a description using a concrete RDF
+  principles. Give all significant units of information, e.g., concepts,
+  requirements, an identifier, and provide a description using a concrete RDF
   syntax (see also [Spec Terms](http://www.w3.org/ns/spec)).
 * Cite the source resource in which consensus was reached for a given
   statement.
