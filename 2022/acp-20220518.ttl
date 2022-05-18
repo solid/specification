@@ -75,7 +75,7 @@ acp:AlwaysSatisfiedRestriction
 acp:AccessMode
     a rdfs:Class ;
     rdfs:label "Access Mode"@en ;
-    rdfs:comment "The ACP specification does not define specific Access Modes. Instead, any Access Mode granted is an instance of the Access Mode class. Access Modes and their granularity can be tailored to the needs of an application and Access Modes defined in other vocabularies can also be used (for example instances of ACL Access)."@en ;
+    rdfs:comment "The ACP specification does not define specific Access Modes. Instead, any Access Mode granted is an instance of the Access Mode class. Access Modes and their granularity can be tailored to the needs of an application and Access Modes defined in other vocabularies can also be used (for example, instances of ACL Access)."@en ;
     rdfs:isDefinedBy acp: ;
     rdfs:seeAlso <http://www.w3.org/ns/auth/acl#Access> .
 
@@ -147,7 +147,7 @@ acp:deny
 acp:allOf
     a rdf:Property ;
     rdfs:label "all of"@en ;
-    rdfs:comment "The all of property connects Policies to a set of Matchers all of which MUST be satisfied for the Policy to be satisfied."@en ;
+    rdfs:comment "The all of property connects Policies to a set of Matchers, all of which MUST be satisfied for the Policy to be satisfied."@en ;
     rdfs:isDefinedBy acp: ;
     rdfs:domain acp:Policy ;
     rdfs:range acp:Matcher .
@@ -155,7 +155,7 @@ acp:allOf
 acp:anyOf
     a rdf:Property ;
     rdfs:label "any of"@en ;
-    rdfs:comment "The any of property connects Policies to a set of Matchers at least one of which MUST be satisfied for the Policy to be satisfied."@en ;
+    rdfs:comment "The any of property connects Policies to a set of Matchers, at least one of which MUST be satisfied for the Policy to be satisfied."@en ;
     rdfs:isDefinedBy acp: ;
     rdfs:domain acp:Policy ;
     rdfs:range acp:Matcher .
@@ -163,7 +163,7 @@ acp:anyOf
 acp:noneOf
     a rdf:Property ;
     rdfs:label "none of"@en ;
-    rdfs:comment "The none of property connects Policies to a set of Matchers all of which MUST NOT be satisfied for the Policy to be satisfied."@en ;
+    rdfs:comment "The none of property connects Policies to a set of Matchers, all of which MUST NOT be satisfied for the Policy to be satisfied."@en ;
     rdfs:isDefinedBy acp: ;
     rdfs:domain acp:Policy ;
     rdfs:range acp:Matcher .
