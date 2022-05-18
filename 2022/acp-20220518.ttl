@@ -43,7 +43,7 @@ acp:AccessControl
     a rdfs:Class ;
     rdfs:label "Access Control"@en ;
     rdfs:comment "Instances of the Access Control class connect Access Control Resources to their Policies."@en ;
-    rdfs:commnet "All Access Controls controlling member resources access via the acp:memberAccessControl property MUST be included in the set of Access Controls linked as acp:accessControl in the effective authorization graph of a resource."@en ;
+    rdfs:comment "All Access Controls controlling member resources access via the acp:memberAccessControl property MUST be included in the set of Access Controls linked as acp:accessControl in the effective authorization graph of a resource."@en ;
     rdfs:isDefinedBy acp: .
 
 acp:Policy
