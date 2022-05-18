@@ -1,50 +1,51 @@
 <!DOCTYPE html>
 <html
   about="https://solidproject.org/TR/acp#"
+  typeof="schema:Article doap:Specification"
   prefix="
-    rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
-    rdfs: http://www.w3.org/2000/01/rdf-schema#
-    owl: http://www.w3.org/2002/07/owl#
-    xsd: http://www.w3.org/2001/XMLSchema#
-    acp: http://www.w3.org/ns/solid/acp#
-    dc: http://purl.org/dc/terms/
-    doap: http://usefulinc.com/ns/doap#
-    bibo: http://purl.org/ontology/bibo/
-    cito: http://purl.org/spar/cito/
-    schema: http://schema.org/
-    vann: http://purl.org/vocab/vann/"
+  acp: http://www.w3.org/ns/solid/acp#
+  bibo: http://purl.org/ontology/bibo/
+  cito: http://purl.org/spar/cito/
+  dc: http://purl.org/dc/terms/
+  doap: http://usefulinc.com/ns/doap#
+  owl: http://www.w3.org/2002/07/owl#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  schema: http://schema.org/
+  vann: http://purl.org/vocab/vann/
+  xsd: http://www.w3.org/2001/XMLSchema#"
   dir="ltr"
   lang="en"
 >
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <link rel="icon" href="./favicon.ico" />
+    <link href="https://solidproject.org/TR/solid.svg" rel="icon">
     <title>Access Control Policy (ACP)</title>
     <link
       rel="stylesheet"
       href="https://www.w3.org/StyleSheets/TR/2016/base.css"
       media="all"
     />
-    <link rel="stylesheet" href="./2022/acp-main-20220513.css" media="all" />
-    <link rel="stylesheet" href="./2022/acp-code-20220513.css" media="all" />
+    <link rel="stylesheet" href="./2022/acp-main-20220518.css" media="all" />
+    <link rel="stylesheet" href="./2022/acp-code-20220518.css" media="all" />
   </head>
   <body vocab="https://solidproject.org/TR/acp#">
     <header class="head">
-      <a class="logo" href="https:&#x2F;&#x2F;solidproject.org&#x2F;"
+      <a class="logo" href="https://solidproject.org/"
         ><img alt="Solid" src="solid.svg" width="72" height="66"
       /></a>
       <h1 property="dc:title">Access Control Policy (ACP)</h1>
       <h2>
         <span property="rdfs:comment">Version 0.9.0</span>,
-        <time property="dc:issued" datetime="2022-05-13">2022-05-13</time>
+        <time property="dc:issued" datetime="2022-05-18">2022-05-18</time>
       </h2>
       <details open="">
         <summary>More details about this document</summary>
         <dl>
           <dt>This version</dt>
           <dd>
-            <a href="https://solidproject.org/TR/2022/acp-20220513">https://solidproject.org/TR/2022/acp-20220513</a>
+            <a href="https://solidproject.org/TR/2022/acp-20220518">https://solidproject.org/TR/2022/acp-20220518</a>
           </dd>
           <dt>Latest version</dt>
           <dd>
@@ -97,7 +98,7 @@
         <span property="dc:dateCopyrighted">2022</span>
         <a
           rel="dc:rightsHolder"
-          href="http:&#x2F;&#x2F;www.w3.org&#x2F;community&#x2F;solid&#x2F;"
+          href="http://www.w3.org/community/solid/"
           >W3C Solid Community Group</a
         >.
       </p>
@@ -116,7 +117,7 @@
           >Access Control Policy Language (ACP)</span
         >.
         <span about="acp:" typeof="owl:Ontology" property="rdfs:comment"
-          >ACP is a language for describing, controlling and granting access to
+          >ACP is a language for describing, controlling, and granting access to
           resources.</span
         >
       </p>
@@ -378,14 +379,37 @@
           >
           <ol class="toc">
             <li class="tocline">
+              <a href="#resolved-access-control" class="tocxref"
+                ><span class="secno">6.1</span>Resolved Access Control</a
+              >
+              <ol class="toc">
+                <li class="tocline">
+                  <a href="#resolved-access-control-pseudocode" class="tocxref"
+                    ><span class="secno">6.1.1</span>Resolved Access Control
+                    pseudocode</a
+                  >
+                </li>
+              </ol>
+            </li>
+          </ol>
+          <ol class="toc">
+            <li class="tocline">
               <a href="#effective-policies" class="tocxref"
-                ><span class="secno">6.1</span>Effective Policies</a
+                ><span class="secno">6.2</span>Effective Policies</a
               >
               <ol class="toc">
                 <li class="tocline">
                   <a href="#effective-policies-example" class="tocxref"
-                    ><span class="secno">6.1.1</span>Effective Policies
+                    ><span class="secno">6.2.1</span>Effective Policies
                     example</a
+                  >
+                </li>
+              </ol>
+              <ol class="toc">
+                <li class="tocline">
+                  <a href="#effective-policies-pseudocode" class="tocxref"
+                    ><span class="secno">6.2.2</span>Effective Policies
+                    pseudocode</a
                   >
                 </li>
               </ol>
@@ -394,12 +418,12 @@
           <ol class="toc">
             <li class="tocline">
               <a href="#granted-access-modes" class="tocxref"
-                ><span class="secno">6.2</span>Granted Access Modes</a
+                ><span class="secno">6.3</span>Granted Access Modes</a
               >
               <ol class="toc">
                 <li class="tocline">
                   <a href="#granted-access-modes-example" class="tocxref"
-                    ><span class="secno">6.2.1</span>Granted Access Modes
+                    ><span class="secno">6.3.1</span>Granted Access Modes
                     example</a
                   >
                 </li>
@@ -407,7 +431,7 @@
               <ol class="toc">
                 <li class="tocline">
                   <a href="#granted-access-modes-pseudocode" class="tocxref"
-                    ><span class="secno">6.2.2</span>Granted Access Modes
+                    ><span class="secno">6.3.2</span>Granted Access Modes
                     pseudocode</a
                   >
                 </li>
@@ -417,19 +441,19 @@
           <ol class="toc">
             <li class="tocline">
               <a href="#satisfied-policy" class="tocxref"
-                ><span class="secno">6.3</span>Satisfied Policy</a
+                ><span class="secno">6.4</span>Satisfied Policy</a
               >
               <ol class="toc">
                 <li class="tocline">
                   <a href="#satisfied-policy-example" class="tocxref"
-                    ><span class="secno">6.3.1</span>Satisfied Policy example</a
+                    ><span class="secno">6.4.1</span>Satisfied Policy example</a
                   >
                 </li>
               </ol>
               <ol class="toc">
                 <li class="tocline">
                   <a href="#satisfied-policy-pseudocode" class="tocxref"
-                    ><span class="secno">6.3.2</span>Satisfied Policy
+                    ><span class="secno">6.4.2</span>Satisfied Policy
                     pseudocode</a
                   >
                 </li>
@@ -439,12 +463,12 @@
           <ol class="toc">
             <li class="tocline">
               <a href="#satisfied-matcher" class="tocxref"
-                ><span class="secno">6.4</span>Satisfied Matcher</a
+                ><span class="secno">6.5</span>Satisfied Matcher</a
               >
               <ol class="toc">
                 <li class="tocline">
                   <a href="#satisfied-matcher-example" class="tocxref"
-                    ><span class="secno">6.4.1</span>Satisfied Matcher
+                    ><span class="secno">6.5.1</span>Satisfied Matcher
                     example</a
                   >
                 </li>
@@ -452,7 +476,7 @@
               <ol class="toc">
                 <li class="tocline">
                   <a href="#satisfied-matcher-pseudocode" class="tocxref"
-                    ><span class="secno">6.4.2</span>Satisfied Matcher
+                    ><span class="secno">6.5.2</span>Satisfied Matcher
                     pseudocode</a
                   >
                 </li>
@@ -466,29 +490,15 @@
           >
           <ol class="toc">
             <li class="tocline">
-              <a href="#capability-discovery" class="tocxref"
-                ><span class="secno">7.1</span>Capability discovery</a
+              <a href="#conforming-resource-server" class="tocxref"
+                ><span class="secno">7.1</span>Conforming resource server</a
               >
             </li>
           </ol>
           <ol class="toc">
             <li class="tocline">
-              <a href="#acr-discovery" class="tocxref"
-                ><span class="secno">7.2</span>ACR discovery</a
-              >
-            </li>
-          </ol>
-          <ol class="toc">
-            <li class="tocline">
-              <a href="#acr-editing" class="tocxref"
-                ><span class="secno">7.3</span>ACR editing</a
-              >
-            </li>
-          </ol>
-          <ol class="toc">
-            <li class="tocline">
-              <a href="#resource-management" class="tocxref"
-                ><span class="secno">7.4</span>Resource management</a
+              <a href="#conforming-acp-server" class="tocxref"
+                ><span class="secno">7.2</span>Conforming ACP server</a
               >
             </li>
           </ol>
@@ -531,7 +541,7 @@
           explanation of the conventions used in this document, example graphs
           to illustrate basic concepts of resource access description and
           validation, a diagram representing the main elements of the ACP data
-          model, and a non-normative RDF representation of the ACP ontology.
+          model, and an RDF representation of the ACP ontology.
         </p>
 
         <section
@@ -566,10 +576,7 @@
               ><dfn id="rdf-namespace-prefix">namespace prefix</dfn></a
             >,
             <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-rdf-graph"
-              ><dfn id="rdf-graph">RDF graph</dfn></a
-            >,
-            <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-rdf-triple"
-              ><dfn id="rdf-triple">RDF triple</dfn></a
+              ><dfn id="rdf-graph">graph</dfn></a
             >,
             <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-iri"
               ><dfn id="rdf-iri">IRI</dfn></a
@@ -582,26 +589,12 @@
             >,
             <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-node"
               ><dfn id="rdf-node">node</dfn></a
-            >
-            of an RDF graph,
+            >,
             <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-rdf-term"
-              ><dfn id="rdf-term">RDF term</dfn></a
+              ><dfn id="rdf-term">term</dfn></a
             >,
-            <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-subject"
-              ><dfn id="rdf-subject">subject</dfn></a
-            >,
-            <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-predicate"
-              ><dfn id="rdf-predicate">predicate</dfn></a
-            >, and
-            <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-object"
-              ><dfn id="rdf-object">object</dfn></a
-            >
-            of RDF triples,
-            <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-datatype"
-              ><dfn id="rdf-datatype">datatype</dfn></a
-            >, and
             <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-iri-equality"
-              ><dfn id="rdf-iri-eqality">IRI</dfn></a
+              ><dfn id="rdf-iri-eqality">IRI equality</dfn></a
             >
             and
             <a
@@ -731,28 +724,49 @@
           <p><em>This section is non-normative.</em></p>
 
           <dl>
-            <dt id="terminology-context-graph">Context graph</dt>
+            <dt id="acp-terminology-context-graph">Context graph</dt>
             <dd>
               <a href="#context-graph">Context graphs</a> describe the
-              attributes of resource access instances. Those attributes can be
-              matched to sets of conditions defined in the form of an
-              <a href="#terminology-authorization-graph">authorization graph</a>
+              attributes of resource access instances. An access request's
+              attributes can be matched to sets of conditions defined in the
+              form of an
+              <a href="#acp-terminology-authorization-graph"
+                >authorization graph</a
+              >
               in order to determine Access Modes granted over resources.
             </dd>
-            <dt id="terminology-authorization-graph">Authorization graph</dt>
+
+            <dt id="acp-terminology-authorization-graph">
+              Authorization graph
+            </dt>
             <dd>
               <a href="#authorization-graph">Authorization graphs</a>
               authoritatively define the conditions for granting Access Modes
-              over resources through Access Controls, Policies and Matchers. The
-              result of applying an authorization graph to a described instance
-              of resource access is an
-              <a href="#terminology-access-grant-graph">access grant graph</a>.
+              over resources through Access Control Resources, Access Controls,
+              Policies and Matchers. The result of applying an authorization
+              graph to a described instance of resource access is an
+              <a href="#acp-terminology-access-grant-graph"
+                >access grant graph</a
+              >.
             </dd>
-            <dt id="terminology-access-grant-graph">Access grant graph</dt>
+
+            <dt id="acp-terminology-access-grant-graph">Access grant graph</dt>
             <dd>
               <a href="#access-grant-graph">Access grant graphs</a> describe
-              sets of granted access modes over resources in the context of
-              resource access instances.
+              sets of Access Modes granted over resources in the context of
+              resource access requests. Access grants are the result of
+              <a href="#acp-terminology-access-control-resolution"
+                >access control resolution</a
+              >.
+            </dd>
+
+            <dt id="acp-terminology-access-control-resolution">
+              Access control resolution
+            </dt>
+            <dd>
+              <a href="#access-control-resolution">Access control resolution</a>
+              describes the algorithm used to apply an authorization graph to a
+              context graph in order to obtain an access grant graph.
             </dd>
           </dl>
         </section>
@@ -773,18 +787,22 @@
           <p>
             Throughout this document, color-coded boxes contain the RDF
             representation of example context graphs, authorization graphs, and
-            access grant graphs serialized in Turtle. Those graphs use a mix of
-            IRIs and blank nodes where applicable to better show the range of
-            possible representations.
+            access grant graphs serialized in
+            <a href="https://www.w3.org/TR/turtle/"
+              ><dfn id="turtle-syntax">turtle</dfn></a
+            >
+            <cite><a class="bibref" href="#turtle">RDF11-TURTLE</a></cite
+            >. Those graphs use a mix of IRIs and blank nodes where applicable
+            to better show the range of possible representations.
           </p>
 
           <p>
             The following example
-            <a href="#terminology-context-graph">context graph</a> describes an
-            instance of resource access and could be translated as:
+            <a href="#acp-terminology-context-graph">context graph</a> describes
+            an instance of resource access and could be translated as:
             <em
-              >"Bob is trying to access resource X using client application Y
-              with his identity asserted by identity provider Z."</em
+              >"Bob is trying to read resource X using client application Y with
+              their identity asserted by identity provider Z."</em
             >.
           </p>
 
@@ -793,23 +811,26 @@
 # It describes an instance of resource access&nbsp;&nbsp;
 
 []
-  acp:agent ex:Bob ;
   acp:target ex:resourceX ;
-  acp:client ex:ClientApplicationY ;
-  acp:issuer ex:IdentityProviderZ .
+  acp:agent ex:Bob ;
+  acp:mode acl:Read ;
+  acp:client ex:clientApplicationY ;
+  acp:issuer ex:identityProviderZ .
 </pre
           >
 
           <p>
             The following example
-            <a href="#terminology-authorization-graph">authorization graph</a>
-            authoritatively defines the conditions of access to resource X and
-            could be translated as:
+            <a href="#acp-terminology-authorization-graph"
+              >authorization graph</a
+            >
+            defines the conditions of access to resource X and could be
+            translated as:
             <em
               >"Access to resource X is mandated by one Access Control that
               applies one Policy which allows access mode
-              <code>acl:Read</code> when the agent matcher is satisfied that
-              Alice or Bob are the agent trying to access resource X."</em
+              <code>acl:Read</code> when Alice or Bob are the agent trying to
+              access resource X."</em
             >.
           </p>
 
@@ -829,7 +850,7 @@
       a acp:Policy ;
       acp:allow acl:Read ;
       acp:anyOf [
-        a acp:AgentMatcher ;
+        a acp:Matcher ;
         acp:agent ex:Alice, ex:Bob ;
       ]
     ]
@@ -839,17 +860,19 @@
 
           <p>
             The following example
-            <a href="#terminology-access-grant-graph">access grant graph</a> is
-            the result of applying the previous example authorization graph
-            which defines access to resource X to the previous example context
-            graph which describes an instance of access to target resource X.
-            Bob is matched as the context agent and since it defines no further
-            restrictions, the policy allowing <code>acl:Read</code> is
+            <a href="#acp-terminology-access-grant-graph">access grant graph</a>
+            is the result of
+            <a href="#acp-terminology-access-control-resolution">applying</a>
+            the previous example authorization graph which defines access to
+            resource X to the previous example context graph which describes a
+            read access request to target resource X. Bob is matched as the
+            context agent and since the policy allowing
+            <code>acl:Read</code> defines no further restrictions, it is
             satisfied. The following access grant graph could be read as:
             <em
-              >"The access mode <code>acl:Read</code> is granted to Bob whom
-              requested access to resource X using client application Y and
-              whose identity was asserted by identity provider Z."</em
+              >"The access mode <code>acl:Read</code> is granted to Bob who
+              requested read access to resource X using client application Y
+              with their identity asserted by identity provider Z."</em
             >.
           </p>
 
@@ -865,6 +888,7 @@
   acp:context [
     acp:agent ex:Bob ;
     acp:target ex:resourceX ;
+    acp:mode acl:Read ;
     acp:client ex:ClientApplicationY ;
     acp:issuer ex:IdentityProviderZ ;
   ] .
@@ -887,7 +911,7 @@
           <p>The following diagram illustrates the main elements of ACP.</p>
           <img
             alt="ACP Data Model"
-            src="2022/acp-data-model-20220513.svg"
+            src="./2022/acp-data-model-20220518.svg"
             style="width: 100%"
           />
         </section>
@@ -905,7 +929,7 @@
           <p>
             All terms defined by the Access Control Policy Language are present
             in a non-normative RDF representation of the
-            <a href="./acp.ttl">ACP ontology serialized in turtle</a>.
+            <a href="./2022/acp-20220518.ttl">ACP ontology serialized in turtle</a>.
           </p>
         </section>
       </section>
@@ -1021,16 +1045,11 @@
               <code>acp:attribute</code>
             </dt>
             <dd about="acp:attribute" property="rdfs:comment">
-              The <span property="rdfs:label">attribute</span> properties
-              defined by ACP describe
+              Sub-properties of ACP
+              <span property="rdfs:label">attribute</span> are used to describe
               <span property="rdfs:domain" resource="acp:Context"
-                >instances</span
-              >
-              of
-              <span property="rdfs:range" resource="rdfs:Resource"
-                >resource</span
-              >
-              access.
+                >instances of resource access</span
+              >.
             </dd>
 
             <dt
@@ -1047,7 +1066,10 @@
               <span property="rdfs:subPropertyOf" resource="acp:attribute"
                 >attribute</span
               >
-              describes requested resources.
+              describes
+              <span property="rdfs:domain" resource="acp:AccessRequest"
+                >requested resources</span
+              >.
             </dd>
 
             <dt
@@ -1154,23 +1176,6 @@
             </dd>
 
             <dt
-              id="acp-time"
-              about="acp:time"
-              property="rdfs:isDefinedBy"
-              resource="acp:"
-              typeof="rdf:Property"
-            >
-              <code>acp:time</code>
-            </dt>
-            <dd about="acp:time" typeof="rdfs:comment">
-              The <span property="rdfs:label">time</span>
-              <span property="rdfs:subPropertyOf" resource="acp:attribute"
-                >attribute</span
-              >
-              describes times of resource access requests.
-            </dd>
-
-            <dt
               id="acp-vc"
               about="acp:vc"
               property="rdfs:isDefinedBy"
@@ -1184,8 +1189,8 @@
               <span property="rdfs:subPropertyOf" resource="acp:attribute"
                 >attribute</span
               >
-              describes verifiable credentials presented as part of resource
-              access requests.
+              describes types of Verifiable Credentials (VC) presented as part
+              of resource access requests.
             </dd>
           </dl>
 
@@ -1203,7 +1208,7 @@
 
             <p>
               The following example context graph denotes instances of resource
-              access over resource X initiated by Bob.
+              access initiated by Bob.
             </p>
 
             <pre id="example-context-0" class="example example-context-graph">
@@ -1214,20 +1219,20 @@
             >
 
             <p>
-              The following example context graph denotes instances of resource
-              access over resource X initiated by Bob using client application Y
-              where Bob's identity is asserted by identity provider Z, Bob is
-              the owner of resource X, and Alice is the creator of resource X.
+              The following example context graph means that Bob requests access
+              to resource X using client application Y and with their identity
+              asserted by identity provider Z; furthermore, resource X was
+              created by Alice and is owned by Bob.
             </p>
 
             <pre id="example-context-1" class="example example-context-graph">
 ex:contextA
-  acp:agent ex:Bob ;
   acp:target ex:resourceX ;
-  acp:owner ex:Bob ;
-  acp:creator ex:Alice ;
+  acp:agent ex:Bob ;
   acp:client ex:ClientApplicationY ;&nbsp;&nbsp;
-  acp:issuer ex:IdentityProviderZ .
+  acp:issuer ex:IdentityProviderZ ;
+  acp:owner ex:Bob ;
+  acp:creator ex:Alice .
 </pre
             >
 
@@ -1260,8 +1265,7 @@ ex:contextA
           </h3>
           <p about="acp:attribute" property="rdfs:comment">
             Sub-properties of <code>acp:attribute</code> can be created to fit
-            the specific resource access description requirements of
-            applications.
+            the specific access control requirements of applications.
           </p>
 
           <section
@@ -1290,8 +1294,8 @@ ex:contextA
               class="example example-context-graph"
             >
 ex:contextA
-  acp:agent ex:Bob ;
   acp:target ex:resourceX ;
+  acp:agent ex:Bob ;
   ex:tag ex:Music, ex:FavouriteRecord .&nbsp;&nbsp;
 </pre
             >
@@ -1328,7 +1332,7 @@ ex:contextA
           </h3>
           <dl>
             <dt
-              id="acp-access-control-resource"
+              id="acp-Access-Control-Resource"
               about="acp:AccessControlResource"
               property="rdfs:isDefinedBy"
               resource="acp:"
@@ -1427,7 +1431,9 @@ ex:contextA
               The following example authorization graph means that access to
               resource X is controlled by both Access Controls B and C;
               furthermore, access to members of resource X is controlled by
-              Access Control D.
+              Access Control D; furthermore, member control is transitive,
+              therefore, further members of member resources will also be
+              controlled by Access Control D.
             </p>
 
             <pre
@@ -1519,8 +1525,8 @@ ex:accessControlResourceA
             >
 
             <p>
-              The following two example authorization graphs mean that access to
-              resource X is controlled by Policy D and Policy E.
+              The following two example authorization graphs both mean that
+              access to resource X is controlled by Policy D and Policy E.
             </p>
 
             <pre
@@ -1630,10 +1636,9 @@ ex:accessControlF
             <dd about="acp:allOf" property="rdfs:comment">
               The <span property="rdfs:label">all of</span> property connects
               <span property="rdfs:domain" resource="acp:Policy">Policies</span>
-              to the set of
+              to a set of
               <span property="rdfs:range" resource="acp:Matcher">Matchers</span>
-              all of which MUST must be satisfied for the Policy to be
-              satisfied.
+              all of which MUST be satisfied for the Policy to be satisfied.
             </dd>
 
             <dt
@@ -1648,7 +1653,7 @@ ex:accessControlF
             <dd about="acp:anyOf" property="rdfs:comment">
               The <span property="rdfs:label">any of</span> property connects
               <span property="rdfs:domain" resource="acp:Policy">Policies</span>
-              to the set of
+              to a set of
               <span property="rdfs:range" resource="acp:Matcher">Matchers</span>
               at least one of which MUST be satisfied for the Policy to be
               satisfied.
@@ -1666,7 +1671,7 @@ ex:accessControlF
             <dd about="acp:noneOf" property="rdfs:comment">
               The <span property="rdfs:label">none of</span> property connects
               <span property="rdfs:domain" resource="acp:Policy">Policies</span>
-              to the set of
+              to a set of
               <span property="rdfs:range" resource="acp:Matcher">Matchers</span>
               all of which MUST NOT be satisfied for the Policy to be satisfied.
             </dd>
@@ -1685,8 +1690,8 @@ ex:accessControlF
             </h4>
             <p>
               The following example authorization graph means that Policy A will
-              allow Read for instances of resource access satisfying both
-              Matcher B and Matcher C.
+              allow <code>acl:Read</code> for instances of resource access
+              satisfying both Matcher B and Matcher C.
             </p>
 
             <pre
@@ -1701,8 +1706,8 @@ ex:policyA
 
             <p>
               The following example authorization graph means that a Policy will
-              deny Write for instances of resource access satisfying either
-              Matcher B or Matcher C.
+              deny <code>acl:Write</code> for instances of resource access
+              satisfying either Matcher B or Matcher C.
             </p>
 
             <pre
@@ -1716,8 +1721,8 @@ ex:policyA
             >
 
             <p>
-              The following example authorization graph means that Reading and
-              Writing resource X will be allowed for instances of resource
+              The following example authorization graph means that reading and
+              writing resource X will be allowed for instances of resource
               access satisfying Matcher A and not Matcher B.
             </p>
 
@@ -1762,18 +1767,16 @@ ex:policyA
             </dt>
             <dd about="acp:Matcher" property="rdfs:comment">
               Instances of the <span property="rdfs:label">Matcher</span> class
-              are descriptions of matching resource access Contexts. To satisfy
-              a Matcher, every described resource access attribute must match
-              the resource access Context.
+              are descriptions of matching Contexts.
             </dd>
 
             <dt id="acp-agent-matcher">
               <a href="#acp-agent"><code>acp:agent</code></a>
             </dt>
             <dd about="acp:agent" property="rdfs:comment">
-              The agent attribute used in a Matcher defines a set of agents, at
-              least one of which MUST match the resource access Context for the
-              agent restriction to be satisfied.
+              In a Matcher, agent attributes define a set of agents, at least
+              one of which MUST match the Context for the Matcher to be
+              satisfied.
             </dd>
 
             <dt
@@ -1786,9 +1789,9 @@ ex:policyA
               <code>acp:PublicAgent</code>
             </dt>
             <dd about="acp:PublicAgent" property="rdfs:comment">
-              The <span property="rdfs:label">Public Agent</span> named
-              individual used in an agent restriction means that the restriction
-              is always satisfied.
+              In a Matcher, agent attributes using the
+              <span property="rdfs:label">Public Agent</span> named individual
+              MUST match all Contexts.
             </dd>
 
             <dt
@@ -1801,9 +1804,9 @@ ex:policyA
               <code>acp:AuthenticatedAgent</code>
             </dt>
             <dd about="acp:AuthenticatedAgent" property="rdfs:comment">
-              The <span property="rdfs:label">Authenticated Agent</span> named
-              individual used in an agent restriction means that any agent in
-              the Context satisfies the restriction.
+              In a Matcher, agent attributes using the
+              <span property="rdfs:label">Authenticated Agent</span> named
+              individual MUST match Contexts that contain an agent.
             </dd>
 
             <dt
@@ -1816,10 +1819,10 @@ ex:policyA
               <code>acp:CreatorAgent</code>
             </dt>
             <dd about="acp:CreatorAgent" property="rdfs:comment">
-              The <span property="rdfs:label">Creator Agent</span> named
-              individual used in an agent restriction means that the restriction
-              is satisfied if the Context contains an agent that is also a
-              creator.
+              In a Matcher, agent attributes using the
+              <span property="rdfs:label">Creator Agent</span> named individual
+              MUST match Contexts where a defined creator matches the defined
+              agent.
             </dd>
 
             <dt
@@ -1832,19 +1835,19 @@ ex:policyA
               <code>acp:OwnerAgent</code>
             </dt>
             <dd about="acp:OwnerAgent" property="rdfs:comment">
-              The <span property="rdfs:label">Owner Agent</span> named
-              individual used in an agent restriction means that the restriction
-              is satisfied if the Context contains an agent that is also an
-              owner.
+              In a Matcher, agent attributes using the
+              <span property="rdfs:label">Owner Agent</span> named individual
+              MUST match Contexts where a defined owner matches the defined
+              agent.
             </dd>
 
             <dt id="acp-client-matcher">
               <a href="#acp-client"><code>acp:client</code></a>
             </dt>
             <dd about="acp:client" property="rdfs:comment">
-              The client attribute used in a Matcher defines a set of clients,
-              at least one of which MUST match the resource access Context for
-              the client restriction to be satisfied.
+              In a Matcher, client attributes define a set of clients, at least
+              one of which MUST match the Context for the Matcher to be
+              satisfied.
             </dd>
 
             <dt
@@ -1857,18 +1860,18 @@ ex:policyA
               <code>acp:PublicClient</code>
             </dt>
             <dd about="acp:PublicClient" property="rdfs:comment">
-              The <span property="rdfs:label">Public Client</span> named
-              individual used in a client restriction means that the restriction
-              is always satisfied.
+              In a Matcher, client attributes using the
+              <span property="rdfs:label">Public Client</span> named individual
+              MUST match all Contexts.
             </dd>
 
             <dt id="acp-issuer-matcher">
               <a href="#acp-issuer"><code>acp:issuer</code></a>
             </dt>
             <dd about="acp:issuer" property="rdfs:comment">
-              The issuer attribute used in a Matcher defines a set of issuers,
-              at least one of which MUST match the resource access Context for
-              the issuer restriction to be satisfied.
+              In a Matcher, issuer attributes define a set of issuers, at least
+              one of which MUST match the Context for the Matcher to be
+              satisfied.
             </dd>
 
             <dt
@@ -1881,32 +1884,39 @@ ex:policyA
               <code>acp:PublicIssuer</code>
             </dt>
             <dd about="acp:PublicIssuer" property="rdfs:comment">
-              The <span property="rdfs:label">Public Issuer</span> named
-              individual used in an issuer restriction means that the
-              restriction is always satisfied.
-            </dd>
-
-            <dt id="acp-time-matcher">
-              <a href="#acp-time"><code>acp:time</code></a>
-            </dt>
-            <dd about="acp:time" property="rdfs:comment">
-              The time attribute used in a Matcher defines a set of times, at
-              least one of which MUST match the resource access Context for the
-              time restriction is satisfied.
+              In a Matcher, issuer attributes using the
+              <span property="rdfs:label">Public Issuer</span> named individual
+              MUST match all Contexts.
             </dd>
 
             <dt id="acp-vc-matcher">
               <a href="#acp-vc"><code>acp:vc</code></a>
             </dt>
             <dd about="acp:vc" property="rdfs:comment">
-              The vc attribute used in a Matcher defines a set of types of
-              <a href="https://www.w3.org/TR/vc-data-model/"
+              In a Matcher, vc attributes define a set of
+              <a
+                rel="cito:citesAsAuthority"
+                href="https://www.w3.org/TR/vc-data-model/#dfn-type"
+                ><dfn id="vc-type">types</dfn></a
+              >
+              of
+              <a
+                rel="cito:citesAsAuthority"
+                href="https://www.w3.org/TR/vc-data-model/"
                 ><dfn id="verifiable-credentials"
                   >Verifiable Credentials</dfn
                 ></a
               >
-              (VC), at least one of which MUST match the resource access Context
-              for the vc restriction to be satisfied.
+              (VC), at least one of which MUST match the Context for the Matcher
+              to be satisfied. A VC type present in the Context MUST be a
+              <a href="https://www.w3.org/TR/vc-data-model/#validation"
+                ><dfn id="vc-validation">valid</dfn></a
+              >
+              VC
+              <a href="https://www.w3.org/TR/vc-data-model/#presentations"
+                ><dfn id="vc-presentation">presented</dfn></a
+              >
+              as part of the resource access request.
             </dd>
 
             <dt
@@ -1940,8 +1950,8 @@ ex:policyA
               ><a class="self-link" href="#example-matcher"></a>
             </h4>
             <p>
-              The following example authorization graph means that Agent Matcher
-              A will be satisfied when either Alice or the owner of the access
+              The following example authorization graph means that Matcher A
+              will be satisfied when either Alice or the owner of the access
               controlled resource are requesting access.
             </p>
 
@@ -1957,9 +1967,9 @@ ex:matcherA
 
             <p>
               The following example authorization graph means that the defined
-              Client Matcher will be satisfied when matched against a context
-              graph where the client used to access the access controlled
-              resource is client B.
+              Matcher will be satisfied when matched against a context graph
+              where the client used to access the access controlled resource is
+              client B.
             </p>
 
             <pre
@@ -1974,11 +1984,10 @@ ex:matcherA
             >
 
             <p>
-              The following example authorization graph means that Issuer
-              Matcher A will be satisfied when matched against a context graph
-              where the identity provider used to assert the identity of the
-              agent requesting access to the access controlled resource is
-              issuer B.
+              The following example authorization graph means that Matcher A
+              will be satisfied when matched against a context graph where the
+              identity provider used to assert the identity of the agent
+              requesting access to the access controlled resource is issuer B.
             </p>
 
             <pre
@@ -1993,10 +2002,9 @@ ex:matcherA
 
             <p>
               The following example authorization graph means that the defined
-              Verifiable Credentials (VC) Matcher A will be satisfied when
-              matched against a context graph where one of the presented
-              verifiable credentials is an instance of credential B, is valid
-              and has been issued to the agent requesting the resource.
+              Matcher will be satisfied when matched against a context graph
+              showing that a valid VC of type credential B has been presented by
+              the agent requesting access to the access controlled resource.
             </p>
 
             <pre
@@ -2031,8 +2039,8 @@ ex:matcherA
               The following example authorization graph means that the defined
               matcher will be satisfied only if Alice, whose identity is
               asserted by Identity Provider B, is the agent requesting resource
-              access and is doing so presenting a VC that is a verified instance
-              of credential A issued to Alice.
+              access and is doing so presenting a VC that is a valid instance of
+              credential A.
             </p>
 
             <pre
@@ -2091,11 +2099,9 @@ ex:policyB
             ><a class="self-link" href="#matcher-extensibility"></a>
           </h3>
           <p about="acp:Matcher" property="rdfs:comment">
-            All sub-properties of <code>acp:attribute</code> correspond
-            implicitly to their own type of Matcher restriction. If applications
-            support additional sub-properties of
-            <code>acp:attribute</code> other than the ones defined by ACP, then,
-            they MUST also implement corresponding matching algorithms.
+            ACP implementations supporting sub-properties of
+            <code>acp:attribute</code> other than the ones defined by ACP SHOULD
+            also define and implement corresponding matching algorithms.
           </p>
 
           <section
@@ -2233,7 +2239,7 @@ ex:policy1
             <p>
               The following example access grant graph means that Access Modes
               <code>acl:Read</code> and <code>acl:Write</code> have been granted
-              to Bob for accessing resource X.
+              to Alice for accessing resource X.
             </p>
 
             <pre
@@ -2243,7 +2249,7 @@ ex:policy1
 []
   acp:grant acl:Read, acl:Write ;&nbsp;&nbsp;
   acp:context [
-    acp:agent ex:Bob ;
+    acp:agent ex:Alice ;
     acp:target ex:resourceX ;
   ] .
 </pre
@@ -2277,10 +2283,11 @@ ex:policy1
               Instead, any Access Mode granted is an instance of the
               <span property="rdfs:label">Access Mode</span> class. Access Modes
               and their granularity can be tailored to the needs of an
-              application. Access Modes defined in other vocabularies (<span
-                property="rdfs:seeAlso"
-                >for example ACL</span
-              >) can also be used.
+              application and Access Modes defined in other vocabularies can
+              also be used (for example instances of
+              <a rel="rdfs:seeAlso" href="http://www.w3.org/ns/auth/acl#Access"
+                ><dfn>ACL Access</dfn></a
+              >).
             </dd>
           </dl>
 
@@ -2299,8 +2306,7 @@ ex:policy1
               The following example access grant graph means that
               <code>acl:Read</code> and <code>ex:Delete</code> are Access Modes;
               furthermore, it means that <code>acl:Read</code> and
-              <code>ex:Delete</code> have been granted to Bob for accessing
-              resource X.
+              <code>ex:Delete</code> have been granted to Bob over resource X.
             </p>
 
             <pre
@@ -2310,8 +2316,8 @@ ex:policy1
 []
   acp:grant acl:Read, ex:Delete ;&nbsp;&nbsp;
   acp:context [
-    acp:agent ex:Bob ;
     acp:target ex:resourceX ;
+    acp:agent ex:Bob ;
   ] .
 </pre
             >
@@ -2338,40 +2344,76 @@ ex:policy1
         <section
           datatype="rdf:HTML"
           typeof="bibo:Chapter"
+          resource=":resolved-access-control"
+          property="bibo:hasPart"
+        >
+          <h3 class="heading" id="resolved-access-control">
+            <span class="secno">6.1. </span
+            ><span class="content">Resolved Access Control</span
+            ><a class="self-link" href="#resolved-access-control"></a>
+          </h3>
+          <p>
+            An ACP engine MUST grant exactly those Access Modes allowed by
+            Effective Policies.
+          </p>
+
+          <section
+            datatype="rdf:HTML"
+            typeof="bibo:Chapter"
+            resource=":resolved-access-control-pseudocode"
+            property="bibo:hasPart"
+          >
+            <h4 class="heading" id="resolved-access-control-pseudocode">
+              <span class="secno">6.1.1. </span
+              ><span class="content">Resolved Access Control pseudocode</span
+              ><a
+                class="self-link"
+                href="#resolved-access-control-pseudocode"
+              ></a>
+            </h4>
+            <pre
+              class="highlight pseudocode"
+            ><code><span class="kd">function</span> <span class="nx">resolveAccessControl</span><span class="p">(</span><span class="nx">acr</span><span class="p">,</span> <span class="nx">ancestorAcrs</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">effectivePolicies</span> <span class="o">=</span> <span class="nx">gatherEffectivePolicies</span><span class="p">(</span><span class="nx">acr</span><span class="p">,</span> <span class="nx">ancestorAcrs</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">allowedAccessModes</span> <span class="o">=</span> <span class="nx">grantAccessModes</span><span class="p">(</span><span class="nx">effectivePolicies</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">grantGraph</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">context</span><span class="p">,</span>
+      <span class="na">grant</span><span class="p">:</span> <span class="nx">allowedAccessModes</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">grantGraph</span>
+<span class="p">}</span>
+</code></pre>
+          </section>
+        </section>
+
+        <section
+          datatype="rdf:HTML"
+          typeof="bibo:Chapter"
           resource=":effective-policies"
           property="bibo:hasPart"
         >
           <h3 class="heading" id="effective-policies">
-            <span class="secno">6.1. </span
+            <span class="secno">6.2. </span
             ><span class="content">Effective Policies</span
             ><a class="self-link" href="#effective-policies"></a>
           </h3>
           <p>
-            Both the <code>acp:resource</code> property and its inverse
-            <code>acp:accessControlResource</code> MUST be taken into account in
-            determining the Access Control Resources controlling access to
-            resources.
+            Effective Policies are the Policies controlling access to a
+            resource.
           </p>
 
-          <p>
-            All Access Controls controlling member resources access via the
-            <code>acp:memberAccessControl</code> property MUST be included in
-            the set of Access Controls linked as
-            <code>acp:accessControl</code> in the effective authorization graph
-            of a resource.
-          </p>
+          <p>A Policy MUST control access to a resource if:</p>
 
-          <p>
-            The set of Policies controlling access to a resource MUST contain
-            all Policies that are linked to a resource via the
-            <a href="https://www.w3.org/TR/sparql11-query/#propertypaths"
-              ><dfn id="sparql-property-path">property path</dfn></a
-            >
-            <code>acp:accessControlResource/acp:accessControl/acp:apply</code>
-            <cite
-              ><a class="bibref" href="#sparql11-query">SPARQL11 QUERY</a></cite
-            >.
-          </p>
+          <ul>
+            <li>
+              it is applied by an Access Control of an ACR of the resource; or,
+            </li>
+            <li>
+              it is applied by a member Access Control of an ACR of an ancestor
+              of the resource.
+            </li>
+          </ul>
 
           <section
             datatype="rdf:HTML"
@@ -2380,7 +2422,7 @@ ex:policy1
             property="bibo:hasPart"
           >
             <h4 class="heading" id="effective-policies-example">
-              <span class="secno">6.1.1. </span
+              <span class="secno">6.2.1. </span
               ><span class="content">Effective Policies example</span
               ><a class="self-link" href="#effective-policies-example"></a>
             </h4>
@@ -2417,6 +2459,38 @@ ex:policy1
 </pre
             >
           </section>
+
+          <section
+            datatype="rdf:HTML"
+            typeof="bibo:Chapter"
+            resource=":effective-policies-pseudocode"
+            property="bibo:hasPart"
+          >
+            <h4 class="heading" id="effective-policies-pseudocode">
+              <span class="secno">6.2.2. </span
+              ><span class="content">Effective Policies pseudocode</span
+              ><a class="self-link" href="#effective-policies-pseudocode"></a>
+            </h4>
+            <pre
+              class="highlight pseudocode"
+            ><code><span class="kd">function</span> <span class="nx">gatherEffectivePolicies</span><span class="p">(</span><span class="nx">acr</span><span class="p">,</span> <span class="nx">ancestorAcrs</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">effectivePolicies</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Set</span>
+
+  <span class="c1">// Direct access controls of own ACR.</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">accessControl</span> <span class="k">of</span> <span class="nx">acr</span><span class="p">.</span><span class="nx">accessControls</span><span class="p">)</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">policy</span> <span class="k">of</span> <span class="nx">accessControl</span><span class="p">.</span><span class="nx">appliedPolicies</span><span class="p">)</span>
+          <span class="nx">effectivePolicies</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">policy</span><span class="p">)</span>
+
+  <span class="c1">// Member access controls of ancestor ACRs.</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">acr</span> <span class="k">of</span> <span class="nx">ancestorAcrs</span><span class="p">)</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">accessControl</span> <span class="k">of</span> <span class="nx">acr</span><span class="p">.</span><span class="nx">memberAccessControls</span><span class="p">)</span>
+          <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">policy</span> <span class="k">of</span> <span class="nx">accessControl</span><span class="p">.</span><span class="nx">appliedPolicies</span><span class="p">)</span>
+              <span class="nx">effectivePolicies</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">policy</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="nx">effectivePolicies</span>
+<span class="p">}</span>
+</code></pre>
+          </section>
         </section>
 
         <section
@@ -2426,18 +2500,18 @@ ex:policy1
           property="bibo:hasPart"
         >
           <h3 class="heading" id="granted-access-modes">
-            <span class="secno">6.2. </span
+            <span class="secno">6.3. </span
             ><span class="content">Granted Access Modes</span
             ><a class="self-link" href="#granted-access-modes"></a>
           </h3>
           <div about="acp:Policy" property="rdfs:comment">
             <p>
-              An Access Mode MUST be granted over a resource if and only if in
-              the set of Policies controlling access to it:
+              An Access Mode MUST be granted if and only if in the set of
+              Effective Policies:
             </p>
             <ul>
-              <li>A satisfied policy allows the Access Mode; and</li>
-              <li>No satisfied policy denies the Access Mode.</li>
+              <li>a satisfied policy allows the Access Mode; and,</li>
+              <li>no satisfied policy denies it.</li>
             </ul>
           </div>
 
@@ -2448,7 +2522,7 @@ ex:policy1
             property="bibo:hasPart"
           >
             <h4 class="heading" id="granted-access-modes-example">
-              <span class="secno">6.2.1. </span
+              <span class="secno">6.3.1. </span
               ><span class="content">Granted Access Modes example</span
               ><a class="self-link" href="#granted-access-modes-example"></a>
             </h4>
@@ -2501,30 +2575,30 @@ ex:policyC
             property="bibo:hasPart"
           >
             <h4 class="heading" id="granted-access-modes-pseudocode">
-              <span class="secno">6.2.2. </span
+              <span class="secno">6.3.2. </span
               ><span class="content">Granted Access Modes pseudocode</span
               ><a class="self-link" href="#granted-access-modes-pseudocode"></a>
             </h4>
             <pre
               class="highlight pseudocode"
             ><code><span class="kd">function</span> <span class="nx">grantAccessModes</span><span class="p">(</span><span class="nx">policies</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">allow</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Set</span><span class="p">,</span> <span class="nx">deny</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Set</span>
+  <span class="kd">const</span> <span class="nx">allowedAccessModes</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Set</span><span class="p">,</span> <span class="nx">deniedAccessModes</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Set</span>
 
-  <span class="c1">// Gather allowed and denied access modes from satisfied policies</span>&nbsp;&nbsp;
+  <span class="c1">// Gather allowed and denied access modes from satisfied policies</span>
   <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">policy</span> <span class="k">of</span> <span class="nx">policies</span><span class="p">)</span>
       <span class="k">if</span> <span class="p">(</span><span class="nx">isSatisfiedPolicy</span><span class="p">(</span><span class="nx">policy</span><span class="p">,</span> <span class="nx">context</span><span class="p">))</span> <span class="p">{</span>
-          <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">mode</span> <span class="k">of</span> <span class="nx">policy</span><span class="p">.</span><span class="nx">allow</span><span class="p">)</span>
-              <span class="nx">allow</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">mode</span><span class="p">)</span>
+          <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">mode</span> <span class="k">of</span> <span class="nx">policy</span><span class="p">.</span><span class="nx">allowedAccessModes</span><span class="p">)</span>
+              <span class="nx">allowedAccessModes</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">mode</span><span class="p">)</span>
 
-          <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">mode</span> <span class="k">of</span> <span class="nx">policy</span><span class="p">.</span><span class="nx">deny</span><span class="p">)</span>
-              <span class="nx">deny</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">mode</span><span class="p">)</span>
+          <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">mode</span> <span class="k">of</span> <span class="nx">policy</span><span class="p">.</span><span class="nx">deniedAccessModes</span><span class="p">)</span>
+              <span class="nx">deniedAccessModes</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">mode</span><span class="p">)</span>
       <span class="p">}</span>
 
   <span class="c1">// Deny overrules allow.</span>
-  <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">mode</span> <span class="k">of</span> <span class="nx">deny</span><span class="p">)</span>
-      <span class="nx">allow</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">mode</span><span class="p">)</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">mode</span> <span class="k">of</span> <span class="nx">deniedAccessModes</span><span class="p">)</span>
+      <span class="nx">allowedAccessModes</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">mode</span><span class="p">)</span>
 
-  <span class="k">return</span> <span class="nx">allow</span>
+  <span class="k">return</span> <span class="nx">allowedAccessModes</span>
 <span class="p">}</span>
 </code></pre>
           </section>
@@ -2537,39 +2611,29 @@ ex:policyC
           property="bibo:hasPart"
         >
           <h3 class="heading" id="satisfied-policy">
-            <span class="secno">6.3. </span
+            <span class="secno">6.4. </span
             ><span class="content">Satisfied Policy</span
             ><a class="self-link" href="#satisfied-policy"></a>
           </h3>
-          <p>
-            Policies are satisfied via the <code>acp:allOf</code>,
-            <code>acp:anyOf</code> and <code>acp:noneOf</code> properties which
-            act respectively as intersection, union and exclusion operators.
-          </p>
-
           <div about="acp:Policy" property="rdfs:comment">
-            <p>A Policy MUST be considered satisfied if and only if:</p>
+            <p>A Policy MUST be satisfied if and only if:</p>
             <ul>
               <li>
-                It references at least one Matcher via a
-                <code>acp:allOf</code> or <code>acp:anyOf</code> property; and
+                it references at least one Matcher via an
+                <code>acp:allOf</code> or <code>acp:anyOf</code> property; and,
               </li>
               <li>
-                At least one Matcher it references matches the given resource
-                access description; and
+                all of its <code>acp:allOf</code> Matchers are satisfied; and,
               </li>
               <li>
-                The <code>acp:allOf</code>, <code>acp:anyOf</code> and
-                <code>acp:noneOf</code> of conditions it defines are satisfied.
+                at least one of its <code>acp:anyOf</code> Matchers is
+                satisfied; and,
+              </li>
+              <li>
+                none of its <code>acp:noneOf</code> Matchers are satisfied.
               </li>
             </ul>
           </div>
-
-          <p>
-            Given that the <code>acp:noneOf</code> condition excludes matches, a
-            policy without a satisfied <code>acp:allOf</code> or
-            <code>acp:anyOf</code> condition is never satisfied.
-          </p>
 
           <section
             datatype="rdf:HTML"
@@ -2578,7 +2642,7 @@ ex:policyC
             property="bibo:hasPart"
           >
             <h4 class="heading" id="satisfied-policy-example">
-              <span class="secno">6.3.1. </span
+              <span class="secno">6.4.1. </span
               ><span class="content">Satisfied Policy example</span
               ><a class="self-link" href="#satisfied-policy-example"></a>
             </h4>
@@ -2594,16 +2658,17 @@ ex:policyC
                 A will not be satisfied.
               </li>
               <li>
-                If both Matcher D and Matcher E are not satisfied, then Policy A
+                If neither Matcher D nor Matcher E are satisfied, then Policy A
                 will not be satisfied.
               </li>
               <li>
-                If Matcher F is satisfied, then Policy A will not be satisfied.
+                If either Matcher F or Matcher G is satisfied, then Policy A
+                will not be satisfied.
               </li>
               <li>
                 If both Matcher B and Matcher C are satisfied, and, either
-                Matcher D or Matcher E are satisfied, and, Matcher F is not
-                satisfied, then Policy A will be satisfied.
+                Matcher D or Matcher E are satisfied, and, Matcher F and Matcher
+                G are not satisfied, then Policy A will be satisfied.
               </li>
             </ul>
 
@@ -2621,7 +2686,7 @@ ex:policyC
 ex:policyA
   acp:allOf ex:matcherB, ex:matcherC ;&nbsp;&nbsp;
   acp:anyOf ex:matcherD, matcherE ;
-  acp:noneOf ex:matcherF .
+  acp:noneOf ex:matcherF, ex:matcherG .
 </pre
             >
           </section>
@@ -2633,7 +2698,7 @@ ex:policyA
             property="bibo:hasPart"
           >
             <h4 class="heading" id="satisfied-policy-pseudocode">
-              <span class="secno">6.3.2. </span
+              <span class="secno">6.4.2. </span
               ><span class="content">Satisfied Policy pseudocode</span
               ><a class="self-link" href="#satisfied-policy-pseudocode"></a>
             </h4>
@@ -2641,17 +2706,17 @@ ex:policyA
               class="highlight pseudocode"
             ><code><span class="kd">function</span> <span class="nx">isSatisfiedPolicy</span><span class="p">(</span><span class="nx">policy</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// If any 'none of' matcher is satisfied then the policy is not satisfied.</span>
-  <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">matcher</span> <span class="k">of</span> <span class="nx">policy</span><span class="p">.</span><span class="nx">noneOf</span><span class="p">)</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">matcher</span> <span class="k">of</span> <span class="nx">policy</span><span class="p">.</span><span class="nx">noneOfMatchers</span><span class="p">)</span>
       <span class="k">if</span> <span class="p">(</span><span class="nx">isSatisfiedMatcher</span><span class="p">(</span><span class="nx">matcher</span><span class="p">,</span> <span class="nx">context</span><span class="p">))</span>
           <span class="k">return</span> <span class="kc">false</span>
 
-  <span class="c1">// If any 'all of' matcher is not satisfied then the policy is not satisfied.</span>&nbsp;&nbsp;
-  <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">matcher</span> <span class="k">of</span> <span class="nx">policy</span><span class="p">.</span><span class="nx">allOf</span><span class="p">)</span>
+  <span class="c1">// If any 'all of' matcher is not satisfied then the policy is not satisfied.</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">matcher</span> <span class="k">of</span> <span class="nx">policy</span><span class="p">.</span><span class="nx">allOfMatchers</span><span class="p">)</span>
       <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isSatisfiedMatcher</span><span class="p">(</span><span class="nx">matcher</span><span class="p">,</span> <span class="nx">context</span><span class="p">))</span>
           <span class="k">return</span> <span class="kc">false</span>
 
   <span class="c1">// If any 'any of' matcher is satisfied then the policy is satisfied.</span>
-  <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">matcher</span> <span class="k">of</span> <span class="nx">policy</span><span class="p">.</span><span class="nx">anyOf</span><span class="p">)</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">matcher</span> <span class="k">of</span> <span class="nx">policy</span><span class="p">.</span><span class="nx">anyOfMatchers</span><span class="p">)</span>
       <span class="k">if</span> <span class="p">(</span><span class="nx">isSatisfiedMatcher</span><span class="p">(</span><span class="nx">matcher</span><span class="p">,</span> <span class="nx">context</span><span class="p">))</span>
           <span class="k">return</span> <span class="kc">true</span>
 
@@ -2663,7 +2728,7 @@ ex:policyA
   <span class="c1">// Hence, the policy is satisfied if it has</span>
   <span class="c1">// - an 'all of' condition and</span>
   <span class="c1">// - no 'any of' condition.</span>
-  <span class="k">return</span> <span class="nx">policy</span><span class="p">.</span><span class="nx">allOf</span><span class="p">.</span><span class="nx">size</span> <span class="o">!==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">policy</span><span class="p">.</span><span class="nx">anyOf</span><span class="p">.</span><span class="nx">size</span> <span class="o">===</span> <span class="mi">0</span>
+  <span class="k">return</span> <span class="nx">policy</span><span class="p">.</span><span class="nx">allOfMatchers</span><span class="p">.</span><span class="nx">size</span> <span class="o">!==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">policy</span><span class="p">.</span><span class="nx">anyOfMatchers</span> <span class="o">===</span> <span class="mi">0</span>
 <span class="p">}</span>
 </code></pre>
           </section>
@@ -2676,35 +2741,23 @@ ex:policyA
           property="bibo:hasPart"
         >
           <h3 class="heading" id="satisfied-matcher">
-            <span class="secno">6.4. </span
+            <span class="secno">6.5. </span
             ><span class="content">Satisfied Matcher</span
             ><a class="self-link" href="#satisfied-matcher"></a>
           </h3>
-          <p>
-            The default operation of matching is based on
-            <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-iri-equality"
-              ><dfn>IRI</dfn></a
-            >
-            and
-            <a
-              href="https://www.w3.org/TR/rdf11-concepts/#dfn-literal-term-equality"
-              ><dfn>literal term equality</dfn></a
-            >
-            as defined in the RDF 1.1 Concepts and Abstract Syntax
-            <cite
-              ><a class="bibref" href="#rdf11-concepts">RDF11 CONCEPTS</a></cite
-            >.
-          </p>
-
           <div about="acp:Matcher" property="rdfs:comment">
-            <p>A Matcher MUST be considered satisfied if and only if:</p>
+            <p>A Matcher MUST be satisfied if and only if:</p>
             <ul>
-              <li>It defines at least one matching attribute; and</li>
+              <li>it defines at least one attribute; and,</li>
               <li>
-                All the attributes defined find a match in the given resource
-                access description.
+                at least one value of each defined attribute matches the
+                Context.
               </li>
             </ul>
+            <p>
+              ACP engines MUST match the context attributes defined by this
+              specification according to IRI equality and literal term equality.
+            </p>
           </div>
 
           <section
@@ -2714,10 +2767,60 @@ ex:policyA
             property="bibo:hasPart"
           >
             <h4 class="heading" id="satisfied-matcher-example">
-              <span class="secno">6.4.1. </span
+              <span class="secno">6.5.1. </span
               ><span class="content">Satisfied Matcher example</span
               ><a class="self-link" href="#satisfied-matcher-example"></a>
             </h4>
+            <p>
+              The following example authorization graph means that access to
+              resource X is controlled by a Policy that will allow read if it is
+              satisfied and be satisfied if either matcher A or matcher B or
+              both are satisfied.
+            </p>
+
+            <p>Matcher A will be satisfied if:</p>
+
+            <ul>
+              <li>
+                either Alice or Bob are the requesting agent or if the
+                requesting agent is an owner or creator; and,
+              </li>
+              <li>client 1 is used by the requesting agent; and,</li>
+              <li>
+                issuer 2 is used by the requesting agent to assert their
+                identity.
+              </li>
+            </ul>
+
+            <p>Matcher B will be satisfied if:</p>
+
+            <ul>
+              <li>a valid VC of type "Family Member" is presented.</li>
+            </ul>
+
+            <pre
+              id="satisfied-matcher-example-0"
+              class="example example-authorization-graph"
+            >
+[
+  acp:resource ex:X ;
+  acp:accessControl [
+    acp:apply [
+      acp:allow acl:Read ;
+      acp:anyOf ex:matcherA, ex:matcherB ;
+    ]
+  ]
+] .
+
+ex:matcherA
+  acp:agent ex:Alice, ex:Bob, acp:CreatorAgent, acp:OwnerAgent ;&nbsp;&nbsp;
+  acp:client ex:client1 ;
+  acp:issuer ex:issuer2 .
+
+ex:matcherB
+  acp:vc ex:FamilyMember .
+</pre
+            >
           </section>
 
           <section
@@ -2727,10 +2830,121 @@ ex:policyA
             property="bibo:hasPart"
           >
             <h4 class="heading" id="satisfied-matcher-pseudocode">
-              <span class="secno">6.4.2. </span
+              <span class="secno">6.5.2. </span
               ><span class="content">Satisfied Matcher pseudocode</span
               ><a class="self-link" href="#satisfied-matcher-pseudocode"></a>
             </h4>
+            <pre
+              class="highlight pseudocode"
+            ><code><span class="kd">function</span> <span class="nx">isSatisfiedMatcher</span><span class="p">(</span><span class="nx">matcher</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// An empty matcher is never satisfied.</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">matcher</span><span class="p">.</span><span class="nx">agents</span><span class="p">.</span><span class="nx">size</span> <span class="o">===</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">matcher</span><span class="p">.</span><span class="nx">clients</span><span class="p">.</span><span class="nx">size</span> <span class="o">===</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">matcher</span><span class="p">.</span><span class="nx">issuers</span><span class="p">.</span><span class="nx">size</span> <span class="o">===</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">matcher</span><span class="p">.</span><span class="nx">vcs</span><span class="p">.</span><span class="nx">size</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="k">return</span> <span class="kc">false</span>
+
+  <span class="c1">// For each attribute, if any values are defined, then at least one of them must match the context.</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">matcher</span><span class="p">.</span><span class="nx">agents</span><span class="p">.</span><span class="nx">size</span> <span class="o">!==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">isMatch</span> <span class="o">=</span> <span class="kc">false</span>
+
+      <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">agent</span> <span class="k">of</span> <span class="nx">matcher</span><span class="p">.</span><span class="nx">agents</span><span class="p">)</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">agentMatches</span><span class="p">(</span><span class="nx">agent</span><span class="p">,</span> <span class="nx">context</span><span class="p">))</span> <span class="p">{</span>
+              <span class="nx">isMatch</span> <span class="o">=</span> <span class="kc">true</span>
+              <span class="k">break</span>
+          <span class="p">}</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isMatch</span><span class="p">)</span>
+          <span class="k">return</span> <span class="kc">false</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">matcher</span><span class="p">.</span><span class="nx">clients</span><span class="p">.</span><span class="nx">size</span> <span class="o">!==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">isMatch</span> <span class="o">=</span> <span class="kc">false</span>
+
+      <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">client</span> <span class="k">of</span> <span class="nx">matcher</span><span class="p">.</span><span class="nx">clients</span><span class="p">)</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">clientMatches</span><span class="p">(</span><span class="nx">client</span><span class="p">,</span> <span class="nx">context</span><span class="p">))</span> <span class="p">{</span>
+              <span class="nx">isMatch</span> <span class="o">=</span> <span class="kc">true</span>
+              <span class="k">break</span>
+          <span class="p">}</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isMatch</span><span class="p">)</span>
+          <span class="k">return</span> <span class="kc">false</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">matcher</span><span class="p">.</span><span class="nx">issuers</span><span class="p">.</span><span class="nx">size</span> <span class="o">!==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">isMatch</span> <span class="o">=</span> <span class="kc">false</span>
+
+      <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">issuer</span> <span class="k">of</span> <span class="nx">matcher</span><span class="p">.</span><span class="nx">issuers</span><span class="p">)</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">issuerMatches</span><span class="p">(</span><span class="nx">issuer</span><span class="p">,</span> <span class="nx">context</span><span class="p">))</span> <span class="p">{</span>
+              <span class="nx">isMatch</span> <span class="o">=</span> <span class="kc">true</span>
+              <span class="k">break</span>
+          <span class="p">}</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isMatch</span><span class="p">)</span>
+          <span class="k">return</span> <span class="kc">false</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">matcher</span><span class="p">.</span><span class="nx">vcs</span><span class="p">.</span><span class="nx">size</span> <span class="o">!==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">isMatch</span> <span class="o">=</span> <span class="kc">false</span>
+
+      <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">vc</span> <span class="k">of</span> <span class="nx">matcher</span><span class="p">.</span><span class="nx">vcs</span><span class="p">)</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">vcMatches</span><span class="p">(</span><span class="nx">vc</span><span class="p">,</span> <span class="nx">context</span><span class="p">))</span> <span class="p">{</span>
+              <span class="nx">isMatch</span> <span class="o">=</span> <span class="kc">true</span>
+              <span class="k">break</span>
+          <span class="p">}</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isMatch</span><span class="p">)</span>
+          <span class="k">return</span> <span class="kc">false</span>
+  <span class="p">}</span>
+
+  <span class="c1">// At this point, the matcher is satisfied because</span>
+  <span class="c1">// - there was at least one defined attribute and</span>
+  <span class="c1">// - at least one value of each defined attribute matched the context.</span>
+  <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">publicAgent</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://www.w3.org/ns/solid/acp#PublicAgent</span><span class="dl">"</span>
+<span class="kd">const</span> <span class="nx">authenticatedAgent</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://www.w3.org/ns/solid/acp#AuthenticatedAgent</span><span class="dl">"</span>
+<span class="kd">const</span> <span class="nx">creatorAgent</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://www.w3.org/ns/solid/acp#CreatorAgent</span><span class="dl">"</span>
+<span class="kd">const</span> <span class="nx">ownerAgent</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://www.w3.org/ns/solid/acp#OwnerAgent</span><span class="dl">"</span>
+<span class="kd">function</span> <span class="nx">agentMatches</span><span class="p">(</span><span class="nx">agent</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">agent</span> <span class="o">===</span> <span class="nx">publicAgent</span><span class="p">)</span>
+      <span class="k">return</span> <span class="kc">true</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">agent</span> <span class="o">===</span> <span class="nx">authenticatedAgent</span> <span class="o">&amp;&amp;</span> <span class="nx">context</span><span class="p">.</span><span class="nx">agent</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span>
+      <span class="k">return</span> <span class="kc">true</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">agent</span> <span class="o">===</span> <span class="nx">creatorAgent</span> <span class="o">&amp;&amp;</span> <span class="nx">context</span><span class="p">.</span><span class="nx">creators</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">agent</span><span class="p">))</span>
+      <span class="k">return</span> <span class="kc">true</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">agent</span> <span class="o">===</span> <span class="nx">ownerAgent</span> <span class="o">&amp;&amp;</span> <span class="nx">context</span><span class="p">.</span><span class="nx">owners</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">agent</span><span class="p">))</span>
+      <span class="k">return</span> <span class="kc">true</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">agent</span> <span class="o">===</span> <span class="nx">context</span><span class="p">.</span><span class="nx">agent</span><span class="p">)</span>
+      <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">publicClient</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://www.w3.org/ns/solid/acp#PublicClient</span><span class="dl">"</span>
+<span class="kd">function</span> <span class="nx">clientMatches</span><span class="p">(</span><span class="nx">client</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">client</span> <span class="o">===</span> <span class="nx">publicClient</span><span class="p">)</span>
+      <span class="k">return</span> <span class="kc">true</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">client</span> <span class="o">===</span> <span class="nx">context</span><span class="p">.</span><span class="nx">client</span><span class="p">)</span>
+      <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">publicIssuer</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://www.w3.org/ns/solid/acp#PublicIssuer</span><span class="dl">"</span>
+<span class="kd">function</span> <span class="nx">issuerMatches</span><span class="p">(</span><span class="nx">issuer</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">issuer</span> <span class="o">===</span> <span class="nx">publicIssuer</span><span class="p">)</span>
+      <span class="k">return</span> <span class="kc">true</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">issuer</span> <span class="o">===</span> <span class="nx">context</span><span class="p">.</span><span class="nx">issuer</span><span class="p">)</span>
+      <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">vcMatches</span><span class="p">(</span><span class="nx">vc</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">vcs</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">vc</span><span class="p">))</span>
+      <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+</code></pre>
           </section>
         </section>
       </section>
@@ -2747,174 +2961,82 @@ ex:policyA
           ><a class="self-link" href="#server-implementation"></a>
         </h2>
         <p>
-          This section introduces ACP server capability and ACR discovery, as
-          well as ACR editing, and ACP resources lifecycle management.
+          This section introduces conforming resource server and ACP server
+          requirements.
         </p>
 
         <section
           datatype="rdf:HTML"
           typeof="bibo:Chapter"
-          resource=":capability-discovery"
+          resource=":conforming-resource-server"
           property="bibo:hasPart"
         >
-          <h3 class="heading" id="capability-discovery">
+          <h3 class="heading" id="conforming-resource-server">
             <span class="secno">7.1. </span
-            ><span class="content">Capability discovery</span
-            ><a class="self-link" href="#capability-discovery"></a>
+            ><span class="content">Conforming resource server</span
+            ><a class="self-link" href="#conforming-resource-server"></a>
           </h3>
           <p>
-            When a server wants to enable applications to discover its ACP
-            capabilities, it MUST do so via link headers.
+            Conforming resource servers MUST provide ACP servers with resource
+            access Contexts and MUST authorize resource access according to
+            grant graphs produced by a conforming ACP server.
           </p>
 
           <p>
-            The server MUST advertise the access modes it supports by responding
-            to HTTP OPTIONS requests over ACP access control resources including
-            a Link header with the rel value of
-            <code>http://www.w3.org/ns/solid/acp#grant</code> and the full URI
-            of an access mode as link target [RFC8288]. The server MUST produce
-            one such Link header for each access mode it supports.
-          </p>
-
-          <p>
-            For example, if a server supports the ACL read, write and append
-            access modes, it should advertise it by responding to HTTP OPTIONS
-            requests over ACP access control resources including three link
-            headers with rel value of
-            <code>http://www.w3.org/ns/solid/acp#grant</code> and respectively
-            targets of <code>http://www.w3.org/ns/auth/acl#Read</code>,
-            <code>http://www.w3.org/ns/auth/acl#Write</code> and
-            <code>http://www.w3.org/ns/auth/acl#Append</code> in order to make
-            it explicit which set of access modes are understood and relevant
-            when editing ACP policies.
-          </p>
-
-          <p>
-            The server MUST advertise the request attributes it supports by
-            responding to HTTP OPTIONS requests over ACP access control
-            resources including a Link header with the rel value of
-            <code>http://www.w3.org/ns/solid/acp#attribute</code> and the full
-            URI of an acp attribute as link target [RFC8288]. The server MUST
-            produce one such Link header for each request attribute it supports.
-          </p>
-
-          <p>
-            For example, if a server supports the ACP agent, client and issuer
-            request attributes, it should advertise it by responding to HTTP
-            OPTIONS requests over ACP access control resources including three
-            link headers with rel value of
-            <code>http://www.w3.org/ns/solid/acp#attribute</code> and
-            respectively targets of
-            <code>http://www.w3.org/ns/solid/acp#agent</code>,
-            <code>http://www.w3.org/ns/solid/acp#client</code> and
-            <code>http://www.w3.org/ns/solid/acp#issuer</code> in order to make
-            it explicit which set of request attributes are understood and
-            relevant when editing ACP matchers.
-          </p>
-        </section>
-
-        <section
-          datatype="rdf:HTML"
-          typeof="bibo:Chapter"
-          resource=":acr-discovery"
-          property="bibo:hasPart"
-        >
-          <h3 class="heading" id="acr-discovery">
-            <span class="secno">7.2. </span
-            ><span class="content">ACR discovery</span
-            ><a class="self-link" href="#acr-discovery"></a>
-          </h3>
-          <p>
-            When a server wants to enable applications to discover the ACP
-            access control resource associated with a given resource, the server
-            MUST advertise the ACP access control resource that is associated
-            with that resource by responding to HTTP requests over the resource
-            including a <code>Link</code> header with the <code>rel</code> value
-            of <code>acl</code> (acl Link Relation) and the ACP access control
-            resource as the link target [RFC8288]. The same mechanism is used in
-            <a
-              href="https://solid.github.io/web-access-control-spec/#acl-resource-discovery"
-              >Web Access Control resource discovery</a
+            When responding to requests targetting access controlled resources,
+            conforming resource servers MUST include a <code>Link</code> header
+            with the <code>rel</code> value of <code>acl</code> and controlled
+            resources&apos; ACRs as the link target
+            <cite><a class="bibref" href="#rfc8288">RFC 8288</a></cite
             >.
           </p>
+
           <p>
-            A server responding to an HTTP request over an ACP access control
-            resource MUST include a <code>Link</code> header with the
+            Conforming resource servers MUST provide ACP servers with sufficient
+            resource membership information to resolve ancestor ACRs.
+          </p>
+        </section>
+
+        <section
+          datatype="rdf:HTML"
+          typeof="bibo:Chapter"
+          resource=":conforming-acp-server"
+          property="bibo:hasPart"
+        >
+          <h3 class="heading" id="conforming-acp-server">
+            <span class="secno">7.2. </span
+            ><span class="content">Conforming ACP server</span
+            ><a class="self-link" href="#conforming-acp-server"></a>
+          </h3>
+          <p>
+            When responding to requests targetting an ACR, conforming ACP
+            servers MUST include a <code>Link</code> header with the
             <code>rel</code> value of <code>type</code> and the
-            <code>acp:AccessControlResource</code> URI as link target.
-          </p>
-        </section>
-
-        <section
-          datatype="rdf:HTML"
-          typeof="bibo:Chapter"
-          resource=":acr-editing"
-          property="bibo:hasPart"
-        >
-          <h3 class="heading" id="acr-editing">
-            <span class="secno">7.3. </span
-            ><span class="content">ACR editing</span
-            ><a class="self-link" href="#acr-editing"></a>
-          </h3>
-          <p>
-            The owner of a storage is implicitly considered an owner of all the
-            resources in the URI space corresponding to the storage.
+            <code>http://www.w3.org/ns/solid/acp#AccessControlResource</code>
+            IRI as the link target.
           </p>
 
           <p>
-            An owner of a resource is implicitly considered an owner of its
-            associated Access Control Resource.
+            When responding to OPTIONS requests targetting an ACR, conforming
+            ACP servers MUST include a <code>Link</code> header for each
+            supported Access Mode with the <code>rel</code> value of
+            <code>http://www.w3.org/ns/solid/acp#grant</code> and the full IRI
+            of the supported Access Mode as the link target.
           </p>
 
           <p>
-            An owner of an Access Control Resource implicitly has full read and
-            write access over it.
+            When responding to OPTIONS requests targetting an ACR, conforming
+            ACP servers MUST include a <code>Link</code> header for each
+            supported attribute with the <code>rel</code> value of
+            <code>http://www.w3.org/ns/solid/acp#attribute</code> and the full
+            IRI of the supported attribute as the link target.
           </p>
 
-          <p>
-            To add or remove an Access Control from an ACR, agents that are not
-            owners of said ACR need read and write access to both the ACR itself
-            and to the resource where said Access Control is defined. In other
-            words, Access Controls defined as part of a separate resource can be
-            protected from unwanted edits in and out of ACRs by setting adequate
-            permissions in their own ACR.
-          </p>
-        </section>
-
-        <section
-          datatype="rdf:HTML"
-          typeof="bibo:Chapter"
-          resource=":resource-management"
-          property="bibo:hasPart"
-        >
-          <h3 class="heading" id="resource-management">
-            <span class="secno">7.4. </span
-            ><span class="content">Resource management</span
-            ><a class="self-link" href="#resource-management"></a>
-          </h3>
-          <p>Access Control Resources MUST be server managed.</p>
+          <p>Conforming ACP engines MAY be conforming resource servers.</p>
 
           <p>
-            There is a one to one relationship between a resource and its
-            authoritative source of access control. Therefore, when resources
-            are created or deleted, the corresponding ACRs MUST be created or
-            deleted accordingly.
-          </p>
-
-          <p>
-            Access Controls, Policies and Matchers MAY all be access controlled
-            via their own ACR.
-          </p>
-
-          <p>
-            As long as an Access Control, a Policy or a Matcher is referenced by
-            an ACR, it MUST not be deleted. However, if such consistency failed
-            to be enforced or if an Access Control, a Policy or a Matcher is not
-            accessible for any other reason, then access permissions resolution
-            MUST fail to its default behaviour of only granting read and write
-            access to the invalid ACR to its owners; read and write access MUST
-            not be implicitly granted to a resource whose access control
-            resolution fails, even to owners of that resource.
+            The lifecycle of Access Control Resources SHOULD take into account
+            the lifecycle of resources they control access to.
           </p>
         </section>
       </section>
@@ -2928,6 +3050,19 @@ ex:policyA
     >
       <h2 id="acknowledgements">Acknowledgements</h2>
       <p><em>This section is non-normative.</em></p>
+
+      <p>
+        Samu Lang provided a comprehensive review of the specification as well
+        as the pseudocode sections.
+      </p>
+
+      <p>
+        The Solid Community Group would like to thank the following individuals
+        for reviewing and providing feedback on the specification (in
+        alphabetical order): Justin Bingham, Sarven Capadisli, Aaron Coburn,
+        Pete Edwards, Samu Lang, Elf Pavlik, Henry Story, Ted Thibodeau Jr,
+        Emmet Townsend.
+      </p>
     </section>
 
     <section
@@ -2945,7 +3080,7 @@ ex:policyA
         property="bibo:hasPart"
       >
         <h3 id="normative-references">Normative references</h3>
-        <dl resource="">
+        <dl>
           <dt id="rdf11-concepts">[RDF11-CONCEPTS]</dt>
           <dd>
             <a
@@ -2958,6 +3093,7 @@ ex:policyA
               >https://www.w3.org/TR/rdf11-concepts/</a
             >.
           </dd>
+
           <dt id="rfc2119">[RFC2119]</dt>
           <dd>
             <a
@@ -2971,6 +3107,7 @@ ex:policyA
               >https://datatracker.ietf.org/doc/html/rfc2119</a
             >.
           </dd>
+
           <dt id="rfc8174">[RFC8174]</dt>
           <dd>
             <a
@@ -2984,16 +3121,29 @@ ex:policyA
               >https://datatracker.ietf.org/doc/html/rfc8174</a
             >.
           </dd>
-          <dt id="sparql11-query">[SPARQL11-QUERY]</dt>
+
+          <dt id="rfc8288">[RFC8288]</dt>
           <dd>
             <a
-              href="https://www.w3.org/TR/sparql11-query/"
+              href="https://www.rfc-editor.org/info/rfc8288"
               rel="cito:citesAsAuthority"
-              ><cite>SPARQL 1.1 Query</cite></a
-            >. Steve Harris; Andy Seaborne; Eric Prud'hommeaux. W3C. 21 March
-            2013. W3C Recommendation. URL:
-            <a href="https://www.w3.org/TR/sparql11-query/"
-              >https://www.w3.org/TR/sparql11-query/</a
+              ><cite>Web Linking</cite></a
+            >. B. Leiba. IETF. October 2017. Proposed Standard. URL:
+            <a href="https://datatracker.ietf.org/doc/html/rfc8288"
+              >https://datatracker.ietf.org/doc/html/rfc8288</a
+            >.
+          </dd>
+
+          <dt id="vc-data-model">[VC-DATA-MODEL]</dt>
+          <dd>
+            <a
+              href="https://www.w3.org/TR/vc-data-model/"
+              rel="cito:citesAsAuthority"
+              ><cite>VC Data Model</cite></a
+            >. Manu Sporny; Grant Noble; Dave Longley; Daniel C. Burnett; Brent
+            Zundel; Kyle Den Hartog. W3C. 3 March 2022. W3C Recommendation. URL:
+            <a href="https://www.w3.org/TR/vc-data-model/"
+              >https://www.w3.org/TR/vc-data-model/</a
             >.
           </dd>
         </dl>
@@ -3006,6 +3156,18 @@ ex:policyA
         property="bibo:hasPart"
       >
         <h3 id="informative-references">Informative references</h3>
+        <dl>
+          <dt id="turtle">[RDF11-TURTLE]</dt>
+          <dd>
+            <a href="https://www.w3.org/TR/turtle/" rel="rdfs:seeAlso"
+              ><cite>RDF 1.1 Turtle</cite></a
+            >. Eric Prud'hommeaux; Gavin Carothers. W3C. 25 February 2014. W3C
+            Recommendation. URL:
+            <a href="https://www.w3.org/TR/turtle/"
+              >https://www.w3.org/TR/turtle/</a
+            >.
+          </dd>
+        </dl>
       </section>
     </section>
 
