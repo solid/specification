@@ -50,8 +50,7 @@ acp:Policy
     a rdfs:Class ;
     rdfs:label "Access Policy"@en ;
     rdfs:comment "Instances of the Policy class connect Access Controls to allowed and denied Access Modes as well as sets of Matchers describing instances of resource access."@en ;
-    rdfs:comment " An ACP engine MUST grant exactly those Access Modes allowed by Effective Policies."@en ;
-    rdfs:comment "Effective Policies are the Policies controlling access to a resource. A Policy MUST control access to a resource if: it is applied by an Access Control of an ACR of the resource; or, it is applied by a member Access Control of an ACR of an ancestor of the resource."@en ;
+    rdfs:comment "An ACP engine MUST grant exactly those Access Modes allowed by Effective Policies. Effective Policies are the Policies controlling access to a resource. A Policy MUST control access to a resource if: it is applied by an Access Control of an ACR of the resource; or, it is applied by a member Access Control of an ACR of an ancestor of the resource."@en ;
     rdfs:comment "An Access Mode MUST be granted if and only if in the set of Effective Policies controlling access to it: a satisfied policy allows the Access Mode; and, no satisfied policy denies it."@en ;
     rdfs:comment "A Policy MUST be satisfied if and only if: it references at least one Matcher via an acp:allOf or acp:anyOf property; and, all of its acp:allOf Matchers are satisfied; and, at least one of its acp:anyOf Matchers is satisfied; and, none of its acp:noneOf Matchers are satisfied."@en ;
     rdfs:seeAlso <https://www.w3.org/TR/sparql11-query/#propertypaths> ;
