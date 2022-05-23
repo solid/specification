@@ -330,12 +330,12 @@ content: "";
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#notifications"><span class="secno">6</span> <span class="content">Notifications</span></a>
+                  <a class="tocxref" href="#notifications"><span class="secno">6</span> <span class="content">Linked Data Notifications</span></a>
                 </li>
                 <li class="tocline">
                   <a class="tocxref" href="#live-update"><span class="secno">7</span> <span class="content">Live Update</span></a>
                   <ol>
-                    <li><a href="#websockets"><span class="secno">7.1</span> <span class="content">WebSockets</span></a></li>
+                    <li><a href="#notification-protocol"><span class="secno">7.1</span> <span class="content">Solid Notifications Protocol</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -923,7 +923,7 @@ content: "";
           </section>
 
           <section id="notifications" inlist="" rel="schema:hasPart" resource="#notifications">
-            <h2 property="schema:name">Notifications</h2>
+            <h2 property="schema:name">Linked Data Notifications</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p><span about="" id="server-ldn" rel="spec:requirement" resource="#server-ldn"><span property="spec:statement">A Solid <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> conform to the LDN specification by implementing the Receiver parts to receive notifications and make Inbox contents available [<cite><a class="bibref" href="#bib-ldn">LDN</a></cite>].</span></span></p>
 
@@ -934,22 +934,49 @@ content: "";
           <section id="live-update" inlist="" rel="schema:hasPart" resource="#live-update">
             <h2 property="schema:name">Live Update</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <section id="websockets" inlist="" rel="schema:hasPart" resource="#websockets">
-                <h3 property="schema:name">WebSockets</h3>
+              <section id="notification-protocol" inlist="" rel="schema:hasPart" resource="#notification-protocol">
+                <h3 property="schema:name">Solid Notifications Protocol</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>For real-time collaborative communication between client and server about changes affecting a resource, this Solid Protocol uses the WebSocket API [<cite><a class="bibref" href="#bib-w3c-html">W3C-HTML</a></cite>] and the WebSocket Protocol.</p>
+                  <p>
+                    Entities in a Solid ecosystem use the
+                    <cite><a href="https://solidproject.org/TR/notifications-protocol">Solid Notifications Protocol</a></cite>
+                    to communicate about changes affecting a resource.
+                  </p>
 
-                  <p><span about="" id="server-websockets-api" rel="spec:requirement" resource="#server-websockets-api"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:SHOULD">SHOULD</span> implement the <cite><a href="https://github.com/solid/solid-spec/blob/master/api-websockets.md">Solid WebSockets API</a></cite> [<cite><a class="bibref" href="#bib-solid-websockets-api">SOLID-WEBSOCKETS-API</a></cite>].</span></span></p>
+                  <p>
+                    <span about="" id="server-notification-api" rel="spec:requirement" resource="#server-notification-api">
+                      <span property="spec:statement">
+                        <span rel="spec:requirementSubject" resource="spec:Server">Servers</span>
+                        <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> implement the
+                        <cite><a href="https://solidproject.org/TR/notifications-protocol">Solid Notifications Protocol</a></cite>
+                        [<cite><a class="bibref" href="#bib-solid-notifications-protocol">SOLID-NOTIFICATIONS-PROTOCOL</a></cite>]
+                      </span>
+                    </span>
+                  </p>
 
-                  <p><span about="" id="client-websockets-api" rel="spec:requirement" resource="#client-websockets-api"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Client">Clients</span> <span rel="spec:requirementLevel" resource="spec:SHOULD">SHOULD</span> implement the <cite><a href="https://github.com/solid/solid-spec/blob/master/api-websockets.md">Solid WebSockets API</a></cite> [<cite><a class="bibref" href="#bib-solid-websockets-api">SOLID-WEBSOCKETS-API</a></cite>].</span></span></p>
+                  <p>
+                    <span about="" id="client-notification-api" rel="spec:requirement" resource="#client-notification-api">
+                      <span property="spec:statement">
+                        <span rel="spec:requirementSubject" resource="spec:Client">Clients</span>
+                        <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> implement the
+                        <cite><a href="https://solidproject.org/TR/notifications-protocol">Solid Notifications Protocol</a></cite>
+                        [<cite><a class="bibref" href="#bib-solid-notifications-protocol">SOLID-NOTIFICATIONS-PROTOCOL</a></cite>]
+                      </span>
+                    </span>
+                  </p>
 
                   <p><em>The following is non-normative.</em></p>
 
-                  <p>The <cite>Solid WebSockets API</cite> (Unofficial Draft) has been the common protocol for many years. That draft does not include an authentication mechanism, and therefore the Protocol will transition to a new design. The new design is currently at <cite><a href="https://solid.github.io/notifications/protocol" rel="cito:citesAsPotentialSolution">Solid Notifications Protocol</a></cite> [<cite><a class="bibref" href="#bib-solid-notifications-protocol">SOLID-NOTIFICATIONS-PROTOCOL</a></cite>]. It is planned to include both security through authentication, and also common formats with other forms of real-time notification in the Solid ecosystem.</p>
+                  <p>
+                    The <cite>Solid WebSockets API</cite> (Unofficial Draft)
+                    [<cite><a class="bibref" href="#bib-solid-websockets-api">SOLID-WEBSOCKETS-API</a></cite>]
+                    has been the common notification protocol for many years. That draft does not include an authentication mechanism,
+                    and therefore this Protocol has transitioned to require the <a href="https://solidproject.org/TR/notifications-protocol">Solid Notifications Protocol</a>.
+                  </p>
 
-                  <p>Both client and server implementations should provide the existing protocol, and should transition to providing both protocols as the new one becomes available..</p>
-
-                  <p>The future directions of the protocol include moving from a simple one-bit notification that a resource has changed, requiring the client to reload the resource, to adding <code>PATCH</code> information in the notification so the client can calculate the new state immediately.</p>
+                  <p>
+                    Existing client and server implementations should begin providing support for the new notification protocol while supporting backwards compatability, as appropriate.
+                  </p>
                 </div>
               </section>
             </div>
@@ -1324,8 +1351,8 @@ content: "";
                     <dd><a href="https://datatracker.ietf.org/doc/html/rfc8174" rel="cito:citesAsAuthority"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc8174">https://datatracker.ietf.org/doc/html/rfc8174</a></dd>
                     <dt id="bib-rfc8288">[RFC8288]</dt>
                     <dd><a href="https://httpwg.org/specs/rfc8288.html" rel="cito:citesAsAuthority"><cite>Web Linking</cite></a>. M. Nottingham.  IETF. October 2017. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc8288.html">https://httpwg.org/specs/rfc8288.html</a></dd>
-                    <dt id="bib-solid-websockets-api">[SOLID-WEBSOCKETS-API]</dt>
-                    <dd><a href="https://github.com/solid/solid-spec/blob/master/api-websockets.md" rel="cito:citesAsAuthority"><cite>Solid WebSockets API</cite></a>. Nicola Greco; Dmitri Zagidulin; Ruben Verborgh.  W3C Solid Community Group. 17 June 2020. Unofficial Draft. URL: <a href="https://github.com/solid/solid-spec/blob/master/api-websockets.md">https://github.com/solid/solid-spec/blob/master/api-websockets.md</a></dd>
+                    <dt id="bib-solid-notifications-protocol">[SOLID-NOTIFICATIONS-PROTOCOL]</dt>
+                    <dd><a href="https://solidproject.org/TR/notifications-protocol" rel="cito:citesAsAuthority"><cite>Solid Notifications Protocol</cite></a>. Aaron Coburn; Sarven Capadisli.  W3C Solid Community Group. 09 May 2022. Proposed Standard. URL: <a href="https://solidproject.org/TR/notifications-protocol">https://solidproject.org/TR/notifications-protocol</a></dd>
                     <dt id="bib-solid-oidc">[SOLID-OIDC]</dt>
                     <dd><a href="https://solidproject.org/TR/oidc" rel="cito:citesAsAuthority"><cite>SOLID-OIDC</cite></a>. Aaron Coburn; elf Pavlik; Dmitri Zagidulin.  W3C Solid Community Group. 28 March 2022. Version 0.1.0. URL: <a href="https://solidproject.org/TR/oidc">https://solidproject.org/TR/oidc</a></dd>
                     <dt id="bib-sparql11-query">[SPARQL11-QUERY]</dt>
@@ -1362,8 +1389,8 @@ content: "";
                     <dd><a href="https://www.w3.org/TR/security-privacy-questionnaire/" rel="cito:citesAsPotentialSolution"><cite>Self-Review Questionnaire: Security and Privacy</cite></a>. Theresa O'Connor; Peter Snyder.  W3C. 23 March 2021. W3C Note. URL: <a href="https://www.w3.org/TR/security-privacy-questionnaire/">https://www.w3.org/TR/security-privacy-questionnaire/</a></dd>
                     <dt id="bib-societal-impact-questionnaire">[SOCIETAL-IMPACT-QUESTIONNAIRE]</dt>
                     <dd><a href="https://w3ctag.github.io/societal-impact-questionnaire/" rel="cito:citesAsPotentialSolution"><cite>Self-Review Questionnaire: Societal Impact</cite></a>. Amy Guy.  W3C. 13 Dec 2021. W3C Draft TAG Finding. URL: <a href="https://w3ctag.github.io/societal-impact-questionnaire/">https://w3ctag.github.io/societal-impact-questionnaire/</a></dd>
-                    <dt id="bib-solid-notifications-protocol">[SOLID-NOTIFICATIONS-PROTOCOL]</dt>
-                    <dd><a href="https://solid.github.io/notifications/protocol" rel="cito:citesAsPotentialSolution"><cite>Solid Notifications Protocol</cite></a>. Aaron Coburn; Sarven Capadisli.  W3C Solid Community Group. 16 December 2021. W3C Editor’s Draft. URL: <a href="https://solid.github.io/notifications/protocol">https://solid.github.io/notifications/protocol</a></dd>
+                    <dt id="bib-solid-websockets-api">[SOLID-WEBSOCKETS-API]</dt>
+                    <dd><a href="https://github.com/solid/solid-spec/blob/master/api-websockets.md" rel="cito:citesAsPotentialSolution"><cite>Solid WebSockets API</cite></a>. Nicola Greco; Dmitri Zagidulin; Ruben Verborgh.  W3C Solid Community Group. 17 June 2020. Unofficial Draft. URL: <a href="https://github.com/solid/solid-spec/blob/master/api-websockets.md">https://github.com/solid/solid-spec/blob/master/api-websockets.md</a></dd>
                     <dt id="bib-uaag20">[UAAG20]</dt>
                     <dd><a href="https://www.w3.org/TR/UAAG20/" rel="cito:citesAsPotentialSolution"><cite>User Agent Accessibility Guidelines (UAAG) 2.0</cite></a>. James Allan; Greg Lowney; Kimberly Patch; Jeanne F Spellman.  W3C. 15 December 2015. W3C Note. URL: <a href="https://www.w3.org/TR/UAAG20/">https://www.w3.org/TR/UAAG20/</a></dd>
                     <dt id="bib-wai-aria-1.2">[WAI-ARIA-1.2]</dt>
