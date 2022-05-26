@@ -284,3 +284,14 @@ We also make the following recommendations:
 * Cite the source resource in which consensus was reached for a given
   statement.
 * Changelog from previous published releases (if applicable).
+
+
+## Vocabulary Management
+
+TRs might refer or make use of namespaces for specific functionality. The CG
+handles the management of Solid vocabularies under its responsibility through
+the [solid/vocab](https://github.com/solid/vocab) repository.
+
+The policy for the management of Solid vocabularies under the W3C namespace is
+described in [Adding to W3C RDF
+Namespaces](https://www.w3.org/2016/08/namespaces/).
