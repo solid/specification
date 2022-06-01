@@ -295,3 +295,13 @@ the [solid/vocab](https://github.com/solid/vocab) repository.
 The policy for the management of Solid vocabularies under the W3C namespace is
 described in [Adding to W3C RDF
 Namespaces](https://www.w3.org/2016/08/namespaces/).
+
+
+## Meetings
+
+The CG [Meeting
+Guidelines](https://github.com/solid/specification/blob/main/meetings/README.md)
+describes how to participate and record meetings. There is a
+[minutes
+template](https://github.com/solid/specification/blob/main/meetings/template.md)
+that can be used by scribes to transcribe the meeting.
