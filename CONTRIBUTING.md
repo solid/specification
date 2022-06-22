@@ -236,8 +236,7 @@ Versioned technical reports MUST indicate their version using the [Semantic
 Versioning](https://semver.org/) scheme in the document. The first release
 of a technical report MUST use `1.0.0` (for `version-core`). Any release can
 use a `pre-release` value part of the version indicating the document status
-and the publication date, e.g., "Version 1.0.0-WD.20221231" indicates a
-Working Draft released on 2022-12-31.
+and the publication date, e.g., "Version 1.0.0-WD" indicates a Working Draft.
 
 ### Non-versioned technical report
 
