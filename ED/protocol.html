@@ -623,6 +623,19 @@ content: "";
 
                   <p>[<a href="https://github.com/solid/data-interoperability-panel/issues/10#issuecomment-598694029" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/153#issuecomment-624630022" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
+                  <p><span about="" id="server-storage-description" rel="spec:requirement" resource="#server-storage-description"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> include the <code>Link</code> header with <code>rel="http://www.w3.org/ns/solid/terms#storageDescription"</code> targeting the URI of the storage description resource in the response of HTTP <code>GET</code>, <code>HEAD</code> and <code>OPTIONS</code> requests targeting a resource in a storage.</span></span></p>
+
+                  <p><span about="" id="server-storage-description-resource" rel="spec:requirement" resource="#server-storage-description-resource"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> include <a href="#storage-description-statements" rel="rdfs:seeAlso">statements about the storage</a> as part of the storage description resource.</span></span></p>
+
+                  <p id="storage-description-statements" about="#storage-description-statements" typeof="skos:Collection"><span property="skos:prefLabel">Storage description statements</span> include the properties:</p>
+
+                  <dl about="#storage-description-statements" rel="skos:member">
+                    <dt about="#storage-description-rdf-type" id="storage-description-rdf-type" property="skos:prefLabel" typeof="skos:Concept"><code>rdf:type</code></dt>
+                    <dd about="#storage-description-rdf-type" property="skos:definition">A class whose URI is <code>http://www.w3.org/ns/pim/space#Storage</code>.</dd>
+                  </dl>
+
+                  <p>[<a href="https://github.com/solid/specification/issues/355" rel="cito:citesAsSourceDocument">Source</a>]
+
                   <p><span about="" id="server-storage-track-owner" rel="spec:requirement" resource="#server-storage-track-owner"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> keep track of at least one <a href="#owner">owner</a> of a storage in an implementation defined way.</span></span></p>
 
                   <p><span about="" id="server-storage-link-owner" rel="spec:requirement" resource="#server-storage-link-owner"><span property="spec:statement">When a <span rel="spec:requirementSubject" resource="spec:Server">server</span> wants to advertise the owner of a storage, the server <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> include the <code>Link</code> header with <code>rel="http://www.w3.org/ns/solid/terms#owner"</code> targeting the URI of the owner in the response of HTTP <code>HEAD</code> or <code>GET</code> requests targeting the root container.</span></span></p>
