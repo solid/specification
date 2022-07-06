@@ -131,7 +131,7 @@ content: "";
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Solid Protocol</h1>
-        <h2>Version <span property="doap:revision">0.9.1</span> Editor’s Draft, 2022-06-30</h2>
+        <h2>Version <span property="doap:revision">0.9.1</span> Editor’s Draft, 2022-07-06</h2>
 
         <details open="">
           <summary>More details about this document</summary>
@@ -178,7 +178,7 @@ content: "";
 
           <dl id="document-modified">
             <dt>Modified</dt>
-            <dd><time content="2022-06-30T00:00:00Z" datatype="xsd:dateTime" datetime="2022-06-30T00:00:00Z" property="schema:dateModified">2022-06-30</time></dd>
+            <dd><time content="2022-07-06T00:00:00Z" datatype="xsd:dateTime" datetime="2022-07-06T00:00:00Z" property="schema:dateModified">2022-07-06</time></dd>
           </dl>
 
           <dl id="document-repository">
@@ -1284,6 +1284,25 @@ content: "";
               <p><em>This section is non-normative.</em></p>
 
               <p>The summary of <em>editorial</em> and <em>substantive</em> changes in this section are based on <cite>W3C Process Document</cite> <cite><a href="https://www.w3.org/2021/Process-20211102/#correction-classes">Classes of Changes</a></cite> [<cite><a class="bibref" href="#bib-w3c-process">W3C-PROCESS</a></cite>].</p>
+
+              <p><a about="https://solidproject.org/ED/protocol" href="https://solidproject.org/ED/protocol" rel="prov:wasRevisionOf" resource="https://solidproject.org/TR/2021/protocol-20211217">ED</a> ← <a href="https://solidproject.org/TR/2021/protocol-20211217">protocol-20211217</a></p>
+
+              <section id="change-log-protocol-20211217" inlist="" rel="schema:hasPart" resource="#change-log-protocol-20211217">
+                <h3 property="schema:name">Changes from protocol-20211217 to this version</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <ul>
+                    <li>Amend language, document details, and markup.</li>
+                    <li>Add <a href="#change-log">Change Log</a>.</li>
+                    <li>Update <a href="#references">References</a>.</li>
+                    <li>Change requirement for server including <code>Accept-*</code> headers in <a href="https://solidproject.org/TR/2021/protocol-20211217#server-options-asterisk-accept-headers"><code>OPTIONS *</code></a> to <a href="#server-accept-headers"><code>OPTIONS</code></a>.</li>
+                    <li>Add requirements for server <a href="#server-auxiliary-resources-management">auxiliary resources management</a> and <a href="#server-link-auxiliary-type">link auxiliary type</a>.</li>
+                    <li>Constrain server requirement for <a href="#server-allow-methods"><code>Allow</code> methods</a> to successful responses.</li>
+                    <li>Update current copyright year.</li>
+                    <li>Add advisement for <a href="#privacy-principles">privacy principles</a>.</li>
+                    <li>Add requirements for storage description: <a href="#server-storage-description">discovery</a>, <a href="#server-storage-description-resource">resource</a>, <a href="#storage-description-statements">statements</a>.</li>
+                  </ul>
+                </div>
+              </section>
             </div>
           </section>
 
