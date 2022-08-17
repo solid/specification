@@ -39,6 +39,12 @@ license](https://github.com/solid/specification/blob/main/LICENSE.md).
 
 We accept different types of contributions as described below.
 
+To ensure that anyone can follow along a contribution and support
+verification, provide citations to significant units of information, e.g.,
+references to specific requirements in technical reports, decisions made in a
+formal meeting. To promote accountable discourse, request citations when
+questioning uncited claims.
+
 ### Discussions
 
 If you'd like help troubleshooting a pull request (PR) you're working on, have a
