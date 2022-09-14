@@ -289,6 +289,8 @@ We also make the following recommendations:
   Service](https://validator.w3.org/)).
 * MUST include published and modified dates (`YYYY-MM-DD`).
 * MUST use the MIT License (with URL: http://purl.org/NET/rdflicense/MIT1.0 ).
+* Follow the [Internationalization Best Practices for Spec
+  Developers](https://www.w3.org/TR/international-specs/).
 * Follow the [Linked Data](https://www.w3.org/DesignIssues/LinkedData) design
   principles. Give all significant units of information, e.g., concepts,
   requirements, an identifier, and provide a description using a concrete RDF
