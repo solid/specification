@@ -298,6 +298,9 @@ We also make the following recommendations:
 * Cite the source resource in which consensus was reached for a given
   statement.
 * Changelog from previous published releases (if applicable).
+* Considerations section, e.g., [Self-Review Questionnaire: Security and
+  Privacy](https://www.w3.org/TR/security-privacy-questionnaire/),
+  Accessibility, Internationalization, Societal Impact.
 
 
 ## Vocabulary Management
