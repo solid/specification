@@ -301,6 +301,8 @@ We also make the following recommendations:
 * Considerations section, e.g., [Self-Review Questionnaire: Security and
   Privacy](https://www.w3.org/TR/security-privacy-questionnaire/),
   Accessibility, Internationalization, Societal Impact.
+* Conformance Classes section to identify who and/or what will implement the
+  specification.
 
 
 ## Vocabulary Management
