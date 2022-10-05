@@ -15,7 +15,7 @@ All substantive contributors to Work Items must be members of the Solid CG. Itâ€
 
 Anyone can join the [Solid specification chat](https://gitter.im/solid/specification).
 
-Wednesdays, 14:00 UTC at https://meet.jit.si/solid/cg/weekly . Meetings are transcribed and [published](https://github.com/solid/specification/tree/main/meetings/). See also the event in the [W3C calendar](https://www.w3.org/events/meetings/0caa6ba5-5523-4e16-b514-aeec098e4d72/20221005T140000).
+Wednesdays, 14:00 UTC at https://meet.jit.si/solid/cg/weekly . Meetings are transcribed and [published](https://github.com/solid/specification/tree/main/meetings/). See also the event in the [W3C calendar](https://www.w3.org/events/meetings/0caa6ba5-5523-4e16-b514-aeec098e4d72).
 
 <span id="solid-panels">Solid Panels</span> focus on certain work streams, with an aim to propose technical reports for
 the Solid ecosystem:
