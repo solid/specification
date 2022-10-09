@@ -131,7 +131,7 @@ content: "";
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Solid Protocol</h1>
-        <h2>Version <span property="doap:revision">0.9.1</span> Editor’s Draft, 2022-07-06</h2>
+        <h2>Version <span property="doap:revision">0.9.1</span> Editor’s Draft, 2022-10-09</h2>
 
         <details open="">
           <summary>More details about this document</summary>
@@ -178,7 +178,7 @@ content: "";
 
           <dl id="document-modified">
             <dt>Modified</dt>
-            <dd><time content="2022-07-06T00:00:00Z" datatype="xsd:dateTime" datetime="2022-07-06T00:00:00Z" property="schema:dateModified">2022-07-06</time></dd>
+            <dd><time content="2022-10-09T00:00:00Z" datatype="xsd:dateTime" datetime="2022-10-09T00:00:00Z" property="schema:dateModified">2022-10-09</time></dd>
           </dl>
 
           <dl id="document-repository">
@@ -1135,7 +1135,7 @@ content: "";
 
                   <p id="consider-uri-http">Implementations are subject to the same security considerations that are found in HTTP/1.1 [<cite><a class="bibref" href="#bib-rfc7230">RFC7230</a></cite>] and [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>].</p>
 
-                  <p id="consider-request-validation">Servers are strongly discouraged from assuming that HTTP request headers’ field-values are valid or non-malicious. Servers are strongly encouraged to sanitize requests before processing them or incorporating them in messages sent to others. Servers are encouraged to reject bad requests that conflict with this specification's normative requirements. Servers are encouraged to apply normalization and canonicalization algorithms where applicable. Servers are encouraged to take measures to mitigate potential timing attacks attempting to discover resource existence even if requesting agent has no access to the resource(s). Servers are strongly discouraged from exposing information beyond the minimum amount necessary to enable a feature.</p>
+                  <p id="consider-request-validation">Servers are strongly discouraged from assuming that HTTP request headers’ field-values are valid or non-malicious. Servers are strongly encouraged to sanitize requests before processing them or incorporating them in messages sent to others. Servers are encouraged to reject bad requests that conflict with this specification's normative requirements. Servers are encouraged to restrict untrusted requests. Servers are encouraged to apply normalization and canonicalization algorithms where applicable. Servers are encouraged to take measures to mitigate potential timing attacks attempting to discover resource existence even if requesting agent has no access to the resource(s). Servers are strongly discouraged from exposing information beyond the minimum amount necessary to enable a feature.</p>
 
                   <p id="consider-client-assumptions">Servers are strongly discouraged from assuming that the user agent is a regular Web browser, even when requests contain familiar values in headers such as <code>User-Agent</code> or <code>Origin</code>. Such an assumption could lead to incorrect conclusions about the security model of the application making the request, since the request might actually come from a non-browser actor unaffected by browser security constraints.</p>
 
