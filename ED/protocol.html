@@ -131,7 +131,7 @@ content: "";
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Solid Protocol</h1>
-        <h2>Version <span property="doap:revision">0.9.1</span> Editor’s Draft, 2022-10-09</h2>
+        <h2>Version <span property="doap:revision">0.9.1</span> Editor’s Draft, 2022-10-14</h2>
 
         <details open="">
           <summary>More details about this document</summary>
@@ -178,7 +178,7 @@ content: "";
 
           <dl id="document-modified">
             <dt>Modified</dt>
-            <dd><time content="2022-10-09T00:00:00Z" datatype="xsd:dateTime" datetime="2022-10-09T00:00:00Z" property="schema:dateModified">2022-10-09</time></dd>
+            <dd><time content="2022-10-14T00:00:00Z" datatype="xsd:dateTime" datetime="2022-10-14T00:00:00Z" property="schema:dateModified">2022-10-14</time></dd>
           </dl>
 
           <dl id="document-repository">
@@ -327,6 +327,7 @@ content: "";
                     <li><a href="#writing-resources"><span class="secno">5.3</span> <span class="content">Writing Resources</span></a></li>
                     <li><a href="#deleting-resources"><span class="secno">5.4</span> <span class="content">Deleting Resources</span></a></li>
                     <li><a href="#resource-representations"><span class="secno">5.5</span> <span class="content">Resource Representations</span></a></li>
+                    <li><a href="#constraints-problem-details"><span class="secno">5.6</span> <span class="content">Constraints and Problem Details</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -933,6 +934,21 @@ content: "";
                   <p><span about="" id="server-representation-turtle-jsonld" rel="spec:requirement" resource="#server-representation-turtle-jsonld"><span property="spec:statement">When a <span rel="spec:requirementSubject" resource="spec:Server">server</span> creates a resource on HTTP <code>PUT</code>, <code>POST</code> or <code>PATCH</code> requests such that the request’s representation data encodes an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>] (as determined by the <code>Content-Type</code> header), the server <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> accept <code>GET</code> requests on this resource when the value of the <code>Accept</code> header requests a representation in <code>text/turtle</code> or <code>application/ld+json</code> [<cite><a class="bibref" href="#bib-turtle">Turtle</a></cite>] [<cite><a class="bibref" href="#bib-json-ld11">JSON-LD11</a></cite>].</span></span> [<a href="https://github.com/solid/specification/issues/45" rel="cito:citesAsSourceDocument">Source</a>] <a href="https://github.com/solid/specification/issues/69" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/109" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/195" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
                   <p><span about="" id="server-representation-write-redirect" rel="spec:requirement" resource="#server-representation-write-redirect"><span property="spec:statement">When a <code>PUT</code>, <code>POST</code>, <code>PATCH</code> or <code>DELETE</code> method request targets a representation URL that is different than the resource URL, the <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>307</code> or <code>308</code> status code and <code>Location</code> header specifying the preferred URI reference.</span></span> [<a href="https://github.com/solid/specification/issues/109" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                </div>
+              </section>
+
+              <section id="constraints-problem-details" inlist="" rel="schema:hasPart" resource="#constraints-problem-details">
+                <h3 property="schema:name">Constraints and Problem Details</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p><em>This section is non-normative.</em></p>
+
+                  <p>Servers are encouraged to publish any constraints on clients’ ability to create or update resources by adding a <code>Link</code> header with an appropriate context URI, a link relation of <code>http://www.w3.org/ns/ldp#constrainedBy</code>, and a target URI identifying a set of constraints [<cite><a class="bibref" href="#bib-rfc8288">RFC8288</a></cite>], to responses to requests that fail due to violation of those constraints. The same <code>Link</code> header can be provided in other responses.</p>
+
+                  <p>Servers are encouraged to use the URIs of the constraints that are defined by this specification or other constraint URIs within its authority depending on the request's semantics on a target resource.</p>
+
+                  <p>Constraints are intended to be protected and persistent resources and therefore cannot be modified by clients. To facilitate better client interactions, it is encouraged to express constraints in RDF.</p>
+
+                  <p>[<a href="https://github.com/solid/specification/pull/185" rel="cito:citesAsSourceDocument">Source</a>]</p>
                 </div>
               </section>
             </div>
