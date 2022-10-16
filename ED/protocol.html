@@ -944,7 +944,7 @@ content: "";
 
                   <p>Servers are encouraged to publish any constraints on clients’ ability to create or update resources by adding a <code>Link</code> header with an appropriate context URI, a link relation of <code>http://www.w3.org/ns/ldp#constrainedBy</code>, and a target URI identifying a set of constraints [<cite><a class="bibref" href="#bib-rfc8288">RFC8288</a></cite>], to responses to requests that fail due to violation of those constraints. The same <code>Link</code> header can be provided in other responses.</p>
 
-                  <p>Servers are encouraged to use the URIs of the constraints that are defined by this specification or other constraint URIs within its authority depending on the request's semantics on a target resource.</p>
+                  <p>Servers are encouraged to use the URIs of the constraints that are defined by specifications or other constraint URIs within its authority depending on the request's semantics on a target resource.</p>
 
                   <p>Constraints are intended to be protected and persistent resources and therefore cannot be modified by clients. To facilitate better client interactions, it is encouraged to express constraints in RDF.</p>
 
