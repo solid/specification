@@ -118,6 +118,66 @@ content: ",";
 dl [rel~="odrl:action"] li:last-child:after {
 content: "";
 }
+aside section > .toc,
+aside section > .toc ol {
+margin-left: revert;
+}
+aside section > .toc li li {
+margin-left: 1em;
+font-size: revert;
+}
+
+table tbody tr:nth-child(odd) {
+background-color:#f3f3f3;
+}
+table tbody tr:nth-child(odd) th {
+background-color:#fff;
+}
+table + table {
+margin-top:2em;
+}
+caption {
+text-align:left;
+padding:0 0.25em 0.25em;
+margin-bottom: 1em;
+font-size: 1em;
+font-style: revert;
+font-weight: bold;
+border-bottom: 1px solid;
+}
+caption, tbody, tfoot {
+border-bottom:2pt solid #000;
+}
+thead,
+thead th[colspan] {
+border-bottom:1pt solid #000;
+}
+[rowspan] { vertical-align: bottom; }
+tbody [rowspan] { vertical-align: middle; }
+
+tbody th[scope="rowgroup"] {
+border-bottom:3pt double #000;
+}
+th, td {
+padding:0.25em;
+font-size:0.923em;
+word-wrap:normal;
+}
+table ul,
+table ol,
+table li,
+table p,
+table dd {
+margin:0;
+text-align:left;
+}
+table ul,
+table ol {
+padding-left:1em;
+}
+tfoot td > * + * {
+margin-top:1em;
+}
 </style>
   </head>
 
