@@ -488,9 +488,12 @@ margin-top:1em;
 
                   <p property="skos:definition">The Solid Protocol specification defines the following terms. These terms are referenced throughout this specification.</p>
 
-                  <span rel="skos:hasTopConcept"><span resource="#solid-app"></span><span resource="#uniform-resource-identifier"></span><span resource="#resource"></span><span resource="#container-resource"></span><span resource="#root-container"></span><span resource="#resource-metadata"></span><span resource="#agent"></span><span resource="#owner"></span><span resource="#origin"></span><span resource="#read-operation"></span><span resource="#write-operation"></span><span resource="#append-operation"></span></span>
+                  <span rel="skos:hasTopConcept"><span resource="#storage"></span><span resource="#solid-app"></span><span resource="#uniform-resource-identifier"></span><span resource="#resource"></span><span resource="#container-resource"></span><span resource="#root-container"></span><span resource="#resource-metadata"></span><span resource="#agent"></span><span resource="#owner"></span><span resource="#origin"></span><span resource="#read-operation"></span><span resource="#write-operation"></span><span resource="#append-operation"></span></span>
 
                   <dl>
+                    <dt about="#storage" property="skos:prefLabel" typeof="skos:Concept"><dfn id="storage">storage</dfn></dt>
+                    <dd about="#storage" property="skos:definition">A storage is a space of URIs that affords agents controlled access to resources.</dd>
+
                     <dt about="#solid-app" property="skos:prefLabel" typeof="skos:Concept"><dfn id="solid-app">Solid app</dfn></dt>
                     <dd about="#solid-app" property="skos:definition">A Solid app is an application that reads or writes data from one or more <a href="#storage">storages</a>.</dd>
 
@@ -513,7 +516,7 @@ margin-top:1em;
                     <dd about="#agent" property="skos:definition">An agent is a person, social entity, or software identified by a URI; e.g., a WebID denotes an agent [<cite><a class="bibref" href="#bib-webid">WEBID</a></cite>].</dd>
 
                     <dt about="#owner" property="skos:prefLabel" typeof="skos:Concept"><dfn id="owner">owner</dfn></dt>
-                    <dd about="#owner" property="skos:definition">An owner is a person or a social entity that is considered to have the rights and responsibilities of a data storage. An owner is identified by a URI, and implicitly has control over all data in a storage. An owner is first set at storage provisioning time and can be changed.</dd>
+                    <dd about="#owner" property="skos:definition">An owner is a person or a social entity that is considered to have the rights and responsibilities of a storage. An owner is identified by a URI, and implicitly has control over all URIs in a storage. An owner is first set at storage provisioning time and can be changed.</dd>
 
                     <dt about="#origin" property="skos:prefLabel" typeof="skos:Concept"><dfn id="origin">origin</dfn></dt>
                     <dd about="#origin" property="skos:definition">An origin indicates where an HTTP request originates from [<cite><a class="bibref" href="#bib-rfc6454">RFC6454</a></cite>].</dd>
@@ -635,7 +638,7 @@ margin-top:1em;
               <div class="note" id="storage-owner-uri-ownership" inlist="" rel="schema:hasPart" resource="#storage-owner-uri-ownership">
                 <h3 property="schema:name"><span>Note</span>: Storage Owner and URI Ownership</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>This specification does not describe the relationship between a Solid storage <q>owner</q> and Web architecture’s <cite><a href="https://www.w3.org/TR/webarch/#uri-ownership">URI ownership</a></cite> [<cite><a class="bibref" href="#bib-webarch">WEBARCH</a></cite>].</p>
+                  <p>This specification does not describe the relationship between a storage <q>owner</q> and Web architecture’s <cite><a href="https://www.w3.org/TR/webarch/#uri-ownership">URI ownership</a></cite> [<cite><a class="bibref" href="#bib-webarch">WEBARCH</a></cite>].</p>
                 </div>
               </div>
 
@@ -672,7 +675,7 @@ margin-top:1em;
               <section id="storage-resource" inlist="" rel="schema:hasPart" resource="#storage-resource">
                 <h3 property="schema:name">Storage Resource</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p><span about="" id="server-storage" rel="spec:requirement" resource="#server-storage"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> provide one or more storages (<code>pim:Storage</code>) – a space of URIs in which data can be accessed. A storage is the root container for all of its contained resources (see <a href="#resource-containment">Resource Containment</a>).</span></span></p>
+                  <p><span about="" id="server-storage" rel="spec:requirement" resource="#server-storage"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> provide one or more <a href="#storage">storages</a>. The storage resource (<code>pim:Storage</code>) is the root container for all of its contained resources (see <a href="#resource-containment">Resource Containment</a>).</span></span></p>
 
                   <p><span about="" id="server-storage-nonoverlapping" rel="spec:requirement" resource="#server-storage-nonoverlapping"><span property="spec:statement">When a <span rel="spec:requirementSubject" resource="spec:Server">server</span> supports multiple storages, the URIs <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> be allocated to non-overlapping space.</span></span></p>
 
