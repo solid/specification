@@ -303,6 +303,7 @@ We also make the following recommendations:
   Accessibility, Internationalization, Societal Impact.
 * Conformance Classes section to identify who and/or what will implement the
   specification.
+* Document wilful violations.
 
 
 ## Vocabulary Management
