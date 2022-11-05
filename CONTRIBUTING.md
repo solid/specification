@@ -165,7 +165,9 @@ repository, create a PR.
 
 * Include atomic commits, small PRs: "one concern, one PR".
 * In the PR comment, provide as much context and evidence to help reviewers
-  evaluate the PR.
+  evaluate the PR. Identify, classify, describes the changes as per W3C
+  Process [Correction
+  Classes](https://www.w3.org/2021/Process-20211102/#correction-classes).
 * Don't forget to [link PR to
   issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue)
   if you are solving one.
