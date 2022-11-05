@@ -589,9 +589,48 @@ margin-top:1em;
               <section id="conformance" inlist="" rel="schema:hasPart" resource="#conformance">
                 <h3 property="schema:name">Conformance</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>All assertions, diagrams, examples, and notes are non-normative, as are all sections explicitly marked non-normative. Everything else is normative.</p>
+                  <p>This section describes the <span about="" rel="spec:conformance" resource="#conformance">conformance model of the Solid Protocol</span>.</p>
 
-                  <p>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” are to be interpreted as described in <a href="https://tools.ietf.org/html/bcp14">BCP 14</a> [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>] [<cite><a class="bibref" href="#bib-rfc8174">RFC8174</a></cite>] when, and only when, they appear in all capitals, as shown here.</p>
+                  <section id="normative-informative-content" inlist="" rel="schema:hasPart" resource="#normative-informative-content">
+                    <h4 property="schema:name">Normative and Informative Content</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p id="normative-informative-sections">All assertions, diagrams, examples, and notes are non-normative, as are all sections explicitly marked non-normative. Everything else is normative.</p>
+
+                      <p id="requirement-levels">The key words “<span rel="dcterms:subject" resource="spec:MUST">MUST</span>”, “<span rel="dcterms:subject" resource="spec:MUST-NOT">MUST NOT</span>”, “<span rel="dcterms:subject" resource="spec:SHOULD">SHOULD</span>”, and “<span rel="dcterms:subject" resource="spec:MAY">MAY</span>” are to be interpreted as described in <a href="https://tools.ietf.org/html/bcp14">BCP 14</a> [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>] [<cite><a class="bibref" href="#bib-rfc8174">RFC8174</a></cite>] when, and only when, they appear in all capitals, as shown here.</p>
+
+                      <p id="advisement-levels">The key words “<span rel="dcterms:subject" resource="spec:strongly-encouraged">strongly encouraged</span>”, “<span rel="dcterms:subject" resource="spec:strongly-discouraged">strongly discouraged</span>”, “<span rel="dcterms:subject" resource="spec:encouraged">encouraged</span>", “<span rel="dcterms:subject" resource="spec:discouraged">discouraged</span>", “<span rel="dcterms:subject" resource="spec:can">can</span>", “<span rel="dcterms:subject" resource="spec:cannot">cannot</span>”, “<span rel="dcterms:subject" resource="spec:could">could</span>”, “<span rel="dcterms:subject" resource="spec:could-not">could not</span>”, “<span rel="dcterms:subject" resource="spec:might">might</span>”, and “<span rel="dcterms:subject" resource="spec:might-not">might not</span>” are used for non-normative content.</p>
+                    </div>
+                  </section>
+
+                  <section id="classes-of-products" inlist="" rel="schema:hasPart" resource="#classes-of-products" typeof="skos:ConceptScheme">
+                    <h4 property="schema:name skos:prefLabel">Classes of Products</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p property="skos:definition">The <span about="" rel="spec:classesOfProducts" resource="#classes-of-products">Solid Protocol</span> identifies the following <cite><a href="https://www.w3.org/TR/qaframe-spec/#cop-def" rel="dcterms:subject" resource="spec:ClassesOfProducts">Classes of Products</a></cite> for conforming implementations. These products are referenced throughout this specification.</p>
+
+                      <span rel="skos:hasTopConcept"><span resource="#Server"></span><span resource="#Client"></span></span>
+
+                      <dl>
+                        <dt about="#Server" property="skos:prefLabel" rel="skos:relatedMatch" resource="spec:RespondingAgent" typeof="skos:Concept"><dfn id="Server">Server</dfn></dt>
+                        <dd about="#Server" property="skos:definition">A <a href="#http-server" rel="rdfs:seeAlso">server</a> that builds on HTTP <cite>server</cite> [<cite><a class="bibref" href="#bib-rfc7230">RFC7230</a></cite>] and [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>] by defining media types, HTTP header fields, and the behaviour of resources, as identified by link relations.</dd>
+                        <dt about="#Client" property="skos:prefLabel" rel="skos:relatedMatch" resource="spec:Consumer" typeof="skos:Concept"><dfn id="Client">Client</dfn></dt>
+                        <dd about="#Client" property="skos:definition">A <a href="#http-client" rel="rdfs:seeAlso">client</a> that builds on HTTP <cite>client</cite> [<cite><a class="bibref" href="#bib-rfc7230">RFC7230</a></cite>], [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>], and [<cite><a class="bibref" href="#bib-fetch">FETCH</a></cite>] by defining behaviour in terms of fetching across the platform.</dd>
+                      </dl>
+                    </div>
+                  </section>
+
+                  <section id="specification-category" inlist="" rel="schema:hasPart spec:specificationCategory" resource="#specification-category" typeof="skos:ConceptScheme">
+                    <h4 property="schema:name skos:prefLabel">Specification Category</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p property="skos:definition">The <span about="" rel="spec:specificationCategory" resource="#specification-category">Solid Protocol</span> identifies the following <cite><a href="https://www.w3.org/TR/spec-variability/#spec-cat" rel="dcterms:subject" resource="spec:SpecificationCategory">Specification Category</a></cite> to distinguish the types of conformance: <span rel="skos:hasTopConcept" resource="spec:APIs">APIs</span>, <span rel="skos:hasTopConcept" resource="spec:NotationSyntax">Notation/syntax</span>, <span rel="skos:hasTopConcept" resource="spec:SetOfEvents">Set of events</span>, <span rel="skos:hasTopConcept" resource="spec:ProcessorBehaviour">Processor behaviour</span>, <span rel="skos:hasTopConcept" resource="spec:Protocol">Protocol</span>.</p>
+                    </div>
+                  </section>
+
+                  <section id="interoperability" inlist="" rel="schema:hasPart" resource="#interoperability">
+                    <h4 property="schema:name skos:prefLabel">Interoperability</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p id="interoperability-server-client">Interoperability of implementations for <a href="#Server" rel="rdfs:seeAlso">servers</a> and <a href="#Client" rel="rdfs:seeAlso">clients</a> is tested by evaluating an implementation’s ability to request and respond to HTTP messages that conform to this specification.</p>
+                    </div>
+                  </section>
                 </div>
               </section>
             </div>
@@ -1395,6 +1434,7 @@ margin-top:1em;
                     <li>Remove the term <em>data pod</em> and add definition of <a href="#storage">storage</a>.</li>
                     <li>Add <a href="#constraints-problem-details">Constraints and Problem Details</a>.</li>
                     <li>Add consideration for restricting untrusted requests.</li>
+                    <li>Update <a href="#conformance">Conformance</a> to add <a href="#normative-informative-content">Normative and Information Content</a>, <a href="#classes-of-products">Class of Products</a>, <a href="#specification-category">Specification Category</a>, <a href="#interoperability">Interoperability</a>.</li>
                   </ul>
                 </div>
               </section>
