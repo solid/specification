@@ -13,10 +13,10 @@
 
 ## Announcements
 
-### Meeting Recordings and Transcripts
+### Meeting Guidelines
 * No audio or video recording, or automated transcripts without consent. Meetings are transcribed and made public. If consent is withheld by anyone, recording/retention must not occur.
 * Join queue to talk.
-
+* Topics can be proposed at the bottom of the agenda to be discussed as time allows. Make it known if a topic is urgent or cannot be postponed.
 
 ### Participation and Code of Conduct
 * [Join the W3C Solid Community Group](https://www.w3.org/community/solid/join), [W3C Account Request](http://www.w3.org/accounts/request), [W3C Community Contributor License Agreement](https://www.w3.org/community/about/agreements/cla/)
