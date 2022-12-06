@@ -38,6 +38,7 @@ Below are some common roles and their descriptions as useful guidelines. It is n
 * Defines and announces meeting agenda prior to the meeting.
 * Runs the meeting agenda; announcements, topics.
 * Generally stays neutral in discussion but can participate in discussions if announces in advance their "hat" at that time.
+* Acknowledge the attendance of participants and awareness of roles, and who is missing and the implications for the meeting.
 * Facilitate reaching consensus.
 * Asks participants to approve prior meeting minutes. If no objections, notes approval to scribe.
 * Ensures minutes are taken and posted in due time.
