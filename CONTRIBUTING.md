@@ -327,3 +327,16 @@ describes how to participate and record meetings. There is a
 [minutes
 template](https://github.com/solid/specification/blob/main/meetings/template.md)
 that can be used by scribes to transcribe the meeting.
+
+
+## Communication
+
+The opinions of CG members may carry particular weight, whether they are
+expressed within our community or elsewhere. As a CG member:
+* It is assumed you are speaking as an individual unless you state otherwise.
+* If you want to express the opinion of your organisation or a group you are
+  affiliated with, make it clear before you state their view.
+* Do not use phrases like "on behalf of the CG" or "the CG thinks that" unless
+  the group has asked you to do so.
+* When communicating CG decisions, provide references to what was decided and
+  what was not decided.
