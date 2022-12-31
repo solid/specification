@@ -424,6 +424,7 @@ margin-top:1em;
                   <a class="tocxref" href="#authorization"><span class="secno">11</span> <span class="content">Authorization</span></a>
                   <ol>
                     <li><a href="#web-access-control"><span class="secno">11.1</span> <span class="content">Web Access Control</span></a></li>
+                    <li><a href="#access-control-policy"><span class="secno">11.2</span> <span class="content">Access Control Policy</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -1156,16 +1157,27 @@ margin-top:1em;
           <section id="authorization" inlist="" rel="schema:hasPart" resource="#authorization">
             <h2 property="schema:name">Authorization</h2>
             <div datatype="rdf:HTML" property="schema:description">
+              <p><span about="" id="server-wac-acp" rel="spec:requirement" resource="#server-wac-acp"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> conform to either or both Web Access Control [<cite><a class="bibref" href="#bib-wac">WAC</a></cite>] and Access Control Policy [<cite><a class="bibref" href="#bib-acp">ACP</a></cite>] specifications.</span></span></p>
+
               <section id="web-access-control" inlist="" rel="schema:hasPart" resource="#web-access-control">
                 <h3 property="schema:name">Web Access Control</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>Web Access Control (<abbr title="Web Access Control">WAC</abbr>) is a decentralized cross-domain access control system providing a way for Linked Data systems to set authorization conditions on HTTP resources using the Access Control List (<abbr title="Access Control List">ACL</abbr>) model. Server manages the association between a resource and an ACL resource, and applies the authorization conditions on requested operations. Authorizations are described using the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citesAsAuthority">ACL ontology</a></cite> to express and determine access privileges of a requested resource. Applications can discover authorization rules associated with a given resource, and to control such rules, as directed by an agent.</p>
-
-                  <p><span about="" id="server-wac" rel="spec:requirement" resource="#server-wac"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> conform to the Web Access Control specification [<cite><a class="bibref" href="#bib-wac">WAC</a></cite>].</span></span></p>
+                  <p>Web Access Control (<abbr title="Web Access Control">WAC</abbr>) is a decentralized cross-domain access control system providing a way for Linked Data systems to set authorization conditions on HTTP resources using the Access Control List (<abbr title="Access Control List">ACL</abbr>) model. Server manages the association between a resource and an ACL resource with the <cite><a href="https://solidproject.org/TR/wac#acl-link-relation" rel="cito:citesAsAuthority"><code>acl</code> Link Relation</a></cite>, and applies the authorization conditions on requested operations. Authorizations are described using the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citesAsAuthority">ACL ontology</a></cite> to express and determine access privileges of a requested resource. Applications can discover authorization rules associated with a given resource, and to control such rules, as directed by an agent.</p>
 
                   <p><span about="" id="client-wac" rel="spec:requirement" resource="#client-wac"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Client">Clients</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> conform to the Web Access Control specification [<cite><a class="bibref" href="#bib-wac">WAC</a></cite>].</span></span></p>
 
                   <p>[<a href="https://github.com/solid/specification/issues/171" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/170" rel="cito:citesAsSourceDocument">Source</a>] <a href="https://github.com/solid/specification/issues/181" rel="cito:citesAsSourceDocument">Source</a>] <a href="https://gitter.im/solid/specification?at=60101295d8bdab47395e6775" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                </div>
+              </section>
+
+              <section id="access-control-policy" inlist="" rel="schema:hasPart" resource="#access-control-policy">
+                <h3 property="schema:name">Access Control Policy</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>Access Control Policy (<abbr title="Access Control Policy">ACP</abbr>) is a language for describing, controlling, and granting access to resources. Authorizations are described using the <cite><a href="http://www.w3.org/ns/solid/acp" rel="cito:citesAsAuthority">ACL ontology</a></cite> to express and determine access privileges of a requested resource.</p>
+
+                  <p><span about="" id="client-acp" rel="spec:requirement" resource="#client-acp"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Client">Clients</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> conform to the Access Control Policy specification [<cite><a class="bibref" href="#bib-acp">ACP</a></cite>].</span></span></p>
+
+                  <p>[<a href="https://github.com/solid/specification/issues/447" rel="cito:citesAsSourceDocument">Source</a>]</p>
                 </div>
               </section>
             </div>
@@ -1425,6 +1437,7 @@ margin-top:1em;
                     <li>Add consideration for restricting untrusted requests.</li>
                     <li>Update <a href="#conformance">Conformance</a> to add <a href="#normative-informative-content">Normative and Information Content</a>, <a href="#classes-of-products">Class of Products</a>, <a href="#specification-category">Specification Category</a>, <a href="#interoperability">Interoperability</a>.</li>
                     <li>Update <a href="#security-privacy-review">Security and Privacy Review</a>.</li>
+                    <li>Add requirements for <a hef="#access-control-policy">Access Control Policy</a>.</li>
                   </ul>
                 </div>
               </section>
@@ -1438,6 +1451,8 @@ margin-top:1em;
                 <h3 property="schema:name">Normative References</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <dl class="bibliography" resource="">
+                    <dt id="bib-acp">[ACP]</dt>
+                    <dd><a href="https://solidproject.org/TR/acp" rel="cito:citesAsAuthority"><cite>Access Control Policy</cite></a>.  Matthieu Bosquet.  W3C Solid Community Group. 18 May 2022. Version 0.9.0. URL: <a href="https://solidproject.org/TR/acp">https://solidproject.org/TR/acp</a></dd>
                     <dt id="bib-dc-terms">[DC-TERMS]</dt>
                     <dd><a href="http://dublincore.org/documents/2010/10/11/dcmi-terms/" rel="cito:citesAsAuthority"><cite>Dublin Core Metadata Terms, version 1.1</cite></a>. DCMI Usage Board.  DCMI. 11 October 2010. DCMI Recommendation. URL: <a href="http://dublincore.org/documents/2010/10/11/dcmi-terms/">http://dublincore.org/documents/2010/10/11/dcmi-terms/</a></dd>
                     <dt id="bib-fetch">[FETCH]</dt>
