@@ -53,6 +53,11 @@ border-bottom: 2pt solid #000;
           <dd><a href="https://solidproject.org/TR/" rel="owl:sameAs doap:homepage">https://solidproject.org/TR/</a></dd>
         </dl>
 
+        <dl id="document-editors">
+          <dt>Editors</dt>
+          <dd id="Sarven-Capadisli"><span about="" rel="schema:creator schema:editor"><span about="https://csarven.ca/#i" typeof="schema:Person"><a href="https://csarven.ca/" rel="schema:url"><span about="https://csarven.ca/#i" property="schema:name"><span property="schema:givenName">Sarven</span> <span property="schema:familyName">Capadisli</span></span></a></span></span></dd>
+        </dl>
+
         <dl id="document-created">
           <dt>Created</dt>
           <dd><time content="2020-12-16T00:00:00Z" datatype="xsd:dateTime" datetime="2020-12-16T00:00:00Z" property="schema:dateCreated">2020-12-16</time></dd>
@@ -65,7 +70,7 @@ border-bottom: 2pt solid #000;
 
         <dl id="document-modified">
           <dt>Modified</dt>
-          <dd><time content="2022-09-14T00:00:00Z" datatype="xsd:dateTime" datetime="2022-09-14T00:00:00Z" property="schema:dateModified">2022-09-14</time></dd>
+          <dd><time content="2023-01-05T00:00:00Z" datatype="xsd:dateTime" datetime="2023-01-05T00:00:00Z" property="schema:dateModified">2023-01-05</time></dd>
         </dl>
 
         <dl id="document-repository">
@@ -74,7 +79,7 @@ border-bottom: 2pt solid #000;
           <dd><a href="https://github.com/solid/specification/issues" rel="doap:bug-database">Issues</a></dd>
         </dl>
 
-        <p class="copyright">MIT License. Copyright © 2019–2022 <a href="https://www.w3.org/community/solid/">W3C Solid Community Group</a>.</p>
+        <p class="copyright">MIT License. Copyright © 2019–2023 <a href="https://www.w3.org/community/solid/">W3C Solid Community Group</a>.</p>
 
         <div datatype="rdf:HTML" id="content" property="schema:description">
           <section id="abstract" inlist="" rel="schema:hasPart" resource="#abstract">
@@ -242,6 +247,46 @@ border-bottom: 2pt solid #000;
                   </tr>
                 </tbody>
               </table>
+
+              <section id="notification-channel-type-registry" inlist="" rel="schema:hasPart" resource="#notification-channel-type-registry">
+                <h3 property="schema:name">Notification Channel Type Registry</h3>
+                <div  datatype="rdf:HTML" property="schema:description">
+                  <p>In order to help with the discovery of notification channel types that can be used with the <a href="https://solidproject.org/TR/notifications-protocol">Solid Notifications Protocol</a>, it is encouraged to register them for maximum global interoperability.</p>
+
+                  <p>To update the registry table an implementer MUST submit a modification request for this index as a pull request at the <a href="https://github.com/solid/specification">https://github.com/solid/specification</a> repository, which includes the following information:</p>
+
+                  <dl>
+                    <dt>IRI</dt>
+                    <dd>The IRI of the notification channel type.</dd>
+                    <dt>Name</dt>
+                    <dd>The name of the notification channel type.</dd>
+                    <dt>Description</dt>
+                    <dd>A short English description of the notification channel type's semantics.</dd>
+                    <dt>Reference</dt>
+                    <dd>The retrievable URI of the document that specifies the notification channel type.</dd>
+                  </dl>
+
+                  <table id="notification-channel-types">
+                    <caption>Notification Channel Types</caption>
+                    <thead>
+                      <tr>
+                        <th>IRI</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Reference</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
             </div>
           </section>
 
