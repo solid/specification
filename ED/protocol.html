@@ -183,7 +183,7 @@ margin-top:1em;
     <script async="" src="https://dokie.li/scripts/dokieli.js"></script>
   </head>
 
-  <body about="" prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# owl: http://www.w3.org/2002/07/owl# xsd: http://www.w3.org/2001/XMLSchema# dcterms: http://purl.org/dc/terms/ skos: http://www.w3.org/2004/02/skos/core# prov: http://www.w3.org/ns/prov# mem: http://mementoweb.org/ns# qb: http://purl.org/linked-data/cube# schema: http://schema.org/ doap: http://usefulinc.com/ns/doap# deo: http://purl.org/spar/deo/ fabio: http://purl.org/spar/fabio/ cito: http://purl.org/spar/cito/ as: https://www.w3.org/ns/activitystreams# ldp: http://www.w3.org/ns/ldp# earl: http://www.w3.org/ns/earl# spec: http://www.w3.org/ns/spec# rel: https://www.w3.org/ns/iana/link-relations/relation# odrl: http://www.w3.org/ns/odrl/2/" typeof="schema:CreativeWork prov:Entity as:Article">
+  <body about="" prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# owl: http://www.w3.org/2002/07/owl# xsd: http://www.w3.org/2001/XMLSchema# dcterms: http://purl.org/dc/terms/ skos: http://www.w3.org/2004/02/skos/core# prov: http://www.w3.org/ns/prov# mem: http://mementoweb.org/ns# qb: http://purl.org/linked-data/cube# schema: http://schema.org/ doap: http://usefulinc.com/ns/doap# deo: http://purl.org/spar/deo/ cito: http://purl.org/spar/cito/ as: https://www.w3.org/ns/activitystreams# ldp: http://www.w3.org/ns/ldp# earl: http://www.w3.org/ns/earl# spec: http://www.w3.org/ns/spec# rel: https://www.w3.org/ns/iana/link-relations/relation# odrl: http://www.w3.org/ns/odrl/2/" typeof="schema:CreativeWork prov:Entity as:Article">
     <header>
       <address>
         <a class="logo" href="https://solidproject.org/"><img alt="Solid Project" height="66" src="https://solidproject.org/TR/solid.svg" width="72" /></a>
@@ -590,7 +590,14 @@ margin-top:1em;
 
                       <p id="requirement-levels">The key words “<span rel="dcterms:subject" resource="spec:MUST">MUST</span>”, “<span rel="dcterms:subject" resource="spec:MUSTNOT">MUST NOT</span>”, “<span rel="dcterms:subject" resource="spec:SHOULD">SHOULD</span>”, and “<span rel="dcterms:subject" resource="spec:MAY">MAY</span>” are to be interpreted as described in <a href="https://tools.ietf.org/html/bcp14">BCP 14</a> [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>] [<cite><a class="bibref" href="#bib-rfc8174">RFC8174</a></cite>] when, and only when, they appear in all capitals, as shown here.</p>
 
-                      <p id="advisement-levels">The key words “<span rel="dcterms:subject" resource="spec:strongly-encouraged">strongly encouraged</span>”, “<span rel="dcterms:subject" resource="spec:strongly-discouraged">strongly discouraged</span>”, “<span rel="dcterms:subject" resource="spec:encouraged">encouraged</span>", “<span rel="dcterms:subject" resource="spec:discouraged">discouraged</span>", “<span rel="dcterms:subject" resource="spec:can">can</span>", “<span rel="dcterms:subject" resource="spec:cannot">cannot</span>”, “<span rel="dcterms:subject" resource="spec:could">could</span>”, “<span rel="dcterms:subject" resource="spec:could-not">could not</span>”, “<span rel="dcterms:subject" resource="spec:might">might</span>”, and “<span rel="dcterms:subject" resource="spec:might-not">might not</span>” are used for non-normative content.</p>
+                      <p id="advisement-levels">The key words “<span rel="dcterms:subject" resource="spec:StronglyEncouraged">strongly encouraged</span>”, “<span rel="dcterms:subject" resource="spec:StronglyDiscouraged">strongly discouraged</span>”, “<span rel="dcterms:subject" resource="spec:Encouraged">encouraged</span>", “<span rel="dcterms:subject" resource="spec:Discouraged">discouraged</span>", “<span rel="dcterms:subject" resource="spec:Can">can</span>", “<span rel="dcterms:subject" resource="spec:Cannot">cannot</span>”, “<span rel="dcterms:subject" resource="spec:Could">could</span>”, “<span rel="dcterms:subject" resource="spec:CouldNot">could not</span>”, “<span rel="dcterms:subject" resource="spec:Might">might</span>”, and “<span rel="dcterms:subject" resource="spec:MightNot">might not</span>” are used for non-normative content.</p>
+                    </div>
+                  </section>
+
+                  <section id="specification-category" inlist="" rel="schema:hasPart spec:specificationCategory" resource="#specification-category" typeof="skos:ConceptScheme">
+                    <h4 property="schema:name skos:prefLabel">Specification Category</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p property="skos:definition">The <span about="" rel="spec:specificationCategory" resource="#specification-category">Solid Protocol</span> identifies the following <cite><a href="https://www.w3.org/TR/spec-variability/#spec-cat" rel="dcterms:subject" resource="spec:SpecificationCategory">Specification Category</a></cite> to distinguish the types of conformance: <span rel="skos:hasTopConcept" resource="spec:API">API</span>, <span rel="skos:hasTopConcept" resource="spec:NotationSyntax">notation/syntax</span>, <span rel="skos:hasTopConcept" resource="spec:SetOfEvents">set of events</span>, <span rel="skos:hasTopConcept" resource="spec:ProcessorBehaviour">processor behaviour</span>, <span rel="skos:hasTopConcept" resource="spec:Protocol">protocol</span>.</p>
                     </div>
                   </section>
 
@@ -607,13 +614,6 @@ margin-top:1em;
                         <dt about="#Client" property="skos:prefLabel" rel="skos:relatedMatch" resource="spec:Consumer" typeof="skos:Concept"><dfn id="Client">Client</dfn></dt>
                         <dd about="#Client" property="skos:definition">A <a href="#http-client" rel="rdfs:seeAlso">client</a> that builds on HTTP <cite>client</cite> [<cite><a class="bibref" href="#bib-rfc7230">RFC7230</a></cite>], [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>], and [<cite><a class="bibref" href="#bib-fetch">FETCH</a></cite>] by defining behaviour in terms of fetching across the platform.</dd>
                       </dl>
-                    </div>
-                  </section>
-
-                  <section id="specification-category" inlist="" rel="schema:hasPart spec:specificationCategory" resource="#specification-category" typeof="skos:ConceptScheme">
-                    <h4 property="schema:name skos:prefLabel">Specification Category</h4>
-                    <div datatype="rdf:HTML" property="schema:description">
-                      <p property="skos:definition">The <span about="" rel="spec:specificationCategory" resource="#specification-category">Solid Protocol</span> identifies the following <cite><a href="https://www.w3.org/TR/spec-variability/#spec-cat" rel="dcterms:subject" resource="spec:SpecificationCategory">Specification Category</a></cite> to distinguish the types of conformance: <span rel="skos:hasTopConcept" resource="spec:API">API</span>, <span rel="skos:hasTopConcept" resource="spec:NotationSyntax">Notation/syntax</span>, <span rel="skos:hasTopConcept" resource="spec:SetOfEvents">Set of events</span>, <span rel="skos:hasTopConcept" resource="spec:ProcessorBehaviour">Processor behaviour</span>, <span rel="skos:hasTopConcept" resource="spec:Protocol">Protocol</span>.</p>
                     </div>
                   </section>
 
@@ -988,7 +988,7 @@ margin-top:1em;
 
                   <figure class="example listing" id="n3-patch-example" rel="schema:hasPart" resource="#n3-patch-example">
                     <p class="example-h"><span>Example</span>: Applying an N3 patch.</p>
-                    <pre about="#n3-patch-example" property="schema:description" typeof="fabio:Script"><code>@prefix solid: &lt;http://www.w3.org/ns/solid/terms#&gt;.</code>
+                    <pre about="#n3-patch-example" property="schema:description"><code>@prefix solid: &lt;http://www.w3.org/ns/solid/terms#&gt;.</code>
 <code>@prefix ex: &lt;http://www.example.org/terms#&gt;.</code>
 <code></code>
 <code>_:rename a solid:InsertDeletePatch;</code>
