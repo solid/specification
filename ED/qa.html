@@ -546,7 +546,7 @@ margin-top:1em;
               <section id="specification-category" inlist="" rel="schema:hasPart" resource="#specification-category" typeof="skos:ConceptScheme">
                 <h3 property="schema:name skos:prefLabel">Specification Category</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p property="skos:definition">The <span about="" rel="spec:specificationCategory" resource="#specification-category">Solid Notifications Protocol</span> identifies the following <cite><a href="https://www.w3.org/TR/spec-variability/#spec-cat" rel="dcterms:subject" resource="spec:SpecificationCategory">Specification Category</a></cite> to distinguish the types of conformance: <span rel="skos:hasTopConcept" resource="spec:API">API</span>, <span rel="skos:hasTopConcept" resource="spec:NotationSyntax">notation/syntax</span>, <span rel="skos:hasTopConcept" resource="spec:SetOfEvents">set of events</span>, <span rel="skos:hasTopConcept" resource="spec:ProcessorBehaviour">processor behaviour</span>, <span rel="skos:hasTopConcept" resource="spec:Protocol">protocol</span>.</p>
+                  <p property="skos:definition">The <span about="" rel="spec:specificationCategory" resource="#specification-category">Solid QA</span> identifies the following <cite><a href="https://www.w3.org/TR/spec-variability/#spec-cat" rel="dcterms:subject" resource="spec:SpecificationCategory">Specification Category</a></cite> to distinguish the types of conformance: <span rel="skos:hasTopConcept" resource="spec:API">API</span>, <span rel="skos:hasTopConcept" resource="spec:NotationSyntax">notation/syntax</span>, <span rel="skos:hasTopConcept" resource="spec:SetOfEvents">set of events</span>, <span rel="skos:hasTopConcept" resource="spec:ProcessorBehaviour">processor behaviour</span>, <span rel="skos:hasTopConcept" resource="spec:Protocol">protocol</span>.</p>
                 </div>
               </section>
 
@@ -558,10 +558,17 @@ margin-top:1em;
                   <span rel="skos:hasTopConcept"><span resource="#TestReport"></span></span>
 
                   <dl>
-                    <dt about="#TestReport" property="skos:prefLabel" rel="skos:relatedMatch" resource="spec:RespondingAgent" typeof="skos:Concept"><dfn id="TestReport">Test Report</dfn></dt>
-                    <dd about="#TestReport" property="skos:definition">A <a href="#test-report" rel="rdfs:seeAlso">Test Report</a> is a resource that describes the level of conformance of a project tests against <a href="#TestCase">Test Cases</a> [<cite><a class="bib-ref" href="#bib-test-metadata">test-metadata</a></cite>].</dd>
-                    <dt><dfn id="TestCase">Test Case</dfn></dt>
-                    <dd>..</dd>
+                    <dt about="#TechnicalReport" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Content" typeof="skos:Concept"><dfn id="TestReport">Technical Report</dfn></dt>
+                    <dd about="#TechnicalReport" property="skos:definition">..</dd>
+
+                    <dt about="#TestCase" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Content" typeof="skos:Concept"><dfn id="TestCase">Test Case</dfn></dt>
+                    <dd about="#TestCase" property="skos:definition">..</dd>
+
+                    <dt about="#TestReport" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Content" typeof="skos:Concept"><dfn id="TestReport">Test Report</dfn></dt>
+                    <dd about="#TestReport" property="skos:definition">A <a href="#test-report" rel="rdfs:seeAlso"><em>Test Report</em></a> is a resource that describes the level of conformance of a project’s tests against <a href="#TestCase">Test Cases</a> [<cite><a class="bib-ref" href="#bib-test-metadata">test-metadata</a></cite>].</dd>
+
+                    <dt about="#TestSuite" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Consumer" typeof="skos:Concept"><dfn id="TestCase">Test Suite</dfn></dt>
+                    <dd about="#TestSuite" property="skos:definition" rel="skos:broadMatch" resource="spec:ProducerOfContent">A <a href=""><em>Test Suite</em></a> is software that, .., and consumes <a href="#TechnicalReport">Technical Reports</a> and produces <a href="#TestCase">Test Cases</a>.</dd>
                   </dl>
                 </div>
               </section>
@@ -569,7 +576,7 @@ margin-top:1em;
               <section id="interoperability" inlist="" rel="schema:hasPart" resource="#interoperability">
                 <h3 property="schema:name skos:prefLabel">Interoperability</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p id="interoperability-server-client">Interoperability of implementations for <a href="#Server" rel="rdfs:seeAlso">servers</a> and <a href="#Client" rel="rdfs:seeAlso">clients</a> is tested by evaluating an implementation’s ability to request and respond to HTTP messages that conform to this specification.</p>
+                  <p id="interoperability-server-client">Interoperability of implementations for <a href="#TestSuite" rel="rdfs:seeAlso">TestSuite</a> and <a href="#Content" rel="rdfs:seeAlso">clients</a> is tested by evaluating an implementation’s ability to request and respond to HTTP messages that conform to this specification.</p>
                 </div>
               </section>
             </div>
@@ -601,7 +608,7 @@ margin-top:1em;
 
                   <ul>
                     <li>Document metadata (e.g., license, date, report generated by, submitted by, approved by, notes from the maintainer).</li>
-                    <li>Description of the project (implementation) that's tested (e.g., repository, version, maintainers).</li>
+                    <li>Description of the project (implementation) that is tested (e.g., repository, version, maintainers).</li>
                     <li>Reference to test metadata (e.g., test authors and reviewers, test review status, version of the test, setup, provenance, coverage) and test suite. Some information can be incorporated in test assertion info (see next point).</li>
                     <li>Test assertion (with URI) providing the URI of the test that was run (with description referring to the requirement URI), asserter (URI), subject of the test (URI), the mode in which the test was performed (URI), test result (URIs and descriptions); outcome and additional information about the test, result, and notes from the maintainer.</li>
                     <li>Approved test reports MUST NOT include assertions of tests with rejected review status.</li>
@@ -660,7 +667,7 @@ margin-top:1em;
               <section id="test-report-notification" inlist="" rel="schema:hasPart" resource="#test-report-notification">
                 <h3 property="schema:name">Test Report Notification</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>GitHub repo/directory and/or report sent as an LDN (TBD: either including or requesting maintainer's approval.)</p>
+                  <p>GitHub repo/directory and/or report sent as an LDN (TBD: either including or requesting maintainer’s approval.)</p>
 
                   <p>Publication of reports can be pre-authorized for approved tests.</p>
                 </div>
@@ -712,7 +719,7 @@ margin-top:1em;
 
               <p>Provide information indicating to what extent the test suite completely or proportionally covers the specification it aims to support (issue 5).</p>
 
-              <p>Link to project maintainer's WebID or GitHub account.</p>
+              <p>Link to project maintainer’s WebID or GitHub account.</p>
             </div>
           </section>
 
@@ -987,7 +994,7 @@ margin-top:1em;
                     <dt id="bib-w3c-process">[W3C-PROCESS]</dt>
                     <dd><a href="https://www.w3.org/Consortium/Process/" rel="cito:citesAsPotentialSolution"><cite>W3C Process Document</cite></a>. Elika J. Etemad / fantasai; Florian Rivoal;  W3C Process Community Group. 2 November 2021. URL: <a href="https://www.w3.org/Consortium/Process/">https://www.w3.org/Consortium/Process/</a></dd>
                     <dt id="bib-webid-tls">[WEBID-TLS]</dt>
-                    <dd><a href="https://www.w3.org/2005/Incubator/webid/spec/tls/" rel="cito:citesAsPotentialSolution"><cite>WebID Authentication over TLS</cite></a>. Henry Story; Stéphane Corlosquet; Andrei Sambra.  W3C WebID Community Group. W3C Editor's Draft. URL: <a href="https://www.w3.org/2005/Incubator/webid/spec/tls/">https://www.w3.org/2005/Incubator/webid/spec/tls/</a></dd>
+                    <dd><a href="https://www.w3.org/2005/Incubator/webid/spec/tls/" rel="cito:citesAsPotentialSolution"><cite>WebID Authentication over TLS</cite></a>. Henry Story; Stéphane Corlosquet; Andrei Sambra.  W3C WebID Community Group. W3C Editor’s Draft. URL: <a href="https://www.w3.org/2005/Incubator/webid/spec/tls/">https://www.w3.org/2005/Incubator/webid/spec/tls/</a></dd>
                   </dl>
                 </div>
               </section>
