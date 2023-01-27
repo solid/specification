@@ -21,12 +21,30 @@ main article > h1 {
 font-size: 220%;
 font-weight:bold;
 }
-article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]):not([id="exit-criteria"]) {
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]):not([id=exit-criteria]) {
 counter-increment:section;
 counter-reset:sub-section;
 }
-article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]):not([id="exit-criteria"]):not([id^=table-of-]):not([id^=list-of-]) > h2:before {
-content:counter(section) ".\00a0\00a0\00a0\00a0";
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$=references]):not([id=exit-criteria]) {
+counter-increment:sub-section;
+counter-reset:sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$=references]):not([id=exit-criteria]) section {
+counter-increment:sub-sub-section;
+counter-reset:sub-sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$=references]):not([id=exit-criteria]) section section {
+counter-increment:sub-sub-sub-section;
+counter-reset:sub-sub-sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]):not([id=exit-criteria]):not([id^=table-of-]):not([id^=list-of-]) > h2:before {
+content:counter(section) ".\00a0";
+}
+section:not([id$=references]):not([id^=change-log]):not([id=exit-criteria]) > h3:before {
+content:counter(section) "." counter(sub-section) "\00a0";
+}
+section > h4:before {
+content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\00a0";
 }
 table {
 border-collapse: collapse;
@@ -35,6 +53,8 @@ caption, tbody, tfoot {
 border-bottom: 2pt solid #000;
 }
 </style>
+    <link href="https://dokie.li/media/css/dokieli.css" media="all" rel="stylesheet" />
+    <script async="" src="https://dokie.li/scripts/dokieli.js"></script>
   </head>
 
   <body about="" prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# owl: http://www.w3.org/2002/07/owl# xsd: http://www.w3.org/2001/XMLSchema# dcterms: http://purl.org/dc/terms/ schema: http://schema.org/ doap: http://usefulinc.com/ns/doap# cito: http://purl.org/spar/cito/ as: https://www.w3.org/ns/activitystreams#" typeof="schema:CreativeWork prov:Entity as:Article">
@@ -47,6 +67,8 @@ border-bottom: 2pt solid #000;
     <main>
       <article about="" typeof="schema:Article">
         <h1 property="schema:name">Solid Technical Reports</h1>
+
+        <p id="w3c-state"><span property="doap:revision">Living Document</span>, <time>2023-01-27</time></p>
 
         <dl id="document-identifier">
           <dt>This version</dt>
@@ -70,7 +92,7 @@ border-bottom: 2pt solid #000;
 
         <dl id="document-modified">
           <dt>Modified</dt>
-          <dd><time content="2023-01-05T00:00:00Z" datatype="xsd:dateTime" datetime="2023-01-05T00:00:00Z" property="schema:dateModified">2023-01-05</time></dd>
+          <dd><time content="2023-01-27T00:00:00Z" datatype="xsd:dateTime" datetime="2023-01-27T00:00:00Z" property="schema:dateModified">2023-01-27</time></dd>
         </dl>
 
         <dl id="document-repository">
@@ -170,7 +192,7 @@ border-bottom: 2pt solid #000;
                     <td><a href="https://solidproject.org/TR/notifications-protocol" rel="cito:citesForInformation">Solid Notifications Protocol</a></td>
                     <td><a href="https://github.com/solid/notifications">https://github.com/solid/notifications</a></td>
                     <td>Version 0.1.0</td>
-                    <td><time datetime="2022-12-30">2022-12-30</time></td>
+                    <td><time datetime="2023-06-30">2023-06-30</time></td>
                   </tr>
                   <tr>
                     <td><a href="https://solidproject.org/TR/websocket-subscription-2021" rel="cito:citesForInformation">WebSocketSubscription2021</a></td>
