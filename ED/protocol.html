@@ -275,7 +275,7 @@ margin-top:1em;
                 <dd>
                   <dl id="document-permission" rel="odrl:permission" resource="#document-permission" typeof="odrl:Permission">
                     <dt>Assigner</dt>
-                    <dd><a href="https://www.w3.org/community/solid/" rel="odrl:assigner">W3C Solid Community Group</a></dd>
+                    <dd><a href="https://www.w3.org/groups/cg/solid" rel="odrl:assigner">W3C Solid Community Group</a></dd>
                     <dt>Action</dt>
                     <dd>
                       <ul rel="odrl:action">
@@ -310,7 +310,7 @@ margin-top:1em;
           </dl>
         </details>
 
-        <p class="copyright">MIT License. Copyright © 2019–2022 <a href="http://www.w3.org/community/solid/">W3C Solid Community Group</a>.</p>
+        <p class="copyright">MIT License. Copyright © 2019–2022 <a href="https://www.w3.org/groups/cg/solid">W3C Solid Community Group</a>.</p>
 
         <div datatype="rdf:HTML" id="content" property="schema:description">
           <section id="abstract">
@@ -325,11 +325,11 @@ margin-top:1em;
             <div datatype="rdf:HTML" property="schema:description">
               <p>This section describes the status of this document at the time of its publication.</p>
 
-              <p>This document was published by the <a href="https://www.w3.org/community/solid/">Solid Community Group</a> as an <em>Editor’s Draft</em>. The sections that have been incorporated have been reviewed following the <a href="https://github.com/solid/process">Solid process</a>. However, the information in this document is still subject to change. You are invited to <a href="https://github.com/solid/specification/issues">contribute</a> any feedback, comments, or questions you might have.</p>
+              <p>This document was published by the <a href="https://www.w3.org/groups/cg/solid">Solid Community Group</a> as an <em>Editor’s Draft</em>. The sections that have been incorporated have been reviewed following the <a href="https://github.com/solid/process">Solid process</a>. However, the information in this document is still subject to change. You are invited to <a href="https://github.com/solid/specification/issues">contribute</a> any feedback, comments, or questions you might have.</p>
 
               <p>Publication as an <em>Editor’s Draft</em> does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.</p>
 
-              <p>This document was produced by a group operating under the <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available.</p>
+              <p>This document was produced by a group operating under the <a href="https://www.w3.org/community/about/process/cla/">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/process/cla-deed/">summary</a> is available.</p>
             </div>
           </section>
 
@@ -589,7 +589,7 @@ margin-top:1em;
                     <div datatype="rdf:HTML" property="schema:description">
                       <p id="normative-informative-sections">All assertions, diagrams, examples, and notes are non-normative, as are all sections explicitly marked non-normative. Everything else is normative.</p>
 
-                      <p id="requirement-levels">The key words “<span rel="dcterms:subject" resource="spec:MUST">MUST</span>”, “<span rel="dcterms:subject" resource="spec:MUSTNOT">MUST NOT</span>”, “<span rel="dcterms:subject" resource="spec:SHOULD">SHOULD</span>”, and “<span rel="dcterms:subject" resource="spec:MAY">MAY</span>” are to be interpreted as described in <a href="https://tools.ietf.org/html/bcp14">BCP 14</a> [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>] [<cite><a class="bibref" href="#bib-rfc8174">RFC8174</a></cite>] when, and only when, they appear in all capitals, as shown here.</p>
+                      <p id="requirement-levels">The key words “<span rel="dcterms:subject" resource="spec:MUST">MUST</span>”, “<span rel="dcterms:subject" resource="spec:MUSTNOT">MUST NOT</span>”, “<span rel="dcterms:subject" resource="spec:SHOULD">SHOULD</span>”, and “<span rel="dcterms:subject" resource="spec:MAY">MAY</span>” are to be interpreted as described in <a href="https://www.rfc-editor.org/info/bcp14">BCP 14</a> [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>] [<cite><a class="bibref" href="#bib-rfc8174">RFC8174</a></cite>] when, and only when, they appear in all capitals, as shown here.</p>
 
                       <p id="advisement-levels">The key words “<span rel="dcterms:subject" resource="spec:StronglyEncouraged">strongly encouraged</span>”, “<span rel="dcterms:subject" resource="spec:StronglyDiscouraged">strongly discouraged</span>”, “<span rel="dcterms:subject" resource="spec:Encouraged">encouraged</span>", “<span rel="dcterms:subject" resource="spec:Discouraged">discouraged</span>", “<span rel="dcterms:subject" resource="spec:Can">can</span>", “<span rel="dcterms:subject" resource="spec:Cannot">cannot</span>”, “<span rel="dcterms:subject" resource="spec:Could">could</span>”, “<span rel="dcterms:subject" resource="spec:CouldNot">could not</span>”, “<span rel="dcterms:subject" resource="spec:Might">might</span>”, and “<span rel="dcterms:subject" resource="spec:MightNot">might not</span>” are used for non-normative content.</p>
                     </div>
@@ -978,7 +978,7 @@ margin-top:1em;
                     <ol about="#server-patch-n3-semantics">
                       <li>Start from the RDF dataset in the target document, or an empty RDF dataset if the target resource does not exist yet.</li>
                       <li>If <code>?conditions</code> is non-empty, find all (possibly empty) variable mappings such that all of the resulting triples occur in the dataset.</li>
-                      <li>If no such mapping exists, or if multiple mappings exist, the <span id="server-patch-n3-semantics-no-mapping" rel="spec:requirement" resource="#server-patch-n3-semantics-no-mapping"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>409</code> status code.</span></span> [<a href="https://github.com/solid-archive/query-panel/issues/3" rel="cito:citesAsSourceDocument">Source</a>]</li>
+                      <li>If no such mapping exists, or if multiple mappings exist, the <span id="server-patch-n3-semantics-no-mapping" rel="spec:requirement" resource="#server-patch-n3-semantics-no-mapping"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>409</code> status code.</span></span> [<a href="https://github.com/solid-contrib/query-panel/issues/3" rel="cito:citesAsSourceDocument">Source</a>]</li>
                       <li>The resulting variable mapping is propagated to the <code>?deletions</code> and <code>?insertions</code> formulae to obtain two sets of resulting triples.</li>
                       <li>If the set of triples resulting from <code>?deletions</code> is non-empty and the dataset does not contain <em>all</em> of these triples, the <span id="server-patch-n3-semantics-deletions-non-empty-all-triples" rel="spec:requirement" resource="#server-patch-n3-semantics-deletions-non-empty-all-triples"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>409</code> status code.</span></span> [<a href="https://github.com/solid-archive/query-panel/issues/3" rel="cito:citesAsSourceDocument">Source</a>]</li>
                       <li>The triples resulting from <code>?deletions</code> are to be removed from the RDF dataset.</li>
@@ -1008,7 +1008,7 @@ margin-top:1em;
 
                   <p><span about="" id="server-delete-protect-root-container" rel="spec:requirement" resource="#server-delete-protect-root-container"><span property="spec:statement">When a <code>DELETE</code> request targets storage’s root container or its associated ACL resource, the <span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with the <code>405</code> status code.</span></span> <span about="" id="server-disallow-delete" rel="spec:requirement" resource="#server-disallow-delete"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> exclude the <code>DELETE</code> method in the HTTP response header <code>Allow</code> in response to requests to these resources [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>].</span></span> [<a href="https://github.com/solid/specification/issues/37#issuecomment-627281466" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
-                  <p><span about="" id="server-delete-remove-containment" rel="spec:requirement" resource="#server-delete-remove-containment"><span property="spec:statement">When a contained resource is deleted, the <span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> also remove the corresponding containment triple.</span></span> [<a href="https://www.w3.org/TR/ldp#ldpc-del-contremovesconttriple" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                  <p><span about="" id="server-delete-remove-containment" rel="spec:requirement" resource="#server-delete-remove-containment"><span property="spec:statement">When a contained resource is deleted, the <span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> also remove the corresponding containment triple.</span></span> [<a href="https://www.w3.org/TR/ldp/#ldpc-del-contremovesconttriple" rel="cito:citesAsSourceDocument">Source</a>]</p>
 
                   <p><span about="" id="server-delete-remove-auxiliary-resource" rel="spec:requirement" resource="#server-delete-remove-auxiliary-resource"><span property="spec:statement">When a contained resource is deleted, the <span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> also delete the associated auxiliary resources (see the <a href="#auxiliary-resources">Auxiliary Resources</a> section).</span></span></p>
 
