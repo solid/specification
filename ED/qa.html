@@ -429,7 +429,7 @@ margin-top:1em;
             <div datatype="rdf:HTML" property="schema:description">
               <p><em>This section is non-normative.</em></p>
 
-              <p id="background" rel="schema:hasPart" resource="#background" typeof="deo:Background"><span datatype="rdf:HTML" property="schema:description">Specifications in the Solid ecosystem [SOLID-TECHNICAL-REPORTS] describe how implementations can be interoperable by using Web communication protocols, global identifiers, authentication and authorization mechanisms, data formats and shapes, notifications, and query interfaces.</span></p>
+              <p id="background" rel="schema:hasPart" resource="#background" typeof="deo:Background"><span datatype="rdf:HTML" property="schema:description">Specifications in the Solid ecosystem <cite><a href="https://solidproject.org/TR/">Solid Technical Reports</a></cite> [<cite><a class="bibref" href="#bib-solid-technical-reports">SOLID-TECHNICAL-REPORTS</a></cite>] describe how implementations can be interoperable by using Web communication protocols, global identifiers, authentication and authorization mechanisms, data formats and shapes, notifications, and query interfaces.</span></p>
 
               <p id="motivation" rel="schema:hasPart" resource="#motivation" typeof="deo:Motivation"><span datatype="rdf:HTML" property="schema:description">Writing tests in a way that allows implementations to conform to the requirements of a technical report gives Solid projects confidence that their software is compatible with other implementations. This in turn gives authors of technical reports and software implementers confidence that they can rely on the Solid ecosystem to deliver on the promise of interoperability based on open standards. Implementation and interoperability experience can be verified by reporting on implementations passing open test suites.</span></p>
 
@@ -501,7 +501,7 @@ margin-top:1em;
                       <tr rel="skos:member" resource="http://www.w3.org/ns/earl">
                         <td><code>earl</code></td>
                         <td>http://www.w3.org/ns/earl#</td>
-                        <td>[<cite><a class="bibref" href="#bib-earl" property="skos:prefLabel">EARL</a></cite>]</td>
+                        <td>[<cite><a class="bibref" href="#bib-earl10-schema" property="skos:prefLabel">EARL10-Schema</a></cite>]</td>
                       </tr>
                       <tr rel="skos:member" resource="http://www.w3.org/ns/prov">
                         <td><code>prov</code></td>
@@ -512,6 +512,11 @@ margin-top:1em;
                         <td><code>rdf</code></td>
                         <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
                         <td>[<cite><a class="bibref" href="#bib-rdf-schema" property="skos:prefLabel">rdf-schema</a></cite>]</td>
+                      </tr>
+                      <tr rel="skos:member" resource="http://www.w3.org/2004/02/skos/core">
+                        <td><code>skos</code></td>
+                        <td>http://www.w3.org/2004/02/skos/core#</td>
+                        <td>[<cite><a class="bibref" href="#bib-skos-reference" property="skos:prefLabel">skos-reference</a></cite>]</td>
                       </tr>
                       <tr rel="skos:member" resource="http://www.w3.org/ns/solid/terms">
                         <td><code>solid</code></td>
@@ -545,7 +550,7 @@ margin-top:1em;
                 <div datatype="rdf:HTML" property="schema:description">
                   <p id="normative-informative-sections">All assertions, diagrams, examples, and notes are non-normative, as are all sections explicitly marked non-normative. Everything else is normative.</p>
 
-                  <p id="requirement-levels">The key words “<span rel="dcterms:subject" resource="spec:MUST">MUST</span>”, “<span rel="dcterms:subject" resource="spec:MUSTNOT">MUST NOT</span>”, “<span rel="dcterms:subject" resource="spec:SHOULD">SHOULD</span>”, and “<span rel="dcterms:subject" resource="spec:MAY">MAY</span>” are to be interpreted as described in <a href="https://tools.ietf.org/html/bcp14">BCP 14</a> [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>] [<cite><a class="bibref" href="#bib-rfc8174">RFC8174</a></cite>] when, and only when, they appear in all capitals, as shown here.</p>
+                  <p id="requirement-levels">The key words “<span rel="dcterms:subject" resource="spec:MUST">MUST</span>”, “<span rel="dcterms:subject" resource="spec:MUSTNOT">MUST NOT</span>”, “<span rel="dcterms:subject" resource="spec:SHOULD">SHOULD</span>”, and “<span rel="dcterms:subject" resource="spec:MAY">MAY</span>” are to be interpreted as described in <a href="https://www.rfc-editor.org/info/bcp14">BCP 14</a> [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>] [<cite><a class="bibref" href="#bib-rfc8174">RFC8174</a></cite>] when, and only when, they appear in all capitals, as shown here.</p>
 
                   <p id="advisement-levels">The key words “<span rel="dcterms:subject" resource="spec:StronglyEncouraged">strongly encouraged</span>”, “<span rel="dcterms:subject" resource="spec:StronglyDiscouraged">strongly discouraged</span>”, “<span rel="dcterms:subject" resource="spec:Encouraged">encouraged</span>", “<span rel="dcterms:subject" resource="spec:Discouraged">discouraged</span>", “<span rel="dcterms:subject" resource="spec:Can">can</span>", “<span rel="dcterms:subject" resource="spec:Cannot">cannot</span>”, “<span rel="dcterms:subject" resource="spec:Could">could</span>”, “<span rel="dcterms:subject" resource="spec:CouldNot">could not</span>”, “<span rel="dcterms:subject" resource="spec:Might">might</span>”, and “<span rel="dcterms:subject" resource="spec:MightNot">might not</span>” are used for non-normative content.</p>
                 </div>
@@ -563,9 +568,7 @@ margin-top:1em;
                 <div datatype="rdf:HTML" property="schema:description">
                   <p property="skos:definition">The <span about="" rel="spec:classesOfProducts" resource="#classes-of-products">Solid QA</span> identifies the following <cite><a href="https://www.w3.org/TR/qaframe-spec/#cop-def" rel="dcterms:subject" resource="spec:ClassesOfProducts">Classes of Products</a></cite> for conforming implementations. These products are referenced throughout this specification.</p>
 
-                  <span rel="skos:hasTopConcept"><span resource="#TestReport"></span></span>
-
-                  <dl>
+                  <dl rel="skos:hasTopConcept">
                     <dt about="#TechnicalReport" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Content" typeof="skos:Concept"><dfn id="TestReport">Technical Report</dfn></dt>
                     <dd about="#TechnicalReport" property="skos:definition">..</dd>
 
@@ -666,9 +669,9 @@ margin-top:1em;
               <section id="test-result" inlist="" rel="schema:hasPart" resource="#test-result">
                 <h3 property="schema:name">Test Result</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>Test Results MUST use the <cite><a href="https://www.w3.org/TR/EARL10-Schema/" rel="cito:citesAsAuthority">Evaluation and Report Language 1.0 Schema</a></cite> [<cite><a class="bib-ref" href="#bib-EARL10-Schema">EARL10-Schema</a></cite>].</p>
+                  <p>Test Results MUST use the <cite><a href="https://www.w3.org/TR/EARL10-Schema/" rel="cito:citesAsAuthority">Evaluation and Report Language 1.0 Schema</a></cite> [<cite><a class="bib-ref" href="#bib-earl10-Schema">EARL10-Schema</a></cite>].</p>
 
-                  <p>Test Suite implementers are encouraged to follow the <cite><a href="https://www.w3.org/TR/EARL10-Guide/" rel="cito:citesAsPotentialSolution">Developer Guide for Evaluation and Report Language 1.0</a></cite> [<cite><a class="bib-ref" href="#bib-EARL10-Guide">EARL10-Guide</a></cite>].</p>
+                  <p>Test Suite implementers are encouraged to follow the <cite><a href="https://www.w3.org/TR/EARL10-Guide/" rel="cito:citesAsPotentialSolution">Developer Guide for Evaluation and Report Language 1.0</a></cite> [<cite><a class="bib-ref" href="#bib-earl10-guide">EARL10-Guide</a></cite>].</p>
                 </div>
               </section>
 
@@ -818,58 +821,58 @@ margin-top:1em;
 
                   <dl rel="schema:hasPart">
                     <dt about="#security-privacy-review-purpose" id="security-privacy-review-purpose"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#purpose" rel="cito:repliesTo">What information might this feature expose to Web sites or other parties, and for what purposes is that exposure necessary?</a></dt>
-                    <dd about="#security-privacy-review-purpose" datatype="rdf:HTML" property="schema:description"></dd>
+                    <dd about="#security-privacy-review-purpose" datatype="rdf:HTML" property="schema:description">..</dd>
 
-                    <dt about="#security-privacy-review-minimum-data" id="security-privacy-review-minimum-data"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#minimum-data" rel="cito:repliesTo"></a></dt>
-                    <dd about="#security-privacy-review-minimum-data" datatype="rdf:HTML" property="schema:description"></dd>
+                    <dt about="#security-privacy-review-minimum-data" id="security-privacy-review-minimum-data"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#minimum-data" rel="cito:repliesTo">Do features in your specification expose the minimum amount of information necessary to enable their intended uses?</a></dt>
+                    <dd about="#security-privacy-review-minimum-data" datatype="rdf:HTML" property="schema:description">..</dd>
 
-                    <dt about="#security-privacy-review-personal-data" id="security-privacy-review-personal-data"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#personal-data" rel="cito:repliesTo"></a></dt>
-                    <dd about="#security-privacy-review-personal-data" datatype="rdf:HTML" property="schema:description"></dd>
+                    <dt about="#security-privacy-review-personal-data" id="security-privacy-review-personal-data"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#personal-data" rel="cito:repliesTo">How do the features in your specification deal with personal information, personally-identifiable information (PII), or information derived from them?</a></dt>
+                    <dd about="#security-privacy-review-personal-data" datatype="rdf:HTML" property="schema:description">..</dd>
 
                     <dt about="#security-privacy-review-sensitive-data" id="security-privacy-review-sensitive-data"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#sensitive-data" rel="cito:repliesTo">How do the features in your specification deal with sensitive information?</a></dt>
-                    <dd about="#security-privacy-review-sensitive-data" datatype="rdf:HTML" property="schema:description"></dd>
+                    <dd about="#security-privacy-review-sensitive-data" datatype="rdf:HTML" property="schema:description">..</dd>
 
                     <dt about="#security-privacy-review-persistent-origin-specific-state" id="security-privacy-review-persistent-origin-specific-state"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#persistent-origin-specific-state" rel="cito:repliesTo">Do the features in your specification introduce new state for an origin that persists across browsing sessions?</a></dt>
-                    <dd about="#security-privacy-review-persistent-origin-specific-state" datatype="rdf:HTML" property="schema:description"></dd>
+                    <dd about="#security-privacy-review-persistent-origin-specific-state" datatype="rdf:HTML" property="schema:description">..</dd>
 
                     <dt about="#security-privacy-review-underlying-platform-data" id="security-privacy-review-underlying-platform-data"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#underlying-platform-data" rel="cito:repliesTo">Do the features in your specification expose information about the underlying platform to origins?</a></dt>
-                    <dd about="#security-privacy-review-underlying-platform-data" datatype="rdf:HTML" property="schema:description"></dd>
+                    <dd about="#security-privacy-review-underlying-platform-data" datatype="rdf:HTML" property="schema:description">..</dd>
 
                     <dt about="#security-privacy-review-send-to-platform" id="security-privacy-review-send-to-platform"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#send-to-platform" rel="cito:repliesTo">Does this specification allow an origin to send data to the underlying platform?</a></dt>
-                    <dd about="#security-privacy-review-send-to-platform" datatype="rdf:HTML" property="schema:description"></dd>
+                    <dd about="#security-privacy-review-send-to-platform" datatype="rdf:HTML" property="schema:description">..</dd>
 
                     <dt about="#security-privacy-review-sensor-data" id="security-privacy-review-sensor-data"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#sensor-data" rel="cito:repliesTo">Do features in this specification allow an origin access to sensors on a user’s device</a></dt>
-                    <dd about="#security-privacy-review-sensor-data" datatype="rdf:HTML" property="schema:description"></dd>
+                    <dd about="#security-privacy-review-sensor-data" datatype="rdf:HTML" property="schema:description">..</dd>
 
                     <dt about="#security-privacy-review-other-data" id="security-privacy-review-other-data"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#other-data" rel="cito:repliesTo">What data do the features in this specification expose to an origin? Please also document what data is identical to data exposed by other features, in the same or different contexts.</a></dt>
-                    <dd about="#security-privacy-review-other-data" datatype="rdf:HTML" property="schema:description"></dd>
+                    <dd about="#security-privacy-review-other-data" datatype="rdf:HTML" property="schema:description">..</dd>
 
                     <dt about="#security-privacy-review-string-to-script" id="security-privacy-review-string-to-script"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#string-to-script" rel="cito:repliesTo">Do features in this specification enable new script execution/loading mechanisms?</a></dt>
-                    <dd about="#security-privacy-review-string-to-script" datatype="rdf:HTML" property="schema:description"></dd>
+                    <dd about="#security-privacy-review-string-to-script" datatype="rdf:HTML" property="schema:description">..</dd>
 
                     <dt about="#security-privacy-review-remote-device" id="security-privacy-review-remote-device"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#remote-device" rel="cito:repliesTo">Do features in this specification allow an origin to access other devices?</a></dt>
-                    <dd about="#security-privacy-review-remote-device" datatype="rdf:HTML" property="schema:description"></dd>
+                    <dd about="#security-privacy-review-remote-device" datatype="rdf:HTML" property="schema:description">..</dd>
 
                     <dt about="#security-privacy-review-native-ui" id="security-privacy-review-native-ui"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#native-ui" rel="cito:repliesTo">Do features in this specification allow an origin some measure of control over a user agent’s native UI?</a></dt>
-                    <dd about="#security-privacy-review-native-ui" datatype="rdf:HTML" property="schema:description"></dd>
+                    <dd about="#security-privacy-review-native-ui" datatype="rdf:HTML" property="schema:description">..</dd>
 
                     <dt about="#security-privacy-review-temporary-id" id="security-privacy-review-temporary-id"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#temporary-id" rel="cito:repliesTo">What temporary identifiers do the features in this specification create or expose to the web?</a></dt>
-                    <dd about="#security-privacy-review-temporary-id" datatype="rdf:HTML" property="schema:description"></dd>
+                    <dd about="#security-privacy-review-temporary-id" datatype="rdf:HTML" property="schema:description">..</dd>
 
                     <dt about="#security-privacy-review-first-third-party" id="security-privacy-review-first-third-party"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#first-third-party" rel="cito:repliesTo">How does this specification distinguish between behaviour in first-party and third-party contexts?</a></dt>
-                    <dd about="#security-privacy-review-first-third-party" datatype="rdf:HTML" property="schema:description"></dd>
+                    <dd about="#security-privacy-review-first-third-party" datatype="rdf:HTML" property="schema:description">..</dd>
 
                     <dt about="#security-privacy-review-private-browsing" id="security-privacy-review-private-browsing"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#private-browsing" rel="cito:repliesTo">How do the features in this specification work in the context of a browser’s Private Browsing or Incognito mode?</a></dt>
-                    <dd about="#security-privacy-review-private-browsing" datatype="rdf:HTML" property="schema:description"></dd>
+                    <dd about="#security-privacy-review-private-browsing" datatype="rdf:HTML" property="schema:description">..</dd>
 
                     <dt about="#security-privacy-review-considerations" id="security-privacy-review-considerations"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#considerations" rel="cito:repliesTo">Does this specification have both "Security Considerations" and "Privacy Considerations" sections?</a></dt>
-                    <dd about="#security-privacy-review-considerations" datatype="rdf:HTML" property="schema:description"></dd>
+                    <dd about="#security-privacy-review-considerations" datatype="rdf:HTML" property="schema:description">..</dd>
 
                     <dt about="#security-privacy-review-relaxed-sop" id="security-privacy-review-relaxed-sop"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#relaxed-sop" rel="cito:repliesTo">Do features in your specification enable origins to downgrade default security protections?</a></dt>
-                    <dd about="#security-privacy-review-relaxed-sop" datatype="rdf:HTML" property="schema:description"></dd>
+                    <dd about="#security-privacy-review-relaxed-sop" datatype="rdf:HTML" property="schema:description">..</dd>
 
                     <dt about="#security-privacy-review-non-fully-active" id="security-privacy-review-non-fully-active"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#non-fully-active" rel="cito:repliesTo">How does your feature handle non-"fully active" documents?</a></dt>
-                    <dd about="#security-privacy-review-non-fully-active" datatype="rdf:HTML" property="schema:description"></dd>
+                    <dd about="#security-privacy-review-non-fully-active" datatype="rdf:HTML" property="schema:description">..</dd>
                   </dl>
                 </div>
               </section>
@@ -892,77 +895,34 @@ margin-top:1em;
                 <h3 property="schema:name">Normative References</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <dl class="bibliography" resource="">
-                    <dt id="bib-acp">[ACP]</dt>
-                    <dd><a href="https://solidproject.org/TR/acp" rel="cito:citesAsAuthority"><cite>Access Control Policy</cite></a>.  Matthieu Bosquet.  W3C Solid Community Group. 18 May 2022. Version 0.9.0. URL: <a href="https://solidproject.org/TR/acp">https://solidproject.org/TR/acp</a></dd>
                     <dt id="bib-dc-terms">[DC-TERMS]</dt>
                     <dd><a href="http://dublincore.org/documents/2010/10/11/dcmi-terms/" rel="cito:citesAsAuthority"><cite>Dublin Core Metadata Terms, version 1.1</cite></a>. DCMI Usage Board.  DCMI. 11 October 2010. DCMI Recommendation. URL: <a href="http://dublincore.org/documents/2010/10/11/dcmi-terms/">http://dublincore.org/documents/2010/10/11/dcmi-terms/</a></dd>
-                    <dt id="bib-fetch">[FETCH]</dt>
-                    <dd><a href="https://fetch.spec.whatwg.org/" rel="cito:citesAsAuthority"><cite>Fetch Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://fetch.spec.whatwg.org/">https://fetch.spec.whatwg.org/</a></dd>
-                    <dt id="bib-iana-media-types">[IANA-MEDIA-TYPES]</dt>
-                    <dd><a href="https://www.iana.org/assignments/media-types/" rel="cito:citesAsAuthority"><cite>Media Types</cite></a>.  IANA. URL: <a href="https://www.iana.org/assignments/media-types/">https://www.iana.org/assignments/media-types/</a></dd>
-                    <dt id="bib-json-ld11">[JSON-LD11]</dt>
-                    <dd><a href="https://www.w3.org/TR/json-ld11/" rel="cito:citesAsAuthority"><cite>JSON-LD 1.1</cite></a>. Gregg Kellogg; Pierre-Antoine Champin; Dave Longley.  W3C. 16 July 2020. W3C Recommendation. URL: <a href="https://www.w3.org/TR/json-ld11/">https://www.w3.org/TR/json-ld11/</a></dd>
+                    <dt id="bib-earl10-schema">[EARL10-Schema</dt><dd>
+                    <a href="https://www.w3.org/TR/EARL10-Schema/" rel="cito:citesAsAuthority"><cite>Evaluation and Report Language (EARL) 1.0 Schema</cite></a>. Shadi Abou-Zahra.  W3C. 2 February 2017. W3C Working Group Note. URL: <a href="https://www.w3.org/TR/EARL10-Schema/">https://www.w3.org/TR/EARL10-Schema/</a></dd>
                     <dt id="bib-ldn">[LDN]</dt>
                     <dd><a href="https://www.w3.org/TR/ldn/" rel="cito:citesAsAuthority"><cite>Linked Data Notifications</cite></a>. Sarven Capadisli; Amy Guy.  W3C. 2 May 2017. W3C Recommendation. URL: <a href="https://www.w3.org/TR/ldn/">https://www.w3.org/TR/ldn/</a></dd>
-                    <dt id="bib-ldp">[LDP]</dt>
-                    <dd><a href="https://www.w3.org/TR/ldp/" rel="cito:citesAsAuthority"><cite>Linked Data Platform 1.0</cite></a>. Steve Speicher; John Arwe; Ashok Malhotra.  W3C. 26 February 2015. W3C Recommendation. URL: <a href="https://www.w3.org/TR/ldp/">https://www.w3.org/TR/ldp/</a></dd>
-                    <dt id="bib-notation3">[N3]</dt>
-                    <dd><a href="https://w3c.github.io/N3/spec/" rel="cito:citesAsAuthority"><cite>Notation3</cite></a>. Dörthe Arndt; William Van Woensel;Dominik Tomaszuk; Gregg Kellogg.  W3C. 5 September 2021. Draft Community Group Report. URL: <a href="https://w3c.github.io/N3/spec/">https://w3c.github.io/N3/spec/</a></dd>
-                    <dt id="bib-powder-dr">[POWDER-DR]</dt>
-                    <dd><a href="https://www.w3.org/TR/powder-dr/" rel="cito:citesAsAuthority"><cite>Protocol for Web Description Resources (POWDER): Description Resources</cite></a>. Phil Archer; Kevin Smith; Andrea Perego.  W3C. 1 September 2009. W3C Recommendation. URL: <a href="https://www.w3.org/TR/powder-dr/">https://www.w3.org/TR/powder-dr/</a></dd>
+                    <dt id="bib-prov-o">[prov-o]</dt>
+                    <dd><a href="https://www.w3.org/TR/prov-o/" rel="cito:citesAsAuthority"><cite>PROV-O: The PROV Ontology</cite></a>. Timothy Lebo; Satya Sahoo; Deborah McGuinness.  W3C. 30 April 2013. W3C Recommendation. URL: <a href="https://www.w3.org/TR/prov-o/">https://www.w3.org/TR/prov-o/</a></dd>
                     <dt id="bib-rdf-schema">[RDF-SCHEMA]</dt>
                     <dd><a href="https://www.w3.org/TR/rdf-schema/" rel="cito:citesAsAuthority"><cite>RDF Schema 1.1</cite></a>. Dan Brickley; Ramanathan Guha.  W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/rdf-schema/">https://www.w3.org/TR/rdf-schema/</a></dd>
                     <dt id="bib-rdf11-concepts">[RDF11-CONCEPTS]</dt>
                     <dd><a href="https://www.w3.org/TR/rdf11-concepts/" rel="cito:citesAsAuthority"><cite>RDF 1.1 Concepts and Abstract Syntax</cite></a>. Richard Cyganiak; David Wood; Markus Lanthaler.  W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/rdf11-concepts/">https://www.w3.org/TR/rdf11-concepts/</a></dd>
                     <dt id="bib-rfc2119">[RFC2119]</dt>
                     <dd><a href="https://datatracker.ietf.org/doc/html/rfc2119" rel="cito:citesAsAuthority"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc2119">https://datatracker.ietf.org/doc/html/rfc2119</a></dd>
-                    <dt id="bib-rfc3864">[RFC3864]</dt>
-                    <dd><a href="https://datatracker.ietf.org/doc/html/rfc3864" rel="cito:citesAsAuthority"><cite>Registration Procedures for Message Header Fields</cite></a>. G. Klyne; M. Nottingham; J. Mogul.  IETF. September 2004. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc3864">https://datatracker.ietf.org/doc/html/rfc3864</a></dd>
                     <dt id="bib-rfc3986">[RFC3986]</dt>
                     <dd><a href="https://datatracker.ietf.org/doc/html/rfc3986" rel="cito:citesAsAuthority"><cite>Uniform Resource Identifier (URI): Generic Syntax</cite></a>. T. Berners-Lee; R. Fielding; L. Masinter.  IETF. January 2005. Internet Standard. URL: <a href="https://datatracker.ietf.org/doc/html/rfc3986">https://datatracker.ietf.org/doc/html/rfc3986</a></dd>
-                    <dt id="bib-rfc4918">[RFC4918]</dt>
-                    <dd><a href="https://datatracker.ietf.org/doc/html/rfc4918" rel="cito:citesAsAuthority"><cite>HTTP Extensions for Web Distributed Authoring and Versioning (WebDAV)</cite></a>. L. Dusseault, Ed.  IETF. June 2007. Proposed Standard. URL: <a href="https://datatracker.ietf.org/doc/html/rfc4918">https://datatracker.ietf.org/doc/html/rfc4918</a></dd>
-                    <dt id="bib-rfc5023">[RFC5023]</dt>
-                    <dd><a href="https://datatracker.ietf.org/doc/html/rfc5023" rel="cito:citesAsAuthority"><cite>The Atom Publishing Protocol</cite></a>. J. Gregorio, Ed.; B. de hOra, Ed..  IETF. October 2007. Proposed Standard. URL: <a href="https://datatracker.ietf.org/doc/html/rfc5023">https://datatracker.ietf.org/doc/html/rfc5023</a></dd>
-                    <dt id="bib-rfc5789">[RFC5789]</dt>
-                    <dd><a href="https://httpwg.org/specs/rfc5789.html" rel="cito:citesAsAuthority"><cite>PATCH Method for HTTP</cite></a>. L. Dusseault; J. Snell.  IETF. March 2010. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc5789.html">https://httpwg.org/specs/rfc5789.html</a></dd>
-                    <dt id="bib-rfc6454">[RFC6454]</dt>
-                    <dd><a href="https://datatracker.ietf.org/doc/html/rfc6454" rel="cito:citesAsAuthority"><cite>The Web Origin Concept</cite></a>. A. Barth.  IETF. December 2011. Proposed Standard. URL: <a href="https://datatracker.ietf.org/doc/html/rfc6454">https://datatracker.ietf.org/doc/html/rfc6454</a></dd>
-                    <dt id="bib-rfc6455">[RFC6455]</dt>
-                    <dd><a href="https://datatracker.ietf.org/doc/html/rfc6455" rel="cito:citesAsAuthority"><cite>The WebSocket Protocol</cite></a>. I. Fette; A. Melnikov.  IETF. December 2011. Proposed Standard. URL: <a href="https://datatracker.ietf.org/doc/html/rfc6455">https://datatracker.ietf.org/doc/html/rfc6455</a></dd>
-                    <dt id="bib-rfc6570">[RFC6570]</dt><dd><a href="https://www.rfc-editor.org/rfc/rfc6570" rel="cito:citesAsAuthority"><cite>URI Template</cite></a>. J. Gregorio; R. Fielding; M. Hadley; M. Nottingham; D. Orchard.  IETF. March 2012. Proposed Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc6570">https://www.rfc-editor.org/rfc/rfc6570</a></dd>
-                    <dt id="bib-rfc6892">[RFC6892]</dt>
-                    <dd><a href="https://datatracker.ietf.org/doc/html/rfc6892" rel="cito:citesAsAuthority"><cite>The 'describes' Link Relation Type</cite></a>. E. Wilde.  IETF. March 2013. Informational. URL: <a href="https://datatracker.ietf.org/doc/html/rfc6892">https://datatracker.ietf.org/doc/html/rfc6892</a></dd>
-                    <dt id="bib-rfc7230">[RFC7230]</dt>
-                    <dd><a href="https://httpwg.org/specs/rfc7230.html" rel="cito:citesAsAuthority"><cite>Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing</cite></a>. R. Fielding, Ed.; J. Reschke, Ed..  IETF. June 2014. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc7230.html">https://httpwg.org/specs/rfc7230.html</a></dd>
                     <dt id="bib-rfc7231">[RFC7231]</dt>
                     <dd><a href="https://httpwg.org/specs/rfc7231.html" rel="cito:citesAsAuthority"><cite>Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content</cite></a>. R. Fielding, Ed.; J. Reschke, Ed..  IETF. June 2014. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc7231.html">https://httpwg.org/specs/rfc7231.html</a></dd>
-                    <dt id="bib-rfc7232">[RFC7232]</dt>
-                    <dd><a href="https://httpwg.org/specs/rfc7232.html" rel="cito:citesAsAuthority"><cite>Hypertext Transfer Protocol (HTTP/1.1): Conditional Requests</cite></a>. R. Fielding, Ed.; J. Reschke, Ed..  IETF. June 2014. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc7232.html">https://httpwg.org/specs/rfc7232.html</a></dd>
-                    <dt id="bib-rfc7233">[RFC7233]</dt>
-                    <dd><a href="https://httpwg.org/specs/rfc7233.html" rel="cito:citesAsAuthority"><cite>Hypertext Transfer Protocol (HTTP/1.1): Range Requests</cite></a>. R. Fielding, Ed.; Y. Lafon, Ed.; J. Reschke, Ed..  IETF. June 2014. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc7233.html">https://httpwg.org/specs/rfc7233.html</a></dd>
-                    <dt id="bib-rfc7234">[RFC7234]</dt>
-                    <dd><a href="https://httpwg.org/specs/rfc7234.html" rel="cito:citesAsAuthority"><cite>Hypertext Transfer Protocol (HTTP/1.1): Caching</cite></a>. R. Fielding, Ed.; M. Nottingham, Ed.; J. Reschke, Ed..  IETF. June 2014. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc7234.html">https://httpwg.org/specs/rfc7234.html</a></dd>
-                    <dt id="bib-rfc7235">[RFC7235]</dt>
-                    <dd><a href="https://httpwg.org/specs/rfc7235.html" rel="cito:citesAsAuthority"><cite>Hypertext Transfer Protocol (HTTP/1.1): Authentication</cite></a>. R. Fielding, Ed.; J. Reschke, Ed..  IETF. June 2014. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc7235.html">https://httpwg.org/specs/rfc7235.html</a></dd>
                     <dt id="bib-rfc7540">[RFC7540]</dt>
                     <dd><a href="https://httpwg.org/specs/rfc7540.html" rel="cito:citesAsAuthority"><cite>Hypertext Transfer Protocol Version 2 (HTTP/2)</cite></a>. M. Belshe; R. Peon; M. Thomson, Ed..  IETF. May 2015. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc7540.html">https://httpwg.org/specs/rfc7540.html</a></dd>
                     <dt id="bib-rfc8174">[RFC8174]</dt>
                     <dd><a href="https://datatracker.ietf.org/doc/html/rfc8174" rel="cito:citesAsAuthority"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc8174">https://datatracker.ietf.org/doc/html/rfc8174</a></dd>
-                    <dt id="bib-rfc8288">[RFC8288]</dt>
-                    <dd><a href="https://httpwg.org/specs/rfc8288.html" rel="cito:citesAsAuthority"><cite>Web Linking</cite></a>. M. Nottingham.  IETF. October 2017. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc8288.html">https://httpwg.org/specs/rfc8288.html</a></dd>
-                    <dt id="bib-solid-notifications-protocol">[SOLID-NOTIFICATIONS-PROTOCOL]</dt>
-                    <dd><a href="https://solidproject.org/TR/notifications-protocol" rel="cito:citesAsAuthority"><cite>Solid Notifications Protocol</cite></a>. Sarven Capadisli.  W3C Solid Community Group. 31 December 2022. Version 0.2.0. URL: <a href="https://solidproject.org/TR/notifications-protocol">https://solidproject.org/TR/notifications-protocol</a></dd>
-                    <dt id="bib-solid-oidc">[SOLID-OIDC]</dt>
-                    <dd><a href="https://solidproject.org/TR/oidc" rel="cito:citesAsAuthority"><cite>SOLID-OIDC</cite></a>. Aaron Coburn; elf Pavlik; Dmitri Zagidulin.  W3C Solid Community Group. 28 March 2022. Version 0.1.0. URL: <a href="https://solidproject.org/TR/oidc">https://solidproject.org/TR/oidc</a></dd>
-                    <dt id="bib-sparql11-query">[SPARQL11-QUERY]</dt>
-                    <dd><a href="https://www.w3.org/TR/sparql11-query/" rel="cito:citesAsAuthority"><cite>SPARQL 1.1 Query</cite></a>. Steve Harris; Andy Seaborne; Eric Prud'hommeaux.  W3C. 21 March 2013. W3C Recommendation. URL: <a href="https://www.w3.org/TR/sparql11-query/">https://www.w3.org/TR/sparql11-query/</a></dd>
-                    <dt id="bib-turtle">[Turtle]</dt>
-                    <dd><a href="https://www.w3.org/TR/turtle/" rel="cito:citesAsAuthority"><cite>RDF 1.1 Turtle</cite></a>. Eric Prud'hommeaux; Gavin Carothers.  W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/turtle/">https://www.w3.org/TR/turtle/</a></dd>
+                    <dt id="bib-skos-reference">[skos-reference]</dt>
+                    <dd><a href="https://www.w3.org/TR/skos-reference/" rel="cito:citesAsAuthority"><cite>SKOS Simple Knowledge Organization System Reference</cite></a>. Alistair Miles; Sean Bechhofer.  W3C. 18 August 2009. W3C Recommendation. URL: <a href="https://www.w3.org/TR/skos-reference/">https://www.w3.org/TR/skos-reference/</a></dd>
+                    <dt id="bib-test-metadata">[test-metadata]</dt>
+                    <dd><a href="https://www.w3.org/TR/test-metadata/" rel="cito:citesAsAuthority"><cite>Test Metadata</cite></a>. Patrick Curran; Karl Dubost.  W3C. 14 September 2005. W3C Working Group Note. URL: <a href="https://www.w3.org/TR/test-metadata/">https://www.w3.org/TR/test-metadata/</a></dd>
                     <dt id="bib-w3c-html">[W3C-HTML]</dt>
                     <dd><a href="https://www.w3.org/TR/html/" rel="cito:citesAsAuthority"><cite>HTML</cite></a>.  W3C. 28 January 2021. W3C Recommendation. URL: <a href="https://www.w3.org/TR/html/">https://www.w3.org/TR/html/</a></dd>
-                    <dt id="bib-wac">[WAC]</dt>
-                    <dd><a href="https://solidproject.org/TR/wac" rel="cito:citesAsAuthority"><cite>Web Access Control</cite></a>.  Sarven Capadisli.  W3C Solid Community Group. 5 July 2022. Version 1.0.0-cr-1. URL: <a href="https://solidproject.org/TR/wac">https://solidproject.org/TR/wac</a></dd>
                     <dt id="bib-webarch">[WEBARCH]</dt>
                     <dd><a href="https://www.w3.org/TR/webarch/" rel="cito:citesAsAuthority"><cite>Architecture of the World Wide Web, Volume One</cite></a>. Ian Jacobs; Norman Walsh.  W3C. 15 December 2004. W3C Recommendation. URL: <a href="https://www.w3.org/TR/webarch/">https://www.w3.org/TR/webarch/</a></dd>
                     <dt id="bib-webid">[WEBID]</dt>
@@ -975,34 +935,18 @@ margin-top:1em;
                 <h3 property="schema:name">Informative References</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <dl class="bibliography" resource="">
-                    <dt id="bib-atag20">[ATAG20]</dt>
-                    <dd><a href="https://www.w3.org/TR/ATAG20/" rel="cito:citesAsPotentialSolution"><cite>Authoring Tool Accessibility Guidelines (ATAG) 2.0</cite></a>. Jan Richards; Jeanne F Spellman; Jutta Treviranus.  W3C. 24 September 2015. W3C Recommendation. URL: <a href="https://www.w3.org/TR/ATAG20/">https://www.w3.org/TR/ATAG20/</a></dd>
-                    <dt id="bib-coga-usable">[COGA-USABLE]</dt>
-                    <dd><a href="https://www.w3.org/TR/coga-usable/" rel="cito:citesAsPotentialSolution"><cite>Making content usable for people with cognitive and learning disabilities</cite></a>. Lisa Seeman-Horwitz; Rachael Bradley Montgomery; Steve Lee; Ruoxi Ran.  W3C. 11 December 2020. W3C Working Draft. URL: <a href="https://www.w3.org/TR/coga-usable/">https://www.w3.org/TR/coga-usable/</a></dd>
-                    <dt id="bib-dpub-aria-1.0">[DPUB-ARIA-1.0]</dt>
-                    <dd><a href="https://www.w3.org/TR/dpub-aria-1.0/" rel="cito:citesAsPotentialSolution"><cite>Digital Publishing WAI-ARIA Module 1.0</cite></a>. Matt Garrish; Tzviya Siegman; Markus Gylling; Shane McCarron.  W3C. 14 December 2017. W3C Recommendation. URL: <a href="https://www.w3.org/TR/dpub-aria-1.0/">https://www.w3.org/TR/dpub-aria-1.0/</a></dd>
-                    <dt id="bib-graphics-aria-1.0">[GRAPHICS-ARIA-1.0]</dt>
-                    <dd><a href="https://www.w3.org/TR/graphics-aria-1.0/" rel="cito:citesAsPotentialSolution"><cite>WAI-ARIA Graphics Module</cite></a>. Amelia Bellamy-Royds; Joanmarie Diggs; Michael Cooper.  W3C. 2 October 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/graphics-aria-1.0/">https://www.w3.org/TR/graphics-aria-1.0/</a></dd>
-                    <dt id="bib-privacy-principles">[PRIVACY-PRINCIPLES]</dt>
-                    <dd><a href="https://www.w3.org/TR/privacy-principles/" rel="cito:citesAsPotentialSolution"><cite>Privacy Principles</cite></a>. Robin Berjon; Jeffrey Yasskin.  W3C. 12 May 2022. W3C Group Draft Note. URL: <a href="https://www.w3.org/TR/privacy-principles/">https://www.w3.org/TR/privacy-principles/</a></dd>
+                    <dt id="bib-earl10-guide">[EARL10-Guide]</dt>
+                    <dd><a href="https://www.w3.org/TR/EARL10-Guide/"><cite>Developer Guide for Evaluation and Report Language (EARL) 1.0</cite></a>. Carlos A. Velasco; Shadi Abou-Zahra.  W3C. 2 February 2017. W3C Working Group Note. URL: <a href="https://www.w3.org/TR/EARL10-Guide/">https://www.w3.org/TR/EARL10-Guide/</a></dd>
+                    <dt id="bib-qa-handbook">[qa-handbook]</dt>
+                    <dd><a href="https://www.w3.org/TR/qa-handbook/" rel="cito:citesAsPotentialSolution"><cite>The QA Handbook</cite></a>. Lofton Henderson.  W3C. 6 September 2005. W3C Working Group Note. URL: <a href="https://www.w3.org/TR/qa-handbook/">https://www.w3.org/TR/qa-handbook/</a></dd>
+                    <dt id="bib-qaframe-spec">[qaframe-spec]</dt>
+                    <dd><a href="https://www.w3.org/TR/qaframe-spec/" rel="cito:citesAsPotentialSolution"><cite>QA Framework: Specification Guidelines</cite></a>. Karl Dubost; Lynne Rosenthal; Dominique Hazaël-Massieux; Lofton Henderson et al.  W3C. 17 August 2005. W3C Recommendation. URL: <a href="https://www.w3.org/TR/qaframe-spec/">https://www.w3.org/TR/qaframe-spec/</a></dd>
                     <dt id="bib-security-privacy-questionnaire">[SECURITY-PRIVACY-QUESTIONNAIRE]</dt>
                     <dd><a href="https://www.w3.org/TR/security-privacy-questionnaire/" rel="cito:citesAsPotentialSolution"><cite>Self-Review Questionnaire: Security and Privacy</cite></a>. Theresa O'Connor; Peter Snyder.  W3C. 23 March 2021. W3C Note. URL: <a href="https://www.w3.org/TR/security-privacy-questionnaire/">https://www.w3.org/TR/security-privacy-questionnaire/</a></dd>
-                    <dt id="bib-societal-impact-questionnaire">[SOCIETAL-IMPACT-QUESTIONNAIRE]</dt>
-                    <dd><a href="https://w3ctag.github.io/societal-impact-questionnaire/" rel="cito:citesAsPotentialSolution"><cite>Self-Review Questionnaire: Societal Impact</cite></a>. Amy Guy.  W3C. 13 Dec 2021. W3C Draft TAG Finding. URL: <a href="https://w3ctag.github.io/societal-impact-questionnaire/">https://w3ctag.github.io/societal-impact-questionnaire/</a></dd>
-                    <dt id="bib-solid-websockets-api">[SOLID-WEBSOCKETS-API]</dt>
-                    <dd><a href="https://github.com/solid/solid-spec/blob/master/api-websockets.md" rel="cito:citesAsPotentialSolution"><cite>Solid WebSockets API</cite></a>. Nicola Greco; Dmitri Zagidulin; Ruben Verborgh.  W3C Solid Community Group. 17 June 2020. Unofficial Draft. URL: <a href="https://github.com/solid/solid-spec/blob/master/api-websockets.md">https://github.com/solid/solid-spec/blob/master/api-websockets.md</a></dd>
-                    <dt id="bib-uaag20">[UAAG20]</dt>
-                    <dd><a href="https://www.w3.org/TR/UAAG20/" rel="cito:citesAsPotentialSolution"><cite>User Agent Accessibility Guidelines (UAAG) 2.0</cite></a>. James Allan; Greg Lowney; Kimberly Patch; Jeanne F Spellman.  W3C. 15 December 2015. W3C Note. URL: <a href="https://www.w3.org/TR/UAAG20/">https://www.w3.org/TR/UAAG20/</a></dd>
-                    <dt id="bib-wai-aria-1.2">[WAI-ARIA-1.2]</dt>
-                    <dd><a href="https://www.w3.org/TR/wai-aria-1.2/" rel="cito:citesAsPotentialSolution"><cite>Accessible Rich Internet Applications (WAI-ARIA) 1.2</cite></a>. Joanmarie Diggs; James Nurthen; Michael Cooper.  W3C. 2 March 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/wai-aria-1.2/">https://www.w3.org/TR/wai-aria-1.2/</a></dd>
-                    <dt id="bib-wcag-3.0">[WCAG-3.0]</dt>
-                    <dd><a href="https://www.w3.org/TR/wcag-3.0/" rel="cito:citesAsPotentialSolution"><cite>W3C Accessibility Guidelines (WCAG) 3.0</cite></a>. Jeanne F Spellman; Rachael Bradley Montgomery; Shawn Lauriat; Michael Cooper.  W3C. 21 January 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/wcag-3.0/">https://www.w3.org/TR/wcag-3.0/</a></dd>
-                    <dt id="bib-ethical-web-principles">[ETHICAL-WEB-PRINCIPLES]</dt>
-                    <dd><a href="https://www.w3.org/TR/ethical-web-principles/" rel="cito:citesAsPotentialSolution"><cite>W3C TAG Ethical Web Principles</cite></a>. Daniel Appelquist; Hadley Beeman; Amy Guy.  W3C. 12 May 2022. W3C Group Draft Note. URL: <a href="https://www.w3.org/TR/ethical-web-principles/">https://www.w3.org/TR/security-privacy-questionnaire/</a></dd>
+                    <dt id="bib-solid-technical-reports">[SOLID-TECHNICAL-REPORTS]</dt>
+                    <dd><a href="https://solidproject.org/TR/" rel="cito:citesAsRelated"><cite>Solid Technical Reports</cite></a>. Sarven Capadisli.  W3C Solid Community Group. 5 January 2023. Living Document. URL: <a href="https://solidproject.org/TR/">https://solidproject.org/TR/</a></dd>
                     <dt id="bib-w3c-process">[W3C-PROCESS]</dt>
-                    <dd><a href="https://www.w3.org/Consortium/Process/" rel="cito:citesAsPotentialSolution"><cite>W3C Process Document</cite></a>. Elika J. Etemad / fantasai; Florian Rivoal;  W3C Process Community Group. 2 November 2021. URL: <a href="https://www.w3.org/Consortium/Process/">https://www.w3.org/Consortium/Process/</a></dd>
-                    <dt id="bib-webid-tls">[WEBID-TLS]</dt>
-                    <dd><a href="https://www.w3.org/2005/Incubator/webid/spec/tls/" rel="cito:citesAsPotentialSolution"><cite>WebID Authentication over TLS</cite></a>. Henry Story; Stéphane Corlosquet; Andrei Sambra.  W3C WebID Community Group. W3C Editor’s Draft. URL: <a href="https://www.w3.org/2005/Incubator/webid/spec/tls/">https://www.w3.org/2005/Incubator/webid/spec/tls/</a></dd>
+                    <dd><a href="https://www.w3.org/Consortium/Process/" rel="cito:citesAsRelated"><cite>W3C Process Document</cite></a>. Elika J. Etemad (fantasai); Florian Rivoal.  W3C. 2 November 2021. URL: <a href="https://www.w3.org/Consortium/Process/">https://www.w3.org/Consortium/Process/</a></dd>
                   </dl>
                 </div>
               </section>
