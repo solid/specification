@@ -93,7 +93,7 @@ counter-reset:sub-sub-sub-sub-section;
 article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]):not([id=exit-criteria]):not([id^=table-of-]):not([id^=list-of-]) > h2:before {
 content:counter(section) ".\00a0";
 }
-section:not([id$=references]):not([id^=change-log]):not([id=exit-criteria]) > h3:before {
+section:not([id$=references]):not([id^=change-log]):not([id=exit-criteria]):not([id^=table-of-]):not([id^=list-of-]) > h3:before {
 content:counter(section) "." counter(sub-section) "\00a0";
 }
 section > h4:before {
@@ -113,7 +113,7 @@ dl [rel~="odrl:action"] li {
 display: inline;
 }
 dl [rel~="odrl:action"] li:after {
-content: ",";
+content: ", ";
 }
 dl [rel~="odrl:action"] li:last-child:after {
 content: "";
