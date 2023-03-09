@@ -139,12 +139,12 @@ content: "";
 
           <dl id="document-identifier">
             <dt>This version</dt>
-            <dd><a href="https://solidproject.org/TR/2022/notifications-protocol-20221231" rel="owl:sameAs mem:memento">https://solidproject.org/TR/2022/notifications-protocol-20221231</a></dd>
+            <dd><a href="https://solidproject.org/TR/2022/notifications-protocol-20221231" rel="owl:sameAs">https://solidproject.org/TR/2022/notifications-protocol-20221231</a></dd>
           </dl>
 
           <dl id="document-latest-published-version">
             <dt>Latest published version</dt>
-            <dd><a href="https://solidproject.org/TR/notifications-protocol" rel="rel:latest-version">https://solidproject.org/TR/notifications-protocol</a></dd>
+            <dd><a href="https://solidproject.org/TR/notifications-protocol" rel="rel:latest-version mem:original">https://solidproject.org/TR/notifications-protocol</a></dd>
           </dl>
 
           <dl id="document-previous-version">
@@ -172,12 +172,12 @@ content: "";
 
           <dl id="document-created">
             <dt>Created</dt>
-            <dd><time content="2022-05-09T00:00:00Z" datatype="xsd:dateTime" datetime="2022-05-09T00:00:00Z" property="schema:dateCreated">2022-05-09</time></dd>
+            <dd><time content="2022-12-31T00:00:00Z" datatype="xsd:dateTime" datetime="2022-12-31T00:00:00Z" property="schema:dateCreated">2022-12-31</time></dd>
           </dl>
 
           <dl id="document-published">
             <dt>Published</dt>
-            <dd><time content="2022-05-09T00:00:00Z" datatype="xsd:dateTime" datetime="2022-05-09T00:00:00Z" property="schema:datePublished">2022-05-09</time></dd>
+            <dd><time content="2022-12-31T00:00:00Z" datatype="xsd:dateTime" datetime="2022-12-31T00:00:00Z" property="schema:datePublished">2022-12-31</time></dd>
           </dl>
 
           <dl id="document-modified">
@@ -204,6 +204,11 @@ content: "";
           <dl id="document-status">
             <dt>Document Status</dt>
             <dd prefix="pso: http://purl.org/spar/pso/" rel="pso:holdsStatusInTime" resource="#e2fe32a5-ce78-486d-9c5d-a012a6b4972e"><span rel="pso:withStatus" resource="http://purl.org/spar/pso/published" typeof="pso:PublicationStatus">Published</span></dd>
+          </dl>
+
+          <dl id="document-resource-state">
+            <dt>Resource State</dt>
+            <dd><span about="" typeof="mem:Memento">Memento</span></dd>
           </dl>
 
           <dl id="document-in-reply-to">
@@ -386,7 +391,7 @@ content: "";
                   <p>The following diagram shows the high-level interactions involved in discovering notification channels and subscription services. A subscription service allow Subscription Clients to request a customised notification channels.</p>
 
                   <figure id="solid-notifications-flow-discovery-subscription" rel="schema:hasPart" resource="#solid-notifications-flow-discovery-subscription">
-                    <img rel="schema:image" src="2022/notifications-flow-discovery-subscription-20221231.svg" width="800" />
+                    <img rel="schema:image" src="notifications-flow-discovery-subscription-20221231.svg" width="800" />
 
                     <figcaption property="schema:name">Solid Notifications Flow Discovery and Subscription</figcaption>
                   </figure>
@@ -397,7 +402,7 @@ content: "";
                   <p>The following diagram illustrates the flow of data for those notification channel types in which a client establishes a subscription and then maintains a persistent connection to a notifications source are illustrated by the following diagram.</p>
 
                   <figure id="solid-notifications-flow-receivefrom" rel="schema:hasPart" resource="#solid-notifications-flow-receivefrom">
-                    <img rel="schema:image" src="2022/notifications-flow-receivefrom-20221231.svg" width="800" />
+                    <img rel="schema:image" src="notifications-flow-receivefrom-20221231.svg" width="800" />
 
                     <figcaption property="schema:name">Solid Notifications Flow Receive From, where the receiver establishes connection to sender.</figcaption>
                   </figure>
@@ -405,7 +410,7 @@ content: "";
                   <p>The following diagram illustrates the flow of data for those Notification channel types in which a client establishes a subscription and does not maintain a persistent connection to a notifications source:</p>
 
                   <figure id="solid-notifications-flow-sendto" rel="schema:hasPart" resource="#solid-notifications-flow-sendto">
-                    <img rel="schema:image" src="2022/notifications-flow-sendto-20221231.svg" width="800" />
+                    <img rel="schema:image" src="notifications-flow-sendto-20221231.svg" width="800" />
 
                     <figcaption property="schema:name">Solid Notifications Flow Send To, where the sender delivers notifications to receiver.</figcaption>
                   </figure>
