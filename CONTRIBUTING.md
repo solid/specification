@@ -150,8 +150,8 @@ For content changes, make sure that you:
   W3C service to [creating diff between HTML pages](https://services.w3.org/htmldiff)
   can also be used.
 * [ ] Review the content for technical accuracy.
-* [ ] Review the entire PR using the [localization
-  checklist](https://github.com/github/docs/blob/main/contributing/localization-checklist.md)
+* [ ] Review the content using the [translation guide for
+  writers](https://github.com/github/docs/blob/main/contributing/translations/for-writers.md)
   and the [W3C Manual of Style](https://www.w3.org/2001/06/manual/) as guides.
 * [ ] If there are any failing checks in your PR, troubleshoot them until
   they're all passing.
@@ -306,6 +306,7 @@ We also make the following recommendations:
 * Conformance Classes section to identify who and/or what will implement the
   specification.
 * Document wilful violations.
+* Use consistent spelling throughout the document.
 
 
 ## Vocabulary Management
