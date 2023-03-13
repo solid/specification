@@ -306,32 +306,50 @@ border-bottom: 2pt solid #000;
                   <p>To update the registry table an implementer MUST submit a modification request for this index as a pull request at the <a href="https://github.com/solid/specification">https://github.com/solid/specification</a> repository, which includes the following information:</p>
 
                   <dl>
-                    <dt>IRI</dt>
-                    <dd>The IRI of the notification channel type.</dd>
+                    <dt>Specification</dt>
+                    <dd>The URL of the document that specifies the notification channel type.</dd>
                     <dt>Name</dt>
                     <dd>The name of the notification channel type.</dd>
+                    <dt>IRI</dt>
+                    <dd>The IRI of the notification channel type.</dd>
                     <dt>Description</dt>
-                    <dd>A short English description of the notification channel type's semantics.</dd>
-                    <dt>Reference</dt>
-                    <dd>The retrievable URI of the document that specifies the notification channel type.</dd>
+                    <dd>A short English description of the notification channel type.</dd>
                   </dl>
 
                   <table id="notification-channel-types">
                     <caption>Notification Channel Types</caption>
                     <thead>
                       <tr>
+                        <th>Specification</th>
                         <th>IRI</th>
-                        <th>Name</th>
                         <th>Description</th>
-                        <th>Reference</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a href="https://solid.github.io/notifications/eventsource-channel-2023">EventSourceChannel2023</a></td>
+                        <td>http://www.w3.org/ns/solid/notifications#EventSourceChannel2023</td>
+                        <td>A notification channel type that uses the EventSource Web API.</td>
+                      </tr>
+                      <tr>
+                        <td><a href="https://solid.github.io/notifications/ldn-channel-2023">LDNChannel2023</a></td>
+                        <td>http://www.w3.org/ns/solid/notifications#LDNChannel2023</td>
+                        <td>A notification channel type that uses the Linked Data Notifications protocol.</td>
+                      </tr>
+                      <tr>
+                        <td><a href="https://solid.github.io/notifications/streaming-http-channel-2023">StreamingHTTPChannel2023</a></td>
+                        <td>http://www.w3.org/ns/solid/notifications#StreamingHTTPChannel2023</td>
+                        <td>A notification channel type that uses the Fetch API.</td>
+                      </tr>
+                      <tr>
+                        <td><a href="https://solid.github.io/notifications/webhook-channel-2023">WebhookChannel2023</a></td>
+                        <td>http://www.w3.org/ns/solid/notifications#WebhookChannel2023</td>
+                        <td>A notification channel type that uses Webhooks.</td>
+                      </tr>
+                      <tr>
+                        <td><a href="https://solid.github.io/notifications/websocket-channel-2023">WebSocketChannel2023</a></td>
+                        <td>http://www.w3.org/ns/solid/notifications#WebSocketChannel2023</td>
+                        <td>A notification channel type that uses the WebSocket API.</td>
                       </tr>
                     </tbody>
                   </table>
