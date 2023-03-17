@@ -22,7 +22,7 @@ Below are some common roles and their descriptions as useful guidelines. It is n
 * Participants may switch roles provided that it is clear to the other participants and there are no conflicts of interest.
 * Participants other than the moderator should add themselves to the queue to talk, remove themselves, or allow others to go ahead.
 * State name to scribe. Be concise. Stay within topic.
-* Should consider it their responsibility to help the Scribe by offering to type summary into the chat; correct the log or improve fields marked by scribes during meeting; offer to fill in when scribe needs to speak.
+* Should consider it their responsibility to help the scribe by offering to type summary into the chat; correct the log or improve fields marked by scribes during meeting; offer to fill in when scribe needs to speak.
 * Makes recommendations to improve meeting minutes, e.g., PRs.
 * Can recommend meeting topics before or during the meeting.
 * Participants should first attempt to use chats and repositories to work out concerns about the minutes or group decisions before meetings. Specific responses, e.g., clarifications or objections to previous group decisions can be proposed as topics to the meeting agenda.
@@ -45,9 +45,9 @@ Below are some common roles and their descriptions as useful guidelines. It is n
 
 ### Scribes
 
-* Transcribes the meeting *as is*.
+* Transcribes the meeting *as is*: captures discussions, records actions and decisions.
 * Stops transcribing on speaker's request.
-* Requests assistance to improve transcription, e.g., mark text that needs correction or improvement, ask speaker or moderator for clarification.
+* Requests assistance to improve transcription, e.g., mark text that needs correction or improvement (`???`), ask speaker or moderator for clarification.
 * Publishes minutes "soon after" the meeting (unless an another arrangement is made - to ensure it is on the same day).
 * Announces (draft and published) minutes in chats and elsewhere.
 
