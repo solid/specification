@@ -194,7 +194,7 @@ margin-top:1em;
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Solid QA</h1>
 
-        <p id="w3c-state">Version <span property="doap:revision">0.1.0</span> Editor’s Draft, <time>2023-02-03</time></p>
+        <p id="w3c-state">Version <span property="doap:revision">0.2.0</span> Editor’s Draft, <time>2023-03-15</time></p>
 
         <details open="">
           <summary>More details about this document</summary>
@@ -233,7 +233,7 @@ margin-top:1em;
 
           <dl id="document-modified">
             <dt>Modified</dt>
-            <dd><time content="2023-02-03T00:00:00Z" datatype="xsd:dateTime" datetime="2023-02-03T00:00:00Z" property="schema:dateModified">2023-02-03</time></dd>
+            <dd><time content="2023-03-15T00:00:00Z" datatype="xsd:dateTime" datetime="2023-03-15T00:00:00Z" property="schema:dateModified">2023-03-15</time></dd>
           </dl>
 
           <dl id="document-repository">
@@ -381,7 +381,7 @@ margin-top:1em;
                   <ol>
                     <li><a href="#test-report-description"><span class="secno">4.1</span> <span class="content">Test Report Description</span></a></li>
                     <li><a href="#test-case-description"><span class="secno">4.2</span> <span class="content">Test Case Description</span></a></li>
-                    <li><a href="#test-result"><span class="secno">4.3</span> <span class="content">Test Result</span></a></li>
+                    <li><a href="#test-assertion-description"><span class="secno">4.3</span> <span class="content">Test Assertion Description</span></a></li>
                     <li><a href="#test-report-notification"><span class="secno">4.4</span> <span class="content">Test Report Notification</span></a></li>
                     <li><a href="#project-maintainer-input-review"><span class="secno">4.5</span> <span class="content">Project Maintainer Input and Review</span></a></li>
                   </ol>
@@ -599,7 +599,7 @@ margin-top:1em;
               <section id="technical-report-description" inlist="" rel="schema:hasPart" resource="#technical-report-description">
                 <h3 property="schema:name">Technical Report Description</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>The <cite><a href="https://github.com/solid/specification/blob/main/CONTRIBUTING.md">Solid Technical Reports Contributing Guide</a></cite> provides the recommendations for publishing technical reports following the <cite><a href="https://www.w3.org/DesignIssues/LinkedData">Linked Data</a></cite> design principles, where significant units of information, such as concepts and requirements, are given an identifier, and described with a <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-concrete-rdf-syntax">concrete RDF syntax</a>. The <cite><a href="http://www.w3.org/ns/spec">Spec Terms</a></cite> vocabulary provides classes and properties that can be used to describe any significant unit of information in technical reports, as well as supporting the description of test cases and test reports.</p>
+                  <p>The <cite><a href="https://github.com/solid/specification/blob/main/CONTRIBUTING.md">Solid Technical Reports Contributing Guide</a></cite> provides the recommendations for publishing technical reports following the <cite><a href="https://www.w3.org/DesignIssues/LinkedData">Linked Data</a></cite> design principles, where significant units of information, such as concepts and requirements, are given an identifier, and described with a <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-concrete-rdf-syntax">concrete RDF syntax</a>. The <cite><a href="http://www.w3.org/ns/spec">Spec Terms</a></cite> vocabulary provides classes and properties that can be used to describe any significant unit of information in technical reports, as well as supporting the description of test cases and test reports. The <cite><a href="https://www.w3.org/TR/skos-reference/">SKOS</a></cite> data model can be used to identify, describe, and link concepts and definitions across technical reports.</p>
 
                   <p>Specifications MUST link to approved Test Reports summary/index, e.g., <code>https://solidproject.org/test-reports/{technical-report-short-name}/summary</code> where it will link to individual implementation reports e.g., <code>https://solidproject.org/test-reports/{technical-report-short-name}/{uuid}</code>.</p>
                 </div>
@@ -617,15 +617,69 @@ margin-top:1em;
                 <div datatype="rdf:HTML" property="schema:description">
                   <p class="issue"><a href="https://github.com/solid/test-suite-panel/issues/5">solid/test-suite-panel/issues/5</a></p>
 
+                  <p>The Test Report Description includes information pertaining to conformance and interoperability of an implementation.</p>
+
+                  <p>Document metadata:</p>
+
                   <ul>
-                    <li>Document metadata (e.g., license, date, report generated by, submitted by, approved by, notes from the maintainer).</li>
-                    <li>Description of the project (implementation) that is tested (e.g., repository, version, maintainers).</li>
-                    <li>Reference to test metadata (e.g., test authors and reviewers, test review status, version of the test, setup, provenance, coverage) and test suite. Some information can be incorporated in test assertion info (see next point).</li>
-                    <li>Test assertion (with URI) providing the URI of the test that was run (with description referring to the requirement URI), asserter (URI), subject of the test (URI), the mode in which the test was performed (URI), test result (URIs and descriptions); outcome and additional information about the test, result, and notes from the maintainer.</li>
-                    <li>Approved test reports MUST NOT include assertions of tests with rejected review status.</li>
-                    <li>The composition of the summary document is TBD.</li>
-                    <li>The report must also indicate the status of the publication as well as other visual cues.</li>
+                    <li>One <code>dcterms:license</code> property to indicate the license of the report.</li>
+                    <li>One <code>dcterms:created</code> property to indicate the date and time of the report.</li>
+                    <li>One publication status property (TBD) to state the publication status of the report.</li>
+                    <li>One activity association property (TBD) to indicate the agent that had a role in the production of the report.</li>
+                    <li>One submitted by property (TBD) to indicate the entity that proposed the report for publication.</li>
+                    <li>One approved by (TBD) property to indicate the entity that accepted the report for publication.</li>
+                    <li>Zero or one <code>dcterms:description</code> property to include additional notes about the report from the submitter.</li>
                   </ul>
+
+                  <p class="issue">Additional notes about the report can be expressed as a Web Annotation (<code>oa:Annotation</code>).</p>
+
+                  <p class="issue">Agent (person or software) that had a role in the production of the test report can be expressed as a PROV-O activity association (<code>prov:wasAssociatedWith</code>).</p>
+
+                  <p class="issue">For publication status, some TRs use <code>pso:holdsStatusInTime</code> with <code>pso:withStatus</code> - is there something from a common vocabulary? What visual cues should be required to indicate publication status at a glance?</p>
+
+                  <p>Implementations that are software projects MUST be described with the <cite><a href="http://usefulinc.com/ns/doap" rel="cito:citesAsAuthority">Description of a Project</a></cite> vocabulary [<cite><a class="bib-ref" href="#bib-doap">DOAP</a></cite>].</p>
+
+                  <p>Description of a project:</p>
+
+                  <ul>
+                    <li>One <code>rdf:type</code> property whose object is <code>doap:Project</code>.</li>
+                    <li>Zero or one <code>doap:name</code> property to state the name of the project.</li>
+                    <li>Zero or one <code>doap:repository</code> property to indicate the location of of project's source code.</li>
+                    <li>Zero or one <code>doap:release</code> property to indicate the version information of a project release.</li>
+                    <li>Zero or one <code>doap:maintainer</code> property to refer to the maintainers of a project.</li>
+                  </ul>
+
+                  <div class="note" id="test-report-description-doap" inlist="" rel="schema:hasPart" resource="#test-report-description-doap">
+                    <h4 property="schema:name"><span>Note</span>: Test Report Description: Description of a Project</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>The subject of the <code>doap:Project</code> for Test Report Description coincides with the object of the <code>earl:subject</code> in <a href="#test-assertion-description">Test Assertion Description</a>.</p>
+
+                      <p>To help distinguish project releases in test reports, it is encouraged to use versioned URIs for projects.</p>
+
+                      <p>While some information about the project can be accompanied with the test report, it is encouraged that projects are <a href="https://www.w3.org/2001/tag/doc/selfDescribingDocuments" rel="cito:citesAsInformation">self-describing documents</a>.</p>
+                    </div>
+                  </div>
+
+                  <p class="issue">What should be the recommendation for implementations that are not software projects? Perhaps equivalent to a top concept of <code>spec:ClassesOfProducts</code>?</p>
+
+                  <p>Test assertions:</p>
+
+                  <p>Test reports MUST incorporate additional information about test criteria indicating test authors and reviewers, review status, version of the test criterion, software and setup used to run the tests, provenance and coverage and test suite (see also <a href="#test-assertion-description">Test Assertion Description</a>).</p>
+
+                  <p>Test reports with approved status MUST NOT include assertions related to test criteria with rejected review status (<code>td:rejected</code>).</p>
+
+                  <div class="note" id="test-report-description-test-assertion" inlist="" rel="schema:hasPart" resource="#test-report-description-test-assertion">
+                    <h4 property="schema:name"><span>Note</span>: Test Report Description: Test Assertion</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>To help distinguish test criteria, it is encouraged to use versioned URIs for criteria.</p>
+
+                      <p>To convey association between a test criterion and its reviews, it is encouraged to use the <a href="https://www.w3.org/TR/annotation-vocab/">Web Annotation Vocabulary</a> with the <code>oa:assessing</code> motivation.</p>
+                    </div>
+                  </div>
+
+                  <p class="issue">Should <a href="https://www.w3.org/TR/annotation-vocab/">Web Annotation Vocabulary</a> be required to convey the relationship between test criteria and reviews?</p>
+
+                  <p class="issue">The test-report-summary-description. Aggregates test-report-descriptions.</p>
                 </div>
               </section>
 
@@ -652,7 +706,7 @@ margin-top:1em;
                   <figure id="test-case-example" class="example listing" rel="schema:hasPart" resource="#test-case-example">
                     <p class="example-h"><span>Example</span>: Test Case</p>
 
-                    <pre about="#n3-patch-example" property="schema:description" typeof="fabio:Script"><code>@prefix sopr: &lt;https://solidproject.org/TR/2021/protocol-20211217#&gt; .</code>
+                    <pre about="#n3-patch-example" property="schema:description" typeof="fabio:Script"><code>@prefix sopr: &lt;https://solidproject.org/TR/2022/protocol-20221231#&gt; .</code>
 <code></code>
 <code>:server-content-type-reject</code>
 <code>  a td:TestCase ;</code>
@@ -661,15 +715,17 @@ margin-top:1em;
 <code>  td:expectedResults :server-content-type-expected-result ;</code>
 <code>  dcterms:contributor &lt;https://csarven.ca/#i&gt; .</code></pre>
 
-                    <figcaption property="schema:name">A test case for <a href="https://solidproject.org/TR/2021/protocol-20211217#server-content-type">server rejecting requests</a> with reference to expected results.</figcaption>
+                    <figcaption property="schema:name">A test case for <a href="https://solidproject.org/TR/2022/protocol-20221231#server-content-type">server rejecting requests</a> with reference to expected results.</figcaption>
                   </figure>
                 </div>
               </section>
 
-              <section id="test-result" inlist="" rel="schema:hasPart" resource="#test-result">
-                <h3 property="schema:name">Test Result</h3>
+              <section id="test-assertion-description" inlist="" rel="schema:hasPart" resource="#test-assertion-description">
+                <h3 property="schema:name">Test Assertion Description</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>Test Results MUST use the <cite><a href="https://www.w3.org/TR/EARL10-Schema/" rel="cito:citesAsAuthority">Evaluation and Report Language 1.0 Schema</a></cite> [<cite><a class="bib-ref" href="#bib-earl10-Schema">EARL10-Schema</a></cite>].</p>
+                  <p>A Test Assertion indicates measurable or testable statements of behaviour, action, or condition derived from specification's requirements. A test assertion is stated by an entity carrying out the test; indicating contextual result of a test; with a particular process; based on a criterion; that is used to evaluate an implementation.</p>
+
+                  <p>Test assertions MUST use the <cite><a href="https://www.w3.org/TR/EARL10-Schema/" rel="cito:citesAsAuthority">Evaluation and Report Language 1.0 Schema</a></cite> [<cite><a class="bib-ref" href="#bib-earl10-Schema">EARL10-Schema</a></cite>].</p>
 
                   <p>Test Suite implementers are encouraged to follow the <cite><a href="https://www.w3.org/TR/EARL10-Guide/" rel="cito:citesAsPotentialSolution">Developer Guide for Evaluation and Report Language 1.0</a></cite> [<cite><a class="bib-ref" href="#bib-earl10-guide">EARL10-Guide</a></cite>].</p>
                 </div>
@@ -679,6 +735,8 @@ margin-top:1em;
                 <h3 property="schema:name">Test Report Notification</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>GitHub repo/directory and/or report sent as an LDN (TBD: either including or requesting maintainer’s approval.)</p>
+
+                  <p class="issue">Should <a href="https://www.w3.org/TR/annotation-vocab/">Activity Vocabulary</a> and <a href="https://www.w3.org/TR/ldn/">Linked Data Notifications</a> be one of the ways to submit test reports as a notification?</p>
 
                   <p>Publication of reports can be pre-authorized for approved tests.</p>
                 </div>
@@ -897,6 +955,8 @@ margin-top:1em;
                   <dl class="bibliography" resource="">
                     <dt id="bib-dc-terms">[DC-TERMS]</dt>
                     <dd><a href="http://dublincore.org/documents/2010/10/11/dcmi-terms/" rel="cito:citesAsAuthority"><cite>Dublin Core Metadata Terms, version 1.1</cite></a>. DCMI Usage Board.  DCMI. 11 October 2010. DCMI Recommendation. URL: <a href="http://dublincore.org/documents/2010/10/11/dcmi-terms/">http://dublincore.org/documents/2010/10/11/dcmi-terms/</a></dd>
+                    <dt id="bib-doap">[DOAP]</dt>
+                    <dd><a href="https://github.com/ewilderj/doap" rel="cito:citesAsAuthority"><cite>DOAP: Description of a Project</cite></a>. URL: <a href="https://github.com/ewilderj/doap">https://github.com/ewilderj/doap</a></dd>
                     <dt id="bib-earl10-schema">[EARL10-Schema</dt><dd>
                     <a href="https://www.w3.org/TR/EARL10-Schema/" rel="cito:citesAsAuthority"><cite>Evaluation and Report Language (EARL) 1.0 Schema</cite></a>. Shadi Abou-Zahra.  W3C. 2 February 2017. W3C Working Group Note. URL: <a href="https://www.w3.org/TR/EARL10-Schema/">https://www.w3.org/TR/EARL10-Schema/</a></dd>
                     <dt id="bib-ldn">[LDN]</dt>
