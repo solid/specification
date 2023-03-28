@@ -14,8 +14,8 @@
 ## Announcements
 
 ### Meeting Guidelines
-* [W3C Solid Community Group Calendar](https://www.w3.org/groups/cg/solid/calendar)
-* [W3C Solid Community Group Meeting Guidelines](https://github.com/solid/specification/blob/main/meetings/README.md)
+* [W3C Solid Community Group Calendar](https://www.w3.org/groups/cg/solid/calendar).
+* [W3C Solid Community Group Meeting Guidelines](https://github.com/solid/specification/blob/main/meetings/README.md).
 * No audio or video recording, or automated transcripts without consent. Meetings are transcribed and made public. If consent is withheld by anyone, recording/retention must not occur.
 * Join queue to talk.
 * Topics can be proposed at the bottom of the agenda to be discussed as time allows. Make it known if a topic is urgent or cannot be postponed.
