@@ -151,7 +151,7 @@ For content changes, make sure that you:
   can also be used.
 * [ ] Review the content for technical accuracy.
 * [ ] Review the content using the [translation guide for
-  writers](https://github.com/github/docs/blob/main/contributing/translations/for-writers.md)
+  writers](https://github.com/github/docs/blob/main/contributing/translations-for-writers.md)
   and the [W3C Manual of Style](https://www.w3.org/2001/06/manual/) as guides.
 * [ ] If there are any failing checks in your PR, troubleshoot them until
   they're all passing.
