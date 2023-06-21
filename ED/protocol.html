@@ -74,26 +74,26 @@ font-size: 220%;
 font-weight:bold;
 }
 
-article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]):not([id=exit-criteria]) {
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]):not([id=exit-criteria]) {
 counter-increment:section;
 counter-reset:sub-section;
 }
-article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$=references]):not([id=exit-criteria]) {
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]) section:not([id$=references]):not([id=exit-criteria]) {
 counter-increment:sub-section;
 counter-reset:sub-sub-section;
 }
-article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$=references]):not([id=exit-criteria]) section {
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]) section:not([id$=references]):not([id=exit-criteria]) section {
 counter-increment:sub-sub-section;
 counter-reset:sub-sub-sub-section;
 }
-article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$=references]):not([id=exit-criteria]) section section {
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]) section:not([id$=references]):not([id=exit-criteria]) section section {
 counter-increment:sub-sub-sub-section;
 counter-reset:sub-sub-sub-sub-section;
 }
-article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]):not([id=exit-criteria]):not([id^=table-of-]):not([id^=list-of-]) > h2:before {
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]):not([id=exit-criteria]):not([id^=table-of-]):not([id^=list-of-]) > h2:before {
 content:counter(section) ".\00a0";
 }
-section:not([id$=references]):not([id^=change-log]):not([id=exit-criteria]):not([id^=table-of-]):not([id^=list-of-]) > h3:before {
+section:not([id$=references]):not([id^=changelog]):not([id=exit-criteria]):not([id^=table-of-]):not([id^=list-of-]) > h3:before {
 content:counter(section) "." counter(sub-section) "\00a0";
 }
 section > h4:before {
@@ -178,6 +178,10 @@ padding-left:1em;
 tfoot td > * + * {
 margin-top:1em;
 }
+tfoot dd:after { content: "\A"; white-space:pre; }
+tfoot dt, tfoot dd { display:inline; }
+tfoot dd { margin-left: 0.5em }
+tfoot dd + dt { margin-top:0; }
 </style>
     <link href="https://dokie.li/media/css/dokieli.css" media="all" rel="stylesheet" />
     <script async="" src="https://dokie.li/scripts/dokieli.js"></script>
@@ -194,7 +198,7 @@ margin-top:1em;
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Solid Protocol</h1>
 
-        <p id="w3c-state">Version <span property="doap:revision">0.11.0</span> Editor’s Draft, <time>2023-04-17</time></p>
+        <p id="w3c-state">Version <span property="doap:revision">0.11.0</span> Editor’s Draft, <time>2023-06-21</time></p>
 
         <details open="">
           <summary>More details about this document</summary>
@@ -232,7 +236,7 @@ margin-top:1em;
 
           <dl id="document-modified">
             <dt>Modified</dt>
-            <dd><time content="2023-06-12T00:00:00Z" datatype="xsd:dateTime" datetime="2023-06-12T00:00:00Z" property="schema:dateModified">2023-06-12</time></dd>
+            <dd><time content="2023-06-21T00:00:00Z" datatype="xsd:dateTime" datetime="2023-06-21T00:00:00Z" property="schema:dateModified">2023-06-21</time></dd>
           </dl>
 
           <dl id="document-repository">
@@ -437,7 +441,7 @@ margin-top:1em;
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#change-log"><span class="secno"></span> <span class="content">Change Log</span></a>
+                  <a class="tocxref" href="#changelog"><span class="secno"></span> <span class="content">Changelog</span></a>
                 </li>
                 <li class="tocline">
                   <a class="tocxref" href="#references"><span class="secno"></span> <span class="content">References</span></a>
@@ -1406,48 +1410,57 @@ margin-top:1em;
             </div>
           </section>
 
-          <section id="change-log" inlist="" rel="schema:hasPart" resource="#change-log">
-            <h2 property="schema:name">Change Log</h2>
+          <section id="changelog" inlist="" rel="schema:hasPart" resource="#changelog" typeof="spec:Changelog">
+            <h2 property="schema:name">Changelog</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p><em>This section is non-normative.</em></p>
 
-              <p>The summary of <em>editorial</em> and <em>substantive</em> changes in this section are based on <cite>W3C Process Document</cite> <cite><a href="https://www.w3.org/2023/Process-20230612/#correction-classes">Classes of Changes</a></cite> [<cite><a class="bibref" href="#bib-w3c-process">W3C-PROCESS</a></cite>].</p>
+              <p>This document is based on <a href="https://solidproject.org/TR/protocol-20221231">Solid Protocol, Version 0.10.0</a>. A <a href="https://github.com/solid/specification/issues?q=milestone%3A%22Release+0.11.0%22+is%3Aclosed">list of issues addressed</a>, a <a href="https://services.w3.org/htmldiff?doc1=https%3A%2F%2Fsolidproject.org%2FTR%2F2022%protocol-20221231&amp;doc2=https%3A%2F%2Fsolidproject.org%2FED%2Fprotocol">diff from Solid Protocol, Version 0.10.0 to this latest version</a>, as well as a <a href="https://github.com/solid/specification/commits/main/ED/protocol.html">detailed log of changes</a> are available.</p>
 
-              <p><a about="https://solidproject.org/ED/protocol" href="https://solidproject.org/ED/protocol" rel="prov:wasRevisionOf" resource="https://solidproject.org/TR/2022/protocol-20221231">ED</a> ← <a about="https://solidproject.org/TR/2022/protocol-20221231" rel="prov:wasRevisionOf" href="https://solidproject.org/TR/2022/protocol-20221231" resource="https://solidproject.org/TR/2021/protocol-20211217">protocol-20221231</a> ← <a href="https://solidproject.org/TR/2021/protocol-20211217">protocol-20211217</a></p>
+              <p>The following summary of <em>editorial</em>, <em>substantive</em>, and <em>registry</em> <span about="" rel="spec:changelog" resource="#changelog">changes</span> are classified using the <cite>W3C Process Document</cite> <cite><a href="https://www.w3.org/2023/Process-20230612/#correction-classes">Classes of Changes</a></cite> [<cite><a class="bibref" href="#bib-w3c-process">W3C-PROCESS</a></cite>]:</p>
 
-              <section id="change-log-protocol-20221231" inlist="" rel="schema:hasPart" resource="#change-log-protocol-20221231">
-                <h3 property="schema:name">Changes from protocol-20221231 to this version</h3>
-                <div datatype="rdf:HTML" property="schema:description">
-                  <ul>
-                    <li>Amend language, document details, and markup.</li>
-                    <li>Add requirement for server to include <code>Content-Type</code> in <a href="#server-content-type-payload">messages with payload</a>.</li>
-                  </ul>
-                </div>
-              </section>
+              <table id="changes-since-protocol-20221231">
+                <caption>Changes since <a href="https://solidproject.org/TR/protocol-20221231">Solid Protocol, Version 0.10.0</a></caption>
+                <thead>
+                  <tr>
+                    <th>Change Class</th>
+                    <th>Subject</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody about="#changelog" rel="spec:change">
+                  <tr about="#b3536d3a-0d3a-40c9-997b-07aa2f65b5d3" typeof="spec:Change">
+                    <td><a href="https://www.w3.org/2023/Process-20230612/#class-1" rel="spec:changeClass" resource="spec:ChangeClass1">1</a></td>
+                    <td><a href="" rel="spec:changeSubject">Document</a></td>
+                    <td property="spec:statement">Amend broken links, style sheets, or invalid markup.</td>
+                  </tr>
+                  <tr about="#fa50e3ae-ca0d-4857-877c-b88c18dc21ce" typeof="spec:Change">
+                    <td><a href="https://www.w3.org/2023/Process-20230612/#class-2" rel="spec:changeClass" resource="spec:ChangeClass2">2</a></td>
+                    <td><a href="" rel="spec:changeSubject">Document</a></td>
+                    <td property="spec:statement">Amend language and document details.</td>
+                  </tr>
+                  <tr about="#d18392b9-8ffc-4264-a5a2-10e2da6fac32" typeof="spec:Change">
+                    <td><a href="https://www.w3.org/2023/Process-20230612/#class-4" rel="spec:changeClass" resource="spec:ChangeClass4">4</a></td>
+                    <td><a href="#server-content-type-payload" rel="spec:changeSubject">#server-content-type-payload</a></td>
+                    <td property="spec:statement">Add requirement for server to include <code>Content-Type</code> in <a href="#server-content-type-payload">messages with payload</a>.</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="3">
+                      <dl class="change-classes">
+                        <dt>1</dt><dd><a href="https://www.w3.org/2023/Process-20230612/#class-1">No changes to text content</a></dd>
+                        <dt>2</dt><dd><a href="https://www.w3.org/2023/Process-20230612/#class-2">Corrections that do not affect conformance</a></dd>
+                        <dt>3</dt><dd><a href="https://www.w3.org/2023/Process-20230612/#class-3">Corrections that do not add new features</a></dd>
+                        <dt>4</dt><dd><a href="https://www.w3.org/2023/Process-20230612/#class-4">New features</a></dd>
+                        <dt>5</dt><dd><a href="https://www.w3.org/2023/Process-20230612/#class-5">Changes to the contents of a registry table</a></dd>
+                      </dl>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
 
-              <section id="change-log-protocol-20211217" inlist="" rel="schema:hasPart" resource="#change-log-protocol-20211217">
-                <h3 property="schema:name">Changes from protocol-20211217 to this version</h3>
-                <div datatype="rdf:HTML" property="schema:description">
-                  <ul>
-                    <li>Amend language, document details, and markup.</li>
-                    <li>Add <a href="#change-log">Change Log</a>.</li>
-                    <li>Update <a href="#references">References</a>.</li>
-                    <li>Change requirement for server including <code>Accept-*</code> headers in <a href="https://solidproject.org/TR/2021/protocol-20211217#server-options-asterisk-accept-headers"><code>OPTIONS *</code></a> to <a href="#server-accept-headers"><code>OPTIONS</code></a>.</li>
-                    <li>Add requirements for server <a href="#server-auxiliary-resources-management">auxiliary resources management</a> and <a href="#server-link-auxiliary-type">link auxiliary type</a>.</li>
-                    <li>Constrain server requirement for <a href="#server-allow-methods"><code>Allow</code> methods</a> to successful responses.</li>
-                    <li>Update current copyright year.</li>
-                    <li>Add advisement for <a href="#privacy-principles">privacy principles</a>.</li>
-                    <li>Add requirements for storage description: <a href="#server-storage-description">discovery</a>, <a href="#server-storage-description-resource">resource</a>, <a href="#storage-description-statements">statements</a>.</li>
-                    <li>Add requirement for <a href="#notifications-protocol">Solid Notifications Protocol</a>.</li>
-                    <li>Remove the term <em>data pod</em> and add definition of <a href="#storage">storage</a>.</li>
-                    <li>Add <a href="#constraints-problem-details">Constraints and Problem Details</a>.</li>
-                    <li>Add consideration for restricting untrusted requests.</li>
-                    <li>Update <a href="#conformance">Conformance</a> to add <a href="#normative-informative-content">Normative and Information Content</a>, <a href="#classes-of-products">Class of Products</a>, <a href="#specification-category">Specification Category</a>, <a href="#interoperability">Interoperability</a>.</li>
-                    <li>Update <a href="#security-privacy-review">Security and Privacy Review</a>.</li>
-                    <li>Add requirements for <a href="#access-control-policy">Access Control Policy</a>.</li>
-                  </ul>
-                </div>
-              </section>
+              <p id="changes-previous">Changes since earlier versions of the Solid Protocol are detailed in the <a href="https://solidproject.org/TR/2022/protocol-20221231#change-log">changes section of the previous version</a> of the Solid Protocol.</p>
             </div>
           </section>
 
