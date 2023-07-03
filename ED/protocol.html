@@ -353,6 +353,7 @@ tfoot dd + dt { margin-top:0; }
                     <li><a href="#terminology"><span class="secno">1.1</span> <span class="content">Terminology</span></a></li>
                     <li><a href="#namespaces"><span class="secno">1.2</span> <span class="content">Namespaces</span></a></li>
                     <li><a href="#conformance"><span class="secno">1.3</span> <span class="content">Conformance</span></a></li>
+                    <li><a href="#relations"><span class="secno">1.4</span> <span class="content">Relations</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -626,6 +627,30 @@ tfoot dd + dt { margin-top:0; }
                     <h4 property="schema:name skos:prefLabel">Interoperability</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p id="interoperability-server-client">Interoperability of implementations for <a href="#Server" rel="rdfs:seeAlso">servers</a> and <a href="#Client" rel="rdfs:seeAlso">clients</a> is tested by evaluating an implementation’s ability to request and respond to HTTP messages that conform to this specification.</p>
+                    </div>
+                  </section>
+                </div>
+              </section>
+
+              <section id="relations" inlist="" rel="schema:hasPart" resource="#relations">
+                <h3 property="schema:name">Relations</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p><em>This section is non-normative.</em></p>
+
+                  <section id="relationship-to-ldp" inlist="" rel="schema:hasPart" resource="#relationship-to-ldp">
+                    <h3 property="schema:name">Relationship to LDP</h3>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p><em>This section is non-normative.</em></p>
+
+                      <p>The <a href="https://solidproject.org/TR/protocol" rel="cito:discusses">Solid Protocol</a> and the <a href="https://www.w3.org/TR/ldn/" rel="cito:discusses">Linked Data Platform</a> (<abbr title="Linked Data Platform">LDP</abbr>) [<cite><a class="bibref" href="#bib-ldp">LDP</a></cite>] both use relative referencing of URIs [<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>].</p>
+
+                      <p>As HTTP clients assign a URI to a resource when using <code>PUT</code> and <code>PATCH</code>, relative references in representation content are deterministic in both the Solid Protocol and LDP.</p>
+
+                      <p>LDP does not specify URI patterns for resources when using the <code>POST</code> method, e.g., <code>POST http://example.org/foo/</code> may result in creating a resource with URI <code>http://example.org/foo/bar</code> , <code>http://example.org/baz/qux/quxx</code>, <code>http://example.org/{uuid}</code> or something else. In Solid Protocol, the URI of a new resource resulting from, e.g., <code>POST http://example.org/foo/</code>, is in context of the request URI, and therefore <code>http://example.org/foo/bar</code> will be created, and it is not possible to construct the new URI besides under the direct hierarchy of <code>http://example.org/foo/</code>.</p>
+
+                      <p>Solid Protocol's <a href="#Server">server</a> behaviour in that regard is compatible with LDP even if only <code>ldp:Container</code> is advertised in the HTTP <code>Link</code> header of the request URI, i.e., <code>http://example.org/foo/</code> as the effective request URI of <code>POST</code>. Thus, it is possible to have a Solid Protocol server as a particular specialisation of LDP with respect to behaviours around <code>POST</code> to containers. Clients that are interoperable with LDP servers would also be interoperable with Solid Protocol servers with respect to relative referencing. Although LDP servers cannot guarantee the URI pattern resulting from <code>POST</code> requests, the fact that Solid Protocol servers can does not impact interoperability between Solid Protocol servers and LDP clients.</p>
+
+                      <p>Solid Protocol <a href="#Client">clients</a> may not fully interoperate with LDP servers, e.g., it is possible for an LDP server implementation to assign URIs to new resources that is not compatible with Solid Protocol's. An LDP server needs to also conform to Solid Protocol server requirements in order to participate in the Solid ecosystem.</p>
                     </div>
                   </section>
                 </div>
