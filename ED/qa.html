@@ -779,6 +779,11 @@ margin-top:1em;
                 <h3 property="schema:name">Test Suite Description</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>Description of test suites (e.g., license, date, written by, reviewed by), the software (e.g., repository, version, maintainers), setup (e.g., platform, configuration), provenance (e.g., activity, entity, agent), input about environment (e.g., combination of subject and setup). Meet the requirements of reporting (issue 5) and test review checklist (issue 7).</p>
+
+                  <ul>
+                    <li>One <code>rdf:type</code> property whose object is <code>spec:TestSuite</code> (TBD).</li>
+                    <li>One or more <code>spec:testCase</code>s to refer to <a href="#test-case-description">test cases</a>.</li>
+                  </ul>
                 </div>
               </section>
 
