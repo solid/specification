@@ -602,7 +602,14 @@ margin-top:1em;
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>The <cite><a href="https://github.com/solid/specification/blob/main/CONTRIBUTING.md">Solid Technical Reports Contributing Guide</a></cite> provides the recommendations for publishing technical reports following the <cite><a href="https://www.w3.org/DesignIssues/LinkedData">Linked Data</a></cite> design principles, where significant units of information, such as concepts and requirements, are given an identifier, and described with a <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-concrete-rdf-syntax">concrete RDF syntax</a>. The <cite><a href="http://www.w3.org/ns/spec">Spec Terms</a></cite> vocabulary provides classes and properties that can be used to describe any significant unit of information in technical reports, as well as supporting the description of test cases and test reports. The <cite><a href="https://www.w3.org/TR/skos-reference/">SKOS</a></cite> data model can be used to identify, describe, and link concepts and definitions across technical reports.</p>
 
-                  <p>Specifications MUST link to approved Test Reports summary/index, e.g., <code>https://solidproject.org/test-reports/{technical-report-short-name}/summary</code> where it will link to individual implementation reports e.g., <code>https://solidproject.org/test-reports/{technical-report-short-name}/{uuid}</code>.</p>
+                  <p class="issue">Add other requirements from Spec Terms and SKOS.</p>
+
+                  <ul>
+                    <li>One <code>spec:testSuite</code> property to refer to a <a href="#test-suite-description">test suite</a>.</li>
+                    <li>One <code>spec:implementationReport</code> property to refer to an <a href="#implementation-report-description">implementation report</a>.</li>
+                  </ul>
+
+                  <p class="issue">Defining URI Templates for implementation report, e.g.,<code>https://solidproject.org/test-reports/{technical-report-short-name}/summary</code>, and test report, e.g., <code>https://solidproject.org/test-reports/{technical-report-short-name}/{uuid}</code></p>
                 </div>
               </section>
             </div>
