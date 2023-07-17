@@ -384,6 +384,7 @@ margin-top:1em;
                     <li><a href="#test-assertion-description"><span class="secno">4.3</span> <span class="content">Test Assertion Description</span></a></li>
                     <li><a href="#test-report-notification"><span class="secno">4.4</span> <span class="content">Test Report Notification</span></a></li>
                     <li><a href="#project-maintainer-input-review"><span class="secno">4.5</span> <span class="content">Project Maintainer Input and Review</span></a></li>
+                    <li><a href="#implementation-report-description"><span class="secno">4.6</span> <span class="content">Implementation Report Description</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -678,8 +679,6 @@ margin-top:1em;
                   </div>
 
                   <p class="issue">Should <a href="https://www.w3.org/TR/annotation-vocab/">Web Annotation Vocabulary</a> be required to convey the relationship between test criteria and reviews?</p>
-
-                  <p class="issue">The test-report-summary-description. Aggregates test-report-descriptions.</p>
                 </div>
               </section>
 
@@ -746,6 +745,24 @@ margin-top:1em;
                 <h3 property="schema:name">Project Maintainer Input and Review</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>Project maintainer will be notified to review the publication of a report, and if no objection within a certain time (TBD), it can be approved for publication by the submitter (or test suite panel). During the review process, maintainers will be given the opportunity to provide explanatory notes to go with the report.</p>
+                </div>
+              </section>
+
+              <section id="implementation-report-description" inlist="" rel="schema:hasPart" resource="#implementation-report-description">
+                <h3 property="schema:name">Implementation Report Description</h3>
+
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>The Implementation Report Description refers to the criteria and resolutions set forth by the Group publishing a Technical Report to demonstrate implementation experience; refers to test reports; provides a summary.</p>
+
+                  <p>Document metadata:</p>
+
+                  <p class="issue">Similar to Test Report Description document metadata. Reuse or redefine?</p>
+
+                  <p>Referencing individual test reports:</p>
+
+                  <ul>
+                    <li>One or more <code>spec:testReport</code>s to refer to <a href="#test-report-description">test reports</a>.</li>
+                  </ul>
                 </div>
               </section>
             </div>
