@@ -190,6 +190,32 @@ repository, create a PR.
 Congratulations :tada: Solid community thanks you :sparkles:.
 
 
+## Work items
+
+In general, all documents in scope of the group are welcome. Work items can be
+documents or software.
+
+### New work item proposal
+
+* Propose new work item as an issue in https://github.com/solid/specification
+  and propose it as an agenda topic in a group meeting.
+* Include publicly accessible link to abstract or draft.
+* List and link to owners (at least 1 person for advancing the work item and 1
+  other person).
+* Answer the following questions in order to document how you are meeting the
+  requirements for a new work item at the W3C Solid Community Group. Please
+  note if this work item supports certain programs or another government or
+  private sector project.
+  1. Explain what you are trying to do using no jargon or acronyms.
+  2. How is it done today, and what are the limits of the current practice?
+  3. What is new in your approach and why do you think it will be successful?
+  4. How are you involving participants from multiple skill sets and global
+     locations in this work item? (Skill sets: technical, design, product,
+     marketing, anthropological, and UX. Global locations: Africa, the
+     Americas, APAC, Europe, Middle East.)
+  5. What actions are you taking to make this work item accessible to a
+     non-technical audience?
+
 
 ## Publishing a technical report
 
