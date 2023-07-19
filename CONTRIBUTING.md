@@ -206,13 +206,13 @@ documents or software.
   requirements for a new work item at the W3C Solid Community Group. Please
   note if this work item supports certain programs or another government or
   private sector project.
-  1. Explain what you are trying to do using no jargon or acronyms.
+  1. Explain what you are trying to do, using no jargon or acronyms.
   2. How is it done today, and what are the limits of the current practice?
-  3. What is new in your approach and why do you think it will be successful?
+  3. What is new in your approach, and why do you think it will be successful?
   4. How are you involving participants from multiple skill sets and global
      locations in this work item? (Skill sets: technical, design, product,
      marketing, anthropological, and UX. Global locations: Africa, the
-     Americas, APAC, Europe, Middle East.)
+     Americas, APAC, Europe, Middle East, Antarctica.)
   5. What actions are you taking to make this work item accessible to a
      non-technical audience?
 
