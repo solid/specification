@@ -1213,11 +1213,11 @@ tfoot dd + dt { margin-top:0; }
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>This specification introduces a new HTTP response header <code>Accept-Put</code> used to specify the document formats accepted by the server on HTTP PUT requests. It is modelled after the <code>Accept-Patch</code> header defined in [<cite><a class="bibref" href="#bib-rfc5789">RFC5789</a></cite>] and the <code>Accept-Post</code> header defined in [<cite><a class="bibref" href="#bib-ldp">LDP</a></cite>].</p>
 
-                      <p>The syntax for <code>Accept-Put</code>, using the ABNF syntax defined in Section 1.2 of [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>], is:</p>
+                      <p>The syntax for <code>Accept-Put</code>, using the ABNF syntax defined in Section 2.1 of [<cite><a class="bibref" href="#bib-rfc9110">RFC9110</a></cite>], is:</p>
 
                       <pre class="def">Accept-Put = "Accept-Put" ":" # media-range</pre>
 
-                      <p>The <code>Accept-Put</code> header specifies a comma-separated list of media ranges (with optional parameters) as defined by [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>], Section 5.3.2. The <code>Accept-Put</code> header, in effect, uses the same syntax as the HTTP <code>Accept</code> header minus the optional <code>accept-params</code> BNF production, since the latter does not apply to <code>Accept-Put</code>.</p>
+                      <p>The <code>Accept-Put</code> header specifies a comma-separated list of media ranges (with optional parameters) as defined by [<cite><a class="bibref" href="#bib-rfc9110">RFC9110</a></cite>], Section 5.6.1. The <code>Accept-Put</code> header, in effect, uses the same syntax as the HTTP <code>Accept</code> header minus the optional <code>accept-params</code> BNF production, since the latter does not apply to <code>Accept-Put</code>.</p>
 
                       <p>The presence of the <code>Accept-Put</code> header in response to any method is an implicit indication that <code>PUT</code> is allowed on the resource identified by the request URI. The presence of a specific document format in this header indicates that that specific format is allowed on <code>PUT</code> requests to the resource identified by the request URI.</p>
 
