@@ -1217,7 +1217,7 @@ tfoot dd + dt { margin-top:0; }
 
                       <pre class="def">Accept-Put = "Accept-Put" ":" #media-range</pre>
 
-                      <p>The <code>Accept-Put</code> header specifies a comma-separated list of media ranges (with optional parameters) as defined by [<cite><a class="bibref" href="#bib-rfc9110">RFC9110</a></cite>], Section 5.6.1. The <code>Accept-Put</code> header, in effect, uses the same syntax as the HTTP <code>Accept</code> header minus the optional <code>accept-params</code> BNF production, since the latter does not apply to <code>Accept-Put</code>.</p>
+                      <p>The <code>Accept-Put</code> header specifies a comma-separated list of media ranges (with optional parameters) as defined by [<cite><a class="bibref" href="#bib-rfc9110">RFC9110</a></cite>], Section 12.5.1. The <code>Accept-Put</code> header, in effect, uses the same syntax as the HTTP <code>Accept</code> header.</p>
 
                       <p>The presence of the <code>Accept-Put</code> header in response to any method is an implicit indication that <code>PUT</code> is allowed on the resource identified by the target URI. The presence of a specific document format in this header indicates that that specific format is allowed on <code>PUT</code> requests to the resource identified by the target URI.</p>
 
