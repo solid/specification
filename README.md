@@ -6,7 +6,7 @@ The TRs include specifications, use cases and requirements, best practices and g
 
 The Solid Protocol is available from the following URLs:
 * Latest version: https://solidproject.org/TR/protocol
-* Persistent version 0.9.0: https://solidproject.org/TR/2021/protocol-20211217
+* Persistent version 0.10.0: https://solidproject.org/TR/2022/protocol-20221231
 * Editor's draft: https://solidproject.org/ED/protocol
 
 ## Participation

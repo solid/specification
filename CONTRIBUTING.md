@@ -259,7 +259,7 @@ All files use common file name extensions, e.g., `.html`.
 The documents will be published under the path `https://solidproject.org/TR/`.
 
 For example, the *Solid Protocol* is available from the following URLs:
-* This version: https://solidproject.org/TR/2021/protocol-20211217
+* This version: https://solidproject.org/TR/2022/protocol-20221231
 * Latest version: https://solidproject.org/TR/protocol
 
 When a new version of the technical report is made available, we follow the
