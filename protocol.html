@@ -369,8 +369,9 @@ margin-top:1em;
                 <li class="tocline">
                   <a class="tocxref" href="#identifiers"><span class="secno">3</span> <span class="content">Resource Identifiers</span></a>
                   <ol>
-                    <li><a href="#uri-slash-semantics"><span class="secno">3.1</span> <span class="content">URI Slash Semantics</span></a></li>
-                    <li><a href="#uri-persistence"><span class="secno">3.2</span> <span class="content">URI Persistence</span></a></li>
+                    <li><a href="#iris"><span class="secno">3.1</span> <span class="content">Internationalized Resource Identifiers</span></a></li>
+                    <li><a href="#uri-slash-semantics"><span class="secno">3.2</span> <span class="content">URI Slash Semantics</span></a></li>
+                    <li><a href="#uri-persistence"><span class="secno">3.3</span> <span class="content">URI Persistence</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -684,6 +685,35 @@ margin-top:1em;
                   <p>This specification does not describe the relationship between a storage <q>owner</q> and Web architecture’s <cite><a href="https://www.w3.org/TR/webarch/#uri-ownership">URI ownership</a></cite> [<cite><a class="bibref" href="#bib-webarch">WEBARCH</a></cite>].</p>
                 </div>
               </div>
+
+              <section id="iris" inlist="" rel="schema:hasPart" resource="#iris">
+                <h3 property="schema:name">Internationalized Resource Identifiers</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p id="iris-resources">All <a href="#resources">resources</a> provided by a Solid <a href="#Server">server</a> are identified by an <a href="#iri">IRI</a> with the <code>http</code> or <code>https</code> scheme, in the following normal form:</p>
+
+                  <ul id="iris-norm">
+                    <li id="iris-nfc">The IRI is a Unicode string in Normalization Form C (NFC) [<cite><a class="bibref" href="#bib-uax15">UAX15</a></cite>].</li>
+
+                    <li id="#iris-unreserved">The IRI does not contain percent-encoding triplets corresponding to <em>unreserved</em> characters.</li>
+                  
+                    <li id="iris-hex">Hexadecimal digits within percent-encoding triplets corresponding to <em>reserved</em> characters are represented using <em>uppercase</em> letters.</li> 
+
+                    <li id="iris-scheme">The <code>http</code> or <code>https</code> scheme of the IRI is represented using <em>lowercase</em> characters.</li>
+
+                    <li id="#iris-host">The host of the IRI is represented using <em>lowercase</em> characters.</li>
+
+                    <li id="iris-port">If the port of the IRI is the default port for its scheme, the port subcomponent is left out.</li>
+
+                    <li id="iris-path">The path of the IRI does not contain dot-segments.</li>
+                  </ul>
+
+                  <p><span about="" id="server-iris-norm" rel="spec:requirement" resource="#server-iris-norm"><span property="spec:statement">A Solid <span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> create IRIs that do not conform to this normal form.</span></span></p>
+
+                  <p><span about="" id="server-iris-to-http" rel="spec:requirement" resource="#server-iris-to-http"><span property="spec:statement">When using an IRI in an <a href=#http>HTTP</a> message, except in the content, a Solid <span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> map the IRI to a URI according to the algorithm provided by [<cite><a class="bibref" href="#bib-rfc3987">RFC3987</a></cite>] (<a href="https://datatracker.ietf.org/doc/html/rfc3987#section-3.1">section 3.1</a>).</span></span></p>
+
+                  <p><span about="" id="server-iris-from-http" rel="spec:requirement" resource="#server-iris-from-http"><span property="spec:statement">When interpreting a URI in an <a href=#http>HTTP</a> message, except in the content, as a resource identifier, a Solid <span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> map the URI to an IRI according to the algorithm provided by [<cite><a class="bibref" href="#bib-rfc3987">RFC3987</a></cite>] (<a href="https://datatracker.ietf.org/doc/html/rfc3987#section-3.2">section 3.2</a>), and normalize the resulting IRI to the <a href="#iris-norm">normal form</a> provided in this section.</span></span></p>
+                </div>
+              </section>
 
               <section id="uri-slash-semantics" inlist="" rel="schema:hasPart" resource="#uri-slash-semantics">
                 <h3 property="schema:name">URI Slash Semantics</h3>
