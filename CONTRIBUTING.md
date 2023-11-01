@@ -19,6 +19,10 @@ Conduct](https://github.com/solid/process/blob/main/code-of-conduct.md) and the
 Conduct](https://www.w3.org/Consortium/cepc/) to keep our community approachable
 and respectable.
 
+See [additional
+resources](www.w3.org/about/positive-work-environment/#Education) for
+education and training to promote a positive work environment.
+
 ## Conformance
 
 The key words “MUST” and “MUST NOT” are to be interpreted as described in [BCP
