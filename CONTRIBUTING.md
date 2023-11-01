@@ -157,6 +157,12 @@ For content changes, make sure that you:
 * [ ] Review the content using the [translation guide for
   writers](https://github.com/github/docs/blob/main/contributing/translations-for-writers.md)
   and the [W3C Manual of Style](https://www.w3.org/2001/06/manual/) as guides.
+* [ ] Review the content to use [inclusive
+  language](https://github.com/github/docs/blob/main/contributing/content-style-guide.md#inclusive-language).
+  Celebrate people/names from under represented ethnic/cultural backgrounds in
+  examples, e.g., [unique forenames in
+  Earth](https://forebears.io/earth/forenames), [example person
+  names](https://developers.google.com/style/examples#example-person-names).
 * [ ] If there are any failing checks in your PR, troubleshoot them until
   they're all passing.
 * [ ] Follow the [Publication Rules](#publication-rules)
