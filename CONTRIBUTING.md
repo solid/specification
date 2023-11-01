@@ -181,9 +181,10 @@ repository, create a PR.
 * If you run into any merge issues, checkout this [git
   tutorial](https://lab.github.com/githubtraining/managing-merge-conflicts) to
   help you resolve merge conflicts and other issues.
-* If you are not the sole contributor, please identify all contributors in the
-  PR comment. To add a contributor (other than yourself), mark them one per
-  line as follows: `+@github_username`.
+* You can attribute a commit to more than one author by adding one or more
+  `Co-authored-by: NAME <NAME@EXAMPLE.COM>` per line to commit's message
+  (after two empty lines). See [github
+  tutorial](https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/creating-a-commit-with-multiple-authors).
 
 ### Your PR is merged!
 
