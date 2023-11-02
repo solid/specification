@@ -348,16 +348,16 @@ We also make the following recommendations:
 
 ## Decisions
 
-See also https://www.w3.org/2023/Process-20230612/#decisions for general guidance.
+Also see https://www.w3.org/2023/Process-20230612/#decisions for general guidance.
 
 ### Processing pull requests
 
-Unless otherwise there is a prior CG decision, changes to TRs use the W3C Process [Correction Classes](https://www.w3.org/2023/Process-20230612/#correction-classes) as follows:
+Unless there is a prior CG decision otherwise, changes to TRs use the W3C Process [Correction Classes](https://www.w3.org/2023/Process-20230612/#correction-classes) as follows:
 
 |Correction Class|Requirements|Time|
 |-|-|-|
-|[No changes to text content](https://www.w3.org/2023/Process-20230612/#class-1)|Editors MAY PR and merged at their discretion.|Within 5 days or 2 meetings.|
-|[Changes that do not functionally affect interpretation of the document](https://www.w3.org/2023/Process-20230612/#class-2)|Editors SHOULD PR and merged at their discretion.|Within 5 days or 2 meetings.|
+|[No changes to text content](https://www.w3.org/2023/Process-20230612/#class-1)|Editors MAY PR and/or merge at their discretion.|Within 5 days or 2 meetings.|
+|[Changes that do not functionally affect interpretation of the document](https://www.w3.org/2023/Process-20230612/#class-2)|Editors SHOULD PR and/or merge at their discretion.|Within 5 days or 2 meetings.|
 |[Other changes that do not add new features](https://www.w3.org/2023/Process-20230612/#class-3)|MUST PR.|Within 10 days or 2 meetings.|
 |[New features](https://www.w3.org/2023/Process-20230612/#class-4)|MUST PR.|Within 10 days or 2 meetings.|
 |[Changes to the contents of a registry table](https://www.w3.org/2023/Process-20230612/#class-5)|Editors or chairs MUST PR.|Within 10 days or 2 meetings.|
