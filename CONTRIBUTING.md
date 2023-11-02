@@ -348,9 +348,9 @@ We also make the following recommendations:
 
 ## Vocabulary Management
 
-TRs might refer or make use of namespaces for specific functionality. The CG
-handles the management of Solid vocabularies under its responsibility through
-the [solid/vocab](https://github.com/solid/vocab) repository.
+TRs might refer to or make use of namespaces for specific functionality. The
+CG handles the management of Solid vocabularies under its responsibility
+through the [solid/vocab](https://github.com/solid/vocab) repository.
 
 The policy for the management of Solid vocabularies under the W3C namespace is
 described in [Adding to W3C RDF
