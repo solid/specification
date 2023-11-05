@@ -177,7 +177,7 @@ repository, create a PR.
 * In the PR comment, provide as much context and evidence to help reviewers
   evaluate the PR. Identify, classify, describes the changes as per W3C
   Process [Correction
-  Classes](https://www.w3.org/2023/Process-20230612/#correction-classes).
+  Classes](https://www.w3.org/Consortium/Process/#correction-classes).
 * Don't forget to [link PR to
   issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue)
   if you are solving one.
