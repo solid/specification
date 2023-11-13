@@ -7,9 +7,9 @@ The CG operates under a [Charter](https://www.w3.org/community/solid/charter/).
 The Technical Reports (TRs) encompass specifications, use cases and requirements, best practices and guidelines, primers, and notes about the Solid ecosystem. The CG's Work Items are linked from the TR homepage.
 
 The Solid Protocol is accessible from the following URLs:
-- Latest version: [Solid Protocol](https://solidproject.org/TR/protocol)
-- Persistent version 0.10.0: [Protocol Version 0.10.0](https://solidproject.org/TR/2022/protocol-20221231)
-- Editor's draft: [Editor's Draft](https://solidproject.org/ED/protocol)
+* Latest version: https://solidproject.org/TR/protocol
+* Persistent version 0.10.0: https://solidproject.org/TR/2022/protocol-20221231
+* Editor's draft: https://solidproject.org/ED/protocol
 
 ## Participation
 
@@ -21,7 +21,7 @@ Meetings are held on Wednesdays at 14:00 UTC via [this link](https://meet.jit.si
 
 ## Contributing
 
-For detailed instructions on getting started with our project, refer to the [contributing guide](https://github.com/solid/specification/blob/main/CONTRIBUTING.md).
+For detailed instructions on getting started with our project, refer to the [contributing guide](https://github.com/w3c-cg/solid/blob/main/CONTRIBUTING.md).
 
 ## Code of Conduct
 
