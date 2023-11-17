@@ -346,6 +346,23 @@ We also make the following recommendations:
 * Use consistent spelling throughout the document.
 
 
+## Decisions
+
+Also see https://www.w3.org/Consortium/Process/#decisions for general guidance.
+
+### Processing pull requests
+
+Unless there is a prior CG decision otherwise, changes to TRs use the W3C Process [Correction Classes](https://www.w3.org/Consortium/Process/#correction-classes) as follows:
+
+|Correction Class|Requirements|Time|
+|-|-|-|
+|[No changes to text content](https://www.w3.org/Consortium/Process/#class-1)|Editors MAY PR and/or merge at their discretion.|Within 5 days or 2 meetings.|
+|[Changes that do not functionally affect interpretation of the document](https://www.w3.org/Consortium/Process/#class-2)|Editors SHOULD PR and/or merge at their discretion.|Within 5 days or 2 meetings.|
+|[Other changes that do not add new features](https://www.w3.org/Consortium/Process/#class-3)|MUST PR.|Within 10 days or 2 meetings.|
+|[New features](https://www.w3.org/Consortium/Process/#class-4)|MUST PR.|Within 10 days or 2 meetings.|
+|[Changes to the contents of a registry table](https://www.w3.org/Consortium/Process/#class-5)|Editors or chairs MUST PR.|Within 10 days or 2 meetings.|
+
+
 ## Vocabulary Management
 
 TRs might refer to or make use of namespaces for specific functionality. The
