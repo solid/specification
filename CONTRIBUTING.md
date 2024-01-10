@@ -1,3 +1,15 @@
+<details open="">
+  <summary>Document Status</summary>
+  <dl>
+    <dt>Modified</dt>
+    <dd>2024-01-10</dd>
+    <dt>Reason</dt>
+    <dd>This document is no longer effective and is no longer being updated here. For the latest information on the <a href="https://www.w3.org/groups/cg/solid/">W3C Solid Community Group</a>, please refer to its <a href="https://github.com/w3c-cg/solid/">repository</a>, <a href="https://www.w3.org/community/solid/charter/">charter</a>, and <a href="https://github.com/w3c-cg/solid/blob/main/CONTRIBUTING.md">contributing guidelines</a>.</dd>
+  </dl>
+</details>
+
+---
+
 # Solid Technical Reports Contributing Guide
 
 Thank you for investing your time in contribution to the Solid project!
