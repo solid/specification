@@ -5,14 +5,16 @@
     <title>Solid Protocol</title>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <link href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED" media="all" rel="stylesheet" title="W3C-ED" />
+    <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet" />
 <style>
+@media (prefers-color-scheme: light) {
+pre code, pre samp { color: #000; }
+}
 body {
 counter-reset:section;
 counter-reset:sub-section;
 }
-em.rfc2119 { color: #900; }
 code, samp { color: #c83500; }
-pre code, pre samp { color: #000; }
 dfn { font-weight:inherit; }
 .do.fragment a { border-bottom:0; }
 .do.fragment a:hover { background:none; border-bottom:0; }
