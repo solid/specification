@@ -5,16 +5,14 @@
     <title>Solid Protocol</title>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <link href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED" media="all" rel="stylesheet" title="W3C-ED" />
-    <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet" />
+    <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="all" rel="stylesheet" />
 <style>
-@media (prefers-color-scheme: light) {
-pre code, pre samp { color: #000; }
-}
 body {
 counter-reset:section;
 counter-reset:sub-section;
 }
-code, samp { color: #c83500; }
+code, samp { color: #e00; }
+pre code, pre samp { color: var(--text); }
 dfn { font-weight:inherit; }
 .do.fragment a { border-bottom:0; }
 .do.fragment a:hover { background:none; border-bottom:0; }
@@ -40,15 +38,15 @@ div.issue h5 > span, div.note h5 > span {
 text-transform: uppercase;
 }
 div.issue h3, div.issue h4, div.issue h5 {
-color:#ae1e1e;
+color:var(--issueheading-text);
 }
 div.note h3, div.note h4, div.note h5 {
-color:#178217;
+color:var(--noteheading-text);
 }
 figure .example-h {
 margin-top:0;
 text-align: left;
-color:#827017;
+color:var(--exampleheading-text);
 }
 figure .example-h > span {
 text-transform: uppercase;
@@ -106,6 +104,10 @@ content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\
 #acknowledgements li:after { content: ", "; }
 #acknowledgements li:last-child:after { content: ""; }
 
+aside.do { overflow:inherit; }
+aside.do blockquote {
+padding: 0; border: 0; margin: 0;
+}
 dl[id^="document-"] ul {
 padding-left:0;
 list-style-type:none;
@@ -128,12 +130,8 @@ aside section > .toc li li {
 margin-left: 1em;
 font-size: revert;
 }
-
-table tbody tr:nth-child(odd) {
-background-color:#f3f3f3;
-}
-table tbody tr:nth-child(odd) th {
-background-color:#fff;
+table {
+border-collapse:collapse;
 }
 table + table {
 margin-top:2em;
@@ -148,17 +146,20 @@ font-weight: bold;
 border-bottom: 1px solid;
 }
 caption, tbody, tfoot {
-border-bottom:2pt solid #000;
+border-bottom:2pt solid #ccc;
 }
 thead,
 thead th[colspan] {
-border-bottom:1pt solid #000;
+border-bottom:1pt solid #ccc;
 }
 [rowspan] { vertical-align: bottom; }
 tbody [rowspan] { vertical-align: middle; }
 
 tbody th[scope="rowgroup"] {
-border-bottom:3pt double #000;
+border-bottom:3pt double #ccc;
+}
+tr {
+border-bottom:1pt solid #ccc;
 }
 th, td {
 padding:0.25em;
