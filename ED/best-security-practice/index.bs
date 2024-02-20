@@ -1,0 +1,96 @@
+<pre class='metadata'>
+Title: Solid Security Best Current Practice
+Boilerplate: issues-index no
+Boilerplate: omit conformance
+Local Boilerplate: logo yes
+Shortname: solid-best-security-practice
+Level: 1
+Status: w3c/CG-DRAFT
+Group: Solid Community Group
+Favicon: https://solidproject.org/TR/solid.svg
+ED: https://solid.github.io/specification/security-best-practice
+TR: https://solidproject.org/TR/security-best-practice
+!Created: Feb 20, 2024
+!Modified: [DATE]
+!Editor's Draft: [https://solid.github.io/specification/security-best-practice](https://solid.github.io/specification/security-best-practice)
+Repository: https://github.com/solid/security-best-practice
+Inline Github Issues: title
+Markup Shorthands: markdown yes
+Max ToC Depth: 2
+Editor: [elf Pavlik](https://elf-pavlik.hackers4peace.net/)
+Metadata Order: This version, Latest published version, Editor's Draft, Test Suite, Created, Modified, *, !*
+Metadata Include: Editor's Draft off
+Abstract:
+  This document describes best current security practice for OAuth 2.0.
+Status Text:
+  This section describes the status of this document at the time of its publication.
+
+  This document was published by the [Solid Community Group](https://www.w3.org/community/solid/) as
+  an Editor’s Draft. The information in this document is
+  still subject to change. You are invited to [contribute](https://github.com/solid/solid-oidc/issues)
+  any feedback, comments, or questions you might have.
+
+  Publication as an Editor’s Draft does not imply endorsement by the W3C Membership. This is a draft
+  document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate
+  to cite this document as other than work in progress.
+
+  This document was produced by a group operating under the [W3C Community Contributor License Agreement
+  (CLA)](https://www.w3.org/community/about/process/cla/). A human-readable
+  [summary](https://www.w3.org/community/about/process/cla-deed/) is available.
+</pre>
+
+# Attacks and Mitigations # {#attacks-and-mitigations}
+
+## Serving user-created files ## {#serving-user-created-files}
+
+The attacker can be an agent with a WebID or an application. They need append/write access to the user's server
+to be able to store the malicious html file, e.g., because user allowed them to write a blog post,
+or they even have their own storage in a different path on the same domain.
+ 
+Impact of both scenarios: The attacker can access anything that the victim's account has access to,
+pretending to be the victim.
+
+
+### Use Solid-OIDC DPoP-bound ID tokens to make authenticated requests
+
+#### Prerequisites
+
+* The attacker has append/write access to a publicly readable folder/file on the server
+* The server serves [[SolidOS]] under the same domain (in [[Community.Solid.Server]] everything is served under the same domain per default)
+* The victim is logged in via [[SolidOS]], so opening it automatically logins again
+
+#### Attack
+
+The attacker writes a malicious `text/html` file to the server. When this file is opened by the user:
+
+* It opens [[SolidOS]] in a new tab and saves the window reference (iirc, opening any non-existing resource from the server returns [[SolidOS]])
+* [[SolidOS]] automatically logins, as the user made a login there previously
+* The `text/html` file can access [[SolidOS]] via the window reference, including the authenticated fetch
+* The `text/html` file can make any requests through this authenticated fetch in the name of the currently logged-in user
+
+
+### Steal login credentials
+
+#### Prerequisites
+
+* The attacker has append/write access to a publicly readable folder/file on the server
+* The victim uses the IDP of the (small) [[Community.Solid.Server]] server
+* The storages are on the same domain as the IDP (default for [[Community.Solid.Server]])
+* The user saved their login credentials (`/idp/login/` for [[Community.Solid.Server]]) via the browser or a password manager extension
+
+
+#### Attack: The attacker writes a malicious `text/html` file to the server. Depending on the application you used to store the login credentials, the concrete autofill/suggestion behaviour is different. But for instance, if the user saved it with Chrome and opens the malicious file:
+
+* The victim need to make any interaction with the site (e.g., clicking on a cookie banner, whatever)
+* Chrome automatically fills in `<input>` fields for the user name and password with the saved credentials
+* The malicious `text/html` file can read and send the credentials to the attacker
+* The attacker can use it to login with the IDP of the victim
+
+
+
+### Countermeasures ### {#serving-user-created-files-countermeasures}
+
+Servers are encouraged to apply security measures when serving user-created files.
+Multiple agents can create files on the same server, which could render same-origin security boundaries useless.
+As an example countermeasure, servers could add a `Content-Security-Policy: sandbox`
+header to artificially enable same-origin security policies for files on the same origin.

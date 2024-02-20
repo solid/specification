@@ -1,0 +1,16 @@
+{
+    "Community.Solid.Server": {
+        "authors": [
+            "Joachim Van Herwegen"
+        ],
+        "href": "https://communitysolidserver.github.io/",
+        "title": "Community Solid Server"
+    },
+    "SolidOS": {
+        "authors": [
+            "Timea Turdean"
+        ],
+        "href": "https://solidos.solidcommunity.net/",
+        "title": "SolidOS"
+    }
+}
