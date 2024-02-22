@@ -44,11 +44,11 @@ Status Text:
 ## Serving user-created files ## {#serving-user-created-files}
 
 The attacker can be an agent with a WebID or an application. They need append/write access to the user's server
-to be able to store the malicious html file, e.g., because user allowed them to write a blog post,
-or they even have their own storage in a different path on the same domain.
+to store a malicious HTML file, e.g., because the user allowed them to write a blog post,
+or they have their own storage in a different path on the same domain.
  
-Impact of both scenarios: The attacker can access anything that the victim's account has access to,
-pretending to be the victim.
+Impact of both scenarios: The attacker, pretending to be the victim, can access anything
+that the victim's account can access.
 
 
 ### Use Solid-OIDC DPoP-bound ID tokens to make authenticated requests
@@ -56,15 +56,15 @@ pretending to be the victim.
 #### Prerequisites
 
 * The attacker has append/write access to a publicly readable folder/file on the server
-* The server serves [[SolidOS]] under the same domain (in [[Community.Solid.Server]] everything is served under the same domain per default)
-* The victim is logged in via [[SolidOS]], so opening it automatically logins again
+* The server serves [[SolidOS]] under the same domain (by default, [[Community.Solid.Server]] serves everything under the same domain)
+* The victim is logged in via [[SolidOS]], so opening it automatically logs in again
 
 #### Attack
 
 The attacker writes a malicious `text/html` file to the server. When this file is opened by the user:
 
 * It opens [[SolidOS]] in a new tab and saves the window reference (iirc, opening any non-existing resource from the server returns [[SolidOS]])
-* [[SolidOS]] automatically logins, as the user made a login there previously
+* [[SolidOS]] automatically logs in, as the user logged in there previously
 * The `text/html` file can access [[SolidOS]] via the window reference, including the authenticated fetch
 * The `text/html` file can make any requests through this authenticated fetch in the name of the currently logged-in user
 
@@ -79,9 +79,9 @@ The attacker writes a malicious `text/html` file to the server. When this file i
 * The user saved their login credentials (`/idp/login/` for [[Community.Solid.Server]]) via the browser or a password manager extension
 
 
-#### Attack: The attacker writes a malicious `text/html` file to the server. Depending on the application you used to store the login credentials, the concrete autofill/suggestion behaviour is different. But for instance, if the user saved it with Chrome and opens the malicious file:
+#### Attack: The attacker writes a malicious `text/html` file to the server. Depending on the application used to store the login credentials, the concrete autofill/suggestion behaviour can vary. For instance, if the user saved it with Chrome and opens the malicious file:
 
-* The victim need to make any interaction with the site (e.g., clicking on a cookie banner, whatever)
+* The victim performs any interaction with the site (e.g., clicking on a cookie banner)
 * Chrome automatically fills in `<input>` fields for the user name and password with the saved credentials
 * The malicious `text/html` file can read and send the credentials to the attacker
 * The attacker can use it to login with the IDP of the victim
