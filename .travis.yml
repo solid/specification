@@ -1,0 +1,25 @@
+sudo: false
+language: python
+python:
+  - "3.7"
+
+install:
+  - pushd /tmp
+  - git clone https://github.com/tabatkins/bikeshed.git --depth 1
+  - pip install --editable bikeshed
+  - bikeshed update
+  - popd
+
+script:
+  - ./build
+
+before_deploy:
+  - rm .gitignore
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  on:
+    branch: master

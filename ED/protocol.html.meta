@@ -1,0 +1,3 @@
+<http://localhost:3000/specification/ED/protocol.html> <urn:npm:solid:community-server:meta:contentTypeParameter> _:n3-3.
+_:n3-3 <http://www.w3.org/2000/01/rdf-schema#label> "charset";
+    <urn:npm:solid:community-server:meta:value> "utf-8".

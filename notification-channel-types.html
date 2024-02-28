@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Notification Channel Types</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link href="https://www.w3.org/StyleSheets/TR/2021/base.css" media="all" rel="stylesheet" title="W3C-Base" />
+<style>
+body {
+counter-reset:section;
+counter-reset:sub-section;
+}
+em.rfc2119 { color: #900; }
+code, samp { color: #c83500; }
+pre code, pre samp { color: #000; }
+dfn { font-weight:inherit; }
+.do.fragment a { border-bottom:0; }
+.do.fragment a:hover { background:none; border-bottom:0; }
+section figure pre { margin:1em 0; display:block; }
+cite .bibref { font-style: normal; }
+.tabs nav ul li { margin:0; }
+div.issue, div.note, div.warning {
+clear: both;
+margin: 1em 0;
+padding: 1em 1.2em 0.5em;
+position: relative;
+}
+div.issue h3, div.note h3,
+div.issue h4, div.note h4,
+div.issue h5, div.note h5 {
+margin:0;
+font-weight:normal;
+font-style:normal;
+}
+div.issue h3 > span, div.note h3 > span,
+div.issue h4 > span, div.note h4 > span,
+div.issue h5 > span, div.note h5 > span {
+text-transform: uppercase;
+}
+div.issue h3, div.issue h4, div.issue h5 {
+color:#ae1e1e;
+}
+div.note h3, div.note h4, div.note h5 {
+color:#178217;
+}
+figure .example-h {
+margin-top:0;
+text-align: left;
+color:#827017;
+}
+figure .example-h > span {
+text-transform: uppercase;
+}
+header address a[href] {
+float: right;
+margin: 1rem 0 0.2rem 0.4rem;
+background: transparent none repeat scroll 0 0;
+border: medium none;
+text-decoration: none;
+}
+header address img[src*="logos/W3C"] {
+background: #1a5e9a none repeat scroll 0 0;
+border-color: #1a5e9a;
+border-image: none;
+border-radius: 0.4rem;
+border-style: solid;
+border-width: 0.65rem 0.7rem 0.6rem;
+color: white;
+display: block;
+font-weight: bold;
+}
+main article > h1 {
+font-size: 220%;
+font-weight:bold;
+}
+
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]):not([id=exit-criteria]) {
+counter-increment:section;
+counter-reset:sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$=references]):not([id=exit-criteria]) {
+counter-increment:sub-section;
+counter-reset:sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$=references]):not([id=exit-criteria]) section {
+counter-increment:sub-sub-section;
+counter-reset:sub-sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$=references]):not([id=exit-criteria]) section section {
+counter-increment:sub-sub-sub-section;
+counter-reset:sub-sub-sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]):not([id=exit-criteria]):not([id^=table-of-]) > h2:before {
+content:counter(section) ".\00a0";
+}
+section:not([id$=references]):not([id^=change-log]):not([id=exit-criteria]) > h3:before {
+content:counter(section) "." counter(sub-section) "\00a0";
+}
+section > h4:before {
+content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\00a0";
+}
+#acknowledgements ul { padding: 0; margin:0 }
+#acknowledgements li { display:inline; }
+#acknowledgements li:after { content: ", "; }
+#acknowledgements li:last-child:after { content: ""; }
+
+dl[id^="document-"] ul {
+padding-left:0;
+list-style-type:none;
+}
+dl [rel~="odrl:action"],
+dl [rel~="odrl:action"] li {
+display: inline;
+}
+dl [rel~="odrl:action"] li:after {
+content: ",";
+}
+dl [rel~="odrl:action"] li:last-child:after {
+content: "";
+}
+</style>
+  </head>
+
+  <body about="" prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# owl: http://www.w3.org/2002/07/owl# xsd: http://www.w3.org/2001/XMLSchema# dcterms: http://purl.org/dc/terms/ skos: http://www.w3.org/2004/02/skos/core# prov: http://www.w3.org/ns/prov# mem: http://mementoweb.org/ns# qb: http://purl.org/linked-data/cube# schema: http://schema.org/ doap: http://usefulinc.com/ns/doap# deo: http://purl.org/spar/deo/ fabio: http://purl.org/spar/fabio/ cito: http://purl.org/spar/cito/ as: https://www.w3.org/ns/activitystreams# ldp: http://www.w3.org/ns/ldp# earl: http://www.w3.org/ns/earl# spec: http://www.w3.org/ns/spec# rel: https://www.w3.org/ns/iana/link-relations/relation# odrl: http://www.w3.org/ns/odrl/2/" typeof="schema:CreativeWork prov:Entity as:Article">
+    <header>
+      <address>
+        <a class="logo" href="https://solidproject.org/"><img height="66" width="72" alt="Solid Project" src="https://solidproject.org/TR/solid.svg"/></a>
+      </address>
+    </header>
+
+    <main>
+      <article about="" typeof="schema:Article">
+        <h1 property="schema:name">Notification Channel Types</h1>
+        <h2><span property="doap:revision">Living Document</span>, 2022-05-05</h2>
+
+        <details open="">
+          <summary>More details about this document</summary>
+
+          <dl id="document-identifier">
+            <dt>This version</dt>
+            <dd><a href="https://solidproject.org/TR/notification-channel-types" rel="owl:sameAs">https://solidproject.org/TR/notification-channel-types</a></dd>
+          </dl>
+
+          <div id="authors">
+            <dl id="author-name">
+              <dt>Editors</dt>
+              <dd id="Sarven-Capadisli"><span about="" rel="schema:creator schema:editor"><span about="https://csarven.ca/#i" typeof="schema:Person"><a rel="schema:url" href="https://csarven.ca/"><span about="https://csarven.ca/#i" property="schema:name"><span property="schema:givenName">Sarven</span> <span property="schema:familyName">Capadisli</span></span></a></span></span></dd>
+            </dl>
+          </div>
+
+          <dl id="document-created">
+            <dt>Created</dt>
+            <dd><time content="2022-05-05T00:00:00Z" datatype="xsd:dateTime" datetime="2022-05-05T00:00:00Z" property="schema:dateCreated">2022-05-05</time></dd>
+          </dl>
+
+          <dl id="document-published">
+            <dt>Published</dt>
+            <dd><time content="2022-05-05T00:00:00Z" datatype="xsd:dateTime" datetime="2022-05-05T00:00:00Z" property="schema:datePublished">2022-05-05</time></dd>
+          </dl>
+
+          <dl id="document-modified">
+            <dt>Modified</dt>
+            <dd><time content="2022-05-05T00:00:00Z" datatype="xsd:dateTime" datetime="2022-05-05T00:00:00Z" property="schema:dateModified">2022-05-05</time></dd>
+          </dl>
+
+          <dl id="document-repository">
+            <dt>Repository</dt>
+            <dd><a href="https://github.com/solid/specification" rel="doap:repository">GitHub</a></dd>
+            <dd><a href="https://github.com/solid/specification/issues" rel="doap:bug-database">Issues</a></dd>
+          </dl>
+
+         <dl id="document-language">
+            <dt>Language</dt>
+            <dd><span content="en" lang="" property="dcterms:language" xml:lang="">English</span></dd>
+          </dl>
+
+          <dl id="document-license">
+            <dt>License</dt>
+            <dd><a href="http://purl.org/NET/rdflicense/MIT1.0" rel="schema:license">MIT License</a></dd>
+          </dl>
+
+          <dl id="document-status">
+            <dt>Document Status</dt>
+            <dd prefix="pso: http://purl.org/spar/pso/" rel="pso:holdsStatusInTime" resource="#f5da0fce-cc6d-11ec-ae61-ff534e459759"><span rel="pso:withStatus" resource="http://purl.org/spar/pso/published" typeof="pso:PublicationStatus">Published</span></dd>
+          </dl>
+
+          <dl id="document-in-reply-to">
+            <dt>In Reply To</dt>
+            <dd><a href="https://solidproject.org/origin" rel="as:inReplyTo">Solid Origin</a></dd>
+          </dl>
+
+          <dl id="document-policy">
+            <dt>Policy</dt>
+            <dd>
+              <dl id="document-policy-offer" rel="odrl:hasPolicy" resource="#document-policy-offer" typeof="odrl:Policy">
+                <dt>Rule</dt>
+                <dd><a about="#document-policy-offer" href="https://www.w3.org/TR/odrl-vocab/#term-Offer" typeof="odrl:Offer">Offer</a></dd>
+                <dt>Unique Identifier</dt>
+                <dd><a href="https://solidproject.org/TR/notification-channel-types#document-policy-offer" rel="odrl:uid">https://solidproject.org/TR/notification-channel-types#document-policy-offer</a></dd>
+                <dt>Target</dt>
+                <dd><a href="https://solidproject.org/TR/notification-channel-types" rel="odrl:target">https://solidproject.org/TR/notification-channel-types</a></dd>
+                <dt>Permission</dt>
+                <dd>
+                  <dl id="document-permission" rel="odrl:permission" resource="#document-permission" typeof="odrl:Permission">
+                    <dt>Assigner</dt>
+                    <dd><a rel="odrl:assigner" href="https://www.w3.org/community/solid/">W3C Solid Community Group</a></dd>
+                    <dt>Action</dt>
+                    <dd>
+                      <ul rel="odrl:action">
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-aggregate" resource="odrl:aggregate">Aggregate</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-archive" resource="odrl:archive">Archive</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-concurrentUse" resource="odrl:concurrentUse">Concurrent Use</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-DerivativeWorks" resource="http://creativecommons.org/ns#DerivativeWorks">Derivative Works</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-derive" resource="odrl:derive">Derive</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-digitize" resource="odrl:digitize">Digitize</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-display" resource="odrl:display">Display</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-Distribution" resource="http://creativecommons.org/ns#Distribution">Distribution</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-index" resource="odrl:index">Index</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-inform" resource="odrl:inform">Inform</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-install" resource="odrl:install">Install</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-Notice" resource="http://creativecommons.org/ns#Notice">Notice</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-present" resource="odrl:present">Present</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-print" resource="odrl:print">Print</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-read" resource="odrl:read">Read</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-reproduce" resource="odrl:reproduce">Reproduce</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-Reproduction" resource="http://creativecommons.org/ns#Reproduction">Reproduction</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-stream" resource="odrl:stream">Stream</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-synchronize" resource="odrl:synchronize">Synchronize</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-textToSpeech" resource="odrl:textToSpeech">Text-to-speech</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-transform" resource="odrl:transform">Transform</a></li>
+                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-translate" resource="odrl:translate">Translate</a></li>
+                      </ul>
+                    </dd>
+                  </dl>
+                </dd>
+              </dl>
+            </dd>
+          </dl>
+        </details>
+
+        <p class="copyright">MIT License. Copyright © 2022 <a href="https://www.w3.org/community/solid/">W3C Solid Community Group</a>.</p>
+
+        <div datatype="rdf:HTML" id="content" property="schema:description">
+          <section id="abstract" inlist="" rel="schema:hasPart" resource="#abstract">
+            <h2 property="schema:name">Abstract</h2>
+            <div property="schema:description" datatype="rdf:HTML">
+              <p>This document serves as an index for Channel Types that can be used with the Solid Notifications Protocol.</p>
+            </div>
+          </section>
+
+          <section id="sotd" inlist="" rel="schema:hasPart" resource="#sotd">
+            <h2 property="schema:name">Status of This Document</h2>
+            <div property="schema:description" datatype="rdf:HTML">
+              <p>This section describes the status of this document at the time of its publication.</p>
+
+              <p>This document was published by the <a href="https://www.w3.org/community/solid/">Solid Community Group</a> as <em>Living Document</em>. The sections that have been incorporated have been reviewed following the <a href="https://github.com/solid/process">Solid process</a>. However, the information in this document is still subject to change. You are invited to <a href="https://github.com/solid/specification/issues">contribute</a> any feedback, comments, or questions you might have.</p>
+
+              <p>Publication as <em>Living Document</em> does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.</p>
+
+              <p>This document was produced by a group operating under the <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available.</p>
+            </div>
+          </section>
+
+          <nav id="toc">
+            <h2 id="table-of-contents">Table of Contents</h2>
+            <div>
+              <ol class="toc">
+                <li class="tocline">
+                  <a class="tocxref" href="#abstract">Abstract</a>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#sotd">Status of This Document</a>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#introduction"><span class="secno">1</span> <span class="content">Introduction</span></a>
+                  <ol>
+                    <li><a href="#conformance"><span class="secno">1.1</span> <span class="content">Conformance</span></a></li>
+                  </ol>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#indexing-procedure"><span class="secno">2</span> Indexing Procedure</a>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#index"><span class="secno">3</span> Index</a>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#references"><span class="secno"></span> <span class="content">References</span></a>
+                  <ol>
+                    <li><a href="#normative-references"><span class="secno"></span> <span class="content">Normative References</span></a></li>
+                    <li><a href="#informative-references"><span class="secno"></span> <span class="content">Informative References</span></a></li>
+                  </ol>
+                </li>
+              </ol>
+            </div>
+          </nav>
+
+          <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction">
+            <h2 about="#introduction" property="schema:name" typeof="deo:Introduction">Introduction</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p><em>This section is non-normative.</em></p>
+
+              <p>The purpose of this document is to help with the discovery of <a href="https://solidproject.org/TR/notifications-protocol#channel-types">Channel Types</a> published as a <cite><a href="http://solidproject.org/TR/">Solid Technical Report</a></cite> that can be used with the <cite><a href="https://solidproject.org/TR/notifications-protocol">Solid Notifications Protocol</a></cite> [<cite><a class="bibref" href="#bib-solid-notifications-protocol">SOLID-NOTIFICATIONS-PROTOCOL</a></cite>].</p>
+
+              <p>This document also describes the <a href="#indexing-procedure">indexing procedure</a> to add new Channel Types to the <a href="#index">index</a>.</p>
+
+              <p>This document is for:</p>
+
+              <ul rel="schema:audience">
+                <li><a href="http://data.europa.eu/esco/occupation/a7c1d23d-aeca-4bee-9a08-5993ed98b135">Resource server developers</a> who want to implement Channel Types.</li>
+                <li><a href="http://data.europa.eu/esco/occupation/c40a2919-48a9-40ea-b506-1f34f693496d">Application developers</a> who want to implement a client to listen for updates using particular Channel Types.</li>
+              </ul>
+
+              <section id="conformance" inlist="" rel="schema:hasPart" resource="#conformance">
+                <h3 property="schema:name">Conformance</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>All assertions, diagrams, examples, and notes are non-normative, as are all sections explicitly marked non-normative. Everything else is normative.</p>
+
+                  <p>The key words “MUST” and “MUST NOT” are to be interpreted as described in <cite><a href="https://tools.ietf.org/html/bcp14" rel="rdfs:seeAlso">BCP 14</a></cite> [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>] [<cite><a class="bibref" href="#bib-rfc8174">RFC8174</a></cite>] when, and only when, they appear in all capitals, as shown here.</p>
+                </div>
+              </section>
+            </div>
+          </section>
+
+          <section id="indexing-procedure" inlist="" rel="schema:hasPart" resource="#indexing-procedure">
+            <h2 property="schema:name">Indexing Procedure</h2>
+            <div property="schema:description" datatype="rdf:HTML">
+              <p>In order to update this index, an implementer MUST submit a modification request for this index, as a pull request on the repository where this index is hosted, where the modification request includes the following information:</p>
+
+              <dl>
+                <dt>Name</dt>
+                <dd>The name of the subscription type</dd>
+                <dt>Description</dt>
+                <dd>A short English description of the type's semantics.</dd>
+                <dt>Reference</dt>
+                <dd>Reference to the document that specifies the subscription type, preferably including a URI that can be used to retrieve a copy of the document.</dd>
+              </dl>
+            </div>
+          </section>
+
+          <section id="index" inlist="" rel="schema:hasPart" resource="#index">
+            <h2 property="schema:name">Index</h2>
+            <div property="schema:description" datatype="rdf:HTML">
+              <p>The information in these documents may be subject to change, therefore please see each document’s publication status and versions for further details.</p>
+
+              <table id="channel-types">
+                <caption>Channel Types</caption>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Reference</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>WebSocketChannel2023</td>
+                    <td>Subscription type that uses the WebSocket API.</td>
+                    <td><a href="https://solidproject.org/TR/websocket-channel-2023" rel="cito:citesForInformation">WebSocketChannel2023</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="appendix" id="references" inlist="" rel="schema:hasPart" resource="#references">
+            <h2 property="schema:name">References</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <section id="normative-references" inlist="" rel="schema:hasPart" resource="#normative-references">
+                <h3 property="schema:name">Normative References</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <dl class="bibliography" resource="">
+                    <dt id="bib-rfc2119">[RFC2119]</dt>
+                    <dd><a href="https://datatracker.ietf.org/doc/html/rfc2119" rel="cito:citesAsAuthority"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc2119">https://datatracker.ietf.org/doc/html/rfc2119</a></dd>
+                    <dt id="bib-rfc8174">[RFC8174]</dt>
+                    <dd><a href="https://datatracker.ietf.org/doc/html/rfc8174" rel="cito:citesAsAuthority"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc8174">https://datatracker.ietf.org/doc/html/rfc8174</a></dd>
+                  </dl>
+                </div>
+              </section>
+
+              <section id="informative-references" inlist="" rel="schema:hasPart" resource="#informative-references">
+                <h3 property="schema:name">Informative References</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <dl class="bibliography" resource="">
+                    <dt id="bib-solid-notifications-protocol">[SOLID-NOTIFICATIONS-PROTOCOL]</dt>
+                    <dd><a href="https://solidproject.org/TR/notifications-protocol" rel="cito:citesAsAuthority"><cite>Solid Notifications Protocol</cite></a>. Aaron Coburn; Sarven Capadisli.  W3C Solid Community Group. 1 April 2022. Version 0.1.0. URL: <a href="https://solidproject.org/TR/notifications-protocol">https://solidproject.org/TR/notifications-protocol</a></dd>
+                  </dl>
+                </div>
+              </section>
+            </div>
+          </section>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>
