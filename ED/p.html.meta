@@ -1,3 +1,0 @@
-<http://localhost:3000/specification/ED/p.html> <urn:npm:solid:community-server:meta:contentTypeParameter> _:n3-44.
-_:n3-44 <http://www.w3.org/2000/01/rdf-schema#label> "charset";
-    <urn:npm:solid:community-server:meta:value> "utf-8".
