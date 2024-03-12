@@ -367,10 +367,11 @@ margin-top:1em;
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#uri"><span class="secno">3</span> <span class="content">Uniform Resource Identifier</span></a>
+                  <a class="tocxref" href="#resource-identifiers"><span class="secno">3</span> <span class="content">Resource Identifiers</span></a>
                   <ol>
-                    <li><a href="#uri-slash-semantics"><span class="secno">3.1</span> <span class="content">URI Slash Semantics</span></a></li>
-                    <li><a href="#uri-persistence"><span class="secno">3.2</span> <span class="content">URI Persistence</span></a></li>
+                    <li><a href="#iris"><span class="secno">3.1</span> <span class="content">Internationalized Resource Identifiers</span></a></li>
+                    <li><a href="#uri-slash-semantics"><span class="secno">3.2</span> <span class="content">URI Slash Semantics</span></a></li>
+                    <li><a href="#uri-persistence"><span class="secno">3.3</span> <span class="content">URI Persistence</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -498,8 +499,11 @@ margin-top:1em;
                     <dt about="#solid-app" property="skos:prefLabel" typeof="skos:Concept"><dfn id="solid-app">Solid app</dfn></dt>
                     <dd about="#solid-app" property="skos:definition">A Solid app is an application that reads or writes data from one or more <a href="#storage">storages</a>.</dd>
 
+                    <dt about="#iri" property="skos:prefLabel" typeof="skos:Concept"><dfn id="iri">IRI</dfn></dt>
+                    <dd about="#iri" property="skos:definition">An <dfn>Internationalized Resource Identifier</dfn> (<abbr title="Internationalized Resource Identifier">IRI</abbr>) is an identifier as defined in [<cite><a class="bibref" href="#bib-rfc3987">RFC3987</a></cite>], which identifies an entity in a global context, using a Unicode character sequence [<cite><a class="bibref" href="#bib-unicode">UNICODE</a></cite>].</dd>
+
                     <dt about="#uniform-resource-identifier" property="skos:prefLabel" typeof="skos:Concept"><dfn id="uniform-resource-identifier">URI</dfn></dt>
-                    <dd about="#uniform-resource-identifier" property="skos:definition">A <dfn>Uniform Resource Identifier</dfn> (<abbr title="Uniform Resource Identifier">URI</abbr>) provides the means for identifying resources [<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>].</dd>
+                    <dd about="#uniform-resource-identifier" property="skos:definition">A <dfn>Uniform Resource Identifier</dfn> (<abbr title="Uniform Resource Identifier">URI</abbr>) is an identifier as defined in [<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>], which identifies an entity in a global context, using an ASCII character sequence [<cite><a class="bibref" href="#bib-ascii">ASCII</a></cite>]. Every URI is also an IRI.</dd>
 
                     <dt about="#resource" property="skos:prefLabel" typeof="skos:Concept"><dfn id="resource">resource</dfn></dt>
                     <dd about="#resource" property="skos:definition">A resource is the target of an HTTP request identified by a URI [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>].</dd>
@@ -672,8 +676,8 @@ margin-top:1em;
             </div>
           </section>
 
-          <section id="uri" inlist="" rel="schema:hasPart" resource="#uri">
-            <h2 property="schema:name">Uniform Resource Identifier</h2>
+          <section id="resource-identifiers" inlist="" rel="schema:hasPart" resource="#resource-identifiers">
+            <h2 property="schema:name">Resource Identifiers</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <div class="note" id="storage-owner-uri-ownership" inlist="" rel="schema:hasPart" resource="#storage-owner-uri-ownership">
                 <h3 property="schema:name"><span>Note</span>: Storage Owner and URI Ownership</h3>
@@ -681,6 +685,35 @@ margin-top:1em;
                   <p>This specification does not describe the relationship between a storage <q>owner</q> and Web architecture’s <cite><a href="https://www.w3.org/TR/webarch/#uri-ownership">URI ownership</a></cite> [<cite><a class="bibref" href="#bib-webarch">WEBARCH</a></cite>].</p>
                 </div>
               </div>
+
+              <section id="iris" inlist="" rel="schema:hasPart" resource="#iris">
+                <h3 property="schema:name">Internationalized Resource Identifiers</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p id="iris-resources">All <a href="#resources">resources</a> provided by a Solid <a href="#Server">server</a> are identified by an <a href="#iri">IRI</a> with the <code>http</code> or <code>https</code> scheme, in the following normal form:</p>
+
+                  <ul id="iris-norm">
+                    <li id="iris-nfc">The IRI is a Unicode string in Normalization Form C (NFC) [<cite><a class="bibref" href="#bib-uax15">UAX15</a></cite>].</li>
+
+                    <li id="#iris-unreserved">The IRI does not contain percent-encoding triplets corresponding to <em>unreserved</em> characters.</li>
+                  
+                    <li id="iris-hex">Hexadecimal digits within percent-encoding triplets corresponding to <em>reserved</em> characters are represented using <em>uppercase</em> letters.</li> 
+
+                    <li id="iris-scheme">The <code>http</code> or <code>https</code> scheme of the IRI is represented using <em>lowercase</em> characters.</li>
+
+                    <li id="#iris-host">The host of the IRI is represented using <em>lowercase</em> characters.</li>
+
+                    <li id="iris-port">If the port of the IRI is the default port for its scheme, the port subcomponent is left out.</li>
+
+                    <li id="iris-path">The path of the IRI does not contain dot-segments.</li>
+                  </ul>
+
+                  <p><span about="" id="server-iris-norm" rel="spec:requirement" resource="#server-iris-norm"><span property="spec:statement">A Solid <span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> create IRIs that do not conform to this normal form.</span></span></p>
+
+                  <p><span about="" id="server-iris-to-http" rel="spec:requirement" resource="#server-iris-to-http"><span property="spec:statement">When using an IRI in an <a href=#http>HTTP</a> message, except in the content, a Solid <span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> map the IRI to a URI according to the algorithm provided by [<cite><a class="bibref" href="#bib-rfc3987">RFC3987</a></cite>] (<a href="https://datatracker.ietf.org/doc/html/rfc3987#section-3.1">section 3.1</a>).</span></span></p>
+
+                  <p><span about="" id="server-iris-from-http" rel="spec:requirement" resource="#server-iris-from-http"><span property="spec:statement">When interpreting a URI in an <a href=#http>HTTP</a> message, except in the content, as a resource identifier, a Solid <span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> map the URI to an IRI according to the algorithm provided by [<cite><a class="bibref" href="#bib-rfc3987">RFC3987</a></cite>] (<a href="https://datatracker.ietf.org/doc/html/rfc3987#section-3.2">section 3.2</a>), and normalize the resulting IRI to the <a href="#iris-norm">normal form</a> provided in this section.</span></span></p>
+                </div>
+              </section>
 
               <section id="uri-slash-semantics" inlist="" rel="schema:hasPart" resource="#uri-slash-semantics">
                 <h3 property="schema:name">URI Slash Semantics</h3>
@@ -1482,6 +1515,8 @@ margin-top:1em;
                     <dd><a href="https://datatracker.ietf.org/doc/html/rfc3864" rel="cito:citesAsAuthority"><cite>Registration Procedures for Message Header Fields</cite></a>. G. Klyne; M. Nottingham; J. Mogul.  IETF. September 2004. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc3864">https://datatracker.ietf.org/doc/html/rfc3864</a></dd>
                     <dt id="bib-rfc3986">[RFC3986]</dt>
                     <dd><a href="https://datatracker.ietf.org/doc/html/rfc3986" rel="cito:citesAsAuthority"><cite>Uniform Resource Identifier (URI): Generic Syntax</cite></a>. T. Berners-Lee; R. Fielding; L. Masinter.  IETF. January 2005. Internet Standard. URL: <a href="https://datatracker.ietf.org/doc/html/rfc3986">https://datatracker.ietf.org/doc/html/rfc3986</a></dd>
+                    <dt id="bib-rfc3987">[RFC3987]</dt>
+                    <dd><a href="https://datatracker.ietf.org/doc/html/rfc3987" rel="cito:citesAsAuthority"><cite>Internationalized Resource Identifiers (IRIs)</cite></a>. M. J. Dürst; M. Suignard.  IETF. January 2005. Proposed Standard. URL: <a href="https://datatracker.ietf.org/doc/html/rfc3987">https://datatracker.ietf.org/doc/html/rfc3987</a></dd>
                     <dt id="bib-rfc4918">[RFC4918]</dt>
                     <dd><a href="https://datatracker.ietf.org/doc/html/rfc4918" rel="cito:citesAsAuthority"><cite>HTTP Extensions for Web Distributed Authoring and Versioning (WebDAV)</cite></a>. L. Dusseault, Ed.  IETF. June 2007. Proposed Standard. URL: <a href="https://datatracker.ietf.org/doc/html/rfc4918">https://datatracker.ietf.org/doc/html/rfc4918</a></dd>
                     <dt id="bib-rfc5023">[RFC5023]</dt>
@@ -1521,6 +1556,8 @@ margin-top:1em;
                     <dd><a href="https://www.w3.org/TR/sparql11-query/" rel="cito:citesAsAuthority"><cite>SPARQL 1.1 Query</cite></a>. Steve Harris; Andy Seaborne; Eric Prud'hommeaux.  W3C. 21 March 2013. W3C Recommendation. URL: <a href="https://www.w3.org/TR/sparql11-query/">https://www.w3.org/TR/sparql11-query/</a></dd>
                     <dt id="bib-turtle">[Turtle]</dt>
                     <dd><a href="https://www.w3.org/TR/turtle/" rel="cito:citesAsAuthority"><cite>RDF 1.1 Turtle</cite></a>. Eric Prud'hommeaux; Gavin Carothers.  W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/turtle/">https://www.w3.org/TR/turtle/</a></dd>
+                    <dt id="bib-uax15">[UAX15]</dt>
+                    <dd><a href="https://www.unicode.org/reports/tr15/" rel="cito:citesAsAuthority"><cite>Unicode Normalization Forms</cite></a>. K. Whistler, Ed..  The Unicode Consortium. 12 August 2023. Unicode Standard Annex #15. URL: <a href="https://www.unicode.org/reports/tr15/">https://www.unicode.org/reports/tr15/</a></dd>
                     <dt id="bib-w3c-html">[W3C-HTML]</dt>
                     <dd><a href="https://www.w3.org/TR/html/" rel="cito:citesAsAuthority"><cite>HTML</cite></a>.  W3C. 28 January 2021. W3C Recommendation. URL: <a href="https://www.w3.org/TR/html/">https://www.w3.org/TR/html/</a></dd>
                     <dt id="bib-wac">[WAC]</dt>
@@ -1537,6 +1574,8 @@ margin-top:1em;
                 <h3 property="schema:name">Informative References</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <dl class="bibliography" resource="">
+                    <dt id="bib-ascii">[ASCII]</dt>
+                    <dd><a href="https://www.iso.org/standard/4777.html" rel="cito:citesAsPotentialSolution"><cite>Information technology — ISO 7-bit coded character set for information interchange</cite></a>. ISO/IEC. December 1991. Published. URL: <a href="https://www.iso.org/standard/4777.html">https://www.iso.org/standard/4777.html</a></dd>
                     <dt id="bib-atag20">[ATAG20]</dt>
                     <dd><a href="https://www.w3.org/TR/ATAG20/" rel="cito:citesAsPotentialSolution"><cite>Authoring Tool Accessibility Guidelines (ATAG) 2.0</cite></a>. Jan Richards; Jeanne F Spellman; Jutta Treviranus.  W3C. 24 September 2015. W3C Recommendation. URL: <a href="https://www.w3.org/TR/ATAG20/">https://www.w3.org/TR/ATAG20/</a></dd>
                     <dt id="bib-coga-usable">[COGA-USABLE]</dt>
@@ -1555,6 +1594,8 @@ margin-top:1em;
                     <dd><a href="https://github.com/solid/solid-spec/blob/master/api-websockets.md" rel="cito:citesAsPotentialSolution"><cite>Solid WebSockets API</cite></a>. Nicola Greco; Dmitri Zagidulin; Ruben Verborgh.  W3C Solid Community Group. 17 June 2020. Unofficial Draft. URL: <a href="https://github.com/solid/solid-spec/blob/master/api-websockets.md">https://github.com/solid/solid-spec/blob/master/api-websockets.md</a></dd>
                     <dt id="bib-uaag20">[UAAG20]</dt>
                     <dd><a href="https://www.w3.org/TR/UAAG20/" rel="cito:citesAsPotentialSolution"><cite>User Agent Accessibility Guidelines (UAAG) 2.0</cite></a>. James Allan; Greg Lowney; Kimberly Patch; Jeanne F Spellman.  W3C. 15 December 2015. W3C Note. URL: <a href="https://www.w3.org/TR/UAAG20/">https://www.w3.org/TR/UAAG20/</a></dd>
+                    <dt id="bib-unicode">[UNICODE]</dt>
+                    <dd><a href="https://www.unicode.org/versions/latest/" rel="cito:citesAsPotentialSolution"><cite>The Unicode Standard</cite></a>. The Unicode Consortium.  URL: <a href="https://www.unicode.org/versions/latest/">https://www.unicode.org/versions/latest/</a></dd>
                     <dt id="bib-wai-aria-1.2">[WAI-ARIA-1.2]</dt>
                     <dd><a href="https://www.w3.org/TR/wai-aria-1.2/" rel="cito:citesAsPotentialSolution"><cite>Accessible Rich Internet Applications (WAI-ARIA) 1.2</cite></a>. Joanmarie Diggs; James Nurthen; Michael Cooper.  W3C. 2 March 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/wai-aria-1.2/">https://www.w3.org/TR/wai-aria-1.2/</a></dd>
                     <dt id="bib-wcag-3.0">[WCAG-3.0]</dt>
