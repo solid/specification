@@ -10,7 +10,6 @@ body {
 counter-reset:section;
 counter-reset:sub-section;
 }
-em.rfc2119 { color: #900; }
 code, samp { color: #c83500; }
 pre code, pre samp { color: #000; }
 dfn { font-weight:inherit; }
@@ -38,15 +37,15 @@ div.issue h5 > span, div.note h5 > span {
 text-transform: uppercase;
 }
 div.issue h3, div.issue h4, div.issue h5 {
-color:#ae1e1e;
+color:var(--issueheading-text);
 }
 div.note h3, div.note h4, div.note h5 {
-color:#178217;
+color:var(--noteheading-text);
 }
 figure .example-h {
 margin-top:0;
 text-align: left;
-color:#827017;
+color:var(--exampleheading-text);
 }
 figure .example-h > span {
 text-transform: uppercase;
@@ -104,6 +103,10 @@ content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\
 #acknowledgements li:after { content: ", "; }
 #acknowledgements li:last-child:after { content: ""; }
 
+aside.do { overflow:inherit; }
+aside.do blockquote {
+padding: 0; border: 0; margin: 0;
+}
 dl[id^="document-"] ul {
 padding-left:0;
 list-style-type:none;
@@ -126,12 +129,8 @@ aside section > .toc li li {
 margin-left: 1em;
 font-size: revert;
 }
-
-table tbody tr:nth-child(odd) {
-background-color:#f3f3f3;
-}
-table tbody tr:nth-child(odd) th {
-background-color:#fff;
+table {
+border-collapse:collapse;
 }
 table + table {
 margin-top:2em;
@@ -146,17 +145,20 @@ font-weight: bold;
 border-bottom: 1px solid;
 }
 caption, tbody, tfoot {
-border-bottom:2pt solid #000;
+border-bottom:2pt solid #ccc;
 }
 thead,
 thead th[colspan] {
-border-bottom:1pt solid #000;
+border-bottom:1pt solid #ccc;
 }
 [rowspan] { vertical-align: bottom; }
 tbody [rowspan] { vertical-align: middle; }
 
 tbody th[scope="rowgroup"] {
-border-bottom:3pt double #000;
+border-bottom:3pt double #ccc;
+}
+tr {
+border-bottom:1pt solid #ccc;
 }
 th, td {
 padding:0.25em;
@@ -178,12 +180,16 @@ padding-left:1em;
 tfoot td > * + * {
 margin-top:1em;
 }
+tfoot dd:after { content: "\A"; white-space:pre; }
+tfoot dt, tfoot dd { display:inline; }
+tfoot dd { margin-left: 0.5em }
+tfoot dd + dt { margin-top:0; }
 </style>
     <link href="https://dokie.li/media/css/dokieli.css" media="all" rel="stylesheet" />
     <script async="" src="https://dokie.li/scripts/dokieli.js"></script>
   </head>
 
-  <body about="" prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# owl: http://www.w3.org/2002/07/owl# xsd: http://www.w3.org/2001/XMLSchema# dcterms: http://purl.org/dc/terms/ skos: http://www.w3.org/2004/02/skos/core# prov: http://www.w3.org/ns/prov# mem: http://mementoweb.org/ns# qb: http://purl.org/linked-data/cube# schema: http://schema.org/ doap: http://usefulinc.com/ns/doap# deo: http://purl.org/spar/deo/ cito: http://purl.org/spar/cito/ as: https://www.w3.org/ns/activitystreams# ldp: http://www.w3.org/ns/ldp# earl: http://www.w3.org/ns/earl# spec: http://www.w3.org/ns/spec# rel: https://www.w3.org/ns/iana/link-relations/relation# odrl: http://www.w3.org/ns/odrl/2/" typeof="schema:CreativeWork prov:Entity as:Article">
+  <body about="" prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# owl: http://www.w3.org/2002/07/owl# xsd: http://www.w3.org/2001/XMLSchema# dcterms: http://purl.org/dc/terms/ skos: http://www.w3.org/2004/02/skos/core# prov: http://www.w3.org/ns/prov# mem: http://mementoweb.org/ns# qb: http://purl.org/linked-data/cube# schema: http://schema.org/ doap: http://usefulinc.com/ns/doap# deo: http://purl.org/spar/deo/ cito: http://purl.org/spar/cito/ as: https://www.w3.org/ns/activitystreams# ldp: http://www.w3.org/ns/ldp# earl: http://www.w3.org/ns/earl# spec: http://www.w3.org/ns/spec# rel: https://www.w3.org/ns/iana/link-relations/relation# odrl: http://www.w3.org/ns/odrl/2/">
     <header>
       <address>
         <a class="logo" href="https://solidproject.org/"><img alt="Solid Project" height="66" src="https://solidproject.org/TR/solid.svg" width="72" /></a>
