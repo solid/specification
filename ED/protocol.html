@@ -675,7 +675,7 @@ tfoot dd + dt { margin-top:0; }
 
                   <p><span about="" id="server-unauthenticated" rel="spec:requirement" resource="#server-unauthenticated"><span property="spec:statement">When a client does not provide valid credentials when requesting a resource that requires it (see <a href="#webid">WebID</a>), <span rel="spec:requirementSubject" resource="#Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> send a response with a <code>401</code> status code (unless <code>404</code> is preferred for security reasons).</span></span></p>
 
-                  <p><span about="" id="server-content-type-includes" rel="spec:requirement" resource="#server-content-type"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> generate a <code>Content-Type</code> header field in a message that contains content.</span></span></p>
+                  <p><span about="" id="server-content-type-includes" rel="spec:requirement" resource="#server-content-type-includes"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> generate a <code>Content-Type</code> header field in a message that contains content.</span></span></p>
 
                   <p><span about="" id="server-content-type-missing" rel="spec:requirement" resource="#server-content-type-missing"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> reject <code>PUT</code>, <code>POST</code> and <code>PATCH</code> requests without the <code>Content-Type</code> header with a status code of <code>400</code>.</span></span> [<a href="https://github.com/solid/specification/issues/70#issuecomment-547924171" rel="cito:citesAsSourceDocument">Source</a>]</p>
                 </div>
@@ -1460,7 +1460,7 @@ tfoot dd + dt { margin-top:0; }
                   </tr>
                   <tr about="#d18392b9-8ffc-4264-a5a2-10e2da6fac32" typeof="spec:Change">
                     <td><a href="https://www.w3.org/Consortium/Process/#class-4" rel="spec:changeClass" resource="spec:ChangeClass4">4</a></td>
-                    <td><a href="#server-content-type-includes" rel="spec:changeSubject">#server-content-type</a></td>
+                    <td><a href="#server-content-type-includes" rel="spec:changeSubject">#server-content-type-includes</a></td>
                     <td property="spec:statement">Add requirement for server to include <code>Content-Type</code> in <a href="#server-content-type-includes">messages with content</a>.</td>
                   </tr>
                   <tr about="#a91960b6-0543-4acc-8153-689c435c7659" typeof="spec:Change">
