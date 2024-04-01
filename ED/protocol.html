@@ -201,7 +201,7 @@ tfoot dd + dt { margin-top:0; }
       <article about="" typeof="schema:Article">
         <h1 property="schema:name">Solid Protocol</h1>
 
-        <p id="w3c-state">Version <span property="doap:revision">0.11.0</span> Editor’s Draft, <time>2024-02-28</time></p>
+        <p id="w3c-state">Version <span property="doap:revision">0.11.0</span> Editor’s Draft, <time>2024-04-01</time></p>
 
         <details open="">
           <summary>More details about this document</summary>
@@ -239,7 +239,7 @@ tfoot dd + dt { margin-top:0; }
 
           <dl id="document-modified">
             <dt>Modified</dt>
-            <dd><time content="2024-02-28T00:00:00Z" datatype="xsd:dateTime" datetime="2024-02-28T00:00:00Z" property="schema:dateModified">2024-02-28</time></dd>
+            <dd><time content="2024-04-01T00:00:00Z" datatype="xsd:dateTime" datetime="2024-04-01T00:00:00Z" property="schema:dateModified">2024-04-01</time></dd>
           </dl>
 
           <dl id="document-repository">
@@ -358,6 +358,9 @@ tfoot dd + dt { margin-top:0; }
                     <li><a href="#conformance"><span class="secno">1.3</span> <span class="content">Conformance</span></a></li>
                     <li><a href="#relations"><span class="secno">1.4</span> <span class="content">Relations</span></a></li>
                   </ol>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#keyboard-sanctity"><span class="secno">⌨</span> <span class="content">Keyboard Sanctity</span></a>
                 </li>
                 <li class="tocline">
                   <a class="tocxref" href="#http"><span class="secno">2</span> <span class="content">Hypertext Transfer Protocol</span></a>
@@ -615,13 +618,17 @@ tfoot dd + dt { margin-top:0; }
                     <div datatype="rdf:HTML" property="schema:description">
                       <p property="skos:definition">The <span about="" rel="spec:classesOfProducts" resource="#classes-of-products">Solid Protocol</span> identifies the following <cite><a href="https://www.w3.org/TR/qaframe-spec/#cop-def" rel="dcterms:subject" resource="spec:ClassesOfProducts">Classes of Products</a></cite> for conforming implementations. These products are referenced throughout this specification.</p>
 
-                      <span rel="skos:hasTopConcept"><span resource="#Server"></span><span resource="#Client"></span></span>
+                      <span rel="skos:hasTopConcept"><span resource="#Server"></span><span resource="#Client"></span><span resource="#Cat"></span><span resource="#Keyboard"></span></span>
 
                       <dl>
                         <dt about="#Server" property="skos:prefLabel" rel="skos:relatedMatch" resource="spec:RespondingAgent" typeof="skos:Concept"><dfn id="Server">Server</dfn></dt>
                         <dd about="#Server" property="skos:definition">A <a href="#http-server" rel="rdfs:seeAlso">server</a> that builds on HTTP <cite>server</cite> [<cite><a class="bibref" href="#bib-rfc9110">RFC9110</a></cite>] and [<cite><a class="bibref" href="#bib-rfc9112">RFC9112</a></cite>] by defining media types, HTTP header fields, and the behaviour of resources, as identified by link relations.</dd>
                         <dt about="#Client" property="skos:prefLabel" rel="skos:relatedMatch" resource="spec:Consumer" typeof="skos:Concept"><dfn id="Client">Client</dfn></dt>
                         <dd about="#Client" property="skos:definition">A <a href="#http-client" rel="rdfs:seeAlso">client</a> that builds on HTTP <cite>client</cite> [<cite><a class="bibref" href="#bib-rfc9110">RFC9110</a></cite>], [<cite><a class="bibref" href="#bib-rfc9112">RFC9112</a></cite>], and [<cite><a class="bibref" href="#bib-fetch">FETCH</a></cite>] by defining behaviour in terms of fetching across the platform.</dd>
+                        <dt about="#Cat" property="skos:prefLabel" rel="skos:relatedMatch" resource="spec:ProducerOfInstructions" typeof="skos:Concept"><dfn id="Cat">Cat</dfn></dt>
+                        <dd about="#Cat" property="skos:definition">A <a href="https://www.wikidata.org/entity/Q146" rel="rdfs:seeAlso">cat</a> is a stealthy agent of chaos, equally proficient in the arts of espionage, the delicate dance of knocking items off shelves, and mastering the art of napping in improbable locations.</dd>
+                        <dt about="#Keyboard" property="skos:prefLabel" rel="skos:relatedMatch" resource="spec:Consumer" typeof="skos:Concept"><dfn id="Keyboard">Keyboard</dfn></dt>
+                        <dd about="#Keyboard" property="skos:definition">A computer <a href="https://www.wikidata.org/entity/Q250" rel="rdfs:seeAlso">keyboard</a> is a vulnerable landscape of keys, delicately arranged to facilitate human communication and command, subject to the whims of gravity and the unpredictable forces of fate.</dd>
                       </dl>
                     </div>
                   </section>
@@ -630,6 +637,7 @@ tfoot dd + dt { margin-top:0; }
                     <h4 property="schema:name skos:prefLabel">Interoperability</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p id="interoperability-server-client">Interoperability of implementations for <a href="#Server" rel="rdfs:seeAlso">servers</a> and <a href="#Client" rel="rdfs:seeAlso">clients</a> is tested by evaluating an implementation’s ability to request and respond to HTTP messages that conform to this specification.</p>
+                      <p id="interoperability-cat-keyboard">Interoperability of implementations for <a href="#Cat" rel="rdfs:seeAlso">cat</a> and <a href="#Keyboard" rel="rdfs:seeAlso">Keyboard</a> is tested by evaluating an implementation’s ability to stay away from each other.</p>
                     </div>
                   </section>
                 </div>
@@ -658,6 +666,13 @@ tfoot dd + dt { margin-top:0; }
                   </section>
                 </div>
               </section>
+            </div>
+          </section>
+
+          <section id="keyboard-sanctity" inlist="" rel="schema:hasPart" resource="#keyboard-sanctity">
+            <h2 property="schema:name">Keyboard Sanctity</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p about="" id="cat-keyboard-interaction" rel="spec:requirement" resource="#cat-keyboard-interaction"><span property="spec:statement">To maintain data integrity and user peace, <a href="#Cat" rel="spec:requirementSubject">cats</a> (🐈) <span rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> treat <a href="#Keyboard" rel="spec:requirementSubject">keyboards</a> (⌨) as personal walkways with their cute dexterous paws, thus preventing potential mischievous keystrokes, cryptic binary messages, unauthorized access attempts, and inadvertent initiation of world domination protocols.</span></p>
             </div>
           </section>
 
@@ -1482,6 +1497,11 @@ tfoot dd + dt { margin-top:0; }
                     <td><a href="https://www.w3.org/Consortium/Process/#class-2" rel="spec:changeClass" resource="spec:ChangeClass2">2</a></td>
                     <td><a href="#server-slug-uri-assignment" rel="spec:changeSubject">#server-slug-uri-assignment</a></td>
                     <td property="spec:statement">Remove optional requirement for <code>Slug</code> that is not enhancing the product classes.</td>
+                  </tr>
+                  <tr about="#d2f04427-4a83-46b5-8e8d-48fc7ee9120e" typeof="spec:Change">
+                    <td><a href="https://www.w3.org/Consortium/Process/#class-4" rel="spec:changeClass" resource="spec:ChangeClass4">4</a></td>
+                    <td><a href="#cat-keyboard-interaction" rel="spec:changeSubject">#cat-keyboard-interaction</a></td>
+                    <td property="spec:statement">Add requirement for cats to stay off keyboards.</td>
                   </tr>
                 </tbody>
                 <tfoot>
