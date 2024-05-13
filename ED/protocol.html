@@ -34,7 +34,8 @@ font-style:normal;
 }
 div.issue h3 > span, div.note h3 > span,
 div.issue h4 > span, div.note h4 > span,
-div.issue h5 > span, div.note h5 > span {
+div.issue h5 > span, div.note h5 > span,
+figure.example > figcaption > span {
 text-transform: uppercase;
 }
 div.issue h3, div.issue h4, div.issue h5 {
@@ -43,13 +44,20 @@ color:var(--issueheading-text);
 div.note h3, div.note h4, div.note h5 {
 color:var(--noteheading-text);
 }
-figure .example-h {
-margin-top:0;
-text-align: left;
+figure.example figcaption {
 color:var(--exampleheading-text);
 }
-figure .example-h > span {
-text-transform: uppercase;
+main figure {
+text-align:left;
+}
+figure.example > figcaption {
+font-style:normal;
+font-size:1em;
+display:inline-block;
+}
+figure.example > figcaption span + span {
+text-transform:initial;
+}
 }
 header address a[href] {
 float: right;
@@ -1008,16 +1016,16 @@ tfoot dd + dt { margin-top:0; }
                     </ol>
                   </div>
 
-                  <figure class="example listing" id="n3-patch-example" rel="schema:hasPart" resource="#n3-patch-example">
-                    <p class="example-h"><span>Example</span>: Applying an N3 patch.</p>
-                    <pre about="#n3-patch-example" property="schema:description"><code>@prefix solid: &lt;http://www.w3.org/ns/solid/terms#&gt;.</code>
+                  <figure class="example listing" id="n3-patch-example" rel="schema:hasPart" resource="#n3-patch-example" typeof="schema:SoftwareSourceCode">
+                    <figcaption property="schema:name"><span>Example</span>: <span>Applying an <span rel="schema:programmingLanguage" resource="http://www.wikidata.org/entity/Q1424987">N3</span> patch</span></figcaption>
+                    <pre property="schema:description"><code>@prefix solid: &lt;http://www.w3.org/ns/solid/terms#&gt;.</code>
 <code>@prefix ex: &lt;http://www.example.org/terms#&gt;.</code>
 <code></code>
 <code>_:rename a solid:InsertDeletePatch;</code>
 <code>  solid:where   { ?person ex:familyName "Garcia". };</code>
 <code>  solid:inserts { ?person ex:givenName "Alex". };</code>
 <code>  solid:deletes { ?person ex:givenName "Claudia". }.</code></pre>
-                    <figcaption property="schema:name">This N3 Patch instructs to rename <em>Claudia Garcia</em> into <em>Alex Garcia</em>, on the condition that no other Garcia family members are present in the target RDF document.</figcaption>
+                    <p>This N3 Patch instructs to rename <em>Claudia Garcia</em> into <em>Alex Garcia</em>, on the condition that no other Garcia family members are present in the target RDF document.</p>
                   </figure>
                 </section>
               </section>
