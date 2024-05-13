@@ -1001,7 +1001,7 @@ tfoot dd + dt { margin-top:0; }
 
                     <p><span about="" id="server-patch-n3-semantics" rel="spec:requirement" resource="#server-patch-n3-semantics"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> process a patch resource against the target document as follows:</span></span></p>
 
-                    <ol about="#server-patch-n3-semantics">
+                    <ol about="#server-patch-n3-semantics" class="algorithm">
                       <li>Start from the RDF dataset in the target document, or an empty RDF dataset if the target resource does not exist yet.</li>
                       <li>If <code>?conditions</code> is non-empty, find all (possibly empty) variable mappings such that all of the resulting triples occur in the dataset.</li>
                       <li>If no such mapping exists, or if multiple mappings exist, the <span id="server-patch-n3-semantics-no-mapping" rel="spec:requirement" resource="#server-patch-n3-semantics-no-mapping"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>409</code> status code.</span></span> [<a href="https://github.com/solid-contrib/query-panel/issues/3" rel="cito:citesAsSourceDocument">Source</a>]</li>
