@@ -7,6 +7,11 @@
     <link href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED" media="all" rel="stylesheet" title="W3C-ED" />
     <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet" />
 <style>
+main,
+main>article,
+main>article>div {
+background:inherit;
+}
 body {
 counter-reset:section;
 counter-reset:sub-section;
@@ -31,6 +36,7 @@ div.issue h5, div.note h5 {
 margin:0;
 font-weight:normal;
 font-style:normal;
+font-size:1em;
 }
 div.issue h3 > span, div.note h3 > span,
 div.issue h4 > span, div.note h4 > span,
@@ -58,6 +64,8 @@ display:inline-block;
 figure.example > figcaption span + span {
 text-transform:initial;
 }
+.copyright + hr {
+border-style: solid;
 }
 header address a[href] {
 float: right;
@@ -107,7 +115,7 @@ content:counter(section) "." counter(sub-section) "\00a0";
 section > h4:before {
 content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\00a0";
 }
-#acknowledgements ul { padding: 0; margin:0 }
+#acknowledgements ul { padding: 0; margin:0; }
 #acknowledgements li { display:inline; }
 #acknowledgements li:after { content: ", "; }
 #acknowledgements li:last-child:after { content: ""; }
@@ -191,7 +199,7 @@ margin-top:1em;
 }
 tfoot dd:after { content: "\A"; white-space:pre; }
 tfoot dt, tfoot dd { display:inline; }
-tfoot dd { margin-left: 0.5em }
+tfoot dd { margin-left: 0.5em; }
 tfoot dd + dt { margin-top:0; }
 </style>
     <link href="https://dokie.li/media/css/dokieli.css" media="all" rel="stylesheet" />
