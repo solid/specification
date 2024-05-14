@@ -129,7 +129,9 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
 #acknowledgements li { display:inline; }
 #acknowledgements li:after { content: ", "; }
 #acknowledgements li:last-child:after { content: ""; }
-
+dd .contributed {
+user-select: none;
+}
 aside.do { overflow:inherit; }
 aside.do blockquote {
 padding: 0; border: 0; margin: 0;
@@ -180,7 +182,6 @@ border-bottom:1pt solid #ccc;
 }
 [rowspan] { vertical-align: bottom; }
 tbody [rowspan] { vertical-align: middle; }
-
 tbody th[scope="rowgroup"] {
 border-bottom:3pt double #ccc;
 }
@@ -246,11 +247,18 @@ tfoot dd + dt { margin-top:0; }
 
             <dl id="document-editors">
               <dt>Editors</dt>
-              <dd data-editor-id="46140" id="Sarven-Capadisli"><span about="" rel="schema:creator schema:editor schema:author"><span about="https://csarven.ca/#i" typeof="schema:Person"><a href="https://csarven.ca/" rel="schema:url"><span about="https://csarven.ca/#i" property="schema:name"><span property="schema:givenName">Sarven</span> <span property="schema:familyName">Capadisli</span></span></a></span></span></dd>
+              <dd data-editor-id="46140" id="Sarven-Capadisli"><span about="" rel="schema:creator schema:editor schema:author"><span about="https://csarven.ca/#i" typeof="schema:Person"><a href="https://csarven.ca/" rel="schema:url"><span about="https://csarven.ca/#i" property="schema:name"><span property="schema:givenName">Sarven</span> <span property="schema:familyName">Capadisli</span></span></a></span></span>  <span class="contributed">(v0.9, v0.10, v0.11)</span></dd>
 
-              <dd data-editor-id="2017" id="Tim-Berners-Lee"><span about="" rel="schema:editor schema:author"><span about="https://www.w3.org/People/Berners-Lee/card#i" typeof="schema:Person"><a href="https://www.w3.org/People/Berners-Lee/" rel="schema:url"><span about="https://www.w3.org/People/Berners-Lee/card#i" property="schema:name"><span property="schema:givenName">Tim</span> <span property="schema:familyName">Berners-Lee</span></span></a></span></span></dd>
+              <dd data-editor-id="2017" id="Tim-Berners-Lee"><span about="" rel="schema:editor schema:author"><span about="https://www.w3.org/People/Berners-Lee/card#i" typeof="schema:Person"><a href="https://www.w3.org/People/Berners-Lee/" rel="schema:url"><span about="https://www.w3.org/People/Berners-Lee/card#i" property="schema:name"><span property="schema:givenName">Tim</span> <span property="schema:familyName">Berners-Lee</span></span></a></span></span>  <span class="contributed">(v0.9, v0.10, v0.11)</span></dd>
 
-              <dd data-editor-id="38800" id="Kjetil-Kjernsmo"><span about="" rel="schema:editor schema:author"><span about="http://www.kjetil.kjernsmo.net/foaf#me" typeof="schema:Person"><a href="http://kjetil.kjernsmo.net/" rel="schema:url"><span about="http://www.kjetil.kjernsmo.net/foaf#me" property="schema:name"><span property="schema:givenName">Kjetil</span> <span property="schema:familyName">Kjernsmo</span></span></a></span></span></dd>
+              <dd data-editor-id="38800" id="Kjetil-Kjernsmo"><span about="" rel="schema:editor schema:author"><span about="http://www.kjetil.kjernsmo.net/foaf#me" typeof="schema:Person"><a href="http://kjetil.kjernsmo.net/" rel="schema:url"><span about="http://www.kjetil.kjernsmo.net/foaf#me" property="schema:name"><span property="schema:givenName">Kjetil</span> <span property="schema:familyName">Kjernsmo</span></span></a></span></span>  <span class="contributed">(v0.9, v0.10, v0.11)</span></dd>
+            </dl>
+
+            <dl id="document-former-editors">
+              <dt>Former editors</dt>
+              <dd id="Ruben-Verborgh"><span about="" rel="schema:contributor"><span about="https://ruben.verborgh.org/profile/#me" typeof="schema:Person"><a href="https://ruben.verborgh.org/" rel="schema:url"><span about="https://ruben.verborgh.org/profile/#me" property="schema:name"><span property="schema:givenName">Ruben</span> <span property="schema:familyName">Verborgh</span></span></a></span></span> <span class="contributed">(v0.9, v0.10)</span></dd>
+              <dd id="Justin-Bingham"><span about="" rel="schema:contributor"><span about="https://justin.bingham.id/#me" typeof="schema:Person"><a rel="schema:url" href="https://justin.bingham.id/"><span about="https://justin.bingham.id/#me" property="schema:name"><span property="schema:givenName">Justin</span> <span property="schema:familyName">Bingham</span></span></a></span></span>  <span class="contributed">(ED)</span></dd>
+              <dd id="Dmitri-Zagidulin"><span about="" rel="schema:contributor"><span about="http://computingjoy.com/" typeof="schema:Person"><a rel="schema:url" href="http://computingjoy.com/"><span about="http://computingjoy.com/" property="schema:name"><span property="schema:givenName">Dmitri</span> <span property="schema:familyName">Zagidulin</span></span></a></span></span> <span class="contributed">(ED)</span></dd>
             </dl>
 
             <dl id="document-published">
