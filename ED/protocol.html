@@ -86,45 +86,6 @@ main article > h1 {
 font-size: 220%;
 font-weight:bold;
 }
-article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]):not([id=exit-criteria]) {
-counter-increment:section;
-counter-reset:sub-section;
-}
-article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]) section:not([id$=references]):not([id=exit-criteria]) {
-counter-increment:sub-section;
-counter-reset:sub-sub-section;
-}
-article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]) section:not([id$=references]):not([id=exit-criteria]) section {
-counter-increment:sub-sub-section;
-counter-reset:sub-sub-sub-section;
-}
-article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]) section:not([id$=references]):not([id=exit-criteria]) section section {
-counter-increment:sub-sub-sub-section;
-counter-reset:sub-sub-sub-sub-section;
-}
-article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]):not([id=exit-criteria]):not([id^=table-of-]):not([id^=list-of-]) > h2:before {
-content:counter(section) ".\00a0";
-}
-section:not([id$=references]):not([id^=changelog]):not([id=exit-criteria]):not([id^=table-of-]):not([id^=list-of-]) > h3:before {
-content:counter(section) "." counter(sub-section) "\00a0";
-}
-section > h4:before {
-content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\00a0";
-}
-article section.appendix {
-counter-increment:appendix;
-counter-reset:sub-appendix;
-}
-article section[class~=appendix]:not([id=abstract]):not([id=sotd]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]):not([id=exit-criteria]) section {
-counter-increment:sub-appendix;
-counter-reset:sub-sub-appendix;
-}
-section.appendix > h2:before {
-content:counter(appendix, upper-alpha) ".\00a0";
-}
-section.appendix section > h3:before {
-content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
-}
 #acknowledgements ul { padding: 0; margin:0; }
 #acknowledgements li { display:inline; }
 #acknowledgements li:after { content: ", "; }
@@ -212,6 +173,45 @@ tfoot dd:after { content: "\A"; white-space:pre; }
 tfoot dt, tfoot dd { display:inline; }
 tfoot dd { margin-left: 0.5em; }
 tfoot dd + dt { margin-top:0; }
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]):not([id=exit-criteria]) {
+counter-increment:section;
+counter-reset:sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]) section:not([id$=references]):not([id=exit-criteria]) {
+counter-increment:sub-section;
+counter-reset:sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]) section:not([id$=references]):not([id=exit-criteria]) section {
+counter-increment:sub-sub-section;
+counter-reset:sub-sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]) section:not([id$=references]):not([id=exit-criteria]) section section {
+counter-increment:sub-sub-sub-section;
+counter-reset:sub-sub-sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]):not([id=exit-criteria]):not([id^=table-of-]):not([id^=list-of-]) > h2:before {
+content:counter(section) ".\00a0";
+}
+section:not([id$=references]):not([id^=changelog]):not([id=exit-criteria]):not([id^=table-of-]):not([id^=list-of-]) > h3:before {
+content:counter(section) "." counter(sub-section) "\00a0";
+}
+section > h4:before {
+content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\00a0";
+}
+article section.appendix {
+counter-increment:appendix;
+counter-reset:sub-appendix;
+}
+article section[class~=appendix]:not([id=abstract]):not([id=sotd]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]):not([id=exit-criteria]) section {
+counter-increment:sub-appendix;
+counter-reset:sub-sub-appendix;
+}
+section.appendix > h2:before {
+content:counter(appendix, upper-alpha) ".\00a0";
+}
+section.appendix section > h3:before {
+content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
+}
 </style>
     <link href="https://www.w3.org/StyleSheets/TR/2021/cg-draft" media="all" rel="stylesheet" title="CG-DRAFT" />
     <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet" />
@@ -257,8 +257,8 @@ tfoot dd + dt { margin-top:0; }
             <dl id="document-former-editors">
               <dt>Former editors</dt>
               <dd id="Ruben-Verborgh"><span about="" rel="schema:contributor"><span about="https://ruben.verborgh.org/profile/#me" typeof="schema:Person"><a href="https://ruben.verborgh.org/" rel="schema:url"><span about="https://ruben.verborgh.org/profile/#me" property="schema:name"><span property="schema:givenName">Ruben</span> <span property="schema:familyName">Verborgh</span></span></a></span></span> <span class="contributed">(v0.9, v0.10)</span></dd>
-              <dd id="Justin-Bingham"><span about="" rel="schema:contributor"><span about="https://justin.bingham.id/#me" typeof="schema:Person"><a rel="schema:url" href="https://justin.bingham.id/"><span about="https://justin.bingham.id/#me" property="schema:name"><span property="schema:givenName">Justin</span> <span property="schema:familyName">Bingham</span></span></a></span></span>  <span class="contributed">(ED)</span></dd>
-              <dd id="Dmitri-Zagidulin"><span about="" rel="schema:contributor"><span about="http://computingjoy.com/" typeof="schema:Person"><a rel="schema:url" href="http://computingjoy.com/"><span about="http://computingjoy.com/" property="schema:name"><span property="schema:givenName">Dmitri</span> <span property="schema:familyName">Zagidulin</span></span></a></span></span> <span class="contributed">(ED)</span></dd>
+              <dd id="Justin-Bingham"><span about="" rel="schema:contributor"><span about="https://justin.bingham.id/#me" typeof="schema:Person"><a href="https://justin.bingham.id/" rel="schema:url"><span about="https://justin.bingham.id/#me" property="schema:name"><span property="schema:givenName">Justin</span> <span property="schema:familyName">Bingham</span></span></a></span></span>  <span class="contributed">(ED)</span></dd>
+              <dd id="Dmitri-Zagidulin"><span about="" rel="schema:contributor"><span about="http://computingjoy.com/" typeof="schema:Person"><a href="http://computingjoy.com/" rel="schema:url"><span about="http://computingjoy.com/" property="schema:name"><span property="schema:givenName">Dmitri</span> <span property="schema:familyName">Zagidulin</span></span></a></span></span> <span class="contributed">(ED)</span></dd>
             </dl>
 
             <dl id="document-published">
