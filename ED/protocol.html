@@ -11,8 +11,7 @@ main>article>div {
 background:inherit;
 }
 body {
-counter-reset:section;
-counter-reset:sub-section;
+counter-reset:section sub-section appendix sub-appendix;
 }
 code, samp { color: #e00; }
 pre code, pre samp { color: var(--text); }
@@ -87,7 +86,6 @@ main article > h1 {
 font-size: 220%;
 font-weight:bold;
 }
-
 article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]):not([id=exit-criteria]) {
 counter-increment:section;
 counter-reset:sub-section;
@@ -112,6 +110,20 @@ content:counter(section) "." counter(sub-section) "\00a0";
 }
 section > h4:before {
 content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\00a0";
+}
+article section.appendix {
+counter-increment:appendix;
+counter-reset:sub-appendix;
+}
+article section[class~=appendix]:not([id=abstract]):not([id=sotd]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]):not([id=exit-criteria]) section {
+counter-increment:sub-appendix;
+counter-reset:sub-sub-appendix;
+}
+section.appendix > h2:before {
+content:counter(appendix, upper-alpha) ".\00a0";
+}
+section.appendix section > h3:before {
+content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
 }
 #acknowledgements ul { padding: 0; margin:0; }
 #acknowledgements li { display:inline; }
