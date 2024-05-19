@@ -24,7 +24,6 @@ cite .bibref { font-style: normal; }
 div.issue, div.note, div.warning {
 clear: both;
 margin: 1em 0;
-padding: 1em 1.2em 0.5em;
 position: relative;
 }
 div.issue h3, div.note h3,
@@ -53,12 +52,15 @@ color:var(--exampleheading-text);
 main figure {
 text-align:left;
 }
-figure.example > figcaption {
+figure[id] {
+position:relative;
+padding:0.5em;
+}
+figure[id] figcaption {
 font-style:normal;
 font-size:1em;
-display:inline-block;
 }
-figure.example > figcaption span + span {
+figure.example figcaption span + span {
 text-transform:initial;
 }
 .copyright + hr {
