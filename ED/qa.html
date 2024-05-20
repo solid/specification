@@ -3,13 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <title>Solid QA</title>
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <link href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED" media="all" rel="stylesheet" title="W3C-ED" />
-    <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet" />
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
 <style>
+main,
+main>article,
+main>article>div {
+background:inherit;
+}
 body {
-counter-reset:section;
-counter-reset:sub-section;
+counter-reset:section sub-section appendix sub-appendix;
 }
 code, samp { color: #e00; }
 pre code, pre samp { color: var(--text); }
@@ -22,7 +24,6 @@ cite .bibref { font-style: normal; }
 div.issue, div.note, div.warning {
 clear: both;
 margin: 1em 0;
-padding: 1em 1.2em 0.5em;
 position: relative;
 }
 div.issue h3, div.note h3,
@@ -31,10 +32,12 @@ div.issue h5, div.note h5 {
 margin:0;
 font-weight:normal;
 font-style:normal;
+font-size:1em;
 }
 div.issue h3 > span, div.note h3 > span,
 div.issue h4 > span, div.note h4 > span,
-div.issue h5 > span, div.note h5 > span {
+div.issue h5 > span, div.note h5 > span,
+figure.example > figcaption > span {
 text-transform: uppercase;
 }
 div.issue h3, div.issue h4, div.issue h5 {
@@ -43,13 +46,26 @@ color:var(--issueheading-text);
 div.note h3, div.note h4, div.note h5 {
 color:var(--noteheading-text);
 }
-figure .example-h {
-margin-top:0;
-text-align: left;
+figure.example figcaption {
 color:var(--exampleheading-text);
 }
-figure .example-h > span {
-text-transform: uppercase;
+main figure {
+text-align:left;
+}
+figure[id] {
+position:relative;
+padding:0.5em;
+}
+figure[id] figcaption {
+margin-left:1em;
+font-style:normal;
+font-size:1em;
+}
+figure.example figcaption span + span {
+text-transform:initial;
+}
+.copyright + hr {
+border-style: solid;
 }
 header address a[href] {
 float: right;
@@ -73,37 +89,13 @@ main article > h1 {
 font-size: 220%;
 font-weight:bold;
 }
-
-article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]):not([id=exit-criteria]) {
-counter-increment:section;
-counter-reset:sub-section;
-}
-article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$=references]):not([id=exit-criteria]) {
-counter-increment:sub-section;
-counter-reset:sub-sub-section;
-}
-article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$=references]):not([id=exit-criteria]) section {
-counter-increment:sub-sub-section;
-counter-reset:sub-sub-sub-section;
-}
-article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$=references]):not([id=exit-criteria]) section section {
-counter-increment:sub-sub-sub-section;
-counter-reset:sub-sub-sub-sub-section;
-}
-article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]):not([id=exit-criteria]):not([id^=table-of-]):not([id^=list-of-]) > h2:before {
-content:counter(section) ".\00a0";
-}
-section:not([id$=references]):not([id^=change-log]):not([id=exit-criteria]) > h3:before {
-content:counter(section) "." counter(sub-section) "\00a0";
-}
-section > h4:before {
-content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\00a0";
-}
-#acknowledgements ul { padding: 0; margin:0 }
+#acknowledgements ul { padding: 0; margin:0; }
 #acknowledgements li { display:inline; }
 #acknowledgements li:after { content: ", "; }
 #acknowledgements li:last-child:after { content: ""; }
-
+dd .contributed {
+user-select: none;
+}
 aside.do { overflow:inherit; }
 aside.do blockquote {
 padding: 0; border: 0; margin: 0;
@@ -154,7 +146,6 @@ border-bottom:1pt solid #ccc;
 }
 [rowspan] { vertical-align: bottom; }
 tbody [rowspan] { vertical-align: middle; }
-
 tbody th[scope="rowgroup"] {
 border-bottom:3pt double #ccc;
 }
@@ -183,9 +174,107 @@ margin-top:1em;
 }
 tfoot dd:after { content: "\A"; white-space:pre; }
 tfoot dt, tfoot dd { display:inline; }
-tfoot dd { margin-left: 0.5em }
+tfoot dd { margin-left: 0.5em; }
 tfoot dd + dt { margin-top:0; }
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]):not([id=exit-criteria]) {
+counter-increment:section;
+counter-reset:sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]) section:not([id$=references]):not([id=exit-criteria]) {
+counter-increment:sub-section;
+counter-reset:sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]) section:not([id$=references]):not([id=exit-criteria]) section {
+counter-increment:sub-sub-section;
+counter-reset:sub-sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]) section:not([id$=references]):not([id=exit-criteria]) section section {
+counter-increment:sub-sub-sub-section;
+counter-reset:sub-sub-sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]):not([id=exit-criteria]):not([id^=table-of-]):not([id^=list-of-]) > h2:before {
+content:counter(section) ".\00a0";
+}
+section:not([id$=references]):not([id^=changelog]):not([id=exit-criteria]):not([id^=table-of-]):not([id^=list-of-]) > h3:before {
+content:counter(section) "." counter(sub-section) "\00a0";
+}
+section > h4:before {
+content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\00a0";
+}
+article section.appendix {
+counter-increment:appendix;
+counter-reset:sub-appendix;
+}
+article section[class~=appendix]:not([id=abstract]):not([id=sotd]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]):not([id=exit-criteria]) section {
+counter-increment:sub-appendix;
+counter-reset:sub-sub-appendix;
+}
+section.appendix > h2:before {
+content:counter(appendix, upper-alpha) ".\00a0";
+}
+section.appendix section > h3:before {
+content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
+}
+.self-link {
+display: inline-block;
+margin-right:0.25em;
+user-select: none;
+font-family: monospace;
+font-style:normal;
+font-weight:bold;
+outline:none;
+text-align:left;
+text-decoration:underline;
+border:0;
+background-color:transparent;
+line-height: 1;
+vertical-align: initial;
+}
+figure[id] figcaption {
+margin-left:1em;
+}
+figure[id] .self-link {
+position:absolute;
+top:1em;
+left:0.5em;
+}
+.self-link:after {
+content:"#";
+font-size: initial;
+}
+aside > .self-link:after {
+content:"|";
+}
+dl > .self-link:after {
+content:"☝";
+}
+nav > .self-link:after {
+content:"☛";
+}
+p > .self-link:after {
+content:"¶";
+}
+section > .self-link:after {
+content:"§";
+}
+figure > .self-link:after {
+content:"❦";
+}
+table > .self-link:after {
+content:"𝄜";
+}
+[rel~="spec:requirement"] .self-link:after {
+content:"◎";
+}
+h2,h3,h4,h5,h6 {
+display:inline-block;
+margin-block:0;
+margin-bottom:0.5rem;
+}
+.do.fragment { display:none; }
 </style>
+    <link href="https://www.w3.org/StyleSheets/TR/2021/cg-draft" media="all" rel="stylesheet" title="CG-DRAFT" />
+    <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet" />
     <link href="https://dokie.li/media/css/dokieli.css" media="all" rel="stylesheet" />
     <script async="" src="https://dokie.li/scripts/dokieli.js"></script>
   </head>
