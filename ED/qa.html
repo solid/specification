@@ -670,17 +670,17 @@ margin-bottom:0.5rem;
                   <p property="skos:definition">The <span about="" rel="spec:classesOfProducts" resource="#classes-of-products">Solid QA</span> identifies the following <cite><a href="https://www.w3.org/TR/qaframe-spec/#cop-def" rel="dcterms:subject" resource="spec:ClassesOfProducts">Classes of Products</a></cite> for conforming implementations. These products are referenced throughout this specification.</p>
 
                   <dl rel="skos:hasTopConcept">
-                    <dt about="#TechnicalReport" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Content" typeof="skos:Concept"><dfn id="TestReport">Technical Report</dfn></dt>
-                    <dd about="#TechnicalReport" property="skos:definition">..</dd>
+                    <dt about="#TechnicalReport" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Content" typeof="skos:Concept"><dfn id="TechnicalReport"><a class="self-link" href="#TechnicalReport"></a>Technical Report</dfn></dt>
+                    <dd about="#TechnicalReport" property="skos:definition">A <a href="#TechnicalReport">Technical Report</a> is a document outlining recommendations and the level of conformance that various classes of products, processes, or services can achieve [<cite><a class="bibref" href="#bib-qa-glossary">QA GLOSSARY</a></cite>].</dd>
 
-                    <dt about="#TestCase" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Content" typeof="skos:Concept"><dfn id="TestCase">Test Case</dfn></dt>
-                    <dd about="#TestCase" property="skos:definition">..</dd>
+                    <dt about="#TestCase" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Content" typeof="skos:Concept"><dfn id="TestCase"><a class="self-link" href="#TestCase"></a>Test Case</dfn></dt>
+                    <dd about="#TestCase" property="skos:definition">A <a href="#TestCase">Test Cases</a> is an individual test with a purpose that maps to measurable or testable behaviours, actions, or conditions in a <a href="#TechnicalReport" rel="skos:related">Technical Report</a> [<cite><a class="bibref" href="#bib-qa-glossary">QA GLOSSARY</a></cite>].</dd>
 
-                    <dt about="#TestReport" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Content" typeof="skos:Concept"><dfn id="TestReport">Test Report</dfn></dt>
-                    <dd about="#TestReport" property="skos:definition">A <a href="#test-report" rel="rdfs:seeAlso"><em>Test Report</em></a> is a resource that describes the level of conformance of a project’s tests against <a href="#TestCase">Test Cases</a> [<cite><a class="bib-ref" href="#bib-test-metadata">test-metadata</a></cite>].</dd>
+                    <dt about="#TestReport" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Content" typeof="skos:Concept"><dfn id="TestReport"><a class="self-link" href="#TestReport"></a>Test Report</dfn></dt>
+                    <dd about="#TestReport" property="skos:definition">A <a href="#test-report">Test Report</a> is a resource that describes the level of conformance of a project’s tests against <a href="#TestCase" rel="skos:related">Test Cases</a>.</dd>
 
-                    <dt about="#TestSuite" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Consumer" typeof="skos:Concept"><dfn id="TestCase">Test Suite</dfn></dt>
-                    <dd about="#TestSuite" property="skos:definition" rel="skos:broadMatch" resource="spec:ProducerOfContent">A <a href=""><em>Test Suite</em></a> is software that, .., and consumes <a href="#TechnicalReport">Technical Reports</a> and produces <a href="#TestCase">Test Cases</a>.</dd>
+                    <dt about="#TestSuite" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Consumer" typeof="skos:Concept"><dfn id="TestSuite"><a class="self-link" href="#TestSuite"></a>Test Suite</dfn></dt>
+                    <dd about="#TestSuite" property="skos:definition" rel="skos:broadMatch" resource="spec:ProducerOfContent">A <a href="#TestSuite">Test Suite</a> is collection of documents and software designed to verify an implementation's degree of conformance by using <a href="#TechnicalReport" rel="skos:related">Technical Reports</a> and <a href="#TestCase" rel="skos:related">Test Cases</a>, and it generates <a href="#TestReport" rel="skos:related">Test Reports</a> [<cite><a class="bibref" href="#bib-qa-glossary">QA GLOSSARY</a></cite>].</dd>
                   </dl>
                 </div>
               </section>
