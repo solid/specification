@@ -634,10 +634,10 @@ margin-bottom:0.5rem;
                 </div>
               </section>
 
-              <section id="data-formats" inlist="" rel="schema:hasPart" resource="#terminology" typeof="skos:ConceptScheme"><a class="self-link" href="#data-formats"></a>
+              <section id="data-formats" inlist="" rel="schema:hasPart" resource="#data-formats" typeof="skos:ConceptScheme"><a class="self-link" href="#data-formats"></a>
                 <h3 property="schema:name skos:prefLabel">Data Formats</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>This specification uses the RDF language to describe technical reports, test reports, test suites, and test cases. Implementers are encouraged to produce human-visible and machine-readable representations with RDFa in host languages such as HTML and SVG.</p>
+                  <p about="" id="human-machine-readable" rel="spec:advisement" resource="#human-machine-readable"><span property="spec:statement">This specification uses the RDF language to describe technical reports, test reports, test suites, and test cases. Implementers are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to produce human-visible and machine-readable representations with RDFa in host languages such as HTML and SVG.</span></p>
                 </div>
               </section>
             </div>
@@ -672,17 +672,17 @@ margin-bottom:0.5rem;
                   <p property="skos:definition">The <span about="" rel="spec:classesOfProducts" resource="#classes-of-products">Solid QA</span> identifies the following <cite><a href="https://www.w3.org/TR/qaframe-spec/#cop-def" rel="dcterms:subject" resource="spec:ClassesOfProducts">Classes of Products</a></cite> for conforming implementations. These products are referenced throughout this specification.</p>
 
                   <dl rel="skos:hasTopConcept">
-                    <dt about="#TechnicalReport" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Content" typeof="skos:Concept"><dfn id="TestReport">Technical Report</dfn></dt>
-                    <dd about="#TechnicalReport" property="skos:definition">..</dd>
+                    <dt about="#TechnicalReport" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Content" typeof="skos:Concept"><dfn id="TechnicalReport"><a class="self-link" href="#TechnicalReport"></a>Technical Report</dfn></dt>
+                    <dd about="#TechnicalReport" property="skos:definition">A <a href="#TechnicalReport">Technical Report</a> is a document outlining recommendations and the level of conformance that various classes of products, processes, or services can achieve [<cite><a class="bibref" href="#bib-qa-glossary">QA GLOSSARY</a></cite>].</dd>
 
-                    <dt about="#TestCase" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Content" typeof="skos:Concept"><dfn id="TestCase">Test Case</dfn></dt>
-                    <dd about="#TestCase" property="skos:definition">..</dd>
+                    <dt about="#TestCase" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Content" typeof="skos:Concept"><dfn id="TestCase"><a class="self-link" href="#TestCase"></a>Test Case</dfn></dt>
+                    <dd about="#TestCase" property="skos:definition">A <a href="#TestCase">Test Cases</a> is an individual test with a purpose that maps to measurable or testable behaviours, actions, or conditions in a <a href="#TechnicalReport" rel="skos:related">Technical Report</a> [<cite><a class="bibref" href="#bib-qa-glossary">QA GLOSSARY</a></cite>].</dd>
 
-                    <dt about="#TestReport" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Content" typeof="skos:Concept"><dfn id="TestReport">Test Report</dfn></dt>
-                    <dd about="#TestReport" property="skos:definition">A <a href="#test-report" rel="rdfs:seeAlso"><em>Test Report</em></a> is a resource that describes the level of conformance of a project’s tests against <a href="#TestCase">Test Cases</a> [<cite><a class="bib-ref" href="#bib-test-metadata">test-metadata</a></cite>].</dd>
+                    <dt about="#TestReport" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Content" typeof="skos:Concept"><dfn id="TestReport"><a class="self-link" href="#TestReport"></a>Test Report</dfn></dt>
+                    <dd about="#TestReport" property="skos:definition">A <a href="#test-report">Test Report</a> is a resource that describes the level of conformance of a project’s tests against <a href="#TestCase" rel="skos:related">Test Cases</a>.</dd>
 
-                    <dt about="#TestSuite" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Consumer" typeof="skos:Concept"><dfn id="TestCase">Test Suite</dfn></dt>
-                    <dd about="#TestSuite" property="skos:definition" rel="skos:broadMatch" resource="spec:ProducerOfContent">A <a href=""><em>Test Suite</em></a> is software that, .., and consumes <a href="#TechnicalReport">Technical Reports</a> and produces <a href="#TestCase">Test Cases</a>.</dd>
+                    <dt about="#TestSuite" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Consumer" typeof="skos:Concept"><dfn id="TestSuite"><a class="self-link" href="#TestSuite"></a>Test Suite</dfn></dt>
+                    <dd about="#TestSuite" property="skos:definition" rel="skos:broadMatch" resource="spec:ProducerOfContent">A <a href="#TestSuite">Test Suite</a> is collection of documents and software designed to verify an implementation's degree of conformance by using <a href="#TechnicalReport" rel="skos:related">Technical Reports</a> and <a href="#TestCase" rel="skos:related">Test Cases</a>, and it generates <a href="#TestReport" rel="skos:related">Test Reports</a> [<cite><a class="bibref" href="#bib-qa-glossary">QA GLOSSARY</a></cite>].</dd>
                   </dl>
                 </div>
               </section>
@@ -764,9 +764,9 @@ margin-bottom:0.5rem;
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>The subject of the <code>doap:Project</code> for Test Report Description coincides with the object of the <code>earl:subject</code> in <a href="#test-assertion-description">Test Assertion Description</a>.</p>
 
-                      <p>To help distinguish project releases in test reports, it is encouraged to use versioned URIs for projects.</p>
+                      <p about="" id="project-versioned-uri" rel="spec:advisement" resource="#project-versioned-uri"><span property="spec:statement">To help distinguish project releases in test reports, it is <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to use versioned URIs for projects.</span></p>
 
-                      <p>While some information about the project can be accompanied with the test report, it is encouraged that projects are <a href="https://www.w3.org/2001/tag/doc/selfDescribingDocuments" rel="cito:citesAsInformation">self-describing documents</a>.</p>
+                      <p about="" id="project-self-describing-document" rel="spec:advisement" resource="#project-self-describing-document"><span property="spec:statement">While some information about the project can be accompanied with the test report, it is <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> that projects are <a href="https://www.w3.org/2001/tag/doc/selfDescribingDocuments" rel="cito:citesAsInformation">self-describing documents</a>.</span></p>
                     </div>
                   </div>
 
@@ -781,9 +781,9 @@ margin-bottom:0.5rem;
                   <div class="note" id="test-report-description-test-assertion" inlist="" rel="schema:hasPart" resource="#test-report-description-test-assertion"><a class="self-link" href="#test-report-description-test-assertion"></a>
                     <h4 property="schema:name"><span>Note</span>: Test Report Description: Test Assertion</h4>
                     <div datatype="rdf:HTML" property="schema:description">
-                      <p>To help distinguish test criteria, it is encouraged to use versioned URIs for criteria.</p>
+                      <p about="" id="test-criteria-versioned-uri" rel="spec:advisement" resource="#test-criteria-versioned-uri"><span property="spec:statement">To help distinguish test criteria, it is <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to use versioned URIs for criteria.</span></p>
 
-                      <p>To convey association between a test criterion and its reviews, it is encouraged to use the <a href="https://www.w3.org/TR/annotation-vocab/">Web Annotation Vocabulary</a> with the <code>oa:assessing</code> motivation.</p>
+                      <p about="" id="test-criterion-review-assessing-motivation" rel="spec:advisement" resource="#test-criterion-review-assessing-motivation"><span property="spec:statement">To convey association between a test criterion and its reviews, it is <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to use the <a href="https://www.w3.org/TR/annotation-vocab/">Web Annotation Vocabulary</a> with the <code>oa:assessing</code> motivation.</span></p>
                     </div>
                   </div>
 
@@ -809,7 +809,7 @@ margin-bottom:0.5rem;
 
                   <p class="issue"><code>spec:testScript</code> may need to be <code>rdfs:subPropertyOf</code> <code>td:input</code> or <code>td:informationResourceInput</code>, or use those properties instead.</p>
 
-                  <p class="note">When referencing a requirement with <code>spec:requirementReference</code>, it is strongly encouraged to use versioned URLs of technical reports where available with preference to URLs covered by a persistence policy. </p>
+                  <p class="note" about="" id="test-report-requirement-versioned-uri" rel="spec:advisement" resource="#test-report-requirement-versioned-uri"><span property="spec:statement">When referencing a requirement with <code>spec:requirementReference</code>, it is <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to use versioned URLs of technical reports where available with preference to URLs covered by a persistence policy.</span></p>
 
                   <figure class="example listing" id="test-case-example" rel="schema:hasPart" resource="#test-case-example">
                     <figcaption property="schema:name"><span>Example</span>: <span>Test Case</span></figcaption><a class="self-link" href="#test-case-example"></a>
@@ -835,7 +835,7 @@ margin-bottom:0.5rem;
 
                   <p>Test assertions MUST use the <cite><a href="https://www.w3.org/TR/EARL10-Schema/" rel="cito:citesAsAuthority">Evaluation and Report Language 1.0 Schema</a></cite> [<cite><a class="bibref" href="#bib-earl10-Schema">EARL10-Schema</a></cite>].</p>
 
-                  <p>Test Suite implementers are encouraged to follow the <cite><a href="https://www.w3.org/TR/EARL10-Guide/" rel="cito:citesAsPotentialSolution">Developer Guide for Evaluation and Report Language 1.0</a></cite> [<cite><a class="bibref" href="#bib-earl10-guide">EARL10-Guide</a></cite>].</p>
+                  <p about="" id="test-suite-implementation-earl" rel="spec:advisement" resource="#test-suite-implementation-earl"><span property="spec:statement">Test Suite implementers are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to follow the <cite><a href="https://www.w3.org/TR/EARL10-Guide/" rel="cito:citesAsPotentialSolution">Developer Guide for Evaluation and Report Language 1.0</a></cite> [<cite><a class="bibref" href="#bib-earl10-guide">EARL10-Guide</a></cite>].</span></p>
                 </div>
               </section>
 
