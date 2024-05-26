@@ -57,7 +57,6 @@ position:relative;
 padding:0.5em;
 }
 figure[id] figcaption {
-margin-left:1em;
 font-style:normal;
 font-size:1em;
 }
@@ -265,6 +264,9 @@ content:"𝄜";
 }
 [rel~="spec:requirement"] .self-link:after {
 content:"◎";
+}
+[rel~="spec:advisement"] .self-link:after {
+content:"!";
 }
 h2,h3,h4,h5,h6 {
 display:inline-block;
