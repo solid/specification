@@ -746,7 +746,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
 
                   <p about="" id="server-content-type-includes" rel="spec:requirement" resource="#server-content-type-includes"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> generate a <code>Content-Type</code> header field in a message that contains content.</span></p>
 
-                  <p about="" id="server-content-type-missing" rel="spec:requirement" resource="#server-content-type-missing"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> reject <code>PUT</code>, <code>POST</code>, and <code>PATCH</code> requests that contain content but lack the <code>Content-Type</code> header field, with a status code of <code>400</code>.</span> [<a href="https://github.com/solid/specification/issues/70#issuecomment-547924171" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                  <p about="" id="server-content-type-missing" rel="spec:requirement" resource="#server-content-type-missing"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> reject <code>PUT</code>, <code>POST</code>, and <code>PATCH</code> requests that contain content but lack the <code>Content-Type</code> header field, with a status code of <code>400</code>.</span> [<a href="https://github.com/solid/specification/issues/70#issuecomment-547924171" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/pull/660#issue-2319265317" rel="cito:citesAsSourceDocument">Source</a>]</p>
                 </div>
               </section>
 
@@ -757,7 +757,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
 
                   <p about="" id="client-authentication-different-credentials" rel="spec:requirement" resource="#client-authentication-different-credentials"><span property="spec:statement">When a <span rel="spec:requirementSubject" resource="#Client">client</span> receives a response with a <code>403</code> or <code>404</code> status code, the client <span rel="spec:requirementLevel" resource="spec:MAY">MAY</span> repeat the request with different credentials.</span></p>
 
-                  <p about="" id="client-content-type-includes" rel="spec:requirement" resource="#client-content-type"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Client">Clients</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> use the <code>Content-Type</code> HTTP header field in <code>PUT</code>, <code>POST</code>, and <code>PATCH</code> requests that contain content [<cite><a class="bibref" href="#bib-rfc9110">RFC9110</a></cite>].</span> [<a href="https://github.com/solid/specification/issues/70#issuecomment-547924171" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                  <p about="" id="client-content-type-includes" rel="spec:requirement" resource="#client-content-type-includes"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Client">Clients</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> use the <code>Content-Type</code> HTTP header field in <code>PUT</code>, <code>POST</code>, and <code>PATCH</code> requests that contain content [<cite><a class="bibref" href="#bib-rfc9110">RFC9110</a></cite>].</span> [<a href="https://github.com/solid/specification/issues/70#issuecomment-547924171" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/pull/660#issue-2319265317" rel="cito:citesAsSourceDocument">Source</a>]</p>
                 </div>
               </section>
             </div>
@@ -1581,7 +1581,26 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   <tr about="#c6129c53-0f96-426f-9b46-49be21197eac" typeof="spec:Change">
                     <td><a href="https://www.w3.org/Consortium/Process/#class-2" rel="spec:changeClass" resource="spec:ChangeClass2">2</a></td>
                     <td><a href="https://solidproject.org/TR/2022/protocol-20221231#server-slug-uri-assignment" rel="spec:changeSubject">#server-slug-uri-assignment</a></td>
-                    <td property="spec:statement">Remove optional requirement for <code>Slug</code> that is not enhancing the product classes.</td>
+                  </tr>
+                  <tr about="#a23b1b93-3c4f-4565-b697-d703050e662d" typeof="spec:Change">
+                    <td><a href="https://www.w3.org/Consortium/Process/#class-3" rel="spec:changeClass" resource="spec:ChangeClass3">3</a></td>
+                    <td><a href="#server-content-type-missing" rel="spec:changeSubject">#server-content-type-missing</a></td>
+                    <td property="spec:statement">Amend server requirement to clarify <a href="#server-content-type-missing">rejecting messages</a> with content but lacking the <code>Content-Type</code> header field.</td>
+                  </tr>
+                  <tr about="#c3c9a9d8-32d2-47cd-a858-362d9da40fab" typeof="spec:Change">
+                    <td><a href="https://www.w3.org/Consortium/Process/#class-3" rel="spec:changeClass" resource="spec:ChangeClass3">3</a></td>
+                    <td><a href="#client-content-type-includes" rel="spec:changeSubject">#client-content-type-includes</a></td>
+                    <td property="spec:statement">Amend client requirement to clarify <a href="#client-content-type-includes">requesting messages</a> with content to include the <code>Content-Type</code> header field.</td>
+                  </tr>
+                  <tr about="#bcd91ab2-a2cd-4821-8411-2da225d3f64e" typeof="spec:Change">
+                    <td><a href="https://www.w3.org/Consortium/Process/#class-3" rel="spec:changeClass" resource="spec:ChangeClass3">3</a></td>
+                    <td><a href="https://solidproject.org/TR/2022/protocol-20221231#server-post-container-create-container" rel="spec:changeSubject">#server-post-container-create-container</a></td>
+                    <td property="spec:statement">Remove requirement as creating a container with a server-assigned URI is not significant and relied on the LDP interaction model.</td>
+                  </tr>
+                  <tr about="#f82e7748-357a-41d4-b387-3547fa1f7fa2" typeof="spec:Change">
+                    <td><a href="https://www.w3.org/Consortium/Process/#class-3" rel="spec:changeClass" resource="spec:ChangeClass3">3</a></td>
+                    <td><a href="https://solidproject.org/TR/2022/protocol-20221231#server-post-slug-auxiliary-resource" rel="spec:changeSubject">#server-post-slug-auxiliary-resource </a></td>
+                    <td property="spec:statement">Remove requirement as the <code>Slug</code> header field is not widely implemented and should not be used to match any resource.</td>
                   </tr>
                 </tbody>
                 <tfoot>
