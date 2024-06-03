@@ -762,7 +762,8 @@ margin-bottom:0.5rem;
 
                   <p id="acl-mode"><a class="self-link" href="#acl-mode"></a>The <code>acl:mode</code> predicate denotes a class of operations that the agents can perform on a resource.</p>
 
-                  <dl id="acl-access-modes"><a class="self-link" href="#acl-access-modes"></a>
+                  <a class="self-link" href="#acl-access-modes"></a>
+                  <dl id="acl-access-modes">
                     <dt id="acl-mode-read"><a class="self-link" href="#acl-mode-read"></a><code>acl:Read</code></dt>
                     <dd>Allows access to a class of read operations on a resource, e.g., to view the contents of a resource on HTTP <code>GET</code> requests.</dd>
 
@@ -872,7 +873,8 @@ margin-bottom:0.5rem;
 
                   <p id="effective-acl-resource-container-hierarchy"><a class="self-link" href="#effective-acl-resource-container-hierarchy"></a>WAC has the property of being recursive with respect to container hierarchy, meaning that a member resource inherits Authorizations from the closest container resource (heading towards the root container).</p>
 
-                  <dl id="effective-acl-resource-algorithm" rel="schema:hasPart" resource="#effective-acl-resource-algorithm"><a class="self-link" href="#effective-acl-resource-algorithm"></a>
+                  <a class="self-link" href="#effective-acl-resource-algorithm"></a>
+                  <dl id="effective-acl-resource-algorithm" rel="schema:hasPart" resource="#effective-acl-resource-algorithm">
                     <dt property="schema:name">Effective ACL Resource Algorithm</dt>
                     <dd datatype="rdf:HTML" property="schema:description">
                       <p>To determine the <em>effective ACL resource</em> of a resource, perform the following steps. Returns <a href="https://infra.spec.whatwg.org/#strings">string</a> (the URI of an ACL Resource).</p>
@@ -964,7 +966,8 @@ margin-bottom:0.5rem;
                         <div datatype="rdf:HTML" property="schema:description">
                           <p id="http-acl-resource"><a class="self-link" href="#http-acl-resource"></a>When the target of the HTTP request is the ACL resource, the operation can only be allowed with the <code>acl:Control</code> access mode. Having <code>acl:Control</code> does not imply that the agent has <code>acl:Read</code> or <code>acl:Write</code> access to the resource itself, just to its corresponding ACL resource. For example, an agent with control access can disable their own write access (to prevent accidental over-writing of a resource by an application), but be able to change their access levels at a later point (since they retain <code>acl:Control</code> access).</p>
 
-                          <dl id="http-methods-access-modes"><a class="self-link" href="#http-methods-access-modes"></a>
+                          <a class="self-link" href="#http-methods-access-modes"></a>
+                          <dl id="http-methods-access-modes">
                             <dt id="http-get"><a class="self-link" href="#http-get"></a><code>GET</code></dt>
                             <dd>The HTTP <code>GET</code> method request targeting a resource can only be allowed with the <code>acl:Read</code> access mode.</dd>
 
