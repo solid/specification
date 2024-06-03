@@ -57,7 +57,6 @@ position:relative;
 padding:0.5em;
 }
 figure[id] figcaption {
-margin-left:1em;
 font-style:normal;
 font-size:1em;
 }
@@ -265,6 +264,9 @@ content:"𝄜";
 }
 [rel~="spec:requirement"] .self-link:after {
 content:"◎";
+}
+[rel~="spec:advisement"] .self-link:after {
+content:"!";
 }
 h2,h3,h4,h5,h6 {
 display:inline-block;
@@ -627,10 +629,10 @@ margin-bottom:0.5rem;
                 </div>
               </section>
 
-              <section id="data-formats" inlist="" rel="schema:hasPart" resource="#terminology" typeof="skos:ConceptScheme"><a class="self-link" href="#data-formats"></a>
+              <section id="data-formats" inlist="" rel="schema:hasPart" resource="#data-formats" typeof="skos:ConceptScheme"><a class="self-link" href="#data-formats"></a>
                 <h3 property="schema:name skos:prefLabel">Data Formats</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>This specification uses the RDF language to describe technical reports, test reports, test suites, and test cases. Implementers are encouraged to produce human-visible and machine-readable representations with RDFa in host languages such as HTML and SVG.</p>
+                  <p about="" id="human-machine-readable" rel="spec:advisement" resource="#human-machine-readable"><span property="spec:statement">This specification uses the RDF language to describe technical reports, test reports, test suites, and test cases. Implementers are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to produce human-visible and machine-readable representations with RDFa in host languages such as HTML and SVG.</span></p>
                 </div>
               </section>
             </div>
@@ -734,7 +736,7 @@ margin-bottom:0.5rem;
                     <li>Zero or one <code>dcterms:description</code> property to include additional notes about the report from the submitter.</li>
                   </ul>
 
-                  <p class="issue">Additional notes about the report can be expressed as a Web Annotation (<code>oa:Annotation</code>).</p>
+                  <p class="issue" about="" id="test-suite-implementation-earl" rel="spec:advisement" resource="#test-suite-implementation-earl"><span property="spec:statement">Additional notes about the report <span rel="spec:advisementLevel" resource="spec:Can">can</span> be expressed as a Web Annotation (<code>oa:Annotation</code>).</span></p>
 
                   <p class="issue">Agent (person or software) that had a role in the production of the test report can be expressed as a PROV-O activity association (<code>prov:wasAssociatedWith</code>).</p>
 
@@ -757,9 +759,9 @@ margin-bottom:0.5rem;
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>The subject of the <code>doap:Project</code> for Test Report Description coincides with the object of the <code>earl:subject</code> in <a href="#test-assertion-description">Test Assertion Description</a>.</p>
 
-                      <p>To help distinguish project releases in test reports, it is encouraged to use versioned URIs for projects.</p>
+                      <p about="" id="project-versioned-uri" rel="spec:advisement" resource="#project-versioned-uri"><span property="spec:statement">To help distinguish project releases in test reports, it is <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to use versioned URIs for projects.</span></p>
 
-                      <p>While some information about the project can be accompanied with the test report, it is encouraged that projects are <a href="https://www.w3.org/2001/tag/doc/selfDescribingDocuments" rel="cito:citesAsInformation">self-describing documents</a>.</p>
+                      <p about="" id="project-self-describing-document" rel="spec:advisement" resource="#project-self-describing-document"><span property="spec:statement">While some information about the project can be accompanied with the test report, it is <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> that projects are <a href="https://www.w3.org/2001/tag/doc/selfDescribingDocuments" rel="cito:citesAsInformation">self-describing documents</a>.</span></p>
                     </div>
                   </div>
 
@@ -774,9 +776,9 @@ margin-bottom:0.5rem;
                   <div class="note" id="test-report-description-test-assertion" inlist="" rel="schema:hasPart" resource="#test-report-description-test-assertion"><a class="self-link" href="#test-report-description-test-assertion"></a>
                     <h4 property="schema:name"><span>Note</span>: Test Report Description: Test Assertion</h4>
                     <div datatype="rdf:HTML" property="schema:description">
-                      <p>To help distinguish test criteria, it is encouraged to use versioned URIs for criteria.</p>
+                      <p about="" id="test-criteria-versioned-uri" rel="spec:advisement" resource="#test-criteria-versioned-uri"><span property="spec:statement">To help distinguish test criteria, it is <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to use versioned URIs for criteria.</span></p>
 
-                      <p>To convey association between a test criterion and its reviews, it is encouraged to use the <a href="https://www.w3.org/TR/annotation-vocab/">Web Annotation Vocabulary</a> with the <code>oa:assessing</code> motivation.</p>
+                      <p about="" id="test-criterion-review-assessing-motivation" rel="spec:advisement" resource="#test-criterion-review-assessing-motivation"><span property="spec:statement">To convey association between a test criterion and its reviews, it is <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to use the <a href="https://www.w3.org/TR/annotation-vocab/">Web Annotation Vocabulary</a> with the <code>oa:assessing</code> motivation.</span></p>
                     </div>
                   </div>
 
@@ -802,7 +804,7 @@ margin-bottom:0.5rem;
 
                   <p class="issue"><code>spec:testScript</code> may need to be <code>rdfs:subPropertyOf</code> <code>td:input</code> or <code>td:informationResourceInput</code>, or use those properties instead.</p>
 
-                  <p class="note">When referencing a requirement with <code>spec:requirementReference</code>, it is strongly encouraged to use versioned URLs of technical reports where available with preference to URLs covered by a persistence policy. </p>
+                  <p class="note" about="" id="test-report-requirement-versioned-uri" rel="spec:advisement" resource="#test-report-requirement-versioned-uri"><span property="spec:statement">When referencing a requirement with <code>spec:requirementReference</code>, it is <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to use versioned URLs of technical reports where available with preference to URLs covered by a persistence policy.</span></p>
 
                   <figure class="example listing" id="test-case-example" rel="schema:hasPart" resource="#test-case-example">
                     <figcaption property="schema:name"><span>Example</span>: <span>Test Case</span></figcaption><a class="self-link" href="#test-case-example"></a>
@@ -828,7 +830,7 @@ margin-bottom:0.5rem;
 
                   <p>Test assertions MUST use the <cite><a href="https://www.w3.org/TR/EARL10-Schema/" rel="cito:citesAsAuthority">Evaluation and Report Language 1.0 Schema</a></cite> [<cite><a class="bibref" href="#bib-earl10-Schema">EARL10-Schema</a></cite>].</p>
 
-                  <p>Test Suite implementers are encouraged to follow the <cite><a href="https://www.w3.org/TR/EARL10-Guide/" rel="cito:citesAsPotentialSolution">Developer Guide for Evaluation and Report Language 1.0</a></cite> [<cite><a class="bibref" href="#bib-earl10-guide">EARL10-Guide</a></cite>].</p>
+                  <p about="" id="test-suite-implementation-earl" rel="spec:advisement" resource="#test-suite-implementation-earl"><span property="spec:statement">Test Suite implementers are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to follow the <cite><a href="https://www.w3.org/TR/EARL10-Guide/" rel="cito:citesAsPotentialSolution">Developer Guide for Evaluation and Report Language 1.0</a></cite> [<cite><a class="bibref" href="#bib-earl10-guide">EARL10-Guide</a></cite>].</span></p>
                 </div>
               </section>
 
@@ -1121,9 +1123,9 @@ margin-bottom:0.5rem;
                     <dt id="bib-rfc8174">[RFC8174]</dt>
                     <dd><cite><a href="https://datatracker.ietf.org/doc/html/rfc8174" rel="cito:citesAsAuthority">Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</a></cite>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc8174">https://datatracker.ietf.org/doc/html/rfc8174</a></dd>
                     <dt id="bib-rfc9110">[RFC9110]</dt>
-                    <dd><cite><a href="https://www.rfc-editor.org/rfc/rfc9110" rel="cito:citesAsAuthority">HTTP Semantics</a></cite>. R. Fielding, M. Nottingham, J. Reschke, Editors.  IETF. June 2022. Internet Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc9110">https://www.rfc-editor.org/rfc/rfc9110</a></dd>
+                    <dd><cite><a href="https://www.rfc-editor.org/rfc/rfc9110" rel="cito:citesAsAuthority">HTTP Semantics</a></cite>. R. Fielding, M. Nottingham, J. Reschke, Ed..  IETF. June 2022. Internet Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc9110">https://www.rfc-editor.org/rfc/rfc9110</a></dd>
                     <dt id="bib-rfc9113">[RFC9113]</dt>
-                    <dd><cite><a href="https://www.rfc-editor.org/rfc/rfc9113" rel="cito:citesAsAuthority">HTTP/2</a></cite>. M. Thomson, C. Benfield, Editors.  IETF. June 2022. Internet Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc9113">https://www.rfc-editor.org/rfc/rfc9113</a></dd>
+                    <dd><cite><a href="https://www.rfc-editor.org/rfc/rfc9113" rel="cito:citesAsAuthority">HTTP/2</a></cite>. M. Thomson, C. Benfield, Ed..  IETF. June 2022. Internet Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc9113">https://www.rfc-editor.org/rfc/rfc9113</a></dd>
                     <dt id="bib-qa-glossary">[qa-glossary]</dt>
                     <dd><cite><a href="https://www.w3.org/QA/glossary" rel="cito:citesAsAuthority">Quality Assurance glossary</a></cite>. K. Dubost, M. Skall  W3C. 28 April 2005. W3C Quality Assurance and Conformance activity. URL: <a href="https://www.w3.org/QA/glossary">https://www.w3.org/QA/glossary</a></dd>
                     <dt id="bib-skos-reference">[skos-reference]</dt>
@@ -1151,11 +1153,11 @@ margin-bottom:0.5rem;
                     <dt id="bib-qaframe-spec">[qaframe-spec]</dt>
                     <dd><cite><a href="https://www.w3.org/TR/qaframe-spec/" rel="cito:citesAsPotentialSolution">QA Framework: Specification Guidelines</a></cite>. Karl Dubost; Lynne Rosenthal; Dominique Hazaël-Massieux; Lofton Henderson et al.  W3C. 17 August 2005. W3C Recommendation. URL: <a href="https://www.w3.org/TR/qaframe-spec/">https://www.w3.org/TR/qaframe-spec/</a></dd>
                     <dt id="bib-security-privacy-questionnaire">[SECURITY-PRIVACY-QUESTIONNAIRE]</dt>
-                    <dd><cite><a href="https://www.w3.org/TR/security-privacy-questionnaire/" rel="cito:citesAsPotentialSolution">Self-Review Questionnaire: Security and Privacy</a></cite>. Theresa O'Connor; Peter Snyder.  W3C. 23 March 2021. W3C Note. URL: <a href="https://www.w3.org/TR/security-privacy-questionnaire/">https://www.w3.org/TR/security-privacy-questionnaire/</a></dd>
+                    <dd><cite><a href="https://www.w3.org/TR/security-privacy-questionnaire/" rel="cito:citesAsPotentialSolution">Self-Review Questionnaire: Security and Privacy</a></cite>. Theresa O'Connor; Peter Snyder.  W3C. 16 December 2021. W3C Group Note. URL: <a href="https://www.w3.org/TR/security-privacy-questionnaire/">https://www.w3.org/TR/security-privacy-questionnaire/</a></dd>
                     <dt id="bib-solid-technical-reports">[SOLID-TECHNICAL-REPORTS]</dt>
                     <dd><cite><a href="https://solidproject.org/TR/" rel="cito:citesAsRelated">Solid Technical Reports</a></cite>. Sarven Capadisli.  W3C Solid Community Group. 16 March 2024. Living Document. URL: <a href="https://solidproject.org/TR/">https://solidproject.org/TR/</a></dd>
                     <dt id="bib-w3c-process">[W3C-PROCESS]</dt>
-                    <dd><cite><a href="https://www.w3.org/Consortium/Process/" rel="cito:citesAsRelated">W3C Process Document</a></cite>. Elika J. Etemad (fantasai); Florian Rivoal.  W3C. 12 June 2023. URL: <a href="https://www.w3.org/Consortium/Process/">https://www.w3.org/Consortium/Process/</a></dd>
+                    <dd><cite><a href="https://www.w3.org/Consortium/Process/" rel="cito:citesAsPotentialSolution">W3C Process Document</a></cite>. Elika J. Etemad / fantasai; Florian Rivoal;  W3C Process Community Group. 3 November 2023. URL: <a href="https://www.w3.org/Consortium/Process/">https://www.w3.org/Consortium/Process/</a></dd>
                   </dl>
                 </div>
               </section>
