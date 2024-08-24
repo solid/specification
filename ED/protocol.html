@@ -747,6 +747,8 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   <p about="" id="server-content-type-includes" rel="spec:requirement" resource="#server-content-type-includes"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> generate a <code>Content-Type</code> header field in a message that contains content.</span></p>
 
                   <p about="" id="server-content-type-missing" rel="spec:requirement" resource="#server-content-type-missing"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> reject <code>PUT</code>, <code>POST</code>, and <code>PATCH</code> requests that contain content but lack the <code>Content-Type</code> header field, with a status code of <code>400</code>.</span> [<a href="https://github.com/solid/specification/issues/70#issuecomment-547924171" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/pull/660#issue-2319265317" rel="cito:citesAsSourceDocument">Source</a>]</p>
+
+                  <p about="" id="server-last-modified-includes" rel="spec:requirement" resource="#server-last-modified-includes"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> generate a <code>Last-Modified</code> header field in response to <code>GET</code> and <code>HEAD</code> requests.</span></p>
                 </div>
               </section>
 
