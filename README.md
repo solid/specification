@@ -17,7 +17,7 @@ All contributors to [Work Items](https://solidproject.org/TR/#work-items) must b
 
 Feel free to join the [Solid specification chat](https://matrix.to/#/#solid_specification:gitter.im).
 
-Meetings are held on Wednesdays at 14:00 UTC via [this link](https://meet.jit.si/solid-cg). The meetings are transcribed and [published](https://github.com/solid/specification/tree/main/meetings/). You can also find the event in the [W3C calendar](https://www.w3.org/events/meetings/0caa6ba5-5523-4e16-b514-aeec098e4d72).
+Meetings are held on Wednesdays at 14:00 UTC via [this link](https://meet.jit.si/solid-cg). The meeting notes (sometimes rough summaries, sometimes detailed minutes, sometimes transcription) are [published](https://github.com/solid/specification/tree/main/meetings/). You can also find the event as well as information on Special Topic Meetings in the [W3C calendar](https://www.w3.org/events/meetings/0caa6ba5-5523-4e16-b514-aeec098e4d72).
 
 ## Contributing
 
