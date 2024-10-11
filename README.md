@@ -8,7 +8,7 @@ The Technical Reports (TRs) encompass specifications, use cases and requirements
 
 The Solid Protocol is accessible from the following URLs:
 * Latest version: https://solidproject.org/TR/protocol
-* Persistent version 0.10.0: https://solidproject.org/TR/2022/protocol-20221231
+* Persistent version 0.11.0: https://solidproject.org/TR/2024/protocol-20240512
 * Editor's draft: https://solidproject.org/ED/protocol
 
 ## Participation
