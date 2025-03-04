@@ -1148,7 +1148,7 @@ margin-bottom:0.5rem;
                       <li>The resulting variable mapping is propagated to the <code>?deletions</code> and <code>?insertions</code> formulae to obtain two sets of resulting triples.</li>
                       <li>If the set of triples resulting from <code>?deletions</code> is non-empty and the dataset does not contain <em>all</em> of these triples, the <span id="server-patch-n3-semantics-deletions-non-empty-all-triples" rel="spec:requirement" resource="#server-patch-n3-semantics-deletions-non-empty-all-triples"><a class="self-link" href="#server-patch-n3-semantics-deletions-non-empty-all-triples"></a><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>409</code> status code.</span></span> [<a href="https://github.com/solid-archive/query-panel/issues/3" rel="cito:citesAsSourceDocument">Source</a>]</li>
                       <li>The triples resulting from <code>?deletions</code> are to be removed from the RDF dataset.</li>
-                      <li>The triples resulting from <code>?insertions</code> are to be added to the RDF dataset, with each blank node from <code>?insertions</code> resulting in a newly created blank node.</li>
+                      <li>The triples resulting from <code>?insertions</code> are to be added to the RDF dataset.</li>
                       <li>The combination of deletions followed by insertions then forms the new resource state of the RDF document, and the server responds with the appropriate status code.</li>
                     </ol>
                   </div>
