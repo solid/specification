@@ -6,7 +6,7 @@ The CG operates under a [Charter](https://www.w3.org/community/solid/charter/).
 
 The Technical Reports (TRs) encompass specifications, use cases and requirements, best practices and guidelines, primers, and notes about the Solid ecosystem. The CG's Work Items are linked from the TR homepage.
 
-The Solid Protocol is accessible from the following URLs:
+The Solid Protocol is accessible from the following URLs :
 * Latest version: https://solidproject.org/TR/protocol
 * Persistent version 0.11.0: https://solidproject.org/TR/2024/protocol-20240512
 * Editor's draft: https://solidproject.org/ED/protocol
