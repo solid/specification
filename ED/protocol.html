@@ -220,87 +220,68 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
     <link href="https://dokie.li/media/css/dokieli.css" media="all" rel="stylesheet" />
     <script async="" src="https://dokie.li/scripts/dokieli.js"></script>
   </head>
-
   <body about="" prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# owl: http://www.w3.org/2002/07/owl# xsd: http://www.w3.org/2001/XMLSchema# dcterms: http://purl.org/dc/terms/ skos: http://www.w3.org/2004/02/skos/core# prov: http://www.w3.org/ns/prov# mem: http://mementoweb.org/ns# qb: http://purl.org/linked-data/cube# schema: http://schema.org/ doap: http://usefulinc.com/ns/doap# cito: http://purl.org/spar/cito/ as: https://www.w3.org/ns/activitystreams# ldp: http://www.w3.org/ns/ldp# earl: http://www.w3.org/ns/earl# spec: http://www.w3.org/ns/spec# rel: https://www.w3.org/ns/iana/link-relations/relation# odrl: http://www.w3.org/ns/odrl/2/">
     <main>
       <article about="" typeof="schema:Article">
         <div class="head">
           <h1 property="schema:name">Solid Protocol</h1>
-
           <p id="w3c-state">Editor’s Draft, <time datetime="2025-04-12T00:00:00Z">2025-04-12</time></p>
-
           <details open="">
             <summary>More details about this document</summary>
-
             <dl id="document-identifier">
               <dt>This version</dt>
               <dd><a href="https://solidproject.org/ED/protocol" rel="owl:sameAs">https://solidproject.org/ED/protocol</a></dd>
             </dl>
-
             <dl id="document-latest-published-version">
               <dt>Latest published version</dt>
               <dd><a href="https://solidproject.org/TR/protocol" rel="rel:latest-version">https://solidproject.org/TR/protocol</a></dd>
             </dl>
-
             <dl id="document-previous-version">
               <dt>Previous version</dt>
               <dd><a href="https://solidproject.org/TR/2024/protocol-20240512" rel="rel:predecessor-version">https://solidproject.org/TR/2024/protocol-20240512</a></dd>
             </dl>
-
             <dl id="document-history">
               <dt>History</dt>
               <dd><a href="https://github.com/solid/specification/commits/main/ED/protocol.html">Commit history</a></dd>
             </dl>
-
             <dl id="document-editors">
               <dt>Editors</dt>
               <dd data-editor-id="46140" id="Sarven-Capadisli"><span about="" rel="schema:creator schema:editor schema:author"><span about="https://csarven.ca/#i" typeof="schema:Person"><a href="https://csarven.ca/" rel="schema:url"><span about="https://csarven.ca/#i" property="schema:name"><span property="schema:givenName">Sarven</span> <span property="schema:familyName">Capadisli</span></span></a></span></span> <span class="contributed">(v0.9, v0.10, v0.11)</span></dd>
-
               <dd data-editor-id="2017" id="Tim-Berners-Lee"><span about="" rel="schema:editor schema:author"><span about="https://www.w3.org/People/Berners-Lee/card#i" typeof="schema:Person"><a href="https://www.w3.org/People/Berners-Lee/" rel="schema:url"><span about="https://www.w3.org/People/Berners-Lee/card#i" property="schema:name"><span property="schema:givenName">Tim</span> <span property="schema:familyName">Berners-Lee</span></span></a></span></span> <span class="contributed">(v0.9, v0.10, v0.11)</span></dd>
-
               <dd data-editor-id="38800" id="Kjetil-Kjernsmo"><span about="" rel="schema:editor schema:author"><span about="https://www.kjetil.kjernsmo.net/foaf#me" typeof="schema:Person"><a href="https://kjetil.kjernsmo.net/" rel="schema:url"><span about="https://www.kjetil.kjernsmo.net/foaf#me" property="schema:name"><span property="schema:givenName">Kjetil</span> <span property="schema:familyName">Kjernsmo</span></span></a></span></span> <span class="contributed">(v0.9, v0.10, v0.11)</span></dd>
             </dl>
-
             <dl id="document-former-editors">
               <dt>Former editors</dt>
               <dd>Ruben Verborgh <span class="contributed">(v0.9, v0.10)</span></dd>
             </dl>
-
             <dl id="document-published">
               <dt>Published</dt>
               <dd><time content="2020-12-16T00:00:00Z" datatype="xsd:dateTime" datetime="2020-12-16T00:00:00Z" property="schema:datePublished">2020-12-16</time></dd>
             </dl>
-
             <dl id="document-modified">
               <dt>Modified</dt>
               <dd><time content="2025-04-12T00:00:00Z" datatype="xsd:dateTime" datetime="2025-04-12T00:00:00Z" property="schema:dateModified">2025-04-12</time></dd>
             </dl>
-
             <dl id="document-feedback">
               <dt>Feedback</dt>
               <dd><a href="https://github.com/solid/specification" rel="doap:repository">GitHub solid/specification</a> (<a href="https://github.com/solid/specification/pulls">pull requests</a>, <a href="https://github.com/solid/specification/issues/new">new issue</a>, <a href="https://github.com/solid/specification/issues" rel="doap:bug-database">open issues</a>)</dd>
             </dl>
-
             <dl id="document-language">
               <dt>Language</dt>
               <dd><span content="en" lang="" property="dcterms:language" xml:lang="">English</span></dd>
             </dl>
-
             <dl id="document-type">
               <dt>Document Type</dt>
               <dd><a href="http://usefulinc.com/ns/doap#Specification" rel="rdf:type">Specification</a></dd>
             </dl>
-
             <dl id="document-version">
               <dt>Version</dt>
               <dd><span lang="" property="schema:version" xml:lang="">0.12.0</span></dd>
             </dl>
-
             <dl id="document-in-reply-to">
               <dt>In Reply To</dt>
               <dd><a href="https://solidproject.org/about" rel="as:inReplyTo">About Solid</a></dd>
             </dl>
-
             <dl id="document-policy">
               <dt>Policy</dt>
               <dd>
@@ -349,12 +330,9 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               </dd>
             </dl>
           </details>
-
           <p class="copyright" rel="dcterms:rights" resource="#document-rights"><span property="dcterms:description"><a href="https://www.w3.org/policies/#copyright">Copyright</a> © 2019–2024 the Contributors to Solid Protocol, Editor’s Draft, under the <a about="" href="https://www.w3.org/community/about/agreements/cla/" rel="schema:license">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available. All code snippets are in the public domain, <a about="" href="https://creativecommons.org/public-domain/cc0/" rel="schema:license">CC0</a>.</span></p>
-
           <hr title="Separator for header" />
         </div>
-
         <div datatype="rdf:HTML" id="content" property="schema:description">
           <section id="abstract">
             <h2>Abstract</h2>
@@ -362,33 +340,26 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               <p>This document connects a set of specifications that, together, provide applications with secure and permissioned access to externally stored data in an interoperable way.</p>
             </div>
           </section>
-
           <section id="sotd" inlist="" rel="schema:hasPart" resource="#sotd">
             <h2 property="schema:name">Status of This Document</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>This report was not published by the <a href="https://www.w3.org/groups/cg/solid/">Solid Community Group</a>. It is not a W3C Standard nor is it on the W3C Standards Track.</p>
-
               <p>Publication as an Editor’s Draft does not imply endorsement by anyone. This document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress. You are invited to contribute any feedback, comments, or questions you might have.</p>
             </div>
           </section>
-
           <nav id="toc">
             <h2>Table of Contents</h2>
             <div>
               <ol class="toc">
+                <li class="tocline"><a class="tocxref" href="#abstract"><bdi class="secno"></bdi> <span>Abstract</span></a></li>
+                <li class="tocline"><a class="tocxref" href="#sotd"><bdi class="secno"></bdi> <span>Status of This Document</span></a></li>
                 <li class="tocline">
-                  <a class="tocxref" href="#abstract"><bdi class="secno"></bdi> <span>Abstract</span></a>
-                </li>
-                <li class="tocline">
-                  <a class="tocxref" href="#sotd"><bdi class="secno"></bdi> <span>Status of This Document</span></a>
-                </li>
-                <li class="tocline">
-                  <a class="tocxref" href="#introduction"><bdi class="secno">1.</bdi> <span>Introduction</span></a>
+                  <p><a class="tocxref" href="#introduction"><bdi class="secno">1.</bdi> <span>Introduction</span></a></p>
                   <ol>
                     <li class="tocline"><a class="tocxref" href="#terminology"><bdi class="secno">1.1</bdi> <span>Terminology</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#namespaces"><bdi class="secno">1.2</bdi> <span>Namespaces</span></a></li>
                     <li class="tocline">
-                      <a class="tocxref" href="#conformance"><bdi class="secno">1.3</bdi> <span>Conformance</span></a>
+                      <p><a class="tocxref" href="#conformance"><bdi class="secno">1.3</bdi> <span>Conformance</span></a></p>
                       <ol>
                         <li class="tocline"><a class="tocxref" href="#normative-informative-content"><bdi class="secno">1.3.1</bdi> <span>Normative and Informative Content</span></a></li>
                         <li class="tocline"><a class="tocxref" href="#specification-category"><bdi class="secno">1.3.2</bdi> <span>Specification Category</span></a></li>
@@ -397,7 +368,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       </ol>
                     </li>
                     <li class="tocline">
-                      <a class="tocxref" href="#relations"><bdi class="secno">1.4</bdi> <span>Relations</span></a>
+                      <p><a class="tocxref" href="#relations"><bdi class="secno">1.4</bdi> <span>Relations</span></a></p>
                       <ol>
                         <li class="tocline"><a class="tocxref" href="#relationship-to-ldp"><bdi class="secno">1.4.1</bdi> <span>Relationship to LDP</span></a></li>
                       </ol>
@@ -405,31 +376,31 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#http"><bdi class="secno">2.</bdi> <span>Hypertext Transfer Protocol</span></a>
+                  <p><a class="tocxref" href="#http"><bdi class="secno">2.</bdi> <span>Hypertext Transfer Protocol</span></a></p>
                   <ol>
                     <li class="tocline"><a class="tocxref" href="#http-server"><bdi class="secno">2.1</bdi> <span>HTTP Server</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#http-client"><bdi class="secno">2.2</bdi> <span>HTTP Client</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#uri"><bdi class="secno">3.</bdi> <span>Uniform Resource Identifier</span></a>
+                  <p><a class="tocxref" href="#uri"><bdi class="secno">3.</bdi> <span>Uniform Resource Identifier</span></a></p>
                   <ol>
                     <li class="tocline"><a class="tocxref" href="#uri-slash-semantics"><bdi class="secno">3.1</bdi> <span>URI Slash Semantics</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#uri-persistence"><bdi class="secno">3.2</bdi> <span>URI Persistence</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#resources"><bdi class="secno">4.</bdi> <span>Resources</span></a>
+                  <p><a class="tocxref" href="#resources"><bdi class="secno">4.</bdi> <span>Resources</span></a></p>
                   <ol>
                     <li class="tocline"><a class="tocxref" href="#storage-resource"><bdi class="secno">4.1</bdi> <span>Storage Resource</span></a></li>
                     <li class="tocline">
-                      <a class="tocxref" href="#resource-containment"><bdi class="secno">4.2</bdi> <span>Resource Containment</span></a>
+                      <p><a class="tocxref" href="#resource-containment"><bdi class="secno">4.2</bdi> <span>Resource Containment</span></a></p>
                       <ol>
                         <li class="tocline"><a class="tocxref" href="#contained-resource-metadata"><bdi class="secno">4.2.1</bdi> <span>Contained Resource Metadata</span></a></li>
                       </ol>
                     </li>
                     <li class="tocline">
-                      <a class="tocxref" href="#auxiliary-resources"><bdi class="secno">4.3</bdi> <span>Auxiliary Resources</span></a>
+                      <p><a class="tocxref" href="#auxiliary-resources"><bdi class="secno">4.3</bdi> <span>Auxiliary Resources</span></a></p>
                       <ol>
                         <li class="tocline"><a class="tocxref" href="#auxiliary-resources-web-access-control"><bdi class="secno">4.3.1</bdi> <span>Web Access Control</span></a></li>
                         <li class="tocline"><a class="tocxref" href="#auxiliary-resources-description-resource"><bdi class="secno">4.3.2</bdi> <span>Description Resource</span></a></li>
@@ -438,12 +409,12 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#reading-writing-resources"><bdi class="secno">5.</bdi> <span>Reading and Writing Resources</span></a>
+                  <p><a class="tocxref" href="#reading-writing-resources"><bdi class="secno">5.</bdi> <span>Reading and Writing Resources</span></a></p>
                   <ol>
                     <li class="tocline"><a class="tocxref" href="#resource-type-heuristics"><bdi class="secno">5.1</bdi> <span>Resource Type Heuristics</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#reading-resources"><bdi class="secno">5.2</bdi> <span>Reading Resources</span></a></li>
                     <li class="tocline">
-                      <a class="tocxref" href="#writing-resources"><bdi class="secno">5.3</bdi> <span>Writing Resources</span></a>
+                      <p><a class="tocxref" href="#writing-resources"><bdi class="secno">5.3</bdi> <span>Writing Resources</span></a></p>
                       <ol>
                         <li class="tocline"><a class="tocxref" href="#n3-patch"><bdi class="secno">5.3.1</bdi> <span>Modifying Resources Using N3 Patches</span></a></li>
                       </ol>
@@ -453,46 +424,44 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <li class="tocline"><a class="tocxref" href="#constraints-problem-details"><bdi class="secno">5.6</bdi> <span>Constraints and Problem Details</span></a></li>
                   </ol>
                 </li>
+                <li class="tocline"><a class="tocxref" href="#linked-data-notifications"><bdi class="secno">6.</bdi> <span>Linked Data Notifications</span></a></li>
                 <li class="tocline">
-                  <a class="tocxref" href="#linked-data-notifications"><bdi class="secno">6.</bdi> <span>Linked Data Notifications</span></a>
-                </li>
-                <li class="tocline">
-                  <a class="tocxref" href="#live-update"><bdi class="secno">7.</bdi> <span>Live Update</span></a>
+                  <p><a class="tocxref" href="#live-update"><bdi class="secno">7.</bdi> <span>Live Update</span></a></p>
                   <ol>
                     <li class="tocline"><a class="tocxref" href="#notifications-protocol"><bdi class="secno">7.1</bdi> <span>Solid Notifications Protocol</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#cors"><bdi class="secno">8.</bdi> <span>Cross-Origin Resource Sharing</span></a>
+                  <p><a class="tocxref" href="#cors"><bdi class="secno">8.</bdi> <span>Cross-Origin Resource Sharing</span></a></p>
                   <ol>
                     <li class="tocline"><a class="tocxref" href="#cors-server"><bdi class="secno">8.1</bdi> <span>CORS Server</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#identity"><bdi class="secno">9.</bdi> <span>Identity</span></a>
+                  <p><a class="tocxref" href="#identity"><bdi class="secno">9.</bdi> <span>Identity</span></a></p>
                   <ol>
                     <li class="tocline"><a class="tocxref" href="#webid"><bdi class="secno">9.1</bdi> <span>WebID</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#authentication"><bdi class="secno">10.</bdi> <span>Authentication</span></a>
+                  <p><a class="tocxref" href="#authentication"><bdi class="secno">10.</bdi> <span>Authentication</span></a></p>
                   <ol>
                     <li class="tocline"><a class="tocxref" href="#solid-oidc"><bdi class="secno">10.1</bdi> <span>Solid-OIDC</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#webid-tls"><bdi class="secno">10.2</bdi> <span>WebID-TLS</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#authorization"><bdi class="secno">11.</bdi> <span>Authorization</span></a>
+                  <p><a class="tocxref" href="#authorization"><bdi class="secno">11.</bdi> <span>Authorization</span></a></p>
                   <ol>
                     <li class="tocline"><a class="tocxref" href="#web-access-control"><bdi class="secno">11.1</bdi> <span>Web Access Control</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#access-control-policy"><bdi class="secno">11.2</bdi> <span>Access Control Policy</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#http-definitions"><bdi class="secno">12.</bdi> <span>HTTP Definitions</span></a>
+                  <p><a class="tocxref" href="#http-definitions"><bdi class="secno">12.</bdi> <span>HTTP Definitions</span></a></p>
                   <ol>
                     <li class="tocline">
-                      <a class="tocxref" href="#http-headers"><bdi class="secno">12.1</bdi> <span>HTTP Headers</span></a>
+                      <p><a class="tocxref" href="#http-headers"><bdi class="secno">12.1</bdi> <span>HTTP Headers</span></a></p>
                       <ol>
                         <li class="tocline"><a class="tocxref" href="#accept-put"><bdi class="secno">12.1.1</bdi> <span>The Accept-Put Response Header</span></a></li>
                       </ol>
@@ -500,7 +469,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#considerations"><bdi class="secno">13.</bdi> <span>Considerations</span></a>
+                  <p><a class="tocxref" href="#considerations"><bdi class="secno">13.</bdi> <span>Considerations</span></a></p>
                   <ol>
                     <li class="tocline"><a class="tocxref" href="#security-considerations"><bdi class="secno">13.1</bdi> <span>Security Considerations</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#privacy-considerations"><bdi class="secno">13.2</bdi> <span>Privacy Considerations</span></a></li>
@@ -510,14 +479,10 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <li class="tocline"><a class="tocxref" href="#societal-impact-review"><bdi class="secno">13.6</bdi> <span>Societal Impact Review</span></a></li>
                   </ol>
                 </li>
+                <li class="tocline"><a class="tocxref" href="#changelog"><bdi class="secno">A.</bdi> <span>Changelog</span></a></li>
+                <li class="tocline"><a class="tocxref" href="#acknowledgements"><bdi class="secno">B.</bdi> <span>Acknowledgements</span></a></li>
                 <li class="tocline">
-                  <a class="tocxref" href="#changelog"><bdi class="secno">A.</bdi> <span>Changelog</span></a>
-                </li>
-                <li class="tocline">
-                  <a class="tocxref" href="#acknowledgements"><bdi class="secno">B.</bdi> <span>Acknowledgements</span></a>
-                </li>
-                <li class="tocline">
-                  <a class="tocxref" href="#references"><bdi class="secno">C.</bdi> <span>References</span></a>
+                  <p><a class="tocxref" href="#references"><bdi class="secno">C.</bdi> <span>References</span></a></p>
                   <ol>
                     <li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">C.1</bdi> <span>Normative References</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">C.2</bdi> <span>Informative References</span></a></li>
@@ -526,83 +491,57 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               </ol>
             </div>
           </nav>
-
           <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction">
             <h2 property="schema:name">Introduction</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p><em>This section is non-normative.</em></p>
-
               <p>The aims of the Solid project are in line with those of the Web itself: empowerment towards <q cite="https://www.w3.org/TR/ethical-web-principles/">an equitable, informed and interconnected society</q>. Solid adds to existing Web standards to realise a space where individuals can maintain their autonomy, control their data and privacy, and choose applications and services to fulfil their needs.</p>
-
               <p>The Solid ecosystem encapsulates a set of specifications that are guided by the principles we have adopted and also the priority of our values. We acknowledge that every technical decision has ethical implications both for the end user (short-term) as well as society (long-term). To contribute towards a net positive social benefit, we use the <cite><a href="https://www.w3.org/TR/ethical-web-principles/" rel="cito:citesForInformation">Ethical Web Principles</a></cite> [<cite><a class="bibref" href="#bib-ethical-web-principles">ETHICAL-WEB-PRINCIPLES</a></cite>] to orient ourselves. The consensus on the technical designs are informed by common use cases, implementation experience, and use.</p>
-
               <p>An overarching design goal of the Solid ecosystem is to be evolvable and to provide fundamental affordances for decentralised Web applications for information exchange in a way that is secure and privacy respecting. In this environment, actors allocate identifiers for their content, shape and store data where they have access to, set access controls, and use preferred applications and services to achieve them.</p>
-
               <p>The general architectural principles of Solid specifications are borrowed from the <cite><a href="https://www.w3.org/TR/webarch/" rel="cito:citesForInformation">Architecture of the World Wide Web</a></cite> [<cite><a class="bibref" href="#bib-webarch">WEBARCH</a></cite>]. The components as described in each specification may evolve independently – according to the principle of orthogonality in order to increase the flexibility and robustness of the Solid ecosystem. With that, the specifications are loosely coupled and indicate which features overlap with those governed by another specification. Extensibility as well as variability also are taken into account in each specification.</p>
-
               <p>The specifications in the ecosystem describe how Solid servers and clients can be interoperable by using Web communication protocols, global identifiers, authentication and authorization mechanisms, data formats and shapes, and query interfaces.</p>
-
               <p>The specifications are accompanied with supplemental documents, such as <em>Primers</em> and <em>Best Practices and Guidelines</em> to help implementers to form a well-rounded understanding of the Solid ecosystem as well as ways to improve their implementations.</p>
-
               <p>This specification is for:</p>
-
               <ul about="" rel="schema:audience">
                 <li>Resource <a href="http://data.europa.eu/esco/occupation/a7c1d23d-aeca-4bee-9a08-5993ed98b135">server developers</a> that want to enable clients to send and retrieve information;</li>
                 <li><a href="http://data.europa.eu/esco/occupation/c40a2919-48a9-40ea-b506-1f34f693496d">Application developers</a> that want to implement a client to perform operations on resources.</li>
               </ul>
-
               <section id="terminology" inlist="" rel="schema:hasPart" resource="#terminology" typeof="skos:ConceptScheme">
                 <h3 property="schema:name skos:prefLabel">Terminology</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
-
                   <p property="skos:definition">The Solid Protocol specification defines the following terms. These terms are referenced throughout this specification.</p>
-
-                  <span rel="skos:hasTopConcept"><span resource="#storage"></span><span resource="#solid-app"></span><span resource="#uniform-resource-identifier"></span><span resource="#resource"></span><span resource="#container-resource"></span><span resource="#root-container"></span><span resource="#resource-metadata"></span><span resource="#agent"></span><span resource="#owner"></span><span resource="#origin"></span><span resource="#read-operation"></span><span resource="#write-operation"></span><span resource="#append-operation"></span></span>
-
+                  <p><span rel="skos:hasTopConcept"><span resource="#storage"></span><span resource="#solid-app"></span><span resource="#uniform-resource-identifier"></span><span resource="#resource"></span><span resource="#container-resource"></span><span resource="#root-container"></span><span resource="#resource-metadata"></span><span resource="#agent"></span><span resource="#owner"></span><span resource="#origin"></span><span resource="#read-operation"></span><span resource="#write-operation"></span><span resource="#append-operation"></span></span></p>
                   <dl>
                     <dt about="#storage" property="skos:prefLabel" typeof="skos:Concept"><dfn id="storage">storage</dfn></dt>
                     <dd about="#storage" property="skos:definition">A storage is a space of URIs that affords agents controlled access to resources.</dd>
-
                     <dt about="#solid-app" property="skos:prefLabel" typeof="skos:Concept"><dfn id="solid-app">Solid app</dfn></dt>
                     <dd about="#solid-app" property="skos:definition">A Solid app is an application that reads or writes data from one or more <a href="#storage">storages</a>.</dd>
-
                     <dt about="#uniform-resource-identifier" property="skos:prefLabel" typeof="skos:Concept"><dfn id="uniform-resource-identifier">URI</dfn></dt>
                     <dd about="#uniform-resource-identifier" property="skos:definition">A <dfn>Uniform Resource Identifier</dfn> (<abbr title="Uniform Resource Identifier">URI</abbr>) provides the means for identifying resources [<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>].</dd>
-
                     <dt about="#resource" property="skos:prefLabel" typeof="skos:Concept"><dfn id="resource">resource</dfn></dt>
                     <dd about="#resource" property="skos:definition">A resource is the target of an HTTP request identified by a URI [<cite><a class="bibref" href="#bib-rfc9110">RFC9110</a></cite>].</dd>
-
                     <dt about="#container-resource" property="skos:prefLabel" typeof="skos:Concept"><dfn id="container-resource">container resource</dfn></dt>
                     <dd about="#container-resource" property="skos:definition">A container resource is a hierarchical collection of resources that contains other resources, including containers.</dd>
-
                     <dt about="#root-container" property="skos:prefLabel" typeof="skos:Concept"><dfn id="root-container">root container</dfn></dt>
                     <dd about="#root-container" property="skos:definition">A root container is a container resource that is at the highest level of the collection hierarchy.</dd>
-
                     <dt about="#resource-metadata" property="skos:prefLabel" typeof="skos:Concept"><dfn id="resource-metadata">resource metadata</dfn></dt>
                     <dd about="#resource-metadata" property="skos:definition">Resource metadata encompasses data about resources described by means of RDF statements [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>].</dd>
-
                     <dt about="#agent" property="skos:prefLabel" typeof="skos:Concept"><dfn id="agent">agent</dfn></dt>
                     <dd about="#agent" property="skos:definition">An agent is a person, social entity, or software identified by a URI; e.g., a WebID denotes an agent [<cite><a class="bibref" href="#bib-webid">WEBID</a></cite>].</dd>
-
                     <dt about="#owner" property="skos:prefLabel" typeof="skos:Concept"><dfn id="owner">owner</dfn></dt>
                     <dd about="#owner" property="skos:definition">An owner is a person or a social entity that is considered to have the rights and responsibilities of a storage. An owner is identified by a URI, and implicitly has control over all resources in a storage. An owner is first set at storage provisioning time and can be changed.</dd>
-
                     <dt about="#origin" property="skos:prefLabel" typeof="skos:Concept"><dfn id="origin">origin</dfn></dt>
                     <dd about="#origin" property="skos:definition">An origin indicates where an HTTP request originates from [<cite><a class="bibref" href="#bib-rfc6454">RFC6454</a></cite>].</dd>
-
                     <dt about="#read-operation" property="skos:prefLabel" typeof="skos:Concept"><dfn id="read-operation">read operation</dfn></dt>
                     <dd about="#read-operation" property="skos:definition">A read operation entails that information about a resource’s existence or its description can be known. [<a href="https://github.com/solid/specification/issues/149#issue-568433265" rel="cito:citesAsSourceDocument">Source</a>]</dd>
-
                     <dt about="#write-operation" property="skos:prefLabel" typeof="skos:Concept"><dfn id="write-operation">write operation</dfn></dt>
                     <dd about="#write-operation" property="skos:definition">A write operation entails that information about resources can be created or removed. [<a href="https://github.com/solid/specification/issues/126#issuecomment-569920473" rel="cito:citesAsSourceDocument">Source</a>]</dd>
-
                     <dt about="#append-operation" property="skos:prefLabel" typeof="skos:Concept"><dfn id="append-operation">append operation</dfn></dt>
                     <dd about="#append-operation" property="skos:definition">An append operation entails that information can be added but not removed. [<a href="https://github.com/solid/specification/issues/118#issuecomment-569648485" rel="cito:citesAsSourceDocument">Source</a>]</dd>
                   </dl>
                 </div>
               </section>
-
               <section id="namespaces" inlist="" rel="schema:hasPart" resource="#namespaces">
                 <h3 property="schema:name">Namespaces</h3>
                 <div datatype="rdf:HTML" property="schema:description">
@@ -655,37 +594,29 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   </table>
                 </div>
               </section>
-
               <section id="conformance" inlist="" rel="schema:hasPart" resource="#conformance">
                 <h3 property="schema:name">Conformance</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>This section describes the <span about="" rel="spec:conformance" resource="#conformance">conformance model of the Solid Protocol</span>.</p>
-
                   <section id="normative-informative-content" inlist="" rel="schema:hasPart" resource="#normative-informative-content">
                     <h4 property="schema:name">Normative and Informative Content</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p id="normative-informative-sections">All assertions, diagrams, examples, and notes are non-normative, as are all sections explicitly marked non-normative. Everything else is normative.</p>
-
                       <p id="requirement-levels">The key words “<span rel="dcterms:subject" resource="spec:MUST">MUST</span>”, “<span rel="dcterms:subject" resource="spec:MUSTNOT">MUST NOT</span>”, “<span rel="dcterms:subject" resource="spec:SHOULD">SHOULD</span>”, and “<span rel="dcterms:subject" resource="spec:MAY">MAY</span>” are to be interpreted as described in <a href="https://www.rfc-editor.org/info/bcp14">BCP 14</a> [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>] [<cite><a class="bibref" href="#bib-rfc8174">RFC8174</a></cite>] when, and only when, they appear in all capitals, as shown here.</p>
-
                       <p id="advisement-levels">The key words “<span rel="dcterms:subject" resource="spec:StronglyEncouraged">strongly encouraged</span>”, “<span rel="dcterms:subject" resource="spec:StronglyDiscouraged">strongly discouraged</span>”, “<span rel="dcterms:subject" resource="spec:Encouraged">encouraged</span>”, “<span rel="dcterms:subject" resource="spec:Discouraged">discouraged</span>”, “<span rel="dcterms:subject" resource="spec:Can">can</span>", “<span rel="dcterms:subject" resource="spec:Cannot">cannot</span>”, “<span rel="dcterms:subject" resource="spec:Could">could</span>”, “<span rel="dcterms:subject" resource="spec:CouldNot">could not</span>”, “<span rel="dcterms:subject" resource="spec:Might">might</span>”, and “<span rel="dcterms:subject" resource="spec:MightNot">might not</span>” are used for non-normative content.</p>
                     </div>
                   </section>
-
                   <section id="specification-category" inlist="" rel="schema:hasPart" resource="#specification-category" typeof="skos:ConceptScheme">
                     <h4 property="schema:name skos:prefLabel">Specification Category</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p property="skos:definition">The <span about="" rel="spec:specificationCategory" resource="#specification-category">Solid Protocol</span> identifies the following <cite><a href="https://www.w3.org/TR/spec-variability/#spec-cat" rel="dcterms:subject" resource="spec:SpecificationCategory">Specification Category</a></cite> to distinguish the types of conformance: <span rel="skos:hasTopConcept" resource="spec:API">API</span>, <span rel="skos:hasTopConcept" resource="spec:NotationSyntax">notation/syntax</span>, <span rel="skos:hasTopConcept" resource="spec:SetOfEvents">set of events</span>, <span rel="skos:hasTopConcept" resource="spec:ProcessorBehaviour">processor behaviour</span>, <span rel="skos:hasTopConcept" resource="spec:Protocol">protocol</span>.</p>
                     </div>
                   </section>
-
                   <section id="classes-of-products" inlist="" rel="schema:hasPart" resource="#classes-of-products" typeof="skos:ConceptScheme">
                     <h4 property="schema:name skos:prefLabel">Classes of Products</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p property="skos:definition">The <span about="" rel="spec:classesOfProducts" resource="#classes-of-products">Solid Protocol</span> identifies the following <cite><a href="https://www.w3.org/TR/qaframe-spec/#cop-def" rel="dcterms:subject" resource="spec:ClassesOfProducts">Classes of Products</a></cite> for conforming implementations. These products are referenced throughout this specification.</p>
-
-                      <span rel="skos:hasTopConcept"><span resource="#Server"></span><span resource="#Client"></span></span>
-
+                      <p><span rel="skos:hasTopConcept"><span resource="#Server"></span><span resource="#Client"></span></span></p>
                       <dl>
                         <dt about="#Server" property="skos:prefLabel" rel="skos:relatedMatch" resource="spec:RespondingAgent" typeof="skos:Concept"><dfn id="Server">Server</dfn></dt>
                         <dd about="#Server" property="skos:definition">A <a href="#http-server" rel="rdfs:seeAlso">server</a> that builds on HTTP <cite>server</cite> [<cite><a class="bibref" href="#bib-rfc9110">RFC9110</a></cite>] and [<cite><a class="bibref" href="#bib-rfc9112">RFC9112</a></cite>] by defining media types, HTTP header fields, and the behaviour of resources, as identified by link relations.</dd>
@@ -694,7 +625,6 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       </dl>
                     </div>
                   </section>
-
                   <section id="interoperability" inlist="" rel="schema:hasPart" resource="#interoperability">
                     <h4 property="schema:name skos:prefLabel">Interoperability</h4>
                     <div datatype="rdf:HTML" property="schema:description">
@@ -703,25 +633,18 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   </section>
                 </div>
               </section>
-
               <section id="relations" inlist="" rel="schema:hasPart" resource="#relations">
                 <h3 property="schema:name">Relations</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
-
                   <section id="relationship-to-ldp" inlist="" rel="schema:hasPart" resource="#relationship-to-ldp">
                     <h4 property="schema:name">Relationship to LDP</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p><em>This section is non-normative.</em></p>
-
                       <p>The <a href="https://solidproject.org/TR/protocol" rel="cito:discusses">Solid Protocol</a> and the <a href="https://www.w3.org/TR/ldp/" rel="cito:discusses">Linked Data Platform</a> (<abbr title="Linked Data Platform">LDP</abbr>) [<cite><a class="bibref" href="#bib-ldp">LDP</a></cite>] both use relative referencing of URIs [<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>].</p>
-
                       <p>As HTTP clients assign a URI to a resource when using <code>PUT</code> and <code>PATCH</code>, relative references in representation content are deterministic in both the Solid Protocol and LDP.</p>
-
                       <p>LDP does not specify URI patterns for resources when using the <code>POST</code> method, e.g., <code>POST http://example.org/foo/</code> may result in creating a resource with URI <code>http://example.org/foo/bar</code>, <code>http://example.org/baz/qux/quxx</code>, <code>http://example.org/{uuid}</code> or something else. In Solid Protocol, the URI of a new resource resulting from, e.g., <code>POST http://example.org/foo/</code>, is in context of the request URI, and therefore <code>http://example.org/foo/bar</code> will be created, and it is not possible to construct the new URI besides under the direct hierarchy of <code>http://example.org/foo/</code>.</p>
-
                       <p>Solid Protocol's <a href="#Server">server</a> behaviour in that regard is compatible with LDP even if only <code>ldp:Container</code> is advertised in the HTTP <code>Link</code> header field of the request URI, i.e., <code>http://example.org/foo/</code> as the target URI of <code>POST</code>. Thus, it is possible to have a Solid Protocol server as a particular specialisation of LDP with respect to behaviours around <code>POST</code> to containers. Clients that are interoperable with LDP servers would also be interoperable with Solid Protocol servers with respect to relative referencing. Although LDP servers cannot guarantee the URI pattern resulting from <code>POST</code> requests, the fact that Solid Protocol servers can does not impact interoperability between Solid Protocol servers and LDP clients.</p>
-
                       <p>Solid Protocol <a href="#Client">clients</a> may not fully interoperate with LDP servers, e.g., it is possible for an LDP server implementation to assign URIs to new resources that are not compatible with Solid Protocol. An LDP server needs to also conform to Solid Protocol server requirements in order to participate in the Solid ecosystem.</p>
                     </div>
                   </section>
@@ -729,42 +652,31 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               </section>
             </div>
           </section>
-
           <section id="http" inlist="" rel="schema:hasPart" resource="#http">
             <h2 property="schema:name">Hypertext Transfer Protocol</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>Solid <a href="#Server" rel="dcterms:subject">servers</a> and <a href="#Client" rel="dcterms:subject">clients</a> need to exchange data securely over the Internet, and they do so using the HTTP Web standard. This section describes in detail which parts of HTTP must be implemented by clients and servers.</p>
-
               <section id="http-server" inlist="" rel="schema:hasPart" resource="#http-server">
                 <h3 property="schema:name">HTTP Server</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><span about="" id="server-http" rel="spec:requirement" resource="#server-http"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> conform to <cite>HTTP Semantics</cite> [<cite><a class="bibref" href="#bib-rfc9110">RFC9110</a></cite>].</span></span> <span about="" id="server-caching" rel="spec:requirement" resource="#server-caching"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:SHOULD">SHOULD</span> conform to <cite>HTTP Caching</cite> [<cite><a class="bibref" href="#bib-rfc9111">RFC9111</a></cite>].</span></span> <span about="" id="server-http-11" rel="spec:requirement" resource="#server-http-11"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> conform to <cite>HTTP/1.1</cite> [<cite><a class="bibref" href="#bib-rfc9112">RFC9112</a></cite>].</span></span> <span about="" id="server-http-2" rel="spec:requirement" resource="#server-http-2"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:SHOULD">SHOULD</span> conform to <cite>HTTP/2</cite> [<cite><a class="bibref" href="#bib-rfc9113">RFC9113</a></cite>].</span></span></p>
-
                   <p><span about="" id="server-tls-https" rel="spec:requirement" resource="#server-tls-https"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:SHOULD">SHOULD</span> use TLS connections through the <code>https</code> URI scheme in order to secure the communication with clients.</span></span> <span about="" id="server-tls-https-redirect" rel="spec:requirement" resource="#server-tls-https-redirect"><span property="spec:statement">When both <code>http</code> and <code>https</code> URI schemes are supported, the <span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> redirect all <code>http</code> URIs to their <code>https</code> counterparts using a response with a <code>301</code> status code and a <code>Location</code> header field.</span></span></p>
-
                   <p about="" id="server-unauthenticated" rel="spec:requirement" resource="#server-unauthenticated"><span property="spec:statement">When a client does not provide valid credentials when requesting a resource that requires it (see <a href="#webid">WebID</a>), <span rel="spec:requirementSubject" resource="#Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> send a response with a <code>401</code> status code (unless <code>404</code> is preferred for security reasons).</span></p>
-
                   <p about="" id="server-content-type-includes" rel="spec:requirement" resource="#server-content-type-includes"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> generate a <code>Content-Type</code> header field in a message that contains content.</span></p>
-
                   <p about="" id="server-content-type-missing" rel="spec:requirement" resource="#server-content-type-missing"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> reject <code>PUT</code>, <code>POST</code>, and <code>PATCH</code> requests that contain content but lack the <code>Content-Type</code> header field, with a status code of <code>400</code>.</span> [<a href="https://github.com/solid/specification/issues/70#issuecomment-547924171" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/pull/660#issue-2319265317" rel="cito:citesAsSourceDocument">Source</a>]</p>
-
                   <p about="" id="server-last-modified-includes" rel="spec:requirement" resource="#server-last-modified-includes"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> generate a <code>Last-Modified</code> header field in response to <code>GET</code> and <code>HEAD</code> requests.</span></p>
                 </div>
               </section>
-
               <section id="http-client" inlist="" rel="schema:hasPart" resource="#http-client">
                 <h3 property="schema:name">HTTP Client</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><span about="" id="client-http" rel="spec:requirement" resource="#client-http"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Client">Clients</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> conform to <cite>HTTP Semantics</cite> [<cite><a class="bibref" href="#bib-rfc9110">RFC9110</a></cite>].</span></span> <span about="" id="client-caching" rel="spec:requirement" resource="#client-caching"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Client">Clients</span> <span rel="spec:requirementLevel" resource="spec:MAY">MAY</span> conform to <cite>HTTP Caching</cite> [<cite><a class="bibref" href="#bib-rfc9111">RFC9111</a></cite>].</span></span> <span about="" id="client-http-11" rel="spec:requirement" resource="#client-http-11"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Client">Clients</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> conform to <cite>HTTP/1.1</cite> [<cite><a class="bibref" href="#bib-rfc9112">RFC9112</a></cite>].</span></span> <span about="" id="client-http-2" rel="spec:requirement" resource="#client-http-2"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Client">Clients</span> <span rel="spec:requirementLevel" resource="spec:MAY">MAY</span> conform to <cite>HTTP/2</cite> [<cite><a class="bibref" href="#bib-rfc9113">RFC9113</a></cite>].</span></span></p>
-
                   <p about="" id="client-authentication-different-credentials" rel="spec:requirement" resource="#client-authentication-different-credentials"><span property="spec:statement">When a <span rel="spec:requirementSubject" resource="#Client">client</span> receives a response with a <code>403</code> or <code>404</code> status code, the client <span rel="spec:requirementLevel" resource="spec:MAY">MAY</span> repeat the request with different credentials.</span></p>
-
                   <p about="" id="client-content-type-includes" rel="spec:requirement" resource="#client-content-type-includes"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Client">Clients</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> use the <code>Content-Type</code> HTTP header field in <code>PUT</code>, <code>POST</code>, and <code>PATCH</code> requests that contain content [<cite><a class="bibref" href="#bib-rfc9110">RFC9110</a></cite>].</span> [<a href="https://github.com/solid/specification/issues/70#issuecomment-547924171" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/pull/660#issue-2319265317" rel="cito:citesAsSourceDocument">Source</a>]</p>
                 </div>
               </section>
             </div>
           </section>
-
           <section id="uri" inlist="" rel="schema:hasPart" resource="#uri">
             <h2 property="schema:name">Uniform Resource Identifier</h2>
             <div datatype="rdf:HTML" property="schema:description">
@@ -774,23 +686,18 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   <p>This specification does not describe the relationship between a storage <q>owner</q> and Web architecture’s <cite><a href="https://www.w3.org/TR/webarch/#uri-ownership">URI ownership</a></cite> [<cite><a class="bibref" href="#bib-webarch">WEBARCH</a></cite>].</p>
                 </div>
               </div>
-
               <section id="uri-slash-semantics" inlist="" rel="schema:hasPart" resource="#uri-slash-semantics">
                 <h3 property="schema:name">URI Slash Semantics</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p id="uri-slashes-hierarchical-identifier">The slash (<code>/</code>) character in the URI path indicates hierarchical relationship segments, and enables relative referencing [<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>]. The semantics of the slash character is shared by servers and clients. Paths ending with a slash denote a container resource. [<a href="https://github.com/solid/specification/issues/35#issuecomment-547949014" rel="cito:citesAsSourceDocument">Source</a>]</p>
-
                   <p><span about="" id="server-uri-trailing-slash-distinct" rel="spec:requirement" resource="#server-uri-trailing-slash-distinct"><span property="spec:statement">If two URIs differ only in the trailing slash, and the <span rel="spec:requirementSubject" resource="#Server">server</span> has associated a resource with one of them, then the other URI <span rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> correspond to another resource.</span></span> <span about="" id="server-uri-redirect-differing" rel="spec:requirement" resource="#server-uri-redirect-differing"><span property="spec:statement">Instead, the <span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MAY">MAY</span> respond to requests for the latter URI with a 301 redirect to the former.</span></span> [<a href="https://github.com/solid/specification/issues/107#issuecomment-567482817" rel="cito:citesAsSourceDocument">Source</a>]. <span about="" id="server-authorization-redirect" rel="spec:requirement" resource="#server-authorization-redirect"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> authorize prior to this optional redirect.</span></span> [<a href="https://github.com/solid/specification/issues/107#issuecomment-567454889" rel="cito:citesAsSourceDocument">Source</a>].</p>
                 </div>
               </section>
-
               <section id="uri-persistence" inlist="" rel="schema:hasPart" resource="#uri-persistence">
                 <h3 property="schema:name">URI Persistence</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
-
                   <p>Servers should not re-use URIs, regardless of the mechanism by which resources are created. Certain specific cases exist where URIs may be reinstated when it identifies the same resource, but only when consistent with Web architecture’s <cite><a href="https://www.w3.org/TR/webarch/#URI-persistence">URI persistence</a></cite> [<cite><a class="bibref" href="#bib-webarch">WEBARCH</a></cite>]. [<a href="https://github.com/solid/specification/issues/46#issuecomment-589619372" rel="cito:citesAsSourceDocument">Source</a>]</p>
-
                   <div class="note" id="uri-reuse" inlist="" rel="schema:hasPart" resource="#uri-reuse">
                     <h4 property="schema:name"><span>Note</span>: URI Reuse</h4>
                     <div datatype="rdf:HTML" property="schema:description">
@@ -801,7 +708,6 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               </section>
             </div>
           </section>
-
           <section id="resources" inlist="" rel="schema:hasPart" resource="#resources">
             <h2 property="schema:name">Resources</h2>
             <div datatype="rdf:HTML" property="schema:description">
@@ -809,67 +715,44 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                 <h3 property="schema:name">Storage Resource</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p about="" id="server-storage" rel="spec:requirement" resource="#server-storage"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> provide one or more <a href="#storage">storages</a>. The storage resource (<code>pim:Storage</code>) is the root container for all of its contained resources (see <a href="#resource-containment">Resource Containment</a>).</span></p>
-
                   <p about="" id="server-storage-nonoverlapping" rel="spec:requirement" resource="#server-storage-nonoverlapping"><span property="spec:statement">When a <span rel="spec:requirementSubject" resource="#Server">server</span> supports multiple storages, the URIs <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> be allocated to non-overlapping space.</span></p>
-
                   <p about="" id="server-link-storage" rel="spec:requirement" resource="#server-link-storage"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> advertise the storage resource by including the HTTP <code>Link</code> header field with <code>rel="type"</code> targeting <code>http://www.w3.org/ns/pim/space#Storage</code> when responding to storage’s request URI.</span></p>
-
                   <p about="" id="client-link-storage" rel="spec:requirement" resource="#client-link-storage">Clients can determine a resource is of type storage by making an HTTP <code>HEAD</code> or <code>GET</code> request on the target URL, and checking for the <code>Link</code> header field with <code>rel="type"</code> targeting <code>http://www.w3.org/ns/pim/space#Storage</code>.</p>
-
                   <p about="" id="client-storage-disovery" rel="spec:requirement" resource="#client-storage-discovery">Clients can determine the storage of a resource by moving up the URI path hierarchy until the response includes a <code>Link</code> header field with <code>rel="type"</code> targeting <code>http://www.w3.org/ns/pim/space#Storage</code>.</p>
-
                   <p about="" id="client-rdf-storage" rel="spec:requirement" resource="#client-rdf-storage">Clients can discover a storage by making an HTTP <code>GET</code> request on the target URL to retrieve an RDF representation [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>], whose encoded RDF graph contains a relation of type <code>http://www.w3.org/ns/pim/space#storage</code>. The object of the relation is the storage (<code>pim:Storage</code>).</p>
-
                   <p>[<a href="https://github.com/solid/data-interoperability-panel/issues/10#issuecomment-598694029" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/153#issuecomment-624630022" rel="cito:citesAsSourceDocument">Source</a>]</p>
-
                   <p about="" id="server-storage-description" rel="spec:requirement" resource="#server-storage-description"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> include the <code>Link</code> header field with <code>rel="http://www.w3.org/ns/solid/terms#storageDescription"</code> targeting the URI of the storage description resource in the response of HTTP <code>GET</code>, <code>HEAD</code> and <code>OPTIONS</code> requests targeting a resource in a storage.</span></p>
-
                   <p about="" id="server-storage-description-resource" rel="spec:requirement" resource="#server-storage-description-resource"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> include <a href="#storage-description-statements" rel="rdfs:seeAlso">statements about the storage</a> as part of the storage description resource.</span></p>
-
                   <p about="#storage-description-statements" id="storage-description-statements" typeof="skos:Collection"><span property="skos:prefLabel">Storage description statements</span> include the properties:</p>
-
                   <dl about="#storage-description-statements" rel="skos:member">
                     <dt about="#storage-description-rdf-type" id="storage-description-rdf-type" property="skos:prefLabel" typeof="skos:Concept"><code>rdf:type</code></dt>
                     <dd about="#storage-description-rdf-type" property="skos:definition">A class whose URI is <code>http://www.w3.org/ns/pim/space#Storage</code>.</dd>
                   </dl>
-
                   <p>[<a href="https://github.com/solid/specification/issues/355" rel="cito:citesAsSourceDocument">Source</a>].</p>
-
                   <p about="" id="server-storage-track-owner" rel="spec:requirement" resource="#server-storage-track-owner"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> keep track of at least one <a href="#owner">owner</a> of a storage in an implementation defined way.</span></p>
-
                   <p about="" id="server-storage-link-owner" rel="spec:requirement" resource="#server-storage-link-owner"><span property="spec:statement">When a <span rel="spec:requirementSubject" resource="#Server">server</span> wants to advertise the owner of a storage, the server <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> include the <code>Link</code> header field with <code>rel="http://www.w3.org/ns/solid/terms#owner"</code> targeting the URI of the owner in the response of HTTP <code>HEAD</code> or <code>GET</code> requests targeting the root container.</span></p>
-
-                  <p>[<a href="https://github.com/solid/specification/issues/67" rel="cito:citesAsSourceDocument">Source</a>][<a href=" https://github.com/solid/specification/issues/132" rel="cito:citesAsSourceDocument">Source</a>][<a href="https://github.com/solid/specification/issues/153" rel="cito:citesAsSourceDocument">Source</a>][<a href="https://github.com/solid/specification/issues/197" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                  <p>[<a href="https://github.com/solid/specification/issues/67" rel="cito:citesAsSourceDocument">Source</a>][<a href="https://github.com/solid/specification/issues/132" rel="cito:citesAsSourceDocument">Source</a>][<a href="https://github.com/solid/specification/issues/153" rel="cito:citesAsSourceDocument">Source</a>][<a href="https://github.com/solid/specification/issues/197" rel="cito:citesAsSourceDocument">Source</a>]</p>
                 </div>
               </section>
-
               <section id="resource-containment" inlist="" rel="schema:hasPart" resource="#resource-containment">
                 <h3 property="schema:name">Resource Containment</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>Solid has the notion of containers to represent a collection of linked resources to help with resource discovery and lifecycle management.</p>
-
                   <p id="server-hierarchical-containment">There is a 1-1 correspondence between containment triples and relative reference within the path name hierarchy. [<a href="https://github.com/solid/specification/issues/98#issuecomment-547506617" rel="cito:citesAsSourceDocument">Source</a>]. It follows that all resources are discoverable from a container and that it is not possible to create orphan resources. [<a href="https://github.com/solid/specification/issues/97#issuecomment-547459396" rel="cito:citesAsSourceDocument">Source</a>]</p>
-
                   <p about="" id="server-basic-container" rel="spec:requirement" resource="#server-basic-container"><span property="spec:statement">The representation and behaviour of containers in Solid corresponds to LDP Basic Container and <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> be supported by <span rel="spec:requirementSubject" resource="#Server">server</span>.</span> [<a href="https://github.com/solid/specification/issues/47#issuecomment-561675764" rel="cito:citesAsSourceDocument">Source</a>]</p>
-
                   <p id="server-container-last-modified">Servers can determine the field value of the HTTP <code>Last-Modified</code> header field in response to <code>HEAD</code> and <code>GET</code> requests targeting a container based on changes to containment triples.</p>
-
                   <div class="note" id="container-last-modified-comparison" inlist="" rel="schema:hasPart" resource="#container-last-modified-comparison">
                     <h4 property="schema:name"><span>Note</span>: Container Last-Modified Comparison</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p about="" id="container-last-modified-reliability" rel="spec:advisement" resource="#container-last-modified-reliability"><span property="spec:statement">The <code>Last-Modified</code> of a container will not change when other parts of the container changes. This is to avoid instant propagation of changes all the way to the root container. As <code>Last-Modified</code> <span rel="spec:advisementLevel" resource="spec:Cannot">cannot</span> be reliably used to check whether the container representation has changed in any way, relying on it for change detection is not meaningful. In future versions of this specification, this design may be revisited.</span></p>
                     </div>
                   </div>
-
                   <section id="contained-resource-metadata" inlist="" rel="schema:hasPart" resource="#contained-resource-metadata">
                     <h4 property="schema:name">Contained Resource Metadata</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>Container descriptions are not limited to containment triples. To further support client navigation and application interaction, servers can include <a href="#resource-metadata">resource metadata</a> about contained resources as part of the container description, as described below.</p>
-
                       <p about="" id="server-contained-resource-metadata" rel="spec:requirement" resource="#server-contained-resource-metadata"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:SHOULD">SHOULD</span> include <a href="#contained-resource-metadata-statements" rel="rdfs:seeAlso">resource metadata about contained resources</a> as part of the container description, unless that information is inapplicable to the server.</span></p>
-
                       <p about="#contained-resource-metadata-statements" id="contained-resource-metadata-statements" typeof="skos:Collection"><span property="skos:prefLabel">Contained resource metadata statements</span> include the properties:</p>
-
                       <dl about="#contained-resource-metadata-statements" rel="skos:member">
                         <dt about="#contained-resource-metadata-rdf-type" id="contained-resource-metadata-rdf-type" property="skos:prefLabel" typeof="skos:Concept"><code>rdf:type</code></dt>
                         <dd about="#contained-resource-metadata-rdf-type" property="skos:definition">A class whose URI is the expansion of the <em>URI Template</em> [<cite><a class="bibref" href="#bib-rfc6570">RFC6570</a></cite>] <code>http://www.w3.org/ns/iana/media-types/{+iana-media-type}#Resource</code>, where <code>iana-media-type</code> corresponds to a value from the IANA Media Types [<cite><a class="bibref" href="#bib-iana-media-types">IANA-MEDIA-TYPES</a></cite>].</dd>
@@ -880,59 +763,45 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                         <dt about="#contained-resource-metadata-stat-mtime" id="contained-resource-metadata-stat-mtime" property="skos:prefLabel" typeof="skos:Concept"><code>stat:mtime</code></dt>
                         <dd about="#contained-resource-metadata-stat-mtime" property="skos:definition">The Unix time when the resource was last modified.</dd>
                       </dl>
-
                       <p id="dcterms-modified-corresponds-last-modified">The <code>dcterms:modified</code> value of a contained resource corresponds with the <code>Last-Modified</code> header field value of the contained resource. If one were to perform <code>HEAD</code> or <code>GET</code> requests on the URI of the contained resource at the time of the HTTP message’s generation, then a response with the <code>200</code> status code including the <code>Last-Modified</code> header field would indicate the same date and time.</p>
-
                       <div class="note" id="contained-resource-metadata-considerations" inlist="" rel="schema:hasPart" resource="#contained-resource-metadata-considerations">
                         <h5 property="schema:name"><span>Note</span>: Contained Resource Metadata Considerations</h5>
                         <div datatype="rdf:HTML" property="schema:description">
                           <p about="" id="contained-resource-metadata-inapplicable" rel="spec:advisement" resource="#contained-resource-metadata-inapplicable"><span property="spec:statement">The generation of contained resource metadata <span rel="spec:advisementLevel" resource="spec:Might">might</span> be inapplicable to some servers, for example, when that information does not exist or is expensive to determine.</span></p>
                         </div>
                       </div>
-
                       <p>Contained resource metadata is <a href="#server-protect-contained-resource-metadata" rel="cito:discusses">protected by the server</a>.</p>
-
                       <p>[<a href="https://github.com/solid/specification/issues/227" rel="cito:citesAsSourceDocument">Source</a>]
                       [<a href="https://github.com/solid/specification/issues/343" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/pull/352" rel="cito:citesAsSourceDocument">Source</a>]</p>
                     </div>
                   </section>
                 </div>
               </section>
-
               <section id="auxiliary-resources" inlist="" rel="schema:hasPart" resource="#auxiliary-resources">
                 <h3 property="schema:name">Auxiliary Resources</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>Solid has the notion of <em>auxiliary resources</em> to provide supplementary information such as descriptive metadata, authorization conditions, data shape constraints, digital rights or provenance record about a given resource (hereafter referred as the <em>subject resource</em>), and affects how resources and others associated with it are processed, served or interpreted.</p>
-
                   <p about="" id="server-auxiliary-resources-management" rel="spec:requirement" resource="#server-auxiliary-resources-management"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> support auxiliary resources defined by this specification and manage the association between a subject resource and auxiliary resources.</span> When a subject resource is deleted its auxiliary resources are also deleted by the server (<a href="#server-delete-remove-auxiliary-resource">Server Deleting Auxiliary Resources</a>).</p>
-
                   <p id="auxiliary-resources-rdf-document">Auxiliary resources are represented as <em>RDF document</em>s [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>]. HTTP interactions on auxiliary resources are subject to the requirements as per <cite><a href="#reading-writing-resources">Reading and Writing Resources</a></cite>.</p>
-
                   <div class="note" id="self-describing-resources" inlist="" rel="schema:hasPart" resource="#self-describing-resources">
                     <h4 property="schema:name"><span>Note</span>: Self-describing Resources</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p about="" id="self-describing-subject-resource" rel="spec:advisement" resource="#self-describing-subject-resource"><span property="spec:statement">Where applicable, to promote <a href="https://www.w3.org/2001/tag/doc/selfDescribingDocuments">self-describing resources</a>, implementations and authors are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to use the subject resource instead of the associated auxiliary resource.</span></p>
                     </div>
                   </div>
-
                   <div class="note" id="uri-origin" inlist="" rel="schema:hasPart" resource="#uri-origin">
                     <h4 property="schema:name"><span>Note</span>: URI Origin</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>The resource and the associated auxiliary resource can be on different origins [<cite><a class="bibref" href="#bib-rfc6454">RFC6454</a></cite>].</p>
                     </div>
                   </div>
-
                   <p>This specification defines the following types of auxiliary resources:</p>
-
                   <ul>
                     <li><a href="#auxiliary-resources-web-access-control">Web Access Control</a></li>
                     <li><a href="#auxiliary-resources-description-resource">Description Resource</a></li>
                   </ul>
-
                   <p about="" id="server-link-auxiliary-type" rel="spec:requirement" resource="#server-link-auxiliary-type"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> advertise auxiliary resources associated with a subject resource by responding to <code>HEAD</code> and <code>GET</code> requests by including the HTTP <code>Link</code> header field with the <code>rel</code> parameter [<cite><a class="bibref" href="#bib-rfc8288">RFC8288</a></cite>].</span></p>
-
                   <p about="" id="client-link-auxiliary-type" rel="spec:requirement" resource="#client-link-auxiliary-type">Clients can discover auxiliary resources associated with a subject resource by making an HTTP <code>HEAD</code> or <code>GET</code> request on the target URL, and checking the HTTP <code>Link</code> header field with the <code>rel</code> parameter [<cite><a class="bibref" href="#bib-rfc8288">RFC8288</a></cite>].</p>
-
                   <table>
                     <thead>
                       <tr>
@@ -954,23 +823,18 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       </tr>
                     </tbody>
                   </table>
-
                   <section id="auxiliary-resources-web-access-control" inlist="" rel="schema:hasPart" resource="#auxiliary-resources-web-access-control">
                     <h4 property="schema:name">Web Access Control</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>An auxiliary resource of type <em>Web Access Control</em> provides access control description of a subject resource (<a href="#web-access-control">Web Access Control</a>).</p>
                     </div>
                   </section>
-
                   <section id="auxiliary-resources-description-resource" inlist="" rel="schema:hasPart" resource="#auxiliary-resources-description-resource">
                     <h4 property="schema:name">Description Resource</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>An auxiliary resource of type <em>Description Resource</em> provides a description of a subject resource.</p>
-
                       <p about="" id="server-description-resource-max" rel="spec:requirement" resource="#server-description-resource-max"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> directly associate more than one description resource to a subject resource.</span></p>
-
                       <p about="" id="server-description-resource-authorization" rel="spec:requirement" resource="#server-description-resource-authorization"><span property="spec:statement">When an HTTP request targets a description resource, the <span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> apply the authorization rule that is used for the subject resource with which the description resource is associated.</span></p>
-
                       <p about="" id="client-link-describes" rel="spec:requirement" resource="#client-link-describes">Clients can discover resources that are described by description resources by making an HTTP <code>HEAD</code> or <code>GET</code> request on the target URL, and checking the HTTP <code>Link</code> header field with a <code>rel</code> value of <code>describes</code> (inverse of the <code>describedby</code> relation) [<cite><a class="bibref" href="#bib-rfc6892">RFC6892</a></cite>].</p>
                     </div>
                   </section>
@@ -978,79 +842,57 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               </section>
             </div>
           </section>
-
           <section id="reading-writing-resources" inlist="" rel="schema:hasPart" resource="#reading-writing-resources">
             <h2 property="schema:name">Reading and Writing Resources</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p about="" id="server-method-not-allowed" rel="spec:requirement" resource="#server-method-not-allowed"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with the <code>405</code> status code to requests using HTTP methods that are not supported by the target resource.</span> [<a href="https://github.com/solid/specification/issues/117" rel="cito:citesAsSourceDocument">Source</a>]</p>
-
               <section id="resource-type-heuristics" inlist="" rel="schema:hasPart" resource="#resource-type-heuristics">
                 <h3 property="schema:name">Resource Type Heuristics</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>When creating new resources, servers can determine a target URI’s type by examining the URI path ending (<a href="#uri-slash-semantics">URI Slash Semantics</a>).</p>
-
                   <p about="" id="server-post-uri-assignment" rel="spec:requirement" resource="#server-post-uri-assignment"><span property="spec:statement">When a successful <code>POST</code> request creates a resource, the <span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> assign a URI to that resource.</span></p>
-
                   <div class="note" id="uri-allocation" inlist="" rel="schema:hasPart" resource="#uri-allocation">
                     <h4 property="schema:name"><span>Note</span>: URI Allocation</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p about="" id="uri-allocation-put-patch" rel="spec:advisement" resource="#uri-allocation-put-patch"><span property="spec:statement">Clients <span rel="spec:advisementLevel" resource="spec:Can">can</span> use <code>PUT</code> and <code>PATCH</code> requests to assign a URI to a resource.</span></p>
-                      
                       <p about="" id="uri-allocation-post" rel="spec:advisement" resource="#uri-allocation-post"><span property="spec:statement">Clients <span rel="spec:advisementLevel" resource="spec:Can">can</span> use <code>POST</code> requests to have the server assign a URI to a resource.</span></p>
                     </div>
                   </div>
-
                   <p>[<a href="https://github.com/solid/specification/pull/160#issuecomment-636822687" rel="cito:citesAsSourceDocument">Source</a>][<a href="https://github.com/solid/specification/pull/263" rel="cito:citesAsSourceDocument">Source</a>].</p>
                 </div>
               </section>
-
               <section id="reading-resources" inlist="" rel="schema:hasPart" resource="#reading-resources">
                 <h3 property="schema:name">Reading Resources</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p about="" id="server-safe-methods" rel="spec:requirement" resource="#server-safe-methods"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> support the HTTP <code>GET</code>, <code>HEAD</code> and <code>OPTIONS</code> methods [<cite><a class="bibref" href="#bib-rfc9110">RFC9110</a></cite>] for clients to read resources or to determine communication options.</span> [<a href="https://github.com/solid/specification/issues/39#issuecomment-538017667" rel="cito:citesAsSourceDocument">Source</a>]</p>
-
                   <p about="" id="server-allow-methods" rel="spec:requirement" resource="#server-allow-methods"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> indicate the HTTP methods supported by the target resource by generating an <code>Allow</code> header field in successful responses.</span></p>
-
                   <p about="" id="server-accept-headers" rel="spec:requirement" resource="#server-accept-headers"><span property="spec:statement">When responding to authorized requests, <span rel="spec:requirementSubject" resource="#Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> indicate supported media types in the HTTP <code>Accept-Patch</code> [<cite><a class="bibref" href="#bib-rfc5789">RFC5789</a></cite>], <code>Accept-Post</code> [<cite><a class="bibref" href="#bib-ldp">LDP</a></cite>] and <code>Accept-Put</code> [<cite><a href="#accept-put">The Accept-Put Response Header</a></cite>] response header fields that correspond to acceptable HTTP methods listed in <code>Allow</code> header field value in response to HTTP <code>GET</code>, <code>HEAD</code> and <code>OPTIONS</code> requests.</span></p>
-
                   <p>[<a href="https://github.com/solid/specification/issues/85#issuecomment-575386251" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/43" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/pull/378" rel="cito:citesAsSourceDocument">Source</a>]</p>
                 </div>
               </section>
-
               <section id="writing-resources" inlist="" rel="schema:hasPart" resource="#writing-resources">
                 <h3 property="schema:name">Writing Resources</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>Servers MUST support the HTTP <code>PUT</code>, <code>POST</code> and <code>PATCH</code> methods [<cite><a class="bibref" href="#bib-rfc9110">RFC9110</a></cite>]. [<a href="https://github.com/solid/specification/issues/39#issuecomment-538017667" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/pull/304" rel="cito:citesAsSourceDocument">Source</a>]</p>
-
                   <p about="" id="server-put-patch-intermediate-containers" rel="spec:requirement" resource="#server-put-patch-intermediate-containers"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> create intermediate containers and include corresponding containment triples in container representations derived from the URI path component of <code>PUT</code> and <code>PATCH</code> requests.</span> [<a href="https://github.com/solid/specification/issues/68#issuecomment-561690124" rel="cito:citesAsSourceDocument">Source</a>]</p>
-
                   <p><span about="" id="server-post-container" rel="spec:requirement" resource="#server-post-container"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> allow creation of new resources by a <code>POST</code> request to a URI path ending with <code>/</code>.</span></span> <span about="" id="server-post-container-create-resource" rel="spec:requirement" resource="#server-post-container-create-resource"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> create resources with URI paths ending with <code>/{id}</code> in container <code>/</code>.</span></span> [<a href="https://github.com/solid/specification/pull/160#issuecomment-636822687" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/pull/190" rel="cito:citesAsSourceDocument">Source</a>]</p>
-
                   <p about="" id="server-post-target-not-found" rel="spec:requirement" resource="#server-post-target-not-found"><span property="spec:statement">When a <code>POST</code> method request targets a resource without an existing representation, the <span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with the <code>404</code> status code.</span> [<a href="https://github.com/solid/specification/issues/108#issuecomment-549448159" rel="cito:citesAsSourceDocument">Source</a>]</p>
-
                   <p about="" id="server-put-patch-auxiliary-resource" rel="spec:requirement" resource="#server-put-patch-auxiliary-resource"><span property="spec:statement">When a <code>PUT</code> or <code>PATCH</code> request targets an auxiliary resource, the <span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> create or update it.</span> [<a href="https://github.com/solid/specification/issues/42#issuecomment-616688848" rel="cito:citesAsSourceDocument">Source</a>]</p>
-
                   <p><span about="" id="server-protect-containment" rel="spec:requirement" resource="#server-protect-containment"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> allow HTTP <code>PUT</code> or <code>PATCH</code> on a container to update its containment triples; if the server receives such a request, it <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>409</code> status code.</span></span> [<a href="https://github.com/solid/specification/issues/40#issuecomment-573358652" rel="cito:citesAsSourceDocument">Source</a>]</p>
-
                   <p about="" id="server-protect-contained-resource-metadata" rel="spec:requirement" resource="#server-protect-contained-resource-metadata"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> allow HTTP <code>POST</code>, <code>PUT</code> and <code>PATCH</code> to update a container’s <a href="#contained-resource-metadata-statements">resource metadata statements</a>; if the server receives such a request, it MUST respond with a <code>409</code> status code.</span> [<a href="https://github.com/solid/specification/issues/227#issuecomment-919312592" rel="cito:citesAsSourceDocument">Source</a>]</p>
-
                   <div class="note" id="conditional-update" inlist="" rel="schema:hasPart" resource="#conditional-update">
                     <h4 property="schema:name"><span>Note</span>: Conditional Update</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p about="" id="resource-update-integrity" rel="spec:advisement" resource="#resource-update-integrity"><span property="spec:statement">Clients are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to use the HTTP <code>If-None-Match</code> header field with a value of <code>"*"</code> to prevent an unsafe request method, e.g., <code>PUT</code>, <code>PATCH</code>, from inadvertently modifying an existing representation of the target resource when the client believes that the resource does not have a current representation.</span> [<a href="https://github.com/solid/specification/issues/108#issuecomment-567272797" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/40#issuecomment-566995240" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/pull/292" rel="cito:citesAsSourceDocument">Source</a>]</p>
                     </div>
                   </div>
-
                   <p about="" id="server-etag" rel="spec:requirement" resource="#server-etag"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MAY">MAY</span> use the HTTP <code>ETag</code> header field with a strong validator for RDF bearing representations in order to encourage clients to opt-in to using the <code>If-Match</code> header field in their requests.</span></p>
                 </div>
-
                 <section id="n3-patch" inlist="" rel="schema:hasPart" resource="#n3-patch">
                   <h4 property="schema:name">Modifying Resources Using N3 Patches</h4>
                   <div datatype="rdf:HTML" property="schema:description">
                     <p><span about="" id="server-patch-n3-accept" rel="spec:requirement" resource="#server-patch-n3-accept"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> accept a <code>PATCH</code> request with an <em>N3 Patch</em> body when the target of the request is an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>].</span></span> <span about="" id="server-patch-n3-advertise" rel="spec:requirement" resource="#server-patch-n3-advertise"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> indicate support of N3 Patch by listing <code>text/n3</code> as a field value of the <code>Accept-Patch</code> header field [<cite><a class="bibref" href="#bib-rfc5789">RFC5789</a></cite>] of relevant responses.</span></span> [<a href="https://github.com/solid/specification/issues/125#issuecomment-959518598" rel="cito:citesAsSourceDocument">Source</a>]</p>
-
                     <p>An <em>N3 Patch</em> is a document in the <em>Notation3 (N3)</em> format [<cite><a class="bibref" href="#bib-notation3">N3</a></cite>], identified by the media type <code>text/n3</code>, conforming to the following constraints:</p>
-
                     <ul>
                       <li id="server-patch-n3-patches" rel="spec:requirement" resource="#server-patch-n3-patches"><span property="spec:statement">A patch document <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> contain one or more patch resources.</span></li>
                       <li id="server-patch-n3-patch-identifier" rel="spec:requirement" resource="#server-patch-n3-patch-identifier"><span property="spec:statement">A patch resource <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> be identified by a URI or blank node, which we refer to as <code>?patch</code> in the remainder of this section.</span></li>
@@ -1060,9 +902,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       <li id="server-patch-n3-where" rel="spec:requirement" resource="#server-patch-n3-where"><span property="spec:statement">A patch resource <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> contain at most one triple of the form <code>?patch solid:where ?conditions</code>.</span></li>
                       <li id="server-patch-n3-formulae" rel="spec:requirement" resource="#server-patch-n3-formulae"><span property="spec:statement">When present, <code>?deletions</code>, <code>?insertions</code>, and <code>?conditions</code> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> be non-nested <em>cited formulae</em> [<cite><a class="bibref" href="#bib-notation3">N3</a></cite>] consisting only of triples and/or triple patterns [<cite><a class="bibref" href="#bib-sparql11-query">SPARQL11-QUERY</a></cite>]. When not present, they are presumed to be the empty formula <code>{}</code>.</span></li>
                     </ul>
-
                     <p id="server-patch-n3-default" rel="schema:hasPart" resource="#server-patch-n3-default"><span property="schema:description">While other specifications might provide a structure and interpretation for a wider class of N3 Patch documents, the present specification only governs the application of N3 Patch documents that additionally adhere to the following constraints:</span></p>
-
                     <ul about="#server-patch-n3-default">
                       <li id="server-patch-n3-single" rel="spec:requirement" resource="#server-patch-n3-single"><span property="spec:statement">The patch document <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> contain exactly one patch resource, identified by one or more of the triple patterns described above, which all share the same <code>?patch</code> subject.</span></li>
                       <li id="server-patch-n3-simple-type" rel="spec:requirement" resource="#server-patch-n3-type">A patch resource <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> contain a triple <code><span property="spec:statement">?patch rdf:type solid:InsertDeletePatch</span></code>.</li>
@@ -1070,13 +910,9 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       <li id="server-patch-n3-blank-nodes" rel="spec:requirement" resource="#server-patch-n3-blank-nodes"><span property="spec:statement">The <code>?deletions</code> formula <span rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> contain blank nodes.</span></li>
                       <li id="server-patch-n3-blank-nodes-syntax" rel="spec:requirement" resource="#server-patch-n3-blank-nodes-syntax"><span property="spec:statement">The same blank node identifier <span rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> be used in both the <code>?insertions</code> and the <code>?conditions</code> formulae within the same patch resource, nor in either of these formulae and elsewhere in the patch document.</span></li>
                     </ul>
-
                     <p about="" id="server-patch-n3-invalid" rel="spec:requirement" resource="#server-patch-n3-invalid"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>422</code> status code [<cite><a class="bibref" href="#bib-rfc4918">RFC4918</a></cite>] if a patch document does not satisfy all of the above constraints.</span></p>
-
                     <p><span about="" id="server-n3-patch-where" rel="spec:requirement" resource="#server-n3-patch-where"><span property="spec:statement">When <code>?conditions</code> is non-empty, <span rel="spec:requirementSubject" resource="#Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> treat the request as a <a href="#read-operation">Read operation</a>.</span></span> <span about="" id="server-n3-patch-insert" rel="spec:requirement" resource="#server-n3-patch-insert"><span property="spec:statement">When <code>?insertions</code> is non-empty, <span rel="spec:requirementSubject" resource="#Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> (also) treat the request as an <a href="#append-operation">Append operation</a>.</span></span> <span about="" id="server-n3-patch-delete" rel="spec:requirement" resource="#server-n3-patch-delete"><span property="spec:statement">When <code>?deletions</code> is non-empty, <span rel="spec:requirementSubject" resource="#Server">servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> treat the request as a <a href="#read-operation">Read</a> and <a href="#write-operation">Write operation</a>.</span></span></p>
-
                     <p about="" id="server-patch-n3-semantics" rel="spec:requirement" resource="#server-patch-n3-semantics"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> process a patch resource against the target document as follows:</span></p>
-
                     <ol about="#server-patch-n3-semantics" class="algorithm">
                       <li>Start from the RDF dataset in the target document, or an empty RDF dataset if the target resource does not exist yet.</li>
                       <li>If <code>?conditions</code> is non-empty, find all (possibly empty) variable mappings such that all of the resulting triples occur in the dataset.</li>
@@ -1088,7 +924,6 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       <li>The combination of deletions followed by insertions then forms the new resource state of the RDF document, and the server responds with the appropriate status code.</li>
                     </ol>
                   </div>
-
                   <figure class="example listing" id="n3-patch-example" rel="schema:hasPart" resource="#n3-patch-example" typeof="schema:SoftwareSourceCode">
                     <figcaption property="schema:name"><span>Example</span>: <span>Applying an <span rel="schema:programmingLanguage" resource="http://www.wikidata.org/entity/Q1424987">N3</span> patch</span></figcaption>
                     <pre property="schema:description"><code>@prefix solid: &lt;http://www.w3.org/ns/solid/terms#&gt;.</code>
@@ -1102,63 +937,45 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   </figure>
                 </section>
               </section>
-
               <section id="deleting-resources" inlist="" rel="schema:hasPart" resource="#deleting-resources">
                 <h3 property="schema:name">Deleting Resources</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>Servers MUST support the HTTP <code>DELETE</code> method [<cite><a class="bibref" href="#bib-rfc9110">RFC9110</a></cite>]. [<a href="https://github.com/solid/specification/issues/39#issuecomment-538017667" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/pull/304" rel="cito:citesAsSourceDocument">Source</a>]</p>
-
                   <p><span about="" id="server-delete-protect-root-container" rel="spec:requirement" resource="#server-delete-protect-root-container"><span property="spec:statement">When a <code>DELETE</code> request targets storage’s root container or its associated ACL resource, the <span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with the <code>405</code> status code.</span></span> <span about="" id="server-disallow-delete" rel="spec:requirement" resource="#server-disallow-delete"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> exclude the <code>DELETE</code> method in the field value of the <code>Allow</code> header field, in response to requests to these resources [<cite><a class="bibref" href="#bib-rfc9110">RFC9110</a></cite>].</span></span> [<a href="https://github.com/solid/specification/issues/37#issuecomment-627281466" rel="cito:citesAsSourceDocument">Source</a>]</p>
-
                   <p about="" id="server-delete-remove-containment" rel="spec:requirement" resource="#server-delete-remove-containment"><span property="spec:statement">When a contained resource is deleted, the <span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> also remove the corresponding containment triple.</span> [<a href="https://www.w3.org/TR/ldp/#ldpc-del-contremovesconttriple" rel="cito:citesAsSourceDocument">Source</a>]</p>
-
                   <p about="" id="server-delete-remove-auxiliary-resource" rel="spec:requirement" resource="#server-delete-remove-auxiliary-resource"><span property="spec:statement">When a contained resource is deleted, the <span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> also delete the associated auxiliary resources (see the <a href="#auxiliary-resources">Auxiliary Resources</a> section).</span></p>
-
                   <p><span about="" id="server-delete-remove-empty-container" rel="spec:requirement" resource="#server-delete-remove-empty-container"><span property="spec:statement">When a <code>DELETE</code> request targets a container, the <span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> delete the container if it contains no resources.</span></span> <span about="" id="server-delete-protect-nonempty-container" rel="spec:requirement" resource="#server-delete-protect-nonempty-container"><span property="spec:statement">If the container contains resources, the <span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with the <code>409</code> status code and response body describing the error.</span></span> [<a href="https://github.com/solid/specification/pull/187/files/b7426e95a1613e08195a853a4d0a403b7030f494#r447130915" rel="cito:citesAsSourceDocument">Source</a>]</p>
-
                   <p><em>This section is non-normative.</em></p>
-
                   <p about="" id="server-delete-side-effects" rel="spec:advisement" resource="#server-delete-side-effects"><span property="spec:statement">The server might perform additional actions, as described in the normative references like [<cite><a class="bibref" href="#bib-rfc9110">RFC9110</a></cite>]. For example, the server <span rel="spec:advisementLevel" resource="spec:Could">could</span> perform additional cleanup tasks for resources it knows are no longer referenced or have not been accessed for some period of time, and so on.</span></p>
-
                   <p id="server-delete-get">Subsequent <code>GET</code> requests to the deleted resource usually result in a <code>404</code> or <code>410</code> status code, although HTTP allows others. [<a href="https://github.com/solid/specification/issues/72" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/46" rel="cito:citesAsSourceDocument">Source</a>]</p>
                 </div>
               </section>
-
               <section id="resource-representations" inlist="" rel="schema:hasPart" resource="#resource-representations">
                 <h3 property="schema:name">Resource Representations</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p about="" id="server-representation-turtle-jsonld" rel="spec:requirement" resource="#server-representation-turtle-jsonld"><span property="spec:statement">When a <span rel="spec:requirementSubject" resource="#Server">server</span> creates an <em>RDF source</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>] on HTTP <code>PUT</code>, <code>POST</code>, or <code>PATCH</code> requests, the server <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> satisfy <code>GET</code> requests on this resource when the field value of the <code>Accept</code> header field requests a representation in <code>text/turtle</code> or <code>application/ld+json</code> [<cite><a class="bibref" href="#bib-turtle">Turtle</a></cite>] [<cite><a class="bibref" href="#bib-json-ld11">JSON-LD11</a></cite>].</span> [<a href="https://github.com/solid/specification/issues/45" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/69" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/109" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/195" rel="cito:citesAsSourceDocument">Source</a>]</p>
-
                   <p about="" id="server-representation-write-redirect" rel="spec:requirement" resource="#server-representation-write-redirect"><span property="spec:statement">When a <code>PUT</code>, <code>POST</code>, <code>PATCH</code> or <code>DELETE</code> method request targets a representation URL that is different than the resource URL, the <span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>307</code> or <code>308</code> status code and <code>Location</code> header field specifying the preferred URI reference.</span> [<a href="https://github.com/solid/specification/issues/109" rel="cito:citesAsSourceDocument">Source</a>]</p>
                 </div>
               </section>
-
               <section id="constraints-problem-details" inlist="" rel="schema:hasPart" resource="#constraints-problem-details">
                 <h3 property="schema:name">Constraints and Problem Details</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
-
                   <p about="" id="server-resource-constraints-advertisement" rel="spec:advisement" resource="#server-resource-constraints-advertisement"><span property="spec:statement">Servers are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to publish any constraints on clients’ ability to create or update resources by adding a <code>Link</code> header field with an appropriate context URI, a link relation of <code>http://www.w3.org/ns/ldp#constrainedBy</code>, and a target URI identifying a set of constraints [<cite><a class="bibref" href="#bib-rfc8288">RFC8288</a></cite>], to responses to requests that fail due to violation of those constraints. The same <code>Link</code> header field can be provided in other responses.</span></p>
-
                   <p about="" id="server-resource-constraints-uri" rel="spec:advisement" resource="#server-resource-constraints-uri"><span property="spec:statement">Servers are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to use the URIs of the constraints that are defined by specifications or other constraint URIs within its authority depending on the request's semantics on a target resource.</span></p>
-
                   <p about="" id="server-resource-constraints-rdf" rel="spec:advisement" resource="#server-resource-constraints-rdf"><span property="spec:statement">Constraints are intended to be protected and persistent resources and therefore cannot be modified by clients. To facilitate better client interactions, it is <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to express constraints in RDF.</span></p>
-
                   <p>[<a href="https://github.com/solid/specification/pull/185" rel="cito:citesAsSourceDocument">Source</a>]</p>
                 </div>
               </section>
             </div>
           </section>
-
           <section id="linked-data-notifications" inlist="" rel="schema:hasPart" resource="#linked-data-notifications">
             <h2 property="schema:name">Linked Data Notifications</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p about="" id="server-ldn" rel="spec:requirement" resource="#server-ldn"><span property="spec:statement">A Solid <span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> conform to the LDN specification by implementing the Receiver parts to receive notifications and make Inbox contents available [<cite><a class="bibref" href="#bib-ldn">LDN</a></cite>].</span></p>
-
               <p about="" id="client-ldn" rel="spec:requirement" resource="#client-ldn"><span property="spec:statement">A Solid <span rel="spec:requirementSubject" resource="#Client">client</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> conform to the LDN specification by implementing the Sender or Consumer parts to discover the location of a resource’s Inbox, and to send notifications to an Inbox or to retrieve the contents of an Inbox [<cite><a class="bibref" href="#bib-ldn">LDN</a></cite>].</span></p>
             </div>
           </section>
-
           <section id="live-update" inlist="" rel="schema:hasPart" resource="#live-update">
             <h2 property="schema:name">Live Update</h2>
             <div datatype="rdf:HTML" property="schema:description">
@@ -1166,54 +983,39 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                 <h3 property="schema:name">Solid Notifications Protocol</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>Entities in a Solid ecosystem use the <cite><a href="https://solidproject.org/TR/notifications-protocol">Solid Notifications Protocol</a></cite> to communicate about changes affecting a resource.</p>
-
                   <p about="" id="server-notifications-protocol-resource-server" rel="spec:requirement" resource="#server-notifications-protocol-resource-server"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> conform to the <cite><a href="https://solidproject.org/TR/notifications-protocol">Solid Notifications Protocol</a></cite> [<cite><a class="bibref" href="#bib-solid-notifications-protocol">SOLID-NOTIFICATIONS-PROTOCOL</a></cite>] by implementing the <cite><a href="https://solidproject.org/TR/2024/notifications-protocol-20240512#ResourceServer" rel="rdfs:seeAlso">Resource Server</a></cite> to enable clients to discover subscription resources and notification channels available to a given resource or storage.</span></p>
-
                   <p about="" id="server-notifications-protocol-subscription-server" rel="spec:requirement" resource="#server-notifications-protocol-subscription-server"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> conform to the <cite><a href="https://solidproject.org/TR/notifications-protocol">Solid Notifications Protocol</a></cite> [<cite><a class="bibref" href="#bib-solid-notifications-protocol">SOLID-NOTIFICATIONS-PROTOCOL</a></cite>] by implementing the <cite><a href="https://solidproject.org/TR/2024/notifications-protocol-20240512#SubscriptionServer" rel="rdfs:seeAlso">Subscription Server</a></cite> to process and produce instructions for subscription requests.</span></p>
-
                   <p about="" id="server-notifications-protocol-notification-sender" rel="spec:requirement" resource="#server-notifications-protocol-notification-sender"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> conform to the <cite><a href="https://solidproject.org/TR/notifications-protocol">Solid Notifications Protocol</a></cite> [<cite><a class="bibref" href="#bib-solid-notifications-protocol">SOLID-NOTIFICATIONS-PROTOCOL</a></cite>] by implementing the <cite><a href="https://solidproject.org/TR/2024/notifications-protocol-20240512#NotificationSender" rel="rdfs:seeAlso">Notification Sender</a></cite> to produce and send messages to a <cite><a href="https://solidproject.org/TR/2024/notifications-protocol-20240512#NotificationSender" rel="rdfs:seeAlso">Notification Receiver</a></cite>.</span></p>
-
                   <p about="" id="server-notifications-protocol-notification-receiver" rel="spec:requirement" resource="#server-notifications-protocol-notification-receiver"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> conform to the <cite><a href="https://solidproject.org/TR/notifications-protocol">Solid Notifications Protocol</a></cite> [<cite><a class="bibref" href="#bib-solid-notifications-protocol">SOLID-NOTIFICATIONS-PROTOCOL</a></cite>] by implementing the <cite><a href="https://solidproject.org/TR/2024/notifications-protocol-20240512#NotificationReceiver" rel="rdfs:seeAlso">Notification Receiver</a></cite> to receive and process messages that conform to a notification channel type.</span></p>
-
                   <p><em>The following is non-normative.</em></p>
-
                   <p>The <cite>Solid WebSockets API</cite> (Unofficial Draft) [<cite><a class="bibref" href="#bib-solid-websockets-api">SOLID-WEBSOCKETS-API</a></cite>] has been the common notification protocol for many years. That draft does not include an authentication mechanism, and therefore this Protocol has transitioned to require the <a href="https://solidproject.org/TR/notifications-protocol">Solid Notifications Protocol</a>.</p>
-
                   <p>Existing client and server implementations should begin providing support for the new notification protocol while supporting backwards compatibility, as appropriate.</p>
                 </div>
               </section>
             </div>
           </section>
-
           <section id="cors" inlist="" rel="schema:hasPart" resource="#cors">
             <h2 property="schema:name">Cross-Origin Resource Sharing</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p><a href="#solid-app">Solid apps</a> typically access data from multiple sources. However, Web browsers by default prevent apps that run on one origin from accessing data on other origins. This cross-origin protection is a security mechanism that ensures malicious websites cannot simply read your profile or banking details from other websites. However, this reasonable default poses a problem even for benevolent Solid apps, which might have good reasons to access data from different places. For instance, a Solid app at <code>https://app.example/</code> would be prevented from accessing data on <code>https://guinan.example/</code> or <code>https://darmok.example/</code>, even when Guinan and Darmok have given the user of the app their permission to see some of their data.</p>
-
               <p>For cases where the other origins have their own access protection mechanism — <a href="#authorization">like within Solid</a> — the browser’s built-in cross-origin protection is actually an obstacle rather than a feature. After all, storages already ensure through access control that certain documents can only be accessed by specific people or applications. Preventively blocking apps from different origins thus introduces an unnecessary barrier.</p>
-
               <p>Fortunately, Web servers can indicate to the browser that certain documents do not require cross-origin protection. This mechanism to selectively disable that protection is called <em>Cross-Origin Resource Sharing</em> or <em>CORS</em> [<cite><a class="bibref" href="#bib-fetch">FETCH</a></cite>]. By responding to browser requests with a specific combination of HTTP header fields, servers can indicate which actions are allowed for a given resource. For Solid, the goal is to allow <em>all</em> actions on the CORS level, such that the deeper <a href="#authorization">Authorization</a> layer can exert full control over the app’s allowed permissions. The next section describes how to achieve this through the right HTTP header field configuration.</p>
-
               <section id="cors-server" inlist="" rel="schema:hasPart" resource="#cors-server">
                 <h3 property="schema:name">CORS Server</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p about="" id="server-cors" rel="spec:requirement" resource="#server-cors"><span property="spec:statement">A <span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> implement the CORS protocol [<cite><a class="bibref" href="#bib-fetch">FETCH</a></cite>] such that, to the extent possible, the browser allows Solid apps to send any request and combination of request headers to the server, and the Solid app can read any response and response headers received from the server. If the server wishes to block access to a resource, this MUST NOT happen via CORS but MUST instead be communicated to the Solid app in the browser through HTTP status codes such as <code>401</code>, <code>403</code>, or <code>404</code> [<cite><a class="bibref" href="#bib-rfc9110">RFC9110</a></cite>].</span></p>
-
                   <div class="note" id="cors-protocol-blocking" inlist="" rel="schema:hasPart" resource="#cors-protocol-blocking">
                     <h4 property="schema:name"><span>Note</span>: CORS Protocol Blocking</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>Since the CORS protocol is part of a Living Standard, it might be changed at any point, which might necessitate changes to server implementations for continued prevention of undesired blocking. A <a href="https://github.com/whatwg/fetch/issues/878">proposal</a> to mitigate this has been suggested.</p>
                     </div>
                   </div>
-
                   <p>Concretely, <span about="" id="server-cors-access-control-headers" rel="spec:requirement" resource="#server-cors-access-control-headers"><span property="spec:statement">whenever a <span rel="spec:requirementSubject" resource="#Server">server</span> receives an HTTP request containing a valid <code>Origin</code> header [<cite><a class="bibref" href="#bib-rfc6454">RFC6454</a></cite>], the server <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with the appropriate <code>Access-Control-*</code> header fields as specified in the CORS protocol [<cite><a class="bibref" href="#bib-fetch">FETCH</a></cite>].</span></span> In particular, <span about="" id="server-cors-acao-vary" rel="spec:requirement" resource="#server-cors-acao-vary"><span property="spec:statement">the <span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> set the <code>Access-Control-Allow-Origin</code> header field value to the valid <code>Origin</code> header field value from the request and list <code>Origin</code> in the <code>Vary</code> header field value.</span></span> <span about="" id="server-cors-aceh" rel="spec:requirement" resource="#server-cors-aceh"><span property="spec:statement">The <span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> make all used response headers readable for the Solid app through <code>Access-Control-Expose-Headers</code> (with the possible exception of the <code>Access-Control-*</code> header fields themselves).</span></span> <span about="" id="server-cors-options" rel="spec:requirement" resource="#server-cors-options"><span property="spec:statement">A <span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> also support the HTTP <code>OPTIONS</code> method [<cite><a class="bibref" href="#bib-rfc9110">RFC9110</a></cite>] such that it can respond appropriately to CORS preflight requests.</span></span></p>
-
                   <p>Careful attention is warranted, especially because of the many edge cases. For instance, <span about="" id="server-cors-enumerate" rel="spec:requirement" resource="#server-cors-enumerate"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">servers</span> <span rel="spec:requirementLevel" resource="spec:SHOULD">SHOULD</span> explicitly enumerate all used response header fields under <code>Access-Control-Expose-Headers</code> rather than resorting to <code>*</code>, which does not cover all cases (such as credentials mode set to <code>include</code>).</span></span> <span about="" id="server-cors-accept-acah" rel="spec:requirement" resource="#server-cors-accept-acah"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:SHOULD">SHOULD</span> also explicitly list <code>Accept</code> under <code>Access-Control-Allow-Headers</code></span></span>, because header field values longer than 128 characters (not uncommon for RDF-based Solid apps) would otherwise be blocked, despite shorter <code>Accept</code> header field values being allowed without explicit mention.</p>
                 </div>
               </section>
             </div>
           </section>
-
           <section id="identity" inlist="" rel="schema:hasPart" resource="#identity">
             <h2 property="schema:name">Identity</h2>
             <div datatype="rdf:HTML" property="schema:description">
@@ -1225,7 +1027,6 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               </section>
             </div>
           </section>
-
           <section id="authentication" inlist="" rel="schema:hasPart" resource="#authentication">
             <h2 property="schema:name">Authentication</h2>
             <div datatype="rdf:HTML" property="schema:description">
@@ -1235,48 +1036,37 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   <p>The Solid OpenID Connect (Solid OIDC) specification defines how resource servers verify the identity of relying parties and end users based on the authentication performed by an OpenID provider [<cite><a class="bibref" href="#bib-solid-oidc">SOLID-OIDC</a></cite>].</p>
                 </div>
               </section>
-
               <section id="webid-tls" inlist="" rel="schema:hasPart" resource="#webid-tls">
                 <h3 property="schema:name">WebID-TLS</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
-
                   <p>The Solid ecosystem initially relied on WebID-TLS for authenticated resource access <a class="bibref" href="#bib-webid-tls">[WEBID-TLS]</a>. The current recommendation for authentication relies on Solid-OIDC (<a href="#solid-oidc">Solid-OIDC</a>). Implementations can use WebID-TLS just as any other mechanism as an additional authentication method.</p>
                 </div>
               </section>
             </div>
           </section>
-
-
           <section id="authorization" inlist="" rel="schema:hasPart" resource="#authorization">
             <h2 property="schema:name">Authorization</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p about="" id="server-wac-acp" rel="spec:requirement" resource="#server-wac-acp"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> conform to either or both Web Access Control [<cite><a class="bibref" href="#bib-wac">WAC</a></cite>] and Access Control Policy [<cite><a class="bibref" href="#bib-acp">ACP</a></cite>] specifications.</span></p>
-
               <section id="web-access-control" inlist="" rel="schema:hasPart" resource="#web-access-control">
                 <h3 property="schema:name">Web Access Control</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>Web Access Control (<abbr title="Web Access Control">WAC</abbr>) is a decentralized cross-domain access control system providing a way for Linked Data systems to set authorization conditions on HTTP resources using the Access Control List (<abbr title="Access Control List">ACL</abbr>) model. Server manages the association between a resource and an ACL resource with the <cite><a href="https://solidproject.org/TR/wac#acl-link-relation" rel="cito:citesAsAuthority"><code>acl</code> Link Relation</a></cite>, and applies the authorization conditions on requested operations. Authorizations are described using the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citesAsAuthority">ACL ontology</a></cite> to express and determine access privileges of a requested resource. Applications can discover authorization rules associated with a given resource, and to control such rules, as directed by an agent.</p>
-
                   <p about="" id="client-wac" rel="spec:requirement" resource="#client-wac"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Client">Clients</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> conform to the Web Access Control specification [<cite><a class="bibref" href="#bib-wac">WAC</a></cite>].</span></p>
-
                   <p>[<a href="https://github.com/solid/specification/issues/171" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/170" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/181" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://gitter.im/solid/specification?at=60101295d8bdab47395e6775" rel="cito:citesAsSourceDocument">Source</a>]</p>
                 </div>
               </section>
-
               <section id="access-control-policy" inlist="" rel="schema:hasPart" resource="#access-control-policy">
                 <h3 property="schema:name">Access Control Policy</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>Access Control Policy (<abbr title="Access Control Policy">ACP</abbr>) is a language for describing, controlling, and granting access to resources. Authorizations are described using the <cite><a href="http://www.w3.org/ns/solid/acp" rel="cito:citesAsAuthority">ACP ontology</a></cite> to express and determine access privileges of a requested resource.</p>
-
                   <p about="" id="client-acp" rel="spec:requirement" resource="#client-acp"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Client">Clients</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> conform to the Access Control Policy specification [<cite><a class="bibref" href="#bib-acp">ACP</a></cite>].</span></p>
-
                   <p>[<a href="https://github.com/solid/specification/issues/447" rel="cito:citesAsSourceDocument">Source</a>]</p>
                 </div>
               </section>
             </div>
           </section>
-
           <section id="http-definitions" inlist="" rel="schema:hasPart" resource="#http-definitions">
             <h2 property="schema:name">HTTP Definitions</h2>
             <div datatype="rdf:HTML" property="schema:description">
@@ -1287,52 +1077,39 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <h4 property="schema:name">The Accept-Put Response Header</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>This specification introduces the <code>Accept-Put</code> header field used to specify the document formats accepted by the server on HTTP PUT requests. It is modelled after the <code>Accept-Patch</code> header defined in [<cite><a class="bibref" href="#bib-rfc5789">RFC5789</a></cite>] and the <code>Accept-Post</code> header defined in [<cite><a class="bibref" href="#bib-ldp">LDP</a></cite>].</p>
-
                       <p>The syntax for <code>Accept-Put</code>, using the ABNF syntax defined in Section 2.1 of [<cite><a class="bibref" href="#bib-rfc9110">RFC9110</a></cite>], is:</p>
-
                       <pre class="def">Accept-Put = "Accept-Put" ":" #media-range</pre>
-
                       <p>The <code>Accept-Put</code> header field specifies a comma-separated list of media ranges (with optional parameters) as defined by [<cite><a class="bibref" href="#bib-rfc9110">RFC9110</a></cite>], Section 12.5.1. The <code>Accept-Put</code> header field, in effect, uses the same syntax as the HTTP <code>Accept</code> header.</p>
-
                       <p>The presence of the <code>Accept-Put</code> header field in response to any method is an implicit indication that <code>PUT</code> is allowed on the resource identified by the target URI. The presence of a specific document format in this header field indicates that that specific format is allowed on <code>PUT</code> requests to the resource identified by the target URI.</p>
-
                       <p><strong>IANA Registration Template:</strong></p>
-
                       <p>The <code>Accept-Put</code> response header field must be added to the permanent registry (see [<cite><a class="bibref" href="#bib-rfc9110">RFC9110</a></cite>]).</p>
-
-                     <dl>
-                      <dt>Header field name</dt>
-                      <dd>Accept-Put</dd>
-                      <dt>Applicable Protocol</dt>
-                      <dd>HTTP</dd>
-                      <dt>Author/Change controller</dt>
-                      <dd>W3C Solid Community Group</dd>
-                      <dt>Specification document</dt>
-                      <dd>This specification</dd>
-                     </dl>
+                      <dl>
+                        <dt>Header field name</dt>
+                        <dd>Accept-Put</dd>
+                        <dt>Applicable Protocol</dt>
+                        <dd>HTTP</dd>
+                        <dt>Author/Change controller</dt>
+                        <dd>W3C Solid Community Group</dd>
+                        <dt>Specification document</dt>
+                        <dd>This specification</dd>
+                      </dl>
                     </div>
                   </section>
                 </div>
               </section>
             </div>
           </section>
-
           <section id="considerations" inlist="" rel="schema:hasPart" resource="#considerations" typeof="spec:Considerations">
             <h2 property="schema:name">Considerations</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>This section details <span about="" rel="spec:consideration"><a href="#security-considerations">security</a>, <a href="#privacy-considerations">privacy</a>, <a href="#accessibility-considerations">accessibility</a> and <a href="#internationalization-considerations">internationalization</a> considerations</span>.</p>
-
               <p>Some of the normative references with this specification point to documents with a <em>Living Standard</em> or <em>Draft</em> status, meaning their contents can still change over time. It is advised to monitor these documents, as such changes might have implications.</p>
-
               <section id="security-considerations" inlist="" rel="schema:hasPart" resource="#security-considerations" typeof="spec:SecurityConsiderations">
                 <h3 property="schema:name">Security Considerations</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
-
                   <p about="" id="robust-protection-reliability-advice" rel="spec:advisement" resource="#robust-protection-reliability-advice"><span property="spec:statement">While this section attempts to highlight a set of security considerations, it is not a complete list. Implementers are <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to seek the advice of security professionals when developing systems that require robust protection and reliability using the technology outlined in this specification.</span></p>
-
                   <p about="" id="http-security-considerations" rel="spec:advisement" resource="#http-security-considerations"><span property="spec:statement">Implementations are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to adhere to the same security considerations that are found in HTTP Semantics [<cite><a class="bibref" href="#bib-rfc9110">RFC9110</a></cite>] and HTTP/1.1 [<cite><a class="bibref" href="#bib-rfc9112">RFC9112</a></cite>].</span></p>
-
                   <p>
                     <span about="" id="http-request-headers-validity" rel="spec:advisement" resource="#http-request-headers-validity"><span property="spec:statement">Servers are <span rel="spec:advisementLevel" resource="spec:StronglyDiscouraged">strongly discouraged</span> from assuming that HTTP request headers’ field values are valid or non-malicious.</span></span>
 
@@ -1346,75 +1123,54 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
 
                     <span about="" id="timing-attacks" rel="spec:advisement" resource="#timing-attacks"><span property="spec:statement">Servers are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to take measures to mitigate potential timing attacks attempting to discover resource existence even if requesting agent has no access to the resource(s).</span></span>
 
-                    <span about="" id="exposing-information" rel="spec:advisement" resource="#exposing-information"><span property="spec:statement">Servers are <span rel="spec:advisementLevel" resource="spec:StronglyDiscouraged">strongly discouraged</span> from exposing information beyond the minimum amount necessary to enable a feature.</span></span>
-                  </p>
-
+                    <span about="" id="exposing-information" rel="spec:advisement" resource="#exposing-information"><span property="spec:statement">Servers are <span rel="spec:advisementLevel" resource="spec:StronglyDiscouraged">strongly discouraged</span> from exposing information beyond the minimum amount necessary to enable a feature.</span></span></p>
                   <p about="" id="protect-sensitive-information" rel="spec:advisement" resource="#protect-sensitive-information"><span property="spec:statement">Servers are <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to implement additional security measures to protect sensitive information found in identity documents, such as trust anchors, identity provider configurations, and client application properties, ensuring that modifications to this information are only made with proper authorization or under controlled conditions, in compliance with relevant regulatory requirements and standards.</span></p>
-
                   <p about="" id="user-agent-assumptions" rel="spec:advisement" resource="#user-agent-assumptions"><span property="spec:statement">Servers are <span rel="spec:advisementLevel" resource="spec:StronglyDiscouraged">strongly discouraged</span> from assuming that the user agent is a regular Web browser, even when requests contain familiar field values in header fields such as <code>User-Agent</code> or <code>Origin</code>. Such an assumption could lead to incorrect conclusions about the security model of the application making the request, since the request might actually come from a non-browser actor unaffected by browser security constraints.</span></p>
-
                   <p>
                     <span about="" id="cors-protections-authorization" rel="spec:advisement" resource="#cors-protections-authorization"><span property="spec:statement">Servers <a href="#cors-server">disable all cross-origin protections</a> in browsers because resource access is governed explicitly by the <a href="#authorization">Authorization</a> component. As such, servers <span rel="spec:advisementLevel" resource="spec:Cannot">cannot</span> rely on browser-based cross-origin protection mechanisms for determining the authentication status or representation of a resource.</span></span>
 
                     <span about="" id="cors-untrusted-origins-ignore-cookies" rel="spec:advisement" resource="#cors-untrusted-origins-ignore-cookies"><span property="spec:statement">In particular, servers are <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to ignore HTTP cookies from untrusted origins.</span></span>
  
-                    <span about="" id="cors-untrusted-origins-minmise-error-leaking" rel="spec:advisement" resource="#cors-untrusted-origins-minmise-error-leaking"><span property="spec:statement">Additional security measures <span rel="spec:advisementLevel" resource="spec:Can">can</span> be taken to prevent metadata in error responses from leaking. For instance, a malicious application could probe multiple servers to check whether the response status code is <code>401</code> or <code>403</code>, or could try to access an error page from an intranet server within the user agent’s private network to extract company names or other data. To mitigate this, when a request from an untrusted <code>Origin</code> arrives, the server may want to set the status code of error responses to <code>404</code> and/or anonymize or censor their contents.</span></span>
-                  </p>
-
+                    <span about="" id="cors-untrusted-origins-minmise-error-leaking" rel="spec:advisement" resource="#cors-untrusted-origins-minmise-error-leaking"><span property="spec:statement">Additional security measures <span rel="spec:advisementLevel" resource="spec:Can">can</span> be taken to prevent metadata in error responses from leaking. For instance, a malicious application could probe multiple servers to check whether the response status code is <code>401</code> or <code>403</code>, or could try to access an error page from an intranet server within the user agent’s private network to extract company names or other data. To mitigate this, when a request from an untrusted <code>Origin</code> arrives, the server may want to set the status code of error responses to <code>404</code> and/or anonymize or censor their contents.</span></span></p>
                   <p about="" id="tls-connections" rel="spec:advisement" resource="#tls-connections"><span property="spec:statement">Servers are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to use TLS connections to protect the contents of requests and responses from eavesdropping and modification by third parties. Unsecured TCP connections without TLS may be used in testing environments or when the server is behind a reverse proxy that terminates a secure connection.</span></p>
                 </div>
               </section>
-
               <section id="privacy-considerations" inlist="" rel="schema:hasPart" resource="#privacy-considerations" typeof="spec:PrivacyConsiderations">
                 <h3 property="schema:name">Privacy Considerations</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
-
                   <p about="" id="privacy-principles" rel="spec:advisement" resource="#privacy-principles"><span property="spec:statement">Privacy is one of the ethical values that underpin the web. To empower people with needs to have strong privacy protections with respect to information flows, implementers as well as developers of specifications in the Solid ecosystem are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to consider privacy-related design choices as per W3C <cite><a href="https://www.w3.org/TR/privacy-principles/" rel="cito:obtainsBackgroundFrom">Privacy Principles</a></cite> [<cite><a class="bibref" href="#bib-privacy-principles">PRIVACY-PRINCIPLES</a></cite>].</span></p>
-
                   <p about="" id="authorization-resources" rel="spec:advisement" resource="#authorization-resources"><span property="spec:statement">Servers are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to use authorization techniques to prevent unwanted access to resources, rather than depending on the relative obscurity of their resource names.</span></p>
-
                   <p about="" id="identifiable-information-error-responses" rel="spec:advisement" resource="#identifiable-information-error-responses"><span property="spec:statement">To prevent leakage of non-resource data, servers are <span rel="spec:advisementLevel" resource="spec:StronglyDiscouraged">strongly discouraged</span> from including identifiable information in error responses.</span></p>
-
                   <p about="" id="webid-profile-privacy" rel="spec:advisement" resource="#webid-profile-privacy"><span property="spec:statement">The decision to include or exclude any information (e.g., storage, inbox) in a WebID Profile served from a Solid storage lies with the Agent controlling the WebID (or the URI owner). A URI allocated to a WebID in a Solid storage does not imply that the WebID is the storage owner. Owners of a WebID hosted from Solid storage are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to consider information related to themselves that could be readable from other resources in the storage, even if that information (e.g., storage, inbox) is not part of the WebID Profile itself (see <a href="#storage-owner-uri-ownership">Storage Owner and URI Ownership</a> and <a href="#self-describing-resources">Self-describing Resources</a>.)</span></p>
-
                   <p about="" id="report-legal-obstacles" rel="spec:advisement" resource="#report-legal-obstacles"><span property="spec:statement">Servers are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to respond with the <code>451</code> status code and, where appropriate, identify the entities implementing the blocking to provide transparency in cases where legal or public policy issues affect server operations, as outlined in <cite><a href="https://www.rfc-editor.org/rfc/rfc7725.html" rel="cito:citesAsAuthority">Report Legal Obstacles</a></cite>, while avoiding the disclosure of sensitive legal or privacy-related details [<cite><a class="bibref" href="#bib-rfc7725">RFC 7725</a></cite>].</span></p>
                 </div>
               </section>
-
               <section id="accessibility-considerations" inlist="" rel="schema:hasPart" resource="#accessibility-considerations" typeof="spec:AccessibilityConsiderations">
                 <h3 property="schema:name">Accessibility Considerations</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
-
                   <p>We acknowledge the diversity of people using the Web, anyone that may create or use information. Our aim is to have inclusive designs for wide range of people and their abilities. This section details general accessibility considerations to take into account for Web content accessibility, accessible applications, authoring tools, and accessible user agents that uses this specification.</p>
-
                   <dl>
                     <dt>Web Content Accessibility</dt>
                     <dd about="" id="web-content-accessibility" rel="spec:advisement" resource="#web-content-accessibility"><span property="spec:statement">As with implementation of any Web standard or protocol, ignoring accessibility issues makes information unusable by a large subset of the population. It is <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to follow accessibility guidelines and standards, such as the <cite><a href="https://www.w3.org/TR/wcag-3.0/" rel="cito:citesAsAuthority">W3C Accessibility Guidelines</a></cite> [<cite><a class="bibref" href="#bib-wcag-3.0" title="W3C Accessibility Guidelines (WCAG) 3.0">WCAG-3.0</a></cite>] to cover an array of recommendations to make content accessible to a wider range of people regardless of any disability, limitation, or sensitivity.</span></dd>
                     <dd about="" id="cognitive-learning-accessibility" rel="spec:advisement" resource="#cognitive-learning-accessibility"><span property="spec:statement">It is also <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to follow the guidance of <cite><a href="https://www.w3.org/TR/coga-usable/" rel="cito:citesAsAuthority">Making Content Usable for People with Cognitive and Learning Disabilities</a></cite> [<cite><a class="bibref" href="#bib-coga-usable">COGA-USABLE</a></cite>].</span></dd>
-
                     <dt>Accessible Applications</dt>
                     <dd about="" id="accessible-rich-internet-applications" rel="spec:advisement" resource="#accessible-rich-internet-applications"><span property="spec:statement">To help assistive technologies to provide a consistent user interface and understanding of the objects, it is <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to follow the <cite><a href="https://www.w3.org/TR/wai-aria-1.2/" rel="cito:citesAsAuthority">Accessible Rich Internet Applications</a></cite> [<cite><a class="bibref" href="#bib-wai-aria-1.2" title="Accessible Rich Internet Applications (WAI-ARIA) 1.2">WAI-ARIA-1.2</a></cite>] recommendations.</span></dd>
                     <dd about="" id="digital-publishing-module" rel="spec:advisement" resource="#digital-publishing-module"><span property="spec:statement">To enable semantic navigation, styling and interactive features in context of digital publishing, it is <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to follow the <cite><a href="https://www.w3.org/TR/dpub-aria-1.1/" rel="cito:citesAsAuthority">Digital Publishing WAI-ARIA Module 1.1</a></cite> [<cite><a class="bibref" href="#bib-dpub-aria-1.1" title="Digital Publishing WAI-ARIA Module 1.1">DPUB-ARIA-1.1</a></cite>].</span></dd>
                     <dd about="" id="graphics-module" rel="spec:advisement" resource="#graphics-module"><span property="spec:statement">To support structured graphics such as charts, graphs, technical drawings and scientific diagrams, to assistive technologies in order improve accessibility of graphics or diagrams through detailed annotations, it is <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to follow the <cite><a href="https://www.w3.org/TR/graphics-aria-1.0/" rel="cito:citesAsAuthority">WAI-ARIA Graphics Module</a></cite> [<cite><a class="bibref" href="#bib-graphics-aria-1.0">GRAPHICS-ARIA-1.0</a></cite>].</span></dd>
-
                     <dt>Authoring Tool Accessibility</dt>
                     <dd about="" id="authoring-tool-accessibility" rel="spec:advisement" resource="#authoring-tool-accessibility"><span property="spec:statement">To contribute to the proliferation of Web content that is accessible to a broad range of people, it is <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to follow the <cite><a href="https://www.w3.org/TR/ATAG20/" rel="cito:citesAsAuthority">Authoring Tool Accessibility Guidelines</a></cite> [<cite><a class="bibref" href="#bib-atag20" title="Authoring Tool Accessibility Guidelines (ATAG) 2.0">ATAG20</a></cite>] in the design of authoring tools to support the production of accessible content through accessible user interfaces.</span></dd>
-
                     <dt>User Agent Accessibility Guidelines</dt>
                     <dd about="" id="user-agent-accessibility-guidelines" rel="spec:advisement" resource="#user-agent-accessibility-guidelines"><span property="spec:statement">To support the general principles for the development of accessible user agents, i.e., <q>any software that retrieves, renders and facilitates end-user interaction with web content</q>, it is <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to follow the <cite><a href="https://www.w3.org/TR/UAAG20/" rel="cito:citesAsAuthority">User Agent Accessibility Guidelines</a></cite> [<cite><a class="bibref" href="#bib-uaag20" title="User Agent Accessibility Guidelines (UAAG) 2.0">UAAG20</a></cite>].</span></dd>
                   </dl>
                 </div>
               </section>
-
               <section id="internationalization-considerations" inlist="" rel="schema:hasPart" resource="#internationalization-considerations" typeof="spec:InternationalizationConsiderations">
                 <h3 property="schema:name">Internationalization Considerations</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
-
                   <p about="" id="internationalization-best-practices" rel="spec:advisement" resource="#internationalization-best-practices"><span property="spec:statement">Adaptability of content and software to the needs of target audiences helps towards accessibility. The mechanisms to cater information and interfaces so that people from any culture, region, or language preference can participate better. Towards this end, it is <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to apply the recommendations and best practices of W3C <cite><a href="https://www.w3.org/International/" rel="cito:obtainsBackgroundFrom">Internationalization Activity</a></cite>.</span> For example, content authors can:</p>
-
                   <ul>
                     <li>include links to navigate to different languages of the content;</li>
                     <li>declare the base language of a document, indicate multiple languages and their directional flow – to help with translations;</li>
@@ -1424,110 +1180,77 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   </ul>
                 </div>
               </section>
-
               <section id="security-privacy-review" inlist="" rel="schema:hasPart" resource="#security-privacy-review" typeof="spec:SelfReviewQuestionnaireSecurityPrivacy">
                 <h3 property="schema:name">Security and Privacy Review</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
-
                   <p>These questions provide an overview of security and privacy considerations for this specification as guided by [<cite><a class="bibref" href="#bib-security-privacy-questionnaire">SECURITY-PRIVACY-QUESTIONNAIRE</a></cite>].</p>
-
                   <dl rel="schema:hasPart">
                     <dt about="#security-privacy-review-purpose" id="security-privacy-review-purpose"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#purpose" rel="cito:repliesTo">What information might this feature expose to Web sites or other parties, and for what purposes is that exposure necessary?</a></dt>
                     <dd about="#security-privacy-review-purpose" datatype="rdf:HTML" property="schema:description">There are no known security impacts of the features in this specification.</dd>
-
                     <dt about="#security-privacy-review-minimum-data" id="security-privacy-review-minimum-data"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#minimum-data" rel="cito:repliesTo">Do features in your specification expose the minimum amount of information necessary to enable their intended uses?</a></dt>
                     <dd about="#security-privacy-review-minimum-data" datatype="rdf:HTML" property="schema:description">Yes.</dd>
-
                     <dt about="#security-privacy-review-personal-data" id="security-privacy-review-personal-data"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#personal-data" rel="cito:repliesTo">How do the features in your specification deal with personal information, personally-identifiable information (PII), or information derived from them?</a></dt>
                     <dd about="#security-privacy-review-personal-data" datatype="rdf:HTML" property="schema:description">Access to a resource is only granted to authorized agents. HTTP request content can contain any data including that which identifies or refers to the user of the application. Relevant permissions for storing personal data that applications include is extended by the client to the server. In this process, applications are encouraged to consider aspects such as designing <cite><a href="https://w3ctag.github.io/design-principles/#trusted-ui" rel="cito:obtainsBackgroundFrom">trustable user interfaces</a></cite> and <cite><a href="https://w3ctag.github.io/design-principles/#identity" rel="cito:obtainsBackgroundFrom">using identity appropriately in context</a></cite>, while also taking into account other relevant factors, including obtaining <cite><a href="https://w3ctag.github.io/design-principles/#consent" rel="cito:obtainsBackgroundFrom">meaningful consent</a></cite> where relevant or necessary.</dd>
-
                     <dt about="#security-privacy-review-sensitive-data" id="security-privacy-review-sensitive-data"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#sensitive-data" rel="cito:repliesTo">How do the features in your specification deal with sensitive information?</a></dt>
                     <dd about="#security-privacy-review-sensitive-data" datatype="rdf:HTML" property="schema:description">The features do not require obtaining or exposing sensitive information.</dd>
-
                     <dt about="#security-privacy-review-persistent-origin-specific-state" id="security-privacy-review-persistent-origin-specific-state"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#persistent-origin-specific-state" rel="cito:repliesTo">Do the features in your specification introduce new state for an origin that persists across browsing sessions?</a></dt>
                     <dd about="#security-privacy-review-persistent-origin-specific-state" datatype="rdf:HTML" property="schema:description">No.</dd>
-
                     <dt about="#security-privacy-review-underlying-platform-data" id="security-privacy-review-underlying-platform-data"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#underlying-platform-data" rel="cito:repliesTo">Do the features in your specification expose information about the underlying platform to origins?</a></dt>
                     <dd about="#security-privacy-review-underlying-platform-data" datatype="rdf:HTML" property="schema:description">No.</dd>
-
                     <dt about="#security-privacy-review-send-to-platform" id="security-privacy-review-send-to-platform"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#send-to-platform" rel="cito:repliesTo">Does this specification allow an origin to send data to the underlying platform?</a></dt>
                     <dd about="#security-privacy-review-send-to-platform" datatype="rdf:HTML" property="schema:description">No. Resources are described within the framework of HTTP, where some kinds of resources are required to be RDF documents. Servers might be able to redirect to other resources, e.g., the <code>https:</code> URLs to <code>file:</code>, <code>data:</code>, or <code>blob:</code> URLs, but no behaviour is defined by this specification.</dd>
-
                     <dt about="#security-privacy-review-sensor-data" id="security-privacy-review-sensor-data"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#sensor-data" rel="cito:repliesTo">Do features in this specification allow an origin access to sensors on a user’s device</a></dt>
                     <dd about="#security-privacy-review-sensor-data" datatype="rdf:HTML" property="schema:description">No.</dd>
-
                     <dt about="#security-privacy-review-other-data" id="security-privacy-review-other-data"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#other-data" rel="cito:repliesTo">What data do the features in this specification expose to an origin? Please also document what data is identical to data exposed by other features, in the same or different contexts.</a></dt>
                     <dd about="#security-privacy-review-other-data" datatype="rdf:HTML" property="schema:description">No detail about another origin’s state is exposed. As the association between a resource and its auxiliary resource is at the discretion of the server, they can be on different origins (<cite><a href="#uri-origin" rel="cito:discusses">URI Origin</a></cite>). When a server participates in the <cite><a href="https://fetch.spec.whatwg.org/#cors-protocol" rel="cito:citesAsAuthority">CORS protocol</a></cite> [<cite><a class="bibref" href="#bib-fetch">FETCH</a></cite>], HTTP requests from different origins may be allowed. This feature does not add any new attack surface above and beyond normal <cite><a href="https://fetch.spec.whatwg.org/#cors-request" rel="cito:citesAsAuthority">CORS requests</a></cite>, so no extra mitigation is deemed necessary.</dd>
-
                     <dt about="#security-privacy-review-string-to-script" id="security-privacy-review-string-to-script"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#string-to-script" rel="cito:repliesTo">Do features in this specification enable new script execution/loading mechanisms?</a></dt>
                     <dd about="#security-privacy-review-string-to-script" datatype="rdf:HTML" property="schema:description">No.</dd>
-
                     <dt about="#security-privacy-review-remote-device" id="security-privacy-review-remote-device"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#remote-device" rel="cito:repliesTo">Do features in this specification allow an origin to access other devices?</a></dt>
                     <dd about="#security-privacy-review-remote-device" datatype="rdf:HTML" property="schema:description">No.</dd>
-
                     <dt about="#security-privacy-review-native-ui" id="security-privacy-review-native-ui"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#native-ui" rel="cito:repliesTo">Do features in this specification allow an origin some measure of control over a user agent’s native UI?</a></dt>
                     <dd about="#security-privacy-review-native-ui" datatype="rdf:HTML" property="schema:description">No.</dd>
-
                     <dt about="#security-privacy-review-temporary-id" id="security-privacy-review-temporary-id"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#temporary-id" rel="cito:repliesTo">What temporary identifiers do the features in this specification create or expose to the web?</a></dt>
                     <dd about="#security-privacy-review-temporary-id" datatype="rdf:HTML" property="schema:description">None.</dd>
-
                     <dt about="#security-privacy-review-first-third-party" id="security-privacy-review-first-third-party"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#first-third-party" rel="cito:repliesTo">How does this specification distinguish between behaviour in first-party and third-party contexts?</a></dt>
                     <dd about="#security-privacy-review-first-third-party" datatype="rdf:HTML" property="schema:description">Inapplicable.</dd>
-
                     <dt about="#security-privacy-review-private-browsing" id="security-privacy-review-private-browsing"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#private-browsing" rel="cito:repliesTo">How do the features in this specification work in the context of a browser’s Private Browsing or Incognito mode?</a></dt>
                     <dd about="#security-privacy-review-private-browsing" datatype="rdf:HTML" property="schema:description">No different than <q>browser’s 'normal' state</q>.</dd>
-
                     <dt about="#security-privacy-review-considerations" id="security-privacy-review-considerations"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#considerations" rel="cito:repliesTo">Does this specification have both "Security Considerations" and "Privacy Considerations" sections?</a></dt>
                     <dd about="#security-privacy-review-considerations" datatype="rdf:HTML" property="schema:description">Yes, in <cite><a href="#security-considerations" rel="rdfs:seeAlso">Security Considerations</a></cite> and <cite><a href="#privacy-considerations" rel="rdfs:seeAlso">Privacy Considerations</a></cite>.</dd>
-
                     <dt about="#security-privacy-review-relaxed-sop" id="security-privacy-review-relaxed-sop"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#relaxed-sop" rel="cito:repliesTo">Do features in your specification enable origins to downgrade default security protections?</a></dt>
                     <dd about="#security-privacy-review-relaxed-sop" datatype="rdf:HTML" property="schema:description">No.</dd>
-
                     <dt about="#security-privacy-review-non-fully-active" id="security-privacy-review-non-fully-active"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#non-fully-active" rel="cito:repliesTo">How does your feature handle non-"fully active" documents?</a></dt>
                     <dd about="#security-privacy-review-non-fully-active" datatype="rdf:HTML" property="schema:description">Inapplicable.</dd>
                   </dl>
                 </div>
               </section>
-
               <section id="societal-impact-review" inlist="" rel="schema:hasPart" resource="#societal-impact-review">
                 <h3 property="schema:name">Societal Impact Review</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
-
                   <p>These questions provide an overview of ethical considerations and societal impact as guided by [<cite><a class="bibref" href="#bib-societal-impact-questionnaire">SOCIETAL-IMPACT-QUESTIONNAIRE</a></cite>].</p>
-
                   <dl rel="schema:hasPart">
                     <dt about="#societal-impact-review-critical-part" id="societal-impact-review-critical-part"><a href="https://w3ctag.github.io/societal-impact-questionnaire/#critical-part" rel="cito:repliesTo">What kinds of activities do you anticipate your specification becoming a critical part of?</a></dt>
                     <dd about="#societal-impact-review-critical-part" datatype="rdf:HTML" property="schema:description">..</dd>
-
                     <dt about="#societal-impact-review-unexpected-use" id="societal-impact-review-unexpected-use"><a href="https://w3ctag.github.io/societal-impact-questionnaire/#unexpected-use" rel="cito:repliesTo">What kinds of activities could your specification become a part of that you are not designing for?</a></dt>
                     <dd about="#societal-impact-review-unexpected-use" datatype="rdf:HTML" property="schema:description">..</dd>
-
                     <dt about="#societal-impact-review-misuse" id="societal-impact-review-misuse"><a href="https://w3ctag.github.io/societal-impact-questionnaire/#misuse" rel="cito:repliesTo">What risks do you see in features of your specification being misused, or used differently from how you intended?</a></dt>
                     <dd about="#societal-impact-review-misuse" datatype="rdf:HTML" property="schema:description">..</dd>
-
                     <dt about="#societal-impact-review-opt-out" id="societal-impact-review-opt-out"><a href="https://w3ctag.github.io/societal-impact-questionnaire/#opt-out" rel="cito:repliesTo">Can users of the Web Platform choose not to use features of your specification?</a></dt>
                     <dd about="#societal-impact-review-opt-out" datatype="rdf:HTML" property="schema:description">..</dd>
-
                     <dt about="#societal-impact-review-excluded" id="societal-impact-review-excluded"><a href="https://w3ctag.github.io/societal-impact-questionnaire/#excluded" rel="cito:repliesTo">What groups of people are excluded from using features of your specification?</a></dt>
                     <dd about="#societal-impact-review-excluded" datatype="rdf:HTML" property="schema:description">..</dd>
-
                     <dt about="#societal-impact-review-minority-groups" id="societal-impact-review-minority-groups"><a href="https://w3ctag.github.io/societal-impact-questionnaire/#minority-groups" rel="cito:repliesTo">What effect may features of your specification have on minority groups?</a></dt>
                     <dd about="#societal-impact-review-minority-groups" datatype="rdf:HTML" property="schema:description">..</dd>
-
                     <dt about="#societal-impact-review-power-dynamics" id="societal-impact-review-power-dynamics"><a href="https://w3ctag.github.io/societal-impact-questionnaire/#power-dynamics" rel="cito:repliesTo">What are the power dynamics at play in implementations of your specification?</a></dt>
                     <dd about="#societal-impact-review-power-dynamics" datatype="rdf:HTML" property="schema:description">..</dd>
-
                     <dt about="#societal-impact-review-centralization" id="societal-impact-review-centralization"><a href="https://w3ctag.github.io/societal-impact-questionnaire/#centralization" rel="cito:repliesTo">What points of centralization does your feature bring to the web platform?</a></dt>
                     <dd about="#societal-impact-review-centralization" datatype="rdf:HTML" property="schema:description">..</dd>
-
                     <dt about="#societal-impact-review-environment" id="societal-impact-review-environment"><a href="https://w3ctag.github.io/societal-impact-questionnaire/#environment" rel="cito:repliesTo">To what extent do the features in your specification impact the natural environment?</a></dt>
                     <dd about="#societal-impact-review-environment" datatype="rdf:HTML" property="schema:description">..</dd>
-
                     <dt about="#societal-impact-review-lifetime" id="societal-impact-review-lifetime"><a href="https://w3ctag.github.io/societal-impact-questionnaire/#lifetime" rel="cito:repliesTo">What is the expected lifetime of your specification feature(s)?</a></dt>
                     <dd about="#societal-impact-review-lifetime" datatype="rdf:HTML" property="schema:description">..</dd>
-
                     <dt about="#societal-impact-review-have-you-completed-the-security-privacy-self-review-questionnaire" id="societal-impact-review-have-you-completed-the-security-privacy-self-review-questionnaire"><a href="https://w3ctag.github.io/societal-impact-questionnaire/#have-you-completed-the-security-privacy-self-review-questionnaire" rel="cito:repliesTo">Have you completed the Security &amp; Privacy Self-review Questionnaire?</a></dt>
                     <dd about="#societal-impact-review-have-you-completed-the-security-privacy-self-review-questionnaire" datatype="rdf:HTML" property="schema:description">Yes, in <cite><a href="#security-considerations" rel="rdfs:seeAlso">Security Considerations</a></cite> and <cite><a href="#privacy-considerations" rel="rdfs:seeAlso">Privacy Considerations</a></cite>.</dd>
                   </dl>
@@ -1535,16 +1258,12 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               </section>
             </div>
           </section>
-
           <section class="appendix" id="changelog" inlist="" rel="schema:hasPart" resource="#changelog" typeof="spec:Changelog">
             <h2 property="schema:name">Changelog</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p><em>This section is non-normative.</em></p>
-
               <p>This document is based on <a href="https://solidproject.org/TR/2024/protocol-20240512">Solid Protocol, Version 0.11.0</a>. A <a href="https://github.com/solid/specification/issues?q=milestone%3A%22Release+0.12.0%22+is%3Aclosed">list of issues addressed</a>, a <a href="https://services.w3.org/htmldiff?doc1=https%3A%2F%2Fsolidproject.org%2FTR%2F2022%2Fprotocol-20221231&amp;doc2=https%3A%2F%2Fsolidproject.org%2FED%2Fprotocol">diff from Solid Protocol, Version 0.11.0 to this latest version</a>, as well as a <a href="https://github.com/solid/specification/commits/main/ED/protocol.html">detailed log of changes</a> are available.</p>
-
               <p>The following summary of <em>editorial</em>, <em>substantive</em>, and <em>registry</em> <span about="" rel="spec:changelog" resource="#changelog">changes</span> are classified using the <cite>W3C Process Document</cite> <cite><a href="https://www.w3.org/policies/process/#correction-classes">Classes of Changes</a></cite> [<cite><a class="bibref" href="#bib-w3c-process">W3C-PROCESS</a></cite>]:</p>
-
               <table id="changes-since-protocol-20240512">
                 <caption>Changes since <a href="https://solidproject.org/TR/2024/protocol-20240512">Solid Protocol, Version 0.11.0</a></caption>
                 <thead>
@@ -1595,30 +1314,30 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   <tr>
                     <td colspan="3">
                       <dl class="change-classes">
-                        <dt>1</dt><dd><a href="https://www.w3.org/policies/process/#class-1">No changes to text content</a></dd>
-                        <dt>2</dt><dd><a href="https://www.w3.org/policies/process/#class-2">Corrections that do not affect conformance</a></dd>
-                        <dt>3</dt><dd><a href="https://www.w3.org/policies/process/#class-3">Corrections that do not add new features</a></dd>
-                        <dt>4</dt><dd><a href="https://www.w3.org/policies/process/#class-4">New features</a></dd>
-                        <dt>5</dt><dd><a href="https://www.w3.org/policies/process/#class-5">Changes to the contents of a registry table</a></dd>
+                        <dt>1</dt>
+                        <dd><a href="https://www.w3.org/policies/process/#class-1">No changes to text content</a></dd>
+                        <dt>2</dt>
+                        <dd><a href="https://www.w3.org/policies/process/#class-2">Corrections that do not affect conformance</a></dd>
+                        <dt>3</dt>
+                        <dd><a href="https://www.w3.org/policies/process/#class-3">Corrections that do not add new features</a></dd>
+                        <dt>4</dt>
+                        <dd><a href="https://www.w3.org/policies/process/#class-4">New features</a></dd>
+                        <dt>5</dt>
+                        <dd><a href="https://www.w3.org/policies/process/#class-5">Changes to the contents of a registry table</a></dd>
                       </dl>
                     </td>
                   </tr>
                 </tfoot>
               </table>
-
               <p id="changes-previous">Changes since earlier versions of the Solid Protocol are detailed in the <a href="https://solidproject.org/TR/2024/protocol-20240512#change-log">changes section of the previous version</a> of the Solid Protocol.</p>
             </div>
           </section>
-
           <section class="appendix" id="acknowledgements" inlist="" rel="schema:hasPart" resource="#acknowledgements">
             <h2 property="schema:name">Acknowledgements</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>Thanks to Tim Berners-Lee for inventing HTTP, URI, and HTML, without which none of this would exist.</p>
-
               <p>The Community Group gratefully acknowledges the work that led to the creation of this specification, and extends sincere appreciation to those individuals that worked on technologies and specifications that deeply influenced our work.</p>
-
               <p>The Community Group would like to thank the following individuals for their useful comments, both large and small, that have led to changes to this specification over the years:</p>
-
               <ul>
                 <li>Aaron Coburn</li>
                 <li>Abdurrahman Ghanem</li>
@@ -1755,7 +1474,6 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               </ul>
             </div>
           </section>
-
           <section class="appendix" id="references" inlist="" rel="schema:hasPart" resource="#references">
             <h2 property="schema:name">References</h2>
             <div datatype="rdf:HTML" property="schema:description">
@@ -1799,7 +1517,8 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <dd><cite><a href="https://datatracker.ietf.org/doc/html/rfc6454" rel="cito:citesAsAuthority">The Web Origin Concept</a></cite>. A. Barth.  IETF. December 2011. Proposed Standard. URL: <a href="https://datatracker.ietf.org/doc/html/rfc6454">https://datatracker.ietf.org/doc/html/rfc6454</a></dd>
                     <dt id="bib-rfc6455">[RFC6455]</dt>
                     <dd><cite><a href="https://datatracker.ietf.org/doc/html/rfc6455" rel="cito:citesAsAuthority">The WebSocket Protocol</a></cite>. I. Fette; A. Melnikov.  IETF. December 2011. Proposed Standard. URL: <a href="https://datatracker.ietf.org/doc/html/rfc6455">https://datatracker.ietf.org/doc/html/rfc6455</a></dd>
-                    <dt id="bib-rfc6570">[RFC6570]</dt><dd><cite><a href="https://www.rfc-editor.org/rfc/rfc6570" rel="cito:citesAsAuthority">URI Template</a></cite>. J. Gregorio; R. Fielding; M. Hadley; M. Nottingham; D. Orchard.  IETF. March 2012. Proposed Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc6570">https://www.rfc-editor.org/rfc/rfc6570</a></dd>
+                    <dt id="bib-rfc6570">[RFC6570]</dt>
+                    <dd><cite><a href="https://www.rfc-editor.org/rfc/rfc6570" rel="cito:citesAsAuthority">URI Template</a></cite>. J. Gregorio; R. Fielding; M. Hadley; M. Nottingham; D. Orchard.  IETF. March 2012. Proposed Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc6570">https://www.rfc-editor.org/rfc/rfc6570</a></dd>
                     <dt id="bib-rfc6892">[RFC6892]</dt>
                     <dd><cite><a href="https://datatracker.ietf.org/doc/html/rfc6892" rel="cito:citesAsAuthority">The 'describes' Link Relation Type</a></cite>. E. Wilde.  IETF. March 2013. Informational. URL: <a href="https://datatracker.ietf.org/doc/html/rfc6892">https://datatracker.ietf.org/doc/html/rfc6892</a></dd>
                     <dt id="bib-rfc8174">[RFC8174]</dt>
@@ -1833,7 +1552,6 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   </dl>
                 </div>
               </section>
-
               <section id="informative-references" inlist="" rel="schema:hasPart" resource="#informative-references">
                 <h3 property="schema:name">Informative References</h3>
                 <div datatype="rdf:HTML" property="schema:description">
@@ -1876,9 +1594,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
         </div>
       </article>
     </main>
-
-    <p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to top">↑</abbr></a></p>
-
+    <p id="back-to-top" role="navigation"><a href="#toc"><abbr title="Back to top">↑</abbr></a></p>
     <script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script>
   </body>
 </html>
