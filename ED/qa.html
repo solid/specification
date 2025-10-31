@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <title>Solid QA</title>
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
-<style>
+    <style>
 main,
 main>article,
 main>article>div {
@@ -280,86 +280,69 @@ margin-bottom:0.5rem;
     <link href="https://dokie.li/media/css/dokieli.css" media="all" rel="stylesheet" />
     <script async="" src="https://dokie.li/scripts/dokieli.js"></script>
   </head>
-
   <body about="" prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# owl: http://www.w3.org/2002/07/owl# xsd: http://www.w3.org/2001/XMLSchema# dcterms: http://purl.org/dc/terms/ skos: http://www.w3.org/2004/02/skos/core# prov: http://www.w3.org/ns/prov# mem: http://mementoweb.org/ns# qb: http://purl.org/linked-data/cube# schema: http://schema.org/ doap: http://usefulinc.com/ns/doap# deo: http://purl.org/spar/deo/ cito: http://purl.org/spar/cito/ as: https://www.w3.org/ns/activitystreams# ldp: http://www.w3.org/ns/ldp# earl: http://www.w3.org/ns/earl# spec: http://www.w3.org/ns/spec# rel: https://www.w3.org/ns/iana/link-relations/relation# odrl: http://www.w3.org/ns/odrl/2/">
     <main>
       <article about="" typeof="schema:Article">
         <div class="head">
           <h1 property="schema:name">Solid QA</h1>
-
           <p id="w3c-state"><a href="https://www.w3.org/standards/types/#reports" rel="rdf:type">Draft Community Group Report</a>, <time datetime="2024-05-12T00:00:00Z">12 May 2024</time></p>
-
           <details open="">
             <summary>More details about this document</summary>
-
             <dl id="document-identifier">
               <dt>This version</dt>
               <dd><a href="https://solidproject.org/ED/qa" rel="owl:sameAs">https://solidproject.org/ED/qa</a></dd>
             </dl>
-
             <dl id="document-latest-version">
               <dt>Latest version</dt>
               <dd><a href="https://solidproject.org/ED/qa" rel="rel:latest-version">https://solidproject.org/ED/qa</a></dd>
             </dl>
-
             <dl id="document-history">
               <dt>History</dt>
               <dd><a href="https://github.com/solid/specification/commits/main/ED/qa.html">Commit history</a></dd>
             </dl>
-
             <dl id="document-editors">
               <dt>Editors</dt>
               <dd data-editor-id="46140" id="Sarven-Capadisli"><span about="" rel="schema:creator schema:editor"><span about="https://csarven.ca/#i" typeof="schema:Person"><a href="https://csarven.ca/" rel="schema:url"><span about="https://csarven.ca/#i" property="schema:name"><span property="schema:givenName">Sarven</span> <span property="schema:familyName">Capadisli</span></span></a></span></span></dd>
             </dl>
-
             <dl id="document-authors">
               <dt>Authors</dt>
               <dd><a about="" href="https://csarven.ca/" rel="schema:author" resource="https://csarven.ca/#i">Sarven Capadisli</a></dd>
               <dd id="Pete-Edwards"><span about="" rel="schema:author"><span about="https://id.inrupt.com/edwardsph" typeof="schema:Person"><a href="https://id.inrupt.com/edwardsph" rel="schema:url"><span about="https://id.inrupt.com/edwardsph" property="schema:name"><span property="schema:givenName">Pete</span> <span property="schema:familyName">Edwards</span></span></a></span></span></dd>
               <dd id="Michiel-de-Jong"><span about="" rel="schema:author"><span about="https://michielbdejong.solidcommunity.net/profile/card#me" typeof="schema:Person"><a href="https://michielbdejong.com/" rel="schema:url"><span about="https://michielbdejong.solidcommunity.net/profile/card#me" property="schema:name"><span property="schema:givenName">Michiel</span> <span property="schema:familyName">de Jong</span></span></a></span></span></dd>
             </dl>
-
             <dl id="document-created">
               <dt>Created</dt>
               <dd><time content="2023-01-23T00:00:00Z" datatype="xsd:dateTime" datetime="2023-01-23T00:00:00Z" property="schema:dateCreated">2023-01-23</time></dd>
             </dl>
-
             <dl id="document-published">
               <dt>Published</dt>
               <dd><time content="2023-01-23T00:00:00Z" datatype="xsd:dateTime" datetime="2023-01-23T00:00:00Z" property="schema:datePublished">2023-01-23</time></dd>
             </dl>
-
             <dl id="document-modified">
               <dt>Modified</dt>
               <dd><time content="2024-05-12T00:00:00Z" datatype="xsd:dateTime" datetime="2024-05-12T00:00:00Z" property="schema:dateModified">2024-05-12</time></dd>
             </dl>
-
             <dl id="document-feedback">
               <dt>Feedback</dt>
               <dd><a href="https://github.com/solid/specification" rel="doap:repository">GitHub solid/specification</a> (<a href="https://github.com/solid/specification/pulls">pull requests</a>, <a href="https://github.com/solid/specification/issues/new">new issue</a>, <a href="https://github.com/solid/specification/issues" rel="doap:bug-database">open issues</a>)</dd>
             </dl>
-
             <dl id="document-language">
               <dt>Language</dt>
               <dd><span content="en" lang="" property="dcterms:language" xml:lang="">English</span></dd>
             </dl>
-
             <dl id="document-type">
               <dt>Document Type</dt>
               <dd><a href="http://usefulinc.com/ns/doap#Specification" rel="rdf:type">Specification</a></dd>
             </dl>
-
             <dl id="document-version">
               <dt>Version</dt>
               <dd><span lang="" property="schema:version" xml:lang="">0.3.0</span></dd>
             </dl>
-
             <dl id="document-in-reply-to">
               <dt>In Reply To</dt>
               <dd><a href="https://solidproject.org/about" rel="as:inReplyTo">About Solid</a></dd>
               <dd><a href="https://github.com/solid/process/blob/main/test-suite-panel-charter.md" rel="as:inReplyTo">Test Suite Panel Charter</a></dd>
             </dl>
-
             <dl id="document-policy">
               <dt>Policy</dt>
               <dd>
@@ -408,12 +391,9 @@ margin-bottom:0.5rem;
               </dd>
             </dl>
           </details>
-
           <p class="copyright" rel="dcterms:rights" resource="#document-rights"><span property="dcterms:description"><a href="https://www.w3.org/policies/#copyright">Copyright</a> © 2023–2024 the Contributors to QA, Version 0.3.0, published by the <a about="" href="https://www.w3.org/groups/cg/solid/" rel="schema:publisher"><span property="schema:name">Solid Community Group</span></a> under the <a about="" href="https://www.w3.org/community/about/agreements/cla/" rel="schema:license">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available.</span></p>
-
           <hr title="Separator for header" />
         </div>
-
         <div datatype="rdf:HTML" id="content" property="schema:description">
           <section id="abstract"><a class="self-link" href="#abstract"></a>
             <h2>Abstract</h2>
@@ -428,19 +408,14 @@ margin-bottom:0.5rem;
               <p>This report was published by the <a href="https://www.w3.org/groups/cg/solid/">Solid Community Group</a>. It is not a W3C Standard nor is it on the W3C Standards Track. Please note that under the <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a> there is a limited opt-out and other conditions apply. Learn more about <a href="https://www.w3.org/community/">W3C Community and Business Groups</a>.</p>
             </div>
           </section>
-
           <nav id="toc">
             <h2>Table of Contents</h2>
             <div>
               <ol class="toc">
+                <li class="tocline"><a class="tocxref" href="#abstract"><bdi class="secno"></bdi> <span>Abstract</span></a></li>
+                <li class="tocline"><a class="tocxref" href="#sotd"><bdi class="secno"></bdi> <span>Status of This Document</span></a></li>
                 <li class="tocline">
-                  <a class="tocxref" href="#abstract"><bdi class="secno"></bdi> <span>Abstract</span></a>
-                </li>
-                <li class="tocline">
-                  <a class="tocxref" href="#sotd"><bdi class="secno"></bdi> <span>Status of This Document</span></a>
-                </li>
-                <li class="tocline">
-                  <a class="tocxref" href="#introduction"><bdi class="secno">1.</bdi> <span>Introduction</span></a>
+                  <p><a class="tocxref" href="#introduction"><bdi class="secno">1.</bdi> <span>Introduction</span></a></p>
                   <ol>
                     <li class="tocline"><a class="tocxref" href="#terminology"><bdi class="secno">1.1</bdi> <span>Terminology</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#namespaces"><bdi class="secno">1.2</bdi> <span>Namespaces</span></a></li>
@@ -448,30 +423,22 @@ margin-bottom:0.5rem;
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#conformance"><bdi class="secno">2.</bdi> <span>Conformance</span></a>
+                  <p><a class="tocxref" href="#conformance"><bdi class="secno">2.</bdi> <span>Conformance</span></a></p>
                   <ol>
-                    <li class="tocline">
-                      <a class="tocxref" href="#normative-informative-content"><bdi class="secno">2.1</bdi> <span>Normative and Informative Content</span></a>
-                    </li>
-                    <li class="tocline">
-                      <a class="tocxref" href="#specification-category"><bdi class="secno">2.2</bdi> <span>Specification Category</span></a>
-                    </li>
-                    <li class="tocline">
-                      <a class="tocxref" href="#classes-of-products"><bdi class="secno">2.3</bdi> <span>Classes of Products</span></a>
-                    </li>
-                    <li class="tocline">
-                      <a class="tocxref" href="#interoperability"><bdi class="secno">2.4</bdi> <span>Interoperability</span></a>
-                    </li>
+                    <li class="tocline"><a class="tocxref" href="#normative-informative-content"><bdi class="secno">2.1</bdi> <span>Normative and Informative Content</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#specification-category"><bdi class="secno">2.2</bdi> <span>Specification Category</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#classes-of-products"><bdi class="secno">2.3</bdi> <span>Classes of Products</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#interoperability"><bdi class="secno">2.4</bdi> <span>Interoperability</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#technical-report"><bdi class="secno">3.</bdi> <span>Technical Report</span></a>
+                  <p><a class="tocxref" href="#technical-report"><bdi class="secno">3.</bdi> <span>Technical Report</span></a></p>
                   <ol>
                     <li class="tocline"><a class="tocxref" href="#technical-report-description"><bdi class="secno">3.1</bdi> <span>Technical Report Description</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#test-report"><bdi class="secno">4.</bdi> <span>Test Report</span></a>
+                  <p><a class="tocxref" href="#test-report"><bdi class="secno">4.</bdi> <span>Test Report</span></a></p>
                   <ol>
                     <li class="tocline"><a class="tocxref" href="#test-report-description"><bdi class="secno">4.1</bdi> <span>Test Report Description</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#test-case-description"><bdi class="secno">4.2</bdi> <span>Test Case Description</span></a></li>
@@ -482,21 +449,21 @@ margin-bottom:0.5rem;
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#test-suite"><bdi class="secno">5.</bdi> <span>Test Suite</span></a>
+                  <p><a class="tocxref" href="#test-suite"><bdi class="secno">5.</bdi> <span>Test Suite</span></a></p>
                   <ol>
                     <li class="tocline"><a class="tocxref" href="#test-suite-description"><bdi class="secno">5.1</bdi> <span>Test Suite Description</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#test-environment"><bdi class="secno">5.1</bdi> <span>Test Environment</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#test-assessment"><bdi class="secno">6.</bdi> <span>Test Assessment</span></a>
+                  <p><a class="tocxref" href="#test-assessment"><bdi class="secno">6.</bdi> <span>Test Assessment</span></a></p>
                   <ol>
                     <li class="tocline"><a class="tocxref" href="#test-review-policy"><bdi class="secno">6.1</bdi> <span>Test Review Policy</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#test-review-criteria"><bdi class="secno">6.1</bdi> <span>Test Review Criteria</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#considerations"><bdi class="secno">7.</bdi> <span>Considerations</span></a>
+                  <p><a class="tocxref" href="#considerations"><bdi class="secno">7.</bdi> <span>Considerations</span></a></p>
                   <ol>
                     <li class="tocline"><a class="tocxref" href="#security-considerations"><bdi class="secno">8.1</bdi> <span>Security Considerations</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#privacy-considerations"><bdi class="secno">8.2</bdi> <span>Privacy Considerations</span></a></li>
@@ -505,14 +472,10 @@ margin-bottom:0.5rem;
                     <li class="tocline"><a class="tocxref" href="#security-privacy-review"><bdi class="secno">8.5</bdi> <span>Security and Privacy Review</span></a></li>
                   </ol>
                 </li>
+                <li class="tocline"><a class="tocxref" href="#changelog"><bdi class="secno">A.</bdi> <span>Changelog</span></a></li>
+                <li class="tocline"><a class="tocxref" href="#acknowledgements"><bdi class="secno">B.</bdi> <span>Acknowledgements</span></a></li>
                 <li class="tocline">
-                  <a class="tocxref" href="#changelog"><bdi class="secno">A.</bdi> <span>Changelog</span></a>
-                </li>
-                <li class="tocline">
-                  <a class="tocxref" href="#acknowledgements"><bdi class="secno">B.</bdi> <span>Acknowledgements</span></a>
-                </li>
-                <li class="tocline">
-                  <a class="tocxref" href="#references"><bdi class="secno">C.</bdi> <span>References</span></a>
+                  <p><a class="tocxref" href="#references"><bdi class="secno">C.</bdi> <span>References</span></a></p>
                   <ol>
                     <li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">C.1</bdi> <span>Normative References</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">C.2</bdi> <span>Informative References</span></a></li>
@@ -532,18 +495,14 @@ margin-bottom:0.5rem;
               <p id="motivation" rel="schema:hasPart" resource="#motivation" typeof="deo:Motivation"><a class="self-link" href="#motivation"></a><span datatype="rdf:HTML" property="schema:description">Writing tests in a way that allows implementations to conform to the requirements of a technical report gives Solid projects confidence that their software is compatible with other implementations. This in turn gives authors of technical reports and software implementers confidence that they can rely on the Solid ecosystem to deliver on the promise of interoperability based on open standards. Implementation and interoperability experience can be verified by reporting on implementations passing open test suites.</span></p>
 
               <p>The goal of this document is to describe the Solid Quality Assurance (<abbr title="Quality Assurance">QA</abbr>) policy, processes, and procedures. The document details the requirements and advisements towards the publication and consumption of Solid technical reports, test suites, test cases, test assessments, and test reports to:</p>
-
               <ul>
                 <li>improve the quality of technical reports at critical stages of their development;</li>
                 <li>promote wide deployment and proper implementation of technical reports with open implementation reports;</li>
                 <li>help produce quality test suites;</li>
                 <li>advance the development and assessment of test cases.</li>
               </ul>
-
               <p>This document is influenced by the W3C Quality Assurance activity work encompassing W3C processes, specification authoring and publishing, and quality assurance, including: <cite><a href="https://www.w3.org/policies/process/" rel="cito:citesAsAuthority">W3C Process Document</a></cite>, <cite><a href="https://www.w3.org/TR/spec-variability/" rel="cito:citesAsAuthority">Variability in Specifications</a></cite>, <cite><a href="https://www.w3.org/TR/qaframe-spec/" rel="cito:citesAsAuthority">QA Framework: Specification Guidelines</a></cite>, <cite><a href="https://www.w3.org/TR/qa-handbook/" rel="cito:citesAsAuthority">The QA Handbook</a></cite>, <cite><a href="https://www.w3.org/TR/test-metadata/" rel="cito:citesAsAuthority">Test Metadata</a></cite>, <cite><a href="https://www.w3.org/TR/EARL10-Schema/" rel="cito:citesAsAuthority">Evaluation and Report Language (EARL) 1.0 Schema</a></cite>.</p>
-
               <p>This specification is for:</p>
-
               <ul about="" rel="schema:audience">
                 <li><a href="http://data.europa.eu/esco/occupation/a28dff76-74df-46ee-929f-d1fffbb63cd7">Quality assurance managers</a></li>
                 <li><a href="http://data.europa.eu/esco/occupation/a7c1d23d-aeca-4bee-9a08-5993ed98b135">System developers</a></li>
@@ -554,11 +513,8 @@ margin-bottom:0.5rem;
                 <h3 property="schema:name skos:prefLabel">Terminology</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
-
                   <p property="skos:definition">The Solid QA defines the following terms. These terms are referenced throughout this document.</p>
-
-                  <span rel="skos:hasTopConcept"><span resource="#uniform-resource-identifier"></span></span>
-
+                  <p><span rel="skos:hasTopConcept"><span resource="#uniform-resource-identifier"></span></span></p>
                   <dl>
                     <dt about="#uniform-resource-identifier" property="skos:prefLabel" typeof="skos:Concept"><dfn id="uniform-resource-identifier"><a class="self-link" href="#uniform-resource-identifier"></a>URI</dfn></dt>
                     <dd about="#uniform-resource-identifier" property="skos:definition">A <dfn>Uniform Resource Identifier</dfn> (<abbr title="Uniform Resource Identifier">URI</abbr>) provides the means for identifying resources [<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>].</dd>
@@ -647,9 +603,7 @@ margin-bottom:0.5rem;
                 <h3 property="schema:name">Normative and Informative Content</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p id="normative-informative-sections"><a class="self-link" href="#normative-informative-sections"></a>All assertions, diagrams, examples, and notes are non-normative, as are all sections explicitly marked non-normative. Everything else is normative.</p>
-
                   <p id="requirement-levels"><a class="self-link" href="#requirement-levels"></a>The key words “<span rel="dcterms:subject" resource="spec:MUST">MUST</span>”, “<span rel="dcterms:subject" resource="spec:MUSTNOT">MUST NOT</span>”, “<span rel="dcterms:subject" resource="spec:SHOULD">SHOULD</span>”, and “<span rel="dcterms:subject" resource="spec:MAY">MAY</span>” are to be interpreted as described in <a href="https://www.rfc-editor.org/info/bcp14">BCP 14</a> [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>] [<cite><a class="bibref" href="#bib-rfc8174">RFC8174</a></cite>] when, and only when, they appear in all capitals, as shown here.</p>
-
                   <p id="advisement-levels"><a class="self-link" href="#advisement-levels"></a>The key words “<span rel="dcterms:subject" resource="spec:StronglyEncouraged">strongly encouraged</span>”, “<span rel="dcterms:subject" resource="spec:StronglyDiscouraged">strongly discouraged</span>”, “<span rel="dcterms:subject" resource="spec:Encouraged">encouraged</span>", “<span rel="dcterms:subject" resource="spec:Discouraged">discouraged</span>", “<span rel="dcterms:subject" resource="spec:Can">can</span>", “<span rel="dcterms:subject" resource="spec:Cannot">cannot</span>”, “<span rel="dcterms:subject" resource="spec:Could">could</span>”, “<span rel="dcterms:subject" resource="spec:CouldNot">could not</span>”, “<span rel="dcterms:subject" resource="spec:Might">might</span>”, and “<span rel="dcterms:subject" resource="spec:MightNot">might not</span>” are used for non-normative content.</p>
                 </div>
               </section>
@@ -665,7 +619,6 @@ margin-bottom:0.5rem;
                 <h3 property="schema:name skos:prefLabel">Classes of Products</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p property="skos:definition">The <span about="" rel="spec:classesOfProducts" resource="#classes-of-products">Solid QA</span> identifies the following <cite><a href="https://www.w3.org/TR/qaframe-spec/#cop-def" rel="dcterms:subject" resource="spec:ClassesOfProducts">Classes of Products</a></cite> for conforming implementations. These products are referenced throughout this specification.</p>
-
                   <dl rel="skos:hasTopConcept">
                     <dt about="#TechnicalReport" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Content" typeof="skos:Concept"><dfn id="TechnicalReport"><a class="self-link" href="#TechnicalReport"></a>Technical Report</dfn></dt>
                     <dd about="#TechnicalReport" property="skos:definition">A <a href="#TechnicalReport">Technical Report</a> is a document outlining recommendations and the level of conformance that various classes of products, processes, or services can achieve [<cite><a class="bibref" href="#bib-qa-glossary">QA GLOSSARY</a></cite>].</dd>
@@ -698,20 +651,16 @@ margin-bottom:0.5rem;
                 <h3 property="schema:name">Technical Report Description</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>The <cite><a href="https://github.com/w3c-cg/solid/blob/main/CONTRIBUTING.md">Solid Technical Reports Contributing Guide</a></cite> provides the recommendations for publishing technical reports following the <cite><a href="https://www.w3.org/DesignIssues/LinkedData">Linked Data</a></cite> design principles, where significant units of information, such as concepts and requirements, are given an identifier, and described with a <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-concrete-rdf-syntax">concrete RDF syntax</a>. The <cite><a href="http://www.w3.org/ns/spec">Spec Terms</a></cite> vocabulary provides classes and properties that can be used to describe any significant unit of information in technical reports, as well as supporting the description of test cases and test reports. The <cite><a href="https://www.w3.org/TR/skos-reference/">SKOS</a></cite> data model can be used to identify, describe, and link concepts and definitions across technical reports.</p>
-
                   <p class="issue">Add other requirements from Spec Terms and SKOS.</p>
-
                   <ul>
                     <li>One <code>spec:testSuite</code> property to refer to a <a href="#test-suite-description">test suite</a>.</li>
                     <li>One <code>spec:implementationReport</code> property to refer to an <a href="#implementation-report-description">implementation report</a>.</li>
                   </ul>
-
                   <p class="issue">Defining URI Templates for implementation report, e.g., <code>https://solidproject.org/test-reports/{technical-report-short-name}/summary</code>, and test report, e.g., <code>https://solidproject.org/test-reports/{technical-report-short-name}/{uuid}</code>.</p>
                 </div>
               </section>
             </div>
           </section>
-
           <section id="test-report" inlist="" rel="schema:hasPart" resource="#test-report"><a class="self-link" href="#test-report"></a>
             <h2 property="schema:name">Test Report</h2>
             <div datatype="rdf:HTML" property="schema:description">
@@ -721,11 +670,8 @@ margin-bottom:0.5rem;
                 <h3 property="schema:name">Test Report Description</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p class="issue"><a href="https://github.com/solid/test-suite-panel/issues/5">solid/test-suite-panel/issues/5</a></p>
-
                   <p>The Test Report Description includes information pertaining to conformance and interoperability of an implementation.</p>
-
                   <p>Document metadata:</p>
-
                   <ul>
                     <li>One <code>dcterms:license</code> property to indicate the license of the report.</li>
                     <li>One <code>dcterms:created</code> property to indicate the date and time of the report.</li>
@@ -735,17 +681,12 @@ margin-bottom:0.5rem;
                     <li>One approved by (TBD) property to indicate the entity that accepted the report for publication.</li>
                     <li>Zero or one <code>dcterms:description</code> property to include additional notes about the report from the submitter.</li>
                   </ul>
-
                   <p class="issue" about="" id="test-report-additional-annotation" rel="spec:advisement" resource="#test-report-additional-annotation"><a class="self-link" href="#test-report-additional-annotation"></a><span property="spec:statement">Additional notes about the report <span rel="spec:advisementLevel" resource="spec:Can">can</span> be expressed as a Web Annotation (<code>oa:Annotation</code>).</span></p>
-
                   <p class="issue" about="" id="test-report-activity-provenance" rel="spec:advisement" resource="#test-report-activity-provenance"><a class="self-link" href="#test-report-activity-provenance"></a><span property="spec:statement">Agent (person or software) that had a role in the production of the test report <span rel="spec:advisementLevel" resource="spec:Can">can</span> be expressed as a PROV-O activity association (<code>prov:wasAssociatedWith</code>).</span></p>
 
                   <p class="issue">For publication status, some TRs use <code>pso:holdsStatusInTime</code> with <code>pso:withStatus</code> - is there something from a common vocabulary? What visual cues should be required to indicate publication status at a glance?</p>
-
                   <p>Implementations that are software projects MUST be described with the <cite><a href="http://usefulinc.com/ns/doap" rel="cito:citesAsAuthority">Description of a Project</a></cite> vocabulary [<cite><a class="bibref" href="#bib-doap">DOAP</a></cite>].</p>
-
                   <p>Description of a project:</p>
-
                   <ul>
                     <li>One <code>rdf:type</code> property whose object is <code>doap:Project</code>.</li>
                     <li>Zero or one <code>doap:name</code> property to state the name of the project.</li>
@@ -753,39 +694,28 @@ margin-bottom:0.5rem;
                     <li>Zero or one <code>doap:release</code> property to indicate the version information of a project release.</li>
                     <li>Zero or one <code>doap:maintainer</code> property to refer to the maintainers of a project.</li>
                   </ul>
-
                   <div class="note" id="test-report-description-doap" inlist="" rel="schema:hasPart" resource="#test-report-description-doap"><a class="self-link" href="#test-report-description-doap"></a>
                     <h4 property="schema:name"><span>Note</span>: Test Report Description: Description of a Project</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>The subject of the <code>doap:Project</code> for Test Report Description coincides with the object of the <code>earl:subject</code> in <a href="#test-assertion-description">Test Assertion Description</a>.</p>
-
                       <p about="" id="project-versioned-uri" rel="spec:advisement" resource="#project-versioned-uri"><span property="spec:statement">To help distinguish project releases in test reports, it is <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to use versioned URIs for projects.</span></p>
-
                       <p about="" id="project-self-describing-document" rel="spec:advisement" resource="#project-self-describing-document"><span property="spec:statement">While some information about the project can be accompanied with the test report, it is <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> that projects are <a href="https://www.w3.org/2001/tag/doc/selfDescribingDocuments" rel="cito:citesAsInformation">self-describing documents</a>.</span></p>
                     </div>
                   </div>
-
                   <p class="issue">What should be the recommendation for implementations that are not software projects? Perhaps equivalent to a top concept of <code>spec:ClassesOfProducts</code>?</p>
-
                   <p>Test assertions:</p>
-
                   <p>Test reports MUST incorporate additional information about test criteria indicating test authors and reviewers, review status, version of the test criterion, software and setup used to run the tests, provenance and coverage and test suite (see also <a href="#test-assertion-description">Test Assertion Description</a>).</p>
-
                   <p>Test reports with approved status MUST NOT include assertions related to test criteria with rejected review status (<code>td:rejected</code>).</p>
-
                   <div class="note" id="test-report-description-test-assertion" inlist="" rel="schema:hasPart" resource="#test-report-description-test-assertion"><a class="self-link" href="#test-report-description-test-assertion"></a>
                     <h4 property="schema:name"><span>Note</span>: Test Report Description: Test Assertion</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p about="" id="test-criteria-versioned-uri" rel="spec:advisement" resource="#test-criteria-versioned-uri"><span property="spec:statement">To help distinguish test criteria, it is <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to use versioned URIs for criteria.</span></p>
-
                       <p about="" id="test-criterion-review-assessing-motivation" rel="spec:advisement" resource="#test-criterion-review-assessing-motivation"><span property="spec:statement">To convey association between a test criterion and its reviews, it is <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to use the <a href="https://www.w3.org/TR/annotation-vocab/">Web Annotation Vocabulary</a> with the <code>oa:assessing</code> motivation.</span></p>
                     </div>
                   </div>
-
                   <p class="issue">Should <a href="https://www.w3.org/TR/annotation-vocab/">Web Annotation Vocabulary</a> be required to convey the relationship between test criteria and reviews?</p>
                 </div>
               </section>
-
               <section id="test-case-description" inlist="" rel="schema:hasPart" resource="#test-case-description"><a class="self-link" href="#test-case-description"></a>
                 <h3 property="schema:name">Test Case Description</h3>
                 <div datatype="rdf:HTML" property="schema:description">
@@ -801,14 +731,10 @@ margin-bottom:0.5rem;
                     <li>Zero or one <code>dcterms:description</code> property to provide a description of the nature and characteristic of the test.</li>
                     <li>One or more <code>dcterms:contributor</code>s to indicate individuals or organisations that contributed to this test.</li>
                   </ul>
-
                   <p class="issue"><code>spec:testScript</code> may need to be <code>rdfs:subPropertyOf</code> <code>td:input</code> or <code>td:informationResourceInput</code>, or use those properties instead.</p>
-
-                  <p class="note" about="" id="test-report-requirement-versioned-uri" rel="spec:advisement" resource="#test-report-requirement-versioned-uri"><span property="spec:statement">When referencing a requirement with <code>spec:requirementReference</code>, it is <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to use versioned URLs of technical reports where available with preference to URLs covered by a persistence policy.</span></p>
-
+                  <p about="" class="note" id="test-report-requirement-versioned-uri" rel="spec:advisement" resource="#test-report-requirement-versioned-uri"><span property="spec:statement">When referencing a requirement with <code>spec:requirementReference</code>, it is <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to use versioned URLs of technical reports where available with preference to URLs covered by a persistence policy.</span></p>
                   <figure class="example listing" id="test-case-example" rel="schema:hasPart" resource="#test-case-example">
                     <figcaption property="schema:name"><span>Example</span>: <span>Test Case</span></figcaption><a class="self-link" href="#test-case-example"></a>
-
                     <pre property="schema:description"><code>@prefix sopr: &lt;https://solidproject.org/TR/2022/protocol-20221231#&gt; .</code>
 <code></code>
 <code>:server-content-type-reject</code>
@@ -817,53 +743,39 @@ margin-bottom:0.5rem;
 <code>  td:reviewStatus td:unreviewed ;</code>
 <code>  td:expectedResults :server-content-type-expected-result ;</code>
 <code>  dcterms:contributor &lt;https://csarven.ca/#i&gt; .</code></pre>
-
                     <p>A test case for <a href="https://solidproject.org/TR/2022/protocol-20221231#server-content-type">server rejecting requests</a> with reference to expected results.</p>
                   </figure>
                 </div>
               </section>
-
               <section id="test-assertion-description" inlist="" rel="schema:hasPart" resource="#test-assertion-description"><a class="self-link" href="#test-assertion-description"></a>
                 <h3 property="schema:name">Test Assertion Description</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>A Test Assertion indicates measurable or testable statements of behaviour, action, or condition derived from specification's requirements. A test assertion is stated by an entity carrying out the test; indicating contextual result of a test; with a particular process; based on a criterion; that is used to evaluate an implementation.</p>
-
                   <p>Test assertions MUST use the <cite><a href="https://www.w3.org/TR/EARL10-Schema/" rel="cito:citesAsAuthority">Evaluation and Report Language 1.0 Schema</a></cite> [<cite><a class="bibref" href="#bib-earl10-Schema">EARL10-Schema</a></cite>].</p>
-
                   <p about="" id="test-suite-implementation-earl" rel="spec:advisement" resource="#test-suite-implementation-earl"><span property="spec:statement">Test Suite implementers are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to follow the <cite><a href="https://www.w3.org/TR/EARL10-Guide/" rel="cito:citesAsPotentialSolution">Developer Guide for Evaluation and Report Language 1.0</a></cite> [<cite><a class="bibref" href="#bib-earl10-guide">EARL10-Guide</a></cite>].</span></p>
                 </div>
               </section>
-
               <section id="test-report-notification" inlist="" rel="schema:hasPart" resource="#test-report-notification"><a class="self-link" href="#test-report-notification"></a>
                 <h3 property="schema:name">Test Report Notification</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>GitHub repo/directory and/or report sent as an LDN (TBD: either including or requesting maintainer’s approval.)</p>
-
                   <p class="issue">Should <a href="https://www.w3.org/TR/annotation-vocab/">Activity Vocabulary</a> and <a href="https://www.w3.org/TR/ldn/">Linked Data Notifications</a> be one of the ways to submit test reports as a notification?</p>
-
                   <p>Publication of reports can be pre-authorized for approved tests.</p>
                 </div>
               </section>
-
               <section id="project-maintainer-input-review" inlist="" rel="schema:hasPart" resource="#project-maintainer-input-review"><a class="self-link" href="#project-maintainer-input-review"></a>
                 <h3 property="schema:name">Project Maintainer Input and Review</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>Project maintainer will be notified to review the publication of a report, and if no objection within a certain time (TBD), it can be approved for publication by the submitter (or test suite panel). During the review process, maintainers will be given the opportunity to provide explanatory notes to go with the report.</p>
                 </div>
               </section>
-
               <section id="implementation-report-description" inlist="" rel="schema:hasPart" resource="#implementation-report-description"><a class="self-link" href="#implementation-report-description"></a>
                 <h3 property="schema:name">Implementation Report Description</h3>
-
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>The Implementation Report Description refers to the criteria and resolutions set forth by the Group publishing a Technical Report to demonstrate implementation experience; refers to test reports; provides a summary.</p>
-
                   <p>Document metadata:</p>
-
                   <p class="issue">Similar to Test Report Description document metadata. Reuse or redefine?</p>
-
                   <p>Referencing individual test reports:</p>
-
                   <ul>
                     <li>One or more <code>spec:testReport</code>s to refer to <a href="#test-report-description">test reports</a>.</li>
                   </ul>
@@ -871,31 +783,25 @@ margin-bottom:0.5rem;
               </section>
             </div>
           </section>
-
           <section id="test-suite" inlist="" rel="schema:hasPart" resource="#test-suite"><a class="self-link" href="#test-suite"></a>
             <h2 property="schema:name">Test Suite</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>This section describes the requirements for test suite and test metadata.</p>
-
               <p class="issue"><a href="https://github.com/solid/test-suite-panel/issues/6">solid/test-suite-panel/issues/6</a></p>
-
               <section id="test-suite-description" inlist="" rel="schema:hasPart" resource="#test-suite-description"><a class="self-link" href="#test-suite-description"></a>
                 <h3 property="schema:name">Test Suite Description</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>Description of test suites (e.g., license, date, written by, reviewed by), the software (e.g., repository, version, maintainers), setup (e.g., platform, configuration), provenance (e.g., activity, entity, agent), input about environment (e.g., combination of subject and setup). Meet the requirements of reporting (issue 5) and test review checklist (issue 7).</p>
-
                   <ul>
                     <li>One <code>rdf:type</code> property whose object is <code>spec:TestSuite</code> (TBD).</li>
                     <li>One or more <code>spec:testCase</code>s to refer to <a href="#test-case-description">test cases</a>.</li>
                   </ul>
                 </div>
               </section>
-
               <section id="test-environment" inlist="" rel="schema:hasPart" resource="#test-environment"><a class="self-link" href="#test-environment"></a>
                 <h3 property="schema:name">Test Environment</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>Documentation on:</p>
-
                   <ul>
                     <li>how to set up a test environment, how to build the test system (if necessary).</li>
                     <li>how to write tests that are in general, short, self-contained, and maybe provide best practices and guidelines.</li>
@@ -903,28 +809,19 @@ margin-bottom:0.5rem;
                   </ul>
                 </div>
               </section>
-
               <p>Do preliminary checks against multiple implementations to catch anomalies or to tease out issues with the tests themselves. Tests authors and specification authors should coordinate regarding the test design.</p>
-
               <p>PR the updated test, mark what it replaces, mark it as to be reviewed, request reviews.</p>
-
               <p>Notify specification authors and editors (and other group of contributors) about new tests and request reviews, e.g., tagging on GitHub.</p>
-
               <p>Tagging the project maintainer (issue 5).</p>
-
               <p>Provide information indicating to what extent the test suite completely or proportionally covers the specification it aims to support (issue 5).</p>
-
               <p>Link to project maintainer’s WebID or GitHub account.</p>
             </div>
           </section>
-
           <section id="test-assessment" inlist="" rel="schema:hasPart" resource="#test-assessment"><a class="self-link" href="#test-assessment"></a>
             <h2 property="schema:name">Test Assessment</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>This section describes the process for authoring and reviewing tests.</p>
-
               <p class="issue"><a href="https://github.com/solid/test-suite-panel/issues/7">solid/test-suite-panel/issues/7</a></p>
-
               <section id="test-review-policy" inlist="" rel="schema:hasPart" resource="#test-review-policy"><a class="self-link" href="#test-review-policy"></a>
                 <h3 property="schema:name">Test Review Policy</h3>
                 <div datatype="rdf:HTML" property="schema:description">
@@ -934,7 +831,6 @@ margin-bottom:0.5rem;
                   </ul>
                 </div>
               </section>
-
               <section id="test-review-criteria" inlist="" rel="schema:hasPart" resource="#test-review-criteria"><a class="self-link" href="#test-review-criteria"></a>
                 <h3 property="schema:name">Test Review Criteria</h3>
                 <div datatype="rdf:HTML" property="schema:description">
@@ -960,101 +856,75 @@ margin-bottom:0.5rem;
               </section>
             </div>
           </section>
-
           <section id="considerations" inlist="" rel="schema:hasPart" resource="#considerations"><a class="self-link" href="#considerations"></a>
             <h2 property="schema:name">Considerations</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>This section details security, privacy, accessibility and internationalization considerations.</p>
-
               <p>Some of the normative references with this specification point to documents with a <em>Living Standard</em> or <em>Draft</em> status, meaning their contents can still change over time. It is advised to monitor these documents, as such changes might have implications.</p>
-
               <section id="security-considerations" inlist="" rel="schema:hasPart" resource="#security-considerations"><a class="self-link" href="#security-considerations"></a>
                 <h3 property="schema:name">Security Considerations</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
                 </div>
               </section>
-
               <section id="privacy-considerations" inlist="" rel="schema:hasPart" resource="#privacy-considerations"><a class="self-link" href="#privacy-considerations"></a>
                 <h3 property="schema:name">Privacy Considerations</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
                 </div>
               </section>
-
               <section id="accessibility-considerations" inlist="" rel="schema:hasPart" resource="#accessibility-considerations"><a class="self-link" href="#accessibility-considerations"></a>
                 <h3 property="schema:name">Accessibility Considerations</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
                 </div>
               </section>
-
               <section id="internationalization-considerations" inlist="" rel="schema:hasPart" resource="#internationalization-considerations"><a class="self-link" href="#internationalization-considerations"></a>
                 <h3 property="schema:name">Internationalization Considerations</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
                 </div>
               </section>
-
               <section id="security-privacy-review" inlist="" rel="schema:hasPart" resource="#security-privacy-review"><a class="self-link" href="#security-privacy-review"></a>
                 <h3 property="schema:name">Security and Privacy Review</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
-
                   <p>These questions provide an overview of security and privacy considerations for this specification as guided by [<cite><a class="bibref" href="#bib-security-privacy-questionnaire">SECURITY-PRIVACY-QUESTIONNAIRE</a></cite>].</p>
-
                   <dl rel="schema:hasPart">
                     <dt about="#security-privacy-review-purpose" id="security-privacy-review-purpose"><a class="self-link" href="#security-privacy-review-purpose"></a><a href="https://www.w3.org/TR/security-privacy-questionnaire/#purpose" rel="cito:repliesTo">What information might this feature expose to Web sites or other parties, and for what purposes is that exposure necessary?</a></dt>
                     <dd about="#security-privacy-review-purpose" datatype="rdf:HTML" property="schema:description">..</dd>
-
                     <dt about="#security-privacy-review-minimum-data" id="security-privacy-review-minimum-data"><a class="self-link" href="#security-privacy-review-minimum-data"></a><a href="https://www.w3.org/TR/security-privacy-questionnaire/#minimum-data" rel="cito:repliesTo">Do features in your specification expose the minimum amount of information necessary to enable their intended uses?</a></dt>
                     <dd about="#security-privacy-review-minimum-data" datatype="rdf:HTML" property="schema:description">..</dd>
-
                     <dt about="#security-privacy-review-personal-data" id="security-privacy-review-personal-data"><a class="self-link" href="#security-privacy-review-personal-data"></a><a href="https://www.w3.org/TR/security-privacy-questionnaire/#personal-data" rel="cito:repliesTo">How do the features in your specification deal with personal information, personally-identifiable information (PII), or information derived from them?</a></dt>
                     <dd about="#security-privacy-review-personal-data" datatype="rdf:HTML" property="schema:description">..</dd>
-
                     <dt about="#security-privacy-review-sensitive-data" id="security-privacy-review-sensitive-data"><a class="self-link" href="#security-privacy-review-sensitive-data"></a><a href="https://www.w3.org/TR/security-privacy-questionnaire/#sensitive-data" rel="cito:repliesTo">How do the features in your specification deal with sensitive information?</a></dt>
                     <dd about="#security-privacy-review-sensitive-data" datatype="rdf:HTML" property="schema:description">..</dd>
-
                     <dt about="#security-privacy-review-persistent-origin-specific-state" id="security-privacy-review-persistent-origin-specific-state"><a class="self-link" href="#security-privacy-review-persistent-origin-specific-state"></a><a href="https://www.w3.org/TR/security-privacy-questionnaire/#persistent-origin-specific-state" rel="cito:repliesTo">Do the features in your specification introduce new state for an origin that persists across browsing sessions?</a></dt>
                     <dd about="#security-privacy-review-persistent-origin-specific-state" datatype="rdf:HTML" property="schema:description">..</dd>
-
                     <dt about="#security-privacy-review-underlying-platform-data" id="security-privacy-review-underlying-platform-data"><a class="self-link" href="#security-privacy-review-underlying-platform-data"></a><a href="https://www.w3.org/TR/security-privacy-questionnaire/#underlying-platform-data" rel="cito:repliesTo">Do the features in your specification expose information about the underlying platform to origins?</a></dt>
                     <dd about="#security-privacy-review-underlying-platform-data" datatype="rdf:HTML" property="schema:description">..</dd>
-
                     <dt about="#security-privacy-review-send-to-platform" id="security-privacy-review-send-to-platform"><a class="self-link" href="#security-privacy-review-send-to-platform"></a><a href="https://www.w3.org/TR/security-privacy-questionnaire/#send-to-platform" rel="cito:repliesTo">Does this specification allow an origin to send data to the underlying platform?</a></dt>
                     <dd about="#security-privacy-review-send-to-platform" datatype="rdf:HTML" property="schema:description">..</dd>
-
                     <dt about="#security-privacy-review-sensor-data" id="security-privacy-review-sensor-data"><a class="self-link" href="#security-privacy-review-sensor-data"></a><a href="https://www.w3.org/TR/security-privacy-questionnaire/#sensor-data" rel="cito:repliesTo">Do features in this specification allow an origin access to sensors on a user’s device</a></dt>
                     <dd about="#security-privacy-review-sensor-data" datatype="rdf:HTML" property="schema:description">..</dd>
-
                     <dt about="#security-privacy-review-other-data" id="security-privacy-review-other-data"><a class="self-link" href="#security-privacy-review-other-data"></a><a href="https://www.w3.org/TR/security-privacy-questionnaire/#other-data" rel="cito:repliesTo">What data do the features in this specification expose to an origin? Please also document what data is identical to data exposed by other features, in the same or different contexts.</a></dt>
                     <dd about="#security-privacy-review-other-data" datatype="rdf:HTML" property="schema:description">..</dd>
-
                     <dt about="#security-privacy-review-string-to-script" id="security-privacy-review-string-to-script"><a class="self-link" href="#security-privacy-review-string-to-script"></a><a href="https://www.w3.org/TR/security-privacy-questionnaire/#string-to-script" rel="cito:repliesTo">Do features in this specification enable new script execution/loading mechanisms?</a></dt>
                     <dd about="#security-privacy-review-string-to-script" datatype="rdf:HTML" property="schema:description">..</dd>
-
                     <dt about="#security-privacy-review-remote-device" id="security-privacy-review-remote-device"><a class="self-link" href="#security-privacy-review-remote-device"></a><a href="https://www.w3.org/TR/security-privacy-questionnaire/#remote-device" rel="cito:repliesTo">Do features in this specification allow an origin to access other devices?</a></dt>
                     <dd about="#security-privacy-review-remote-device" datatype="rdf:HTML" property="schema:description">..</dd>
-
                     <dt about="#security-privacy-review-native-ui" id="security-privacy-review-native-ui"><a class="self-link" href="#security-privacy-review-native-ui"></a><a href="https://www.w3.org/TR/security-privacy-questionnaire/#native-ui" rel="cito:repliesTo">Do features in this specification allow an origin some measure of control over a user agent’s native UI?</a></dt>
                     <dd about="#security-privacy-review-native-ui" datatype="rdf:HTML" property="schema:description">..</dd>
-
                     <dt about="#security-privacy-review-temporary-id" id="security-privacy-review-temporary-id"><a class="self-link" href="#security-privacy-review-temporary-id"></a><a href="https://www.w3.org/TR/security-privacy-questionnaire/#temporary-id" rel="cito:repliesTo">What temporary identifiers do the features in this specification create or expose to the web?</a></dt>
                     <dd about="#security-privacy-review-temporary-id" datatype="rdf:HTML" property="schema:description">..</dd>
-
                     <dt about="#security-privacy-review-first-third-party" id="security-privacy-review-first-third-party"><a class="self-link" href="#security-privacy-review-first-third-party"></a><a href="https://www.w3.org/TR/security-privacy-questionnaire/#first-third-party" rel="cito:repliesTo">How does this specification distinguish between behaviour in first-party and third-party contexts?</a></dt>
                     <dd about="#security-privacy-review-first-third-party" datatype="rdf:HTML" property="schema:description">..</dd>
-
                     <dt about="#security-privacy-review-private-browsing" id="security-privacy-review-private-browsing"><a class="self-link" href="#security-privacy-review-private-browsing"></a><a href="https://www.w3.org/TR/security-privacy-questionnaire/#private-browsing" rel="cito:repliesTo">How do the features in this specification work in the context of a browser’s Private Browsing or Incognito mode?</a></dt>
                     <dd about="#security-privacy-review-private-browsing" datatype="rdf:HTML" property="schema:description">..</dd>
-
                     <dt about="#security-privacy-review-considerations" id="security-privacy-review-considerations"><a class="self-link" href="#security-privacy-review-considerations"></a><a href="https://www.w3.org/TR/security-privacy-questionnaire/#considerations" rel="cito:repliesTo">Does this specification have both "Security Considerations" and "Privacy Considerations" sections?</a></dt>
                     <dd about="#security-privacy-review-considerations" datatype="rdf:HTML" property="schema:description">..</dd>
-
                     <dt about="#security-privacy-review-relaxed-sop" id="security-privacy-review-relaxed-sop"><a class="self-link" href="#security-privacy-review-relaxed-sop"></a><a href="https://www.w3.org/TR/security-privacy-questionnaire/#relaxed-sop" rel="cito:repliesTo">Do features in your specification enable origins to downgrade default security protections?</a></dt>
                     <dd about="#security-privacy-review-relaxed-sop" datatype="rdf:HTML" property="schema:description">..</dd>
-
                     <dt about="#security-privacy-review-non-fully-active" id="security-privacy-review-non-fully-active"><a class="self-link" href="#security-privacy-review-non-fully-active"></a><a href="https://www.w3.org/TR/security-privacy-questionnaire/#non-fully-active" rel="cito:repliesTo">How does your feature handle non-"fully active" documents?</a></dt>
                     <dd about="#security-privacy-review-non-fully-active" datatype="rdf:HTML" property="schema:description">..</dd>
                   </dl>
@@ -1062,23 +932,18 @@ margin-bottom:0.5rem;
               </section>
             </div>
           </section>
-
           <section class="appendix" id="changelog" inlist="" rel="schema:hasPart" resource="#changelog"><a class="self-link" href="#changelog"></a>
             <h2 property="schema:name">Change Log</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p><em>This section is non-normative.</em></p>
-
               <p>The summary of <em>editorial</em> and <em>substantive</em> changes in this section are based on <cite>W3C Process Document</cite> <cite><a href="https://www.w3.org/policies/process/#correction-classes">Classes of Changes</a></cite> [<cite><a class="bibref" href="#bib-w3c-process">W3C-PROCESS</a></cite>].</p>
             </div>
           </section>
-
           <section class="appendix" id="acknowledgements" inlist="" rel="schema:hasPart" resource="#acknowledgements">
             <h2 property="schema:name">Acknowledgements</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>The Community Group gratefully acknowledges the work that led to the creation of this specification, and extends sincere appreciation to those individuals that worked on technologies and specifications that deeply influenced our work.</p>
-
               <p>The Community Group would like to thank the following individuals for their useful comments, both large and small, that have led to changes to this specification over the years:</p>
-
               <ul>
                 <li>Alain Bourgeois</li>
                 <li>April Daly</li>
@@ -1094,7 +959,6 @@ margin-bottom:0.5rem;
               </ul>
             </div>
           </section>
-
           <section class="appendix" id="references" inlist="" rel="schema:hasPart" resource="#references"><a class="self-link" href="#references"></a>
             <h2 property="schema:name">References</h2>
             <div datatype="rdf:HTML" property="schema:description">
@@ -1106,8 +970,8 @@ margin-bottom:0.5rem;
                     <dd><cite><a href="http://dublincore.org/documents/2010/10/11/dcmi-terms/" rel="cito:citesAsAuthority">Dublin Core Metadata Terms, version 1.1</a></cite>. DCMI Usage Board.  DCMI. 11 October 2010. DCMI Recommendation. URL: <a href="http://dublincore.org/documents/2010/10/11/dcmi-terms/">http://dublincore.org/documents/2010/10/11/dcmi-terms/</a></dd>
                     <dt id="bib-doap">[DOAP]</dt>
                     <dd><cite><a href="https://github.com/ewilderj/doap" rel="cito:citesAsAuthority">DOAP: Description of a Project</a></cite>. URL: <a href="https://github.com/ewilderj/doap">https://github.com/ewilderj/doap</a></dd>
-                    <dt id="bib-earl10-schema">[EARL10-Schema</dt><dd>
-                    <cite><a href="https://www.w3.org/TR/EARL10-Schema/" rel="cito:citesAsAuthority">Evaluation and Report Language (EARL) 1.0 Schema</a></cite>. Shadi Abou-Zahra.  W3C. 2 February 2017. W3C Working Group Note. URL: <a href="https://www.w3.org/TR/EARL10-Schema/">https://www.w3.org/TR/EARL10-Schema/</a></dd>
+                    <dt id="bib-earl10-schema">[EARL10-Schema</dt>
+                    <dd><cite><a href="https://www.w3.org/TR/EARL10-Schema/" rel="cito:citesAsAuthority">Evaluation and Report Language (EARL) 1.0 Schema</a></cite>. Shadi Abou-Zahra.  W3C. 2 February 2017. W3C Working Group Note. URL: <a href="https://www.w3.org/TR/EARL10-Schema/">https://www.w3.org/TR/EARL10-Schema/</a></dd>
                     <dt id="bib-ldn">[LDN]</dt>
                     <dd><cite><a href="https://www.w3.org/TR/ldn/" rel="cito:citesAsAuthority">Linked Data Notifications</a></cite>. Sarven Capadisli; Amy Guy.  W3C. 2 May 2017. W3C Recommendation. URL: <a href="https://www.w3.org/TR/ldn/">https://www.w3.org/TR/ldn/</a></dd>
                     <dt id="bib-prov-o">[prov-o]</dt>
@@ -1141,7 +1005,6 @@ margin-bottom:0.5rem;
                   </dl>
                 </div>
               </section>
-
               <section id="informative-references" inlist="" rel="schema:hasPart" resource="#informative-references"><a class="self-link" href="#informative-references"></a>
                 <h3 property="schema:name">Informative References</h3>
                 <div datatype="rdf:HTML" property="schema:description">
@@ -1166,9 +1029,7 @@ margin-bottom:0.5rem;
         </div>
       </article>
     </main>
-
-    <p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to top">↑</abbr></a></p>
-
+    <p id="back-to-top" role="navigation"><a href="#toc"><abbr title="Back to top">↑</abbr></a></p>
     <script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script>
   </body>
 </html>
