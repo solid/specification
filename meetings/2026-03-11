@@ -1,0 +1,166 @@
+# W3C Solid Community Group: Weekly
+
+* Date: 2026-10-04T14:00:00Z
+* Call: https://meet.jit.si/solid-cg
+* Repository: https://github.com/solid/specification
+
+## Chair
+
+* [elf Pavlik](https://elf-pavlik.hackers4peace.net)
+
+## Present
+
+* Alain Bourgeois
+* James Radley
+* Theo @thhck
+* [Paul Worrall](https://interition.ai)
+* Emelia Smith (independent)
+* Precious Oritsedere
+* Seva Dolgopolov
+* [Luke Dary](https://w3c.social/@lukedary)
+* [Michal](https://id.mrkvon.org)
+* [Rui Zhao](https://me.ryey.icu)
+
+## Regrets
+
+* 
+
+---
+
+## Scribe
+
+* Theo @thhck
+
+### Meeting Guidelines
+
+* [W3C Solid Community Group Calendar](https://www.w3.org/groups/cg/solid/calendar).
+* [W3C Solid Community Group Meeting Guidelines](https://github.com/w3c-cg/solid/blob/main/meetings/README.md).
+* No audio or video recording, or automated transcripts without consent. Meetings are transcribed and made public. If consent is withheld by anyone, recording/retention must not occur.
+* Join queue to talk.
+* Topics can be proposed at the bottom of the agenda to be discussed as time allows. Make it known if a topic is urgent or cannot be postponed.
+
+### Participation and Code of Conduct
+* [Join the W3C Solid Community Group](https://www.w3.org/community/solid/join), [W3C Account Request](http://www.w3.org/accounts/request), [W3C Community Contributor License Agreement](https://www.w3.org/community/about/agreements/cla/)
+* [Solid Code of Conduct](https://github.com/solid/process/blob/main/code-of-conduct.md), [Positive Work Environment at W3C: Code of Conduct](https://www.w3.org/policies/code-of-conduct/)
+* Operating principle for effective participation is to allow access across disabilities, across country borders, and across time. Feedback on tooling and meeting timing is welcome.
+* If this is your first time, welcome! Please introduce yourself.
+
+---
+
+## Introductions
+
+ - Emelia Smith: use to work on Solid at Inrupt, involved in the standard process, left in march 23 and now work on open social web: Activity Pub and in september 2025 pivoted to ATprotocol moslty. Got a 39k grant to work on FedCM
+ - Seva: Fullstack dev and engineer, evaluating user journey before starting my own CG, berlin based. Feel free to reach out if you are in Berlin too :)
+ - Seva: I made the two lst PR on Solid-OIDC with solid spec folder specifically. (script note: didn't get that part, about working on spec design)
+
+https://speculator.openuji.dev/
+
+## Announcements
+
+### Open Source Tools meeting
+https://lists.w3.org/Archives/Public/public-solid/2026Mar/0003.html
+
+* eP: we are going to meet right after this call
+* eP: mostly JS tools, soukai, nextgraph, RDF store tool
+* eP: biweekly meeting, check the w3c solid cg calendar
+
+### FedCM update
+
+[Grant blog post](https://atproto.com/blog/working-to-decentralize-fedcm)
+[Fuller history on CIMD](https://writings.thisismissem.social/introducing-oauth-client-id-metadata-documents/)
+
+* Emelia Smith: Not a grant to work on just FedCM for ATproto, but it is grant to work on FedCM for all decentralized protocols, including Solid, IndieAuth and other groups. I'm independent from Bluesky, so they don't control my technical decisions. Citing the grant:
+  > _Grant Recipient shall serve as a liaison between the FedID WG and communities that share concerns related to decentralized, federated, and user-controlled identity. These include communities working on IndieAuth, **Solid**, and AT Protocol, as well as other groups whose work intersects with federated and decentralized identity._
+* ES: I'm making myself available here to find out what the Solid Community needs from FedCM, and relay that on the FedID CG / WG
+* eP: Emelia you also have experience working on Client ID Metadata Documents with Aaron Parecki, so good dynamics where there are already existing relations that cross over between different communities (IndieAuth, CIMD) and Solid.
+* ES: So the history there is interesting: Back in 2024 I was working on mastodon oauth, to improve security and standardize it, one issue was: we use a proprietary form of Dynamic Client Registration, which leads to a proliferation of client registrations that cannot be expired or cleaned up without breaking clients. We needed the client pre-registered with the mastodon server to do oauth, and this didn't make much sense, and prevented using FedCM or IndieAuth. For that we need some way for authorization servers to discover client metadata, and having worked on Solid before, I knew there was a mechanism defined in Solid-OIDC that allowed authorization servers to fetch client metadata from a URL. So I pitched that to Aaron, and we started working on the Client ID Metadata Document internet draft that we could take to the OAuth WG at IETF for standardisation. We've tried hard to maintain backward compatibility with Solid-OIDC, though we may have to make some breaking changes, like on the `Accept` header which might not be JSON-LD but `application/cimd+json`. Worked on a draft, proposed to IETF, with the support of Bluesky who adopted it for their OAuth, we achieved adoption in September 2025 from the OAuth WG so it's now officially part of IETF OAuth working group. There is an issue open(?) with Solid-OIDC about adopting Client ID Metadata Documents. 
+* eP: LWS is referencing to the CIMD document
+* eP: maybe make a special meeting to talk about it. 
+* Theo: Will you only be doing w3c work or also implementation?
+* ES: yes, I will be focused on the W3C / FedID work, not on  implementation work specifically, though I may do prototypes for demos and to give browser vendors something to test with.
+* eP: Theo would you be willing to be the Solid person to contact for FedCM work?
+* Theo: yep
+* ES: please let me know if you need me to join any future meetings, happy to join Solid meeting to talk about FedCM (or CIMD).
+
+
+### ODI grant for test suite ( move to next week )
+https://www.w3.org/2026/03/09-lws-minutes.html#a338
+
+> jeswr: There is a grant from NLNet
+… That has been granted to ODI for a test suite.
+… That will be worked on.
+* Moved to next week 
+* https://nlnet.nl/project/LinkedWebStorage-testsuite/
+
+## Topics
+
+### Actions Review
+* LD to create issue/discussion on his implementation feedback 
+* LD: implemented mostly using AI, auth hard to understand from both user and dev. Most of my probleme is on the application being able to read and write in the storage. The container permission management from a user pov is tricky. 
+* eP: LD would you like to pick a subject ( auth screen or discovery ) and talk about it for 10min next meeting
+* LD: would be nice to talk about auth
+* ES: side note: there is no "Decision" section in this document, should we add one ?
+* eP: sounds like a good idea
+* ES: on LD: https://datatracker.ietf.org/doc/html/rfc9396 might be of interest for you ...? https://github.com/oauth-wg/draft-ietf-oauth-client-id-metadata-document/issues
+* LD: (... with application design, it not only implementation is also app development. )
+* ES: At inrupt I know we were pushing for UMA for authorization, which was part of using ACP, I'm not sure how Rich Authorization Requests may potentially relate to UMA or ACP/WAC, but that could be a way to surface during authorization flow what resources an client application definitely wants to interact with.
+
+### OIDC PR - feat: add client credentials as a MUST
+https://github.com/solid/solid-oidc/pull/245
+
+ - eP: approval from most reviewer, last call to before merged
+ - ES: looks good, but has to look at some points (will take a closer look in context as the co-author of OAuth CIMD)
+ - eP: its not final, can be iterated later
+ - eP: alright merged !
+
+
+### OIDC Draft PR - Explorations
+[Compare SoloSpec vs Bikeshed flow + a few UI fixes](https://github.com/solid/solid-oidc/pull/249)
+
+* eP: Mostly heads up I'll be testing it more over next weeks
+* eP: Currently we have github action to make schema, with Bikeshed template is more easy to do. More convinient tool exists. 
+* Seva: (dev of Solospec?) Fix some visual issue. Added copy button for examples and code snippet. 
+* eP: Convenient to generte full RDF from a single html tag. 
+* ES: I know Sarven is very on using RDF for tests suite stuff, but worth looking at `cucumber` which use natural language
+* eP: we currently use something similar
+
+[LikeC4 Diagramm](https://github.com/solid/solid-oidc/pull/251)
+* eP:  Also we can embed likeC4 diagram into the spec, which I think is a very nice feature to have as we can interactively with the flow. 
+* eP: Also Seva is very responsive with fixing issue and mergin PR
+* ES: makes a lot of sense. I would recommand reaching the w3c TAG group or whoever oversees ReSpec. 
+
+### WAC PR - Add Support for Client Identification and Issuer Identification
+https://github.com/solid/web-access-control-spec/pull/133
+
+* eP: if Solid 26 includes WAC there will not be even basic App AuthZ unless this PR lands
+* eP: .. reporting to next week 
+
+
+### 2026 CG Roadmap (15+ min)
+
+* CB: https://github.com/w3c-cg/solid/issues/54
+* CB: any updates?
+
+
+### Solid 2026 best practise documents
+
+* eP: we may want to review list of drafts and people compiled in Jan https://github.com/solid/specification/blob/main/meetings/2026-01-28.md#2026-odi-roadmap
+* eP: a list of item we can contribute, most of them assigned to ODI, wanted to check progress
+* JW: want to share and get feedback/PR
+
+#### WebID or WebID-Profile
+
+* eP: WebID-Profile isn't part of Solid Protocol 0.11, does anyone know how much of it and where was implemented?
+* ...: AFAIK noting implements for example 'protected triples' https://solid.github.io/webid-profile/#protected-properties
+* ...: It seems to require WebID-Profile to be hosted on Solid Server while many WebIDs are hosted outside (for good reasons) https://solid.github.io/webid-profile/#Server
+
+
+
+## Actions
+- Deferred:
+    - WAC PR - Add Support for Client Identification and Issuer Identification
+    - WebID or WebID-Profile
+
+## Decisions
+- Theo (@thhck) to act as contact person to bridge between Solid CG and Emelia Smith on the FedID WG (volunteered, not voted)
+- Meta: add decisions section to our minute template ( not voted )
