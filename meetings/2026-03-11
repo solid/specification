@@ -20,6 +20,7 @@
 * [Luke Dary](https://w3c.social/@lukedary)
 * [Michal](https://id.mrkvon.org)
 * [Rui Zhao](https://me.ryey.icu)
+* Christoph Braun - [uvdsl](https://github.com/uvdsl)
 
 ## Regrets
 
@@ -49,9 +50,9 @@
 
 ## Introductions
 
- - Emelia Smith: use to work on Solid at Inrupt, involved in the standard process, left in march 23 and now work on open social web: Activity Pub and in september 2025 pivoted to ATprotocol moslty. Got a 39k grant to work on FedCM
+ - Emelia Smith: used to work on Solid at Inrupt, involved in the standard process, left in March 2023, and now work on open social web: Activity Pub and in September 2025 pivoted to AT protocol, moslty. Got a 39k grant to work on FedCM
  - Seva: Fullstack dev and engineer, evaluating user journey before starting my own CG, berlin based. Feel free to reach out if you are in Berlin too :)
- - Seva: I made the two lst PR on Solid-OIDC with solid spec folder specifically. (script note: didn't get that part, about working on spec design)
+ - Seva: I made the two last PRs on Solid-OIDC with solid spec folder specifically. (scribe note: didn't get that part, about working on spec design)
 
 https://speculator.openuji.dev/
 
@@ -69,7 +70,7 @@ https://lists.w3.org/Archives/Public/public-solid/2026Mar/0003.html
 [Grant blog post](https://atproto.com/blog/working-to-decentralize-fedcm)
 [Fuller history on CIMD](https://writings.thisismissem.social/introducing-oauth-client-id-metadata-documents/)
 
-* Emelia Smith: Not a grant to work on just FedCM for ATproto, but it is grant to work on FedCM for all decentralized protocols, including Solid, IndieAuth and other groups. I'm independent from Bluesky, so they don't control my technical decisions. Citing the grant:
+* Emelia Smith: [This is] Not a grant to work on just FedCM for AT protocol, but it is grant to work on FedCM for all decentralized protocols, including Solid, IndieAuth and other groups. I'm independent from Bluesky, so they don't control my technical decisions. Citing the grant:
   > _Grant Recipient shall serve as a liaison between the FedID WG and communities that share concerns related to decentralized, federated, and user-controlled identity. These include communities working on IndieAuth, **Solid**, and AT Protocol, as well as other groups whose work intersects with federated and decentralized identity._
 * ES: I'm making myself available here to find out what the Solid Community needs from FedCM, and relay that on the FedID CG / WG
 * eP: Emelia you also have experience working on Client ID Metadata Documents with Aaron Parecki, so good dynamics where there are already existing relations that cross over between different communities (IndieAuth, CIMD) and Solid.
@@ -108,10 +109,10 @@ https://www.w3.org/2026/03/09-lws-minutes.html#a338
 ### OIDC PR - feat: add client credentials as a MUST
 https://github.com/solid/solid-oidc/pull/245
 
- - eP: approval from most reviewer, last call to before merged
- - ES: looks good, but has to look at some points (will take a closer look in context as the co-author of OAuth CIMD)
- - eP: its not final, can be iterated later
- - eP: alright merged !
+* eP: approval from most reviewer, last call to before merged
+* ES: looks good, but has to look at some points (will take a closer look in context as the co-author of OAuth CIMD)
+* eP: its not final, can be iterated later
+* eP: alright merged !
 
 
 ### OIDC Draft PR - Explorations
