@@ -1023,6 +1023,8 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                 <h3 property="schema:name">WebID</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>A <em>WebID</em> is an HTTP URI denoting an agent, for example a person, organisation, or software [<cite><a class="bibref" href="#bib-webid">WEBID</a></cite>]. When a WebID is dereferenced, server provides a representation of the WebID Profile in an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>] which uniquely describes an agent denoted by a WebID. WebIDs are an underpinning component in the Solid ecosystem and are used as the primary identifier for users and applications.</p>
+
+                  <p>The RDF document provided by the server when a WebID is dereferenced must contain at least one statement whose subject is the WebID, whose predicate is <code>pim:storage</code> and whose object is a <a href="#storage">storage</a> <a href="#root-container">root container</a>.</p>
                 </div>
               </section>
             </div>
