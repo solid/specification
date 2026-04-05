@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Solid26: Implementation Guide</title>
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
+<style>
+main,
+main>article,
+main>article>div {
+background:inherit;
+}
+body {
+counter-reset:section sub-section appendix sub-appendix;
+}
+code, samp { color: #e00; }
+pre code, pre samp { color: var(--text); }
+dfn { font-weight:inherit; }
+.do.fragment a { border-bottom:0; }
+.do.fragment a:hover { background:none; border-bottom:0; }
+section figure pre { margin:1em 0; display:block; }
+cite .bibref { font-style: normal; }
+.tabs nav ul li { margin:0; }
+div.issue, div.note, div.warning {
+clear: both;
+margin: 1em 0;
+position: relative;
+}
+div.issue h3, div.note h3,
+div.issue h4, div.note h4,
+div.issue h5, div.note h5 {
+margin:0;
+font-weight:normal;
+font-style:normal;
+font-size:1em;
+}
+div.issue h3 > span, div.note h3 > span,
+div.issue h4 > span, div.note h4 > span,
+div.issue h5 > span, div.note h5 > span,
+figure.example > figcaption > span {
+text-transform: uppercase;
+}
+div.issue h3, div.issue h4, div.issue h5 {
+color:var(--issueheading-text);
+}
+div.note h3, div.note h4, div.note h5 {
+color:var(--noteheading-text);
+}
+figure.example figcaption {
+color:var(--exampleheading-text);
+}
+main figure {
+text-align:left;
+}
+figure[id] {
+position:relative;
+padding:0.5em;
+}
+figure[id] figcaption {
+font-style:normal;
+font-size:1em;
+}
+figure.example figcaption span + span {
+text-transform:initial;
+}
+.copyright + hr {
+border-style: solid;
+}
+header address a[href] {
+float: right;
+margin: 1rem 0 0.2rem 0.4rem;
+background: transparent none repeat scroll 0 0;
+border: medium none;
+text-decoration: none;
+}
+header address img[src*="logos/W3C"] {
+background: #1a5e9a none repeat scroll 0 0;
+border-color: #1a5e9a;
+border-image: none;
+border-radius: 0.4rem;
+border-style: solid;
+border-width: 0.65rem 0.7rem 0.6rem;
+color: white;
+display: block;
+font-weight: bold;
+}
+main article > h1 {
+font-size: 220%;
+font-weight:bold;
+}
+#acknowledgements ul { padding: 0; margin:0; }
+#acknowledgements li { display:inline; }
+#acknowledgements li:after { content: ", "; }
+#acknowledgements li:last-child:after { content: ""; }
+dd .contributed {
+user-select: none;
+}
+aside.do { overflow:inherit; }
+aside.do blockquote {
+padding: 0; border: 0; margin: 0;
+}
+dl[id^="document-"] ul {
+padding-left:0;
+list-style-type:none;
+}
+dl [rel~="odrl:action"],
+dl [rel~="odrl:action"] li {
+display: inline;
+}
+dl [rel~="odrl:action"] li:after {
+content: ", ";
+}
+dl [rel~="odrl:action"] li:last-child:after {
+content: "";
+}
+aside section > .toc,
+aside section > .toc ol {
+margin-left: revert;
+}
+aside section > .toc li li {
+margin-left: 1em;
+font-size: revert;
+}
+table {
+border-collapse:collapse;
+}
+table + table {
+margin-top:2em;
+}
+caption {
+text-align:left;
+padding:0 0.25em 0.25em;
+margin-bottom: 1em;
+font-size: 1em;
+font-style: revert;
+font-weight: bold;
+border-bottom: 1px solid;
+}
+caption, tbody, tfoot {
+border-bottom:2pt solid #ccc;
+}
+thead,
+thead th[colspan] {
+border-bottom:1pt solid #ccc;
+}
+[rowspan] { vertical-align: bottom; }
+tbody [rowspan] { vertical-align: middle; }
+tbody th[scope="rowgroup"] {
+border-bottom:3pt double #ccc;
+}
+tr {
+border-bottom:1pt solid #ccc;
+}
+th, td {
+padding:0.25em;
+font-size:0.923em;
+word-wrap:normal;
+}
+table ul,
+table ol,
+table li,
+table p,
+table dd {
+margin:0;
+text-align:left;
+}
+table ul,
+table ol {
+padding-left:1em;
+}
+tfoot td > * + * {
+margin-top:1em;
+}
+tfoot dd:after { content: "\A"; white-space:pre; }
+tfoot dt, tfoot dd { display:inline; }
+tfoot dd { margin-left: 0.5em; }
+tfoot dd + dt { margin-top:0; }
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]):not([id=exit-criteria]) {
+counter-increment:section;
+counter-reset:sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]) section:not([id$=references]):not([id=exit-criteria]) {
+counter-increment:sub-section;
+counter-reset:sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]) section:not([id$=references]):not([id=exit-criteria]) section {
+counter-increment:sub-sub-section;
+counter-reset:sub-sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]) section:not([id$=references]):not([id=exit-criteria]) section section {
+counter-increment:sub-sub-sub-section;
+counter-reset:sub-sub-sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]):not([id=exit-criteria]):not([id^=table-of-]):not([id^=list-of-]) > h2:before {
+content:counter(section) ".\00a0";
+}
+section:not([id$=references]):not([id^=changelog]):not([id=exit-criteria]):not([id^=table-of-]):not([id^=list-of-]) > h3:before {
+content:counter(section) "." counter(sub-section) "\00a0";
+}
+section > h4:before {
+content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\00a0";
+}
+article section.appendix {
+counter-increment:appendix;
+counter-reset:sub-appendix;
+}
+article section[class~=appendix]:not([id=abstract]):not([id=sotd]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]):not([id=exit-criteria]) section {
+counter-increment:sub-appendix;
+counter-reset:sub-sub-appendix;
+}
+section.appendix > h2:before {
+content:counter(appendix, upper-alpha) ".\00a0";
+}
+section.appendix section > h3:before {
+content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
+}
+</style>
+    <link href="https://www.w3.org/StyleSheets/TR/2021/base.css" media="all" rel="stylesheet" title="W3C-Base" />
+    <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet" />
+    <link href="https://dokie.li/media/css/dokieli.css" media="all" rel="stylesheet" />
+    <script async="" src="https://dokie.li/scripts/dokieli.js"></script>
+  </head>
+  <body about="" prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# owl: http://www.w3.org/2002/07/owl# xsd: http://www.w3.org/2001/XMLSchema# dcterms: http://purl.org/dc/terms/ skos: http://www.w3.org/2004/02/skos/core# prov: http://www.w3.org/ns/prov# schema: http://schema.org/ doap: http://usefulinc.com/ns/doap# as: https://www.w3.org/ns/activitystreams# ldp: http://www.w3.org/ns/ldp# spec: http://www.w3.org/ns/spec# rel: https://www.w3.org/ns/iana/link-relations/relation# odrl: http://www.w3.org/ns/odrl/2/">
+    <main>
+      <article about="" typeof="schema:Article">
+        <div class="head">
+          <h1 property="schema:name">Solid26: Implementation Guide</h1>
+          <p id="w3c-state">Draft Community Group Report, <time datetime="2026-04-02T00:00:00Z">2026-04-02</time></p>
+          <details open="">
+            <summary>More details about this document</summary>
+            <dl id="document-identifier">
+              <dt>This version</dt>
+              <dd><a href="https://solidproject.org/TR/solid26" rel="owl:sameAs">https://solidproject.org/TR/solid26</a></dd>
+            </dl>
+            <dl id="document-latest-published-version">
+              <dt>Latest published version</dt>
+              <dd><a href="https://solidproject.org/TR/solid26" rel="rel:latest-version">https://solidproject.org/TR/solid26</a></dd>
+            </dl>
+            <dl id="document-editors">
+              <dt>Editors</dt>
+              <dd id="Jesse-Wright"><span about="" rel="schema:editor schema:author"><span typeof="schema:Person"><a href="mailto:jesse.wright@cs.ox.ac.uk" rel="schema:url"><span property="schema:name"><span property="schema:givenName">Jesse</span> <span property="schema:familyName">Wright</span></span></a> (<span property="schema:affiliation">University of Oxford</span>)</span></span></dd>
+              <dd id="Christoph-Braun"><span about="" rel="schema:editor schema:author"><span typeof="schema:Person"><a href="mailto:braun@kit.edu" rel="schema:url"><span property="schema:name"><span property="schema:givenName">Christoph</span> <span property="schema:familyName">Braun</span></span></a> (<span property="schema:affiliation">Karlsruhe Institute of Technology</span>)</span></span></dd>
+            </dl>
+            <dl id="document-published">
+              <dt>Published</dt>
+              <dd><time content="2026-04-02T00:00:00Z" datatype="xsd:dateTime" datetime="2026-04-02T00:00:00Z" property="schema:datePublished">2026-04-02</time></dd>
+            </dl>
+            <dl id="document-modified">
+              <dt>Modified</dt>
+              <dd><time content="2026-04-02T00:00:00Z" datatype="xsd:dateTime" datetime="2026-04-02T00:00:00Z" property="schema:dateModified">2026-04-02</time></dd>
+            </dl>
+            <dl id="document-feedback">
+              <dt>Feedback</dt>
+              <dd><a href="https://github.com/solid/specification" rel="doap:repository">GitHub solid/specification</a> (<a href="https://github.com/solid/specification/pulls">pull requests</a>, <a href="https://github.com/solid/specification/issues/new">new issue</a>, <a href="https://github.com/solid/specification/issues" rel="doap:bug-database">open issues</a>)</dd>
+            </dl>
+            <dl id="document-language">
+              <dt>Language</dt>
+              <dd><span content="en" lang="" property="dcterms:language" xml:lang="">English</span></dd>
+            </dl>
+            <dl id="document-type">
+              <dt>Document Type</dt>
+              <dd>Implementation Guide</dd>
+            </dl>
+          </details>
+          <p class="copyright" rel="dcterms:rights" resource="#document-rights"><span property="dcterms:description"><a href="https://www.w3.org/policies/#copyright">Copyright</a> © 2026 the Contributors to Solid26: Implementation Guide, under the <a about="" href="https://www.w3.org/community/about/agreements/cla/" rel="schema:license">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available.</span></p>
+          <hr title="Separator for header" />
+        </div>
+        <div datatype="rdf:HTML" id="content" property="schema:description">
+          <section id="abstract">
+            <h2>Abstract</h2>
+            <div datatype="rdf:HTML" property="schema:abstract">
+              <p>This document is an implementation guide for Solid26 — a curated collection of Solid specification versions intended to give developers, organisations, and communities a stable target to build against. It provides practical guidance for implementing the Solid specifications included in this release.</p>
+            </div>
+          </section>
+          <section id="sotd" inlist="" rel="schema:hasPart" resource="#sotd">
+            <h2 property="schema:name">Status of This Document</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p>This document was published by the <a href="https://www.w3.org/groups/cg/solid/">W3C Solid Community Group</a> as an implementation guide. It is not a W3C Standard nor is it on the W3C Standards Track.</p>
+              <p>This document is intended to provide implementation guidance for the Solid specifications collected in the Solid26 release. The content of this guide is informative and non-normative. It may be updated, replaced, or obsoleted by other documents at any time.</p>
+              <p>Comments regarding this document are welcome. Please file issues on <a href="https://github.com/solid/specification/issues">GitHub</a>.</p>
+            </div>
+          </section>
+          <nav id="toc">
+            <h2>Table of Contents</h2>
+            <div>
+              <ol class="toc">
+                <li class="tocline"><a class="tocxref" href="#abstract"><span>Abstract</span></a></li>
+                <li class="tocline"><a class="tocxref" href="#sotd"><span>Status of This Document</span></a></li>
+                <li class="tocline">
+                  <p><a class="tocxref" href="#introduction"><bdi class="secno">1.</bdi> <span>Introduction</span></a></p>
+                  <ol>
+                    <li class="tocline"><a class="tocxref" href="#what-is-solid26"><bdi class="secno">1.1</bdi> <span>What is Solid26?</span></a></li>
+                  </ol>
+                </li>
+                <li class="tocline">
+                  <p><a class="tocxref" href="#specifications"><bdi class="secno">2.</bdi> <span>Specifications</span></a></p>
+                  <ol>
+                    <li class="tocline"><a class="tocxref" href="#solid-protocol"><bdi class="secno">2.1</bdi> <span>Solid Protocol</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#solid-oidc"><bdi class="secno">2.2</bdi> <span>Solid-OIDC</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#web-access-control"><bdi class="secno">2.3</bdi> <span>Web Access Control</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#stability-expectations"><bdi class="secno">2.4</bdi> <span>Stability Expectations</span></a></li>
+                  </ol>
+                </li>
+                <li class="tocline">
+                  <p><a class="tocxref" href="#implementation-requirements"><bdi class="secno">3.</bdi> <span>Implementation Requirements</span></a></p>
+                  <ol>
+                    <li class="tocline"><a class="tocxref" href="#server-conformance"><bdi class="secno">3.1</bdi> <span>Server Conformance</span></a></li>
+                  </ol>
+                </li>
+                <li class="tocline"><a class="tocxref" href="#references"><span>References</span></a></li>
+                <li class="tocline"><a class="tocxref" href="#acknowledgements"><span>Acknowledgements</span></a></li>
+              </ol>
+            </div>
+          </nav>
+
+          <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction">
+            <h2 property="schema:name">Introduction</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p>The <a href="https://solidproject.org/TR/">Solid Specification</a> defines multiple sub-specification documents with differing levels of maturity. This, the Solid26 release, curates those sub-specifications with fixed versions of the most critical and stable documents required to build functional Solid servers and applications.</p>
+              <p>This document serves as an implementation guide — it does not define new normative requirements, but rather collects and explains the specifications needed to build interoperable Solid applications and servers as part of the Solid26 release.</p>
+
+              <section id="what-is-solid26" inlist="" rel="schema:hasPart" resource="#what-is-solid26">
+                <h3>What is Solid26?</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>Solid has been evolving since it was developed by Sir Tim Berners-Lee and his team at MIT. Decades of development has produced a rich set of specifications, tools, and community knowledge — but there is not yet a single, clearly defined collection that says: <em>this is ready to build on</em>.</p>
+                  <p>Solid26 aims to change that. It brings together core Solid specification versions into one coherent collection. Think of it as a stable snapshot of the Solid platform — a known-good baseline that application developers and server implementers can target with confidence.</p>
+                  <p>The name "Solid26" reflects the aspiration for Solid to adopt a rolling release model. Like modern browsers and platforms, the Solid ecosystem would continue to evolve — with annual collections that build on real-world feedback and adoption. Whether this model is adopted is subject to discussion within the W3C Solid Community Group.</p>
+                  <div class="note">
+                    <h4><span>Note</span></h4>
+                    <p>Solid26 does not change or remove existing parts of the Solid Specification in any way. It adds to the existing set of resources in the Solid community, and aims to make Solid more accessible.</p>
+                  </div>
+                </div>
+              </section>
+
+
+            </div>
+          </section>
+
+          <section id="specifications" inlist="" rel="schema:hasPart" resource="#specifications">
+            <h2 property="schema:name">Specifications</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p>The Solid26 specification documents are as follows:</p>
+
+              <section id="solid-protocol" inlist="" rel="schema:hasPart" resource="#solid-protocol">
+                <h3>Solid Protocol</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>The <a href="https://solidproject.org/TR/protocol">Solid Protocol</a> (v0.11.0) is included with the following amendments. Servers are not required to implement the following:</p>
+                  <ul>
+                    <li><a href="https://solidproject.org/TR/protocol#n3-patch">5.3.1 Modifying Resources Using N3 Patches</a></li>
+                    <li><a href="https://solidproject.org/TR/protocol#webid-tls">10.2 WebID-TLS</a></li>
+                    <li><a href="https://solidproject.org/TR/acp">ACP (Access Control Policy)</a></li>
+                  </ul>
+                  <p>The Solid Protocol document is stable.</p>
+                </div>
+              </section>
+
+              <section id="solid-oidc" inlist="" rel="schema:hasPart" resource="#solid-oidc">
+                <h3>Solid-OIDC</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p><a href="https://solidproject.org/TR/oidc">Solid-OIDC</a> (v0.1.0) is included in the Solid26 release.</p>
+                  <p>Solid-OIDC is subject to change as best practices for authentication evolve.</p>
+                  <div class="note">
+                    <h4><span>Editor's Note</span></h4>
+                    <p>Solid-OIDC v0.1.0 is not a widely implemented version. A document that accurately reflects current implementations is being drafted by Christoph Braun. This PR is waiting for that document to be available and ready to reference before merging.</p>
+                  </div>
+                </div>
+              </section>
+
+              <section id="web-access-control" inlist="" rel="schema:hasPart" resource="#web-access-control">
+                <h3>Web Access Control</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p><a href="https://solidproject.org/TR/wac">Web Access Control</a> (Editor's Draft, 2024-06-03) is included in this release.</p>
+                  <p>The Web Access Control specification is likely to become one of many access control language profiles which are supported in future releases. Note that most clients should not need to manage access controls — and hence should not be affected by a change in the access control language that a server uses.</p>
+                </div>
+              </section>
+
+              <section id="stability-expectations" inlist="" rel="schema:hasPart" resource="#stability-expectations">
+                <h3>Stability Expectations</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>The following table summarises the stability expectations for each specification included in this release:</p>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Specification</th>
+                        <th>Version</th>
+                        <th>Stability</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Solid Protocol</td>
+                        <td>v0.11.0</td>
+                        <td>Stable</td>
+                      </tr>
+                      <tr>
+                        <td>Solid-OIDC</td>
+                        <td>v0.1.0</td>
+                        <td>Subject to change</td>
+                      </tr>
+                      <tr>
+                        <td>Web Access Control</td>
+                        <td>ED 2024-06-03</td>
+                        <td>May become one of many profiles</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </div>
+          </section>
+
+          <section id="implementation-requirements" inlist="" rel="schema:hasPart" resource="#implementation-requirements">
+            <h2 property="schema:name">Implementation Requirements</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p>This section describes the expected requirements for applications and servers targeting the Solid26 release.</p>
+
+              <section id="server-conformance" inlist="" rel="schema:hasPart" resource="#server-conformance">
+                <h3>Server Conformance</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>Servers conforming to Solid26 are expected to implement all parts of the <a href="#solid-protocol">Solid Protocol</a> (v0.11.0) with the exceptions noted in that section, along with <a href="#solid-oidc">Solid-OIDC</a> and <a href="#web-access-control">Web Access Control</a>.</p>
+                </div>
+              </section>
+
+
+            </div>
+          </section>
+
+
+
+          <section id="references" inlist="" rel="schema:hasPart" resource="#references">
+            <h2>References</h2>
+            <div>
+              <dl>
+                <dt id="ref-solid-protocol">[SOLID-PROTOCOL]</dt>
+                <dd><cite><a href="https://solidproject.org/TR/protocol">Solid Protocol</a></cite>. Sarven Capadisli; Tim Berners-Lee; Kjetil Kjernsmo. W3C Solid Community Group. URL: <a href="https://solidproject.org/TR/protocol">https://solidproject.org/TR/protocol</a></dd>
+
+                <dt id="ref-solid-oidc">[SOLID-OIDC]</dt>
+                <dd><cite><a href="https://solidproject.org/TR/oidc">Solid-OIDC</a></cite>. W3C Solid Community Group. URL: <a href="https://solidproject.org/TR/oidc">https://solidproject.org/TR/oidc</a></dd>
+
+                <dt id="ref-wac">[WAC]</dt>
+                <dd><cite><a href="https://solidproject.org/TR/wac">Web Access Control</a></cite>. W3C Solid Community Group. URL: <a href="https://solidproject.org/TR/wac">https://solidproject.org/TR/wac</a></dd>
+
+
+              </dl>
+            </div>
+          </section>
+
+          <section id="acknowledgements" inlist="" rel="schema:hasPart" resource="#acknowledgements">
+            <h2>Acknowledgements</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p>The content of Solid26 has been proposed by members of the <a href="https://www.w3.org/community/solid/">W3C Solid Community Group</a>, including the <a href="https://theodi.org">Open Data Institute</a>, and is subject to the group's processes.</p>
+              <p>The <a href="https://theodi.org">Open Data Institute</a> stewards the Solid Project and is coordinating the development of supporting materials for Solid26 in collaboration with the global Solid community.</p>
+            </div>
+          </section>
+
+        </div>
+      </article>
+    </main>
+  </body>
+</html>
