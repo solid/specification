@@ -298,7 +298,6 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <li class="tocline"><a class="tocxref" href="#solid-protocol"><bdi class="secno">2.1</bdi> <span>Solid Protocol</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#solid-oidc"><bdi class="secno">2.2</bdi> <span>Solid-OIDC</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#web-access-control"><bdi class="secno">2.3</bdi> <span>Web Access Control</span></a></li>
-                    <li class="tocline"><a class="tocxref" href="#stability-expectations"><bdi class="secno">2.4</bdi> <span>Stability Expectations</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -350,7 +349,6 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <li><a href="https://solidproject.org/TR/protocol#webid-tls">10.2 WebID-TLS</a></li>
                     <li><a href="https://solidproject.org/TR/acp">ACP (Access Control Policy)</a></li>
                   </ul>
-                  <p>The Solid Protocol document is stable.</p>
                 </div>
               </section>
 
@@ -358,7 +356,6 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                 <h3>Solid-OIDC</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><a href="https://solidproject.org/TR/oidc">Solid-OIDC</a> (CG-Draft, v0.1.0) is included in the Solid26 release.</p>
-                  <p>Solid-OIDC is subject to change as best practices for authentication evolve.</p>
                   <div class="note">
                     <h4><span>Editor's Note</span></h4>
                     <p>Solid-OIDC v0.1.0 is not a widely implemented version. A document that accurately reflects current implementations is being drafted by Christoph Braun. This PR is waiting for that document to be available and ready to reference before merging.</p>
@@ -370,44 +367,10 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                 <h3>Web Access Control</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><a href="https://solidproject.org/TR/2024/wac-20240512">Web Access Control</a> (CG-Draft, 2024-05-12) is included in this release.</p>
-                  <p>The Web Access Control specification is likely to become one of many access control language profiles which are supported in future releases. Note that most clients should not need to manage access controls — and hence should not be affected by a change in the access control language that a server uses.</p>
                   <div class="note">
                     <h4><span>Editor's Note</span></h4>
                     <p>We would like to update the referenced WAC version and snapshot link to include the proposed changes in <a href="https://github.com/solid/web-access-control-spec/pull/134">solid/web-access-control-spec#134</a>, if they are merged in time.</p>
                   </div>
-                </div>
-              </section>
-
-              <section id="stability-expectations" inlist="" rel="schema:hasPart" resource="#stability-expectations">
-                <h3>Stability Expectations</h3>
-                <div datatype="rdf:HTML" property="schema:description">
-                  <p>The following table summarises the stability expectations for each specification included in this release:</p>
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Specification</th>
-                        <th>Version</th>
-                        <th>Stability</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Solid Protocol</td>
-                        <td>CG-Draft, v0.11.0</td>
-                        <td>Stable</td>
-                      </tr>
-                      <tr>
-                        <td>Solid-OIDC</td>
-                        <td>CG-Draft, v0.1.0</td>
-                        <td>Subject to change</td>
-                      </tr>
-                      <tr>
-                        <td>Web Access Control</td>
-                        <td>CG-Draft, 2024-05-12</td>
-                        <td>May become one of many profiles</td>
-                      </tr>
-                    </tbody>
-                  </table>
                 </div>
               </section>
             </div>
