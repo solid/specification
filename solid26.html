@@ -318,10 +318,10 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               <section id="solid-protocol" inlist="" rel="schema:hasPart" resource="#solid-protocol">
                 <h3>Solid Protocol</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>The <a href="https://solidproject.org/TR/protocol">Solid Protocol</a> (CG-DRAFT/FINAL, v0.11.0) is included with the following amendments. Servers are not required to implement the following:</p>
+                  <p>The <a href="https://solidproject.org/TR/protocol">Solid Protocol</a> (CG-DRAFT/FINAL, v0.11.0) is included with the following amendments:</p>
                   <ul>
-                    <li><a href="https://solidproject.org/TR/protocol#n3-patch">5.3.1 Modifying Resources Using N3 Patches</a></li>
-                    <li><a href="https://solidproject.org/TR/protocol#access-control-policy">11.2 ACP (Access Control Policy)</a></li>
+                    <li>Servers are not required to implement <a href="https://solidproject.org/TR/protocol#n3-patch">5.3.1 Modifying Resources Using N3 Patches</a>.</li>
+                    <li>Servers MUST conform to Web Access Control (<a href="https://solidproject.org/TR/protocol#web-access-control">WAC</a>). Clients are not required to conform to Access Control Policy (<a href="https://solidproject.org/TR/protocol#access-control-policy">ACP</a>).</li>
                   </ul>
                 </div>
               </section>
@@ -340,7 +340,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               <section id="web-access-control" inlist="" rel="schema:hasPart" resource="#web-access-control">
                 <h3>Web Access Control</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p><a href="https://solidproject.org/TR/2024/wac-20240512">Web Access Control</a> (CG-DRAFT/FINAL, 2024-05-12) is included in this release.</p>
+                  <p><a href="https://solidproject.org/TR/2024/wac-20240512">Web Access Control</a> (CG-DRAFT/FINAL, 2024-05-12) is included in this release. Solid26 requires servers to implement WAC as their access control mechanism.</p>
                   <div class="note">
                     <h4><span>Note</span></h4>
                     <p>We would like to update the referenced WAC version and snapshot link to include the proposed changes in <a href="https://github.com/solid/web-access-control-spec/pull/134">solid/web-access-control-spec#134</a>, if they are merged in time.</p>
