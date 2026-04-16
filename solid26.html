@@ -301,6 +301,15 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   <p><a class="tocxref" href="#implementation-guidance"><bdi class="secno">3.</bdi> <span>Implementation Guidance</span></a></p>
                   <ol>
                     <li class="tocline"><a class="tocxref" href="#webid"><bdi class="secno">3.1</bdi> <span>WebID</span></a></li>
+                    <li class="tocline">
+                      <p><a class="tocxref" href="#wac-and-acp"><bdi class="secno">3.2</bdi> <span>WAC and ACP</span></a></p>
+                      <ol>
+                        <li class="tocline"><a class="tocxref" href="#data-model-comparison"><bdi class="secno">3.2.1</bdi> <span>Data Model Comparison</span></a></li>
+                        <li class="tocline"><a class="tocxref" href="#converting-wac-to-acp"><bdi class="secno">3.2.2</bdi> <span>Converting WAC to ACP</span></a></li>
+                        <li class="tocline"><a class="tocxref" href="#converting-acp-to-wac"><bdi class="secno">3.2.3</bdi> <span>Converting ACP to WAC</span></a></li>
+                        <li class="tocline"><a class="tocxref" href="#summary-of-convertible-features"><bdi class="secno">3.2.4</bdi> <span>Summary of Convertible Features</span></a></li>
+                      </ol>
+                    </li>
                   </ol>
                 </li>
                 <li class="tocline"><a class="tocxref" href="#references"><span>References</span></a></li>
@@ -427,6 +436,165 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   </div>
                 </div>
               </section>
+
+              <section id="wac-and-acp" inlist="" rel="schema:hasPart" resource="#wac-and-acp">
+                <h3 property="schema:name">WAC and ACP</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>The Solid ecosystem defines two access control systems: [<a href="#ref-wac">WAC</a>] and [<a href="#ref-acp">ACP</a>]. A Solid server implements one or both of these. Clients working across servers may need to convert between the two representations.</p>
+                  <p>WAC and ACP overlap in what they can express but are not equivalent. WAC uses a flat list of <code>acl:Authorization</code> instances. ACP uses a layered structure of Access Control Resources, Access Controls, Policies, and Matchers. Some constructs in each system have no counterpart in the other.</p>
+
+                  <section id="data-model-comparison" inlist="" rel="schema:hasPart" resource="#data-model-comparison">
+                    <h4>Data Model Comparison</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>A WAC authorization (an instance of <code>acl:Authorization</code>) combines access objects, access modes, and access subjects into a single resource. It uses <code>acl:accessTo</code> and <code>acl:default</code> to identify target resources, <code>acl:mode</code> to specify permissions, and <code>acl:agent</code>, <code>acl:agentClass</code>, <code>acl:agentGroup</code>, and <code>acl:origin</code> to identify subjects.</p>
+                      <p>ACP separates these concerns across multiple classes. An <code>acp:AccessControlResource</code> connects a resource to one or more <code>acp:AccessControl</code> instances via <code>acp:accessControl</code> and <code>acp:memberAccessControl</code>. Each Access Control links to Policies via <code>acp:apply</code>. A Policy specifies allowed and denied modes via <code>acp:allow</code> and <code>acp:deny</code>, and references Matchers via <code>acp:allOf</code>, <code>acp:anyOf</code>, and <code>acp:noneOf</code>. A Matcher describes agent, client, issuer, and credential conditions.</p>
+                    </div>
+                  </section>
+
+                  <section id="converting-wac-to-acp" inlist="" rel="schema:hasPart" resource="#converting-wac-to-acp">
+                    <h4>Converting WAC to ACP</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>Each <code>acl:Authorization</code> produces one <code>acp:AccessControlResource</code> containing one <code>acp:AccessControl</code>, one <code>acp:Policy</code>, and one <code>acp:Matcher</code>.</p>
+
+                      <ol>
+                        <li id="wac2acp-step-0">For each <code>acl:Authorization</code> in the source:</li>
+                        <li id="wac2acp-step-1">If the authorization has any <code>acl:origin</code> values, the conversion fails. WAC's origin-based access has no equivalent in ACP's matcher model.</li>
+                        <li id="wac2acp-step-2">If <code>acl:accessTo</code> is present, create an <code>acp:AccessControlResource</code> and link it to a new <code>acp:AccessControl</code> via <code>acp:accessControl</code>. Set <code>acp:resource</code> to the value of <code>acl:accessTo</code>. Then populate the Policy and Matcher as described in steps 4–7.</li>
+                        <li id="wac2acp-step-3">If <code>acl:default</code> is present, create an <code>acp:AccessControlResource</code> and link it to a new <code>acp:AccessControl</code> via <code>acp:memberAccessControl</code>. Set <code>acp:resource</code> to the value of <code>acl:default</code>. The <code>acp:memberAccessControl</code> property provides the transitive inheritance that <code>acl:default</code> provides in WAC. Then populate the Policy and Matcher as described in steps 4–7.</li>
+                        <li id="wac2acp-step-4">Create a new <code>acp:AccessControl</code>, a new <code>acp:Policy</code>, and a new <code>acp:Matcher</code>. Link the Access Control to the Access Control Resource's <code>acp:accessControl</code> or <code>acp:memberAccessControl</code> set (depending on step 2 or 3). Link the Policy to the Access Control via <code>acp:apply</code>. Link the Matcher to the Policy via <code>acp:allOf</code>.</li>
+                        <li id="wac2acp-step-5">For each <code>acl:mode</code> value on the authorization, add it to the Policy via <code>acp:allow</code>. Both systems use the same mode IRIs from the ACL vocabulary (<code>acl:Read</code>, <code>acl:Write</code>, <code>acl:Control</code>, <code>acl:Append</code>).</li>
+                        <li id="wac2acp-step-6">For each <code>acl:agent</code> value:
+                          <ul>
+                            <li>If the value is <code>foaf:Agent</code>, add <code>acp:PublicAgent</code> to the Matcher's <code>acp:agent</code>.</li>
+                            <li>If the value is <code>acl:AuthenticatedAgent</code>, add <code>acp:AuthenticatedAgent</code> to the Matcher's <code>acp:agent</code>.</li>
+                            <li>Otherwise, add the agent IRI directly to the Matcher's <code>acp:agent</code>.</li>
+                          </ul>
+                        </li>
+                        <li id="wac2acp-step-7">For each member of an <code>acl:agentGroup</code> (resolved via <code>vcard:hasMember</code>), add the member IRI to the Matcher's <code>acp:agent</code>. ACP has no group indirection; group members are flattened into individual agent references.</li>
+                      </ol>
+                    </div>
+                  </section>
+
+                  <section id="converting-acp-to-wac" inlist="" rel="schema:hasPart" resource="#converting-acp-to-wac">
+                    <h4>Converting ACP to WAC</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>Each <code>acp:AccessControlResource</code> produces one <code>acl:Authorization</code>. The authorization accumulates modes and agents from all Access Controls and their Policies.</p>
+
+                      <ol>
+                        <li id="acp2wac-step-0">Given an <code>acp:AccessControlResource</code> in the source:</li>
+                        <li id="acp2wac-step-1">Create a new <code>acl:Authorization</code>.</li>
+                        <li id="acp2wac-step-2">If the ACR has any <code>acp:accessControl</code> values, set <code>acl:accessTo</code> on the authorization to the ACR's <code>acp:resource</code> value,</li>
+                        <li id="acp2wac-step-3">If the ACR has any <code>acp:memberAccessControl</code> values, set <code>acl:default</code> on the authorization to the ACR's <code>acp:resource</code> value.</li>
+                        <li id="acp2wac-step-4">For each <code>acp:AccessControl</code> linked via <code>acp:accessControl</code> or <code>acp:memberAccessControl</code>, and for each <code>acp:Policy</code> linked via <code>acp:apply</code>:
+                          <ol type="a">
+                            <li id="acp2wac-step-4a">If the Policy has any <code>acp:deny</code> values, the conversion fails. WAC has no deny mechanism.</li>
+                            <li id="acp2wac-step-4b">If the Policy has any <code>acp:anyOf</code> matchers, the conversion fails. WAC has no disjunctive matching.</li>
+                            <li id="acp2wac-step-4c">If the Policy has any <code>acp:noneOf</code> matchers, the conversion fails. WAC has no negation.</li>
+                            <li id="acp2wac-step-4d">For each <code>acp:allow</code> value on the Policy, add it to the authorization's <code>acl:mode</code>.</li>
+                            <li id="acp2wac-step-4e">For each <code>acp:Matcher</code> linked via <code>acp:allOf</code>:
+                              <ul>
+                                <li>If the Matcher has any <code>acp:client</code> values, the conversion fails. WAC has no client restriction.</li>
+                                <li>If the Matcher has any <code>acp:issuer</code> values, the conversion fails. WAC has no issuer restriction.</li>
+                                <li>If the Matcher has any <code>acp:vc</code> values, the conversion fails. WAC has no verifiable credential matching.</li>
+                                <li>For each <code>acp:agent</code> value on the Matcher:
+                                  <ul>
+                                    <li>If the value is <code>acp:CreatorAgent</code>, the conversion fails. WAC has no creator concept.</li>
+                                    <li>If the value is <code>acp:OwnerAgent</code>, the conversion fails. WAC has no owner concept.</li>
+                                    <li>If the value is <code>acp:PublicAgent</code>, add <code>foaf:Agent</code> to the authorization's <code>acl:agent</code>.</li>
+                                    <li>If the value is <code>acp:AuthenticatedAgent</code>, add <code>acl:AuthenticatedAgent</code> to the authorization's <code>acl:agent</code>.</li>
+                                    <li>Otherwise, add the agent IRI directly to the authorization's <code>acl:agent</code>.</li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </li>
+                          </ol>
+                        </li>
+                      </ol>
+                    </div>
+                  </section>
+
+                  <section id="summary-of-convertible-features" inlist="" rel="schema:hasPart" resource="#summary-of-convertible-features">
+                    <h4>Summary of Convertible Features</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <table>
+                        <caption>WAC ↔ ACP feature mapping</caption>
+                        <thead>
+                          <tr>
+                            <th>WAC</th>
+                            <th>ACP</th>
+                          </tr>
+                        </thead>
+                          <tbody>
+                          <tr>
+                            <td><code>acl:accessTo</code></td>
+                            <td><code>acp:resource</code> (with <code>acp:accessControl</code>)</td>
+                          </tr>
+                          <tr>
+                            <td><code>acl:default</code></td>
+                            <td><code>acp:resource</code> (with <code>acp:memberAccessControl</code>)</td>
+                          </tr>
+                          <tr>
+                            <td><code>acl:mode</code></td>
+                            <td><code>acp:allow</code></td>
+                          </tr>
+                          <tr>
+                            <td><code>acl:agent</code></td>
+                            <td><code>acp:agent</code></td>
+                          </tr>
+                          <tr>
+                            <td><code>foaf:Agent</code></td>
+                            <td><code>acp:PublicAgent</code></td>
+                          </tr>
+                          <tr>
+                            <td><code>acl:AuthenticatedAgent</code></td>
+                            <td><code>acp:AuthenticatedAgent</code></td>
+                          </tr>
+                          <tr>
+                            <td><code>acl:agentGroup</code> (with <code>vcard:hasMember</code>)</td>
+                            <td><code>acp:agent</code></td>
+                          </tr>
+                          <tr>
+                            <td><code>acl:origin</code></td>
+                            <td>∅</td>
+                          </tr>
+                          <tr>
+                            <td>∅</td>
+                            <td><code>acp:deny</code></td>
+                          </tr>
+                          <tr>
+                            <td>∅</td>
+                            <td><code>acp:anyOf</code></td>
+                          </tr>
+                          <tr>
+                            <td>∅</td>
+                            <td><code>acp:noneOf</code></td>
+                          </tr>
+                          <tr>
+                            <td>∅</td>
+                            <td><code>acp:client</code></td>
+                          </tr>
+                          <tr>
+                            <td>∅</td>
+                            <td><code>acp:issuer</code></td>
+                          </tr>
+                          <tr>
+                            <td>∅</td>
+                            <td><code>acp:vc</code></td>
+                          </tr>
+                          <tr>
+                            <td>∅</td>
+                            <td><code>acp:CreatorAgent</code></td>
+                          </tr>
+                          <tr>
+                            <td>∅</td>
+                            <td><code>acp:OwnerAgent</code></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </section>
+                </div>
+              </section>
             </div>
           </section>
 
@@ -442,6 +610,9 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
 
                 <dt id="ref-wac">[WAC]</dt>
                 <dd><cite><a href="https://solidproject.org/TR/2024/wac-20240512">Web Access Control</a></cite>. W3C Solid Community Group. URL: <a href="https://solidproject.org/TR/2024/wac-20240512">https://solidproject.org/TR/2024/wac-20240512</a></dd>
+
+                <dt id="ref-acp">[ACP]</dt>
+                <dd><cite><a href="https://solidproject.org/TR/2022/acp-20220518">Access Control Policy</a></cite>. W3C Solid Community Group. URL: <a href="https://solidproject.org/TR/2022/acp-20220518">https://solidproject.org/TR/2022/acp-20220518</a></dd>
 
                 <dt id="ref-authapp">[BKY+24]</dt>
                 <dd>
