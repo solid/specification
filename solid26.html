@@ -239,7 +239,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
             <dl id="document-editors">
               <dt>Editors</dt>
               <dd id="Jesse-Wright"><span about="" rel="schema:editor schema:author"><span typeof="schema:Person"><a href="mailto:jesse.wright@cs.ox.ac.uk" rel="schema:url"><span property="schema:name"><span property="schema:givenName">Jesse</span> <span property="schema:familyName">Wright</span></span></a> (<span property="schema:affiliation">University of Oxford</span>)</span></span></dd>
-              <dd data-editor-id="128292" id="Christoph-Braun"><span about="" rel="schema:author"><span about="https://uvdsl.solid.aifb.kit.edu/profile/card#me" typeof="schema:Person"><a href="https://aifb.kit.edu/web/Christoph_Braun/en" rel="schema:url"><span about="https://uvdsl.solid.aifb.kit.edu/profile/card#me" property="schema:name"><span property="schema:givenName">Christoph</span> <span property="schema:familyName">Braun</span></span></a> (<span property="schema:affiliation">Karlsruhe Institute of Technology (KIT)</span>)</span></span></dd>
+              <dd data-editor-id="128292" id="Christoph-Braun"><span about="" rel="schema:author"><span about="https://uvdsl.solid.aifb.kit.edu/profile/card#me" typeof="schema:Person"><a href="https://aifb.kit.edu/web/Christoph_Braun/en" rel="schema:url"><span about="https://uvdsl.solid.aifb.kit.edu/profile/card#me" property="schema:name"><span property="schema:givenName">Christoph</span> <span property="schema:familyName">Braun</span></span></a> (<span property="schema:affiliation">FZI Forschungszentrum Informatik</span>)</span></span></dd>
             </dl>
             <dl id="document-published">
               <dt>Published</dt>
@@ -311,7 +311,12 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
           <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction">
             <h2 property="schema:name">Introduction</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p>The <a href="https://solidproject.org/TR/">Solid Specification</a> defines multiple sub-specification documents with differing levels of maturity. Solid26 collects the most mature and widely implemented specification versions into one coherent reference — a snapshot of the parts of the Solid platform that are most broadly supported by existing implementations.</p>
+              <p>
+                The <a href="https://solidproject.org/TR/">Solid Technical Reports</a> comprise multiple specification documents with differing levels of maturity. 
+                The <a href="https://solidproject.org/TR/protocol">Solid Protocol</a> bundles the <a href="https://solidproject.org/TR/protocol#abstract">specifications that, together, provide applications with secure and permissioned access to externally stored data in an interoperable way</a>. 
+                Solid26 points implementers to fixed versions of the <a href="https://solidproject.org/TR/protocol">Solid Protocol</a> and its sub-specifications, a stable snapshot of the specifications to build against today. 
+                Solid26 selects for the most widely implemented specification versions at the time of this documents publication.
+              </p>
               <p>This document does not define new normative requirements, but rather identifies and collects the specifications needed to build interoperable Solid applications and servers.</p>
             </div>
           </section>
@@ -319,15 +324,60 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
           <section id="specifications" inlist="" rel="schema:hasPart" resource="#specifications">
             <h2 property="schema:name">Specifications</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p>The Solid26 specification documents are as follows. All referenced specifications are W3C Solid Community Group Drafts.</p>
+              <p>This Solid26 Implementation Guide recommends the following specification snapshots.</p>
 
               <section id="solid-protocol" inlist="" rel="schema:hasPart" resource="#solid-protocol">
                 <h3>Solid Protocol</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>The <a href="https://solidproject.org/TR/protocol">Solid Protocol</a> (CG-DRAFT/FINAL, v0.11.0) is included with the following comments:</p>
                   <ul>
-                    <li>Servers are not required to implement <a href="https://solidproject.org/TR/protocol#n3-patch">5.3.1 Modifying Resources Using N3 Patches</a>.</li>
-                    <li>Servers MUST conform to Web Access Control (<a href="https://solidproject.org/TR/protocol#web-access-control">WAC</a>). Clients are not required to conform to Access Control Policy (<a href="https://solidproject.org/TR/protocol#access-control-policy">ACP</a>).</li>
+                    <li>
+                      Clients are strongly encouraged to implement a PATCH fallback mechanism, in case they encounter a Server that does not implement <a href="https://solidproject.org/TR/protocol#n3-patch">5.3.1 Modifying Resources Using N3 Patches</a> despite it being required by the Solid Protocol. 
+                      For example, Clients might try to use a combination of HTTP GET and HTTP PUT to work around such limitation of a non-conformant Server.
+                    </li>
+                    <li>
+                      Servers are strongly encouraged to implement Web Access Control (<a href="https://solidproject.org/TR/protocol#web-access-control">WAC</a>), see <a href="#web-access-control">below</a>. 
+                      <div class="note" id="note-survey">
+                        <h4><span>Note</span></h4>
+                        <p>The <a href="https://lists.w3.org/Archives/Public/public-solid/2026Mar/0019.html">March 2026 implementation survey</a> yields the following <a href="https://github.com/w3c-cg/solid/blob/main/implementations/wac-acp.2026-04-01.csv">results</a>:</p>
+                          <ul>
+                            <li>
+                              For WAC, the data shows 13 server-side implementations, deployment in 11 services, and 19 client-side implementations.
+                              WAC is considered the pragmatic, user-friendly, and extensible standard that effectively covers nearly all of the use cases from current Solid Apps. 
+                            </li>
+                            <li>
+                              For ACP, the data shows 4 server-side implementations, deployment in 1 service, and 4 client-side implementations. 
+                              ACP is considered as a highly powerful but complex tool that has not seen wide adoption in the community as the data indicates.
+                            </li>
+                          </ul>
+                          <p>The data shows that most clients implement only one access control language, despite the Solid Protocol requiring Clients to conform to both WAC and ACP.</p>
+                      </div>
+                      </li>
+                      <li>
+                      While the Solid Protocol technically requires any Client to conform to both authorization languages, Client implementers are advised to consider whether their Client implementation should actually attempt to modify access rules at all:
+                      A separation between a client executing application-specific logic and a client executing authorization-related logic might be beneficial in terms of separation of concerns, maintainability, and re-usability of software components [<a href="#ref-authapp">BKY+24</a>].
+                      Such approach might rely on
+                      <ul>
+                        <li>access requests to update access control rules accordingly on a Server</li>
+                        <li>issued by the application-logic client</li>
+                        <li>processed by either a particular Client that is able and trusted to manage access controls (such as an access management or authorization application) or by custom Server functionality</li>
+                       </ul> 
+                      <div class="issue">
+                        <a href="https://github.com/solid/specification/issues/775"><h4><span>[New Work Item]: Access Requests and Grants</span></h4></a>
+                        <p>
+                          Access requests and their processing are currently are poposed work item to the CG.
+                          Different approaches exist within the community; no consensus has been reached yet.
+                          Implementers are encouraged to provide their implementation expierence as input to the community's discussion.
+                        </p>
+                      </div>
+                      <div class="note">
+                        <h4><span>Editor's Note (Christoph)</span></h4>
+                        <p>
+                          Not sure if the above item provides sufficient guidance or is simply confusing due to the lack of context in the Solid Protocol for access requests altogether.
+                          I, Christoph, am torn on the above item on access requests. Would like to hear the groups's opinion here.
+                        </p>
+                      </div>
+                    </li>
                   </ul>
                 </div>
               </section>
@@ -335,10 +385,17 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               <section id="solid-oidc" inlist="" rel="schema:hasPart" resource="#solid-oidc">
                 <h3>Solid-OIDC</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p><a href="https://solidproject.org/TR/oidc">Solid-OIDC</a> (CG-DRAFT/FINAL, v0.1.0) is included in the Solid26 release.</p>
-                  <div class="note">
-                    <h4><span>Note</span></h4>
-                    <p>Solid-OIDC v0.1.0 is not widely implemented. In particular, the recommended flow of User-Managed Access (UMA) is not supported by any open source Solid Server implementation (yet). Current implementations rely on the access token issued by the OpenID Provider of the user to authenticate the user at a Solid Storage. A corresponding Group Note document that accurately reflects current implementations is being drafted by Christoph Braun. This PR is waiting for that document to be available and ready to reference before merging.</p>
+                  <p><a href="https://solidproject.org/TR/oidc">Solid-OIDC</a> (CG-DRAFT/FINAL, v0.1.0) is included with the following comments:</p>
+                    <ul>
+                      <li>
+                        <p>Despite Solid26 including Solid-OIDC v0.1.0, it is not widely implemented. In particular, the Solid-OIDC recommended flow of User-Managed Access (UMA) is not supported by any open source Solid Server implementation. Current implementations rely on the access token issued by the OpenID Provider of the user to authenticate the user at a Solid Storage.</p>
+                      </li>
+                    </ul>
+                    <div class="note">
+                    <h4><span>EDITORS' Note</span></h4>
+                    <p>
+                     A corresponding Group Note document that accurately reflects current implementations is being drafted by Christoph Braun. This PR is waiting for that document to be available and ready to reference before merging.
+                    </p>
                   </div>
                 </div>
               </section>
@@ -346,12 +403,13 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               <section id="web-access-control" inlist="" rel="schema:hasPart" resource="#web-access-control">
                 <h3>Web Access Control</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p><a href="https://solidproject.org/TR/2024/wac-20240512">Web Access Control</a> (CG-DRAFT/FINAL, 2024-05-12) is included in this release. Solid26 requires servers to implement WAC as their access control mechanism.</p>
-                  <div class="note">
-                    <h4><span>Note</span></h4>
-                    <p>We would like to update the referenced WAC version and snapshot link to include the proposed changes in <a href="https://github.com/solid/web-access-control-spec/pull/134">solid/web-access-control-spec#134</a>, if they are merged in time.</p>
+                  <p><a href="https://solidproject.org/TR/2024/wac-20240512">Web Access Control</a> (CG-DRAFT/FINAL, 2024-05-12) is included with the following comments:</p>
+                    <ul>
+                      <li>
+                        WAC is actively being maintained and developed: To officially extend WAC with functionality desired by the community, a corresponding proposal is seeking implementers' feedback (<a href="https://github.com/solid/web-access-control-spec/pull/134">solid/web-access-control-spec#134</a>).
+                      </li>
+                    </ul>
                   </div>
-                </div>
               </section>
             </div>
           </section>
@@ -369,7 +427,6 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   </div>
                 </div>
               </section>
-
             </div>
           </section>
 
@@ -386,7 +443,14 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                 <dt id="ref-wac">[WAC]</dt>
                 <dd><cite><a href="https://solidproject.org/TR/2024/wac-20240512">Web Access Control</a></cite>. W3C Solid Community Group. URL: <a href="https://solidproject.org/TR/2024/wac-20240512">https://solidproject.org/TR/2024/wac-20240512</a></dd>
 
-
+                <dt id="ref-authapp">[BKY+24]</dt>
+                <dd>
+                  <cite>AuthApp - Portable, Reusable Solid App for GDPR-Compliant Access Granting</cite>. 
+                  Andreas Both; Thorsten Kastner; Dustin Yeboah; Christoph Braun; Daniel Schraudner; Sebastian Schmid; Tobias Käfer; Andreas Harth. 
+                  ICWE 2024: 199-214. 
+                  URL: <a href="https://doi.org/10.1007/978-3-031-62362-2_14">https://doi.org/10.1007/978-3-031-62362-2_14</a> , 
+                  Postprint available at: <a href="https://publikationen.bibliothek.kit.edu/1000172187">https://publikationen.bibliothek.kit.edu/1000172187</a>
+                </dd>
               </dl>
             </div>
           </section>
