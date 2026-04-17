@@ -332,8 +332,9 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   <p>The <a href="https://solidproject.org/TR/protocol">Solid Protocol</a> (CG-DRAFT/FINAL, v0.11.0) is included with the following comments:</p>
                   <ul>
                     <li>
-                      Clients are strongly encouraged to implement a PATCH fallback mechanism, in case they encounter a Server that does not implement <a href="https://solidproject.org/TR/protocol#n3-patch">5.3.1 Modifying Resources Using N3 Patches</a> despite it being required by the Solid Protocol. 
-                      For example, Clients might try to use a combination of HTTP GET and HTTP PUT to work around such limitation of a non-conformant Server.
+                      Known implementations of Solid do not support <a href="https://solidproject.org/TR/protocol#n3-patch">§ 5.3.1 Modifying Resources Using N3 Patches</a>. Clients can use <code>Allow</code> headers to determine if a server supports HTTP <code>PATCH</code> requests.
+                      
+                      If a server does not support HTTP <code>PATCH</code> requests, the client can HTTP <code>GET</code> the resource, apply the change in the client, and then HTTP <code>PUT</code> the resource back. Clients can maintain the concurrency control features of HTTP <code>PATCH</code> requests by using an <a href="https://datatracker.ietf.org/doc/html/rfc7232.html"><code>ETag</code> header</a> or <code>If-Modified-Since</code> header. <code>ETag</code> headers are more precise, and therefore a best used in favor of <code>If-Modified-Since</code> headers where possible.
                     </li>
                     <li>
                       Servers are strongly encouraged to implement Web Access Control (<a href="https://solidproject.org/TR/protocol#web-access-control">WAC</a>), see <a href="#web-access-control">below</a>. 
