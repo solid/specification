@@ -334,7 +334,17 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <li>
                       Clients might encounter Servers that do not support <a href="https://solidproject.org/TR/protocol#n3-patch">§ 5.3.1 Modifying Resources Using N3 Patches</a> despite it being required by the Solid Protocol. Clients can use <code>Allow</code> headers to determine if a Server supports HTTP <code>PATCH</code> requests.
                       
-                      If a server does not support HTTP <code>PATCH</code> requests, the client can HTTP <code>GET</code> the resource, apply the change in the client, and then HTTP <code>PUT</code> the resource back. Clients can maintain the concurrency control features of HTTP <code>PATCH</code> requests by using an <a href="https://datatracker.ietf.org/doc/html/rfc7232.html"><code>ETag</code> header</a> or <code>If-Modified-Since</code> header. <code>ETag</code> headers are more precise, and therefore a best used in favor of <code>If-Modified-Since</code> headers where possible.
+                      <p>If a server does not support HTTP <code>PATCH</code> requests, the client can HTTP <code>GET</code> the resource, apply the change locally, and then HTTP <code>PUT</code> the resource back. If the server supports <a href="https://datatracker.ietf.org/doc/html/rfc9110#name-etag"><code>ETag</code> headers</a> or <a href="https://datatracker.ietf.org/doc/html/rfc9110#name-last-modified"><code>Last-Modified</code></a> headers, clients can achieve the concurrency-control behaviour of HTTP <code>PATCH</code> by issuing a conditional <code>PUT</code>. <code>ETag</code>-based validation is more precise than date-based validation and should be preferred when a server supports both, because <code>Last-Modified</code> has only one-second resolution and may not reflect sub-second changes.</p>
+
+<p>The flow is:</p>
+
+<ul>
+  <li>On <code>GET</code>, the server returns an <code>ETag</code> — an opaque validator identifying the current state of the resource (often derived from a content hash, but the exact derivation is up to the server). For example, imagine the server returns <code>ETag: "xyzzy"</code>.</li>
+  <li>The client then makes a conditional <code>PUT</code> using the <a href="https://datatracker.ietf.org/doc/html/rfc9110#name-if-match"><code>If-Match</code></a> header: <code>If-Match: "xyzzy"</code>. The server applies the <code>PUT</code> only if the resource's current <code>ETag</code> still matches <code>"xyzzy"</code>; otherwise it responds with <code>412 Precondition Failed</code>. This guarantees the resource has not changed on the server between the <code>GET</code> and the <code>PUT</code>.</li>
+  <li>The equivalent using dates is <a href="https://datatracker.ietf.org/doc/html/rfc9110#name-if-unmodified-since"><code>If-Unmodified-Since</code></a> paired with the <code>Last-Modified</code> value from the <code>GET</code> response. Note that <code>If-Modified-Since</code> is the header used for cache revalidation on <code>GET</code>, not for lost-update prevention on <code>PUT</code>.</li>
+</ul>
+
+<p>Note that <code>If-Match</code> uses strong comparison, so weak ETags (those prefixed with <code>W/</code>) will not match.</p>
                     </li>
                     <li>
                       Servers are strongly encouraged to implement Web Access Control (<a href="https://solidproject.org/TR/protocol#web-access-control">WAC</a>), see <a href="#web-access-control">below</a>. 
