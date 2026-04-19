@@ -515,6 +515,9 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       <ol>
                         <li>
                           The WebID Document is a public resource (i.e. an unauthenticated HTTP <code>GET</code> on the WebID URI returns the Profile) [<cite><a class="bibref" href="#ref-webid">WebID 1.0</a></cite> § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#processing-the-webid-profile">6 Processing the WebID Profile</a>].
+                          <ul>
+                            <li>The pinned specifications do not preclude a server from retrieving a non-public WebID Document via authenticated requests, but this is not well-supported in Social Web settings, where a WebID is dereferenced by many other agents' servers that cannot be assumed to make authenticated requests to WebIDs.</li>
+                          </ul>
                         </li>
                         <li>
                           The <code>pim:storage</code> statement in the WebID Profile is the only sound mechanism for discovering an agent's storages. The <code>storageDescription</code> Link header is not to be used for this purpose: a WebID Document hosted in a storage does not imply the WebID owns that storage [<cite><a class="bibref" href="#ref-solid-protocol">Solid Protocol</a></cite> § <a href="https://solidproject.org/TR/2024/protocol-20240512#webid-profile-privacy">Privacy Considerations</a>].
