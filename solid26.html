@@ -296,6 +296,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <li class="tocline"><a class="tocxref" href="#solid-oidc"><bdi class="secno">2.2</bdi> <span>Solid-OIDC</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#web-access-control"><bdi class="secno">2.3</bdi> <span>Web Access Control</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#webid-1"><bdi class="secno">2.4</bdi> <span>WebID 1.0</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#webid-profile"><bdi class="secno">2.5</bdi> <span>Solid WebID Profile</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -312,7 +313,6 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   </ol>
                 </li>
                 <li class="tocline"><p><a class="tocxref" href="#client-guidance"><bdi class="secno">4.</bdi> <span>Guidance for clients</span></a></p></li>
-                <li class="tocline"><p><a class="tocxref" href="#server-guidance"><bdi class="secno">5.</bdi> <span>Guidance for server implementors</span></a></p></li>
                 <li class="tocline"><a class="tocxref" href="#references"><span>References</span></a></li>
               </ol>
             </div>
@@ -466,7 +466,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                 <h3>WebID</h3>
                 <div datatype="rdf:HTML" property="schema:description">
 
-                  <p>This section gives implementation guidance for WebID in the context of the Solid26 Implementors Guide. It is organized into normative (<a href="#webid-normative">§ 3.1.1</a>) and non-normative (<a href="#webid-non-normative">§ 3.1.2</a>) statements found within specifications pinned by the Solid26 Implementors Guide (see <a href="#specifications">§ 2 Specifications</a>), and a recommended profile assembly algorithm (<a href="#webid-algorithms">§ 3.1.3</a>). Guidance for client and server implementors is given in <a href="#client-guidance">§ 4 Guidance for clients</a> and <a href="#server-guidance">§ 5 Guidance for server implementors</a>.</p>
+                  <p>This section gives implementation guidance for WebID in the context of the Solid26 Implementors Guide. It is organized into requirements derivable from the pinned specifications (<a href="#webid-normative">§ 3.1.1</a>) and common assumptions not required by them (<a href="#webid-non-normative">§ 3.1.2</a>) (see <a href="#specifications">§ 2 Specifications</a>), and a recommended profile assembly algorithm (<a href="#webid-algorithms">§ 3.1.3</a>). Guidance for client implementors is given in <a href="#client-guidance">§ 4 Guidance for clients</a>.</p>
 
                   <p>For the purposes of this section, the following terms are used:</p>
                   <dl>
@@ -479,11 +479,11 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <dt><dfn id="dfn-preferences-document">Preferences Document</dfn></dt>
                     <dd>A private Web resource, linked from the agent's <a href="#dfn-webid-profile">WebID Profile</a>, that holds settings and pointers to private data. Generally accessible only to the user (or a delegated agent).</dd>
                     <dt><dfn id="dfn-webid-profile">WebID Profile</dfn></dt>
-                    <dd>The RDF graph [<cite><a class="bibref" href="#ref-rdf11-concepts">RDF11-CONCEPTS</a></cite>] formed by the union of the <a href="#dfn-webid-profile-document">WebID Profile Document</a> with any <a href="#dfn-extended-profile-document">Extended Profile Documents</a>, assembled per <a href="#webid-non-normative">§ 3.1.2 Non-Normative Assumptions</a>.</dd>
+                    <dd>The RDF graph [<cite><a class="bibref" href="#ref-rdf11-concepts">RDF11-CONCEPTS</a></cite>] formed by the union of the <a href="#dfn-webid-profile-document">WebID Profile Document</a> with any <a href="#dfn-extended-profile-document">Extended Profile Documents</a>, assembled per <a href="#webid-non-normative">§ 3.1.2 Common assumptions not required by Solid26 Implementors Guide specifications</a>.</dd>
                   </dl>
 
                   <section id="webid-normative" inlist="" rel="schema:hasPart" resource="#webid-normative">
-                    <h4>Normative Requirements</h4>
+                    <h4>Requirements derivable from Solid26 Implementors Guide specifications</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <ol>
                         <li>
@@ -509,7 +509,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   </section>
 
                   <section id="webid-non-normative" inlist="" rel="schema:hasPart" resource="#webid-non-normative">
-                    <h4>Non-Normative Assumptions</h4>
+                    <h4>Common assumptions not required by Solid26 Implementors Guide specifications</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <ol>
                         <li>
