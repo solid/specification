@@ -451,6 +451,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   <ul>
                     <li>Unlike the other pinned specifications, the Solid WebID Profile is <em>not</em> normatively referenced by the Solid Protocol. It is included here as the only specification that describes the structure of a Solid Profile and the predicates clients use to discover its parts.</li>
                     <li>Most clients only need <a href="https://solid.github.io/webid-profile/#discovery">§ 2 Discovery</a> and <a href="https://solid.github.io/webid-profile/#reading-profile">§ 3.1 Reading Profile</a>; the <a href="https://solid.github.io/webid-profile/#dfn-writer-application">Writer Application</a> sections (<a href="https://solid.github.io/webid-profile/#updating-profile">§ 3.2</a>, <a href="https://solid.github.io/webid-profile/#extending-profile">§ 3.3</a>) primarily apply to profile editors and onboarding flows.</li>
+                    <li>The companion <a href="https://github.com/solid/webid-profile/tree/main/shapes">shapes</a> in <code>solid/webid-profile</code> &mdash; <a href="https://github.com/solid/webid-profile/blob/main/shapes/profile-discovery-shape.ttl"><code>profile-discovery-shape.ttl</code></a> (discovery predicates) and <a href="https://github.com/solid/webid-profile/blob/main/shapes/profile-shapes.ttl"><code>profile-shapes.ttl</code></a> (profile data) &mdash; can be used by implementers to validate WebID Profiles, though they are not part of the pinned specification.</li>
                   </ul>
                 </div>
               </section>
@@ -547,9 +548,14 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                         <li>For each linked document (Extended Profile Documents via <code>rdfs:seeAlso</code>/<code>foaf:isPrimaryTopicOf</code>/<code>owl:sameAs</code>; the Preferences Document via <code>pim:preferencesFile</code>; Type Index documents via <code>solid:publicTypeIndex</code>/<code>solid:privateTypeIndex</code>), <code>GET</code> the document. Public documents may be fetched unauthenticated; on <code>401</code>/<code>403</code> with a logged-in user, retry authenticated. Preferences and the private Type Index will normally require authentication [<cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#discovery">2 Discovery</a>, § <a href="https://solid.github.io/webid-profile/#private-preferences">4 Private Preferences</a>].</li>
                         <li>Repeat step 2 transitively for Extended Profile Documents linked from the Preferences Document.</li>
                         <li>Discard any retrieved document that is not self-describing for the WebID (no triple with the WebID as subject, nor a <code>foaf:primaryTopic</code> triple naming it), to prevent attribution of arbitrary statements to the WebID.</li>
-                        <li>Union the remaining documents with the WebID Document, dropping <code>solid:oidcIssuer</code> from any source other than the WebID Document: it is authoritative only when sourced from the WebID Document, mirroring the write protection in <a href="https://solid.github.io/webid-profile/#updating-profile">Solid WebID Profile § 3.2</a>. Other discovery predicates (e.g. <code>pim:storage</code>, <code>ldp:inbox</code>) may legitimately appear in any of these documents.</li>
+                        <li>Union the remaining documents with the WebID Document, dropping <code>solid:oidcIssuer</code> from any source other than the WebID Document: it is authoritative only when sourced from the WebID Document, mirroring the write protection in <a href="https://solid.github.io/webid-profile/#updating-profile">Solid WebID Profile § 3.2</a>. Other discovery predicates (e.g. <code>pim:storage</code>) may legitimately appear in any of these documents.</li>
                         <li>Drop any statement in which the WebID is neither the subject nor the object, restricting the assembled graph to statements about the agent denoted by the WebID.</li>
                       </ol>
+
+                      <div class="note">
+                        <h4><span>Note</span></h4>
+                        <p>The assembled WebID Profile graph can optionally be validated against <a href="https://github.com/solid/webid-profile/blob/main/shapes/profile-discovery-shape.ttl"><code>profile-discovery-shape.ttl</code></a> from the <a href="https://github.com/solid/webid-profile/tree/main/shapes"><code>solid/webid-profile</code> shapes</a>. The shape covers <code>pim:preferencesFile</code> (exactly 1), <code>pim:storage</code> (0+), <code>rdfs:seeAlso</code> (0+), <code>solid:oidcIssuer</code> (0+), <code>solid:publicTypeIndex</code>/<code>solid:privateTypeIndex</code> (at most 1 each), and <code>foaf:primaryTopicOf</code> (at most 1). Two caveats apply: the shape uses the non-standard <code>foaf:primaryTopicOf</code> rather than the FOAF-defined <code>foaf:isPrimaryTopicOf</code> used elsewhere in this guide; and Solid-OIDC requires at least one <code>solid:oidcIssuer</code>, while the shape permits zero.</p>
+                      </div>
 
                     </div>
                   </section>
@@ -582,20 +588,29 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
 
               <div class="note">
                 <h4><span>Note</span></h4>
-                <p>Service-discovery predicates such as <code>pim:storage</code> and <code>ldp:inbox</code> may yield more than one value. When the application needs exactly one (e.g. a storage to write data into), prompt the user to choose which service to use rather than picking one silently.</p>
+                <p><code>pim:storage</code> may yield more than one value. When the application needs exactly one storage to write data into, prompt the user to choose rather than picking one silently.</p>
               </div>
 
               <div class="note">
                 <h4><span>Note</span></h4>
-                <p>The Solid WebID Profile [<cite><a class="bibref" href="#ref-webid-profile">WEBID-PROFILE</a></cite>] does not standardise predicates for rendering an agent's identity (see <a href="https://solid.github.io/webid-profile/#other-predicates">§ 7 Other predicates</a>). The list below is drawn from convention — predicates populated by existing profile editors (<a href="https://github.com/SolidOS/solidos">SolidOS</a>/<a href="https://github.com/SolidOS/mashlib">mashlib</a>, <a href="https://github.com/inrupt/pod-browser">Inrupt PodBrowser</a>, <a href="https://github.com/pod-os/PodOS">PodOS</a>, <a href="https://gitlab.com/vincenttunru/penny">Penny</a>, and Noël De Martin's <a href="https://github.com/NoelDeMartin/umai">Umai</a>, <a href="https://github.com/NoelDeMartin/focus">Focus</a>, <a href="https://github.com/NoelDeMartin/media-kraken">Media Kraken</a>) — drawn from FOAF [<cite><a class="bibref" href="#ref-foaf">FOAF</a></cite>], vCard [<cite><a class="bibref" href="#ref-vcard">VCARD-RDF</a></cite>], Schema.org [<cite><a class="bibref" href="#ref-schema">SCHEMA-ORG</a></cite>], BIO [<cite><a class="bibref" href="#ref-bio">BIO</a></cite>], and <a href="http://www.w3.org/ns/solid/terms#">Solid Terms</a>.</p>
-                <p>Common predicates for rendering a profile:</p>
+                <p>The Solid WebID Profile [<cite><a class="bibref" href="#ref-webid-profile">WEBID-PROFILE</a></cite>] does not standardise predicates for rendering an agent's identity (see <a href="https://solid.github.io/webid-profile/#other-predicates">§ 7 Other predicates</a>). The list below aligns with the companion <a href="https://github.com/solid/webid-profile/blob/main/shapes/profile-shapes.ttl"><code>profile-shapes.ttl</code></a> in the <a href="https://github.com/solid/webid-profile/tree/main/shapes"><code>solid/webid-profile</code> shapes</a> &mdash; which targets <code>foaf:Person</code>, <code>vcard:Individual</code>, and <code>schema:Person</code> &mdash; supplemented with widely-used fallbacks populated by existing profile editors (<a href="https://github.com/SolidOS/solidos">SolidOS</a>/<a href="https://github.com/SolidOS/mashlib">mashlib</a>, <a href="https://github.com/inrupt/pod-browser">Inrupt PodBrowser</a>, <a href="https://github.com/pod-os/PodOS">PodOS</a>, <a href="https://gitlab.com/vincenttunru/penny">Penny</a>, and No&euml;l De Martin's <a href="https://github.com/NoelDeMartin/umai">Umai</a>, <a href="https://github.com/NoelDeMartin/focus">Focus</a>, <a href="https://github.com/NoelDeMartin/media-kraken">Media Kraken</a>). Vocabularies referenced: FOAF [<cite><a class="bibref" href="#ref-foaf">FOAF</a></cite>], vCard [<cite><a class="bibref" href="#ref-vcard">VCARD-RDF</a></cite>], Schema.org [<cite><a class="bibref" href="#ref-schema">SCHEMA-ORG</a></cite>], <a href="http://www.w3.org/ns/org#">Org</a>, and <a href="http://www.w3.org/ns/solid/terms#">Solid Terms</a>.</p>
+                <p>Common predicates for rendering a profile (predicates appearing in <code>profile-shapes.ttl</code> are marked &dagger;):</p>
                 <ul>
-                  <li><strong>Name:</strong> <code>foaf:name</code>, with fallbacks to <code>vcard:fn</code>, <code>schema:name</code>, or <code>rdfs:label</code>.</li>
-                  <li><strong>Avatar / image:</strong> <code>foaf:img</code>, <code>vcard:hasPhoto</code>, or <code>schema:image</code>.</li>
-                  <li><strong>Homepage / web page:</strong> <code>foaf:homepage</code>, <code>foaf:weblog</code>, or <code>schema:url</code>.</li>
-                  <li><strong>Email / contact:</strong> <code>foaf:mbox</code>, <code>vcard:hasEmail</code>, or <code>schema:email</code>.</li>
-                  <li><strong>Description / bio:</strong> <code>vcard:note</code>, <code>schema:description</code>, or <code>bio:olb</code>.</li>
-                  <li><strong>Pronouns / preferred labels:</strong> <code>solid:preferredUsername</code>, <code>vcard:nickname</code>.</li>
+                  <li><strong>Name:</strong> <code>vcard:fn</code>&dagger;, with fallbacks to <code>foaf:name</code>, <code>schema:name</code>, or <code>rdfs:label</code>.</li>
+                  <li><strong>Short name / nickname:</strong> <code>foaf:nick</code>&dagger;, with fallback to <code>vcard:nickname</code>.</li>
+                  <li><strong>Avatar / photo:</strong> <code>vcard:hasPhoto</code>&dagger;, with fallbacks to <code>foaf:img</code> or <code>schema:image</code>.</li>
+                  <li><strong>Email:</strong> <code>vcard:hasEmail</code>&dagger;, with fallbacks to <code>foaf:mbox</code> or <code>schema:email</code>.</li>
+                  <li><strong>Telephone:</strong> <code>vcard:hasTelephone</code>&dagger;.</li>
+                  <li><strong>Address:</strong> <code>vcard:hasAddress</code>&dagger;.</li>
+                  <li><strong>Description / bio:</strong> <code>vcard:note</code>&dagger;, with fallback to <code>schema:description</code>.</li>
+                  <li><strong>Birthday:</strong> <code>vcard:bday</code>&dagger;.</li>
+                  <li><strong>Organization &amp; role:</strong> <code>vcard:organization-name</code>&dagger; and <code>vcard:role</code>&dagger;; for richer involvement, <code>org:organization</code>&dagger; and <code>org:role</code>&dagger;.</li>
+                  <li><strong>Pronouns:</strong> <code>solid:preferredSubjectPronoun</code>&dagger;, <code>solid:preferredObjectPronoun</code>&dagger;, <code>solid:preferredRelativePronoun</code>&dagger;.</li>
+                  <li><strong>Skills:</strong> <code>schema:skills</code>&dagger;.</li>
+                  <li><strong>Languages:</strong> <code>schema:knowsLanguage</code>&dagger;.</li>
+                  <li><strong>Friends / contacts:</strong> <code>foaf:knows</code>&dagger;.</li>
+                  <li><strong>Profile colours:</strong> <code>solid:profileHighlightColor</code>&dagger;, <code>solid:profileBackgroundColor</code>&dagger;.</li>
+                  <li><strong>Homepage / web page:</strong> <code>foaf:homepage</code>, <code>foaf:weblog</code>, or <code>schema:url</code> (not in the shape).</li>
                 </ul>
                 <p>None of these are guaranteed to be present; UIs should fall back to the WebID URI when no human-readable label is available.</p>
               </div>
