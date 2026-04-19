@@ -2,7 +2,7 @@
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Solid26: Implementation Guide</title>
+    <title>Solid26 Implementors Guide</title>
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
 <style>
 main,
@@ -224,7 +224,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
     <main>
       <article about="" typeof="schema:Article">
         <div class="head">
-          <h1 property="schema:name">Solid26: Implementation Guide</h1>
+          <h1 property="schema:name">Solid26 Implementors Guide</h1>
           <p id="w3c-state">Draft Community Group Report, <time datetime="2026-04-02T00:00:00Z">2026-04-02</time></p>
           <details open="">
             <summary>More details about this document</summary>
@@ -259,24 +259,24 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
             </dl>
             <dl id="document-type">
               <dt>Document Type</dt>
-              <dd>Implementation Guide</dd>
+              <dd>Implementors Guide</dd>
             </dl>
           </details>
-          <p class="copyright" rel="dcterms:rights" resource="#document-rights"><span property="dcterms:description"><a href="https://www.w3.org/policies/#copyright">Copyright</a> © 2026 the Contributors to Solid26: Implementation Guide, under the <a about="" href="https://www.w3.org/community/about/agreements/cla/" rel="schema:license">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available.</span></p>
+          <p class="copyright" rel="dcterms:rights" resource="#document-rights"><span property="dcterms:description"><a href="https://www.w3.org/policies/#copyright">Copyright</a> © 2026 the Contributors to the Solid26 Implementors Guide, under the <a about="" href="https://www.w3.org/community/about/agreements/cla/" rel="schema:license">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available.</span></p>
           <hr title="Separator for header" />
         </div>
         <div datatype="rdf:HTML" id="content" property="schema:description">
           <section id="abstract">
             <h2>Abstract</h2>
             <div datatype="rdf:HTML" property="schema:abstract">
-              <p>This document is an implementation guide for Solid26 — a snapshot of the most mature and widely implemented Solid specification versions, collected to help developers and organisations identify a common baseline. It provides practical guidance for implementing the Solid specifications included in this collection.</p>
+              <p>This document is the Solid26 Implementors Guide — a snapshot of the most mature and widely implemented Solid specification versions, collected to help developers and organisations identify a common baseline. It provides practical guidance for implementing the Solid specifications included in this collection.</p>
             </div>
           </section>
           <section id="sotd" inlist="" rel="schema:hasPart" resource="#sotd">
             <h2 property="schema:name">Status of This Document</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>This document was published by the <a href="https://www.w3.org/groups/cg/solid/">W3C Solid Community Group</a>. It is not a W3C Standard nor is it on the W3C Standards Track. Please note that under the <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a> there is a limited opt-out and other conditions apply. Learn more about <a href="https://www.w3.org/community/">W3C Community and Business Groups</a>.</p>
-              <p>This document is intended to provide implementation guidance for the Solid specifications collected in the Solid26 release. The content of this guide is informative and non-normative. It may be updated, replaced, or obsoleted by other documents at any time.</p>
+              <p>This document is intended to provide implementation guidance for the Solid specifications collected in the Solid26 Implementors Guide. The content of this guide is informative and non-normative. It may be updated, replaced, or obsoleted by other documents at any time.</p>
               <p>Comments regarding this document are welcome. Please file issues on <a href="https://github.com/solid/specification/issues">GitHub</a>.</p>
             </div>
           </section>
@@ -295,12 +295,20 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <li class="tocline"><a class="tocxref" href="#solid-protocol"><bdi class="secno">2.1</bdi> <span>Solid Protocol</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#solid-oidc"><bdi class="secno">2.2</bdi> <span>Solid-OIDC</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#web-access-control"><bdi class="secno">2.3</bdi> <span>Web Access Control</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#webid-1"><bdi class="secno">2.4</bdi> <span>WebID 1.0</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
                   <p><a class="tocxref" href="#implementation-guidance"><bdi class="secno">3.</bdi> <span>Implementation Guidance</span></a></p>
                   <ol>
-                    <li class="tocline"><a class="tocxref" href="#webid"><bdi class="secno">3.1</bdi> <span>WebID</span></a></li>
+                    <li class="tocline">
+                      <p><a class="tocxref" href="#webid"><bdi class="secno">3.1</bdi> <span>WebID</span></a></p>
+                      <ol>
+                        <li class="tocline"><a class="tocxref" href="#webid-normative"><bdi class="secno">3.1.1</bdi> <span>Requirements derivable from Solid26 Implementors Guide specifications</span></a></li>
+                        <li class="tocline"><a class="tocxref" href="#webid-non-normative"><bdi class="secno">3.1.2</bdi> <span>Common assumptions not required by Solid26 Implementors Guide specifications</span></a></li>
+                        <li class="tocline"><a class="tocxref" href="#webid-guidance"><bdi class="secno">3.1.3</bdi> <span>Implementation guidance</span></a></li>
+                      </ol>
+                    </li>
                   </ol>
                 </li>
                 <li class="tocline"><a class="tocxref" href="#references"><span>References</span></a></li>
@@ -314,8 +322,8 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               <p>
                 The <a href="https://solidproject.org/TR/">Solid Technical Reports</a> comprise multiple specification documents with differing levels of maturity. 
                 The <a href="https://solidproject.org/TR/protocol">Solid Protocol</a> bundles the <a href="https://solidproject.org/TR/protocol#abstract">specifications that, together, provide applications with secure and permissioned access to externally stored data in an interoperable way</a>. 
-                Solid26 points implementers to fixed versions of the <a href="https://solidproject.org/TR/protocol">Solid Protocol</a> and its sub-specifications, a stable snapshot of the specifications to build against today. 
-                Solid26 selects for the most widely implemented specification versions at the time of this documents publication.
+                The Solid26 Implementors Guide points implementers to fixed versions of the <a href="https://solidproject.org/TR/protocol">Solid Protocol</a> and its sub-specifications, a stable snapshot of the specifications to build against today. 
+                The Solid26 Implementors Guide selects for the most widely implemented specification versions at the time of this documents publication.
               </p>
               <p>This document does not define new normative requirements, but rather identifies and collects the specifications needed to build interoperable Solid applications and servers.</p>
             </div>
@@ -324,7 +332,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
           <section id="specifications" inlist="" rel="schema:hasPart" resource="#specifications">
             <h2 property="schema:name">Specifications</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p>This Solid26 Implementation Guide recommends the following specification snapshots.</p>
+              <p>The Solid26 Implementors Guide recommends the following specification snapshots.</p>
 
               <section id="solid-protocol" inlist="" rel="schema:hasPart" resource="#solid-protocol">
                 <h3>Solid Protocol</h3>
@@ -399,7 +407,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   <p><a href="https://solidproject.org/TR/2022/oidc-20220328">Solid-OIDC</a> (v0.1.0, 2022-03-28) is included with the following comments:</p>
                     <ul>
                       <li>
-                        <p>Despite Solid26 including Solid-OIDC v0.1.0, it is not widely implemented. In particular, the Solid-OIDC recommended flow of User-Managed Access (UMA) is not supported by any open source Solid Server implementation. Current implementations rely on the access token issued by the OpenID Provider of the user to authenticate the user at a Solid Storage.</p>
+                        <p>Despite the Solid26 Implementors Guide including Solid-OIDC v0.1.0, it is not widely implemented. In particular, the Solid-OIDC recommended flow of User-Managed Access (UMA) is not supported by any open source Solid Server implementation. Current implementations rely on the access token issued by the OpenID Provider of the user to authenticate the user at a Solid Storage.</p>
                       </li>
                     </ul>
                     <div class="note">
@@ -423,6 +431,17 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   </div>
               </section>
 
+              <section id="webid-1" inlist="" rel="schema:hasPart" resource="#webid-1">
+                <h3>WebID 1.0</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p><a href="https://www.w3.org/2005/Incubator/webid/spec/identity/">WebID 1.0</a> (W3C Editor's Draft, 5 March 2014) is included with the following comments:</p>
+                  <div class="note">
+                    <h4><span>Note</span></h4>
+                    <p>Throughout this document, references to "the WebID specification" or [<cite><a class="bibref" href="#ref-webid">WEBID</a></cite>] refer to WebID 1.0 as pinned here. WebID 1.0 has the status of a W3C Editor's Draft from the (now closed) W3C WebID Incubator Group; it has not progressed to a W3C Recommendation. The Solid Protocol and Solid-OIDC normatively reference WebID 1.0 for the definition of the term <em>WebID</em>.</p>
+                  </div>
+                </div>
+              </section>
+
             </div>
           </section>
 
@@ -433,10 +452,148 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               <section id="webid" inlist="" rel="schema:hasPart" resource="#webid">
                 <h3>WebID</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <div class="note">
-                    <h4><span>Note</span></h4>
-                    <p>Work in progress: the content from the <a href="https://docs.google.com/document/d/1da2J-NsU3K-4kWEFOvhzIdrvy_KftewXdlxfu401kY0/edit?tab=t.j8ef1ds1wza#heading=h.r94tmffvqx0e">WebID guidance document</a> is to be integrated into this section.</p>
-                  </div>
+
+                  <p>This section gives implementation guidance for WebID in the context of the Solid26 Implementors Guide. It is organised in three parts: a summary of the requirements that can be derived directly from the specifications pinned by the Solid26 Implementors Guide (<a href="#webid-normative">§ 3.1.1</a>); a summary of properties that are commonly assumed but are not strictly required by those specifications (<a href="#webid-non-normative">§ 3.1.2</a>); and concrete guidance for implementers (<a href="#webid-guidance">§ 3.1.3</a>).</p>
+
+                  <p>For the purposes of this section, the following terms are used:</p>
+                  <dl>
+                    <dt><dfn id="dfn-webid">WebID</dfn></dt>
+                    <dd>An IRI that denotes an agent [<cite><a class="bibref" href="#ref-webid">WEBID</a></cite>], [<cite><a class="bibref" href="#ref-solid-protocol">SOLID-PROTOCOL</a></cite>].</dd>
+                    <dt><dfn id="dfn-webid-profile">WebID Profile</dfn></dt>
+                    <dd>An RDF graph [<cite><a class="bibref" href="#ref-rdf11-concepts">RDF11-CONCEPTS</a></cite>] that contains information about the agent denoted by a <a href="#dfn-webid">WebID</a>.</dd>
+                    <dt><dfn id="dfn-webid-document">WebID Document</dfn></dt>
+                    <dd>A Web resource that, when dereferenced, returns a representation of a <a href="#dfn-webid-profile">WebID Profile</a>.</dd>
+                  </dl>
+
+                  <section id="webid-normative" inlist="" rel="schema:hasPart" resource="#webid-normative">
+                    <h4>Requirements derivable from Solid26 Implementors Guide specifications</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>The following requirements are directly stated by, or are direct logical consequences of, the specifications pinned by the Solid26 Implementors Guide (see <a href="#specifications">§ 2 Specifications</a>).</p>
+                      <ol>
+                        <li>
+                          A WebID is an HTTP URI denoting an agent (e.g. a person, organisation, or piece of software) [<cite><a class="bibref" href="#ref-webid">WebID 1.0</a></cite> § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#terminology">2 Terminology</a>, normative; <cite><a class="bibref" href="#ref-solid-protocol">Solid Protocol</a></cite> § <a href="https://solidproject.org/TR/2024/protocol-20240512#webid">9.1 WebID</a>, non-normative; <cite><a class="bibref" href="#ref-solid-oidc">Solid-OIDC</a></cite> § <a href="https://solidproject.org/TR/2022/oidc-20220328#concepts-webids">3.1 WebIDs</a>, non-normative].
+                        </li>
+                        <li>
+                          When a WebID is dereferenced, the server provides a representation of a WebID Profile as an RDF document [<cite><a class="bibref" href="#ref-solid-oidc">Solid-OIDC</a></cite> § <a href="https://solidproject.org/TR/2022/oidc-20220328#webid-profile">6 WebID Profile</a>, normative; <cite><a class="bibref" href="#ref-solid-protocol">Solid Protocol</a></cite> § <a href="https://solidproject.org/TR/2024/protocol-20240512#webid">9.1 WebID</a>, non-normative].
+                        </li>
+                        <li>
+                          The WebID Profile MUST contain one or more statements of the form <code>?webid solid:oidcIssuer ?iss</code>, where <code>?webid</code> is the WebID and each <code>?iss</code> is the IRI of an OpenID Provider trusted to issue ID Tokens for that WebID [<cite><a class="bibref" href="#ref-solid-oidc">Solid-OIDC</a></cite> § <a href="https://solidproject.org/TR/2022/oidc-20220328#oidc-issuer-discovery">6.1 OIDC Issuer Discovery</a>, normative].
+                        </li>
+                        <li>
+                          The <code>webid</code> claim in a Solid-OIDC DPoP-bound ID Token MUST be the user's WebID. Verifiers MUST check that the token's <code>iss</code> claim matches one of the WebID's discovered <code>solid:oidcIssuer</code> values; otherwise, the OpenID Provider is not authoritative for that WebID [<cite><a class="bibref" href="#ref-solid-oidc">Solid-OIDC</a></cite> § <a href="https://solidproject.org/TR/2022/oidc-20220328#tokens-id">8.1 DPoP-bound OIDC ID Token</a>, normative; <cite><a class="bibref" href="#ref-solid-oidc">Solid-OIDC</a></cite> § <a href="https://solidproject.org/TR/2022/oidc-20220328#oidc-issuer-discovery">6.1 OIDC Issuer Discovery</a>, normative].
+                        </li>
+                        <li>
+                          A Solid-OIDC OpenID Provider declares conformance by advertising <code>webid</code> in the <code>scopes_supported</code> property of its OpenID Connect Discovery 1.0 metadata. Clients can therefore determine whether a discovered issuer is a Solid-OIDC OpenID Provider by retrieving its provider configuration document and checking for that value [<cite><a class="bibref" href="#ref-solid-oidc">Solid-OIDC</a></cite> § <a href="https://solidproject.org/TR/2022/oidc-20220328#discovery">10 Solid-OIDC Conformance Discovery</a>, normative].
+                        </li>
+                        <li>
+                          A WAC server SHOULD NOT trust assertions found by dereferencing an agent's WebID for access-control decisions; only the WebID itself (and information the server independently trusts) is reliable for authorisation [<cite><a class="bibref" href="#ref-wac">Web Access Control</a></cite> § <a href="https://solidproject.org/TR/2024/wac-20240512#consider-additional-information-lookups">8.1 Security Considerations</a>, non-normative].
+                        </li>
+                      </ol>
+                      <div class="note">
+                        <h5><span>Note</span></h5>
+                        <p>The Solid Protocol pinned by the Solid26 Implementors Guide does <em>not</em> require a WebID Profile to contain a <code>pim:storage</code> statement pointing at the agent's storage. The protocol's storage-discovery mechanism ([<cite><a class="bibref" href="#ref-solid-protocol">Solid Protocol</a></cite> § <a href="https://solidproject.org/TR/2024/protocol-20240512#storage-resource">4.1 Storage Resource</a>, normative]) describes how a client may discover a storage from <em>any</em> RDF representation containing a <code>pim:storage</code> relation, and from the <code>Link</code> header with <code>rel="http://www.w3.org/ns/solid/terms#storageDescription"</code> on storage resources. It does not bind storage discovery to the WebID Profile specifically.</p>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section id="webid-non-normative" inlist="" rel="schema:hasPart" resource="#webid-non-normative">
+                    <h4>Common assumptions not required by Solid26 Implementors Guide specifications</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>The following properties are widely assumed by existing Solid software and are encouraged by the underlying [<cite><a class="bibref" href="#ref-webid">WebID 1.0</a></cite>] specification, but are not stated as normative requirements by any specification pinned by the Solid26 Implementors Guide.</p>
+                      <ol>
+                        <li>
+                          The WebID Document is publicly readable (i.e. an unauthenticated HTTP <code>GET</code> on the WebID URI returns the Profile) [<cite><a class="bibref" href="#ref-webid">WebID 1.0</a></cite> § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#processing-the-webid-profile">6 Processing the WebID Profile</a>, non-normative].
+                        </li>
+                        <li>
+                          The WebID Document is available as <code>text/turtle</code>. Solid-OIDC and the Solid Protocol require only that the Profile be expressed in some RDF 1.1 serialisation; Turtle is the format described in WebID 1.0 processing rules and is the de-facto default in the existing ecosystem [<cite><a class="bibref" href="#ref-webid">WebID 1.0</a></cite> § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#processing-the-webid-profile">6 Processing the WebID Profile</a>, non-normative; <cite><a class="bibref" href="#ref-solid-oidc">Solid-OIDC</a></cite> § <a href="https://solidproject.org/TR/2022/oidc-20220328#concepts-webids">3.1 WebIDs</a>, non-normative].
+                        </li>
+                        <li>
+                          Dereferencing the WebID URI yields an HTTP <code>200</code> or a <code>303</code> redirect (per the "Cool URIs for the Semantic Web" pattern referenced by WebID 1.0) [<cite><a class="bibref" href="#ref-webid">WebID 1.0</a></cite> § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#the-webid-http-uri">3 The WebID HTTP URI</a>, non-normative; <cite><a href="https://www.w3.org/TR/cooluris/#solutions">Cool URIs for the Semantic Web</a></cite> § 4, non-normative].
+                        </li>
+                        <li>
+                          The WebID Document is served by a Solid storage. WebID Profiles can be hosted on any HTTP resource that can serve RDF; nothing in the Solid26 Implementors Guide requires the WebID Document to itself be a Solid resource.
+                        </li>
+                        <li>
+                          The WebID Profile contains a <code>pim:storage</code> statement linking to the agent's Solid storage. This is a common convention in existing servers but is not required (see note in <a href="#webid-normative">§ 3.1.1</a>).
+                        </li>
+                        <li>
+                          The WebID URI uses a fragment identifier (a "hash URI"). Both fragment and non-fragment ("303") WebIDs are permitted by the underlying specifications.
+                        </li>
+                        <li>
+                          The WebID Document supports CORS so that browser-based clients can fetch it cross-origin. CORS support is not mandated by any specification pinned by the Solid26 Implementors Guide for arbitrary WebID hosts, although the Solid Protocol mandates CORS for resources served by Solid storages.
+                        </li>
+                        <li>
+                          A WebID Profile contains exactly one <code>solid:oidcIssuer</code> statement and at most one <code>pim:storage</code> statement. Solid-OIDC explicitly permits "one or more" issuers, and neither cardinality is otherwise constrained [<cite><a class="bibref" href="#ref-solid-oidc">Solid-OIDC</a></cite> § <a href="https://solidproject.org/TR/2022/oidc-20220328#oidc-issuer-discovery">6.1 OIDC Issuer Discovery</a>, normative].
+                        </li>
+                      </ol>
+                    </div>
+                  </section>
+
+                  <section id="webid-guidance" inlist="" rel="schema:hasPart" resource="#webid-guidance">
+                    <h4>Implementation guidance</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+
+                      <p>The following guidance is offered to implementers of clients and servers that consume WebIDs.</p>
+
+                      <section id="webid-guidance-treat-as-plain-http">
+                        <h5>Treat WebIDs as plain HTTP resources</h5>
+                        <p>Because Solid26 does not require WebID Documents to be Solid resources, clients should dereference WebID URIs as plain HTTP resources. In particular, clients should not send an <code>Authorization</code> header or DPoP proof when fetching a WebID Document, since some hosts may reject authenticated requests for resources that do not expect them.</p>
+                      </section>
+
+                      <section id="webid-guidance-content-negotiation">
+                        <h5>Content negotiation</h5>
+                        <p>Clients should send an <code>Accept</code> header advertising the RDF serialisations they can parse. <code>text/turtle</code> is the most widely deployed serialisation and is recommended as the primary value; clients that also support <code>application/ld+json</code>, <code>application/n-triples</code>, or <code>application/rdf+xml</code> should include those values too. Clients should be prepared to receive any RDF 1.1 serialisation in response and should fail gracefully if the returned representation cannot be parsed.</p>
+                      </section>
+
+                      <section id="webid-guidance-redirects-and-status">
+                        <h5>HTTP response handling</h5>
+                        <p>Clients should be prepared to handle, in addition to a direct <code>200 OK</code> response, an HTTP <code>303 See Other</code> redirect to the WebID Document, as described by the "Cool URIs for the Semantic Web" pattern. Other redirect status codes (e.g. <code>301</code>, <code>302</code>, <code>307</code>, <code>308</code>) may also be encountered and should be followed using standard HTTP semantics. A <code>401</code> response indicates the WebID Document is not publicly readable; in that case the WebID cannot be used for unauthenticated discovery and the client should surface a clear error to the user.</p>
+                      </section>
+
+                      <section id="webid-guidance-fragments">
+                        <h5>Fragment identifiers</h5>
+                        <p>Clients should distinguish between (a) the WebID itself, which includes any fragment identifier, and (b) the URI of the WebID Document, which is the WebID with the fragment removed (or the URI returned by following a <code>303</code> redirect). Authentication and identification always refer to the WebID, not the Document URI. When querying the Profile graph, the subject of statements about the agent is the full WebID (with fragment), not the Document URI.</p>
+                      </section>
+
+                      <section id="webid-guidance-issuer-discovery">
+                        <h5>Discovering the OpenID Provider</h5>
+                        <p>To discover the trusted OpenID Provider(s) for a WebID, clients dereference the WebID and evaluate the SPARQL pattern <code>?webid &lt;http://www.w3.org/ns/solid/terms#oidcIssuer&gt; ?iss</code> over the resulting graph. If the Profile lists more than one issuer, the client should let the user select which to use. <code>solid:oidcIssuer</code> values transmitted in HTTP <code>Link</code> headers may be used as an optimisation but the RDF body remains canonical; clients that use <code>Link</code> headers should reconcile any discrepancy by relying on the body.</p>
+                        <p>Clients should verify that a discovered issuer is a Solid-OIDC OpenID Provider by retrieving its OpenID Connect Discovery 1.0 configuration document and checking that <code>webid</code> appears in <code>scopes_supported</code> (Solid-OIDC § 10). If the issuer is unreachable or does not advertise Solid-OIDC conformance, the client should report this to the user with a meaningful error.</p>
+                      </section>
+
+                      <section id="webid-guidance-token-validation">
+                        <h5>ID Token validation</h5>
+                        <p>When verifying a Solid-OIDC ID Token presented by a client, resource servers MUST check that the token's <code>iss</code> claim matches a <code>solid:oidcIssuer</code> value discoverable from the WebID identified by the token's <code>webid</code> claim. A token whose issuer is not authoritative for the asserted WebID MUST be rejected.</p>
+                      </section>
+
+                      <section id="webid-guidance-storage-discovery">
+                        <h5>Discovering storage</h5>
+                        <p>Although a <code>pim:storage</code> statement in the WebID Profile is the most common way for a client to find an agent's Solid storage, it is not required. When the Profile does not contain such a statement, clients can fall back on the storage-discovery mechanisms defined by the Solid Protocol: requesting an arbitrary resource that may belong to a storage and reading the <code>Link</code> header with <code>rel="http://www.w3.org/ns/solid/terms#storageDescription"</code>, or walking up the URI hierarchy looking for a resource typed as <code>pim:Storage</code>. A WebID Profile may list multiple storages; clients should be prepared to present a choice.</p>
+                      </section>
+
+                      <section id="webid-guidance-extended-profiles">
+                        <h5>Extended profiles</h5>
+                        <p>A WebID Profile may reference additional documents via <code>rdfs:seeAlso</code>. When such references exist, clients may dereference them and treat their contents as part of the agent's Profile. Clients should be prepared for the case in which extended profiles are absent, unreachable, or contain statements that conflict with the primary Profile; per WAC guidance, statements from such documents should not be relied on for access-control decisions.</p>
+                      </section>
+
+                      <section id="webid-guidance-input-validation">
+                        <h5>Validating user-supplied WebIDs</h5>
+                        <p>When asking users to enter a WebID, clients should validate that the input is a syntactically well-formed HTTP or HTTPS URI before attempting to dereference it. Clients should provide clear feedback for malformed input, for URIs that return <code>404</code>, and for URIs that return responses that cannot be parsed as an RDF graph.</p>
+                      </section>
+
+                      <section id="webid-guidance-ssrf-and-parsing">
+                        <h5>Security considerations for dereferencing</h5>
+                        <p>Dereferencing a WebID requires an application to make an HTTP request to a URI supplied by an untrusted party, and to parse the resulting content. Implementers should treat this as a server-side request forgery (SSRF) and untrusted-input surface and apply mitigations appropriate to the deployment, including (but not limited to) restricting the URI scheme to <code>http</code>/<code>https</code>, blocking requests to private and link-local IP ranges where appropriate, applying timeouts and response-size limits, bounding parser memory and CPU use, and rate-limiting per-user dereference operations.</p>
+                      </section>
+
+                      <section id="webid-guidance-presentation">
+                        <h5>Presenting WebIDs in user interfaces</h5>
+                        <p>WebID Profiles may carry human-readable labels (such as <code>foaf:name</code> or <code>rdfs:label</code>) that clients can use for display, but Profiles are not required to include such labels. User interfaces should therefore be designed to display a WebID URI as a fallback identifier and should not assume that a short, human-friendly name is always available for either the agent or any associated storage.</p>
+                      </section>
+
+                    </div>
+                  </section>
+
                 </div>
               </section>
             </div>
@@ -454,6 +611,12 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
 
                 <dt id="ref-wac">[WAC]</dt>
                 <dd><cite><a href="https://solidproject.org/TR/2024/wac-20240512">Web Access Control</a></cite>. Sarven Capadisli. W3C Solid Community Group. 12 May 2024. Draft Community Group Report, Version 1.0.0. URL: <a href="https://solidproject.org/TR/2024/wac-20240512">https://solidproject.org/TR/2024/wac-20240512</a></dd>
+
+                <dt id="ref-webid">[WEBID]</dt>
+                <dd><cite><a href="https://www.w3.org/2005/Incubator/webid/spec/identity/">WebID 1.0</a></cite>. Andrei Sambra; Stéphane Corlosquet. W3C WebID Community Group. 5 March 2014. W3C Editor's Draft. URL: <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/">https://www.w3.org/2005/Incubator/webid/spec/identity/</a></dd>
+
+                <dt id="ref-rdf11-concepts">[RDF11-CONCEPTS]</dt>
+                <dd><cite><a href="https://www.w3.org/TR/rdf11-concepts/">RDF 1.1 Concepts and Abstract Syntax</a></cite>. Richard Cyganiak; David Wood; Markus Lanthaler. W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/rdf11-concepts/">https://www.w3.org/TR/rdf11-concepts/</a></dd>
 
                 <dt id="ref-authapp">[BKY+24]</dt>
                 <dd>
