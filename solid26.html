@@ -347,22 +347,29 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
 <p>Note that <code>If-Match</code> uses strong comparison, so weak ETags (those prefixed with <code>W/</code>) will not match.</p>
                     </li>
                     <li>
-                      Servers are strongly encouraged to implement Web Access Control (<a href="https://solidproject.org/TR/protocol#web-access-control">WAC</a>), see <a href="#web-access-control">below</a>. 
+                      <p>
+                        Servers are strongly encouraged to implement Web Access Control (<a href="https://solidproject.org/TR/protocol#web-access-control">WAC</a>), see <a href="#web-access-control">below</a>. 
+                      </p>
                       <div class="note" id="note-survey">
                         <h4><span>Note</span></h4>
                         <p>The <a href="https://lists.w3.org/Archives/Public/public-solid/2026Mar/0019.html">March 2026 implementation survey</a> yields the following <a href="https://github.com/w3c-cg/solid/blob/main/implementations/wac-acp.2026-04-01.csv">results</a> (<a href="https://web.archive.org/web/20260415092405/https://raw.githubusercontent.com/w3c-cg/solid/64d2c5383976b9e3a51f854576245dbb4bda1ce1/implementations/wac-acp.2026-04-01.csv">archived</a>):</p>
                           <ul>
                             <li>
                               For WAC, the data shows 13 server-side implementations, deployment in 11 services, and 19 client-side implementations.
-                              WAC is pragmatic, user-friendly, and extensible. WAC has all the features that most open, social, Web applications need.
+                              WAC is considered the pragmatic, user-friendly, and extensible standard that effectively covers nearly all of the use cases from current Solid Apps. 
                             </li>
                             <li>
                               For ACP, the data shows 4 server-side implementations, deployment in 1 service, and 4 client-side implementations. 
-                              ACP is highly expressive. ACP is most commonly applied in enterprise and B2B applications of Solid involving complex permissions.
+                              ACP is considered an expressive and complex alternative that might be chosen to satisfy corresponding use-case specific requirements.
                             </li>
                           </ul>
                           <p>The data shows that most clients implement only one access control language, despite the Solid Protocol requiring Clients to conform to both WAC and ACP.</p>
                       </div>
+                      <p>
+                        In case WAC seems not to satisfy implementers' requirements, implementers are strongly encouraged to verify their understanding of the matter in community discussion by providing <a href="https://solidproject.org/TR/wac#document-feedback">feedback</a> to the community.
+                        If WAC is not able to satisfy the requirements, implementers might consider ACP or <a href="https://github.com/solid/authorization-panel/issues/121#issuecomment-4253548683">other suitable mechanisms</a> to achieve their goals.
+                        Client implementers are advised to consider that their Client implementation will not be able to interoperate with every conforming Server their Client might encounter.
+                      </p>
                       </li>
                       <li>
                       <p>
