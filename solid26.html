@@ -365,16 +365,24 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       </div>
                       </li>
                       <li>
-                      While the Solid Protocol technically requires any Client to conform to both authorization languages, Client implementers are advised to consider whether their Client implementation should actually attempt to modify access rules at all:
-                      A separation between a client executing application-specific logic and a client executing authorization-related logic might be beneficial in terms of separation of concerns, maintainability, and re-usability of software components [<a href="#ref-authapp">BKY+24</a>].
-                      Such approach might rely on
-                      <ul>
-                        <li>access requests to update access control rules accordingly on a Server</li>
-                        <li>issued by the application-logic client</li>
-                        <li>processed by a particular Client that is able and trusted to manage access controls (such as an access management or authorization application)</li>
-                       </ul> 
-                    </li>
-                  </ul>
+                      <p>
+                        Clients might desire to update access control on particular resources, e.g., for sharing a user's data with another user or application.
+                        In such a case, Clients are strongly encouraged to rely on or make use of conforming implementations that are independently tested and verified, e.g., through open test suites and publicly documented implementation reports.
+                        Servers might only allow such tested and verified conformant Clients to modify access control rules.
+                      </p>
+                      <p>
+                        Implementers are advised to consider whether their Client implementation should actually attempt to modify access rules at all:
+                        An architectural separation between a Client executing application-specific logic and a Client executing authorization-related logic might be beneficial in terms of separation of concerns, maintainability, and re-usability of software components [<a href="#ref-authapp">BKY+24</a>].
+                        Such separation allows Clients to rely on an externally tested and verified Client already implementing of authorization-related logic.
+                        Such approach to modifying access control rules might rely on
+                        <ul>
+                          <li>access requests to update access control rules accordingly on a Server</li>
+                          <li>issued by the application-logic client</li>
+                          <li>processed by a particular Client that is able and trusted to manage access controls (such as an access management or authorization application)</li>
+                        </ul> 
+                      </li>
+                    </ul>
+                  </p>
                 </div>
               </section>
 
