@@ -2,7 +2,7 @@
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Solid26 Implementors Guide</title>
+    <title>Solid26: Implementation Guide</title>
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
 <style>
 main,
@@ -224,7 +224,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
     <main>
       <article about="" typeof="schema:Article">
         <div class="head">
-          <h1 property="schema:name">Solid26 Implementors Guide</h1>
+          <h1 property="schema:name">Solid26: Implementation Guide</h1>
           <p id="w3c-state">Draft Community Group Report, <time datetime="2026-04-02T00:00:00Z">2026-04-02</time></p>
           <details open="">
             <summary>More details about this document</summary>
@@ -259,24 +259,24 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
             </dl>
             <dl id="document-type">
               <dt>Document Type</dt>
-              <dd>Implementors Guide</dd>
+              <dd>Implementation Guide</dd>
             </dl>
           </details>
-          <p class="copyright" rel="dcterms:rights" resource="#document-rights"><span property="dcterms:description"><a href="https://www.w3.org/policies/#copyright">Copyright</a> © 2026 the Contributors to the Solid26 Implementors Guide, under the <a about="" href="https://www.w3.org/community/about/agreements/cla/" rel="schema:license">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available.</span></p>
+          <p class="copyright" rel="dcterms:rights" resource="#document-rights"><span property="dcterms:description"><a href="https://www.w3.org/policies/#copyright">Copyright</a> © 2026 the Contributors to Solid26: Implementation Guide, under the <a about="" href="https://www.w3.org/community/about/agreements/cla/" rel="schema:license">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available.</span></p>
           <hr title="Separator for header" />
         </div>
         <div datatype="rdf:HTML" id="content" property="schema:description">
           <section id="abstract">
             <h2>Abstract</h2>
             <div datatype="rdf:HTML" property="schema:abstract">
-              <p>This document is the Solid26 Implementors Guide — a snapshot of the most mature and widely implemented Solid specification versions, collected to help developers and organisations identify a common baseline. It provides practical guidance for implementing the Solid specifications included in this collection.</p>
+              <p>This document is an implementation guide for Solid26 — a snapshot of the most mature and widely implemented Solid specification versions, collected to help developers and organisations identify a common baseline. It provides practical guidance for implementing the Solid specifications included in this collection.</p>
             </div>
           </section>
           <section id="sotd" inlist="" rel="schema:hasPart" resource="#sotd">
             <h2 property="schema:name">Status of This Document</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>This document was published by the <a href="https://www.w3.org/groups/cg/solid/">W3C Solid Community Group</a>. It is not a W3C Standard nor is it on the W3C Standards Track. Please note that under the <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a> there is a limited opt-out and other conditions apply. Learn more about <a href="https://www.w3.org/community/">W3C Community and Business Groups</a>.</p>
-              <p>This document is intended to provide implementation guidance for the Solid specifications collected in the Solid26 Implementors Guide. The content of this guide is informative and non-normative. It may be updated, replaced, or obsoleted by other documents at any time.</p>
+              <p>This document is intended to provide implementation guidance for the Solid specifications collected in the Solid26 release. The content of this guide is informative and non-normative. It may be updated, replaced, or obsoleted by other documents at any time.</p>
               <p>Comments regarding this document are welcome. Please file issues on <a href="https://github.com/solid/specification/issues">GitHub</a>.</p>
             </div>
           </section>
@@ -324,8 +324,8 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               <p>
                 The <a href="https://solidproject.org/TR/">Solid Technical Reports</a> comprise multiple specification documents with differing levels of maturity. 
                 The <a href="https://solidproject.org/TR/protocol">Solid Protocol</a> bundles the <a href="https://solidproject.org/TR/protocol#abstract">specifications that, together, provide applications with secure and permissioned access to externally stored data in an interoperable way</a>. 
-                The Solid26 Implementors Guide points implementers to fixed versions of the <a href="https://solidproject.org/TR/protocol">Solid Protocol</a> and its sub-specifications, a stable snapshot of the specifications to build against today. 
-                The Solid26 Implementors Guide selects for the most widely implemented specification versions at the time of this documents publication.
+                Solid26 points implementers to fixed versions of the <a href="https://solidproject.org/TR/protocol">Solid Protocol</a> and its sub-specifications, a stable snapshot of the specifications to build against today. 
+                Solid26 selects for the most widely implemented specification versions at the time of this documents publication.
               </p>
               <p>This document does not define new normative requirements, but rather identifies and collects the specifications needed to build interoperable Solid applications and servers.</p>
             </div>
@@ -334,7 +334,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
           <section id="specifications" inlist="" rel="schema:hasPart" resource="#specifications">
             <h2 property="schema:name">Specifications</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p>The Solid26 Implementors Guide recommends the following specification snapshots.</p>
+              <p>This Solid26 Implementation Guide recommends the following specification snapshots.</p>
 
               <section id="solid-protocol" inlist="" rel="schema:hasPart" resource="#solid-protocol">
                 <h3>Solid Protocol</h3>
@@ -409,7 +409,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   <p><a href="https://solidproject.org/TR/2022/oidc-20220328">Solid-OIDC</a> (v0.1.0, 2022-03-28) is included with the following comments:</p>
                     <ul>
                       <li>
-                        <p>Despite the Solid26 Implementors Guide including Solid-OIDC v0.1.0, it is not widely implemented. In particular, the Solid-OIDC recommended flow of User-Managed Access (UMA) is not supported by any open source Solid Server implementation. Current implementations rely on the access token issued by the OpenID Provider of the user to authenticate the user at a Solid Storage.</p>
+                        <p>Despite Solid26 including Solid-OIDC v0.1.0, it is not widely implemented. In particular, the Solid-OIDC recommended flow of User-Managed Access (UMA) is not supported by any open source Solid Server implementation. Current implementations rely on the access token issued by the OpenID Provider of the user to authenticate the user at a Solid Storage.</p>
                       </li>
                     </ul>
                     <div class="note">
@@ -436,7 +436,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               <section id="webid-1" inlist="" rel="schema:hasPart" resource="#webid-1">
                 <h3>WebID 1.0</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p><a href="https://www.w3.org/2005/Incubator/webid/spec/identity/">WebID 1.0</a> (W3C Editor's Draft, 5 March 2014) is included with the following comments:</p>
+                  <p><a href="https://www.w3.org/2005/Incubator/webid/spec/identity/">WebID 1.0</a> (W3C Editor's Draft, 5 March 2014) is included.</p>
                   <div class="note">
                     <h4><span>Note</span></h4>
                     <p>Throughout this document, references to "the WebID specification" or [<cite><a class="bibref" href="#ref-webid">WEBID</a></cite>] refer to WebID 1.0 as pinned here. WebID 1.0 has the status of a W3C Editor's Draft from the (now closed) W3C WebID Incubator Group; it has not progressed to a W3C Recommendation. The Solid Protocol and Solid-OIDC normatively reference WebID 1.0 for the definition of the term <em>WebID</em>.</p>
@@ -467,7 +467,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                 <h3>WebID</h3>
                 <div datatype="rdf:HTML" property="schema:description">
 
-                  <p>This section gives implementation guidance for WebID in the context of the Solid26 Implementors Guide. It is organized into requirements derivable from the pinned specifications (<a href="#webid-normative">§ 3.1.1</a>) and common assumptions not required by them (<a href="#webid-non-normative">§ 3.1.2</a>) (see <a href="#specifications">§ 2 Specifications</a>), and a recommended profile assembly algorithm (<a href="#webid-algorithms">§ 3.1.3</a>). Guidance for client implementors is given in <a href="#client-guidance">§ 4 Guidance for clients</a>.</p>
+                  <p>This section gives implementation guidance for WebID in the context of the Solid26 Implementation Guide. It is organized into requirements derivable from the respective specifications (<a href="#webid-normative">§ 3.1.1</a>) and common assumptions not required by them (<a href="#webid-non-normative">§ 3.1.2</a>) (see <a href="#specifications">§ 2 Specifications</a>), and a recommended profile assembly algorithm (<a href="#webid-algorithms">§ 3.1.3</a>). Guidance for client implementers is given in <a href="#client-guidance">§ 4 Guidance for clients</a>.</p>
 
                   <p>For the purposes of this section, the following terms are used:</p>
                   <dl>
@@ -480,7 +480,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <dt><dfn id="dfn-preferences-document">Preferences Document</dfn></dt>
                     <dd>A private Web resource, linked from the agent's <a href="#dfn-webid-profile">WebID Profile</a>, that holds settings and pointers to private data. Generally accessible only to the user (or a delegated agent).</dd>
                     <dt><dfn id="dfn-webid-profile">WebID Profile</dfn></dt>
-                    <dd>The RDF graph [<cite><a class="bibref" href="#ref-rdf11-concepts">RDF11-CONCEPTS</a></cite>] formed by the union of the <a href="#dfn-webid-profile-document">WebID Profile Document</a> with any <a href="#dfn-extended-profile-document">Extended Profile Documents</a>, assembled per <a href="#webid-non-normative">§ 3.1.2 Common assumptions not required by Solid26 Implementors Guide specifications</a>.</dd>
+                    <dd>The RDF graph [<cite><a class="bibref" href="#ref-rdf11-concepts">RDF11-CONCEPTS</a></cite>] formed by the union of the <a href="#dfn-webid-profile-document">WebID Profile Document</a> with any <a href="#dfn-extended-profile-document">Extended Profile Documents</a>, assembled per <a href="#webid-non-normative">§ 3.1.2 Common assumptions not required by Solid26 Implementation Guide specifications</a>.</dd>
                   </dl>
 
                   <section id="webid-normative" inlist="" rel="schema:hasPart" resource="#webid-normative">
@@ -510,7 +510,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   </section>
 
                   <section id="webid-non-normative" inlist="" rel="schema:hasPart" resource="#webid-non-normative">
-                    <h4>Common assumptions not required by Solid26 Implementors Guide specifications</h4>
+                    <h4>Common assumptions not required by Solid26 Implementation Guide specifications</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <ol>
                         <li>
