@@ -215,7 +215,7 @@ section.appendix section > h3:before {
 content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
 }
 </style>
-    <link href="https://www.w3.org/StyleSheets/TR/2021/base.css" media="all" rel="stylesheet" title="W3C-Base" />
+    <link href="https://www.w3.org/StyleSheets/TR/2021/cg-draft" media="all" rel="stylesheet" title="CG-DRAFT" />
     <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet" />
     <link href="https://dokie.li/media/css/dokieli.css" media="all" rel="stylesheet" />
     <script async="" src="https://dokie.li/scripts/dokieli.js"></script>
@@ -315,7 +315,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                 The <a href="https://solidproject.org/TR/">Solid Technical Reports</a> comprise multiple specification documents with differing levels of maturity. 
                 The <a href="https://solidproject.org/TR/protocol">Solid Protocol</a> bundles the <a href="https://solidproject.org/TR/protocol#abstract">specifications that, together, provide applications with secure and permissioned access to externally stored data in an interoperable way</a>. 
                 Solid26 points implementers to fixed versions of the <a href="https://solidproject.org/TR/protocol">Solid Protocol</a> and its sub-specifications, a stable snapshot of the specifications to build against today. 
-                Solid26 selects for the most widely implemented specification versions at the time of this documents publication.
+                Solid26 selects for the most widely implemented specification versions at the time of this document's publication.
               </p>
               <p>This document does not define new normative requirements, but rather identifies and collects the specifications needed to build interoperable Solid applications and servers.</p>
             </div>
@@ -332,7 +332,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   <p>The <a href="https://solidproject.org/TR/2024/protocol-20240512">Solid Protocol</a> (CG-DRAFT, v0.11.0, 2024-05-12) is included with the following comments:</p>
                   <ul>
                     <li>
-                      Clients might encounter Servers that do not support <a href="https://solidproject.org/TR/protocol#n3-patch">§ 5.3.1 Modifying Resources Using N3 Patches</a> despite it being required by the Solid Protocol. Clients can use <code>Allow</code> headers to determine if a Server supports HTTP <code>PATCH</code> requests.
+                      <p>Clients might encounter Servers that do not support <a href="https://solidproject.org/TR/protocol#n3-patch">§ 5.3.1 Modifying Resources Using N3 Patches</a> despite it being required by the Solid Protocol. Clients can use <code>Allow</code> headers to determine if a Server supports HTTP <code>PATCH</code> requests.</p>
                       
                       <p>If a server does not support HTTP <code>PATCH</code> requests, the client can HTTP <code>GET</code> the resource, apply the change locally, and then HTTP <code>PUT</code> the resource back. If the server supports <a href="https://datatracker.ietf.org/doc/html/rfc9110#name-etag"><code>ETag</code> headers</a> or <a href="https://datatracker.ietf.org/doc/html/rfc9110#name-last-modified"><code>Last-Modified</code></a> headers, clients can achieve the concurrency-control behaviour of HTTP <code>PATCH</code> by issuing a conditional <code>PUT</code>. <code>ETag</code>-based validation is more precise than date-based validation and should be preferred when a server supports both, because <code>Last-Modified</code> has only one-second resolution and may not reflect sub-second changes.</p>
 
@@ -371,23 +371,8 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       <ul>
                         <li>access requests to update access control rules accordingly on a Server</li>
                         <li>issued by the application-logic client</li>
-                        <li>processed by either a particular Client that is able and trusted to manage access controls (such as an access management or authorization application) or by custom Server functionality</li>
+                        <li>processed by a particular Client that is able and trusted to manage access controls (such as an access management or authorization application)</li>
                        </ul> 
-                      <div class="issue">
-                        <a href="https://github.com/solid/specification/issues/775"><h4><span>[New Work Item]: Access Requests and Grants</span></h4></a>
-                        <p>
-                          Access requests and their processing are currently are poposed work item to the CG.
-                          Different approaches exist within the community; no consensus has been reached yet.
-                          Implementers are encouraged to provide their implementation expierence as input to the community's discussion.
-                        </p>
-                      </div>
-                      <div class="note">
-                        <h4><span>Editor's Note (Christoph)</span></h4>
-                        <p>
-                          Not sure if the above item provides sufficient guidance or is simply confusing due to the lack of context in the Solid Protocol for access requests altogether.
-                          I, Christoph, am torn on the above item on access requests. Would like to hear the groups's opinion here.
-                        </p>
-                      </div>
                     </li>
                   </ul>
                 </div>
