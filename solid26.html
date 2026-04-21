@@ -215,7 +215,7 @@ section.appendix section > h3:before {
 content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
 }
 </style>
-    <link href="https://www.w3.org/StyleSheets/TR/2021/base.css" media="all" rel="stylesheet" title="W3C-Base" />
+    <link href="https://www.w3.org/StyleSheets/TR/2021/cg-draft" media="all" rel="stylesheet" title="CG-DRAFT" />
     <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet" />
     <link href="https://dokie.li/media/css/dokieli.css" media="all" rel="stylesheet" />
     <script async="" src="https://dokie.li/scripts/dokieli.js"></script>
@@ -325,7 +325,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                 The <a href="https://solidproject.org/TR/">Solid Technical Reports</a> comprise multiple specification documents with differing levels of maturity. 
                 The <a href="https://solidproject.org/TR/protocol">Solid Protocol</a> bundles the <a href="https://solidproject.org/TR/protocol#abstract">specifications that, together, provide applications with secure and permissioned access to externally stored data in an interoperable way</a>. 
                 Solid26 points implementers to fixed versions of the <a href="https://solidproject.org/TR/protocol">Solid Protocol</a> and its sub-specifications, a stable snapshot of the specifications to build against today. 
-                Solid26 selects for the most widely implemented specification versions at the time of this documents publication.
+                Solid26 selects for the most widely implemented specification versions at the time of this document's publication.
               </p>
               <p>This document does not define new normative requirements, but rather identifies and collects the specifications needed to build interoperable Solid applications and servers.</p>
             </div>
@@ -336,70 +336,97 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
             <div datatype="rdf:HTML" property="schema:description">
               <p>This Solid26 Implementation Guide recommends the following specification snapshots.</p>
 
+              <table>
+                <thead>
+                  <tr>
+                    <th>Specification</th>
+                    <th>Version</th>
+                    <th>Details</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a href="https://solidproject.org/TR/2024/protocol-20240512">Solid Protocol</a></td>
+                    <td><a href="https://solidproject.org/TR/2024/protocol-20240512">(CG-DRAFT, v0.11.0, 2024-05-12)</a></td>
+                    <td><a href="#solid-protocol">Link</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="https://solidproject.org/TR/2022/oidc-20220328">Solid-OIDC</a></td>
+                    <td><a href="https://solidproject.org/TR/2022/oidc-20220328">(v0.1.0, 2022-03-28)</a></td>
+                    <td><a href="#solid-oidc">Link</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="https://solidproject.org/TR/2024/wac-20240512">Web Access Control</a></td>
+                    <td><a href="https://solidproject.org/TR/2024/wac-20240512">(CG-DRAFT, v1.0.0, 2024-05-12)</a></td>
+                    <td><a href="#web-access-control">Link</a></td>
+                  </tr>
+                </tbody>
+              </table>
+
               <section id="solid-protocol" inlist="" rel="schema:hasPart" resource="#solid-protocol">
                 <h3>Solid Protocol</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>The <a href="https://solidproject.org/TR/2024/protocol-20240512">Solid Protocol</a> (CG-DRAFT, v0.11.0, 2024-05-12) is included with the following comments:</p>
                   <ul>
                     <li>
-                      Clients might encounter Servers that do not support <a href="https://solidproject.org/TR/protocol#n3-patch">§ 5.3.1 Modifying Resources Using N3 Patches</a> despite it being required by the Solid Protocol. Clients can use <code>Allow</code> headers to determine if a Server supports HTTP <code>PATCH</code> requests.
+                      <p>Clients might encounter Servers that do not support <a href="https://solidproject.org/TR/protocol#n3-patch">§ 5.3.1 Modifying Resources Using N3 Patches</a> despite it being required by the Solid Protocol. Clients can use <code>Allow</code> headers to determine if a Server supports HTTP <code>PATCH</code> requests.</p>
                       
                       <p>If a server does not support HTTP <code>PATCH</code> requests, the client can HTTP <code>GET</code> the resource, apply the change locally, and then HTTP <code>PUT</code> the resource back. If the server supports <a href="https://datatracker.ietf.org/doc/html/rfc9110#name-etag"><code>ETag</code> headers</a> or <a href="https://datatracker.ietf.org/doc/html/rfc9110#name-last-modified"><code>Last-Modified</code></a> headers, clients can achieve the concurrency-control behaviour of HTTP <code>PATCH</code> by issuing a conditional <code>PUT</code>. <code>ETag</code>-based validation is more precise than date-based validation and should be preferred when a server supports both, because <code>Last-Modified</code> has only one-second resolution and may not reflect sub-second changes.</p>
 
-<p>The flow is:</p>
+                      <p>The flow is:</p>
 
-<ul>
-  <li>On <code>GET</code>, the server returns an <code>ETag</code> — an opaque validator identifying the current state of the resource (often derived from a content hash, but the exact derivation is up to the server). For example, imagine the server returns <code>ETag: "xyzzy"</code>.</li>
-  <li>The client then makes a conditional <code>PUT</code> using the <a href="https://datatracker.ietf.org/doc/html/rfc9110#name-if-match"><code>If-Match</code></a> header: <code>If-Match: "xyzzy"</code>. The server applies the <code>PUT</code> only if the resource's current <code>ETag</code> still matches <code>"xyzzy"</code>; otherwise it responds with <code>412 Precondition Failed</code>. This guarantees the resource has not changed on the server between the <code>GET</code> and the <code>PUT</code>.</li>
-  <li>The equivalent using dates is <a href="https://datatracker.ietf.org/doc/html/rfc9110#name-if-unmodified-since"><code>If-Unmodified-Since</code></a> paired with the <code>Last-Modified</code> value from the <code>GET</code> response. Note that <code>If-Modified-Since</code> is the header used for cache revalidation on <code>GET</code>, not for lost-update prevention on <code>PUT</code>.</li>
-</ul>
+                      <ul>
+                        <li>On <code>GET</code>, the server returns an <code>ETag</code> — an opaque validator identifying the current state of the resource (often derived from a content hash, but the exact derivation is up to the server). For example, imagine the server returns <code>ETag: "xyzzy"</code>.</li>
+                        <li>The client then makes a conditional <code>PUT</code> using the <a href="https://datatracker.ietf.org/doc/html/rfc9110#name-if-match"><code>If-Match</code></a> header: <code>If-Match: "xyzzy"</code>. The server applies the <code>PUT</code> only if the resource's current <code>ETag</code> still matches <code>"xyzzy"</code>; otherwise it responds with <code>412 Precondition Failed</code>. This guarantees the resource has not changed on the server between the <code>GET</code> and the <code>PUT</code>.</li>
+                        <li>The equivalent using dates is <a href="https://datatracker.ietf.org/doc/html/rfc9110#name-if-unmodified-since"><code>If-Unmodified-Since</code></a> paired with the <code>Last-Modified</code> value from the <code>GET</code> response. Note that <code>If-Modified-Since</code> is the header used for cache revalidation on <code>GET</code>, not for lost-update prevention on <code>PUT</code>.</li>
+                      </ul>
 
-<p>Note that <code>If-Match</code> uses strong comparison, so weak ETags (those prefixed with <code>W/</code>) will not match.</p>
+                      <p>Note that <code>If-Match</code> uses strong comparison, so weak ETags (those prefixed with <code>W/</code>) will not match.</p>
                     </li>
                     <li>
-                      Servers are strongly encouraged to implement Web Access Control (<a href="https://solidproject.org/TR/protocol#web-access-control">WAC</a>), see <a href="#web-access-control">below</a>. 
+                      <p>
+                        Servers are strongly encouraged to implement Web Access Control (<a href="https://solidproject.org/TR/protocol#web-access-control">WAC</a>), see <a href="#web-access-control">below</a>. 
+                      </p>
                       <div class="note" id="note-survey">
                         <h4><span>Note</span></h4>
                         <p>The <a href="https://lists.w3.org/Archives/Public/public-solid/2026Mar/0019.html">March 2026 implementation survey</a> yields the following <a href="https://github.com/w3c-cg/solid/blob/main/implementations/wac-acp.2026-04-01.csv">results</a> (<a href="https://web.archive.org/web/20260415092405/https://raw.githubusercontent.com/w3c-cg/solid/64d2c5383976b9e3a51f854576245dbb4bda1ce1/implementations/wac-acp.2026-04-01.csv">archived</a>):</p>
                           <ul>
                             <li>
                               For WAC, the data shows 13 server-side implementations, deployment in 11 services, and 19 client-side implementations.
-                              WAC is pragmatic, user-friendly, and extensible. WAC has all the features that most open, social, Web applications need.
+                              WAC is considered the pragmatic, user-friendly, and extensible standard that effectively covers nearly all of the use cases from current Solid Apps. 
                             </li>
                             <li>
                               For ACP, the data shows 4 server-side implementations, deployment in 1 service, and 4 client-side implementations. 
-                              ACP is highly expressive. ACP is most commonly applied in enterprise and B2B applications of Solid involving complex permissions.
+                              ACP is considered an expressive and complex alternative that might be chosen to satisfy corresponding use-case specific requirements.
                             </li>
                           </ul>
                           <p>The data shows that most clients implement only one access control language, despite the Solid Protocol requiring Clients to conform to both WAC and ACP.</p>
                       </div>
+                      <p>
+                        In case WAC seems not to satisfy implementers' requirements, implementers are strongly encouraged to verify their understanding of the matter in community discussion by providing <a href="https://solidproject.org/TR/wac#document-feedback">feedback</a> to the community.
+                        If WAC is not able to satisfy the requirements, implementers might consider ACP or <a href="https://github.com/solid/authorization-panel/issues/121#issuecomment-4253548683">other suitable mechanisms</a> to achieve their goals.
+                        Client implementers are advised to consider that their Client implementation will not be able to interoperate with every conforming Server their Client might encounter.
+                      </p>
                       </li>
                       <li>
-                      While the Solid Protocol technically requires any Client to conform to both authorization languages, Client implementers are advised to consider whether their Client implementation should actually attempt to modify access rules at all:
-                      A separation between a client executing application-specific logic and a client executing authorization-related logic might be beneficial in terms of separation of concerns, maintainability, and re-usability of software components [<a href="#ref-authapp">BKY+24</a>].
-                      Such approach might rely on
-                      <ul>
-                        <li>access requests to update access control rules accordingly on a Server</li>
-                        <li>issued by the application-logic client</li>
-                        <li>processed by either a particular Client that is able and trusted to manage access controls (such as an access management or authorization application) or by custom Server functionality</li>
-                       </ul> 
-                      <div class="issue">
-                        <a href="https://github.com/solid/specification/issues/775"><h4><span>[New Work Item]: Access Requests and Grants</span></h4></a>
-                        <p>
-                          Access requests and their processing are currently are poposed work item to the CG.
-                          Different approaches exist within the community; no consensus has been reached yet.
-                          Implementers are encouraged to provide their implementation expierence as input to the community's discussion.
-                        </p>
-                      </div>
-                      <div class="note">
-                        <h4><span>Editor's Note (Christoph)</span></h4>
-                        <p>
-                          Not sure if the above item provides sufficient guidance or is simply confusing due to the lack of context in the Solid Protocol for access requests altogether.
-                          I, Christoph, am torn on the above item on access requests. Would like to hear the groups's opinion here.
-                        </p>
-                      </div>
-                    </li>
-                  </ul>
+                      <p>
+                        Clients might desire to update access control on particular resources, e.g., for sharing a user's data with another user or application.
+                        In such a case, Clients are strongly encouraged to rely on or make use of conforming implementations that are independently tested and verified, e.g., through open test suites and publicly documented implementation reports.
+                        Servers might only allow such tested and verified conformant Clients to modify access control rules.
+                      </p>
+                      <p>
+                        Implementers are advised to consider whether their Client implementation should actually attempt to modify access rules at all:
+                        An architectural separation between a Client executing application-specific logic and a Client executing authorization-related logic might be beneficial in terms of separation of concerns, maintainability, and re-usability of software components [<a href="#ref-authapp">BKY+24</a>].
+                        Such separation allows Clients to rely on an externally tested and verified Client already implementing of authorization-related logic.
+                        Such approach to modifying access control rules might rely on
+                        <ul>
+                          <li>access requests to update access control rules accordingly on a Server</li>
+                          <li>issued by the application-logic client</li>
+                          <li>processed by a particular Client that is able and trusted to manage access controls (such as an access management or authorization application)</li>
+                        </ul> 
+                      </li>
+                    </ul>
+                  </p>
                 </div>
               </section>
 
@@ -424,12 +451,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               <section id="web-access-control" inlist="" rel="schema:hasPart" resource="#web-access-control">
                 <h3>Web Access Control</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p><a href="https://solidproject.org/TR/2024/wac-20240512">Web Access Control</a> (CG-DRAFT, v1.0.0, 2024-05-12) is included with the following comments:</p>
-                    <ul>
-                      <li>
-                        WAC is actively being maintained and developed: To officially extend WAC with functionality desired by the community, a corresponding proposal is seeking implementers' feedback (<a href="https://github.com/solid/web-access-control-spec/pull/134">solid/web-access-control-spec#134</a>).
-                      </li>
-                    </ul>
+                  <p><a href="https://solidproject.org/TR/2024/wac-20240512">Web Access Control</a> (CG-DRAFT, v1.0.0, 2024-05-12) is included.</p>
                   </div>
               </section>
 
