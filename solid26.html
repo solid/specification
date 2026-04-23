@@ -523,6 +523,9 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                         <li>
                           An agent may have zero or more Solid storages, and any number of these MAY be discoverable from the WebID Profile via statements of the form <code>?webid pim:storage ?storage</code>, where <code>?webid</code> is the WebID and each <code>?storage</code> is the IRI of a storage owned by that agent [<cite><a class="bibref" href="#ref-solid-protocol">Solid Protocol</a></cite> § <a href="https://solidproject.org/TR/2024/protocol-20240512#storage">4 Storage</a>].
                         </li>
+                        <li>
+                          An agent MAY advertise a Linked Data Notifications inbox in the WebID Profile via a statement of the form <code>?webid ldp:inbox ?inbox</code>, where <code>?inbox</code> is the IRI of an LDN inbox to which other agents can post notifications [<cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#webid-profile-data-model">WebID Profile Data Model</a>; <cite><a class="bibref" href="#ref-solid-protocol">Solid Protocol</a></cite> § <a href="https://solidproject.org/TR/2024/protocol-20240512#linked-data-notifications">Linked Data Notifications</a>].
+                        </li>
                       </ol>
                     </div>
                   </section>
@@ -575,7 +578,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
 
                       <div class="note">
                         <h4><span>Note</span></h4>
-                        <p>The assembled WebID Profile graph can optionally be validated against <a href="https://github.com/solid/webid-profile/blob/main/shapes/profile-discovery-shape.ttl"><code>profile-discovery-shape.ttl</code></a> from the <a href="https://github.com/solid/webid-profile/tree/main/shapes"><code>solid/webid-profile</code> shapes</a>. The shape covers <code>pim:preferencesFile</code> (exactly 1), <code>pim:storage</code> (0+), <code>rdfs:seeAlso</code> (0+), <code>solid:oidcIssuer</code> (0+), <code>solid:publicTypeIndex</code>/<code>solid:privateTypeIndex</code> (at most 1 each), and <code>foaf:isPrimaryTopicOf</code> (at most 1). Note that Solid-OIDC requires at least one <code>solid:oidcIssuer</code> in order to attest ownership of the WebID, while the shape permits zero.</p>
+                        <p>The assembled WebID Profile graph can optionally be validated against <a href="https://github.com/solid/webid-profile/blob/main/shapes/profile-discovery-shape.ttl"><code>profile-discovery-shape.ttl</code></a> from the <a href="https://github.com/solid/webid-profile/tree/main/shapes"><code>solid/webid-profile</code> shapes</a>. The shape covers <code>pim:preferencesFile</code> (exactly 1), <code>pim:storage</code> (0+), <code>ldp:inbox</code> (at most 1), <code>rdfs:seeAlso</code> (0+), <code>solid:oidcIssuer</code> (0+), <code>solid:publicTypeIndex</code>/<code>solid:privateTypeIndex</code> (at most 1 each), and <code>foaf:isPrimaryTopicOf</code> (at most 1). Note that Solid-OIDC requires at least one <code>solid:oidcIssuer</code> in order to attest ownership of the WebID, while the shape permits zero.</p>
                       </div>
 
                     </div>
