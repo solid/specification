@@ -488,13 +488,13 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   <p>For the purposes of this section, the following terms are used:</p>
                   <dl>
                     <dt><dfn id="dfn-webid">WebID</dfn></dt>
-                    <dd>An IRI that denotes an agent [<cite><a class="bibref" href="#ref-webid">WEBID</a></cite>], [<cite><a class="bibref" href="#ref-solid-protocol">SOLID-PROTOCOL</a></cite>].</dd>
+                    <dd>An HTTP URI that denotes an agent [<cite><a class="bibref" href="#ref-webid">WEBID</a></cite>], [<cite><a class="bibref" href="#ref-solid-protocol">SOLID-PROTOCOL</a></cite>].</dd>
                     <dt><dfn id="dfn-webid-profile-document">WebID Profile Document</dfn></dt>
-                    <dd>The Web resource obtained by dereferencing a <a href="#dfn-webid">WebID</a>. Generally public.</dd>
+                    <dd>The document obtained by dereferencing a <a href="#dfn-webid">WebID</a>.</dd>
                     <dt><dfn id="dfn-extended-profile-document">Extended Profile Document</dfn></dt>
-                    <dd>A further Web resource linked from the <a href="#dfn-webid-profile-document">WebID Profile Document</a> that contains additional statements about the <a href="#dfn-webid">WebID</a>. Generally permissioned, but available to trusted participants (e.g. friends).</dd>
+                    <dd>A further document linked from the <a href="#dfn-webid-profile-document">WebID Profile Document</a> that contains additional statements about the <a href="#dfn-webid">WebID</a>; retrieval may require authentication.</dd>
                     <dt><dfn id="dfn-preferences-document">Preferences Document</dfn></dt>
-                    <dd>A private Web resource, linked from the agent's <a href="#dfn-webid-profile">WebID Profile</a>, that holds settings and pointers to private data. Generally accessible only to the user (or a delegated agent).</dd>
+                    <dd>A document, linked from the agent's <a href="#dfn-webid-profile">WebID Profile</a> via <code>pim:preferencesFile</code>, that holds settings and pointers to private data; typically accessible only to the agent or a delegate.</dd>
                     <dt><dfn id="dfn-webid-profile">WebID Profile</dfn></dt>
                     <dd>The RDF graph [<cite><a class="bibref" href="#ref-rdf11-concepts">RDF11-CONCEPTS</a></cite>] formed by the union of the <a href="#dfn-webid-profile-document">WebID Profile Document</a> with any <a href="#dfn-extended-profile-document">Extended Profile Documents</a>, assembled per <a href="#webid-non-normative">§ 3.1.2 Common assumptions not required by Solid26 Implementation Guide specifications</a>.</dd>
                   </dl>
