@@ -511,6 +511,9 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                         </li>
                         <li>
                           A WebID Document MAY be hosted anywhere on the Web; it MAY, but need not, reside in a Solid storage [<cite><a class="bibref" href="#ref-webid">WebID 1.0</a></cite> § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#publishing-the-webid-profile-document">5 Publishing the WebID Profile Document</a>].
+                          <ul>
+                            <li>A Solid client can only modify a WebID Profile if the underlying document is in a Solid storage. When the WebID Document is not in a Solid storage, it is recommended to link at least one <a href="#dfn-extended-profile-document">Extended Profile Document</a> that is, so that clients can attach further profile statements by writing to it.</li>
+                          </ul>
                         </li>
                         <li>
                           The WebID Profile Document MUST have a <code>text/turtle</code> representation [<cite><a class="bibref" href="#ref-webid">WebID 1.0</a></cite> § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#publishing-the-webid-profile-document">5 Publishing the WebID Profile Document</a>].
