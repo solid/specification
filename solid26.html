@@ -537,7 +537,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                         <li>
                           The WebID Document is a public resource (i.e. an unauthenticated HTTP <code>GET</code> on the WebID URI returns the Profile) [<cite><a class="bibref" href="#ref-webid">WebID 1.0</a></cite> § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#processing-the-webid-profile">6 Processing the WebID Profile</a>].
                           <ul>
-                            <li>The pinned specifications do not preclude a server from retrieving a non-public WebID Document via authenticated requests, but this is not well-supported in Social Web settings, where a WebID is dereferenced by many other agents' servers that cannot be assumed to make authenticated requests to WebIDs.</li>
+                            <li>The pinned specifications do not preclude a server, acting as a client, from retrieving a non-public WebID Document via authenticated requests. However, this is generally not well-supported by current server implementations.</li>
                           </ul>
                         </li>
                         <li>
