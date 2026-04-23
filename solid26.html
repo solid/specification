@@ -516,7 +516,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                           </ul>
                         </li>
                         <li>
-                          The WebID Profile Document MUST have a <code>text/turtle</code> representation [<cite><a class="bibref" href="#ref-webid">WebID 1.0</a></cite> § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#publishing-the-webid-profile-document">5 Publishing the WebID Profile Document</a>].
+                          The WebID Profile Document MUST be available in <code>text/turtle</code> and <code>application/ld+json</code> [<cite><a class="bibref" href="#ref-webid">WebID 1.0</a></cite> § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#publishing-the-webid-profile-document">5 Publishing the WebID Profile Document</a>; <cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#reading-profile">3.1 Reading Profile</a>].
                         </li>
                         <li>
                           The WebID Profile MUST contain one or more statements of the form <code>?webid solid:oidcIssuer ?iss</code>, where <code>?webid</code> is the WebID and each <code>?iss</code> is the IRI of an OpenID Provider trusted to issue ID Tokens for that WebID [<cite><a class="bibref" href="#ref-solid-oidc">Solid-OIDC</a></cite> § <a href="https://solidproject.org/TR/2022/oidc-20220328#oidc-issuer-discovery">6.1 OIDC Issuer Discovery</a>].
