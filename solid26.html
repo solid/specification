@@ -295,8 +295,9 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <li class="tocline"><a class="tocxref" href="#solid-protocol"><bdi class="secno">2.1</bdi> <span>Solid Protocol</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#solid-oidc"><bdi class="secno">2.2</bdi> <span>Solid-OIDC</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#web-access-control"><bdi class="secno">2.3</bdi> <span>Web Access Control</span></a></li>
-                    <li class="tocline"><a class="tocxref" href="#webid-1"><bdi class="secno">2.4</bdi> <span>WebID 1.0</span></a></li>
-                    <li class="tocline"><a class="tocxref" href="#webid-profile"><bdi class="secno">2.5</bdi> <span>Solid WebID Profile</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#access-control-policy"><bdi class="secno">2.4</bdi> <span>Access Control Policy</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#webid-1"><bdi class="secno">2.5</bdi> <span>WebID 1.0</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#webid-profile"><bdi class="secno">2.6</bdi> <span>Solid WebID Profile</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -361,6 +362,11 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <td><a href="https://solidproject.org/TR/2024/wac-20240512">(CG-DRAFT, v1.0.0, 2024-05-12)</a></td>
                     <td><a href="#web-access-control">Link</a></td>
                   </tr>
+                  <tr>
+                    <td><a href="https://solidproject.org/TR/2022/acp-20220518">Access Control Policy</a></td>
+                    <td><a href="https://solidproject.org/TR/2022/acp-20220518">(v0.9.0, 2022-05-18)</a></td>
+                    <td><a href="#access-control-policy">Link</a></td>
+                  </tr>
                 </tbody>
               </table>
 
@@ -376,28 +382,19 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     </li>
                     <li>
                       <p>
-                        Servers are strongly encouraged to implement Web Access Control (<a href="https://solidproject.org/TR/protocol#web-access-control">WAC</a>), see <a href="#web-access-control">below</a>. 
+                        The Solid Protocol requires Servers to conform to Web Access Control (<a href="#web-access-control">WAC</a>) or Access Control Policy (<a href="#access-control-policy">ACP</a>), or both, and requires Clients to conform to both. In practice Clients typically conform to one. A Client that needs to read or write access-control rules will not interoperate with a Server that implements only the language the Client does not support; Clients that do not interact with access-control rules are unaffected. Implementers choosing between the two should consider the requirements each satisfies.
                       </p>
+                      <p>WAC is the simpler and extensible access-control language, covering the cases used by most current Solid applications. Its policies are RDF with monotonic semantics &mdash; adding or removing triples preserves the truth of existing grants. Optional <code>acl:origin</code> matching is not intended as client identification [<cite><a class="bibref" href="#ref-wac">WAC</a></cite> § <a href="https://solidproject.org/TR/2024/wac-20240512#security-privacy-review">Security and Privacy Review</a>]. WAC does not express deny rules, application-aware matching beyond Origin, or conditional grants.</p>
+                      <p>ACP is the more expressive alternative, suited to requirements that go beyond what WAC can directly express. Policies can carry allow and deny rules in the same document with non-monotonic semantics, so a deny rule can override a prior allow. Subjects can additionally be identified by the <em>application</em> making the request via the <code>acp:client</code> matcher, and rules compose via <code>acp:allOf</code>, <code>acp:anyOf</code>, and <code>acp:noneOf</code>, supporting context-aware policies.</p>
                       <div class="note" id="note-survey">
                         <h4><span>Note</span></h4>
-                        <p>The <a href="https://lists.w3.org/Archives/Public/public-solid/2026Mar/0019.html">March 2026 implementation survey</a> yields the following <a href="https://github.com/w3c-cg/solid/blob/main/implementations/wac-acp.2026-04-01.csv">results</a> (<a href="https://web.archive.org/web/20260415092405/https://raw.githubusercontent.com/w3c-cg/solid/64d2c5383976b9e3a51f854576245dbb4bda1ce1/implementations/wac-acp.2026-04-01.csv">archived</a>):</p>
-                          <ul>
-                            <li>
-                              For WAC, the data shows 13 server-side implementations, deployment in 11 services, and 19 client-side implementations.
-                              WAC is considered the pragmatic, user-friendly, and extensible standard that effectively covers nearly all of the use cases from current Solid Apps. 
-                            </li>
-                            <li>
-                              For ACP, the data shows 4 server-side implementations, deployment in 1 service, and 4 client-side implementations. 
-                              ACP is considered an expressive and complex alternative that might be chosen to satisfy corresponding use-case specific requirements.
-                            </li>
-                          </ul>
-                          <p>The data shows that most clients implement only one access control language, despite the Solid Protocol requiring Clients to conform to both WAC and ACP.</p>
+                        <p>The <a href="https://lists.w3.org/Archives/Public/public-solid/2026Mar/0019.html">March 2026 implementation survey</a> (<a href="https://github.com/w3c-cg/solid/blob/main/implementations/wac-acp.2026-04-01.csv">data</a>, <a href="https://web.archive.org/web/20260415092405/https://raw.githubusercontent.com/w3c-cg/solid/64d2c5383976b9e3a51f854576245dbb4bda1ce1/implementations/wac-acp.2026-04-01.csv">archived</a>):</p>
+                        <ul>
+                          <li>WAC: 13 server-side implementations, deployment in 11 services, 19 client-side implementations.</li>
+                          <li>ACP: 4 server-side implementations, deployment in 1 service, 4 client-side implementations.</li>
+                        </ul>
+                        <p>Most surveyed Clients implement one access control language, not both.</p>
                       </div>
-                      <p>
-                        In case WAC seems not to satisfy implementers' requirements, implementers are strongly encouraged to verify their understanding of the matter in community discussion by providing <a href="https://solidproject.org/TR/wac#document-feedback">feedback</a> to the community.
-                        If WAC is not able to satisfy the requirements, implementers might consider ACP or <a href="https://github.com/solid/authorization-panel/issues/121#issuecomment-4253548683">other suitable mechanisms</a> to achieve their goals.
-                        Client implementers are advised to consider that their Client implementation will not be able to interoperate with every conforming Server their Client might encounter.
-                      </p>
                       </li>
                       <li>
                       <p>
@@ -443,7 +440,14 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                 <h3>Web Access Control</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><a href="https://solidproject.org/TR/2024/wac-20240512">Web Access Control</a> (CG-DRAFT, v1.0.0, 2024-05-12) is included.</p>
-                  </div>
+                </div>
+              </section>
+
+              <section id="access-control-policy" inlist="" rel="schema:hasPart" resource="#access-control-policy">
+                <h3>Access Control Policy</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p><a href="https://solidproject.org/TR/2022/acp-20220518">Access Control Policy</a> (v0.9.0, 2022-05-18) is included.</p>
+                </div>
               </section>
 
               <section id="webid-1" inlist="" rel="schema:hasPart" resource="#webid-1">
@@ -649,7 +653,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
 
               <ul>
                 <li><strong>WebID integrity.</strong> The meaning of a WebID depends on the integrity of its Profile Document. <cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#protected-properties">Protected properties</a> requires servers to protect <code>solid:oidcIssuer</code> triples from non-owner modification; not all servers do, and on such a server any agent with write access to the document can change the issuer.</li>
-                <li><strong>Authorization authorizes agents, not applications.</strong> WAC and ACP both grant access to the agent (WebID) behind a request. Any application acting as that agent inherits its access. WAC has no mechanism to constrain by application; ACP's <code>Client</code> matcher has limited practical coverage (<a href="https://youtu.be/5Q1nUmGdaXE">demonstration</a>). CG work on conditional grants is in progress.</li>
+                <li><strong>Authorization of applications.</strong> WAC grants access to agents (WebIDs); an application acting as an authorized agent inherits that agent's access. ACP extends matching to applications via <code>acp:client</code>, though practical coverage varies across implementations (<a href="https://youtu.be/5Q1nUmGdaXE">demonstration</a>). CG work on extending WAC with conditional grants is in progress.</li>
                 <li><strong>Consent transitivity in access control.</strong> Access-control and group resources can themselves carry personal data. Any agent with <code>acl:Control</code> on such a resource can read that data; consent to include someone in an ACL is transitive to every Control holder [<cite><a class="bibref" href="#ref-wac">WAC</a></cite> § <a href="https://solidproject.org/TR/2024/wac-20240512#security-privacy-review">Security and Privacy Review</a>].</li>
                 <li><strong>Client identity.</strong> Solid-OIDC has no mechanism for strongly-asserted client identity, and browser-based clients cannot hold client secrets. Authorization Servers treat anonymous clients with low-trust policies; confidential-client protections are unavailable in typical SPA deployments [<cite><a class="bibref" href="#ref-solid-oidc">Solid-OIDC</a></cite> § <a href="https://solidproject.org/TR/2022/oidc-20220328#out-of-scope">Out of Scope</a>, § <a href="https://solidproject.org/TR/2022/oidc-20220328#client-secrets">Client Secrets</a>].</li>
               </ul>
@@ -669,6 +673,9 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
 
                 <dt id="ref-wac">[WAC]</dt>
                 <dd><cite><a href="https://solidproject.org/TR/2024/wac-20240512">Web Access Control</a></cite>. Sarven Capadisli. W3C Solid Community Group. 12 May 2024. Draft Community Group Report, Version 1.0.0. URL: <a href="https://solidproject.org/TR/2024/wac-20240512">https://solidproject.org/TR/2024/wac-20240512</a></dd>
+
+                <dt id="ref-acp">[ACP]</dt>
+                <dd><cite><a href="https://solidproject.org/TR/2022/acp-20220518">Access Control Policy</a></cite>. Matthieu Bosquet. W3C Solid Community Group. 18 May 2022. Version 0.9.0. URL: <a href="https://solidproject.org/TR/2022/acp-20220518">https://solidproject.org/TR/2022/acp-20220518</a></dd>
 
                 <dt id="ref-webid">[WEBID]</dt>
                 <dd><cite><a href="https://www.w3.org/2005/Incubator/webid/spec/identity/">WebID 1.0</a></cite>. Andrei Sambra; Stéphane Corlosquet. W3C WebID Community Group. 5 March 2014. W3C Editor's Draft. URL: <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/">https://www.w3.org/2005/Incubator/webid/spec/identity/</a></dd>
