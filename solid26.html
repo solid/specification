@@ -484,9 +484,9 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                 <h3>WebID</h3>
                 <div datatype="rdf:HTML" property="schema:description">
 
-                  <p>This section gives implementation guidance for WebID in the context of the Solid26 Implementation Guide. It is organized into requirements derivable from the respective specifications (<a href="#webid-normative">§ 3.1.1</a>) and common assumptions not required by them (<a href="#webid-non-normative">§ 3.1.2</a>) (see <a href="#specifications">§ 2 Specifications</a>), and a recommended profile assembly algorithm (<a href="#webid-algorithms">§ 3.1.3</a>). Guidance for client implementers is given in <a href="#client-guidance">§ 4 Guidance for clients</a>.</p>
+                  <p>This section gives WebID implementation guidance for the Solid26 Implementation Guide. It covers requirements derivable from the specifications pinned in <a href="#specifications">§ 2</a> (<a href="#webid-normative">§ 3.1.1</a>), common assumptions not derivable from them (<a href="#webid-non-normative">§ 3.1.2</a>), a profile assembly algorithm (<a href="#webid-algorithms">§ 3.1.3</a>), and security considerations (<a href="#webid-security">§ 3.1.4</a>). Client-side guidance is in <a href="#client-guidance">§ 4</a>.</p>
 
-                  <p>For the purposes of this section, the following terms are used:</p>
+                  <p>Terms used in this section:</p>
                   <dl>
                     <dt><dfn id="dfn-webid">WebID</dfn></dt>
                     <dd>An HTTP URI that denotes an agent [<cite><a class="bibref" href="#ref-webid">WEBID</a></cite>], [<cite><a class="bibref" href="#ref-solid-protocol">SOLID-PROTOCOL</a></cite>].</dd>
@@ -497,21 +497,21 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <dt><dfn id="dfn-preferences-document">Preferences Document</dfn></dt>
                     <dd>A document, linked from the agent's <a href="#dfn-webid-profile">WebID Profile</a> via <code>pim:preferencesFile</code>, that holds settings and pointers to private data; typically accessible only to the agent or a delegate.</dd>
                     <dt><dfn id="dfn-webid-profile">WebID Profile</dfn></dt>
-                    <dd>The RDF graph [<cite><a class="bibref" href="#ref-rdf11-concepts">RDF11-CONCEPTS</a></cite>] formed by the set union of the <a href="#dfn-webid-profile-document">WebID Profile Document</a> with any <a href="#dfn-extended-profile-document">Extended Profile Documents</a>, assembled per <a href="#webid-non-normative">§ 3.1.2 Common assumptions not required by Solid26 Implementation Guide specifications</a>.</dd>
+                    <dd>The RDF graph [<cite><a class="bibref" href="#ref-rdf11-concepts">RDF11-CONCEPTS</a></cite>] formed by the set union of the <a href="#dfn-webid-profile-document">WebID Profile Document</a> with any <a href="#dfn-extended-profile-document">Extended Profile Documents</a>, assembled per <a href="#webid-non-normative">§ 3.1.2</a>.</dd>
                   </dl>
 
                   <section id="webid-normative" inlist="" rel="schema:hasPart" resource="#webid-normative">
-                    <h4>Requirements derivable from Solid26 Implementors Guide specifications</h4>
+                    <h4>Requirements derivable from Solid26 Implementation Guide specifications</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <ol>
                         <li>
-                          A WebID is an HTTP URI denoting an agent (e.g. a person) [<cite><a class="bibref" href="#ref-webid">WebID 1.0</a></cite> § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#terminology">Terminology</a>].
+                          A WebID is an HTTP URI denoting an agent [<cite><a class="bibref" href="#ref-webid">WebID 1.0</a></cite> § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#terminology">Terminology</a>].
                         </li>
                         <li>
-                          The WebID Profile Document is the resource obtained by dereferencing the WebID HTTP URI: for a WebID with a fragment identifier (e.g. <code>#me</code>), the URI without the fragment denotes the Profile Document; for a WebID without a fragment, an HTTP <code>GET</code> on the WebID MUST return a <code>303 See Other</code> response whose <code>Location</code> header URI denotes the Profile Document [<cite><a class="bibref" href="#ref-webid">WebID 1.0</a></cite> § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#terminology">Terminology</a>; <cite><a class="bibref" href="#ref-webid">WebID 1.0</a></cite> § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#the-webid-http-uri">The WebID HTTP URI</a>].
+                          The WebID Profile Document is obtained by dereferencing the WebID HTTP URI: for a WebID with a fragment (e.g. <code>#me</code>), the fragment-less URI identifies it; for a WebID without a fragment, an HTTP <code>GET</code> MUST return <code>303 See Other</code> whose <code>Location</code> identifies it [<cite><a class="bibref" href="#ref-webid">WebID 1.0</a></cite> § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#terminology">Terminology</a>, § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#the-webid-http-uri">The WebID HTTP URI</a>].
                         </li>
                         <li>
-                          A WebID Document MAY be hosted anywhere on the Web; it MAY, but need not, reside in a Solid storage [<cite><a class="bibref" href="#ref-webid">WebID 1.0</a></cite> § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#publishing-the-webid-profile-document">Publishing the WebID Profile Document</a>].
+                          A WebID Document MAY be hosted anywhere on the Web, in or out of Solid storage [<cite><a class="bibref" href="#ref-webid">WebID 1.0</a></cite> § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#publishing-the-webid-profile-document">Publishing the WebID Profile Document</a>].
                           <ul>
                             <li>A Solid client can only modify a WebID Profile if the underlying document is in a Solid storage. When the WebID Document is not in a Solid storage, it is recommended to link at least one <a href="#dfn-extended-profile-document">Extended Profile Document</a> that is, so that clients can attach further profile statements by writing to it.</li>
                           </ul>
@@ -520,13 +520,13 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                           The WebID Profile Document MUST be available in <code>text/turtle</code> and <code>application/ld+json</code> [<cite><a class="bibref" href="#ref-webid">WebID 1.0</a></cite> § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#publishing-the-webid-profile-document">Publishing the WebID Profile Document</a>; <cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#reading-profile">Reading Profile</a>].
                         </li>
                         <li>
-                          The WebID Profile MUST contain one or more statements of the form <code>?webid solid:oidcIssuer ?iss</code>, where <code>?webid</code> is the WebID and each <code>?iss</code> is the IRI of an OpenID Provider trusted to issue ID Tokens for that WebID [<cite><a class="bibref" href="#ref-solid-oidc">Solid-OIDC</a></cite> § <a href="https://solidproject.org/TR/2022/oidc-20220328#oidc-issuer-discovery">OIDC Issuer Discovery</a>].
+                          The WebID Profile MUST contain at least one statement <code>&lt;webid&gt; solid:oidcIssuer &lt;iss&gt;</code>, where <code>&lt;iss&gt;</code> is an OpenID Provider trusted to issue ID Tokens for the WebID [<cite><a class="bibref" href="#ref-solid-oidc">Solid-OIDC</a></cite> § <a href="https://solidproject.org/TR/2022/oidc-20220328#oidc-issuer-discovery">OIDC Issuer Discovery</a>].
                         </li>
                         <li>
-                          An agent may have zero or more Solid storages, and any number of these MAY be discoverable from the WebID Profile via statements of the form <code>?webid pim:storage ?storage</code>, where <code>?webid</code> is the WebID and each <code>?storage</code> is the IRI of a storage owned by that agent [<cite><a class="bibref" href="#ref-solid-protocol">Solid Protocol</a></cite> § <a href="https://solidproject.org/TR/2024/protocol-20240512#storage">Storage</a>].
+                          Solid storages owned by the agent MAY be advertised in the WebID Profile via <code>&lt;webid&gt; pim:storage &lt;storage&gt;</code> [<cite><a class="bibref" href="#ref-solid-protocol">Solid Protocol</a></cite> § <a href="https://solidproject.org/TR/2024/protocol-20240512#storage">Storage</a>].
                         </li>
                         <li>
-                          An agent MAY advertise a Linked Data Notifications inbox in the WebID Profile via a statement of the form <code>?webid ldp:inbox ?inbox</code>, where <code>?inbox</code> is the IRI of an LDN inbox to which other agents can post notifications [<cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#webid-profile-data-model">WebID Profile Data Model</a>; <cite><a class="bibref" href="#ref-solid-protocol">Solid Protocol</a></cite> § <a href="https://solidproject.org/TR/2024/protocol-20240512#linked-data-notifications">Linked Data Notifications</a>].
+                          An agent MAY advertise a Linked Data Notifications inbox via <code>&lt;webid&gt; ldp:inbox &lt;inbox&gt;</code>; other agents post notifications there [<cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#webid-profile-data-model">WebID Profile Data Model</a>; <cite><a class="bibref" href="#ref-solid-protocol">Solid Protocol</a></cite> § <a href="https://solidproject.org/TR/2024/protocol-20240512#linked-data-notifications">Linked Data Notifications</a>].
                         </li>
                       </ol>
                     </div>
@@ -539,7 +539,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                         <li>
                           The WebID Document is a public resource (i.e. an unauthenticated HTTP <code>GET</code> on the WebID URI returns the Profile) [<cite><a class="bibref" href="#ref-webid">WebID 1.0</a></cite> § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#processing-the-webid-profile">Processing the WebID Profile</a>].
                           <ul>
-                            <li>The pinned specifications do not preclude a server, acting as a client, from retrieving a non-public WebID Document via authenticated requests. However, this is generally not well-supported by current server implementations.</li>
+                            <li>The pinned specifications do not preclude authenticated retrieval of a non-public WebID Document by a server acting as a client, though current server implementations generally do not support it.</li>
                           </ul>
                         </li>
                         <li>
@@ -559,7 +559,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <h4>Assembling the Profile</h4>
                     <div datatype="rdf:HTML" property="schema:description">
 
-                      <p>Per [<cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#discovery">Discovery</a>], the full profile of an agent is the union of statements found in:</p>
+                      <p>Per [<cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#discovery">Discovery</a>], the full profile is the union of statements in:</p>
                       <ul>
                         <li>the <a href="#dfn-webid-profile-document">WebID Profile Document</a>;</li>
                         <li><a href="#dfn-extended-profile-document">Extended Profile Documents</a> directly linked from the WebID Document via <a href="#dfn-discovery-links">discovery links</a>, and Extended Profile Documents that those in turn link by discovery links;</li>
@@ -570,7 +570,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       <p>To assemble it:</p>
                       <ol>
                         <li><code>GET</code> the WebID Document. If it cannot be retrieved, surface a clear error.</li>
-                        <li>For each linked document (Extended Profile Documents via <a href="#dfn-discovery-links">discovery links</a>; the Preferences Document via <code>pim:preferencesFile</code>; Type Index documents via <code>solid:publicTypeIndex</code>/<code>solid:privateTypeIndex</code>), <code>GET</code> the document. Public documents may be fetched unauthenticated; on <code>401</code>/<code>403</code> with a logged-in user, retry authenticated. Preferences and the private Type Index will normally require authentication [<cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#discovery">Discovery</a>, § <a href="https://solid.github.io/webid-profile/#private-preferences">Private Preferences</a>]. If the WebID Document does not link a Preferences Document or Type Index documents, those fetches are skipped; their absence is not an error.</li>
+                        <li><code>GET</code> each linked document: Extended Profile Documents via <a href="#dfn-discovery-links">discovery links</a>, the Preferences Document via <code>pim:preferencesFile</code>, and Type Index documents via <code>solid:publicTypeIndex</code>/<code>solid:privateTypeIndex</code>. On <code>401</code>/<code>403</code> with a logged-in user, retry authenticated; Preferences and the private Type Index normally require authentication [<cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#discovery">Discovery</a>, § <a href="https://solid.github.io/webid-profile/#private-preferences">Private Preferences</a>]. Absent links are skipped, not an error.</li>
                         <li>For each Extended Profile Document linked directly from the WebID Document, fetch the Extended Profile Documents it links via its <a href="#dfn-discovery-links">discovery links</a>. Do not traverse further: discovery links in the documents fetched by this step, in extended profiles discovered from the Preferences Document, and in Type Index documents are not followed. Use cycle detection so no document is fetched twice.</li>
                         <li>Form the set union of the fetched documents, then drop every <code>solid:oidcIssuer</code> triple that did not originate in the WebID Document: that predicate is authoritative only when sourced there, mirroring the write protection in <cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#updating-profile">Updating Profile</a>. Other discovery predicates (e.g. <code>pim:storage</code>, <code>ldp:inbox</code>) may legitimately appear in any of these documents.</li>
                         <li>Retain only statements that have the WebID as subject or object [<cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#discovery">Discovery</a>].</li>
@@ -578,7 +578,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
 
                       <div class="note">
                         <h4><span>Note</span></h4>
-                        <p>When the WebID Document is not hosted in Solid storage, clients cannot add new <a href="#dfn-discovery-links">discovery links</a> to it. Allowing one level of traversal from Extended Profile Documents which are in Solid storage lets a client attach further Extended Profile Documents &mdash; for example, with different access levels &mdash; by linking them from an existing Extended Profile Document it can write to.</p>
+                        <p>When the WebID Document is not hosted in Solid storage, clients cannot add new <a href="#dfn-discovery-links">discovery links</a> to it. The one level of traversal from Extended Profile Documents in Solid storage lets a client attach further Extended Profile Documents (for example, at different access levels) via links it can write.</p>
                       </div>
 
                     </div>
@@ -587,7 +587,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   <section id="webid-security" inlist="" rel="schema:hasPart" resource="#webid-security">
                     <h4>Security Considerations</h4>
                     <div datatype="rdf:HTML" property="schema:description">
-                      <p>Solid WebID Profile [<cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#protected-properties">Protected properties</a>] requires servers hosting a WebID Document to protect <code>solid:oidcIssuer</code> triples from modification by non-owners. At the time of publication, no known Solid server implements this protection; where the hosting server does not, any agent with write access to the document can add, remove, or replace the WebID's issuer statement.</p>
+                      <p>[<cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#protected-properties">Protected properties</a>] requires servers hosting a WebID Document to protect <code>solid:oidcIssuer</code> triples from modification by non-owners. No known Solid server implements this protection at the time of publication; without it, any agent with write access to the document can modify the WebID's issuer.</p>
                     </div>
                   </section>
 
