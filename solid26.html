@@ -313,17 +313,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   </ol>
                 </li>
                 <li class="tocline"><p><a class="tocxref" href="#client-guidance"><bdi class="secno">4.</bdi> <span>Guidance for clients</span></a></p></li>
-                <li class="tocline">
-                  <p><a class="tocxref" href="#security-privacy"><bdi class="secno">5.</bdi> <span>Security and Privacy Considerations</span></a></p>
-                  <ol>
-                    <li class="tocline"><a class="tocxref" href="#security-webid-integrity"><bdi class="secno">5.1</bdi> <span>WebID Profile Integrity</span></a></li>
-                    <li class="tocline"><a class="tocxref" href="#security-app-auth"><bdi class="secno">5.2</bdi> <span>Application Authorization</span></a></li>
-                    <li class="tocline"><a class="tocxref" href="#security-wac-leakage"><bdi class="secno">5.3</bdi> <span>Access Control Leakage</span></a></li>
-                    <li class="tocline"><a class="tocxref" href="#security-personal-data"><bdi class="secno">5.4</bdi> <span>Personal Data in Access Control and Preferences</span></a></li>
-                    <li class="tocline"><a class="tocxref" href="#security-client-trust"><bdi class="secno">5.5</bdi> <span>Client Identity and Trust</span></a></li>
-                    <li class="tocline"><a class="tocxref" href="#security-discoverability"><bdi class="secno">5.6</bdi> <span>Profile and Storage Discoverability</span></a></li>
-                  </ol>
-                </li>
+                <li class="tocline"><p><a class="tocxref" href="#security-privacy"><bdi class="secno">5.</bdi> <span>Security and Privacy Considerations</span></a></p></li>
                 <li class="tocline"><a class="tocxref" href="#references"><span>References</span></a></li>
               </ol>
             </div>
@@ -654,74 +644,15 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
 
               <div class="note">
                 <h4><span>Note</span></h4>
-                <p>This section was drafted with the assistance of generative AI to kickstart coverage of known security and privacy limitations across the Solid26 Implementation Guide specifications. Community review and refinement is expected. <cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> and the Access Control Policy draft do not include dedicated Security or Privacy Considerations sections in their current drafts; items sourced from them below are drawn from inline notes or absences.</p>
+                <p>Drafted with generative-AI assistance to kickstart coverage; community review is expected.</p>
               </div>
 
-              <p>This section collects known security and privacy limitations that implementers should be aware of when building against the specifications in this guide. Items below are sourced from the referenced specifications.</p>
-
-              <section id="security-webid-integrity" inlist="" rel="schema:hasPart" resource="#security-webid-integrity">
-                <h3>WebID Profile Integrity</h3>
-                <div datatype="rdf:HTML" property="schema:description">
-                  <ul>
-                    <li>The meaning of a WebID depends on the integrity of its WebID Profile Document. DNS tampering, TLS interception, or unauthorised write access to the document subverts the WebID's semantics [<cite><a class="bibref" href="#ref-webid">WebID 1.0</a></cite> § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#security-considerations">Security Considerations</a>].</li>
-                    <li>[<cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#protected-properties">Protected properties</a>] requires servers hosting a WebID Document to protect <code>solid:oidcIssuer</code> triples from modification by non-owners. Not all Solid servers implement this protection; on a server that does not, any agent with write access to the document can modify the WebID's issuer.</li>
-                    <li>When resolving <code>solid:oidcIssuer</code> during authentication, clients MUST treat the RDF body of the WebID Document as canonical rather than any <code>Link</code> header that purports to advertise the issuer; a mismatch between the two is a spoofing vector [<cite><a class="bibref" href="#ref-solid-oidc">Solid-OIDC</a></cite> § <a href="https://solidproject.org/TR/2022/oidc-20220328#oidc-issuer-discovery">OIDC Issuer Discovery</a>].</li>
-                  </ul>
-                </div>
-              </section>
-
-              <section id="security-app-auth" inlist="" rel="schema:hasPart" resource="#security-app-auth">
-                <h3>Application Authorization</h3>
-                <div datatype="rdf:HTML" property="schema:description">
-                  <p>Web Access Control and Access Control Policy both authorize <em>agents</em> (identified by WebID), not the <em>applications</em> acting on their behalf. Once a user grants an agent access to a resource, any application operating under that agent's WebID inherits that access. Work in the Solid CG is exploring application-aware authorization:</p>
-                  <ul>
-                    <li>WAC has no built-in mechanism to constrain access by application. Its <code>Origin</code>-based matching is explicitly not intended as client identification [<cite><a class="bibref" href="#ref-wac">WAC</a></cite> § <a href="https://solidproject.org/TR/2024/wac-20240512#security-privacy-review">Security and Privacy Review</a>].</li>
-                    <li>ACP can express application-aware rules via the <code>Client</code> matcher, but practical coverage in current implementations is limited (see <a href="https://youtu.be/5Q1nUmGdaXE">this demonstration</a>).</li>
-                    <li>Ongoing CG proposals (e.g. conditional-grants extensions to WAC) aim to address these gaps but have not been incorporated into the pinned versions.</li>
-                  </ul>
-                </div>
-              </section>
-
-              <section id="security-wac-leakage" inlist="" rel="schema:hasPart" resource="#security-wac-leakage">
-                <h3>Access Control Leakage</h3>
-                <div datatype="rdf:HTML" property="schema:description">
-                  <ul>
-                    <li>Append-only permissions can leak the existence of created resources via the <code>Location</code> or <code>Content-Location</code> header in <code>POST</code> responses, even when the requester lacks read access to the container [<cite><a class="bibref" href="#ref-wac">WAC</a></cite> § <a href="https://solidproject.org/TR/2024/wac-20240512#privacy-considerations">Privacy Considerations</a>].</li>
-                    <li><code>DELETE</code> and <code>PATCH</code> status codes can reveal the existence of resources a requester cannot read — for example, a <code>404</code> vs. <code>403</code> distinction on a <code>SPARQL DELETE DATA</code> [<cite><a class="bibref" href="#ref-wac">WAC</a></cite> § <a href="https://solidproject.org/TR/2024/wac-20240512#privacy-considerations">Privacy Considerations</a>].</li>
-                    <li>WAC does not mandate audit trails or change notifications for ACL modifications; implementations are only encouraged to provide such accountability features [<cite><a class="bibref" href="#ref-wac">WAC</a></cite> § <a href="https://solidproject.org/TR/2024/wac-20240512#security-considerations">Security Considerations</a>].</li>
-                  </ul>
-                </div>
-              </section>
-
-              <section id="security-personal-data" inlist="" rel="schema:hasPart" resource="#security-personal-data">
-                <h3>Personal Data in Access Control and Preferences</h3>
-                <div datatype="rdf:HTML" property="schema:description">
-                  <ul>
-                    <li>Access-control resources and group resources can themselves carry personal data (for example, the WebIDs and group memberships of other agents). Any agent holding <code>acl:Control</code> on such a resource can read this data; consent to include someone in an ACL is effectively transitive to everyone with Control rights on it [<cite><a class="bibref" href="#ref-wac">WAC</a></cite> § <a href="https://solidproject.org/TR/2024/wac-20240512#security-privacy-review">Security and Privacy Review</a>].</li>
-                    <li>Preferences Documents are described as legitimate stores for private information, but the Solid WebID Profile draft delegates all protection to WAC/ACP without additional in-spec guidance [<cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#reading-profile">Reading Profile</a>]. Implementers should treat Preferences as sensitive and ensure access controls are applied correctly at storage creation.</li>
-                  </ul>
-                </div>
-              </section>
-
-              <section id="security-client-trust" inlist="" rel="schema:hasPart" resource="#security-client-trust">
-                <h3>Client Identity and Trust</h3>
-                <div datatype="rdf:HTML" property="schema:description">
-                  <ul>
-                    <li>Solid-OIDC does not define a mechanism for strongly-asserted client identity; Authorization Servers cannot reliably distinguish one ephemeral client from another, and are expected to treat anonymous clients with low-trust policies [<cite><a class="bibref" href="#ref-solid-oidc">Solid-OIDC</a></cite> § <a href="https://solidproject.org/TR/2022/oidc-20220328#out-of-scope">Out of Scope</a>, § <a href="https://solidproject.org/TR/2022/oidc-20220328#client-ids">Client IDs</a>].</li>
-                    <li>Browser-based clients cannot safely hold client secrets. Confidential-client protections defined by OAuth 2.0 are therefore not available in typical single-page application deployments [<cite><a class="bibref" href="#ref-solid-oidc">Solid-OIDC</a></cite> § <a href="https://solidproject.org/TR/2022/oidc-20220328#client-secrets">Client Secrets</a>].</li>
-                  </ul>
-                </div>
-              </section>
-
-              <section id="security-discoverability" inlist="" rel="schema:hasPart" resource="#security-discoverability">
-                <h3>Profile and Storage Discoverability</h3>
-                <div datatype="rdf:HTML" property="schema:description">
-                  <ul>
-                    <li>Information an agent might choose to omit from their WebID Profile (for example, <code>pim:storage</code> or <code>ldp:inbox</code>) may still be discoverable from other resources hosted in the same storage. Exclusion from the profile does not imply non-discoverability [<cite><a class="bibref" href="#ref-solid-protocol">Solid Protocol</a></cite> § <a href="https://solidproject.org/TR/2024/protocol-20240512#webid-profile-privacy">Privacy Considerations</a>].</li>
-                    <li>WebID 1.0 does not include a Privacy Considerations section. Because WebID Profile Documents are typically publicly dereferenceable, profile enumeration and correlation across services are possible by default; deployments that wish to limit this must impose it through access control, not the specification.</li>
-                  </ul>
-                </div>
-              </section>
+              <ul>
+                <li><strong>WebID integrity.</strong> The meaning of a WebID depends on the integrity of its Profile Document. <cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#protected-properties">Protected properties</a> requires servers to protect <code>solid:oidcIssuer</code> triples from non-owner modification; not all servers do, and on such a server any agent with write access to the document can change the issuer.</li>
+                <li><strong>Authorization authorizes agents, not applications.</strong> WAC and ACP both grant access to the agent (WebID) behind a request. Any application acting as that agent inherits its access. WAC has no mechanism to constrain by application; ACP's <code>Client</code> matcher has limited practical coverage (<a href="https://youtu.be/5Q1nUmGdaXE">demonstration</a>). CG work on conditional grants is in progress.</li>
+                <li><strong>Consent transitivity in access control.</strong> Access-control and group resources can themselves carry personal data. Any agent with <code>acl:Control</code> on such a resource can read that data; consent to include someone in an ACL is transitive to every Control holder [<cite><a class="bibref" href="#ref-wac">WAC</a></cite> § <a href="https://solidproject.org/TR/2024/wac-20240512#security-privacy-review">Security and Privacy Review</a>].</li>
+                <li><strong>Client identity.</strong> Solid-OIDC has no mechanism for strongly-asserted client identity, and browser-based clients cannot hold client secrets. Authorization Servers treat anonymous clients with low-trust policies; confidential-client protections are unavailable in typical SPA deployments [<cite><a class="bibref" href="#ref-solid-oidc">Solid-OIDC</a></cite> § <a href="https://solidproject.org/TR/2022/oidc-20220328#out-of-scope">Out of Scope</a>, § <a href="https://solidproject.org/TR/2022/oidc-20220328#client-secrets">Client Secrets</a>].</li>
+              </ul>
 
             </div>
           </section>
