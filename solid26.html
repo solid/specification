@@ -581,11 +581,6 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                         <p>When the WebID Document is not hosted in Solid storage, clients cannot add new <a href="#dfn-discovery-links">discovery links</a> to it. Allowing one level of traversal from Extended Profile Documents which are in Solid storage lets a client attach further Extended Profile Documents &mdash; for example, with different access levels &mdash; by linking them from an existing Extended Profile Document it can write to.</p>
                       </div>
 
-                      <div class="note">
-                        <h4><span>Note</span></h4>
-                        <p>The assembled WebID Profile graph can optionally be validated against <a href="https://github.com/solid/webid-profile/blob/main/shapes/profile-discovery-shape.ttl"><code>profile-discovery-shape.ttl</code></a> from the <a href="https://github.com/solid/webid-profile/tree/main/shapes"><code>solid/webid-profile</code> shapes</a>. The shape covers <code>pim:preferencesFile</code> (exactly 1), <code>pim:storage</code> (0+), <code>ldp:inbox</code> (at most 1), <code>rdfs:seeAlso</code> (0+), <code>solid:oidcIssuer</code> (0+), <code>solid:publicTypeIndex</code>/<code>solid:privateTypeIndex</code> (at most 1 each), and <code>foaf:isPrimaryTopicOf</code> (at most 1). Note that Solid-OIDC requires at least one <code>solid:oidcIssuer</code> in order to attest ownership of the WebID, while the shape permits zero.</p>
-                      </div>
-
                     </div>
                   </section>
 
@@ -629,24 +624,24 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
 
               <div class="note">
                 <h4><span>Note</span></h4>
-                <p>The Solid WebID Profile [<cite><a class="bibref" href="#ref-webid-profile">WEBID-PROFILE</a></cite>] does not standardise predicates for rendering an agent's identity (see <a href="https://solid.github.io/webid-profile/#other-predicates">§ 7 Other predicates</a>). For empirical data on which predicates are actually populated across the ecosystem &mdash; and at what frequency &mdash; implementers should consult <a href="https://jeff-zucker.github.io/solid-load-profile/">solid-load-profile</a>, which loads and summarises predicate usage from a wide sample of live Solid profiles. The list below aligns with the companion <a href="https://github.com/solid/webid-profile/blob/main/shapes/profile-shapes.ttl"><code>profile-shapes.ttl</code></a> in the <a href="https://github.com/solid/webid-profile/tree/main/shapes"><code>solid/webid-profile</code> shapes</a> &mdash; which targets <code>foaf:Person</code>, <code>vcard:Individual</code>, and <code>schema:Person</code> &mdash; supplemented with widely-used fallbacks populated by existing profile editors (<a href="https://github.com/SolidOS/solidos">SolidOS</a>/<a href="https://github.com/SolidOS/mashlib">mashlib</a>, <a href="https://github.com/pod-os/PodOS">PodOS</a>, <a href="https://gitlab.com/vincenttunru/penny">Penny</a>, <a href="https://dokie.li/">dokieli</a>). Vocabularies referenced: FOAF [<cite><a class="bibref" href="#ref-foaf">FOAF</a></cite>], vCard [<cite><a class="bibref" href="#ref-vcard">VCARD-RDF</a></cite>], Schema.org [<cite><a class="bibref" href="#ref-schema">SCHEMA-ORG</a></cite>], <a href="http://www.w3.org/ns/org#">Org</a>, and <a href="http://www.w3.org/ns/solid/terms#">Solid Terms</a>.</p>
-                <p>Common predicates for rendering a profile (predicates appearing in <code>profile-shapes.ttl</code> are marked &dagger;). The order given for each field is a suggested preference when multiple predicates are present; other orderings may be more appropriate depending on the ecosystem the application integrates with. Reader applications SHOULD accept any of the listed predicates as equivalent; writer applications typically commit to one predicate per field.</p>
+                <p>The Solid WebID Profile [<cite><a class="bibref" href="#ref-webid-profile">WEBID-PROFILE</a></cite>] does not standardise predicates for rendering an agent's identity (see <a href="https://solid.github.io/webid-profile/#other-predicates">§ 7 Other predicates</a>). For empirical data on which predicates are actually populated across the ecosystem &mdash; and at what frequency &mdash; implementers should consult <a href="https://jeff-zucker.github.io/solid-load-profile/">solid-load-profile</a>, which loads and summarises predicate usage from a wide sample of live Solid profiles. The list below targets <code>foaf:Person</code>, <code>vcard:Individual</code>, and <code>schema:Person</code>, supplemented with widely-used fallbacks populated by existing profile editors (<a href="https://github.com/SolidOS/solidos">SolidOS</a>/<a href="https://github.com/SolidOS/mashlib">mashlib</a>, <a href="https://github.com/pod-os/PodOS">PodOS</a>, <a href="https://gitlab.com/vincenttunru/penny">Penny</a>, <a href="https://dokie.li/">dokieli</a>). Vocabularies referenced: FOAF [<cite><a class="bibref" href="#ref-foaf">FOAF</a></cite>], vCard [<cite><a class="bibref" href="#ref-vcard">VCARD-RDF</a></cite>], Schema.org [<cite><a class="bibref" href="#ref-schema">SCHEMA-ORG</a></cite>], <a href="http://www.w3.org/ns/org#">Org</a>, and <a href="http://www.w3.org/ns/solid/terms#">Solid Terms</a>.</p>
+                <p>Common predicates for rendering a profile. The order given for each field is a suggested preference when multiple predicates are present; other orderings may be more appropriate depending on the ecosystem the application integrates with. Reader applications SHOULD accept any of the listed predicates as equivalent; writer applications typically commit to one predicate per field.</p>
                 <ul>
-                  <li><strong>Name:</strong> <code>vcard:fn</code>&dagger;, with fallbacks to <code>foaf:name</code>, <code>schema:name</code>, or <code>rdfs:label</code>.</li>
-                  <li><strong>Short name / nickname:</strong> <code>foaf:nick</code>&dagger;, with fallback to <code>vcard:nickname</code>.</li>
-                  <li><strong>Avatar / photo:</strong> <code>vcard:hasPhoto</code>&dagger;, with fallbacks to <code>foaf:img</code> or <code>schema:image</code>.</li>
-                  <li><strong>Email:</strong> <code>vcard:hasEmail</code>&dagger;, with fallbacks to <code>foaf:mbox</code> or <code>schema:email</code>.</li>
-                  <li><strong>Telephone:</strong> <code>vcard:hasTelephone</code>&dagger;.</li>
-                  <li><strong>Address:</strong> <code>vcard:hasAddress</code>&dagger;.</li>
-                  <li><strong>Description / bio:</strong> <code>vcard:note</code>&dagger;, with fallback to <code>schema:description</code>.</li>
-                  <li><strong>Birthday:</strong> <code>vcard:bday</code>&dagger;.</li>
-                  <li><strong>Organization &amp; role:</strong> <code>vcard:organization-name</code>&dagger; and <code>vcard:role</code>&dagger;; for richer involvement, <code>org:organization</code>&dagger; and <code>org:role</code>&dagger;.</li>
-                  <li><strong>Pronouns:</strong> <code>solid:preferredSubjectPronoun</code>&dagger;, <code>solid:preferredObjectPronoun</code>&dagger;, <code>solid:preferredRelativePronoun</code>&dagger;.</li>
-                  <li><strong>Skills:</strong> <code>schema:skills</code>&dagger;.</li>
-                  <li><strong>Languages:</strong> <code>schema:knowsLanguage</code>&dagger;.</li>
-                  <li><strong>Friends / contacts:</strong> <code>foaf:knows</code>&dagger;.</li>
-                  <li><strong>Profile colours:</strong> <code>solid:profileHighlightColor</code>&dagger;, <code>solid:profileBackgroundColor</code>&dagger;.</li>
-                  <li><strong>Homepage / web page:</strong> <code>foaf:homepage</code>, <code>foaf:weblog</code>, or <code>schema:url</code> (not in the shape).</li>
+                  <li><strong>Name:</strong> <code>vcard:fn</code>, with fallbacks to <code>foaf:name</code>, <code>schema:name</code>, or <code>rdfs:label</code>.</li>
+                  <li><strong>Short name / nickname:</strong> <code>foaf:nick</code>, with fallback to <code>vcard:nickname</code>.</li>
+                  <li><strong>Avatar / photo:</strong> <code>vcard:hasPhoto</code>, with fallbacks to <code>foaf:img</code> or <code>schema:image</code>.</li>
+                  <li><strong>Email:</strong> <code>vcard:hasEmail</code>, with fallbacks to <code>foaf:mbox</code> or <code>schema:email</code>.</li>
+                  <li><strong>Telephone:</strong> <code>vcard:hasTelephone</code>.</li>
+                  <li><strong>Address:</strong> <code>vcard:hasAddress</code>.</li>
+                  <li><strong>Description / bio:</strong> <code>vcard:note</code>, with fallback to <code>schema:description</code>.</li>
+                  <li><strong>Birthday:</strong> <code>vcard:bday</code>.</li>
+                  <li><strong>Organization &amp; role:</strong> <code>vcard:organization-name</code> and <code>vcard:role</code>; for richer involvement, <code>org:organization</code> and <code>org:role</code>.</li>
+                  <li><strong>Pronouns:</strong> <code>solid:preferredSubjectPronoun</code>, <code>solid:preferredObjectPronoun</code>, <code>solid:preferredRelativePronoun</code>.</li>
+                  <li><strong>Skills:</strong> <code>schema:skills</code>.</li>
+                  <li><strong>Languages:</strong> <code>schema:knowsLanguage</code>.</li>
+                  <li><strong>Friends / contacts:</strong> <code>foaf:knows</code>.</li>
+                  <li><strong>Profile colours:</strong> <code>solid:profileHighlightColor</code>, <code>solid:profileBackgroundColor</code>.</li>
+                  <li><strong>Homepage / web page:</strong> <code>foaf:homepage</code>, <code>foaf:weblog</code>, or <code>schema:url</code>.</li>
                 </ul>
                 <p>None of these are guaranteed to be present; UIs should fall back to the WebID URI when no human-readable label is available.</p>
               </div>
