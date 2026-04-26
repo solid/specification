@@ -385,7 +385,10 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       <p>If a server does not support HTTP <code>PATCH</code>, a client can read-modify-write via <code>GET</code> then <code>PUT</code>. To avoid the lost-update problem [<a href="https://www.w3.org/1999/04/Editing/">W3C &mdash; Editing the Web</a>], issue the <code>PUT</code> conditionally with <code>If-Match</code> carrying the <code>ETag</code> returned from the <code>GET</code>; the server responds with <code>412 Precondition Failed</code> if the resource has changed in the interim. If only <code>Last-Modified</code> is exposed, <code>If-Unmodified-Since</code> serves the same role, though its one-second resolution is coarser than <code>ETag</code>-based validation. See <a href="https://httpwg.org/specs/rfc9110.html#response.validator">RFC 9110 &sect; Validator Fields</a> for the full mechanics.</p>
                     </li>
                     <li>
-                      <p>The Solid Protocol's access-control requirements (Web Access Control and Access Control Policy) are <em>subject to discussion before inclusion</em>. See <a href="#web-access-control">§ Web Access Control</a> and <a href="#access-control-policy">§ Access Control Policy</a>.</p>
+                      <div class="warning">
+                        <h4><span>Subject to discussion before inclusion</span></h4>
+                        <p>The Solid Protocol's access-control requirements (Web Access Control and Access Control Policy) are subject to discussion before inclusion. See <a href="#web-access-control">§ Web Access Control</a> and <a href="#access-control-policy">§ Access Control Policy</a>.</p>
+                      </div>
                     </li>
                     <li>
                       <p>
