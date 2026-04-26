@@ -458,6 +458,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   <p>The <a href="https://solid.github.io/webid-profile/">Solid WebID Profile</a> (CG Draft Report, v1.0.0, 12 May 2024) is included with the following comments:</p>
                   <ul>
                     <li>Most clients only need <a href="https://solid.github.io/webid-profile/#discovery">Discovery</a> and <a href="https://solid.github.io/webid-profile/#reading-profile">Reading Profile</a>; the <a href="https://solid.github.io/webid-profile/#dfn-writer-application">Writer Application</a> sections (<a href="https://solid.github.io/webid-profile/#updating-profile">Updating Profile</a>, <a href="https://solid.github.io/webid-profile/#extending-profile">Extending Profile</a>) primarily apply to profile editors and onboarding flows.</li>
+                    <li>The Solid WebID Profile <a href="https://solid.github.io/webid-profile/#protected-properties">Protected Properties</a> requirement is intended to prevent non-owner agents from modifying <code>solid:oidcIssuer</code> and other protected terms; most server implementations do not conform to this requirement. On such servers, an agent with write access to the WebID Document can rewrite the WebID's issuer, redirecting authentication to an attacker-controlled OpenID Provider and impersonating the WebID owner.</li>
                   </ul>
                 </div>
               </section>
