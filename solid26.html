@@ -487,7 +487,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <dt><dfn id="dfn-preferences-document">Preferences Document</dfn></dt>
                     <dd>A document, linked from the agent's <a href="#dfn-webid-profile">WebID Profile</a> via <code>pim:preferencesFile</code>, that holds settings and pointers to private data; typically accessible only to the agent or a delegate.</dd>
                     <dt><dfn id="dfn-webid-profile">WebID Profile</dfn></dt>
-                    <dd>The RDF graph [<cite><a class="bibref" href="#ref-rdf11-concepts">RDF11-CONCEPTS</a></cite>] formed by the set union of statements drawn from the <a href="#dfn-webid-profile-document">WebID Profile Document</a>, any <a href="#dfn-extended-profile-document">Extended Profile Documents</a>, the <a href="#dfn-preferences-document">Preferences Document</a>, and the Type Index documents, assembled per the <a href="#webid-non-normative">common assumptions below</a>.</dd>
+                    <dd>The RDF graph [<cite><a class="bibref" href="#ref-rdf11-concepts">RDF11-CONCEPTS</a></cite>] produced by the procedure in <a href="#webid-algorithms">§ Assembling the Profile</a>.</dd>
                   </dl>
 
                   <section id="webid-normative" inlist="" rel="schema:hasPart" resource="#webid-normative">
@@ -536,10 +536,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                           The <code>pim:storage</code> statement in the WebID Profile is the only sound mechanism for discovering an agent's storages. The <code>storageDescription</code> Link header is not to be used for this purpose: a WebID Document hosted in a storage does not imply the WebID owns that storage [<cite><a class="bibref" href="#ref-solid-protocol">Solid Protocol</a></cite> § <a href="https://solidproject.org/TR/2024/protocol-20240512#webid-profile-privacy">Privacy Considerations</a>].
                         </li>
                         <li>
-                          The WebID Profile is assembled by collecting all statements that have the WebID as subject or object, drawn from the WebID Document and from any Extended Profile Document linked from it via <code>rdfs:seeAlso</code>, <code>foaf:isPrimaryTopicOf</code>, or <code>owl:sameAs</code> (collectively, <dfn id="dfn-discovery-links">discovery links</dfn>) [<cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#discovery">Discovery</a>; <cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#extending-profile">Extending a Profile</a>; <cite><a class="bibref" href="#ref-webid">WebID 1.0</a></cite> § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#processing-the-webid-profile">Processing the WebID Profile</a>]. Extended Profile Documents may require authenticated retrieval. One caveat applies:
-                          <ul>
-                            <li><code>solid:oidcIssuer</code> is honoured only from the WebID Document; statements of the form <code>?webid solid:oidcIssuer ?iss</code> in Extended Profile Documents are ignored.</li>
-                          </ul>
+                          The WebID Profile is the full set of valid statements collected by the discovery procedure in <a href="#webid-algorithms">§ Assembling the Profile</a> [<cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#discovery">Discovery</a>; <cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#extending-profile">Extending a Profile</a>; <cite><a class="bibref" href="#ref-webid">WebID 1.0</a></cite> § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#processing-the-webid-profile">Processing the WebID Profile</a>].
                         </li>
                       </ol>
                     </div>
@@ -549,26 +546,32 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <h4>Assembling the Profile</h4>
                     <div datatype="rdf:HTML" property="schema:description">
 
-                      <p>Per [<cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#discovery">Discovery</a>], the full profile is the union of statements in:</p>
-                      <ul>
-                        <li>the <a href="#dfn-webid-profile-document">WebID Profile Document</a>;</li>
-                        <li><a href="#dfn-extended-profile-document">Extended Profile Documents</a> directly linked from the WebID Document via <a href="#dfn-discovery-links">discovery links</a>, and Extended Profile Documents that those in turn link by discovery links;</li>
-                        <li>the agent's <a href="#dfn-preferences-document">Preferences Document</a> (linked via <code>pim:preferencesFile</code>) and the Extended Profile Documents it links by discovery links;</li>
-                        <li>the agent's public and private Type Index documents (linked via <code>solid:publicTypeIndex</code> and <code>solid:privateTypeIndex</code>).</li>
-                      </ul>
-
-                      <p>To assemble it:</p>
+                      <p>The WebID Profile is the set <em>S</em> of statements assembled by the procedure below. The <em>user's WebIDs</em> are the original WebID together with every WebID transitively equated to it via <code>owl:sameAs</code> within <em>S</em>; this set grows as <em>S</em> grows. Apply cycle detection throughout: do not re-fetch a document already retrieved. On <code>401</code>/<code>403</code> with a logged-in user, retry authenticated; missing links are not errors.</p>
                       <ol>
-                        <li><code>GET</code> the WebID Document. If it cannot be retrieved, surface a clear error.</li>
-                        <li><code>GET</code> each linked document: Extended Profile Documents via <a href="#dfn-discovery-links">discovery links</a>, the Preferences Document via <code>pim:preferencesFile</code>, and Type Index documents via <code>solid:publicTypeIndex</code>/<code>solid:privateTypeIndex</code>. On <code>401</code>/<code>403</code> with a logged-in user, retry authenticated; Preferences and the private Type Index normally require authentication [<cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#discovery">Discovery</a>, § <a href="https://solid.github.io/webid-profile/#private-preferences">Private Preferences</a>]. If the WebID Document does not link a Preferences Document or Type Index documents, those fetches are skipped; their absence is not an error.</li>
-                        <li>For each Extended Profile Document linked directly from the WebID Document, fetch the Extended Profile Documents it links via its <a href="#dfn-discovery-links">discovery links</a>. Do not traverse further: discovery links in the documents fetched by this step, in extended profiles discovered from the Preferences Document, and in Type Index documents are not followed. Use cycle detection so no document is fetched twice.</li>
-                        <li>Form the set union of statements from the fetched documents, then drop every <code>solid:oidcIssuer</code> triple that did not originate in the WebID Document: that predicate is authoritative only when sourced there, mirroring the write protection in <cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#updating-profile">Updating Profile</a>. Other discovery predicates (e.g., <code>pim:storage</code>, <code>ldp:inbox</code>) may legitimately appear in any of these documents.</li>
-                        <li>Retain only statements that have the WebID as subject or object [<cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#discovery">Discovery</a>].</li>
+                        <li><strong>Initialise.</strong> <code>GET</code> the WebID Document for the original WebID. If it cannot be retrieved, surface a clear error. Add its triples to <em>S</em>.</li>
+                        <li><strong>Discovery-link expansion.</strong> For each triple <code>?w ?p ?o</code> in <em>S</em> where <code>?p</code> is a <dfn id="dfn-discovery-links">discovery link</dfn> (<code>rdfs:seeAlso</code>, <code>foaf:isPrimaryTopicOf</code>, <code>pim:preferencesFile</code>, or <code>owl:sameAs</code>), <code>?w</code> is one of the user's WebIDs, and <code>?o</code> is a URL whose document has not yet been fetched, <code>GET</code> <code>?o</code> and add its triples to <em>S</em>. Repeat until no new documents are discovered [<cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#discovery">Discovery</a>, § <a href="https://solid.github.io/webid-profile/#private-preferences">Private Preferences</a>].</li>
+                        <li><strong>Type Indexes.</strong> For each triple in <em>S</em> with predicate <code>solid:publicTypeIndex</code> or <code>solid:privateTypeIndex</code> whose subject is one of the user's WebIDs, <code>GET</code> the document at the object (if not already fetched) and add its triples to <em>S</em>.</li>
+                        <li><strong>Authoritative filter.</strong> Drop every <code>solid:oidcIssuer</code> triple in <em>S</em> that did not originate in a WebID Document; that predicate is authoritative only when sourced there, mirroring the write protection in <cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#updating-profile">Updating Profile</a>. Other discovery predicates (e.g., <code>pim:storage</code>, <code>ldp:inbox</code>) may legitimately appear in any of the fetched documents.</li>
+                        <li><strong>Subject filter.</strong> Restrict <em>S</em> to triples whose subject or object is one of the user's WebIDs [<cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#discovery">Discovery</a>]. The result is the WebID Profile graph.</li>
                       </ol>
 
                       <div class="note">
                         <h4><span>Note</span></h4>
-                        <p>When the WebID Document is not hosted in Solid storage, clients cannot add new <a href="#dfn-discovery-links">discovery links</a> to it. The one level of traversal from Extended Profile Documents in Solid storage lets a client attach further Extended Profile Documents (for example, at different access levels) via links it can write.</p>
+                        <p>Traversal of discovery links is unbounded; clients SHOULD apply cycle detection (no document fetched twice). Clients MAY also consider terminating traversal at a depth or document-count limit appropriate to their environment, to bound fetch cost and protect against pathological link chains.</p>
+                      </div>
+
+                      <div class="note">
+                        <h4><span>Note (Preferences leniency)</span></h4>
+                        <p>Including <code>pim:preferencesFile</code> in the discovery-link set is intentionally lenient. In practice an agent has a single Preferences Document linked from the original WebID Document; the algorithm tolerates the <code>pim:preferencesFile</code> link appearing in any document already in <em>S</em>, provided its subject is one of the user's WebIDs.</p>
+                      </div>
+
+                      <div class="note">
+                        <h4><span>Note (entity reconciliation)</span></h4>
+                        <p>The assembled graph may contain triples about more than one of the user's WebIDs. Depending on the client's context, these typically need to be reconciled into a single subject. Two common strategies:</p>
+                        <ul>
+                          <li><strong>Augmentation</strong> — for every triple in which one of the user's WebIDs appears as subject or object, add a parallel triple substituting the original WebID. Non-destructive; original sources are preserved.</li>
+                          <li><strong>Rewriting</strong> — replace every occurrence of any of the user's WebIDs (subject or object) with the original WebID, then delete the <code>owl:sameAs</code> triples.</li>
+                        </ul>
                       </div>
 
                     </div>
