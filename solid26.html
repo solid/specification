@@ -313,7 +313,6 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   </ol>
                 </li>
                 <li class="tocline"><p><a class="tocxref" href="#client-guidance"><bdi class="secno">4.</bdi> <span>Guidance for clients</span></a></p></li>
-                <li class="tocline"><p><a class="tocxref" href="#security-privacy"><bdi class="secno">5.</bdi> <span>Security and Privacy Considerations</span></a></p></li>
                 <li class="tocline"><a class="tocxref" href="#references"><span>References</span></a></li>
               </ol>
             </div>
@@ -474,7 +473,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                 <h3>WebID</h3>
                 <div datatype="rdf:HTML" property="schema:description">
 
-                  <p>This section gives WebID implementation guidance for the Solid26 Implementation Guide. It covers <a href="#webid-normative">requirements</a> and <a href="#webid-non-normative">common assumptions</a> drawn from the Solid26 Implementation Guide specifications, and a <a href="#webid-algorithms">profile assembly algorithm</a>. <a href="#client-guidance">Client-side guidance</a> is in a separate section; known limitations are collected in <a href="#security-privacy">Security and Privacy Considerations</a>.</p>
+                  <p>This section gives WebID implementation guidance for the Solid26 Implementation Guide. It covers <a href="#webid-normative">requirements</a> and <a href="#webid-non-normative">common assumptions</a> drawn from the Solid26 Implementation Guide specifications, and a <a href="#webid-algorithms">profile assembly algorithm</a>. <a href="#client-guidance">Client-side guidance</a> is in a separate section.</p>
 
                   <p>Terms used in this section:</p>
                   <dl>
@@ -634,23 +633,6 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                 <h4><span>Note</span></h4>
                 <p>Data discovery beyond the profile varies across the ecosystem. Within the <a href="https://solidproject.org/TR/">Solid TR work items</a> the relevant mechanisms are Type Indexes and Solid Application Interoperability (SAI); many additional bespoke mechanisms are in active use outside the TR work items. This guide does not prescribe a single mechanism.</p>
               </div>
-
-            </div>
-          </section>
-
-          <section id="security-privacy" inlist="" rel="schema:hasPart" resource="#security-privacy">
-            <h2 property="schema:name">Security and Privacy Considerations</h2>
-            <div datatype="rdf:HTML" property="schema:description">
-
-              <div class="note">
-                <h4><span>Note</span></h4>
-                <p>Drafted with generative-AI assistance to kickstart coverage; community review is expected.</p>
-              </div>
-
-              <ul>
-                <li><strong>Protected Properties in WebID Profile Documents.</strong> Servers are strongly encouraged to protect the § <a href="https://solid.github.io/webid-profile/#protected-properties">Protected properties</a> in a <cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> document such that non-owner agents with write access to the document cannot change the issuer.</li>
-                <li><strong>Client identity.</strong> Solid-OIDC has no mechanism for strongly-asserted client identity, and browser-based clients cannot hold client secrets. Authorization Servers treat anonymous clients with low-trust policies; confidential-client protections are unavailable in typical SPA deployments [<cite><a class="bibref" href="#ref-solid-oidc">Solid-OIDC</a></cite> § <a href="https://solidproject.org/TR/2022/oidc-20220328#out-of-scope">Out of Scope</a>, § <a href="https://solidproject.org/TR/2022/oidc-20220328#client-secrets">Client Secrets</a>].</li>
-              </ul>
 
             </div>
           </section>
