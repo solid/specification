@@ -278,6 +278,10 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               <p>This document was published by the <a href="https://www.w3.org/groups/cg/solid/">W3C Solid Community Group</a>. It is not a W3C Standard nor is it on the W3C Standards Track. Please note that under the <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a> there is a limited opt-out and other conditions apply. Learn more about <a href="https://www.w3.org/community/">W3C Community and Business Groups</a>.</p>
               <p>This document is intended to provide implementation guidance for the Solid specifications collected in the Solid26 release. The content of this guide is informative and non-normative. It may be updated, replaced, or obsoleted by other documents at any time.</p>
               <p>Comments regarding this document are welcome. Please file issues on <a href="https://github.com/solid/specification/issues">GitHub</a>.</p>
+              <div class="issue">
+                <h4><span>Notice</span></h4>
+                <p>This document is currently a draft; all parts are subject to change. The pieces marked <strong>subject to discussion before inclusion</strong> are at primary risk: <a href="#web-access-control">§ Web Access Control</a> and <a href="#access-control-policy">§ Access Control Policy</a>. The access-control-language wording is being worked on in <a href="https://github.com/solid/specification/pull/783">PR #783</a> and will land here once consensus is reached.</p>
+              </div>
             </div>
           </section>
           <nav id="toc">
@@ -295,8 +299,9 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <li class="tocline"><a class="tocxref" href="#solid-protocol"><bdi class="secno">2.1</bdi> <span>Solid Protocol</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#solid-oidc"><bdi class="secno">2.2</bdi> <span>Solid-OIDC</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#web-access-control"><bdi class="secno">2.3</bdi> <span>Web Access Control</span></a></li>
-                    <li class="tocline"><a class="tocxref" href="#webid-1"><bdi class="secno">2.4</bdi> <span>WebID 1.0</span></a></li>
-                    <li class="tocline"><a class="tocxref" href="#webid-profile"><bdi class="secno">2.5</bdi> <span>Solid WebID Profile</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#access-control-policy"><bdi class="secno">2.4</bdi> <span>Access Control Policy</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#webid-1"><bdi class="secno">2.5</bdi> <span>WebID 1.0</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#webid-profile"><bdi class="secno">2.6</bdi> <span>Solid WebID Profile</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -357,8 +362,13 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   </tr>
                   <tr>
                     <td><a href="https://solidproject.org/TR/2024/wac-20240512">Web Access Control</a></td>
-                    <td><a href="https://solidproject.org/TR/2024/wac-20240512">(CG-DRAFT, v1.0.0, 2024-05-12)</a></td>
+                    <td><em>Subject to discussion before inclusion</em></td>
                     <td><a href="#web-access-control">Link</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="https://solidproject.org/TR/2022/acp-20220518">Access Control Policy</a></td>
+                    <td><em>Subject to discussion before inclusion</em></td>
+                    <td><a href="#access-control-policy">Link</a></td>
                   </tr>
                 </tbody>
               </table>
@@ -374,31 +384,12 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       <p>If a server does not support HTTP <code>PATCH</code>, a client can read-modify-write via <code>GET</code> then <code>PUT</code>. To avoid the lost-update problem [<a href="https://www.w3.org/1999/04/Editing/">W3C &mdash; Editing the Web</a>], issue the <code>PUT</code> conditionally with <code>If-Match</code> carrying the <code>ETag</code> returned from the <code>GET</code>; the server responds with <code>412 Precondition Failed</code> if the resource has changed in the interim. If only <code>Last-Modified</code> is exposed, <code>If-Unmodified-Since</code> serves the same role, though its one-second resolution is coarser than <code>ETag</code>-based validation. See <a href="https://httpwg.org/specs/rfc9110.html#response.validator">RFC 9110 &sect; Validator Fields</a> for the full mechanics.</p>
                     </li>
                     <li>
-                      <p>
-                        Servers are strongly encouraged to implement Web Access Control (<a href="https://solidproject.org/TR/protocol#web-access-control">WAC</a>), see <a href="#web-access-control">below</a>. 
-                      </p>
-                      <div class="note" id="note-survey">
-                        <h4><span>Note</span></h4>
-                        <p>The <a href="https://lists.w3.org/Archives/Public/public-solid/2026Mar/0019.html">March 2026 implementation survey</a> yields the following <a href="https://github.com/w3c-cg/solid/blob/main/implementations/wac-acp.2026-04-01.csv">results</a> (<a href="https://web.archive.org/web/20260415092405/https://raw.githubusercontent.com/w3c-cg/solid/64d2c5383976b9e3a51f854576245dbb4bda1ce1/implementations/wac-acp.2026-04-01.csv">archived</a>):</p>
-                          <ul>
-                            <li>
-                              For WAC, the data shows 13 server-side implementations, deployment in 11 services, and 19 client-side implementations.
-                              WAC is considered the pragmatic, user-friendly, and extensible standard that effectively covers nearly all of the use cases from current Solid Apps. 
-                            </li>
-                            <li>
-                              For ACP, the data shows 4 server-side implementations, deployment in 1 service, and 4 client-side implementations. 
-                              ACP is considered an expressive and complex alternative that might be chosen to satisfy corresponding use-case specific requirements.
-                            </li>
-                          </ul>
-                          <p>The data shows that most clients implement only one access control language, despite the Solid Protocol requiring Clients to conform to both WAC and ACP.</p>
+                      <div class="issue">
+                        <h4><span>Subject to discussion before inclusion</span></h4>
+                        <p>The Solid Protocol's access-control requirements (Web Access Control and Access Control Policy) are subject to discussion before inclusion. See <a href="#web-access-control">§ Web Access Control</a> and <a href="#access-control-policy">§ Access Control Policy</a>.</p>
                       </div>
-                      <p>
-                        In case WAC seems not to satisfy implementers' requirements, implementers are strongly encouraged to verify their understanding of the matter in community discussion by providing <a href="https://solidproject.org/TR/wac#document-feedback">feedback</a> to the community.
-                        If WAC is not able to satisfy the requirements, implementers might consider ACP or <a href="https://github.com/solid/authorization-panel/issues/121#issuecomment-4253548683">other suitable mechanisms</a> to achieve their goals.
-                        Client implementers are advised to consider that their Client implementation will not be able to interoperate with every conforming Server their Client might encounter.
-                      </p>
-                      </li>
-                      <li>
+                    </li>
+                    <li>
                       <p>
                         Some Clients might desire to update access control on particular resources, e.g., for sharing a user's data with another user or application.
                         In such a case, Clients are strongly encouraged to rely on or make use of conforming implementations that are independently tested and verified, e.g., through open test suites and publicly documented implementation reports.
@@ -415,7 +406,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                         <li>issued by the application-logic Client</li>
                         <li>processed by a particular Client that is able and trusted to manage access controls (such as an access management or authorization application; e.g. the <a href="https://solid.github.io/data-interoperability-panel/specification/#authorization-redirect-endpoint">Authorization Agent</a> defined by <a href="https://solidproject.org/TR/sai">Solid Application Interoperability</a>)</li>
                       </ul>
-                      </li>
+                    </li>
                     </ul>
                 </div>
               </section>
@@ -441,8 +432,21 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               <section id="web-access-control" inlist="" rel="schema:hasPart" resource="#web-access-control">
                 <h3>Web Access Control</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p><a href="https://solidproject.org/TR/2024/wac-20240512">Web Access Control</a> (CG-DRAFT, v1.0.0, 2024-05-12) is included.</p>
+                  <div class="issue">
+                    <h4><span>Subject to discussion before inclusion</span></h4>
+                    <p>Inclusion and wording of <a href="https://solidproject.org/TR/2024/wac-20240512">Web Access Control</a> in this Implementation Guide is currently under CG discussion. The proposed text is being worked on in <a href="https://github.com/solid/specification/pull/783">PR #783</a> and will land here once consensus is reached.</p>
                   </div>
+                </div>
+              </section>
+
+              <section id="access-control-policy" inlist="" rel="schema:hasPart" resource="#access-control-policy">
+                <h3>Access Control Policy</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <div class="issue">
+                    <h4><span>Subject to discussion before inclusion</span></h4>
+                    <p>Inclusion and wording of <a href="https://solidproject.org/TR/2022/acp-20220518">Access Control Policy</a> in this Implementation Guide is currently under CG discussion. The proposed text is being worked on in <a href="https://github.com/solid/specification/pull/783">PR #783</a> and will land here once consensus is reached.</p>
+                  </div>
+                </div>
               </section>
 
               <section id="webid-1" inlist="" rel="schema:hasPart" resource="#webid-1">
