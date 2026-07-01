@@ -1,0 +1,85 @@
+<h1 id="intent-handover-for-solid-applications">Intent Handover for Solid Applications</h1>
+<h2 id="abstract">Abstract</h2>
+<p>This specification defines a mechanism that enables one Solid application to convey user intent to another Solid application. A receiving application MAY use any, all, or none of the conveyed information.</p>
+<h2 id="status-of-this-document">Status of This Document</h2>
+<p>This is a draft proposal intended for discussion within the Solid community. It does not yet define a standard and may change based on implementation experience and community feedback.</p>
+<h2 id="introduction">1. Introduction</h2>
+<p>Solid applications can redirect users to other Solid applications to continue a workflow. During such transitions, the initiating application may already possess information that could simplify the user’s experience, such as the user’s WebID, Identity Provider (IDP), storage location, or a resource that should be opened.</p>
+<p>This specification defines a standardized mechanism for communicating such information between Solid applications.</p>
+<p>The mechanism is intentionally non-prescriptive. The receiving application retains complete control over how, or whether, the conveyed information is used.</p>
+<h2 id="conformance">2. Conformance</h2>
+<p>The key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, and <strong>MAY</strong> in this document are to be interpreted as described in RFC 2119 and RFC 8174 when, and only when, they appear in all capitals, as shown here.RFC 2119 and RFC 8174.</p>
+<h2 id="design-principles">3. Design Principles</h2>
+<p>The mechanism defined by this specification follows these principles:</p>
+<ul>
+<li>The initiating application MAY provide one or more pieces of contextual information.</li>
+<li>The receiving application MAY use the provided information.</li>
+<li>The receiving application MAY ignore any or all provided information.</li>
+<li>The receiving application remains responsible for validating any information before acting upon it.</li>
+<li>The mechanism does not require any particular authentication or authorization model.</li>
+</ul>
+<h2 id="intent-parameters">4. Intent Parameters</h2>
+<p>This specification defines intent parameters as HTTP URL query parameters.</p>
+<p>An initiating application MAY include any combination of the following parameters. When multiple intent parameters are present, the receiving application MAY use any subset of them. Query parameter values MUST be URL-encoded according to RFC 3986. Examples in this document omit URL encoding for readability.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>solidIntent</code></td>
+<td>loginAs, openResource</td>
+</tr>
+<tr class="even">
+<td><code>solidIntentWebId</code></td>
+<td>WebID URI</td>
+</tr>
+<tr class="odd">
+<td><code>solidIntentIdp</code></td>
+<td>Identity Provider URI</td>
+</tr>
+<tr class="even">
+<td><code>solidIntentStorage</code></td>
+<td>Storage URI</td>
+</tr>
+<tr class="odd">
+<td><code>solidIntentResource</code></td>
+<td>Resource URI</td>
+</tr>
+</tbody>
+</table>
+<h3 id="intent">4.1 Intent</h3>
+<p>This parameter signals the intent of the user to the receiving app. Currently two possible values are specified.</p>
+<h3 id="loginas">4.1.1 loginAs</h3>
+<p>When this intent is signalled, the receiving application MAY initiate authentication using the supplied values from either <code>solidIntentWebId</code> or <code>solidIntentIdp</code></p>
+<h3 id="openresource">4.1.2 openResource</h3>
+<p>When this intent is signalled, the receiving application MAY use the provided values from <code>solidIntentStorage</code> and/or <code>solidIntentResource</code> to start the application with a specific resource. The initiating application can implement ‘open with…’ using this mechanic.</p>
+<p>Example:</p>
+<pre><code>https://target.app/?intent=loginAs&amp;solidIntentWebId=https://example.com/profile/card#me
+https://target.app/?intent[]=loginAs&amp;intent[]=openResource&amp;solidIntentWebId=https://example.com/profile/card#me&amp;solidIntentResource=https://storage.example.com/resource.ttl</code></pre>
+<h3 id="webid">4.2 WebID</h3>
+<p>A WebID identifying the user.</p>
+<p>Example:</p>
+<pre><code>https://target.app/?solidIntentWebId=https://example.com/profile/card#me</code></pre>
+<p>A receiving application MAY use this value to initiate authentication for the supplied WebID.</p>
+<h3 id="identity-provider-idp">4.3 Identity Provider (IDP)</h3>
+<p>The URI of an Identity Provider.</p>
+<p>Example:</p>
+<pre><code>https://target.app/?solidIntentIdp=https://idp.example.com/</code></pre>
+<p>A receiving application MAY use this URI as a suggested Identity Provider for authentication.</p>
+<h3 id="storage-uri">4.4 Storage URI</h3>
+<p>The URI of a Solid storage location.</p>
+<p>Example:</p>
+<pre><code>https://target.app/?solidIntentStorage=https://storage.example.com/</code></pre>
+<p>A receiving application MAY use this value as the preferred storage location. For users that have multiple storage locations in their profile information, this parameter conveys which storage location the initiating application intends the receiving application to use.</p>
+<h3 id="resource-uri">4.5 Resource URI</h3>
+<p>The URI of a specific resource.</p>
+<p>Example:</p>
+<pre><code>https://target.app/?solidIntentResource=https://storage.example.com/documents/report.ttl</code></pre>
+<p>A receiving application MAY attempt to open, inspect, or otherwise use the referenced resource as appropriate for the application’s functionality.</p>
+<h2 id="extensibility">5. Extensibility</h2>
+<p>Future versions of this specification MAY define additional intent parameters.</p>
+<p>Applications SHOULD ignore parameters they do not recognize unless another specification defines their semantics.</p>
