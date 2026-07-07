@@ -19,67 +19,91 @@
 <li>The mechanism does not require any particular authentication or authorization model.</li>
 </ul>
 <h2 id="intent-parameters">4. Intent Parameters</h2>
-<p>This specification defines intent parameters as HTTP URL query parameters.</p>
+<p>This specification defines intent parameters as either HTTP URL fragment parameters or HTTP URL query parameters. The usage depends on the capabilities of the receiving application.</p>
+<p>Receiving applications that run purely in the browser SHOULD use fragment parameters to prevent transmission of information to the server.</p>
+<p>Receiving applications that run server side and thus require the intent to be transmitted to the server, MUST use query parameters.</p>
 <p>An initiating application MAY include any combination of the following parameters. When multiple intent parameters are present, the receiving application MAY use any subset of them. Query parameter values MUST be URL-encoded according to RFC 3986. Examples in this document omit URL encoding for readability.</p>
 <table>
 <thead>
 <tr class="header">
 <th>Parameter</th>
 <th>Value</th>
+<th>Used by intent</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>solidIntent</code></td>
-<td>loginAs, openResource</td>
+<td><code>intent</code></td>
+<td>login, open</td>
+<td></td>
 </tr>
 <tr class="even">
-<td><code>solidIntentWebId</code></td>
-<td>WebID URI</td>
+<td><code>solidWebId</code></td>
+<td>A Solid compatible WebID URI</td>
+<td>login</td>
 </tr>
 <tr class="odd">
-<td><code>solidIntentIdp</code></td>
-<td>Identity Provider URI</td>
+<td><code>solidIdp</code></td>
+<td>A Solid Identity Provider URI</td>
+<td>login</td>
 </tr>
 <tr class="even">
-<td><code>solidIntentStorage</code></td>
-<td>Storage URI</td>
+<td><code>solidStorage</code></td>
+<td>A Solid Storage URI</td>
+<td>open</td>
 </tr>
 <tr class="odd">
-<td><code>solidIntentResource</code></td>
-<td>Resource URI</td>
+<td><code>solidResource</code></td>
+<td>Resource URI (one or multiple)</td>
+<td>open</td>
 </tr>
 </tbody>
 </table>
 <h3 id="intent">4.1 Intent</h3>
 <p>This parameter signals the intent of the user to the receiving app. Currently two possible values are specified.</p>
-<h3 id="loginas">4.1.1 loginAs</h3>
-<p>When this intent is signalled, the receiving application MAY initiate authentication using the supplied values from either <code>solidIntentWebId</code> or <code>solidIntentIdp</code></p>
-<h3 id="openresource">4.1.2 openResource</h3>
-<p>When this intent is signalled, the receiving application MAY use the provided values from <code>solidIntentStorage</code> and/or <code>solidIntentResource</code> to start the application with a specific resource. The initiating application can implement ‘open with…’ using this mechanic.</p>
-<p>Example:</p>
-<pre><code>https://target.app/?intent=loginAs&amp;solidIntentWebId=https://example.com/profile/card#me
-https://target.app/?intent[]=loginAs&amp;intent[]=openResource&amp;solidIntentWebId=https://example.com/profile/card#me&amp;solidIntentResource=https://storage.example.com/resource.ttl</code></pre>
+<h3 id="login">4.1.1 login</h3>
+<p>When this intent is signalled, the receiving application MAY initiate authentication using the supplied values from either <code>solidWebId</code> or <code>solidIdp</code></p>
+<p>Examples using fragment parameters:</p>
+<pre><code>https://target.app/#intent=login&amp;solidWebId=https://example.com/profile/card#me</code></pre>
+<p>Examples using query parameters:</p>
+<pre><code>https://target.app/?intent=login&amp;solidWebId=https://example.com/profile/card#me</code></pre>
+<h3 id="open">4.1.2 open</h3>
+<p>When this intent is signalled, the receiving application MAY use the provided values from <code>solidStorage</code> and/or <code>solidResource</code> to start the application with a specific resource. The initiating application can implement ‘open with…’ using this mechanic.</p>
+<p>Examples using fragment parameters:</p>
+<pre><code>https://target.app/#intent[]=open&amp;solidResource=https://storage.example.com/resource.ttl</code></pre>
+<p>Examples using query parameters:</p>
+<pre><code>https://target.app/?intent[]=open&amp;solidResource=https://storage.example.com/resource.ttl</code></pre>
 <h3 id="webid">4.2 WebID</h3>
 <p>A WebID identifying the user.</p>
-<p>Example:</p>
-<pre><code>https://target.app/?solidIntentWebId=https://example.com/profile/card#me</code></pre>
+<p>Examples using fragment parameters:</p>
+<pre><code>https://target.app/#solidWebId=https://example.com/profile/card#me</code></pre>
+<p>Examples using query parameters:</p>
+<pre><code>https://target.app/?solidWebId=https://example.com/profile/card#me</code></pre>
 <p>A receiving application MAY use this value to initiate authentication for the supplied WebID.</p>
 <h3 id="identity-provider-idp">4.3 Identity Provider (IDP)</h3>
 <p>The URI of an Identity Provider.</p>
-<p>Example:</p>
-<pre><code>https://target.app/?solidIntentIdp=https://idp.example.com/</code></pre>
+<p>Examples using fragment parameters:</p>
+<pre><code>https://target.app/#solidIdp=https://idp.example.com/</code></pre>
+<p>Examples using query parameters:</p>
+<pre><code>https://target.app/?solidIdp=https://idp.example.com/</code></pre>
 <p>A receiving application MAY use this URI as a suggested Identity Provider for authentication.</p>
 <h3 id="storage-uri">4.4 Storage URI</h3>
 <p>The URI of a Solid storage location.</p>
-<p>Example:</p>
-<pre><code>https://target.app/?solidIntentStorage=https://storage.example.com/</code></pre>
+<p>Examples using fragment parameters:</p>
+<pre><code>https://target.app/#solidStorage=https://storage.example.com/</code></pre>
+<p>Examples using query parameters:</p>
+<pre><code>https://target.app/?solidStorage=https://storage.example.com/</code></pre>
 <p>A receiving application MAY use this value as the preferred storage location. For users that have multiple storage locations in their profile information, this parameter conveys which storage location the initiating application intends the receiving application to use.</p>
 <h3 id="resource-uri">4.5 Resource URI</h3>
-<p>The URI of a specific resource.</p>
-<p>Example:</p>
-<pre><code>https://target.app/?solidIntentResource=https://storage.example.com/documents/report.ttl</code></pre>
+<p>The URI of one or multiple resources. If multiple resources are to be opened, this parameter can be used multiple times.</p>
+<p>Examples using fragment parameters:</p>
+<pre><code>https://target.app/#solidResource=https://storage.example.com/documents/report.ttl
+https://target.app/#solidResource[]=https://storage.example.com/documents/report.ttl&amp;solidResource[]=https://storage.example.com/documents/report-metadata.ttl</code></pre>
+<p>Examples using query parameters:</p>
+<pre><code>https://target.app/?solidResource=https://storage.example.com/documents/report.ttl
+https://target.app/?solidResource[]=https://storage.example.com/documents/report.ttl&amp;solidResource[]=https://storage.example.com/documents/report-metadata.ttl</code></pre>
 <p>A receiving application MAY attempt to open, inspect, or otherwise use the referenced resource as appropriate for the application’s functionality.</p>
 <h2 id="extensibility">5. Extensibility</h2>
 <p>Future versions of this specification MAY define additional intent parameters.</p>
 <p>Applications SHOULD ignore parameters they do not recognize unless another specification defines their semantics.</p>
+<p>Future versions of this specification may evolve towards a broader audience, as the mechanic as described by this specification is not unique to Solid as an ecosystem.</p>
