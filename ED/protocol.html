@@ -225,7 +225,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
       <article about="" typeof="schema:Article">
         <div class="head">
           <h1 property="schema:name">Solid Protocol</h1>
-          <p id="w3c-state">Editor’s Draft, <time datetime="2025-04-12T00:00:00Z">2025-04-12</time></p>
+          <p id="w3c-state">Editor’s Draft, <time datetime="2026-07-19T00:00:00Z">2026-07-19</time></p>
           <details open="">
             <summary>More details about this document</summary>
             <dl id="document-identifier">
@@ -260,7 +260,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
             </dl>
             <dl id="document-modified">
               <dt>Modified</dt>
-              <dd><time content="2025-04-12T00:00:00Z" datatype="xsd:dateTime" datetime="2025-04-12T00:00:00Z" property="schema:dateModified">2025-04-12</time></dd>
+              <dd><time content="2026-07-19T00:00:00Z" datatype="xsd:dateTime" datetime="2026-07-19T00:00:00Z" property="schema:dateModified">2026-07-19</time></dd>
             </dl>
             <dl id="document-feedback">
               <dt>Feedback</dt>
@@ -511,8 +511,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
                   <p property="skos:definition">The Solid Protocol specification defines the following terms. These terms are referenced throughout this specification.</p>
-                  <p><span rel="skos:hasTopConcept"><span resource="#storage"></span><span resource="#solid-app"></span><span resource="#uniform-resource-identifier"></span><span resource="#resource"></span><span resource="#container-resource"></span><span resource="#root-container"></span><span resource="#resource-metadata"></span><span resource="#agent"></span><span resource="#owner"></span><span resource="#origin"></span><span resource="#read-operation"></span><span resource="#write-operation"></span><span resource="#append-operation"></span></span></p>
-                  <dl>
+                  <dl rel="skos:hasTopConcept">
                     <dt about="#storage" property="skos:prefLabel" typeof="skos:Concept"><dfn id="storage">storage</dfn></dt>
                     <dd about="#storage" property="skos:definition">A storage is a space of URIs that affords agents controlled access to resources.</dd>
                     <dt about="#solid-app" property="skos:prefLabel" typeof="skos:Concept"><dfn id="solid-app">Solid app</dfn></dt>
@@ -529,6 +528,8 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <dd about="#resource-metadata" property="skos:definition">Resource metadata encompasses data about resources described by means of RDF statements [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>].</dd>
                     <dt about="#agent" property="skos:prefLabel" typeof="skos:Concept"><dfn id="agent">agent</dfn></dt>
                     <dd about="#agent" property="skos:definition">An agent is a person, social entity, or software identified by a URI; e.g., a WebID denotes an agent [<cite><a class="bibref" href="#bib-webid">WEBID</a></cite>].</dd>
+                    <dt about="#creator" property="skos:prefLabel" typeof="skos:Concept"><dfn id="creator">creator</dfn></dt>
+                    <dd about="#creator" property="skos:definition">A creator is an <a href="#agent">agent</a> that is attributed with the creation of a resource. A creator is first set at resource creation time and does not change.</dd>
                     <dt about="#owner" property="skos:prefLabel" typeof="skos:Concept"><dfn id="owner">owner</dfn></dt>
                     <dd about="#owner" property="skos:definition">An owner is a person or a social entity that is considered to have the rights and responsibilities of a storage. An owner is identified by a URI, and implicitly has control over all resources in a storage. An owner is first set at storage provisioning time and can be changed.</dd>
                     <dt about="#origin" property="skos:prefLabel" typeof="skos:Concept"><dfn id="origin">origin</dfn></dt>
@@ -835,6 +836,8 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       <p>An auxiliary resource of type <em>Description Resource</em> provides a description of a subject resource.</p>
                       <p about="" id="server-description-resource-max" rel="spec:requirement" resource="#server-description-resource-max"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> directly associate more than one description resource to a subject resource.</span></p>
                       <p about="" id="server-description-resource-authorization" rel="spec:requirement" resource="#server-description-resource-authorization"><span property="spec:statement">When an HTTP request targets a description resource, the <span rel="spec:requirementSubject" resource="#Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> apply the authorization rule that is used for the subject resource with which the description resource is associated.</span></p>
+                      <p about="" id="server-description-resource-creator" rel="spec:requirement" resource="#server-description-resource-creator"><span property="spec:statement">When a <span rel="spec:requirementSubject" resource="#Server">server</span> records the <a href="#creator">creator</a> of a resource created by a successful request from an authenticated <a href="#agent">agent</a>, the server <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> include a statement with the <code>dcterms:creator</code> property, whose subject is the created resource and whose object is the authenticated agent, in the associated description resource.</span> [<a href="https://github.com/solid/specification/issues/315" rel="cito:citesAsSourceDocument">Source</a>][<a href="https://github.com/solid/specification/issues/66" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                      <p about="" id="server-protect-creator" rel="spec:requirement" resource="#server-protect-creator"><span property="spec:statement"><span rel="spec:requirementSubject" resource="#Server">Servers</span> <span rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> allow HTTP <code>POST</code>, <code>PUT</code> and <code>PATCH</code> to update <a href="#creator">creator</a> statements in a description resource; if the server receives such a request, it <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>409</code> status code.</span> [<a href="https://github.com/solid/specification/issues/315" rel="cito:citesAsSourceDocument">Source</a>]</p>
                       <p about="" id="client-link-describes" rel="spec:requirement" resource="#client-link-describes">Clients can discover resources that are described by description resources by making an HTTP <code>HEAD</code> or <code>GET</code> request on the target URL, and checking the HTTP <code>Link</code> header field with a <code>rel</code> value of <code>describes</code> (inverse of the <code>describedby</code> relation) [<cite><a class="bibref" href="#bib-rfc6892">RFC6892</a></cite>].</p>
                     </div>
                   </section>
@@ -1143,6 +1146,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   <p about="" id="authorization-resources" rel="spec:advisement" resource="#authorization-resources"><span property="spec:statement">Servers are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to use authorization techniques to prevent unwanted access to resources, rather than depending on the relative obscurity of their resource names.</span></p>
                   <p about="" id="identifiable-information-error-responses" rel="spec:advisement" resource="#identifiable-information-error-responses"><span property="spec:statement">To prevent leakage of non-resource data, servers are <span rel="spec:advisementLevel" resource="spec:StronglyDiscouraged">strongly discouraged</span> from including identifiable information in error responses.</span></p>
                   <p about="" id="webid-profile-privacy" rel="spec:advisement" resource="#webid-profile-privacy"><span property="spec:statement">The decision to include or exclude any information (e.g., storage, inbox) in a WebID Profile served from a Solid storage lies with the Agent controlling the WebID (or the URI owner). A URI allocated to a WebID in a Solid storage does not imply that the WebID is the storage owner. Owners of a WebID hosted from Solid storage are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to consider information related to themselves that could be readable from other resources in the storage, even if that information (e.g., storage, inbox) is not part of the WebID Profile itself (see <a href="#storage-owner-uri-ownership">Storage Owner and URI Ownership</a> and <a href="#self-describing-resources">Self-describing Resources</a>.)</span></p>
+                  <p about="" id="creator-privacy" rel="spec:advisement" resource="#creator-privacy"><span property="spec:statement">The <a href="#creator">creator</a> of a resource reveals information about an agent’s identity and activity. Disclosure of the creator through a description resource is subject to the same authorization rule as the subject resource. Servers are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to make their attribution practice known to agents. URI owners <span rel="spec:advisementLevel" resource="spec:Can">can</span> take measures beyond what is defined by this specification to determine what information is retained, for example, removing an existing attribution to meet data protection obligations.</span></p>
                   <p about="" id="report-legal-obstacles" rel="spec:advisement" resource="#report-legal-obstacles"><span property="spec:statement">Servers are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to respond with the <code>451</code> status code and, where appropriate, identify the entities implementing the blocking to provide transparency in cases where legal or public policy issues affect server operations, as outlined in <cite><a href="https://www.rfc-editor.org/rfc/rfc7725.html" rel="cito:citesAsAuthority">Report Legal Obstacles</a></cite>, while avoiding the disclosure of sensitive legal or privacy-related details [<cite><a class="bibref" href="#bib-rfc7725">RFC 7725</a></cite>].</span></p>
                 </div>
               </section>
@@ -1310,6 +1314,26 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <td><a href="https://www.w3.org/policies/process/#class-4" rel="spec:changeClass">4</a></td>
                     <td><a href="#server-patch-n3-blank-nodes-syntax" rel="spec:changeSubject">#server-patch-n3-blank-nodes-syntax</a></td>
                     <td property="spec:statement">Add requirement for server to constrain <a href="#server-patch-n3-blank-nodes-syntax">blank node usage in N3 Patch syntax</a>.</td>
+                  </tr>
+                  <tr about="#ea3b1abc-7e19-42f1-8e82-b62cae0aca49" typeof="spec:Change">
+                    <td><a href="https://www.w3.org/policies/process/#class-4" rel="spec:changeClass">4</a></td>
+                    <td><a href="#creator" rel="spec:changeSubject">#creator</a></td>
+                    <td property="spec:statement">Add definition of <a href="#creator">creator</a>.</td>
+                  </tr>
+                  <tr about="#d74c7d63-67a0-41fb-ac20-a70e612b2dfe" typeof="spec:Change">
+                    <td><a href="https://www.w3.org/policies/process/#class-4" rel="spec:changeClass">4</a></td>
+                    <td><a href="#server-description-resource-creator" rel="spec:changeSubject">#server-description-resource-creator</a></td>
+                    <td property="spec:statement">Add requirement for server to record the <a href="#server-description-resource-creator">creator in the associated description resource</a>.</td>
+                  </tr>
+                  <tr about="#f46e3ef2-215f-41b0-9098-c4f5049e4dd6" typeof="spec:Change">
+                    <td><a href="https://www.w3.org/policies/process/#class-4" rel="spec:changeClass">4</a></td>
+                    <td><a href="#server-protect-creator" rel="spec:changeSubject">#server-protect-creator</a></td>
+                    <td property="spec:statement">Add requirement for server to protect <a href="#server-protect-creator">creator statements in a description resource</a>.</td>
+                  </tr>
+                  <tr about="#c5e1c7a2-55ed-459b-b0dd-669eda9737df" typeof="spec:Change">
+                    <td><a href="https://www.w3.org/policies/process/#class-2" rel="spec:changeClass">2</a></td>
+                    <td><a href="#creator-privacy" rel="spec:changeSubject">#creator-privacy</a></td>
+                    <td property="spec:statement">Add advisement for <a href="#creator-privacy">creator privacy</a>.</td>
                   </tr>
                 </tbody>
                 <tfoot>
