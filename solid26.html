@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Solid26: Implementation Guide</title>
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
+<style>
+main,
+main>article,
+main>article>div {
+background:inherit;
+}
+body {
+counter-reset:section sub-section appendix sub-appendix;
+}
+code, samp { color: #e00; }
+pre code, pre samp { color: var(--text); }
+dfn { font-weight:inherit; }
+.do.fragment a { border-bottom:0; }
+.do.fragment a:hover { background:none; border-bottom:0; }
+section figure pre { margin:1em 0; display:block; }
+cite .bibref { font-style: normal; }
+.tabs nav ul li { margin:0; }
+div.issue, div.note, div.warning {
+clear: both;
+margin: 1em 0;
+position: relative;
+}
+div.issue h3, div.note h3,
+div.issue h4, div.note h4,
+div.issue h5, div.note h5 {
+margin:0;
+font-weight:normal;
+font-style:normal;
+font-size:1em;
+}
+div.issue h3 > span, div.note h3 > span,
+div.issue h4 > span, div.note h4 > span,
+div.issue h5 > span, div.note h5 > span,
+figure.example > figcaption > span {
+text-transform: uppercase;
+}
+div.issue h3, div.issue h4, div.issue h5 {
+color:var(--issueheading-text);
+}
+div.note h3, div.note h4, div.note h5 {
+color:var(--noteheading-text);
+}
+figure.example figcaption {
+color:var(--exampleheading-text);
+}
+main figure {
+text-align:left;
+}
+figure[id] {
+position:relative;
+padding:0.5em;
+}
+figure[id] figcaption {
+font-style:normal;
+font-size:1em;
+}
+figure.example figcaption span + span {
+text-transform:initial;
+}
+.copyright + hr {
+border-style: solid;
+}
+header address a[href] {
+float: right;
+margin: 1rem 0 0.2rem 0.4rem;
+background: transparent none repeat scroll 0 0;
+border: medium none;
+text-decoration: none;
+}
+header address img[src*="logos/W3C"] {
+background: #1a5e9a none repeat scroll 0 0;
+border-color: #1a5e9a;
+border-image: none;
+border-radius: 0.4rem;
+border-style: solid;
+border-width: 0.65rem 0.7rem 0.6rem;
+color: white;
+display: block;
+font-weight: bold;
+}
+main article > h1 {
+font-size: 220%;
+font-weight:bold;
+}
+#acknowledgements ul { padding: 0; margin:0; }
+#acknowledgements li { display:inline; }
+#acknowledgements li:after { content: ", "; }
+#acknowledgements li:last-child:after { content: ""; }
+dd .contributed {
+user-select: none;
+}
+aside.do { overflow:inherit; }
+aside.do blockquote {
+padding: 0; border: 0; margin: 0;
+}
+dl[id^="document-"] ul {
+padding-left:0;
+list-style-type:none;
+}
+dl [rel~="odrl:action"],
+dl [rel~="odrl:action"] li {
+display: inline;
+}
+dl [rel~="odrl:action"] li:after {
+content: ", ";
+}
+dl [rel~="odrl:action"] li:last-child:after {
+content: "";
+}
+aside section > .toc,
+aside section > .toc ol {
+margin-left: revert;
+}
+aside section > .toc li li {
+margin-left: 1em;
+font-size: revert;
+}
+table {
+border-collapse:collapse;
+}
+table + table {
+margin-top:2em;
+}
+caption {
+text-align:left;
+padding:0 0.25em 0.25em;
+margin-bottom: 1em;
+font-size: 1em;
+font-style: revert;
+font-weight: bold;
+border-bottom: 1px solid;
+}
+caption, tbody, tfoot {
+border-bottom:2pt solid #ccc;
+}
+thead,
+thead th[colspan] {
+border-bottom:1pt solid #ccc;
+}
+[rowspan] { vertical-align: bottom; }
+tbody [rowspan] { vertical-align: middle; }
+tbody th[scope="rowgroup"] {
+border-bottom:3pt double #ccc;
+}
+tr {
+border-bottom:1pt solid #ccc;
+}
+th, td {
+padding:0.25em;
+font-size:0.923em;
+word-wrap:normal;
+}
+table ul,
+table ol,
+table li,
+table p,
+table dd {
+margin:0;
+text-align:left;
+}
+table ul,
+table ol {
+padding-left:1em;
+}
+tfoot td > * + * {
+margin-top:1em;
+}
+tfoot dd:after { content: "\A"; white-space:pre; }
+tfoot dt, tfoot dd { display:inline; }
+tfoot dd { margin-left: 0.5em; }
+tfoot dd + dt { margin-top:0; }
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]):not([id=exit-criteria]) {
+counter-increment:section;
+counter-reset:sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]) section:not([id$=references]):not([id=exit-criteria]) {
+counter-increment:sub-section;
+counter-reset:sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]) section:not([id$=references]):not([id=exit-criteria]) section {
+counter-increment:sub-sub-section;
+counter-reset:sub-sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]) section:not([id$=references]):not([id=exit-criteria]) section section {
+counter-increment:sub-sub-sub-section;
+counter-reset:sub-sub-sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]):not([id=exit-criteria]):not([id^=table-of-]):not([id^=list-of-]) > h2:before {
+content:counter(section) ".\00a0";
+}
+section:not([id$=references]):not([id^=changelog]):not([id=exit-criteria]):not([id^=table-of-]):not([id^=list-of-]) > h3:before {
+content:counter(section) "." counter(sub-section) "\00a0";
+}
+section > h4:before {
+content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\00a0";
+}
+article section.appendix {
+counter-increment:appendix;
+counter-reset:sub-appendix;
+}
+article section[class~=appendix]:not([id=abstract]):not([id=sotd]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]):not([id=exit-criteria]) section {
+counter-increment:sub-appendix;
+counter-reset:sub-sub-appendix;
+}
+section.appendix > h2:before {
+content:counter(appendix, upper-alpha) ".\00a0";
+}
+section.appendix section > h3:before {
+content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
+}
+</style>
+    <link href="https://www.w3.org/StyleSheets/TR/2021/cg-draft" media="all" rel="stylesheet" title="CG-DRAFT" />
+    <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet" />
+    <link href="https://dokie.li/media/css/dokieli.css" media="all" rel="stylesheet" />
+    <script async="" src="https://dokie.li/scripts/dokieli.js"></script>
+  </head>
+  <body about="" prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# owl: http://www.w3.org/2002/07/owl# xsd: http://www.w3.org/2001/XMLSchema# dcterms: http://purl.org/dc/terms/ skos: http://www.w3.org/2004/02/skos/core# prov: http://www.w3.org/ns/prov# schema: http://schema.org/ doap: http://usefulinc.com/ns/doap# as: https://www.w3.org/ns/activitystreams# ldp: http://www.w3.org/ns/ldp# spec: http://www.w3.org/ns/spec# rel: https://www.w3.org/ns/iana/link-relations/relation# odrl: http://www.w3.org/ns/odrl/2/">
+    <main>
+      <article about="" typeof="schema:Article">
+        <div class="head">
+          <h1 property="schema:name">Solid26: Implementation Guide</h1>
+          <p id="w3c-state">Draft Community Group Report, <time datetime="2026-04-02T00:00:00Z">2026-04-02</time></p>
+          <details open="">
+            <summary>More details about this document</summary>
+            <dl id="document-identifier">
+              <dt>This version</dt>
+              <dd><a href="https://solidproject.org/TR/solid26" rel="owl:sameAs">https://solidproject.org/TR/solid26</a></dd>
+            </dl>
+            <dl id="document-latest-published-version">
+              <dt>Latest published version</dt>
+              <dd><a href="https://solidproject.org/TR/solid26" rel="rel:latest-version">https://solidproject.org/TR/solid26</a></dd>
+            </dl>
+            <dl id="document-editors">
+              <dt>Editors</dt>
+              <dd id="Jesse-Wright"><span about="" rel="schema:editor schema:author"><span typeof="schema:Person"><a href="mailto:jesse.wright@cs.ox.ac.uk" rel="schema:url"><span property="schema:name"><span property="schema:givenName">Jesse</span> <span property="schema:familyName">Wright</span></span></a> (<span property="schema:affiliation">University of Oxford</span>)</span></span></dd>
+              <dd data-editor-id="128292" id="Christoph-Braun"><span about="" rel="schema:author"><span about="https://uvdsl.solid.aifb.kit.edu/profile/card#me" typeof="schema:Person"><a href="https://aifb.kit.edu/web/Christoph_Braun/en" rel="schema:url"><span about="https://uvdsl.solid.aifb.kit.edu/profile/card#me" property="schema:name"><span property="schema:givenName">Christoph</span> <span property="schema:familyName">Braun</span></span></a> (<span property="schema:affiliation">FZI Forschungszentrum Informatik</span>)</span></span></dd>
+            </dl>
+            <dl id="document-published">
+              <dt>Published</dt>
+              <dd><time content="2026-04-02T00:00:00Z" datatype="xsd:dateTime" datetime="2026-04-02T00:00:00Z" property="schema:datePublished">2026-04-02</time></dd>
+            </dl>
+            <dl id="document-modified">
+              <dt>Modified</dt>
+              <dd><time content="2026-04-02T00:00:00Z" datatype="xsd:dateTime" datetime="2026-04-02T00:00:00Z" property="schema:dateModified">2026-04-02</time></dd>
+            </dl>
+            <dl id="document-feedback">
+              <dt>Feedback</dt>
+              <dd><a href="https://github.com/solid/specification" rel="doap:repository">GitHub solid/specification</a> (<a href="https://github.com/solid/specification/pulls">pull requests</a>, <a href="https://github.com/solid/specification/issues/new">new issue</a>, <a href="https://github.com/solid/specification/issues" rel="doap:bug-database">open issues</a>)</dd>
+            </dl>
+            <dl id="document-language">
+              <dt>Language</dt>
+              <dd><span content="en" lang="" property="dcterms:language" xml:lang="">English</span></dd>
+            </dl>
+            <dl id="document-type">
+              <dt>Document Type</dt>
+              <dd>Implementation Guide</dd>
+            </dl>
+          </details>
+          <p class="copyright" rel="dcterms:rights" resource="#document-rights"><span property="dcterms:description"><a href="https://www.w3.org/policies/#copyright">Copyright</a> © 2026 the Contributors to Solid26: Implementation Guide, under the <a about="" href="https://www.w3.org/community/about/agreements/cla/" rel="schema:license">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available.</span></p>
+          <hr title="Separator for header" />
+        </div>
+        <div datatype="rdf:HTML" id="content" property="schema:description">
+          <section id="abstract">
+            <h2>Abstract</h2>
+            <div datatype="rdf:HTML" property="schema:abstract">
+              <p>This document is an implementation guide for Solid26 — a snapshot of the most mature and widely implemented Solid specification versions, collected to help developers and organisations identify a common baseline. It provides practical guidance for implementing the Solid specifications included in this collection.</p>
+            </div>
+          </section>
+          <section id="sotd" inlist="" rel="schema:hasPart" resource="#sotd">
+            <h2 property="schema:name">Status of This Document</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p>This document was published by the <a href="https://www.w3.org/groups/cg/solid/">W3C Solid Community Group</a>. It is not a W3C Standard nor is it on the W3C Standards Track. Please note that under the <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a> there is a limited opt-out and other conditions apply. Learn more about <a href="https://www.w3.org/community/">W3C Community and Business Groups</a>.</p>
+              <p>This document is intended to provide implementation guidance for the Solid specifications collected in the Solid26 release. The content of this guide is informative and non-normative. It may be updated, replaced, or obsoleted by other documents at any time.</p>
+              <p>Comments regarding this document are welcome. Please file issues on <a href="https://github.com/solid/specification/issues">GitHub</a>.</p>
+            </div>
+          </section>
+          <nav id="toc">
+            <h2>Table of Contents</h2>
+            <div>
+              <ol class="toc">
+                <li class="tocline"><a class="tocxref" href="#abstract"><span>Abstract</span></a></li>
+                <li class="tocline"><a class="tocxref" href="#sotd"><span>Status of This Document</span></a></li>
+                <li class="tocline">
+                  <p><a class="tocxref" href="#introduction"><bdi class="secno">1.</bdi> <span>Introduction</span></a></p>
+                </li>
+                <li class="tocline">
+                  <p><a class="tocxref" href="#specifications"><bdi class="secno">2.</bdi> <span>Specifications</span></a></p>
+                  <ol>
+                    <li class="tocline"><a class="tocxref" href="#solid-protocol"><bdi class="secno">2.1</bdi> <span>Solid Protocol</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#solid-oidc"><bdi class="secno">2.2</bdi> <span>Solid-OIDC</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#web-access-control"><bdi class="secno">2.3</bdi> <span>Web Access Control</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#webid-1"><bdi class="secno">2.4</bdi> <span>WebID 1.0</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#webid-profile"><bdi class="secno">2.5</bdi> <span>Solid WebID Profile</span></a></li>
+                  </ol>
+                </li>
+                <li class="tocline">
+                  <p><a class="tocxref" href="#implementation-guidance"><bdi class="secno">3.</bdi> <span>Implementation Guidance</span></a></p>
+                  <ol>
+                    <li class="tocline">
+                      <p><a class="tocxref" href="#webid"><bdi class="secno">3.1</bdi> <span>WebID</span></a></p>
+                      <ol>
+                        <li class="tocline"><a class="tocxref" href="#webid-normative"><bdi class="secno">3.1.1</bdi> <span>Requirements derivable from Solid26 Implementation Guide specifications</span></a></li>
+                        <li class="tocline"><a class="tocxref" href="#webid-non-normative"><bdi class="secno">3.1.2</bdi> <span>Common assumptions not required by Solid26 Implementation Guide specifications</span></a></li>
+                        <li class="tocline"><a class="tocxref" href="#webid-algorithms"><bdi class="secno">3.1.3</bdi> <span>Assembling the Profile</span></a></li>
+                      </ol>
+                    </li>
+                  </ol>
+                </li>
+                <li class="tocline"><p><a class="tocxref" href="#client-guidance"><bdi class="secno">4.</bdi> <span>Guidance for clients</span></a></p></li>
+                <li class="tocline"><a class="tocxref" href="#references"><span>References</span></a></li>
+              </ol>
+            </div>
+          </nav>
+
+          <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction">
+            <h2 property="schema:name">Introduction</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p>
+                The <a href="https://solidproject.org/TR/">Solid Technical Reports</a> comprise multiple specification documents with differing levels of maturity. 
+                The <a href="https://solidproject.org/TR/protocol">Solid Protocol</a> bundles the <a href="https://solidproject.org/TR/protocol#abstract">specifications that, together, provide applications with secure and permissioned access to externally stored data in an interoperable way</a>. 
+                Solid26 points implementers to fixed versions of the <a href="https://solidproject.org/TR/protocol">Solid Protocol</a> and its sub-specifications, a stable snapshot of the specifications to build against today. 
+                Solid26 selects for the most widely implemented specification versions at the time of this document's publication.
+              </p>
+              <p>This document does not define new normative requirements, but rather identifies and collects the specifications needed to build interoperable Solid applications and servers.</p>
+            </div>
+          </section>
+
+          <section id="specifications" inlist="" rel="schema:hasPart" resource="#specifications">
+            <h2 property="schema:name">Specifications</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p>This Solid26 Implementation Guide recommends the following specification snapshots.</p>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Specification</th>
+                    <th>Version</th>
+                    <th>Details</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a href="https://solidproject.org/TR/2024/protocol-20240512">Solid Protocol</a></td>
+                    <td><a href="https://solidproject.org/TR/2024/protocol-20240512">(CG-DRAFT, v0.11.0, 2024-05-12)</a></td>
+                    <td><a href="#solid-protocol">Link</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="https://solidproject.org/TR/2022/oidc-20220328">Solid-OIDC</a></td>
+                    <td><a href="https://solidproject.org/TR/2022/oidc-20220328">(v0.1.0, 2022-03-28)</a></td>
+                    <td><a href="#solid-oidc">Link</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="https://solidproject.org/TR/2024/wac-20240512">Web Access Control</a></td>
+                    <td><a href="https://solidproject.org/TR/2024/wac-20240512">(CG-DRAFT, v1.0.0, 2024-05-12)</a></td>
+                    <td><a href="#web-access-control">Link</a></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <section id="solid-protocol" inlist="" rel="schema:hasPart" resource="#solid-protocol">
+                <h3>Solid Protocol</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>The <a href="https://solidproject.org/TR/2024/protocol-20240512">Solid Protocol</a> (CG-DRAFT, v0.11.0, 2024-05-12) is included with the following comments:</p>
+                  <ul>
+                    <li>
+                      <p>Clients might encounter Servers that do not support <a href="https://solidproject.org/TR/protocol#n3-patch">Modifying Resources Using N3 Patches</a> despite it being required by the Solid Protocol. Clients can use <code>Allow</code> headers to determine if a Server supports HTTP <code>PATCH</code> requests.</p>
+                      
+                      <p>If a server does not support HTTP <code>PATCH</code>, a client can read-modify-write via <code>GET</code> then <code>PUT</code>. To avoid the lost-update problem [<a href="https://www.w3.org/1999/04/Editing/">W3C &mdash; Editing the Web</a>], issue the <code>PUT</code> conditionally with <code>If-Match</code> carrying the <code>ETag</code> returned from the <code>GET</code>; the server responds with <code>412 Precondition Failed</code> if the resource has changed in the interim. If only <code>Last-Modified</code> is exposed, <code>If-Unmodified-Since</code> serves the same role, though its one-second resolution is coarser than <code>ETag</code>-based validation. See <a href="https://httpwg.org/specs/rfc9110.html#response.validator">RFC 9110 &sect; Validator Fields</a> for the full mechanics.</p>
+                    </li>
+                    <li>
+                      <p>
+                        Servers are strongly encouraged to implement Web Access Control (<a href="https://solidproject.org/TR/protocol#web-access-control">WAC</a>), see <a href="#web-access-control">below</a>. 
+                      </p>
+                      <div class="note" id="note-survey">
+                        <h4><span>Note</span></h4>
+                        <p>The <a href="https://lists.w3.org/Archives/Public/public-solid/2026Mar/0019.html">March 2026 implementation survey</a> yields the following <a href="https://github.com/w3c-cg/solid/blob/main/implementations/wac-acp.2026-04-01.csv">results</a> (<a href="https://web.archive.org/web/20260415092405/https://raw.githubusercontent.com/w3c-cg/solid/64d2c5383976b9e3a51f854576245dbb4bda1ce1/implementations/wac-acp.2026-04-01.csv">archived</a>):</p>
+                          <ul>
+                            <li>
+                              For WAC, the data shows 13 server-side implementations, deployment in 11 services, and 19 client-side implementations.
+                              WAC is considered the pragmatic, user-friendly, and extensible standard that effectively covers nearly all of the use cases from current Solid Apps. 
+                            </li>
+                            <li>
+                              For ACP, the data shows 4 server-side implementations, deployment in 1 service, and 4 client-side implementations. 
+                              ACP is considered an expressive and complex alternative that might be chosen to satisfy corresponding use-case specific requirements.
+                            </li>
+                          </ul>
+                          <p>The data shows that most clients implement only one access control language, despite the Solid Protocol requiring Clients to conform to both WAC and ACP.</p>
+                      </div>
+                      <p>
+                        In case WAC seems not to satisfy implementers' requirements, implementers are strongly encouraged to verify their understanding of the matter in community discussion by providing <a href="https://solidproject.org/TR/wac#document-feedback">feedback</a> to the community.
+                        If WAC is not able to satisfy the requirements, implementers might consider ACP or <a href="https://github.com/solid/authorization-panel/issues/121#issuecomment-4253548683">other suitable mechanisms</a> to achieve their goals.
+                        Client implementers are advised to consider that their Client implementation will not be able to interoperate with every conforming Server their Client might encounter.
+                      </p>
+                      </li>
+                      <li>
+                      <p>
+                        Some Clients might desire to update access control on particular resources, e.g., for sharing a user's data with another user or application.
+                        In such a case, Clients are strongly encouraged to rely on or make use of conforming implementations that are independently tested and verified, e.g., through open test suites and publicly documented implementation reports.
+                        Servers might only allow such tested and verified conformant Clients to modify access control rules.
+                      </p>
+                      <p>
+                        Implementers of Clients are advised to consider whether their Client implementation should actually attempt to modify access rules at all:
+                        An architectural separation between a Client executing application-specific logic and a Client executing authorization-related logic might be beneficial in terms of separation of concerns, maintainability, and re-usability of software components [<a href="#ref-authapp">BKY+24</a>].
+                        Such separation allows Clients to rely on an externally tested and verified Client already implementing of authorization-related logic.
+                        Such approach to modifying access control rules might rely on
+                      </p>
+                      <ul>
+                        <li>access requests to update access control rules accordingly on a Server</li>
+                        <li>issued by the application-logic Client</li>
+                        <li>processed by a particular Client that is able and trusted to manage access controls (such as an access management or authorization application; e.g. the <a href="https://solid.github.io/data-interoperability-panel/specification/#authorization-redirect-endpoint">Authorization Agent</a> defined by <a href="https://solidproject.org/TR/sai">Solid Application Interoperability</a>)</li>
+                      </ul>
+                      </li>
+                    </ul>
+                </div>
+              </section>
+
+              <section id="solid-oidc" inlist="" rel="schema:hasPart" resource="#solid-oidc">
+                <h3>Solid-OIDC</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p><a href="https://solidproject.org/TR/2022/oidc-20220328">Solid-OIDC</a> (v0.1.0, 2022-03-28) is included with the following comments:</p>
+                    <ul>
+                      <li>
+                        <p>Despite Solid26 including Solid-OIDC v0.1.0, it is not widely implemented. In particular, the Solid-OIDC recommended flow of User-Managed Access (UMA) is not supported by any open source Solid Server implementation. Current implementations rely on the access token issued by the OpenID Provider of the user to authenticate the user at a Solid Storage.</p>
+                      </li>
+                    </ul>
+                    <div class="note">
+                    <h4><span>EDITORS' Note</span></h4>
+                    <p>
+                     A corresponding Group Note document that accurately reflects current implementations is being drafted by Christoph Braun. This PR is waiting for that document to be available and ready to reference before merging.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              <section id="web-access-control" inlist="" rel="schema:hasPart" resource="#web-access-control">
+                <h3>Web Access Control</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p><a href="https://solidproject.org/TR/2024/wac-20240512">Web Access Control</a> (CG-DRAFT, v1.0.0, 2024-05-12) is included.</p>
+                  </div>
+              </section>
+
+              <section id="webid-1" inlist="" rel="schema:hasPart" resource="#webid-1">
+                <h3>WebID 1.0</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p><a href="https://www.w3.org/2005/Incubator/webid/spec/identity/">WebID 1.0</a> (W3C Editor's Draft, 5 March 2014) is included.</p>
+                </div>
+              </section>
+
+              <section id="webid-profile" inlist="" rel="schema:hasPart" resource="#webid-profile">
+                <h3>Solid WebID Profile</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>The <a href="https://solid.github.io/webid-profile/">Solid WebID Profile</a> (CG Draft Report, v1.0.0, 12 May 2024) is included with the following comments:</p>
+                  <ul>
+                    <li>Most clients only need <a href="https://solid.github.io/webid-profile/#discovery">Discovery</a> and <a href="https://solid.github.io/webid-profile/#reading-profile">Reading Profile</a>; the <a href="https://solid.github.io/webid-profile/#dfn-writer-application">Writer Application</a> sections (<a href="https://solid.github.io/webid-profile/#updating-profile">Updating Profile</a>, <a href="https://solid.github.io/webid-profile/#extending-profile">Extending Profile</a>) primarily apply to profile editors and onboarding flows.</li>
+                    <li>The Solid WebID Profile <a href="https://solid.github.io/webid-profile/#protected-properties">Protected Properties</a> requirement is intended to prevent non-owner agents from modifying <code>solid:oidcIssuer</code> and other protected terms; most server implementations do not conform to this requirement. On such servers, an agent with write access to the WebID Document can rewrite the WebID's issuer, redirecting authentication to an attacker-controlled OpenID Provider and impersonating the WebID owner.</li>
+                  </ul>
+                </div>
+              </section>
+
+            </div>
+          </section>
+
+          <section id="implementation-guidance" inlist="" rel="schema:hasPart" resource="#implementation-guidance">
+            <h2 property="schema:name">Implementation Guidance</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+
+              <section id="webid" inlist="" rel="schema:hasPart" resource="#webid">
+                <h3>WebID</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+
+                  <p>This section gives WebID implementation guidance for the Solid26 Implementation Guide. It covers <a href="#webid-normative">requirements</a> and <a href="#webid-non-normative">common assumptions</a> drawn from the Solid26 Implementation Guide specifications, and a <a href="#webid-algorithms">profile assembly algorithm</a>. <a href="#client-guidance">Client-side guidance</a> is in a separate section.</p>
+
+                  <p>Terms used in this section:</p>
+                  <dl>
+                    <dt><dfn id="dfn-webid">WebID</dfn></dt>
+                    <dd>An HTTP URI that denotes an agent [<cite><a class="bibref" href="#ref-webid">WEBID</a></cite>], [<cite><a class="bibref" href="#ref-solid-protocol">SOLID-PROTOCOL</a></cite>].</dd>
+                    <dt><dfn id="dfn-webid-profile-document">WebID Profile Document</dfn></dt>
+                    <dd>The document obtained by dereferencing a <a href="#dfn-webid">WebID</a>.</dd>
+                    <dt><dfn id="dfn-extended-profile-document">Extended Profile Document</dfn></dt>
+                    <dd>A further document linked from the <a href="#dfn-webid-profile-document">WebID Profile Document</a> that contains additional statements about the <a href="#dfn-webid">WebID</a>; retrieval may require authentication.</dd>
+                    <dt><dfn id="dfn-preferences-document">Preferences Document</dfn></dt>
+                    <dd>A document, linked from the agent's <a href="#dfn-webid-profile">WebID Profile</a> via <code>pim:preferencesFile</code>, that holds settings and pointers to private data; typically accessible only to the agent or a delegate.</dd>
+                    <dt><dfn id="dfn-webid-profile">WebID Profile</dfn></dt>
+                    <dd>The RDF graph [<cite><a class="bibref" href="#ref-rdf11-concepts">RDF11-CONCEPTS</a></cite>] produced by the procedure in <a href="#webid-algorithms">§ Assembling the Profile</a>.</dd>
+                  </dl>
+
+                  <section id="webid-normative" inlist="" rel="schema:hasPart" resource="#webid-normative">
+                    <h4>Requirements derivable from Solid26 Implementation Guide specifications</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <ol>
+                        <li>
+                          A WebID is an HTTP URI denoting an agent [<cite><a class="bibref" href="#ref-webid">WebID 1.0</a></cite> § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#terminology">Terminology</a>].
+                        </li>
+                        <li>
+                          The WebID Profile Document is obtained by dereferencing the WebID HTTP URI: for a WebID with a fragment (e.g., <code>#me</code>), the fragment-less URI identifies it; for a WebID without a fragment, an HTTP <code>GET</code> MUST return <code>303 See Other</code> whose <code>Location</code> identifies it [<cite><a class="bibref" href="#ref-webid">WebID 1.0</a></cite> § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#terminology">Terminology</a>, § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#the-webid-http-uri">The WebID HTTP URI</a>].
+                        </li>
+                        <li>
+                          A WebID Document MAY be hosted anywhere on the Web, in or out of Solid storage [<cite><a class="bibref" href="#ref-webid">WebID 1.0</a></cite> § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#publishing-the-webid-profile-document">Publishing the WebID Profile Document</a>].
+                          <ul>
+                            <li>A Solid client can only modify a WebID Profile if the underlying document is in a Solid storage. When the WebID Document is not in a Solid storage, it is recommended to link at least one <a href="#dfn-extended-profile-document">Extended Profile Document</a> that is, so that clients can attach further profile statements by writing to it.</li>
+                          </ul>
+                        </li>
+                        <li>
+                          The WebID Profile Document MUST be available in <code>text/turtle</code> and <code>application/ld+json</code> [<cite><a class="bibref" href="#ref-webid">WebID 1.0</a></cite> § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#publishing-the-webid-profile-document">Publishing the WebID Profile Document</a>; <cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#reading-profile">Reading Profile</a>].
+                        </li>
+                        <li>
+                          The WebID Profile MUST contain at least one statement <code>&lt;webid&gt; solid:oidcIssuer &lt;iss&gt;</code>, where <code>&lt;iss&gt;</code> is an OpenID Provider trusted to issue ID Tokens for the WebID [<cite><a class="bibref" href="#ref-solid-oidc">Solid-OIDC</a></cite> § <a href="https://solidproject.org/TR/2022/oidc-20220328#oidc-issuer-discovery">OIDC Issuer Discovery</a>].
+                        </li>
+                        <li>
+                          Solid storages owned by the agent MAY be advertised in the WebID Profile via <code>&lt;webid&gt; pim:storage &lt;storage&gt;</code> [<cite><a class="bibref" href="#ref-solid-protocol">Solid Protocol</a></cite> § <a href="https://solidproject.org/TR/2024/protocol-20240512#storage">Storage</a>].
+                        </li>
+                        <li>
+                          An agent MAY advertise a Linked Data Notifications inbox via <code>&lt;webid&gt; ldp:inbox &lt;inbox&gt;</code>; other agents post notifications there [<cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#webid-profile-data-model">WebID Profile Data Model</a>; <cite><a class="bibref" href="#ref-solid-protocol">Solid Protocol</a></cite> § <a href="https://solidproject.org/TR/2024/protocol-20240512#linked-data-notifications">Linked Data Notifications</a>].
+                        </li>
+                      </ol>
+                    </div>
+                  </section>
+
+                  <section id="webid-non-normative" inlist="" rel="schema:hasPart" resource="#webid-non-normative">
+                    <h4>Common assumptions not required by Solid26 Implementation Guide specifications</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <ol>
+                        <li>
+                          The WebID Document is a public resource (i.e., an unauthenticated HTTP <code>GET</code> on the WebID URI returns the Profile) [<cite><a class="bibref" href="#ref-webid">WebID 1.0</a></cite> § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#processing-the-webid-profile">Processing the WebID Profile</a>].
+                          <ul>
+                            <li>These specifications do not preclude authenticated retrieval of a non-public WebID Document by a server acting as a client, though current server implementations generally do not support it.</li>
+                          </ul>
+                        </li>
+                        <li>
+                          The <code>pim:storage</code> statement in the WebID Profile is the only sound mechanism for discovering an agent's storages. The <code>storageDescription</code> Link header is not to be used for this purpose: a WebID Document hosted in a storage does not imply the WebID owns that storage [<cite><a class="bibref" href="#ref-solid-protocol">Solid Protocol</a></cite> § <a href="https://solidproject.org/TR/2024/protocol-20240512#webid-profile-privacy">Privacy Considerations</a>].
+                        </li>
+                        <li>
+                          The WebID Profile is the full set of valid statements collected by the discovery procedure in <a href="#webid-algorithms">§ Assembling the Profile</a> [<cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#discovery">Discovery</a>; <cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#extending-profile">Extending a Profile</a>; <cite><a class="bibref" href="#ref-webid">WebID 1.0</a></cite> § <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#processing-the-webid-profile">Processing the WebID Profile</a>].
+                        </li>
+                      </ol>
+                    </div>
+                  </section>
+
+                  <section id="webid-algorithms" inlist="" rel="schema:hasPart" resource="#webid-algorithms">
+                    <h4>Assembling the Profile</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+
+                      <p>The WebID Profile is the set <em>S</em> of statements assembled by the procedure below. The <em>user's WebIDs</em> are the original WebID together with every WebID transitively equated to it via <code>owl:sameAs</code> within <em>S</em>; this set grows as <em>S</em> grows. Apply cycle detection throughout: do not re-fetch a document already retrieved. On <code>401</code>/<code>403</code> with a logged-in user, retry authenticated; missing links are not errors.</p>
+                      <ol>
+                        <li><strong>Initialise.</strong> <code>GET</code> the WebID Document for the original WebID. If it cannot be retrieved, surface a clear error. Add its triples to <em>S</em>.</li>
+                        <li><strong>Discovery-link expansion.</strong> For each triple <code>?w ?p ?o</code> in <em>S</em> where <code>?p</code> is a <dfn id="dfn-discovery-links">discovery link</dfn> (<code>rdfs:seeAlso</code>, <code>foaf:isPrimaryTopicOf</code>, <code>pim:preferencesFile</code>, or <code>owl:sameAs</code>), <code>?w</code> is one of the user's WebIDs, and <code>?o</code> is a URL whose document has not yet been fetched, <code>GET</code> <code>?o</code> and add its triples to <em>S</em>. Repeat until no new documents are discovered [<cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#discovery">Discovery</a>, § <a href="https://solid.github.io/webid-profile/#private-preferences">Private Preferences</a>].</li>
+                        <li><strong>Type Indexes.</strong> For each triple in <em>S</em> with predicate <code>solid:publicTypeIndex</code> or <code>solid:privateTypeIndex</code> whose subject is one of the user's WebIDs, <code>GET</code> the document at the object (if not already fetched) and add its triples to <em>S</em>.</li>
+                        <li><strong>Authoritative filter.</strong> Drop every <code>solid:oidcIssuer</code> triple in <em>S</em> that did not originate in a WebID Document; that predicate is authoritative only when sourced there, mirroring the write protection in <cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#updating-profile">Updating Profile</a>. Other discovery predicates (e.g., <code>pim:storage</code>, <code>ldp:inbox</code>) may legitimately appear in any of the fetched documents.</li>
+                        <li><strong>Subject filter.</strong> Restrict <em>S</em> to triples whose subject or object is one of the user's WebIDs [<cite><a class="bibref" href="#ref-webid-profile">Solid WebID Profile</a></cite> § <a href="https://solid.github.io/webid-profile/#discovery">Discovery</a>]. The result is the WebID Profile graph.</li>
+                      </ol>
+
+                      <div class="note">
+                        <h4><span>Note (Bounded traversal)</span></h4>
+                        <p>Traversal of discovery links is unbounded. Clients apply cycle detection to avoid re-fetching documents. To ensure that owners of WebIDs hosted outside Solid storage can extend their profile via documents they control, clients follow at least two hops of discovery links from each WebID Profile Document (the document itself, the documents it links, and the documents those link in turn). Beyond two hops, clients can terminate at a depth or document-count limit appropriate to their environment.</p>
+                      </div>
+
+                      <div class="note">
+                        <h4><span>Note (Preferences leniency)</span></h4>
+                        <p>Including <code>pim:preferencesFile</code> in the discovery-link set is intentionally lenient. In practice an agent has a single Preferences Document linked from the original WebID Document; the algorithm tolerates the <code>pim:preferencesFile</code> link appearing in any document already in <em>S</em>, provided its subject is one of the user's WebIDs.</p>
+                      </div>
+
+                      <div class="note">
+                        <h4><span>Note (entity reconciliation)</span></h4>
+                        <p>The assembled graph may contain triples about more than one of the user's WebIDs. Depending on the client's context, these typically need to be reconciled into a single subject. Two common strategies:</p>
+                        <ul>
+                          <li><strong>Augmentation</strong> — for every triple in which one of the user's WebIDs appears as subject or object, add a parallel triple substituting the original WebID. Non-destructive; original sources are preserved.</li>
+                          <li><strong>Rewriting</strong> — replace every occurrence of any of the user's WebIDs (subject or object) with the original WebID, then delete the <code>owl:sameAs</code> triples.</li>
+                        </ul>
+                      </div>
+
+                    </div>
+                  </section>
+
+                </div>
+              </section>
+            </div>
+          </section>
+
+          <section id="client-guidance" inlist="" rel="schema:hasPart" resource="#client-guidance">
+            <h2 property="schema:name">Guidance for clients</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+
+              <p>This section targets clients acting on behalf of a single end user — reading and writing the user's data — as opposed to authorization agents, profile editors, or server-side resource servers. The recommended flow is:</p>
+
+              <ol>
+                <li>
+                  <p><strong>Obtain the user's WebID.</strong> Prompt for a WebID URI and validate that it is a well-formed <code>http</code>/<code>https</code> URI. Surface clear errors for malformed input, <code>404</code>s, and responses that cannot be parsed as RDF.</p>
+                </li>
+                <li>
+                  <p><strong>Dereference the WebID.</strong> Issue an unauthenticated <code>GET</code> on the WebID URI. The <code>303 See Other</code> redirect to the WebID Document is expected per the "Cool URIs for the Semantic Web" pattern, but other 3xx codes (<code>301</code>, <code>302</code>, <code>307</code>, <code>308</code>) may also occur and must be handled.</p>
+                </li>
+                <li>
+                  <p><strong>Authenticate the user via their OpenID Provider.</strong> Read <code>?webid solid:oidcIssuer ?iss</code> from the WebID Document. If no <code>solid:oidcIssuer</code> statement is present, surface a clear error: the WebID is not usable for Solid authentication. If more than one issuer is listed, let the user choose. Before initiating the Solid-OIDC login flow, fetch the issuer's OpenID Connect Discovery 1.0 configuration and verify that <code>webid</code> appears in <code>scopes_supported</code> [<cite><a class="bibref" href="#ref-solid-oidc">Solid-OIDC</a></cite> § <a href="https://solidproject.org/TR/2022/oidc-20220328#oidc-issuer-discovery">OIDC Issuer Discovery</a>, § <a href="https://solidproject.org/TR/2022/oidc-20220328#openid-provider-conformance">OpenID Provider Conformance</a>].</p>
+                </li>
+                <li>
+                  <p><strong>Build the WebID Profile graph</strong> by running <a href="#webid-algorithms">Assembling the Profile</a> (do not discover storages via the <code>solid:storageDescription</code> <code>Link</code> header).</p>
+                </li>
+              </ol>
+
+              <div class="note">
+                <h4><span>Note</span></h4>
+                <p><code>pim:storage</code> may yield more than one value. When the application needs exactly one storage to write data into, prompt the user to choose rather than picking one silently.</p>
+              </div>
+
+              <div class="note">
+                <h4><span>Note</span></h4>
+                <p>The Solid WebID Profile [<cite><a class="bibref" href="#ref-webid-profile">WEBID-PROFILE</a></cite>] does not standardise predicates for rendering an agent's identity. For empirical data on which predicates are actually populated across the ecosystem, implementers can consult <a href="https://jeff-zucker.github.io/solid-load-profile/">solid-load-profile</a>, which summarises predicate usage from a sample of live Solid profiles. The list below targets <code>foaf:Person</code>, <code>vcard:Individual</code>, and <code>schema:Person</code>, drawing from the predicates read by existing profile renderers including <a href="https://github.com/SolidOS/solidos">SolidOS</a>/<a href="https://github.com/SolidOS/mashlib">mashlib</a>, <a href="https://github.com/pod-os/PodOS">PodOS</a>, <a href="https://gitlab.com/vincenttunru/penny">Penny</a>, and <a href="https://dokie.li/">dokieli</a>. Vocabularies referenced: FOAF [<cite><a class="bibref" href="#ref-foaf">FOAF</a></cite>], vCard [<cite><a class="bibref" href="#ref-vcard">VCARD-RDF</a></cite>], Schema.org [<cite><a class="bibref" href="#ref-schema">SCHEMA-ORG</a></cite>], <a href="http://www.w3.org/ns/activitystreams#">ActivityStreams</a>, <a href="http://rdfs.org/sioc/ns#">SIOC</a>, <a href="http://www.w3.org/ns/org#">Org</a>, and <a href="http://www.w3.org/ns/solid/terms#">Solid Terms</a>.</p>
+                <p>The following is a list of fallback predicates that applications may wish to consider using when rendering a profile. The order given for each field is a suggested preference; other orderings may be more appropriate depending on the ecosystem the application integrates with.</p>
+                <ul>
+                  <li><strong>Name:</strong> <code>foaf:name</code>, with fallbacks to <code>schema:name</code>, <code>vcard:fn</code>, <code>as:name</code>, or <code>rdfs:label</code>. For structured names: <code>schema:givenName</code>+<code>schema:familyName</code>, <code>foaf:givenName</code>+<code>foaf:familyName</code>, or <code>vcard:given-name</code>+<code>vcard:family-name</code>.</li>
+                  <li><strong>Short name / nickname:</strong> <code>foaf:nick</code>, with fallback to <code>vcard:nickname</code>.</li>
+                  <li><strong>Avatar / photo:</strong> <code>vcard:hasPhoto</code>, with fallbacks to <code>as:image</code>, <code>as:icon</code>, <code>foaf:img</code>, <code>schema:image</code>, <code>vcard:photo</code>, <code>sioc:avatar</code>, or <code>foaf:depiction</code>.</li>
+                  <li><strong>Email:</strong> <code>vcard:hasEmail</code>, with fallbacks to <code>schema:email</code> or <code>foaf:mbox</code>.</li>
+                  <li><strong>Telephone:</strong> <code>vcard:hasTelephone</code>.</li>
+                  <li><strong>Address:</strong> <code>vcard:hasAddress</code> (with <code>vcard:country-name</code>, <code>vcard:locality</code> on the value).</li>
+                  <li><strong>Description / bio:</strong> <code>vcard:note</code>, with fallback to <code>schema:description</code>.</li>
+                  <li><strong>Birthday:</strong> <code>vcard:bday</code>.</li>
+                  <li><strong>Organization &amp; role:</strong> <code>vcard:organization-name</code> and <code>vcard:role</code>; for richer involvement, <code>org:organization</code>/<code>org:member</code> and <code>org:role</code>, or <code>schema:hasOccupation</code>.</li>
+                  <li><strong>Pronouns:</strong> <code>solid:preferredSubjectPronoun</code>, <code>solid:preferredObjectPronoun</code>, <code>solid:preferredRelativePronoun</code>.</li>
+                  <li><strong>Skills:</strong> <code>schema:skills</code>, with fallback to <code>cco:skill</code>.</li>
+                  <li><strong>Languages:</strong> <code>vcard:language</code>, with fallbacks to <code>schema:knowsLanguage</code> or <code>solid:preferredLanguage</code>.</li>
+                  <li><strong>Friends / contacts:</strong> <code>foaf:knows</code>, with fallback to <code>schema:knows</code>.</li>
+                  <li><strong>Profile colours:</strong> <code>solid:profileHighlightColor</code>, <code>solid:profileBackgroundColor</code>.</li>
+                  <li><strong>Homepage / web page:</strong> <code>foaf:homepage</code>, <code>foaf:weblog</code>, <code>schema:url</code>, or <code>vcard:url</code>.</li>
+                  <li><strong>Social accounts:</strong> <code>foaf:account</code>, with account nodes carrying <code>foaf:accountName</code> and <code>foaf:userProfilePrefix</code>.</li>
+                </ul>
+                <p>None of these are guaranteed to be present; UIs should fall back to the WebID URI when no human-readable label is available.</p>
+              </div>
+
+              <div class="note">
+                <h4><span>Note</span></h4>
+                <p>Data discovery beyond the profile varies across the ecosystem. Within the <a href="https://solidproject.org/TR/">Solid TR work items</a> the relevant mechanisms are Type Indexes and <a href="https://solidproject.org/TR/sai">Solid Application Interoperability (SAI)</a>; many additional bespoke mechanisms are in active use outside the TR work items. This guide does not prescribe a single mechanism.</p>
+                <p><em>Editor's note: a link to the Type Indexes specification will be added once <a href="https://github.com/solid/specification/pull/786">PR #786</a> is merged.</em></p>
+              </div>
+
+            </div>
+          </section>
+
+          <section id="references" inlist="" rel="schema:hasPart" resource="#references">
+            <h2>References</h2>
+            <div>
+              <dl>
+                <dt id="ref-solid-protocol">[SOLID-PROTOCOL]</dt>
+                <dd><cite><a href="https://solidproject.org/TR/2024/protocol-20240512">Solid Protocol</a></cite>. Sarven Capadisli; Tim Berners-Lee; Kjetil Kjernsmo. W3C Solid Community Group. 12 May 2024. Draft Community Group Report, Version 0.11.0. URL: <a href="https://solidproject.org/TR/2024/protocol-20240512">https://solidproject.org/TR/2024/protocol-20240512</a></dd>
+
+                <dt id="ref-solid-oidc">[SOLID-OIDC]</dt>
+                <dd><cite><a href="https://solidproject.org/TR/2022/oidc-20220328">Solid-OIDC</a></cite>. Aaron Coburn; elf Pavlik; Dmitri Zagidulin. W3C Solid Community Group. 28 March 2022. Version 0.1.0. URL: <a href="https://solidproject.org/TR/2022/oidc-20220328">https://solidproject.org/TR/2022/oidc-20220328</a></dd>
+
+                <dt id="ref-wac">[WAC]</dt>
+                <dd><cite><a href="https://solidproject.org/TR/2024/wac-20240512">Web Access Control</a></cite>. Sarven Capadisli. W3C Solid Community Group. 12 May 2024. Draft Community Group Report, Version 1.0.0. URL: <a href="https://solidproject.org/TR/2024/wac-20240512">https://solidproject.org/TR/2024/wac-20240512</a></dd>
+
+                <dt id="ref-webid">[WEBID]</dt>
+                <dd><cite><a href="https://www.w3.org/2005/Incubator/webid/spec/identity/">WebID 1.0</a></cite>. Andrei Sambra; Stéphane Corlosquet. W3C WebID Community Group. 5 March 2014. W3C Editor's Draft. URL: <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/">https://www.w3.org/2005/Incubator/webid/spec/identity/</a></dd>
+
+                <dt id="ref-webid-profile">[WEBID-PROFILE]</dt>
+                <dd><cite><a href="https://solid.github.io/webid-profile/">Solid WebID Profile</a></cite>. Virginia Balseiro; Jeff Zucker; Sarven Capadisli (eds.). Tim Berners-Lee; Sarven Capadisli; Virginia Balseiro; Timea Turdean; Jeff Zucker (authors). W3C Solid Community Group. 12 May 2024. Draft Community Group Report, Version 1.0.0. URL: <a href="https://solid.github.io/webid-profile/">https://solid.github.io/webid-profile/</a></dd>
+
+                <dt id="ref-rdf11-concepts">[RDF11-CONCEPTS]</dt>
+                <dd><cite><a href="https://www.w3.org/TR/rdf11-concepts/">RDF 1.1 Concepts and Abstract Syntax</a></cite>. Richard Cyganiak; David Wood; Markus Lanthaler. W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/rdf11-concepts/">https://www.w3.org/TR/rdf11-concepts/</a></dd>
+
+                <dt id="ref-foaf">[FOAF]</dt>
+                <dd><cite><a href="http://xmlns.com/foaf/spec/">FOAF Vocabulary Specification 0.99</a></cite>. Dan Brickley; Libby Miller. 14 January 2014. URL: <a href="http://xmlns.com/foaf/spec/">http://xmlns.com/foaf/spec/</a></dd>
+
+                <dt id="ref-vcard">[VCARD-RDF]</dt>
+                <dd><cite><a href="https://www.w3.org/TR/vcard-rdf/">vCard Ontology - for describing People and Organizations</a></cite>. Renato Iannella; James McKinney. W3C. 22 May 2014. W3C Working Group Note. URL: <a href="https://www.w3.org/TR/vcard-rdf/">https://www.w3.org/TR/vcard-rdf/</a></dd>
+
+                <dt id="ref-schema">[SCHEMA-ORG]</dt>
+                <dd><cite><a href="https://schema.org/">Schema.org</a></cite>. W3C Schema.org Community Group. URL: <a href="https://schema.org/">https://schema.org/</a></dd>
+
+                <dt id="ref-authapp">[BKY+24]</dt>
+                <dd>
+                  <cite>AuthApp - Portable, Reusable Solid App for GDPR-Compliant Access Granting</cite>. 
+                  Andreas Both; Thorsten Kastner; Dustin Yeboah; Christoph Braun; Daniel Schraudner; Sebastian Schmid; Tobias Käfer; Andreas Harth. 
+                  ICWE 2024: 199-214. 
+                  URL: <a href="https://publikationen.bibliothek.kit.edu/1000172187/post">https://publikationen.bibliothek.kit.edu/1000172187/post</a>
+                </dd>
+              </dl>
+            </div>
+          </section>
+
+        </div>
+      </article>
+    </main>
+  </body>
+</html>
